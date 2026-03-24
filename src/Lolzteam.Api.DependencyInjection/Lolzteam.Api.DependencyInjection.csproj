@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0</TargetFrameworks>
+    <PackageId>Lolzteam.Api.DependencyInjection</PackageId>
+    <Description>Optional Microsoft.Extensions.DependencyInjection integration for Lolzteam.Api. Provides AddForumClient() and AddMarketClient() service collection extensions using IHttpClientFactory.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lolzteam.Api\Lolzteam.Api.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.*" />
+  </ItemGroup>
+</Project>

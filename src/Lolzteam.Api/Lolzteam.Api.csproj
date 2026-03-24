@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0</TargetFrameworks>
+    <PackageId>Lolzteam.Api</PackageId>
+    <Description>Zero-dependency C# client for the Lolzteam Forum and Market APIs. Works on .NET Standard 2.0+, .NET 6+, Unity, and .NET Framework 4.6.1+.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- System.Text.Json: built-in net6+, NuGet for older TFMs -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="System.Text.Json" Version="8.*" />
+  </ItemGroup>
+
+  <!-- InternalsVisibleTo for tests, DI package, and benchmarks -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="Lolzteam.Api.Tests" />
+    <InternalsVisibleTo Include="Lolzteam.Api.DependencyInjection" />
+    <InternalsVisibleTo Include="Lolzteam.Benchmarks" />
+  </ItemGroup>
+</Project>

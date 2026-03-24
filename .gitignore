@@ -1,0 +1,43 @@
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+packages/
+!**/packages/repositories.config
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# VS Code
+.vscode/
+
+# Test results and coverage
+coveragereport/
+coverage/
+*.trx
+
+# Benchmark artifacts
+BenchmarkDotNet.Artifacts/
+
+# dotnet tools
+.dotnet-tools/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

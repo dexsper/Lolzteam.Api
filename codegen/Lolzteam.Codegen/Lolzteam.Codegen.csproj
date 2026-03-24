@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsCodegenProject>true</IsCodegenProject>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- Codegen is an internal tool — suppress style-only rules on copied code -->
+    <NoWarn>$(NoWarn);CA1305;CA1310;CA1834;CA1862;CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- System.Text.Json Nodes API -->
+    <PackageReference Include="System.Text.Json" Version="8.*" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/Lolzteam.Benchmarks/Lolzteam.Benchmarks.csproj" />
+  </Folder>
+  <Folder Name="/codegen/">
+    <Project Path="codegen/Lolzteam.Codegen/Lolzteam.Codegen.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Lolzteam.Api.DependencyInjection/Lolzteam.Api.DependencyInjection.csproj" />
+    <Project Path="src/Lolzteam.Api/Lolzteam.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Lolzteam.Api.Tests/Lolzteam.Api.Tests.csproj" />
+  </Folder>
+</Solution>
