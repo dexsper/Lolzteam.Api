@@ -6,7 +6,7 @@ Production-grade C# client for the [Lolzteam Forum](https://prod-api.lolz.live) 
 
 * **Code-generated** from official OpenAPI schemas — 151 Forum and 115 Market operations, all strongly typed
 * **AOT-safe** deserialization — each response record reads itself directly from a binary stream, zero runtime reflection
-* **Low allocation** HTTP — `ArrayPool<byte>` response buffering with a static pooled `HttpMessageHandler` (no socket exhaustion)
+* **Low allocation** HTTP — `ArrayPool<byte>` response buffering with a static pooled `HttpMessageHandler`
 * **Automatic retry** on 429 / 502 / 503 with `Retry-After` header respect and configurable back-off
 * **Client-side rate limiting** — proactively throttles requests before the server ever returns 429
 * **Proxy support** — HTTP, HTTPS, and SOCKS5 with optional per-proxy credentials
