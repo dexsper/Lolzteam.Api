@@ -4,6 +4,16 @@ namespace Lolzteam.Codegen;
 
 internal static partial class Emitter
 {
+    internal sealed record CSharpMethod(
+        string TypeName,
+        string ClassName,
+        string PathExpression,
+        bool IsSearch,
+        bool HasQueryType,
+        string ResponseTypeName,
+        bool HasBodyType
+    );
+
     private static void EmitGroupClass(CodeWriter w, ParsedGroup group)
     {
         var className = Naming.GroupToClassName(group.GroupName);
@@ -37,8 +47,7 @@ internal static partial class Emitter
         }
 
         w.Line().Line("private readonly LolzteamHttpClient _http;").Line();
-        w.Line(
-                "/// <summary>Create a new client. For DI / IHttpClientFactory use the Lolzteam.Api.DependencyInjection package.</summary>")
+        w.Line("/// <summary>Create a new client.</summary>")
             .Open($"public {clientName}(ClientConfig config)")
             .Open("var resolvedConfig = config with")
             .Line($"BaseUrl = config.BaseUrl ?? \"{defaultBaseUrl}\",")
@@ -62,8 +71,11 @@ internal static partial class Emitter
             .Line("_http = http;");
 
         foreach (var group in groups)
+        {
             w.Line(
-                $"{Naming.GroupToPropertyName(group.GroupName)} = new {Naming.GroupToClassName(group.GroupName)}(_http);");
+                $"{Naming.GroupToPropertyName(group.GroupName)} = new {Naming.GroupToClassName(group.GroupName)}(_http);"
+            );
+        }
 
         w.Close()
             .Line()
@@ -84,8 +96,7 @@ internal static partial class Emitter
             .Line()
             .Line($"namespace {ns};")
             .Line()
-            .Line(
-                $"/// <summary>Interface for the {interfaceName[1..]} — enables mocking and DI substitution.</summary>")
+            .Line($"/// <summary>Interface for the {interfaceName[1..]}.</summary>")
             .Open($"public interface {interfaceName} : System.IDisposable");
 
         foreach (var group in groups)
@@ -100,84 +111,135 @@ internal static partial class Emitter
         return w.ToString();
     }
 
-    private static void EmitCSharpMethod(CodeWriter w, string group, MethodDefinition method)
+    private static void EmitCSharpMethod(CodeWriter w, string group, MethodDefinition definition)
     {
-        var typeName = Naming.BuildTypeName(group, method.MethodName);
+        var typeName = Naming.BuildTypeName(group, definition.MethodName);
         var className = Naming.GroupToClassName(group);
-        var responseTypeName = $"{className}Types.{typeName}Response";
-        var pathExpr = BuildPathExpression(method.Path, method.Params.PathParams);
+        var hasQueryType = definition.Params.QueryParams.Count > 0;
+        var hasBodyType = definition.HasBody && (definition.BodyProperties.Count > 0 || definition.BodyIsArray);
+
+        var pathExpr = BuildPathExpression(definition.Path, definition.Params.PathParams);
         var isSearch = group.Equals("category", StringComparison.OrdinalIgnoreCase);
-        var hasQueryType = method.Params.QueryParams.Count > 0;
+        var responseTypeName = $"{className}Types.{typeName}Response";
 
-        var args = new List<string>();
-        foreach (var p in method.Params.PathParams)
-            args.Add($"{PathParamToCSharpType(p.Type)} {Naming.SnakeToPascal(Naming.SanitizeName(p.Name))}");
+        var method = new CSharpMethod(
+            typeName,
+            className,
+            pathExpr,
+            isSearch,
+            hasQueryType,
+            responseTypeName,
+            hasBodyType
+        );
 
-        var bodyTypeName = $"{className}Types.{typeName}Body";
-        var hasBodyType = method.HasBody && (method.BodyProperties.Count > 0 || method.BodyIsArray);
-        if (hasBodyType)
+        EmitMethodDescription(w, definition);
+        EmitMethodSignature(w, definition, method);
+
+        if (definition.ReturnsHtml)
         {
-            if (method.BodyIsArray)
-            {
-                bodyTypeName = $"List<{Transforms.ToCSharpType(method.BodyArrayItemType ?? "unknown")}>";
-            }
-
-            args.Add(method.BodyRequired ? $"{bodyTypeName} body" : $"{bodyTypeName}? body = null");
+            EmitHtmlMethodBody(w, definition, method);
+            w.Close();
+            return;
         }
 
-        if (hasQueryType)
-            args.Add($"{className}Types.{typeName}Params? @params = null");
+        if (definition.BodyEncoding == "multipart" && definition.BodyProperties.Exists(p => p.Type == "Blob"))
+        {
+            EmitMultipartByteArrayMethodBody(w, definition, method);
+            w.Close();
+            return;
+        }
 
-        args.Add("CancellationToken cancellationToken = default");
-        w.Open($"public async Task<{responseTypeName}> {method.MethodName}Async({string.Join(", ", args)})");
-
-        if (method.ReturnsHtml)
-            EmitHtmlMethodBody(w, method.HttpMethod, pathExpr, hasQueryType, isSearch, responseTypeName);
-        else if (method.BodyEncoding == "multipart" && method.BodyProperties.Exists(p => p.Type == "Blob"))
-            EmitMultipartByteArrayMethodBody(w, method, pathExpr, hasQueryType, isSearch, responseTypeName);
-        else
-            EmitStandardMethodBody(w, method, pathExpr, hasQueryType, hasBodyType, isSearch, responseTypeName);
-
+        EmitStandardMethodBody(w, definition, method);
         w.Close();
     }
 
-    /// <summary>Body for text/html endpoints: use <c>RequestRawAsync</c> and wrap the result.</summary>
-    private static void EmitHtmlMethodBody(
-        CodeWriter w, string httpMethod, string pathExpr,
-        bool hasQueryType, bool isSearch, string responseTypeName)
+    private static void EmitMethodDescription(CodeWriter w, MethodDefinition definition)
     {
-        EmitBuildOpts(w, httpMethod, pathExpr, hasQueryType,
-            includeBody: false, bodyRequired: false, bodyEncoding: "form",
-            isSearch, includeByteFields: false, includeJsonObj: false
+        if (definition.Description == null)
+            return;
+
+        w.Line("/// <summary>");
+
+        var descriptionLines = definition.Description
+            .Replace("\r\n", "\n")
+            .Replace("\r", "\n")
+            .Split('\n')
+            .ToList();
+
+        foreach (var line in descriptionLines)
+            w.Line($"/// {System.Security.SecurityElement.Escape(line)}");
+
+        w.Line("/// </summary>");
+    }
+
+    private static void EmitMethodSignature(CodeWriter w, MethodDefinition definition, CSharpMethod method)
+    {
+        var args = new List<string>();
+        foreach (var p in definition.Params.PathParams)
+            args.Add($"{PathParamToCSharpType(p.Type)} {Naming.SnakeToPascal(Naming.SanitizeName(p.Name))}");
+
+        var bodyTypeName = $"{method.ClassName}Types.{method.TypeName}Body";
+
+        if (method.HasBodyType)
+        {
+            if (definition.BodyIsArray)
+            {
+                bodyTypeName = $"List<{Transforms.ToCSharpType(definition.BodyArrayItemType ?? "unknown")}>";
+            }
+
+            args.Add(definition.BodyRequired ? $"{bodyTypeName} body" : $"{bodyTypeName}? body = null");
+        }
+
+        if (method.HasQueryType)
+            args.Add($"{method.ClassName}Types.{method.TypeName}Params? @params = null");
+
+        args.Add("CancellationToken cancellationToken = default");
+        w.Open($"public async Task<{method.ResponseTypeName}> {definition.MethodName}Async({string.Join(", ", args)})");
+    }
+
+    /// <summary>Body for text/html endpoints: use <c>RequestRawAsync</c> and wrap the result.</summary>
+    private static void EmitHtmlMethodBody(CodeWriter w, MethodDefinition definition, CSharpMethod method)
+    {
+        EmitBuildOpts(w,
+            definition.HttpMethod,
+            method.PathExpression,
+            method.HasQueryType,
+            includeBody: false,
+            bodyRequired: false,
+            bodyEncoding: "form",
+            method.IsSearch,
+            includeByteFields: false,
+            includeJsonObj: false
         );
 
         w.Line("var __raw = await _http.RequestRawAsync(__opts, cancellationToken).ConfigureAwait(false);");
-        w.Line($"return new {responseTypeName}(__raw);");
+        w.Line($"return new {method.ResponseTypeName}(__raw);");
     }
 
     /// <summary>Body for standard JSON/form endpoints.</summary>
-    private static void EmitStandardMethodBody(
-        CodeWriter w, MethodDefinition method, string pathExpr,
-        bool hasQueryType, bool hasBodyType, bool isSearch, string responseTypeName)
+    private static void EmitStandardMethodBody(CodeWriter w, MethodDefinition definition, CSharpMethod method)
     {
-        EmitBuildOpts(w, method.HttpMethod, pathExpr, hasQueryType,
-            includeBody: hasBodyType, bodyRequired: method.BodyRequired,
-            bodyEncoding: method.BodyEncoding, isSearch,
+        EmitBuildOpts(w,
+            definition.HttpMethod,
+            method.PathExpression,
+            definition.Params.QueryParams.Count > 0,
+            includeBody: method.HasBodyType,
+            bodyRequired: definition.BodyRequired,
+            bodyEncoding: definition.BodyEncoding,
+            method.IsSearch,
             includeByteFields: false, includeJsonObj: false
         );
 
-        EmitRequestAndReturn(w, responseTypeName);
+        EmitRequestAndReturn(w, method.ResponseTypeName);
     }
 
     /// <summary>Body for multipart endpoints that include raw byte-array (file upload) fields.</summary>
-    private static void EmitMultipartByteArrayMethodBody(
-        CodeWriter w, MethodDefinition method, string pathExpr,
-        bool hasQueryType, bool isSearch, string responseTypeName)
+    private static void EmitMultipartByteArrayMethodBody(CodeWriter w, MethodDefinition definition, CSharpMethod method)
     {
-        var serializableProps = method.BodyProperties.FindAll(p => p.Type != "Blob");
-        var blobFields = method.BodyProperties.FindAll(p => p.Type == "Blob");
+        var serializableProps = definition.BodyProperties.FindAll(p => p.Type != "Blob");
+        var blobFields = definition.BodyProperties.FindAll(p => p.Type == "Blob");
+        var hasQueryType = definition.Params.QueryParams.Count > 0;
 
-        // Local function builds jsonObj + byteFields, then emits __opts and return
         void EmitBodyAndReturn()
         {
             if (serializableProps.Count > 0)
@@ -207,32 +269,45 @@ internal static partial class Emitter
                     : $"if (body.{pn} is not null) byteFields[\"{field.Name}\"] = body.{pn};");
             }
 
-            EmitBuildOpts(w, method.HttpMethod, pathExpr, hasQueryType, includeBody: serializableProps.Count > 0,
-                bodyRequired: true, bodyEncoding: "multipart", isSearch,
-                includeByteFields: true, includeJsonObj: serializableProps.Count > 0
+            EmitBuildOpts(w,
+                definition.HttpMethod,
+                method.PathExpression,
+                hasQueryType,
+                includeBody: serializableProps.Count > 0,
+                bodyRequired: true,
+                bodyEncoding: "multipart",
+                method.IsSearch,
+                includeByteFields: true,
+                includeJsonObj: serializableProps.Count > 0
             );
 
-            EmitRequestAndReturn(w, responseTypeName);
+            EmitRequestAndReturn(w, method.ResponseTypeName);
         }
 
-        if (method.BodyRequired)
+        if (definition.BodyRequired)
         {
             EmitBodyAndReturn();
+            return;
         }
-        else
-        {
-            // body is optional: send multipart only when provided, otherwise send without fields
-            w.Open("if (body is not null)");
-            EmitBodyAndReturn();
-            w.Close().Open("else");
 
-            EmitBuildOpts(w, method.HttpMethod, pathExpr, hasQueryType, includeBody: false,
-                bodyRequired: false, bodyEncoding: "multipart", isSearch,
-                includeByteFields: false, includeJsonObj: false
-            );
-            EmitRequestAndReturn(w, responseTypeName);
-            w.Close(); // else
-        }
+        w.Open("if (body is not null)");
+        EmitBodyAndReturn();
+        w.Close().Open("else");
+
+        EmitBuildOpts(w,
+            definition.HttpMethod,
+            method.PathExpression,
+            hasQueryType,
+            includeBody: false,
+            bodyRequired: false,
+            bodyEncoding: "multipart",
+            method.IsSearch,
+            includeByteFields: false,
+            includeJsonObj: false
+        );
+
+        EmitRequestAndReturn(w, method.ResponseTypeName);
+        w.Close();
     }
 
     /// <summary>Emit <c>var __opts = new RequestOptions { … };</c>.</summary>
@@ -243,25 +318,24 @@ internal static partial class Emitter
         string bodyEncoding, bool isSearch,
         bool includeByteFields, bool includeJsonObj)
     {
-        w.Line("var __opts = new RequestOptions")
-            .Open("{")
+        w.Open("var __opts = new RequestOptions")
             .Line($"Method = \"{httpMethod}\",")
             .Line($"Path = {pathExpr},");
 
         if (hasQueryType)
             w.Line("Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,");
 
-        if (includeBody)
+        string? bodyLine = !includeBody ? null
+            : includeJsonObj ? "Body = JsonSerializer.SerializeToElement(jsonObj),"
+            : bodyRequired ? "Body = JsonSerializer.SerializeToElement(body),"
+            : "Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,";
+
+        if (bodyLine is not null)
         {
-            if (includeJsonObj)
-                w.Line("Body = JsonSerializer.SerializeToElement(jsonObj),");
-            else if (bodyRequired)
-                w.Line("Body = JsonSerializer.SerializeToElement(body),");
-            else
-                w.Line("Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,");
-            w.Line($"BodyEncoding = {BodyEncodingLiteral(bodyEncoding)},");
+            w.Line(bodyLine);
         }
-        else if (bodyEncoding != "form")
+
+        if (includeBody || bodyEncoding != "form")
         {
             w.Line($"BodyEncoding = {BodyEncodingLiteral(bodyEncoding)},");
         }
@@ -269,8 +343,7 @@ internal static partial class Emitter
         if (includeByteFields)
             w.Line("ByteArrayFields = byteFields,");
 
-        w.LineIf(isSearch, "IsSearch = true,")
-            .Close(";");
+        w.LineIf(isSearch, "IsSearch = true,").Close(";");
     }
 
     private static void EmitRequestAndReturn(CodeWriter w, string responseTypeName)

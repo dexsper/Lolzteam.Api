@@ -8,8 +8,6 @@ internal static partial class Transforms
     [GeneratedRegex(@"^Array<(.+)>$")]
     private static partial Regex ArrayTypePattern();
 
-    // ─── Ref Resolution ───────────────────────────────────────────────
-
     /// <summary>Follow a JSON pointer path like #/components/schemas/Foo.</summary>
     internal static JsonNode? ResolveRef(string reference, JsonNode spec)
     {
@@ -90,8 +88,6 @@ internal static partial class Transforms
             }
         }
     }
-
-    // ─── OpenAPI Schema → Type String ─────────────────────────────────
 
     /// <summary>Convert an OpenAPI schema to an intermediate type string.</summary>
     private static string SchemaToTypeString(JsonNode? schema, JsonNode spec)
@@ -202,7 +198,6 @@ internal static partial class Transforms
 
             var valType = SchemaToTypeString(addlProps, spec);
             return "Record<string, " + valType + ">";
-
         }
 
         if (type is not null) return PrimitiveType(type);
@@ -279,8 +274,6 @@ internal static partial class Transforms
         };
     }
 
-    // ─── Enum Value Extraction ────────────────────────────────────────
-
     /// <summary>Extract raw enum values from a schema node (after deref).</summary>
     private static List<EnumVariant>? ExtractEnumValues(JsonNode? schema, JsonNode spec)
     {
@@ -350,8 +343,6 @@ internal static partial class Transforms
 
         return defaultNode.ToJsonString();
     }
-
-    // ─── Parameter Extraction ─────────────────────────────────────────
 
     private static OperationParameters ExtractParameters(JsonNode operation, JsonNode spec)
     {
@@ -424,8 +415,6 @@ internal static partial class Transforms
 
         return new OperationParameters(pathParams, queryParams);
     }
-
-    // ─── Discriminated OneOf Detection ───────────────────────────────
 
     /// <summary>Try to detect a discriminated union from oneOf variants.</summary>
     private static List<OneOfVariant>? TryExtractDiscriminatedOneOf(JsonArray oneOfArr, JsonNode spec)
@@ -544,8 +533,6 @@ internal static partial class Transforms
         return TryExtractDiscriminatedOneOf(oneOfArr, spec);
     }
 
-    // ─── Body Extraction ──────────────────────────────────────────────
-
     private static BodyExtractionResult ExtractBody(JsonNode operation, JsonNode spec)
     {
         var empty = new BodyExtractionResult([]);
@@ -642,7 +629,8 @@ internal static partial class Transforms
             foreach (var kvp in allProps)
             {
                 // Intersection: required only if present in ALL variants
-                var isRequired = variantRequiredSets.Count > 0 && variantRequiredSets.TrueForAll(rs => rs.Contains(kvp.Key));
+                var isRequired = variantRequiredSets.Count > 0 &&
+                                 variantRequiredSets.TrueForAll(rs => rs.Contains(kvp.Key));
 
                 // Merge schemas: if all have enums, merge enum values
                 JsonNode mergedSchema;
@@ -759,8 +747,6 @@ internal static partial class Transforms
         return new BodyExtractionResult(bodyProperties, false, null, bodyEncoding);
     }
 
-    // ─── Response Content Type Detection ──────────────────────────────
-
     /// <summary>Check if the response content type is text/html (not application/json).</summary>
     private static bool IsHtmlResponse(JsonNode operation, JsonNode spec)
     {
@@ -774,8 +760,6 @@ internal static partial class Transforms
         if (content is not JsonObject contentObj) return false;
         return contentObj["text/html"] is not null && contentObj["application/json"] is null;
     }
-
-    // ─── Response Extraction ──────────────────────────────────────────
 
     private static string ExtractResponseType(JsonNode operation, JsonNode spec)
     {
@@ -795,13 +779,12 @@ internal static partial class Transforms
         return SchemaToTypeString(schema, spec);
     }
 
-    // ─── Response Schema Extraction (with $ref preservation) ─────────
-
     /// <summary>
     /// Extract typed response schema info from the raw (pre-deref) operation,
     /// preserving component schema $ref names.
     /// </summary>
-    internal static ResponseSchemaInfo? ExtractResponseSchema(JsonNode? rawOperation, JsonNode rawSpec, HashSet<string> componentSchemaNames)
+    internal static ResponseSchemaInfo? ExtractResponseSchema(JsonNode? rawOperation, JsonNode rawSpec,
+        HashSet<string> componentSchemaNames)
     {
         if (rawOperation is not JsonObject rawOpObj) return null;
 
@@ -849,58 +832,37 @@ internal static partial class Transforms
     }
 
     /// <summary>
-    /// Extract response schema info plus the raw resolved schema object for nested record generation.
+    /// Extract raw resolved response schema object for nested record generation.
     /// </summary>
-    private static (ResponseSchemaInfo? Schema, JsonObject? RawSchema) ExtractResponseSchemaWithRaw(
-        JsonNode? rawOperation, JsonNode rawSpec, HashSet<string> componentSchemaNames)
+    private static JsonObject? ExtractResponseSchemaRaw(JsonNode? rawOperation, JsonNode rawSpec)
     {
-        if (rawOperation is not JsonObject rawOpObj) return (null, null);
+        if (rawOperation is not JsonObject rawOpObj) return null;
 
         var responses = rawOpObj["responses"];
-        if (responses is not JsonObject respObj) return (null, null);
+        if (responses is not JsonObject respObj) return null;
+
         var rawSuccess = respObj["200"] ?? respObj["201"];
-        if (rawSuccess is null) return (null, null);
+        if (rawSuccess is null) return null;
+
         var success = DerefShallow(rawSuccess, rawSpec);
-        if (success is not JsonObject successObj) return (null, null);
+        if (success is not JsonObject successObj) return null;
+
         var content = successObj["content"];
-        if (content is not JsonObject contentObj) return (null, null);
+        if (content is not JsonObject contentObj) return null;
+
         var jsonContent = contentObj["application/json"];
-        if (jsonContent is not JsonObject jsonObj) return (null, null);
+        if (jsonContent is not JsonObject jsonObj) return null;
+
         var rawSchema = jsonObj["schema"];
-        if (rawSchema is null) return (null, null);
+        if (rawSchema is null) return null;
+
         var schema = DerefShallow(rawSchema, rawSpec);
-        if (schema is not JsonObject schemaObj) return (null, null);
+        if (schema is not JsonObject schemaObj) return null;
 
         var properties = schemaObj["properties"];
-        if (properties is not JsonObject propsObj || propsObj.Count == 0) return (null, null);
+        if (properties is not JsonObject propsObj || propsObj.Count == 0) return null;
 
-        var requiredSet = new HashSet<string>();
-        var requiredArr = schemaObj["required"];
-        if (requiredArr is JsonArray reqArr)
-        {
-            foreach (var r in reqArr)
-            {
-                requiredSet.Add(r!.GetValue<string>());
-            }
-        }
-
-        var result = new List<ResponseProperty>();
-        foreach (var kvp in propsObj)
-        {
-            var propName = kvp.Key;
-            var propSchema = kvp.Value;
-            if (propSchema is null) continue;
-
-            var required = requiredSet.Contains(propName);
-            var (csharpType, componentRef) = ResolvePropertyType(propSchema, rawSpec, componentSchemaNames);
-            result.Add(new ResponseProperty(propName, csharpType, required, componentRef));
-        }
-
-        if (result.Count == 0) return (null, null);
-
-        // Deep-clone the schema so the emitter can iterate raw properties for nested record generation
-        var cloned = schemaObj.DeepClone();
-        return (new ResponseSchemaInfo(result), cloned as JsonObject);
+        return schemaObj.DeepClone() as JsonObject;
     }
 
     /// <summary>
@@ -1005,8 +967,6 @@ internal static partial class Transforms
         return ("JsonElement", null);
     }
 
-    // ─── Method Definition ────────────────────────────────────────────
-
     internal static MethodDefinition ExtractMethodDefinition(
         string operationId,
         string methodName,
@@ -1014,16 +974,21 @@ internal static partial class Transforms
         string path,
         JsonNode operation,
         JsonNode? rawOperation,
-        JsonNode rawSpec,
-        HashSet<string> componentSchemaNames)
+        JsonNode rawSpec)
     {
+        string? operationDescription = "";
+
+        var operationDescNode = operation["description"];
+        if (operationDescNode is JsonValue opDescVal)
+            opDescVal.TryGetValue(out operationDescription);
+
         var emptySpec = new JsonObject();
         var parameters = ExtractParameters(operation, emptySpec);
         var body = ExtractBody(operation, emptySpec);
         var oneOfVariants = ExtractOneOfVariants(operation, emptySpec);
         var responseType = ExtractResponseType(operation, emptySpec);
         var returnsHtml = IsHtmlResponse(operation, emptySpec);
-        var (responseSchema, rawResponseSchema) = ExtractResponseSchemaWithRaw(rawOperation, rawSpec, componentSchemaNames);
+        var rawResponseSchema = ExtractResponseSchemaRaw(rawOperation, rawSpec);
 
         var isGet = httpMethod.Equals("GET", StringComparison.OrdinalIgnoreCase);
 
@@ -1064,6 +1029,7 @@ internal static partial class Transforms
 
         return new MethodDefinition(
             operationId,
+            operationDescription,
             methodName,
             httpMethod.ToUpperInvariant(),
             path,
@@ -1075,7 +1041,6 @@ internal static partial class Transforms
             !isGet && body.BodyIsArray,
             isGet ? null : body.BodyArrayItemType,
             isGet ? "form" : body.BodyEncoding,
-            responseSchema,
             rawResponseSchema,
             isGet ? null : oneOfVariants,
             returnsHtml

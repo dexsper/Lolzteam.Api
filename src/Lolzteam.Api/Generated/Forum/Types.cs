@@ -236,7 +236,7 @@ public enum PrizeType
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ProfilePostsFieldsInclude>))]
 public enum ProfilePostsFieldsInclude
 {
-	[Lolzteam.Api.Runtime.EnumValue("*")] Value815934146,
+	[Lolzteam.Api.Runtime.EnumValue("*")] Value60336541,
 	[Lolzteam.Api.Runtime.EnumValue("latest_comments")] LatestComments,
 }
 
@@ -270,7 +270,7 @@ public enum State
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ThreadsFieldsInclude>))]
 public enum ThreadsFieldsInclude
 {
-	[Lolzteam.Api.Runtime.EnumValue("*")] Value815934146,
+	[Lolzteam.Api.Runtime.EnumValue("*")] Value60336541,
 	[Lolzteam.Api.Runtime.EnumValue("latest_posts")] LatestPosts,
 }
 
@@ -394,7 +394,7 @@ public enum TransferType
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<UsersFieldsInclude>))]
 public enum UsersFieldsInclude
 {
-	[Lolzteam.Api.Runtime.EnumValue("*")] Value815934146,
+	[Lolzteam.Api.Runtime.EnumValue("*")] Value60336541,
 	[Lolzteam.Api.Runtime.EnumValue("alerts")] Alerts,
 }
 
@@ -428,7 +428,7 @@ public sealed record Resp_ChatboxMessageModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ChatboxMessageModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -450,6 +450,7 @@ public sealed record Resp_ChatboxMessageModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("can_report"u8))
 			{
 				reader.Read();
@@ -495,7 +496,11 @@ public sealed record Resp_ChatboxMessageModel(
 				reader.Read();
 				v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ChatboxMessageModelUser.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ChatboxMessageModel(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
@@ -510,7 +515,7 @@ public sealed record Resp_ChatboxMessageModelRoom(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ChatboxMessageModelRoom ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -528,6 +533,7 @@ public sealed record Resp_ChatboxMessageModelRoom(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("can_report"u8))
 			{
 				reader.Read();
@@ -553,7 +559,11 @@ public sealed record Resp_ChatboxMessageModelRoom(
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ChatboxMessageModelRoom(v0, v1, v2, v3, v4);
 	}
@@ -566,7 +576,7 @@ public sealed record Resp_ChatboxMessageModelUserRenderedAvatars(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ChatboxMessageModelUserRenderedAvatars ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -582,6 +592,7 @@ public sealed record Resp_ChatboxMessageModelUserRenderedAvatars(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("l"u8))
 			{
 				reader.Read();
@@ -597,7 +608,11 @@ public sealed record Resp_ChatboxMessageModelUserRenderedAvatars(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ChatboxMessageModelUserRenderedAvatars(v0, v1, v2);
 	}
@@ -610,7 +625,7 @@ public sealed record Resp_ChatboxMessageModelUserRendered(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ChatboxMessageModelUserRendered ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -626,6 +641,7 @@ public sealed record Resp_ChatboxMessageModelUserRendered(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
@@ -641,7 +657,11 @@ public sealed record Resp_ChatboxMessageModelUserRendered(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ChatboxMessageModelUserRendered(v0, v1, v2);
 	}
@@ -655,7 +675,7 @@ public sealed record Resp_ChatboxMessageModelUserUniqBanner(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ChatboxMessageModelUserUniqBanner ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -672,6 +692,7 @@ public sealed record Resp_ChatboxMessageModelUserUniqBanner(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("banner_css"u8))
 			{
 				reader.Read();
@@ -692,7 +713,11 @@ public sealed record Resp_ChatboxMessageModelUserUniqBanner(
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ChatboxMessageModelUserUniqBanner(v0, v1, v2, v3);
 	}
@@ -725,7 +750,7 @@ public sealed record Resp_ChatboxMessageModelUser(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ChatboxMessageModelUser ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -761,6 +786,7 @@ public sealed record Resp_ChatboxMessageModelUser(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("avatar_date"u8))
 			{
 				reader.Read();
@@ -876,7 +902,11 @@ public sealed record Resp_ChatboxMessageModelUser(
 				reader.Read();
 				v22 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ChatboxMessageModelUser(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
@@ -902,7 +932,7 @@ public sealed record Resp_ConversationMessageModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ConversationMessageModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -931,6 +961,7 @@ public sealed record Resp_ConversationMessageModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("message_id"u8))
 			{
 				reader.Read();
@@ -1011,7 +1042,11 @@ public sealed record Resp_ConversationMessageModel(
 				reader.Read();
 				v15 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ConversationMessageModelPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ConversationMessageModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
@@ -1025,7 +1060,7 @@ public sealed record Resp_ConversationMessageModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ConversationMessageModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1042,6 +1077,7 @@ public sealed record Resp_ConversationMessageModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("detail"u8))
 			{
 				reader.Read();
@@ -1062,7 +1098,11 @@ public sealed record Resp_ConversationMessageModelLinks(
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ConversationMessageModelLinks(v0, v1, v2, v3);
 	}
@@ -1076,7 +1116,7 @@ public sealed record Resp_ConversationMessageModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ConversationMessageModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1093,6 +1133,7 @@ public sealed record Resp_ConversationMessageModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -1113,7 +1154,11 @@ public sealed record Resp_ConversationMessageModelPermissions(
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ConversationMessageModelPermissions(v0, v1, v2, v3);
 	}
@@ -1145,7 +1190,7 @@ public sealed record Resp_ConversationModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ConversationModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1180,6 +1225,7 @@ public sealed record Resp_ConversationModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("conversation_id"u8))
 			{
 				reader.Read();
@@ -1299,7 +1345,11 @@ public sealed record Resp_ConversationModel(
 				reader.Read();
 				v21 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ConversationModelLinks.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ConversationModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
 	}
@@ -1317,7 +1367,7 @@ public sealed record Resp_ConversationModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ConversationModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1338,6 +1388,7 @@ public sealed record Resp_ConversationModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -1378,7 +1429,11 @@ public sealed record Resp_ConversationModelPermissions(
 				reader.Read();
 				v7 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ConversationModelPermissions(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
@@ -1395,7 +1450,7 @@ public sealed record Resp_ConversationModelRecipient(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ConversationModelRecipient ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1415,6 +1470,7 @@ public sealed record Resp_ConversationModelRecipient(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -1450,7 +1506,11 @@ public sealed record Resp_ConversationModelRecipient(
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ConversationModelRecipient(v0, v1, v2, v3, v4, v5, v6);
 	}
@@ -1467,7 +1527,7 @@ public sealed record Resp_ConversationModelRecipients(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ConversationModelRecipients ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1487,6 +1547,7 @@ public sealed record Resp_ConversationModelRecipients(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -1522,7 +1583,11 @@ public sealed record Resp_ConversationModelRecipients(
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ConversationModelRecipients(v0, v1, v2, v3, v4, v5, v6);
 	}
@@ -1536,7 +1601,7 @@ public sealed record Resp_ConversationModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ConversationModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1553,6 +1618,7 @@ public sealed record Resp_ConversationModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -1573,7 +1639,11 @@ public sealed record Resp_ConversationModelLinks(
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ConversationModelLinks(v0, v1, v2, v3);
 	}
@@ -1588,7 +1658,7 @@ public sealed record Resp_LinkModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_LinkModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1606,6 +1676,7 @@ public sealed record Resp_LinkModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link_id"u8))
 			{
 				reader.Read();
@@ -1631,7 +1702,11 @@ public sealed record Resp_LinkModel(
 				reader.Read();
 				v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_LinkModelPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_LinkModel(v0, v1, v2, v3, v4);
 	}
@@ -1643,7 +1718,7 @@ public sealed record Resp_LinkModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_LinkModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1658,6 +1733,7 @@ public sealed record Resp_LinkModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("target"u8))
 			{
 				reader.Read();
@@ -1668,7 +1744,11 @@ public sealed record Resp_LinkModelLinks(
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_LinkModelLinks(v0, v1);
 	}
@@ -1679,7 +1759,7 @@ public sealed record Resp_LinkModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_LinkModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1693,12 +1773,17 @@ public sealed record Resp_LinkModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
 				v0 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_LinkModelPermissions(v0);
 	}
@@ -1720,7 +1805,7 @@ public sealed record Resp_NotificationModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_NotificationModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1745,6 +1830,7 @@ public sealed record Resp_NotificationModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("notification_id"u8))
 			{
 				reader.Read();
@@ -1805,7 +1891,11 @@ public sealed record Resp_NotificationModel(
 				reader.Read();
 				v11 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_NotificationModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
 	}
@@ -1817,7 +1907,7 @@ public sealed record Resp_NotificationModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_NotificationModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1832,6 +1922,7 @@ public sealed record Resp_NotificationModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content"u8))
 			{
 				reader.Read();
@@ -1842,7 +1933,11 @@ public sealed record Resp_NotificationModelLinks(
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_NotificationModelLinks(v0, v1);
 	}
@@ -1869,7 +1964,7 @@ public sealed record Resp_PostCommentModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_PostCommentModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -1899,6 +1994,7 @@ public sealed record Resp_PostCommentModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_comment_id"u8))
 			{
 				reader.Read();
@@ -1984,7 +2080,11 @@ public sealed record Resp_PostCommentModel(
 				reader.Read();
 				v16 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostCommentModelPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_PostCommentModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16);
 	}
@@ -2002,7 +2102,7 @@ public sealed record Resp_PostCommentModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_PostCommentModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2023,6 +2123,7 @@ public sealed record Resp_PostCommentModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -2063,7 +2164,11 @@ public sealed record Resp_PostCommentModelLinks(
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_PostCommentModelLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
@@ -2079,7 +2184,7 @@ public sealed record Resp_PostCommentModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_PostCommentModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2098,6 +2203,7 @@ public sealed record Resp_PostCommentModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -2128,7 +2234,11 @@ public sealed record Resp_PostCommentModelPermissions(
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_PostCommentModelPermissions(v0, v1, v2, v3, v4, v5);
 	}
@@ -2159,7 +2269,7 @@ public sealed record Resp_PostModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_PostModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2193,6 +2303,7 @@ public sealed record Resp_PostModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -2298,7 +2409,11 @@ public sealed record Resp_PostModel(
 				reader.Read();
 				v20 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_PostModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
@@ -2315,7 +2430,7 @@ public sealed record Resp_PostModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_PostModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2335,6 +2450,7 @@ public sealed record Resp_PostModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -2370,7 +2486,11 @@ public sealed record Resp_PostModelLinks(
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_PostModelLinks(v0, v1, v2, v3, v4, v5, v6);
 	}
@@ -2386,7 +2506,7 @@ public sealed record Resp_PostModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_PostModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2405,6 +2525,7 @@ public sealed record Resp_PostModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -2435,7 +2556,11 @@ public sealed record Resp_PostModelPermissions(
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_PostModelPermissions(v0, v1, v2, v3, v4, v5);
 	}
@@ -2458,7 +2583,7 @@ public sealed record Resp_ProfilePostCommentModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ProfilePostCommentModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2484,6 +2609,7 @@ public sealed record Resp_ProfilePostCommentModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("comment_id"u8))
 			{
 				reader.Read();
@@ -2549,7 +2675,11 @@ public sealed record Resp_ProfilePostCommentModel(
 				reader.Read();
 				v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ProfilePostCommentModelPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ProfilePostCommentModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 	}
@@ -2565,7 +2695,7 @@ public sealed record Resp_ProfilePostCommentModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ProfilePostCommentModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2584,6 +2714,7 @@ public sealed record Resp_ProfilePostCommentModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("detail"u8))
 			{
 				reader.Read();
@@ -2614,7 +2745,11 @@ public sealed record Resp_ProfilePostCommentModelLinks(
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ProfilePostCommentModelLinks(v0, v1, v2, v3, v4, v5);
 	}
@@ -2626,7 +2761,7 @@ public sealed record Resp_ProfilePostCommentModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ProfilePostCommentModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2641,6 +2776,7 @@ public sealed record Resp_ProfilePostCommentModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -2651,7 +2787,11 @@ public sealed record Resp_ProfilePostCommentModelPermissions(
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ProfilePostCommentModelPermissions(v0, v1);
 	}
@@ -2682,7 +2822,7 @@ public sealed record Resp_ProfilePostModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ProfilePostModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2716,6 +2856,7 @@ public sealed record Resp_ProfilePostModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("profile_post_id"u8))
 			{
 				reader.Read();
@@ -2821,7 +2962,11 @@ public sealed record Resp_ProfilePostModel(
 				reader.Read();
 				v20 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModel.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ProfilePostModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
@@ -2840,7 +2985,7 @@ public sealed record Resp_ProfilePostModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ProfilePostModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2862,6 +3007,7 @@ public sealed record Resp_ProfilePostModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -2907,7 +3053,11 @@ public sealed record Resp_ProfilePostModelLinks(
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ProfilePostModelLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
@@ -2924,7 +3074,7 @@ public sealed record Resp_ProfilePostModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ProfilePostModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -2944,6 +3094,7 @@ public sealed record Resp_ProfilePostModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -2979,7 +3130,11 @@ public sealed record Resp_ProfilePostModelPermissions(
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ProfilePostModelPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
@@ -2991,7 +3146,7 @@ public sealed record Resp_SystemInfo(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_SystemInfo ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3006,6 +3161,7 @@ public sealed record Resp_SystemInfo(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("visitor_id"u8))
 			{
 				reader.Read();
@@ -3016,7 +3172,11 @@ public sealed record Resp_SystemInfo(
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_SystemInfo(v0, v1);
 	}
@@ -3052,7 +3212,7 @@ public sealed record Resp_ThreadModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3091,6 +3251,7 @@ public sealed record Resp_ThreadModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("thread_id"u8))
 			{
 				reader.Read();
@@ -3230,7 +3391,11 @@ public sealed record Resp_ThreadModel(
 				reader.Read();
 				v25 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelContest.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25);
 	}
@@ -3247,7 +3412,7 @@ public sealed record Resp_ThreadModelFirstPostLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3267,6 +3432,7 @@ public sealed record Resp_ThreadModelFirstPostLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -3302,7 +3468,11 @@ public sealed record Resp_ThreadModelFirstPostLinks(
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelFirstPostLinks(v0, v1, v2, v3, v4, v5, v6);
 	}
@@ -3318,7 +3488,7 @@ public sealed record Resp_ThreadModelFirstPostPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3337,6 +3507,7 @@ public sealed record Resp_ThreadModelFirstPostPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -3367,7 +3538,11 @@ public sealed record Resp_ThreadModelFirstPostPermissions(
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelFirstPostPermissions(v0, v1, v2, v3, v4, v5);
 	}
@@ -3399,7 +3574,7 @@ public sealed record Resp_ThreadModelFirstPost(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3434,6 +3609,7 @@ public sealed record Resp_ThreadModelFirstPost(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -3544,7 +3720,11 @@ public sealed record Resp_ThreadModelFirstPost(
 				reader.Read();
 				v21 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
 	}
@@ -3557,7 +3737,7 @@ public sealed record Resp_ThreadModelThreadTags(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelThreadTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3573,6 +3753,7 @@ public sealed record Resp_ThreadModelThreadTags(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("97491"u8))
 			{
 				reader.Read();
@@ -3588,7 +3769,11 @@ public sealed record Resp_ThreadModelThreadTags(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelThreadTags(v0, v1, v2);
 	}
@@ -3607,7 +3792,7 @@ public sealed record Resp_ThreadModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3629,6 +3814,7 @@ public sealed record Resp_ThreadModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -3674,7 +3860,11 @@ public sealed record Resp_ThreadModelLinks(
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
@@ -3688,7 +3878,7 @@ public sealed record Resp_ThreadModelPermissionsBump(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelPermissionsBump ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3705,6 +3895,7 @@ public sealed record Resp_ThreadModelPermissionsBump(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("can"u8))
 			{
 				reader.Read();
@@ -3725,7 +3916,11 @@ public sealed record Resp_ThreadModelPermissionsBump(
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelPermissionsBump(v0, v1, v2, v3);
 	}
@@ -3743,7 +3938,7 @@ public sealed record Resp_ThreadModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3764,6 +3959,7 @@ public sealed record Resp_ThreadModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -3804,7 +4000,11 @@ public sealed record Resp_ThreadModelPermissions(
 				reader.Read();
 				v7 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelPermissionsBump.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelPermissions(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
@@ -3816,7 +4016,7 @@ public sealed record Resp_ThreadModelRestrictions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelRestrictions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3831,6 +4031,7 @@ public sealed record Resp_ThreadModelRestrictions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("reply_delay"u8))
 			{
 				reader.Read();
@@ -3841,7 +4042,11 @@ public sealed record Resp_ThreadModelRestrictions(
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelRestrictions(v0, v1);
 	}
@@ -3858,7 +4063,7 @@ public sealed record Resp_ThreadModelLastPostLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelLastPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3878,6 +4083,7 @@ public sealed record Resp_ThreadModelLastPostLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -3913,7 +4119,11 @@ public sealed record Resp_ThreadModelLastPostLinks(
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelLastPostLinks(v0, v1, v2, v3, v4, v5, v6);
 	}
@@ -3929,7 +4139,7 @@ public sealed record Resp_ThreadModelLastPostPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelLastPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -3948,6 +4158,7 @@ public sealed record Resp_ThreadModelLastPostPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -3978,7 +4189,11 @@ public sealed record Resp_ThreadModelLastPostPermissions(
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelLastPostPermissions(v0, v1, v2, v3, v4, v5);
 	}
@@ -4010,7 +4225,7 @@ public sealed record Resp_ThreadModelLastPost(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelLastPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -4045,6 +4260,7 @@ public sealed record Resp_ThreadModelLastPost(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -4155,7 +4371,11 @@ public sealed record Resp_ThreadModelLastPost(
 				reader.Read();
 				v21 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelLastPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
 	}
@@ -4169,7 +4389,7 @@ public sealed record Resp_ThreadModelContestPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelContestPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -4186,6 +4406,7 @@ public sealed record Resp_ThreadModelContestPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("can_finish"u8))
 			{
 				reader.Read();
@@ -4206,7 +4427,11 @@ public sealed record Resp_ThreadModelContestPermissions(
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelContestPermissions(v0, v1, v2, v3);
 	}
@@ -4232,7 +4457,7 @@ public sealed record Resp_ThreadModelContest(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_ThreadModelContest ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -4261,6 +4486,7 @@ public sealed record Resp_ThreadModelContest(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("type"u8))
 			{
 				reader.Read();
@@ -4350,7 +4576,11 @@ public sealed record Resp_ThreadModelContest(
 				reader.Read();
 				v15 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelContestPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_ThreadModelContest(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
@@ -4405,7 +4635,7 @@ public sealed record Resp_UserModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -4463,6 +4693,7 @@ public sealed record Resp_UserModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -4724,7 +4955,11 @@ public sealed record Resp_UserModel(
 				reader.Read();
 				v44 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44);
 	}
@@ -4746,7 +4981,7 @@ public sealed record Resp_UserModelLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -4771,6 +5006,7 @@ public sealed record Resp_UserModelLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -4831,7 +5067,11 @@ public sealed record Resp_UserModelLinks(
 				reader.Read();
 				v11 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
 	}
@@ -4845,7 +5085,7 @@ public sealed record Resp_UserModelPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -4862,6 +5102,7 @@ public sealed record Resp_UserModelPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("edit"u8))
 			{
 				reader.Read();
@@ -4882,7 +5123,11 @@ public sealed record Resp_UserModelPermissions(
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelPermissions(v0, v1, v2, v3);
 	}
@@ -4903,7 +5148,7 @@ public sealed record Resp_UserModelUserGroups(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelUserGroups ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -4927,6 +5172,7 @@ public sealed record Resp_UserModelUserGroups(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_group_id"u8))
 			{
 				reader.Read();
@@ -4982,7 +5228,11 @@ public sealed record Resp_UserModelUserGroups(
 				reader.Read();
 				v10 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelUserGroups(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
@@ -4994,7 +5244,7 @@ public sealed record Resp_UserModelFieldsChoices(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelFieldsChoices ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5009,6 +5259,7 @@ public sealed record Resp_UserModelFieldsChoices(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("key"u8))
 			{
 				reader.Read();
@@ -5019,7 +5270,11 @@ public sealed record Resp_UserModelFieldsChoices(
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelFieldsChoices(v0, v1);
 	}
@@ -5038,7 +5293,7 @@ public sealed record Resp_UserModelFields(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5060,6 +5315,7 @@ public sealed record Resp_UserModelFields(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -5123,7 +5379,11 @@ public sealed record Resp_UserModelFields(
 					v8 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelFields(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
@@ -5135,7 +5395,7 @@ public sealed record Resp_UserModelUserExternalAuthentications(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelUserExternalAuthentications ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5150,6 +5410,7 @@ public sealed record Resp_UserModelUserExternalAuthentications(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("provider"u8))
 			{
 				reader.Read();
@@ -5160,7 +5421,11 @@ public sealed record Resp_UserModelUserExternalAuthentications(
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelUserExternalAuthentications(v0, v1);
 	}
@@ -5171,7 +5436,7 @@ public sealed record Resp_UserModelSelfPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelSelfPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5185,12 +5450,17 @@ public sealed record Resp_UserModelSelfPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("create_conversation"u8))
 			{
 				reader.Read();
 				v0 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelSelfPermissions(v0);
 	}
@@ -5212,7 +5482,7 @@ public sealed record Resp_UserModelEditPermissions(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelEditPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5237,6 +5507,7 @@ public sealed record Resp_UserModelEditPermissions(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("password"u8))
 			{
 				reader.Read();
@@ -5297,7 +5568,11 @@ public sealed record Resp_UserModelEditPermissions(
 				reader.Read();
 				v11 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelEditPermissions(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
 	}
@@ -5310,7 +5585,7 @@ public sealed record Resp_UserModelBirthdayTimeStamp(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelBirthdayTimeStamp ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5326,6 +5601,7 @@ public sealed record Resp_UserModelBirthdayTimeStamp(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("date"u8))
 			{
 				reader.Read();
@@ -5341,7 +5617,11 @@ public sealed record Resp_UserModelBirthdayTimeStamp(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelBirthdayTimeStamp(v0, v1, v2);
 	}
@@ -5354,7 +5634,7 @@ public sealed record Resp_UserModelBirthday(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelBirthday ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5370,6 +5650,7 @@ public sealed record Resp_UserModelBirthday(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("age"u8))
 			{
 				reader.Read();
@@ -5385,7 +5666,11 @@ public sealed record Resp_UserModelBirthday(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelBirthday(v0, v1, v2);
 	}
@@ -5399,7 +5684,7 @@ public sealed record Resp_UserModelUserFollowingUsers(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelUserFollowingUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5416,6 +5701,7 @@ public sealed record Resp_UserModelUserFollowingUsers(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -5436,7 +5722,11 @@ public sealed record Resp_UserModelUserFollowingUsers(
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelUserFollowingUsers(v0, v1, v2, v3);
 	}
@@ -5448,7 +5738,7 @@ public sealed record Resp_UserModelUserFollowing(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelUserFollowing ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5463,6 +5753,7 @@ public sealed record Resp_UserModelUserFollowing(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("users"u8))
 			{
 				reader.Read();
@@ -5482,7 +5773,11 @@ public sealed record Resp_UserModelUserFollowing(
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelUserFollowing(v0, v1);
 	}
@@ -5496,7 +5791,7 @@ public sealed record Resp_UserModelUserFollowersUsers(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelUserFollowersUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5513,6 +5808,7 @@ public sealed record Resp_UserModelUserFollowersUsers(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -5533,7 +5829,11 @@ public sealed record Resp_UserModelUserFollowersUsers(
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelUserFollowersUsers(v0, v1, v2, v3);
 	}
@@ -5545,7 +5845,7 @@ public sealed record Resp_UserModelUserFollowers(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_UserModelUserFollowers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5560,6 +5860,7 @@ public sealed record Resp_UserModelUserFollowers(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("users"u8))
 			{
 				reader.Read();
@@ -5579,7 +5880,11 @@ public sealed record Resp_UserModelUserFollowers(
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_UserModelUserFollowers(v0, v1);
 	}
@@ -5601,7 +5906,7 @@ public static class AssetsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static AssetsCssResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -5616,6 +5921,7 @@ public static class AssetsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("contents"u8))
 				{
 					reader.Read();
@@ -5626,11 +5932,16 @@ public static class AssetsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new AssetsCssResponse(v0, v1);
 		}
 	}
+
 }
 
 // ─── BatchApi Types ────────────────────────────────────────
@@ -5642,7 +5953,7 @@ public static class BatchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static BatchExecuteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -5656,23 +5967,28 @@ public static class BatchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("jobs"u8))
 				{
 					reader.Read();
 					v0 = reader.TokenType == JsonTokenType.Null ? null! : BatchExecuteResponseJobs.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new BatchExecuteResponse(v0);
 		}
 	}
 
-	public sealed record BatchExecuteResponseJobs(
+public sealed record BatchExecuteResponseJobs(
 	[property: JsonPropertyName("job_id")] JsonElement JobId
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static BatchExecuteResponseJobs ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5686,16 +6002,22 @@ public static class BatchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("job_id"u8))
 			{
 				reader.Read();
 				v0 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new BatchExecuteResponseJobs(v0);
 	}
 }
+
 }
 
 // ─── CategoriesApi Types ────────────────────────────────────────
@@ -5719,7 +6041,7 @@ public static class CategoriesApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoriesListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -5735,6 +6057,7 @@ public static class CategoriesApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("categories"u8))
 				{
 					reader.Read();
@@ -5759,13 +6082,17 @@ public static class CategoriesApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoriesListResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record CategoriesListResponseCategoriesLinks(
+public sealed record CategoriesListResponseCategoriesLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -5773,7 +6100,7 @@ public static class CategoriesApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoriesListResponseCategoriesLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5790,6 +6117,7 @@ public static class CategoriesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -5810,20 +6138,24 @@ public static class CategoriesApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoriesListResponseCategoriesLinks(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoriesListResponseCategoriesPermissions(
+public sealed record CategoriesListResponseCategoriesPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoriesListResponseCategoriesPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5839,6 +6171,7 @@ public static class CategoriesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -5854,13 +6187,17 @@ public static class CategoriesApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoriesListResponseCategoriesPermissions(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoriesListResponseCategories(
+public sealed record CategoriesListResponseCategories(
 	[property: JsonPropertyName("category_id")] long CategoryId,
 	[property: JsonPropertyName("category_title")] string CategoryTitle,
 	[property: JsonPropertyName("category_description")] string CategoryDescription,
@@ -5869,7 +6206,7 @@ public static class CategoriesApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoriesListResponseCategories ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5887,6 +6224,7 @@ public static class CategoriesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
@@ -5912,7 +6250,11 @@ public static class CategoriesApiTypes
 				reader.Read();
 				v4 = reader.TokenType == JsonTokenType.Null ? null! : CategoriesListResponseCategoriesPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoriesListResponseCategories(v0, v1, v2, v3, v4);
 	}
@@ -5924,7 +6266,7 @@ public static class CategoriesApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoriesGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -5939,6 +6281,7 @@ public static class CategoriesApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("category"u8))
 				{
 					reader.Read();
@@ -5949,13 +6292,17 @@ public static class CategoriesApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoriesGetResponse(v0, v1);
 		}
 	}
 
-	public sealed record CategoriesGetResponseCategoryLinks(
+public sealed record CategoriesGetResponseCategoryLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -5963,7 +6310,7 @@ public static class CategoriesApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoriesGetResponseCategoryLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -5980,6 +6327,7 @@ public static class CategoriesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -6000,20 +6348,24 @@ public static class CategoriesApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoriesGetResponseCategoryLinks(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoriesGetResponseCategoryPermissions(
+public sealed record CategoriesGetResponseCategoryPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoriesGetResponseCategoryPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6029,6 +6381,7 @@ public static class CategoriesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -6044,13 +6397,17 @@ public static class CategoriesApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoriesGetResponseCategoryPermissions(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoriesGetResponseCategory(
+public sealed record CategoriesGetResponseCategory(
 	[property: JsonPropertyName("category_id")] long CategoryId,
 	[property: JsonPropertyName("category_title")] string CategoryTitle,
 	[property: JsonPropertyName("category_description")] string CategoryDescription,
@@ -6059,7 +6416,7 @@ public static class CategoriesApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoriesGetResponseCategory ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6077,6 +6434,7 @@ public static class CategoriesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
@@ -6102,11 +6460,16 @@ public static class CategoriesApiTypes
 				reader.Read();
 				v4 = reader.TokenType == JsonTokenType.Null ? null! : CategoriesGetResponseCategoryPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoriesGetResponseCategory(v0, v1, v2, v3, v4);
 	}
 }
+
 }
 
 // ─── ChatboxApi Types ────────────────────────────────────────
@@ -6130,7 +6493,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxIndexResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -6150,6 +6513,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("rooms"u8))
 				{
 					reader.Read();
@@ -6212,13 +6576,17 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v6 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxIndexResponse(v0, v1, v2, v3, v4, v5, v6);
 		}
 	}
 
-	public sealed record ChatboxIndexResponseRooms(
+public sealed record ChatboxIndexResponseRooms(
 	[property: JsonPropertyName("can_report")] bool CanReport,
 	[property: JsonPropertyName("eng")] bool Eng,
 	[property: JsonPropertyName("market")] bool Market,
@@ -6227,7 +6595,7 @@ public static class ChatboxApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxIndexResponseRooms ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6245,6 +6613,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("can_report"u8))
 			{
 				reader.Read();
@@ -6270,20 +6639,24 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxIndexResponseRooms(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record ChatboxIndexResponseIgnoreRenderedAvatars(
+public sealed record ChatboxIndexResponseIgnoreRenderedAvatars(
 	[property: JsonPropertyName("l")] string L,
 	[property: JsonPropertyName("m")] string M,
 	[property: JsonPropertyName("s")] string S
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxIndexResponseIgnoreRenderedAvatars ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6299,6 +6672,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("l"u8))
 			{
 				reader.Read();
@@ -6314,20 +6688,24 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxIndexResponseIgnoreRenderedAvatars(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxIndexResponseIgnoreRendered(
+public sealed record ChatboxIndexResponseIgnoreRendered(
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatars")] ChatboxIndexResponseIgnoreRenderedAvatars Avatars,
 	[property: JsonPropertyName("link")] string Link
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxIndexResponseIgnoreRendered ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6343,6 +6721,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
@@ -6358,13 +6737,17 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxIndexResponseIgnoreRendered(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxIndexResponseIgnore(
+public sealed record ChatboxIndexResponseIgnore(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("background_date")] long BackgroundDate,
 	[property: JsonPropertyName("contest_count")] long ContestCount,
@@ -6391,7 +6774,7 @@ public static class ChatboxApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxIndexResponseIgnore ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6427,6 +6810,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("avatar_date"u8))
 			{
 				reader.Read();
@@ -6542,13 +6926,17 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v22 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxIndexResponseIgnore(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
 }
 
-	public sealed record ChatboxIndexResponsePermissions(
+public sealed record ChatboxIndexResponsePermissions(
 	[property: JsonPropertyName("deleteAnyMessage")] bool DeleteAnyMessage,
 	[property: JsonPropertyName("editAnyMessage")] bool EditAnyMessage,
 	[property: JsonPropertyName("viewAnyMessage")] bool ViewAnyMessage,
@@ -6558,7 +6946,7 @@ public static class ChatboxApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxIndexResponsePermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6577,6 +6965,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("deleteAnyMessage"u8))
 			{
 				reader.Read();
@@ -6607,18 +6996,22 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxIndexResponsePermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ChatboxIndexResponseRoomsOnline(
+public sealed record ChatboxIndexResponseRoomsOnline(
 	[property: JsonPropertyName("chat:0")] long Chat_0
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxIndexResponseRoomsOnline ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6632,12 +7025,17 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("chat:0"u8))
 			{
 				reader.Read();
 				v0 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxIndexResponseRoomsOnline(v0);
 	}
@@ -6657,7 +7055,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxGetMessagesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -6672,6 +7070,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("messages"u8))
 				{
 					reader.Read();
@@ -6691,7 +7090,11 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxGetMessagesResponse(v0, v1);
 		}
@@ -6713,7 +7116,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxPostMessageResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -6728,6 +7131,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
@@ -6738,7 +7142,11 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxPostMessageResponse(v0, v1);
 		}
@@ -6758,7 +7166,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxEditMessageResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -6773,6 +7181,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
@@ -6783,7 +7192,11 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxEditMessageResponse(v0, v1);
 		}
@@ -6802,7 +7215,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxDeleteMessageResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -6818,6 +7231,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -6833,7 +7247,11 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxDeleteMessageResponse(v0, v1, v2);
 		}
@@ -6851,7 +7269,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxOnlineResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -6866,6 +7284,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -6885,20 +7304,24 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxOnlineResponse(v0, v1);
 		}
 	}
 
-	public sealed record ChatboxOnlineResponseUsersRenderedAvatars(
+public sealed record ChatboxOnlineResponseUsersRenderedAvatars(
 	[property: JsonPropertyName("l")] string L,
 	[property: JsonPropertyName("m")] string M,
 	[property: JsonPropertyName("s")] string S
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxOnlineResponseUsersRenderedAvatars ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6914,6 +7337,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("l"u8))
 			{
 				reader.Read();
@@ -6929,20 +7353,24 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxOnlineResponseUsersRenderedAvatars(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxOnlineResponseUsersRendered(
+public sealed record ChatboxOnlineResponseUsersRendered(
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatars")] ChatboxOnlineResponseUsersRenderedAvatars Avatars,
 	[property: JsonPropertyName("link")] string Link
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxOnlineResponseUsersRendered ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -6958,6 +7386,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
@@ -6973,13 +7402,17 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxOnlineResponseUsersRendered(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxOnlineResponseUsersUniqBanner(
+public sealed record ChatboxOnlineResponseUsersUniqBanner(
 	[property: JsonPropertyName("banner_css")] string BannerCss,
 	[property: JsonPropertyName("banner_text")] string BannerText,
 	[property: JsonPropertyName("banner_icon")] string BannerIcon,
@@ -6987,7 +7420,7 @@ public static class ChatboxApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxOnlineResponseUsersUniqBanner ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7004,6 +7437,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("banner_css"u8))
 			{
 				reader.Read();
@@ -7024,13 +7458,17 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxOnlineResponseUsersUniqBanner(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record ChatboxOnlineResponseUsers(
+public sealed record ChatboxOnlineResponseUsers(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("background_date")] long BackgroundDate,
 	[property: JsonPropertyName("contest_count")] long ContestCount,
@@ -7057,7 +7495,7 @@ public static class ChatboxApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxOnlineResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7093,6 +7531,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("avatar_date"u8))
 			{
 				reader.Read();
@@ -7208,7 +7647,11 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v22 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxOnlineResponseUsers(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
@@ -7226,7 +7669,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxReportReasonsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -7241,6 +7684,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("reasons"u8))
 				{
 					reader.Read();
@@ -7260,7 +7704,11 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxReportReasonsResponse(v0, v1);
 		}
@@ -7281,7 +7729,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxReportResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -7297,6 +7745,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -7312,7 +7761,11 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxReportResponse(v0, v1, v2);
 		}
@@ -7330,7 +7783,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxGetLeaderboardResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -7345,6 +7798,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("leaderboard"u8))
 				{
 					reader.Read();
@@ -7364,20 +7818,24 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxGetLeaderboardResponse(v0, v1);
 		}
 	}
 
-	public sealed record ChatboxGetLeaderboardResponseLeaderboardRenderedAvatars(
+public sealed record ChatboxGetLeaderboardResponseLeaderboardRenderedAvatars(
 	[property: JsonPropertyName("l")] string L,
 	[property: JsonPropertyName("m")] string M,
 	[property: JsonPropertyName("s")] string S
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxGetLeaderboardResponseLeaderboardRenderedAvatars ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7393,6 +7851,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("l"u8))
 			{
 				reader.Read();
@@ -7408,20 +7867,24 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxGetLeaderboardResponseLeaderboardRenderedAvatars(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxGetLeaderboardResponseLeaderboardRendered(
+public sealed record ChatboxGetLeaderboardResponseLeaderboardRendered(
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatars")] ChatboxGetLeaderboardResponseLeaderboardRenderedAvatars Avatars,
 	[property: JsonPropertyName("link")] string Link
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxGetLeaderboardResponseLeaderboardRendered ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7437,6 +7900,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
@@ -7452,20 +7916,24 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxGetLeaderboardResponseLeaderboardRendered(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxGetLeaderboardResponseLeaderboardUniqBanner(
+public sealed record ChatboxGetLeaderboardResponseLeaderboardUniqBanner(
 	[property: JsonPropertyName("banner_css")] string BannerCss,
 	[property: JsonPropertyName("banner_text")] string BannerText,
 	[property: JsonPropertyName("banner_icon")] string BannerIcon
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxGetLeaderboardResponseLeaderboardUniqBanner ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7481,6 +7949,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("banner_css"u8))
 			{
 				reader.Read();
@@ -7496,13 +7965,17 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxGetLeaderboardResponseLeaderboardUniqBanner(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxGetLeaderboardResponseLeaderboard(
+public sealed record ChatboxGetLeaderboardResponseLeaderboard(
 	[property: JsonPropertyName("count")] long Count,
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
@@ -7527,7 +8000,7 @@ public static class ChatboxApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxGetLeaderboardResponseLeaderboard ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7561,6 +8034,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("count"u8))
 			{
 				reader.Read();
@@ -7666,7 +8140,11 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v20 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxGetLeaderboardResponseLeaderboard(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
@@ -7678,7 +8156,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxGetIgnoreResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -7693,6 +8171,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("ignored"u8))
 				{
 					reader.Read();
@@ -7712,20 +8191,24 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxGetIgnoreResponse(v0, v1);
 		}
 	}
 
-	public sealed record ChatboxGetIgnoreResponseIgnoredRenderedAvatars(
+public sealed record ChatboxGetIgnoreResponseIgnoredRenderedAvatars(
 	[property: JsonPropertyName("l")] string L,
 	[property: JsonPropertyName("m")] string M,
 	[property: JsonPropertyName("s")] string S
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxGetIgnoreResponseIgnoredRenderedAvatars ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7741,6 +8224,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("l"u8))
 			{
 				reader.Read();
@@ -7756,20 +8240,24 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxGetIgnoreResponseIgnoredRenderedAvatars(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxGetIgnoreResponseIgnoredRendered(
+public sealed record ChatboxGetIgnoreResponseIgnoredRendered(
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatars")] ChatboxGetIgnoreResponseIgnoredRenderedAvatars Avatars,
 	[property: JsonPropertyName("link")] string Link
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxGetIgnoreResponseIgnoredRendered ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7785,6 +8273,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
@@ -7800,13 +8289,17 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxGetIgnoreResponseIgnoredRendered(v0, v1, v2);
 	}
 }
 
-	public sealed record ChatboxGetIgnoreResponseIgnored(
+public sealed record ChatboxGetIgnoreResponseIgnored(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("background_date")] long BackgroundDate,
 	[property: JsonPropertyName("contest_count")] long ContestCount,
@@ -7830,7 +8323,7 @@ public static class ChatboxApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ChatboxGetIgnoreResponseIgnored ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -7863,6 +8356,7 @@ public static class ChatboxApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("avatar_date"u8))
 			{
 				reader.Read();
@@ -7963,7 +8457,11 @@ public static class ChatboxApiTypes
 				reader.Read();
 				v19 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ChatboxGetIgnoreResponseIgnored(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19);
 	}
@@ -7982,7 +8480,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxPostIgnoreResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -7998,6 +8496,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -8013,7 +8512,11 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxPostIgnoreResponse(v0, v1, v2);
 		}
@@ -8032,7 +8535,7 @@ public static class ChatboxApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ChatboxDeleteIgnoreResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8048,6 +8551,7 @@ public static class ChatboxApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -8063,11 +8567,16 @@ public static class ChatboxApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ChatboxDeleteIgnoreResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── ConversationsApi Types ────────────────────────────────────────
@@ -8093,7 +8602,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8111,6 +8620,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("conversations"u8))
 				{
 					reader.Read();
@@ -8154,20 +8664,24 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsListResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ConversationsListResponseFolders(
+public sealed record ConversationsListResponseFolders(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("name")] string Name
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ConversationsListResponseFolders ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -8183,6 +8697,7 @@ public static class ConversationsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -8198,20 +8713,24 @@ public static class ConversationsApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ConversationsListResponseFolders(v0, v1, v2);
 	}
 }
 
-	public sealed record ConversationsListResponseLinks(
+public sealed record ConversationsListResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ConversationsListResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -8227,6 +8746,7 @@ public static class ConversationsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -8242,7 +8762,11 @@ public static class ConversationsApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ConversationsListResponseLinks(v0, v1, v2);
 	}
@@ -8277,7 +8801,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8292,6 +8816,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("conversation"u8))
 				{
 					reader.Read();
@@ -8302,7 +8827,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsCreateResponse(v0, v1);
 		}
@@ -8332,7 +8861,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsUpdateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8347,6 +8876,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("conversation"u8))
 				{
 					reader.Read();
@@ -8357,7 +8887,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsUpdateResponse(v0, v1);
 		}
@@ -8378,7 +8912,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8394,6 +8928,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -8409,7 +8944,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsDeleteResponse(v0, v1, v2);
 		}
@@ -8427,7 +8966,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsStartResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8442,6 +8981,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("conversation"u8))
 				{
 					reader.Read();
@@ -8452,7 +8992,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsStartResponse(v0, v1);
 		}
@@ -8471,7 +9015,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsSaveResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8487,6 +9031,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -8502,7 +9047,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsSaveResponse(v0, v1, v2);
 		}
@@ -8514,7 +9063,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8529,6 +9078,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("conversation"u8))
 				{
 					reader.Read();
@@ -8539,7 +9089,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsGetResponse(v0, v1);
 		}
@@ -8567,7 +9121,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsMessagesListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8584,6 +9138,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("messages"u8))
 				{
 					reader.Read();
@@ -8613,20 +9168,24 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsMessagesListResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record ConversationsMessagesListResponseLinks(
+public sealed record ConversationsMessagesListResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ConversationsMessagesListResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -8642,6 +9201,7 @@ public static class ConversationsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -8657,7 +9217,11 @@ public static class ConversationsApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ConversationsMessagesListResponseLinks(v0, v1, v2);
 	}
@@ -8677,7 +9241,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsMessagesCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8692,6 +9256,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
@@ -8702,7 +9267,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsMessagesCreateResponse(v0, v1);
 		}
@@ -8725,7 +9294,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsSearchResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8741,6 +9310,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("conversations"u8))
 				{
 					reader.Read();
@@ -8765,7 +9335,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsSearchResponse(v0, v1, v2);
 		}
@@ -8777,7 +9351,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsMessagesGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8792,6 +9366,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
@@ -8802,7 +9377,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsMessagesGetResponse(v0, v1);
 		}
@@ -8820,7 +9399,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsMessagesEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8835,6 +9414,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
@@ -8845,7 +9425,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsMessagesEditResponse(v0, v1);
 		}
@@ -8858,7 +9442,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsMessagesDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8874,6 +9458,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -8889,7 +9474,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsMessagesDeleteResponse(v0, v1, v2);
 		}
@@ -8908,7 +9497,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsInviteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8924,6 +9513,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -8939,7 +9529,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsInviteResponse(v0, v1, v2);
 		}
@@ -8958,7 +9552,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsKickResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -8974,6 +9568,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -8989,7 +9584,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsKickResponse(v0, v1, v2);
 		}
@@ -9002,7 +9601,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsReadResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9018,6 +9617,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -9033,7 +9633,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsReadResponse(v0, v1, v2);
 		}
@@ -9046,7 +9650,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsReadAllResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9062,6 +9666,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -9077,7 +9682,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsReadAllResponse(v0, v1, v2);
 		}
@@ -9090,7 +9699,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsMessagesStickResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9106,6 +9715,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -9121,7 +9731,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsMessagesStickResponse(v0, v1, v2);
 		}
@@ -9134,7 +9748,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsMessagesUnstickResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9150,6 +9764,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -9165,7 +9780,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsMessagesUnstickResponse(v0, v1, v2);
 		}
@@ -9178,7 +9797,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsStarResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9194,6 +9813,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -9209,7 +9829,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsStarResponse(v0, v1, v2);
 		}
@@ -9222,7 +9846,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsUnstarResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9238,6 +9862,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -9253,7 +9878,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsUnstarResponse(v0, v1, v2);
 		}
@@ -9266,7 +9895,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsAlertsEnableResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9282,6 +9911,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -9297,7 +9927,11 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsAlertsEnableResponse(v0, v1, v2);
 		}
@@ -9310,7 +9944,7 @@ public static class ConversationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ConversationsAlertsDisableResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9326,6 +9960,7 @@ public static class ConversationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -9341,11 +9976,16 @@ public static class ConversationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ConversationsAlertsDisableResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── FormsApi Types ────────────────────────────────────────
@@ -9367,7 +10007,7 @@ public static class FormsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static FormsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9385,6 +10025,7 @@ public static class FormsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("forms"u8))
 				{
 					reader.Read();
@@ -9419,19 +10060,23 @@ public static class FormsApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new FormsListResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record FormsListResponseFormsFieldsFieldChoices(
+public sealed record FormsListResponseFormsFieldsFieldChoices(
 	[property: JsonPropertyName("buy")] string Buy,
 	[property: JsonPropertyName("sell")] string Sell
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static FormsListResponseFormsFieldsFieldChoices ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -9446,6 +10091,7 @@ public static class FormsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("buy"u8))
 			{
 				reader.Read();
@@ -9456,13 +10102,17 @@ public static class FormsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new FormsListResponseFormsFieldsFieldChoices(v0, v1);
 	}
 }
 
-	public sealed record FormsListResponseFormsFields(
+public sealed record FormsListResponseFormsFields(
 	[property: JsonPropertyName("field_id")] long FieldId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("fieldChoices")] FormsListResponseFormsFieldsFieldChoices FieldChoices,
@@ -9472,7 +10122,7 @@ public static class FormsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static FormsListResponseFormsFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -9491,6 +10141,7 @@ public static class FormsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("field_id"u8))
 			{
 				reader.Read();
@@ -9521,13 +10172,17 @@ public static class FormsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new FormsListResponseFormsFields(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record FormsListResponseForms(
+public sealed record FormsListResponseForms(
 	[property: JsonPropertyName("form_id")] long FormId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
@@ -9535,7 +10190,7 @@ public static class FormsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static FormsListResponseForms ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -9552,6 +10207,7 @@ public static class FormsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("form_id"u8))
 			{
 				reader.Read();
@@ -9581,16 +10237,20 @@ public static class FormsApiTypes
 					v3 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new FormsListResponseForms(v0, v1, v2, v3);
 	}
 }
 
-#if NET7_0_OR_GREATER
+	#if NET7_0_OR_GREATER
 	[JsonDerivedType(typeof(FormsCreateBodyP2PTrade), "1")]
 	[JsonDerivedType(typeof(FormsCreateBodyComplaint), "3")]
-#endif
+	#endif
 	public abstract record FormsCreateBody;
 
 	public sealed record FormsCreateBodyP2PTrade : FormsCreateBody
@@ -9600,6 +10260,7 @@ public static class FormsApiTypes
 		[JsonPropertyName("fields")]
 		public required JsonElement Fields { get; init; }
 	}
+
 	public sealed record FormsCreateBodyComplaint : FormsCreateBody
 	{
 		[JsonPropertyName("form_id")]
@@ -9615,7 +10276,7 @@ public static class FormsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static FormsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -9631,6 +10292,7 @@ public static class FormsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
@@ -9646,13 +10308,17 @@ public static class FormsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new FormsCreateResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record FormsCreateResponseContentLinks(
+public sealed record FormsCreateResponseContentLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -9664,7 +10330,7 @@ public static class FormsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static FormsCreateResponseContentLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -9685,6 +10351,7 @@ public static class FormsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -9725,13 +10392,17 @@ public static class FormsApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new FormsCreateResponseContentLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record FormsCreateResponseContentPermissions(
+public sealed record FormsCreateResponseContentPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -9739,7 +10410,7 @@ public static class FormsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static FormsCreateResponseContentPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -9756,6 +10427,7 @@ public static class FormsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -9776,13 +10448,17 @@ public static class FormsApiTypes
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new FormsCreateResponseContentPermissions(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record FormsCreateResponseContent(
+public sealed record FormsCreateResponseContent(
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("thread_title")] string ThreadTitle,
@@ -9807,7 +10483,7 @@ public static class FormsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static FormsCreateResponseContent ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -9841,6 +10517,7 @@ public static class FormsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("thread_id"u8))
 			{
 				reader.Read();
@@ -9964,11 +10641,16 @@ public static class FormsApiTypes
 				reader.Read();
 				v20 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new FormsCreateResponseContent(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
+
 }
 
 // ─── ForumsApi Types ────────────────────────────────────────
@@ -9993,7 +10675,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -10010,6 +10692,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("forums"u8))
 				{
 					reader.Read();
@@ -10048,19 +10731,23 @@ public static class ForumsApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsListResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record ForumsListResponseForumsForumPrefixesGroupPrefixes(
+public sealed record ForumsListResponseForumsForumPrefixesGroupPrefixes(
 	[property: JsonPropertyName("prefix_id")] long PrefixId,
 	[property: JsonPropertyName("prefix_title")] string PrefixTitle
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsListResponseForumsForumPrefixesGroupPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10075,6 +10762,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
@@ -10085,19 +10773,23 @@ public static class ForumsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsListResponseForumsForumPrefixesGroupPrefixes(v0, v1);
 	}
 }
 
-	public sealed record ForumsListResponseForumsForumPrefixes(
+public sealed record ForumsListResponseForumsForumPrefixes(
 	[property: JsonPropertyName("group_title")] string GroupTitle,
 	[property: JsonPropertyName("group_prefixes")] List<ForumsListResponseForumsForumPrefixesGroupPrefixes> GroupPrefixes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsListResponseForumsForumPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10112,6 +10804,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("group_title"u8))
 			{
 				reader.Read();
@@ -10131,13 +10824,17 @@ public static class ForumsApiTypes
 					v1 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsListResponseForumsForumPrefixes(v0, v1);
 	}
 }
 
-	public sealed record ForumsListResponseForumsLinks(
+public sealed record ForumsListResponseForumsLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -10147,7 +10844,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsListResponseForumsLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10166,6 +10863,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -10196,13 +10894,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsListResponseForumsLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ForumsListResponseForumsPermissions(
+public sealed record ForumsListResponseForumsPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -10212,7 +10914,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsListResponseForumsPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10231,6 +10933,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -10261,13 +10964,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsListResponseForumsPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ForumsListResponseForums(
+public sealed record ForumsListResponseForums(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -10282,7 +10989,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsListResponseForums ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10306,6 +11013,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -10370,13 +11078,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsListResponseForums(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record ForumsListResponseTabs(
+public sealed record ForumsListResponseTabs(
 	[property: JsonPropertyName("link_title")] string LinkTitle,
 	[property: JsonPropertyName("isDefault")] bool IsDefault,
 	[property: JsonPropertyName("title")] string Title,
@@ -10384,7 +11096,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsListResponseTabs ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10401,6 +11113,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link_title"u8))
 			{
 				reader.Read();
@@ -10421,7 +11134,11 @@ public static class ForumsApiTypes
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsListResponseTabs(v0, v1, v2, v3);
 	}
@@ -10434,7 +11151,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsGroupedResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -10450,6 +11167,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -10474,13 +11192,17 @@ public static class ForumsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsGroupedResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record ForumsGroupedResponseData00Links(
+public sealed record ForumsGroupedResponseData00Links(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -10490,7 +11212,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGroupedResponseData00Links ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10509,6 +11231,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -10539,13 +11262,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGroupedResponseData00Links(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ForumsGroupedResponseData00Permissions(
+public sealed record ForumsGroupedResponseData00Permissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -10555,7 +11282,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGroupedResponseData00Permissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10574,6 +11301,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -10604,13 +11332,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGroupedResponseData00Permissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ForumsGroupedResponseData00(
+public sealed record ForumsGroupedResponseData00(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -10623,7 +11355,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGroupedResponseData00 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10645,6 +11377,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -10690,18 +11423,22 @@ public static class ForumsApiTypes
 				reader.Read();
 				v8 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGroupedResponseData00(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record ForumsGroupedResponseData0(
+public sealed record ForumsGroupedResponseData0(
 	[property: JsonPropertyName("0")] ForumsGroupedResponseData00 _0
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGroupedResponseData0 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10715,23 +11452,28 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : ForumsGroupedResponseData00.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGroupedResponseData0(v0);
 	}
 }
 
-	public sealed record ForumsGroupedResponseData(
+public sealed record ForumsGroupedResponseData(
 	[property: JsonPropertyName("0")] ForumsGroupedResponseData0 _0
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGroupedResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10745,18 +11487,23 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : ForumsGroupedResponseData0.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGroupedResponseData(v0);
 	}
 }
 
-	public sealed record ForumsGroupedResponseTabs(
+public sealed record ForumsGroupedResponseTabs(
 	[property: JsonPropertyName("link_title")] string LinkTitle,
 	[property: JsonPropertyName("isDefault")] bool IsDefault,
 	[property: JsonPropertyName("title")] string Title,
@@ -10764,7 +11511,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGroupedResponseTabs ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10781,6 +11528,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link_title"u8))
 			{
 				reader.Read();
@@ -10801,7 +11549,11 @@ public static class ForumsApiTypes
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGroupedResponseTabs(v0, v1, v2, v3);
 	}
@@ -10813,7 +11565,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -10828,6 +11580,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("forum"u8))
 				{
 					reader.Read();
@@ -10838,19 +11591,23 @@ public static class ForumsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsGetResponse(v0, v1);
 		}
 	}
 
-	public sealed record ForumsGetResponseForumForumPrefixesGroupPrefixes(
+public sealed record ForumsGetResponseForumForumPrefixesGroupPrefixes(
 	[property: JsonPropertyName("prefix_id")] long PrefixId,
 	[property: JsonPropertyName("prefix_title")] string PrefixTitle
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGetResponseForumForumPrefixesGroupPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10865,6 +11622,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
@@ -10875,19 +11633,23 @@ public static class ForumsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGetResponseForumForumPrefixesGroupPrefixes(v0, v1);
 	}
 }
 
-	public sealed record ForumsGetResponseForumForumPrefixes(
+public sealed record ForumsGetResponseForumForumPrefixes(
 	[property: JsonPropertyName("group_title")] string GroupTitle,
 	[property: JsonPropertyName("group_prefixes")] List<ForumsGetResponseForumForumPrefixesGroupPrefixes> GroupPrefixes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGetResponseForumForumPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10902,6 +11664,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("group_title"u8))
 			{
 				reader.Read();
@@ -10921,13 +11684,17 @@ public static class ForumsApiTypes
 					v1 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGetResponseForumForumPrefixes(v0, v1);
 	}
 }
 
-	public sealed record ForumsGetResponseForumLinks(
+public sealed record ForumsGetResponseForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -10937,7 +11704,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGetResponseForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -10956,6 +11723,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -10986,13 +11754,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGetResponseForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ForumsGetResponseForumPermissions(
+public sealed record ForumsGetResponseForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -11003,7 +11775,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGetResponseForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11023,6 +11795,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -11058,13 +11831,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGetResponseForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ForumsGetResponseForum(
+public sealed record ForumsGetResponseForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -11079,7 +11856,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGetResponseForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11103,6 +11880,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -11167,7 +11945,11 @@ public static class ForumsApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGetResponseForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
@@ -11179,7 +11961,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsFollowersResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -11194,6 +11976,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -11213,20 +11996,24 @@ public static class ForumsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsFollowersResponse(v0, v1);
 		}
 	}
 
-	public sealed record ForumsFollowersResponseUsersFollow(
+public sealed record ForumsFollowersResponseUsersFollow(
 	[property: JsonPropertyName("post")] bool Post,
 	[property: JsonPropertyName("alert")] bool Alert,
 	[property: JsonPropertyName("email")] bool Email
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsFollowersResponseUsersFollow ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11242,6 +12029,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post"u8))
 			{
 				reader.Read();
@@ -11257,20 +12045,24 @@ public static class ForumsApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsFollowersResponseUsersFollow(v0, v1, v2);
 	}
 }
 
-	public sealed record ForumsFollowersResponseUsers(
+public sealed record ForumsFollowersResponseUsers(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("follow")] ForumsFollowersResponseUsersFollow Follow
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsFollowersResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11286,6 +12078,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -11301,7 +12094,11 @@ public static class ForumsApiTypes
 				reader.Read();
 				v2 = reader.TokenType == JsonTokenType.Null ? null! : ForumsFollowersResponseUsersFollow.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsFollowersResponseUsers(v0, v1, v2);
 	}
@@ -11328,7 +12125,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsFollowResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -11344,6 +12141,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -11359,7 +12157,11 @@ public static class ForumsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsFollowResponse(v0, v1, v2);
 		}
@@ -11372,7 +12174,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsUnfollowResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -11388,6 +12190,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -11403,7 +12206,11 @@ public static class ForumsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsUnfollowResponse(v0, v1, v2);
 		}
@@ -11421,7 +12228,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsFollowedResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -11436,6 +12243,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("forums"u8))
 				{
 					reader.Read();
@@ -11455,19 +12263,23 @@ public static class ForumsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsFollowedResponse(v0, v1);
 		}
 	}
 
-	public sealed record ForumsFollowedResponseForumsForumPrefixesGroupPrefixes(
+public sealed record ForumsFollowedResponseForumsForumPrefixesGroupPrefixes(
 	[property: JsonPropertyName("prefix_id")] long PrefixId,
 	[property: JsonPropertyName("prefix_title")] string PrefixTitle
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsFollowedResponseForumsForumPrefixesGroupPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11482,6 +12294,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
@@ -11492,19 +12305,23 @@ public static class ForumsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsFollowedResponseForumsForumPrefixesGroupPrefixes(v0, v1);
 	}
 }
 
-	public sealed record ForumsFollowedResponseForumsForumPrefixes(
+public sealed record ForumsFollowedResponseForumsForumPrefixes(
 	[property: JsonPropertyName("group_title")] string GroupTitle,
 	[property: JsonPropertyName("group_prefixes")] List<ForumsFollowedResponseForumsForumPrefixesGroupPrefixes> GroupPrefixes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsFollowedResponseForumsForumPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11519,6 +12336,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("group_title"u8))
 			{
 				reader.Read();
@@ -11538,13 +12356,17 @@ public static class ForumsApiTypes
 					v1 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsFollowedResponseForumsForumPrefixes(v0, v1);
 	}
 }
 
-	public sealed record ForumsFollowedResponseForumsLinks(
+public sealed record ForumsFollowedResponseForumsLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -11554,7 +12376,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsFollowedResponseForumsLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11573,6 +12395,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -11603,13 +12426,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsFollowedResponseForumsLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ForumsFollowedResponseForumsPermissions(
+public sealed record ForumsFollowedResponseForumsPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -11620,7 +12447,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsFollowedResponseForumsPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11640,6 +12467,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -11675,20 +12503,24 @@ public static class ForumsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsFollowedResponseForumsPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ForumsFollowedResponseForumsFollow(
+public sealed record ForumsFollowedResponseForumsFollow(
 	[property: JsonPropertyName("post")] bool Post,
 	[property: JsonPropertyName("alert")] bool Alert,
 	[property: JsonPropertyName("email")] bool Email
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsFollowedResponseForumsFollow ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11704,6 +12536,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post"u8))
 			{
 				reader.Read();
@@ -11719,13 +12552,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsFollowedResponseForumsFollow(v0, v1, v2);
 	}
 }
 
-	public sealed record ForumsFollowedResponseForums(
+public sealed record ForumsFollowedResponseForums(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -11741,7 +12578,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsFollowedResponseForums ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11766,6 +12603,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -11835,7 +12673,11 @@ public static class ForumsApiTypes
 				reader.Read();
 				v11 = reader.TokenType == JsonTokenType.Null ? null! : ForumsFollowedResponseForumsFollow.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsFollowedResponseForums(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
 	}
@@ -11850,7 +12692,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsGetFeedOptionsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -11868,6 +12710,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("forums"u8))
 				{
 					reader.Read();
@@ -11920,13 +12763,17 @@ public static class ForumsApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsGetFeedOptionsResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ForumsGetFeedOptionsResponseForumsLinks(
+public sealed record ForumsGetFeedOptionsResponseForumsLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -11936,7 +12783,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGetFeedOptionsResponseForumsLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -11955,6 +12802,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -11985,13 +12833,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGetFeedOptionsResponseForumsLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ForumsGetFeedOptionsResponseForumsPermissions(
+public sealed record ForumsGetFeedOptionsResponseForumsPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -12001,7 +12853,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGetFeedOptionsResponseForumsPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -12020,6 +12872,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -12050,13 +12903,17 @@ public static class ForumsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGetFeedOptionsResponseForumsPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ForumsGetFeedOptionsResponseForums(
+public sealed record ForumsGetFeedOptionsResponseForums(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -12068,7 +12925,7 @@ public static class ForumsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ForumsGetFeedOptionsResponseForums ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -12089,6 +12946,7 @@ public static class ForumsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -12129,7 +12987,11 @@ public static class ForumsApiTypes
 				reader.Read();
 				v7 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ForumsGetFeedOptionsResponseForums(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
@@ -12150,7 +13012,7 @@ public static class ForumsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ForumsEditFeedOptionsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12166,6 +13028,7 @@ public static class ForumsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -12181,11 +13044,16 @@ public static class ForumsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ForumsEditFeedOptionsResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── LinksApi Types ────────────────────────────────────────
@@ -12199,7 +13067,7 @@ public static class LinksApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static LinksListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12215,6 +13083,7 @@ public static class LinksApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("link-forums"u8))
 				{
 					reader.Read();
@@ -12239,7 +13108,11 @@ public static class LinksApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new LinksListResponse(v0, v1, v2);
 		}
@@ -12251,7 +13124,7 @@ public static class LinksApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static LinksGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12266,6 +13139,7 @@ public static class LinksApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("link-forum"u8))
 				{
 					reader.Read();
@@ -12276,11 +13150,16 @@ public static class LinksApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new LinksGetResponse(v0, v1);
 		}
 	}
+
 }
 
 // ─── NavigationApi Types ────────────────────────────────────────
@@ -12300,7 +13179,7 @@ public static class NavigationApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static NavigationListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12316,6 +13195,7 @@ public static class NavigationApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("elements"u8))
 				{
 					reader.Read();
@@ -12340,13 +13220,17 @@ public static class NavigationApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new NavigationListResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record NavigationListResponseElementsLinks(
+public sealed record NavigationListResponseElementsLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -12355,7 +13239,7 @@ public static class NavigationApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static NavigationListResponseElementsLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -12373,6 +13257,7 @@ public static class NavigationApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -12398,20 +13283,24 @@ public static class NavigationApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new NavigationListResponseElementsLinks(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record NavigationListResponseElementsPermissions(
+public sealed record NavigationListResponseElementsPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static NavigationListResponseElementsPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -12427,6 +13316,7 @@ public static class NavigationApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -12442,13 +13332,17 @@ public static class NavigationApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new NavigationListResponseElementsPermissions(v0, v1, v2);
 	}
 }
 
-	public sealed record NavigationListResponseElements(
+public sealed record NavigationListResponseElements(
 	[property: JsonPropertyName("category_id")] long CategoryId,
 	[property: JsonPropertyName("category_title")] string CategoryTitle,
 	[property: JsonPropertyName("category_description")] string CategoryDescription,
@@ -12461,7 +13355,7 @@ public static class NavigationApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static NavigationListResponseElements ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -12483,6 +13377,7 @@ public static class NavigationApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
@@ -12528,11 +13423,16 @@ public static class NavigationApiTypes
 				reader.Read();
 				v8 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new NavigationListResponseElements(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
+
 }
 
 // ─── NotificationsApi Types ────────────────────────────────────────
@@ -12557,7 +13457,7 @@ public static class NotificationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static NotificationsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12574,6 +13474,7 @@ public static class NotificationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("notifications"u8))
 				{
 					reader.Read();
@@ -12603,13 +13504,17 @@ public static class NotificationsApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new NotificationsListResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record NotificationsListResponseLinks(
+public sealed record NotificationsListResponseLinks(
 	[property: JsonPropertyName("read")] string Read,
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
@@ -12617,7 +13522,7 @@ public static class NotificationsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static NotificationsListResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -12634,6 +13539,7 @@ public static class NotificationsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("read"u8))
 			{
 				reader.Read();
@@ -12654,7 +13560,11 @@ public static class NotificationsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new NotificationsListResponseLinks(v0, v1, v2, v3);
 	}
@@ -12667,7 +13577,7 @@ public static class NotificationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static NotificationsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12683,6 +13593,7 @@ public static class NotificationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("notification_id"u8))
 				{
 					reader.Read();
@@ -12698,7 +13609,11 @@ public static class NotificationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new NotificationsGetResponse(v0, v1, v2);
 		}
@@ -12717,7 +13632,7 @@ public static class NotificationsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static NotificationsReadResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12733,6 +13648,7 @@ public static class NotificationsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -12748,23 +13664,28 @@ public static class NotificationsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new NotificationsReadResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── OAuthApi Types ────────────────────────────────────────
 
 public static class OAuthApiTypes
 {
-#if NET7_0_OR_GREATER
+	#if NET7_0_OR_GREATER
 	[JsonDerivedType(typeof(OAuthTokenBodyClientCredentials), "client_credentials")]
 	[JsonDerivedType(typeof(OAuthTokenBodyAuthorizationCode), "authorization_code")]
 	[JsonDerivedType(typeof(OAuthTokenBodyRefreshToken), "refresh_token")]
 	[JsonDerivedType(typeof(OAuthTokenBodyPassword), "password")]
-#endif
+	#endif
 	public abstract record OAuthTokenBody;
 
 	public sealed record OAuthTokenBodyClientCredentials : OAuthTokenBody
@@ -12778,6 +13699,7 @@ public static class OAuthApiTypes
 		[JsonPropertyName("scope")]
 		public required JsonElement Scope { get; init; }
 	}
+
 	public sealed record OAuthTokenBodyAuthorizationCode : OAuthTokenBody
 	{
 		[JsonPropertyName("grant_type")]
@@ -12793,6 +13715,7 @@ public static class OAuthApiTypes
 		[JsonPropertyName("scope")]
 		public required JsonElement Scope { get; init; }
 	}
+
 	public sealed record OAuthTokenBodyRefreshToken : OAuthTokenBody
 	{
 		[JsonPropertyName("grant_type")]
@@ -12804,6 +13727,7 @@ public static class OAuthApiTypes
 		[JsonPropertyName("client_secret")]
 		public required string ClientSecret { get; init; }
 	}
+
 	public sealed record OAuthTokenBodyPassword : OAuthTokenBody
 	{
 		[JsonPropertyName("grant_type")]
@@ -12829,7 +13753,7 @@ public static class OAuthApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static OAuthTokenResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12847,6 +13771,7 @@ public static class OAuthApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("access_token"u8))
 				{
 					reader.Read();
@@ -12872,11 +13797,16 @@ public static class OAuthApiTypes
 					reader.Read();
 					v4 = reader.GetString()!;
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new OAuthTokenResponse(v0, v1, v2, v3, v4);
 		}
 	}
+
 }
 
 // ─── PagesApi Types ────────────────────────────────────────
@@ -12898,7 +13828,7 @@ public static class PagesApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PagesListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -12914,6 +13844,7 @@ public static class PagesApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("pages"u8))
 				{
 					reader.Read();
@@ -12938,20 +13869,24 @@ public static class PagesApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PagesListResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record PagesListResponsePagesLinks(
+public sealed record PagesListResponsePagesLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-pages")] string SubPages
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PagesListResponsePagesLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -12967,6 +13902,7 @@ public static class PagesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -12982,20 +13918,24 @@ public static class PagesApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PagesListResponsePagesLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record PagesListResponsePagesPermissions(
+public sealed record PagesListResponsePagesPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PagesListResponsePagesPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13011,6 +13951,7 @@ public static class PagesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -13026,13 +13967,17 @@ public static class PagesApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PagesListResponsePagesPermissions(v0, v1, v2);
 	}
 }
 
-	public sealed record PagesListResponsePages(
+public sealed record PagesListResponsePages(
 	[property: JsonPropertyName("page_id")] long PageId,
 	[property: JsonPropertyName("page_title")] string PageTitle,
 	[property: JsonPropertyName("page_description")] string PageDescription,
@@ -13041,7 +13986,7 @@ public static class PagesApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PagesListResponsePages ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13059,6 +14004,7 @@ public static class PagesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("page_id"u8))
 			{
 				reader.Read();
@@ -13084,7 +14030,11 @@ public static class PagesApiTypes
 				reader.Read();
 				v4 = reader.TokenType == JsonTokenType.Null ? null! : PagesListResponsePagesPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PagesListResponsePages(v0, v1, v2, v3, v4);
 	}
@@ -13096,7 +14046,7 @@ public static class PagesApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PagesGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13111,6 +14061,7 @@ public static class PagesApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("page"u8))
 				{
 					reader.Read();
@@ -13121,20 +14072,24 @@ public static class PagesApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PagesGetResponse(v0, v1);
 		}
 	}
 
-	public sealed record PagesGetResponsePageLinks(
+public sealed record PagesGetResponsePageLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-pages")] string SubPages
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PagesGetResponsePageLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13150,6 +14105,7 @@ public static class PagesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -13165,20 +14121,24 @@ public static class PagesApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PagesGetResponsePageLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record PagesGetResponsePagePermissions(
+public sealed record PagesGetResponsePagePermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PagesGetResponsePagePermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13194,6 +14154,7 @@ public static class PagesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -13209,13 +14170,17 @@ public static class PagesApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PagesGetResponsePagePermissions(v0, v1, v2);
 	}
 }
 
-	public sealed record PagesGetResponsePage(
+public sealed record PagesGetResponsePage(
 	[property: JsonPropertyName("page_id")] long PageId,
 	[property: JsonPropertyName("page_title")] string PageTitle,
 	[property: JsonPropertyName("page_description")] string PageDescription,
@@ -13226,7 +14191,7 @@ public static class PagesApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PagesGetResponsePage ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13246,6 +14211,7 @@ public static class PagesApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("page_id"u8))
 			{
 				reader.Read();
@@ -13281,11 +14247,16 @@ public static class PagesApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PagesGetResponsePage(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
+
 }
 
 // ─── PostsApi Types ────────────────────────────────────────
@@ -13314,7 +14285,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13331,6 +14302,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("posts"u8))
 				{
 					reader.Read();
@@ -13360,7 +14332,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsListResponse(v0, v1, v2, v3);
 		}
@@ -13382,7 +14358,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13397,6 +14373,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("post"u8))
 				{
 					reader.Read();
@@ -13407,7 +14384,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsCreateResponse(v0, v1);
 		}
@@ -13419,7 +14400,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13434,6 +14415,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("post"u8))
 				{
 					reader.Read();
@@ -13444,7 +14426,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsGetResponse(v0, v1);
 		}
@@ -13462,7 +14448,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13477,6 +14463,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("post"u8))
 				{
 					reader.Read();
@@ -13487,7 +14474,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsEditResponse(v0, v1);
 		}
@@ -13506,7 +14497,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13522,6 +14513,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -13537,7 +14529,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsDeleteResponse(v0, v1, v2);
 		}
@@ -13557,7 +14553,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsLikesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13572,6 +14568,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -13591,19 +14588,23 @@ public static class PostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsLikesResponse(v0, v1);
 		}
 	}
 
-	public sealed record PostsLikesResponseUsers(
+public sealed record PostsLikesResponseUsers(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PostsLikesResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13618,6 +14619,7 @@ public static class PostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -13628,7 +14630,11 @@ public static class PostsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PostsLikesResponseUsers(v0, v1);
 	}
@@ -13641,7 +14647,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsLikeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13657,6 +14663,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -13672,7 +14679,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsLikeResponse(v0, v1, v2);
 		}
@@ -13685,7 +14696,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsUnlikeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13701,6 +14712,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -13716,7 +14728,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsUnlikeResponse(v0, v1, v2);
 		}
@@ -13728,7 +14744,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsReportReasonsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13743,6 +14759,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("reasons"u8))
 				{
 					reader.Read();
@@ -13762,7 +14779,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsReportReasonsResponse(v0, v1);
 		}
@@ -13781,7 +14802,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsReportResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13797,6 +14818,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -13812,7 +14834,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsReportResponse(v0, v1, v2);
 		}
@@ -13834,7 +14860,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsCommentsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13849,6 +14875,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("comments"u8))
 				{
 					reader.Read();
@@ -13868,7 +14895,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsCommentsGetResponse(v0, v1);
 		}
@@ -13888,7 +14919,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsCommentsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -13903,6 +14934,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("comment"u8))
 				{
 					reader.Read();
@@ -13913,13 +14945,17 @@ public static class PostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsCommentsCreateResponse(v0, v1);
 		}
 	}
 
-	public sealed record PostsCommentsCreateResponseCommentLinks(
+public sealed record PostsCommentsCreateResponseCommentLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("post")] string Post,
@@ -13931,7 +14967,7 @@ public static class PostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PostsCommentsCreateResponseCommentLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13952,6 +14988,7 @@ public static class PostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -13992,13 +15029,17 @@ public static class PostsApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PostsCommentsCreateResponseCommentLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record PostsCommentsCreateResponseCommentPermissions(
+public sealed record PostsCommentsCreateResponseCommentPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -14008,7 +15049,7 @@ public static class PostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PostsCommentsCreateResponseCommentPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14027,6 +15068,7 @@ public static class PostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -14057,13 +15099,17 @@ public static class PostsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PostsCommentsCreateResponseCommentPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record PostsCommentsCreateResponseComment(
+public sealed record PostsCommentsCreateResponseComment(
 	[property: JsonPropertyName("post_comment_id")] long PostCommentId,
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -14083,7 +15129,7 @@ public static class PostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PostsCommentsCreateResponseComment ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14112,6 +15158,7 @@ public static class PostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_comment_id"u8))
 			{
 				reader.Read();
@@ -14192,7 +15239,11 @@ public static class PostsApiTypes
 				reader.Read();
 				v15 = reader.TokenType == JsonTokenType.Null ? null! : PostsCommentsCreateResponseCommentPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PostsCommentsCreateResponseComment(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
@@ -14212,7 +15263,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsCommentsEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -14227,6 +15278,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("comment"u8))
 				{
 					reader.Read();
@@ -14237,13 +15289,17 @@ public static class PostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsCommentsEditResponse(v0, v1);
 		}
 	}
 
-	public sealed record PostsCommentsEditResponseCommentLinks(
+public sealed record PostsCommentsEditResponseCommentLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("post")] string Post,
@@ -14255,7 +15311,7 @@ public static class PostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PostsCommentsEditResponseCommentLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14276,6 +15332,7 @@ public static class PostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -14316,13 +15373,17 @@ public static class PostsApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PostsCommentsEditResponseCommentLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record PostsCommentsEditResponseCommentPermissions(
+public sealed record PostsCommentsEditResponseCommentPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -14332,7 +15393,7 @@ public static class PostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PostsCommentsEditResponseCommentPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14351,6 +15412,7 @@ public static class PostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -14381,13 +15443,17 @@ public static class PostsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PostsCommentsEditResponseCommentPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record PostsCommentsEditResponseComment(
+public sealed record PostsCommentsEditResponseComment(
 	[property: JsonPropertyName("post_comment_id")] long PostCommentId,
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -14407,7 +15473,7 @@ public static class PostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PostsCommentsEditResponseComment ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14436,6 +15502,7 @@ public static class PostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_comment_id"u8))
 			{
 				reader.Read();
@@ -14516,7 +15583,11 @@ public static class PostsApiTypes
 				reader.Read();
 				v15 = reader.TokenType == JsonTokenType.Null ? null! : PostsCommentsEditResponseCommentPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PostsCommentsEditResponseComment(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
@@ -14537,7 +15608,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsCommentsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -14553,6 +15624,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -14568,7 +15640,11 @@ public static class PostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsCommentsDeleteResponse(v0, v1, v2);
 		}
@@ -14589,7 +15665,7 @@ public static class PostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PostsCommentsReportResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -14605,6 +15681,7 @@ public static class PostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -14620,11 +15697,16 @@ public static class PostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PostsCommentsReportResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── ProfilePostsApi Types ────────────────────────────────────────
@@ -14652,7 +15734,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -14670,6 +15752,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("profile_posts"u8))
 				{
 					reader.Read();
@@ -14704,20 +15787,24 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsListResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ProfilePostsListResponseLinks(
+public sealed record ProfilePostsListResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsListResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14733,6 +15820,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -14748,7 +15836,11 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsListResponseLinks(v0, v1, v2);
 	}
@@ -14760,7 +15852,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -14775,6 +15867,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("profile_post"u8))
 				{
 					reader.Read();
@@ -14785,7 +15878,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsGetResponse(v0, v1);
 		}
@@ -14805,7 +15902,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -14820,6 +15917,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("profile_post"u8))
 				{
 					reader.Read();
@@ -14830,13 +15928,17 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsEditResponse(v0, v1);
 		}
 	}
 
-	public sealed record ProfilePostsEditResponseProfilePostLinks(
+public sealed record ProfilePostsEditResponseProfilePostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("timeline")] string Timeline,
@@ -14849,7 +15951,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsEditResponseProfilePostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14871,6 +15973,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -14916,13 +16019,17 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsEditResponseProfilePostLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record ProfilePostsEditResponseProfilePostPermissions(
+public sealed record ProfilePostsEditResponseProfilePostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -14932,7 +16039,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsEditResponseProfilePostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14951,6 +16058,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -14981,13 +16089,17 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsEditResponseProfilePostPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ProfilePostsEditResponseProfilePost(
+public sealed record ProfilePostsEditResponseProfilePost(
 	[property: JsonPropertyName("profile_post_id")] long ProfilePostId,
 	[property: JsonPropertyName("timeline_user_id")] long TimelineUserId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -15006,7 +16118,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsEditResponseProfilePost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15034,6 +16146,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("profile_post_id"u8))
 			{
 				reader.Read();
@@ -15109,7 +16222,11 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v14 = reader.TokenType == JsonTokenType.Null ? null! : ProfilePostsEditResponseProfilePostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsEditResponseProfilePost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14);
 	}
@@ -15128,7 +16245,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15144,6 +16261,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -15159,7 +16277,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsDeleteResponse(v0, v1, v2);
 		}
@@ -15171,7 +16293,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsReportReasonsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15186,6 +16308,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("reasons"u8))
 				{
 					reader.Read();
@@ -15205,7 +16328,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsReportReasonsResponse(v0, v1);
 		}
@@ -15224,7 +16351,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsReportResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15240,6 +16367,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -15255,7 +16383,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsReportResponse(v0, v1, v2);
 		}
@@ -15275,7 +16407,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15290,6 +16422,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("profile_post"u8))
 				{
 					reader.Read();
@@ -15300,13 +16433,17 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsCreateResponse(v0, v1);
 		}
 	}
 
-	public sealed record ProfilePostsCreateResponseProfilePostLinks(
+public sealed record ProfilePostsCreateResponseProfilePostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("timeline")] string Timeline,
@@ -15319,7 +16456,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCreateResponseProfilePostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15341,6 +16478,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -15386,13 +16524,17 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCreateResponseProfilePostLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record ProfilePostsCreateResponseProfilePostPermissions(
+public sealed record ProfilePostsCreateResponseProfilePostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -15402,7 +16544,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCreateResponseProfilePostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15421,6 +16563,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -15451,13 +16594,17 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCreateResponseProfilePostPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ProfilePostsCreateResponseProfilePost(
+public sealed record ProfilePostsCreateResponseProfilePost(
 	[property: JsonPropertyName("profile_post_id")] long ProfilePostId,
 	[property: JsonPropertyName("timeline_user_id")] long TimelineUserId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -15476,7 +16623,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCreateResponseProfilePost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15504,6 +16651,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("profile_post_id"u8))
 			{
 				reader.Read();
@@ -15579,7 +16727,11 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v14 = reader.TokenType == JsonTokenType.Null ? null! : ProfilePostsCreateResponseProfilePostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCreateResponseProfilePost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14);
 	}
@@ -15592,7 +16744,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsStickResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15608,6 +16760,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -15623,7 +16776,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsStickResponse(v0, v1, v2);
 		}
@@ -15636,7 +16793,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsUnstickResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15652,6 +16809,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -15667,7 +16825,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsUnstickResponse(v0, v1, v2);
 		}
@@ -15679,7 +16841,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsLikesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15694,6 +16856,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -15713,19 +16876,23 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsLikesResponse(v0, v1);
 		}
 	}
 
-	public sealed record ProfilePostsLikesResponseUsers(
+public sealed record ProfilePostsLikesResponseUsers(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsLikesResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15740,6 +16907,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -15750,7 +16918,11 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsLikesResponseUsers(v0, v1);
 	}
@@ -15763,7 +16935,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsLikeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15779,6 +16951,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -15794,7 +16967,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsLikeResponse(v0, v1, v2);
 		}
@@ -15807,7 +16984,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsUnlikeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15823,6 +17000,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -15838,7 +17016,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsUnlikeResponse(v0, v1, v2);
 		}
@@ -15863,7 +17045,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsCommentsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -15881,6 +17063,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("comments"u8))
 				{
 					reader.Read();
@@ -15915,13 +17098,17 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsCommentsListResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ProfilePostsCommentsListResponseProfilePostLinks(
+public sealed record ProfilePostsCommentsListResponseProfilePostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("timeline")] string Timeline,
@@ -15934,7 +17121,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsListResponseProfilePostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15956,6 +17143,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -16001,13 +17189,17 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsListResponseProfilePostLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record ProfilePostsCommentsListResponseProfilePostPermissions(
+public sealed record ProfilePostsCommentsListResponseProfilePostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -16017,7 +17209,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsListResponseProfilePostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16036,6 +17228,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -16066,13 +17259,17 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsListResponseProfilePostPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ProfilePostsCommentsListResponseProfilePost(
+public sealed record ProfilePostsCommentsListResponseProfilePost(
 	[property: JsonPropertyName("profile_post_id")] long ProfilePostId,
 	[property: JsonPropertyName("timeline_user_id")] long TimelineUserId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -16091,7 +17288,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsListResponseProfilePost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16119,6 +17316,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("profile_post_id"u8))
 			{
 				reader.Read();
@@ -16194,7 +17392,11 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v14 = reader.TokenType == JsonTokenType.Null ? null! : ProfilePostsCommentsListResponseProfilePostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsListResponseProfilePost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14);
 	}
@@ -16214,7 +17416,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsCommentsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -16229,6 +17431,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("comment"u8))
 				{
 					reader.Read();
@@ -16239,13 +17442,17 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsCommentsCreateResponse(v0, v1);
 		}
 	}
 
-	public sealed record ProfilePostsCommentsCreateResponseCommentLinks(
+public sealed record ProfilePostsCommentsCreateResponseCommentLinks(
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("profile_post")] string ProfilePost,
 	[property: JsonPropertyName("timeline")] string Timeline,
@@ -16255,7 +17462,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsCreateResponseCommentLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16274,6 +17481,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("detail"u8))
 			{
 				reader.Read();
@@ -16304,19 +17512,23 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsCreateResponseCommentLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ProfilePostsCommentsCreateResponseCommentPermissions(
+public sealed record ProfilePostsCommentsCreateResponseCommentPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsCreateResponseCommentPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16331,6 +17543,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -16341,13 +17554,17 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsCreateResponseCommentPermissions(v0, v1);
 	}
 }
 
-	public sealed record ProfilePostsCommentsCreateResponseComment(
+public sealed record ProfilePostsCommentsCreateResponseComment(
 	[property: JsonPropertyName("comment_id")] long CommentId,
 	[property: JsonPropertyName("profile_post_id")] long ProfilePostId,
 	[property: JsonPropertyName("comment_user_id")] long CommentUserId,
@@ -16362,7 +17579,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsCreateResponseComment ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16386,6 +17603,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("comment_id"u8))
 			{
 				reader.Read();
@@ -16441,7 +17659,11 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v10 = reader.TokenType == JsonTokenType.Null ? null! : ProfilePostsCommentsCreateResponseCommentPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsCreateResponseComment(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
@@ -16461,7 +17683,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsCommentsEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -16476,6 +17698,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("comment"u8))
 				{
 					reader.Read();
@@ -16486,13 +17709,17 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsCommentsEditResponse(v0, v1);
 		}
 	}
 
-	public sealed record ProfilePostsCommentsEditResponseCommentLinks(
+public sealed record ProfilePostsCommentsEditResponseCommentLinks(
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("profile_post")] string ProfilePost,
 	[property: JsonPropertyName("timeline")] string Timeline,
@@ -16502,7 +17729,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsEditResponseCommentLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16521,6 +17748,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("detail"u8))
 			{
 				reader.Read();
@@ -16551,19 +17779,23 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsEditResponseCommentLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ProfilePostsCommentsEditResponseCommentPermissions(
+public sealed record ProfilePostsCommentsEditResponseCommentPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsEditResponseCommentPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16578,6 +17810,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -16588,13 +17821,17 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsEditResponseCommentPermissions(v0, v1);
 	}
 }
 
-	public sealed record ProfilePostsCommentsEditResponseComment(
+public sealed record ProfilePostsCommentsEditResponseComment(
 	[property: JsonPropertyName("comment_id")] long CommentId,
 	[property: JsonPropertyName("profile_post_id")] long ProfilePostId,
 	[property: JsonPropertyName("comment_user_id")] long CommentUserId,
@@ -16609,7 +17846,7 @@ public static class ProfilePostsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfilePostsCommentsEditResponseComment ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16633,6 +17870,7 @@ public static class ProfilePostsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("comment_id"u8))
 			{
 				reader.Read();
@@ -16688,7 +17926,11 @@ public static class ProfilePostsApiTypes
 				reader.Read();
 				v10 = reader.TokenType == JsonTokenType.Null ? null! : ProfilePostsCommentsEditResponseCommentPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfilePostsCommentsEditResponseComment(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
@@ -16707,7 +17949,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsCommentsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -16723,6 +17965,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -16738,7 +17981,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsCommentsDeleteResponse(v0, v1, v2);
 		}
@@ -16750,7 +17997,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsCommentsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -16765,6 +18012,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("comment"u8))
 				{
 					reader.Read();
@@ -16775,7 +18023,11 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsCommentsGetResponse(v0, v1);
 		}
@@ -16794,7 +18046,7 @@ public static class ProfilePostsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfilePostsCommentsReportResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -16810,6 +18062,7 @@ public static class ProfilePostsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -16825,11 +18078,16 @@ public static class ProfilePostsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfilePostsCommentsReportResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── SearchApi Types ────────────────────────────────────────
@@ -16861,7 +18119,7 @@ public static class SearchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static SearchAllResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -16879,6 +18137,7 @@ public static class SearchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -16922,13 +18181,17 @@ public static class SearchApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new SearchAllResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record SearchAllResponseDataFirstPostLinks(
+public sealed record SearchAllResponseDataFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -16939,7 +18202,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16959,6 +18222,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -16994,13 +18258,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataFirstPostLinks(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchAllResponseDataFirstPostPermissions(
+public sealed record SearchAllResponseDataFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -17010,7 +18278,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17029,6 +18297,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -17059,13 +18328,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataFirstPostPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchAllResponseDataFirstPost(
+public sealed record SearchAllResponseDataFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -17091,7 +18364,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17126,6 +18399,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -17236,13 +18510,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v21 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
 	}
 }
 
-	public sealed record SearchAllResponseDataLinks(
+public sealed record SearchAllResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -17256,7 +18534,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17279,6 +18557,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -17329,13 +18608,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
-	public sealed record SearchAllResponseDataPermissionsBump(
+public sealed record SearchAllResponseDataPermissionsBump(
 	[property: JsonPropertyName("can")] bool Can,
 	[property: JsonPropertyName("available_count")] long AvailableCount,
 	[property: JsonPropertyName("error")] JsonElement Error,
@@ -17343,7 +18626,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataPermissionsBump ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17360,6 +18643,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("can"u8))
 			{
 				reader.Read();
@@ -17380,13 +18664,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataPermissionsBump(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record SearchAllResponseDataPermissions(
+public sealed record SearchAllResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -17396,7 +18684,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17415,6 +18703,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -17445,13 +18734,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.TokenType == JsonTokenType.Null ? null! : SearchAllResponseDataPermissionsBump.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchAllResponseDataForumLinks(
+public sealed record SearchAllResponseDataForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -17461,7 +18754,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17480,6 +18773,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -17510,13 +18804,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchAllResponseDataForumPermissions(
+public sealed record SearchAllResponseDataForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -17526,7 +18824,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17545,6 +18843,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -17575,13 +18874,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataForumPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchAllResponseDataForum(
+public sealed record SearchAllResponseDataForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -17597,7 +18900,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17622,6 +18925,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -17691,13 +18995,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v11 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
 	}
 }
 
-	public sealed record SearchAllResponseDataLastPostLinks(
+public sealed record SearchAllResponseDataLastPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -17708,7 +19016,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataLastPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17728,6 +19036,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -17763,13 +19072,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataLastPostLinks(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchAllResponseDataLastPostPermissions(
+public sealed record SearchAllResponseDataLastPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -17779,7 +19092,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataLastPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17798,6 +19111,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -17828,13 +19142,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataLastPostPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchAllResponseDataLastPost(
+public sealed record SearchAllResponseDataLastPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -17860,7 +19178,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseDataLastPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17895,6 +19213,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -18005,13 +19324,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v21 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseDataLastPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
 	}
 }
 
-	public sealed record SearchAllResponseData(
+public sealed record SearchAllResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] string ContentId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -18042,7 +19365,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18082,6 +19405,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -18235,20 +19559,24 @@ public static class SearchApiTypes
 				reader.Read();
 				v26 = reader.TokenType == JsonTokenType.Null ? null! : SearchAllResponseDataLastPost.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26);
 	}
 }
 
-	public sealed record SearchAllResponseLinks(
+public sealed record SearchAllResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchAllResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18264,6 +19592,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -18279,7 +19608,11 @@ public static class SearchApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchAllResponseLinks(v0, v1, v2);
 	}
@@ -18311,7 +19644,7 @@ public static class SearchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static SearchThreadsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -18328,6 +19661,7 @@ public static class SearchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -18357,13 +19691,17 @@ public static class SearchApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new SearchThreadsResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record SearchThreadsResponseDataFirstPostLinks(
+public sealed record SearchThreadsResponseDataFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -18375,7 +19713,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseDataFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18396,6 +19734,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -18436,13 +19775,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseDataFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record SearchThreadsResponseDataFirstPostPermissions(
+public sealed record SearchThreadsResponseDataFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -18453,7 +19796,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseDataFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18473,6 +19816,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -18508,13 +19852,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseDataFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchThreadsResponseDataFirstPost(
+public sealed record SearchThreadsResponseDataFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -18539,7 +19887,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseDataFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18573,6 +19921,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -18678,13 +20027,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v20 = reader.TokenType == JsonTokenType.Null ? null! : SearchThreadsResponseDataFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseDataFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
 
-	public sealed record SearchThreadsResponseDataLinks(
+public sealed record SearchThreadsResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -18697,7 +20050,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18719,6 +20072,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -18764,13 +20118,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record SearchThreadsResponseDataPermissions(
+public sealed record SearchThreadsResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -18780,7 +20138,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18799,6 +20157,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -18829,13 +20188,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseDataPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchThreadsResponseDataForumLinks(
+public sealed record SearchThreadsResponseDataForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -18845,7 +20208,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseDataForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18864,6 +20227,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -18894,13 +20258,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseDataForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchThreadsResponseDataForumPermissions(
+public sealed record SearchThreadsResponseDataForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -18911,7 +20279,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseDataForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18931,6 +20299,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -18966,13 +20335,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseDataForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchThreadsResponseDataForum(
+public sealed record SearchThreadsResponseDataForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -18987,7 +20360,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseDataForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19011,6 +20384,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -19075,13 +20449,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseDataForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record SearchThreadsResponseData(
+public sealed record SearchThreadsResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -19108,7 +20486,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19144,6 +20522,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -19277,20 +20656,24 @@ public static class SearchApiTypes
 				reader.Read();
 				v22 = reader.TokenType == JsonTokenType.Null ? null! : SearchThreadsResponseDataForum.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
 }
 
-	public sealed record SearchThreadsResponseLinks(
+public sealed record SearchThreadsResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchThreadsResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19306,6 +20689,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -19321,7 +20705,11 @@ public static class SearchApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchThreadsResponseLinks(v0, v1, v2);
 	}
@@ -19353,7 +20741,7 @@ public static class SearchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static SearchPostsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -19370,6 +20758,7 @@ public static class SearchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -19399,13 +20788,17 @@ public static class SearchApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new SearchPostsResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record SearchPostsResponseDataFirstPostLinks(
+public sealed record SearchPostsResponseDataFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -19417,7 +20810,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseDataFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19438,6 +20831,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -19478,13 +20872,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseDataFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record SearchPostsResponseDataFirstPostPermissions(
+public sealed record SearchPostsResponseDataFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -19495,7 +20893,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseDataFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19515,6 +20913,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -19550,13 +20949,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseDataFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchPostsResponseDataFirstPost(
+public sealed record SearchPostsResponseDataFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -19581,7 +20984,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseDataFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19615,6 +21018,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -19720,13 +21124,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v20 = reader.TokenType == JsonTokenType.Null ? null! : SearchPostsResponseDataFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseDataFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
 
-	public sealed record SearchPostsResponseDataLinks(
+public sealed record SearchPostsResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -19739,7 +21147,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19761,6 +21169,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -19806,13 +21215,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record SearchPostsResponseDataPermissions(
+public sealed record SearchPostsResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -19822,7 +21235,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19841,6 +21254,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -19871,13 +21285,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseDataPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchPostsResponseDataForumLinks(
+public sealed record SearchPostsResponseDataForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -19887,7 +21305,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseDataForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19906,6 +21324,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -19936,13 +21355,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseDataForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchPostsResponseDataForumPermissions(
+public sealed record SearchPostsResponseDataForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -19953,7 +21376,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseDataForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19973,6 +21396,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -20008,13 +21432,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseDataForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchPostsResponseDataForum(
+public sealed record SearchPostsResponseDataForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -20029,7 +21457,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseDataForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -20053,6 +21481,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -20117,13 +21546,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseDataForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record SearchPostsResponseData(
+public sealed record SearchPostsResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -20150,7 +21583,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -20186,6 +21619,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -20319,20 +21753,24 @@ public static class SearchApiTypes
 				reader.Read();
 				v22 = reader.TokenType == JsonTokenType.Null ? null! : SearchPostsResponseDataForum.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
 }
 
-	public sealed record SearchPostsResponseLinks(
+public sealed record SearchPostsResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchPostsResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -20348,6 +21786,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -20363,7 +21802,11 @@ public static class SearchApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchPostsResponseLinks(v0, v1, v2);
 	}
@@ -20381,7 +21824,7 @@ public static class SearchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static SearchUsersResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -20396,6 +21839,7 @@ public static class SearchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -20415,7 +21859,11 @@ public static class SearchApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new SearchUsersResponse(v0, v1);
 		}
@@ -20441,7 +21889,7 @@ public static class SearchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static SearchProfilePostsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -20458,6 +21906,7 @@ public static class SearchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -20487,13 +21936,17 @@ public static class SearchApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new SearchProfilePostsResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record SearchProfilePostsResponseDataLinks(
+public sealed record SearchProfilePostsResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("timeline")] string Timeline,
@@ -20506,7 +21959,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchProfilePostsResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -20528,6 +21981,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -20573,13 +22027,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchProfilePostsResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record SearchProfilePostsResponseDataPermissions(
+public sealed record SearchProfilePostsResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -20589,7 +22047,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchProfilePostsResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -20608,6 +22066,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -20638,13 +22097,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchProfilePostsResponseDataPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchProfilePostsResponseData(
+public sealed record SearchProfilePostsResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("profile_post_id")] long ProfilePostId,
@@ -20666,7 +22129,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchProfilePostsResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -20697,6 +22160,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -20787,20 +22251,24 @@ public static class SearchApiTypes
 				reader.Read();
 				v17 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModel.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchProfilePostsResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17);
 	}
 }
 
-	public sealed record SearchProfilePostsResponseLinks(
+public sealed record SearchProfilePostsResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchProfilePostsResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -20816,6 +22284,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -20831,7 +22300,11 @@ public static class SearchApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchProfilePostsResponseLinks(v0, v1, v2);
 	}
@@ -20857,7 +22330,7 @@ public static class SearchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static SearchTaggedResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -20874,6 +22347,7 @@ public static class SearchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -20903,13 +22377,17 @@ public static class SearchApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new SearchTaggedResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record SearchTaggedResponseDataFirstPostLinks(
+public sealed record SearchTaggedResponseDataFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -20921,7 +22399,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -20942,6 +22420,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -20982,13 +22461,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataFirstPostPermissions(
+public sealed record SearchTaggedResponseDataFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -20999,7 +22482,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21019,6 +22502,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -21054,13 +22538,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataFirstPost(
+public sealed record SearchTaggedResponseDataFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -21085,7 +22573,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21119,6 +22607,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -21224,18 +22713,22 @@ public static class SearchApiTypes
 				reader.Read();
 				v20 = reader.TokenType == JsonTokenType.Null ? null! : SearchTaggedResponseDataFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataThreadTags(
+public sealed record SearchTaggedResponseDataThreadTags(
 	[property: JsonPropertyName("160179")] string _160179
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataThreadTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21249,18 +22742,23 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("160179"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataThreadTags(v0);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataLinks(
+public sealed record SearchTaggedResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -21273,7 +22771,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21295,6 +22793,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -21340,13 +22839,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataPermissions(
+public sealed record SearchTaggedResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -21358,7 +22861,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21379,6 +22882,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -21419,19 +22923,23 @@ public static class SearchApiTypes
 				reader.Read();
 				v7 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataPermissions(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataForumForumPrefixesGroupPrefixes(
+public sealed record SearchTaggedResponseDataForumForumPrefixesGroupPrefixes(
 	[property: JsonPropertyName("prefix_id")] long PrefixId,
 	[property: JsonPropertyName("prefix_title")] string PrefixTitle
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataForumForumPrefixesGroupPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21446,6 +22954,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
@@ -21456,19 +22965,23 @@ public static class SearchApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataForumForumPrefixesGroupPrefixes(v0, v1);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataForumForumPrefixes(
+public sealed record SearchTaggedResponseDataForumForumPrefixes(
 	[property: JsonPropertyName("group_title")] string GroupTitle,
 	[property: JsonPropertyName("group_prefixes")] List<SearchTaggedResponseDataForumForumPrefixesGroupPrefixes> GroupPrefixes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataForumForumPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21483,6 +22996,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("group_title"u8))
 			{
 				reader.Read();
@@ -21502,13 +23016,17 @@ public static class SearchApiTypes
 					v1 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataForumForumPrefixes(v0, v1);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataForumLinks(
+public sealed record SearchTaggedResponseDataForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -21518,7 +23036,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21537,6 +23055,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -21567,13 +23086,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataForumPermissions(
+public sealed record SearchTaggedResponseDataForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -21584,7 +23107,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21604,6 +23127,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -21639,13 +23163,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchTaggedResponseDataForum(
+public sealed record SearchTaggedResponseDataForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -21660,7 +23188,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseDataForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21684,6 +23212,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -21748,13 +23277,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseDataForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record SearchTaggedResponseData(
+public sealed record SearchTaggedResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -21781,7 +23314,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21817,6 +23350,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -21941,18 +23475,22 @@ public static class SearchApiTypes
 				reader.Read();
 				v22 = reader.TokenType == JsonTokenType.Null ? null! : SearchTaggedResponseDataForum.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
 }
 
-	public sealed record SearchTaggedResponseSearchTags(
+public sealed record SearchTaggedResponseSearchTags(
 	[property: JsonPropertyName("160179")] string _160179
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchTaggedResponseSearchTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21966,12 +23504,17 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("160179"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchTaggedResponseSearchTags(v0);
 	}
@@ -21993,7 +23536,7 @@ public static class SearchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static SearchResultsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -22010,6 +23553,7 @@ public static class SearchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -22039,13 +23583,17 @@ public static class SearchApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new SearchResultsResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record SearchResultsResponseDataFirstPostLinks(
+public sealed record SearchResultsResponseDataFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -22057,7 +23605,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22078,6 +23626,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -22118,13 +23667,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record SearchResultsResponseDataFirstPostPermissions(
+public sealed record SearchResultsResponseDataFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -22135,7 +23688,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22155,6 +23708,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -22190,13 +23744,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchResultsResponseDataFirstPost(
+public sealed record SearchResultsResponseDataFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -22221,7 +23779,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22255,6 +23813,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -22360,18 +23919,22 @@ public static class SearchApiTypes
 				reader.Read();
 				v20 = reader.TokenType == JsonTokenType.Null ? null! : SearchResultsResponseDataFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
 
-	public sealed record SearchResultsResponseDataThreadTags(
+public sealed record SearchResultsResponseDataThreadTags(
 	[property: JsonPropertyName("160179")] string _160179
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataThreadTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22385,18 +23948,23 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("160179"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataThreadTags(v0);
 	}
 }
 
-	public sealed record SearchResultsResponseDataLinks(
+public sealed record SearchResultsResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -22409,7 +23977,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22431,6 +23999,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -22476,13 +24045,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record SearchResultsResponseDataPermissions(
+public sealed record SearchResultsResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -22494,7 +24067,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22515,6 +24088,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -22555,19 +24129,23 @@ public static class SearchApiTypes
 				reader.Read();
 				v7 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataPermissions(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record SearchResultsResponseDataForumForumPrefixesGroupPrefixes(
+public sealed record SearchResultsResponseDataForumForumPrefixesGroupPrefixes(
 	[property: JsonPropertyName("prefix_id")] long PrefixId,
 	[property: JsonPropertyName("prefix_title")] string PrefixTitle
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataForumForumPrefixesGroupPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22582,6 +24160,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
@@ -22592,19 +24171,23 @@ public static class SearchApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataForumForumPrefixesGroupPrefixes(v0, v1);
 	}
 }
 
-	public sealed record SearchResultsResponseDataForumForumPrefixes(
+public sealed record SearchResultsResponseDataForumForumPrefixes(
 	[property: JsonPropertyName("group_title")] string GroupTitle,
 	[property: JsonPropertyName("group_prefixes")] List<SearchResultsResponseDataForumForumPrefixesGroupPrefixes> GroupPrefixes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataForumForumPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22619,6 +24202,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("group_title"u8))
 			{
 				reader.Read();
@@ -22638,13 +24222,17 @@ public static class SearchApiTypes
 					v1 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataForumForumPrefixes(v0, v1);
 	}
 }
 
-	public sealed record SearchResultsResponseDataForumLinks(
+public sealed record SearchResultsResponseDataForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -22654,7 +24242,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22673,6 +24261,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -22703,13 +24292,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record SearchResultsResponseDataForumPermissions(
+public sealed record SearchResultsResponseDataForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -22720,7 +24313,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22740,6 +24333,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -22775,13 +24369,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record SearchResultsResponseDataForum(
+public sealed record SearchResultsResponseDataForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -22796,7 +24394,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseDataForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22820,6 +24418,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -22884,13 +24483,17 @@ public static class SearchApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseDataForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record SearchResultsResponseData(
+public sealed record SearchResultsResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -22917,7 +24520,7 @@ public static class SearchApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22953,6 +24556,7 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -23077,18 +24681,22 @@ public static class SearchApiTypes
 				reader.Read();
 				v22 = reader.TokenType == JsonTokenType.Null ? null! : SearchResultsResponseDataForum.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
 }
 
-	public sealed record SearchResultsResponseSearchTags(
+public sealed record SearchResultsResponseSearchTags(
 	[property: JsonPropertyName("160179")] string _160179
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static SearchResultsResponseSearchTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23102,16 +24710,22 @@ public static class SearchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("160179"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new SearchResultsResponseSearchTags(v0);
 	}
 }
+
 }
 
 // ─── TagsApi Types ────────────────────────────────────────
@@ -23124,7 +24738,7 @@ public static class TagsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static TagsPopularResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -23139,6 +24753,7 @@ public static class TagsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("tags"u8))
 				{
 					reader.Read();
@@ -23149,18 +24764,22 @@ public static class TagsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new TagsPopularResponse(v0, v1);
 		}
 	}
 
-	public sealed record TagsPopularResponseTags(
+public sealed record TagsPopularResponseTags(
 	[property: JsonPropertyName("000")] string _000
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsPopularResponseTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23174,12 +24793,17 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("000"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsPopularResponseTags(v0);
 	}
@@ -23201,7 +24825,7 @@ public static class TagsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static TagsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -23218,6 +24842,7 @@ public static class TagsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("tags"u8))
 				{
 					reader.Read();
@@ -23238,13 +24863,17 @@ public static class TagsApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new TagsListResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record TagsListResponseTags(
+public sealed record TagsListResponseTags(
 	[property: JsonPropertyName("1")] string _1,
 	[property: JsonPropertyName("2")] string _2,
 	[property: JsonPropertyName("3")] string _3,
@@ -23267,7 +24896,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsListResponseTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23299,6 +24928,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1"u8))
 			{
 				reader.Read();
@@ -23394,20 +25024,24 @@ public static class TagsApiTypes
 				reader.Read();
 				v18 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsListResponseTags(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18);
 	}
 }
 
-	public sealed record TagsListResponseLinks(
+public sealed record TagsListResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsListResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23423,6 +25057,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -23438,7 +25073,11 @@ public static class TagsApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsListResponseLinks(v0, v1, v2);
 	}
@@ -23461,7 +25100,7 @@ public static class TagsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static TagsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -23479,6 +25118,7 @@ public static class TagsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("tag"u8))
 				{
 					reader.Read();
@@ -23513,19 +25153,23 @@ public static class TagsApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new TagsGetResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record TagsGetResponseTagLinks(
+public sealed record TagsGetResponseTagLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTagLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23540,6 +25184,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -23550,13 +25195,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTagLinks(v0, v1);
 	}
 }
 
-	public sealed record TagsGetResponseTag(
+public sealed record TagsGetResponseTag(
 	[property: JsonPropertyName("tag_id")] long TagId,
 	[property: JsonPropertyName("tag_text")] string TagText,
 	[property: JsonPropertyName("tag_use_count")] long TagUseCount,
@@ -23564,7 +25213,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTag ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23581,6 +25230,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -23601,13 +25251,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v3 = reader.TokenType == JsonTokenType.Null ? null! : TagsGetResponseTagLinks.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTag(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedFirstPostLinks(
+public sealed record TagsGetResponseTaggedFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -23619,7 +25273,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23640,6 +25294,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -23680,13 +25335,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedFirstPostPermissions(
+public sealed record TagsGetResponseTaggedFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -23697,7 +25356,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23717,6 +25376,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -23752,13 +25412,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedFirstPost(
+public sealed record TagsGetResponseTaggedFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -23783,7 +25447,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23817,6 +25481,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -23922,19 +25587,23 @@ public static class TagsApiTypes
 				reader.Read();
 				v20 = reader.TokenType == JsonTokenType.Null ? null! : TagsGetResponseTaggedFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedThreadPrefixes(
+public sealed record TagsGetResponseTaggedThreadPrefixes(
 	[property: JsonPropertyName("prefix_id")] long PrefixId,
 	[property: JsonPropertyName("prefix_title")] string PrefixTitle
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedThreadPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23949,6 +25618,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
@@ -23959,19 +25629,23 @@ public static class TagsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedThreadPrefixes(v0, v1);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedThreadTags(
+public sealed record TagsGetResponseTaggedThreadTags(
 	[property: JsonPropertyName("1")] string _1,
 	[property: JsonPropertyName("654")] string _654
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedThreadTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23986,6 +25660,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1"u8))
 			{
 				reader.Read();
@@ -23996,13 +25671,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedThreadTags(v0, v1);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedLinks(
+public sealed record TagsGetResponseTaggedLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -24016,7 +25695,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24039,6 +25718,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -24089,13 +25769,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedPermissions(
+public sealed record TagsGetResponseTaggedPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -24105,7 +25789,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24124,6 +25808,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -24154,19 +25839,23 @@ public static class TagsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedForumForumPrefixesGroupPrefixes(
+public sealed record TagsGetResponseTaggedForumForumPrefixesGroupPrefixes(
 	[property: JsonPropertyName("prefix_id")] long PrefixId,
 	[property: JsonPropertyName("prefix_title")] string PrefixTitle
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedForumForumPrefixesGroupPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24181,6 +25870,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
@@ -24191,19 +25881,23 @@ public static class TagsApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedForumForumPrefixesGroupPrefixes(v0, v1);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedForumForumPrefixes(
+public sealed record TagsGetResponseTaggedForumForumPrefixes(
 	[property: JsonPropertyName("group_title")] string GroupTitle,
 	[property: JsonPropertyName("group_prefixes")] List<TagsGetResponseTaggedForumForumPrefixesGroupPrefixes> GroupPrefixes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedForumForumPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24218,6 +25912,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("group_title"u8))
 			{
 				reader.Read();
@@ -24237,13 +25932,17 @@ public static class TagsApiTypes
 					v1 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedForumForumPrefixes(v0, v1);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedForumLinks(
+public sealed record TagsGetResponseTaggedForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -24253,7 +25952,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24272,6 +25971,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -24302,13 +26002,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedForumPermissions(
+public sealed record TagsGetResponseTaggedForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -24319,7 +26023,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24339,6 +26043,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -24374,13 +26079,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record TagsGetResponseTaggedForum(
+public sealed record TagsGetResponseTaggedForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -24395,7 +26104,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTaggedForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24419,6 +26128,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -24483,13 +26193,17 @@ public static class TagsApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTaggedForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record TagsGetResponseTagged(
+public sealed record TagsGetResponseTagged(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -24516,7 +26230,7 @@ public static class TagsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseTagged ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24552,6 +26266,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -24676,20 +26391,24 @@ public static class TagsApiTypes
 				reader.Read();
 				v22 = reader.TokenType == JsonTokenType.Null ? null! : TagsGetResponseTaggedForum.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseTagged(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
 }
 
-	public sealed record TagsGetResponseLinks(
+public sealed record TagsGetResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static TagsGetResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24705,6 +26424,7 @@ public static class TagsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -24720,7 +26440,11 @@ public static class TagsApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new TagsGetResponseLinks(v0, v1, v2);
 	}
@@ -24739,7 +26463,7 @@ public static class TagsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static TagsFindResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -24755,6 +26479,7 @@ public static class TagsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("tags"u8))
 				{
 					reader.Read();
@@ -24788,11 +26513,16 @@ public static class TagsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new TagsFindResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── ThreadsApi Types ────────────────────────────────────────
@@ -24848,7 +26578,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -24866,6 +26596,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("threads"u8))
 				{
 					reader.Read();
@@ -24900,13 +26631,17 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsListResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ThreadsListResponseForumLinks(
+public sealed record ThreadsListResponseForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -24916,7 +26651,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsListResponseForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24935,6 +26670,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -24965,13 +26701,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsListResponseForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ThreadsListResponseForumPermissions(
+public sealed record ThreadsListResponseForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -24982,7 +26722,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsListResponseForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25002,6 +26742,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -25037,13 +26778,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsListResponseForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ThreadsListResponseForum(
+public sealed record ThreadsListResponseForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -25058,7 +26803,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsListResponseForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25082,6 +26827,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -25146,20 +26892,24 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsListResponseForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record ThreadsListResponseLinks(
+public sealed record ThreadsListResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsListResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25175,6 +26925,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -25190,7 +26941,11 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsListResponseLinks(v0, v1, v2);
 	}
@@ -25239,7 +26994,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25254,6 +27009,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("thread"u8))
 				{
 					reader.Read();
@@ -25264,7 +27020,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsCreateResponse(v0, v1);
 		}
@@ -25334,7 +27094,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsCreateContestResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25349,6 +27109,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("thread"u8))
 				{
 					reader.Read();
@@ -25359,7 +27120,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsCreateContestResponse(v0, v1);
 		}
@@ -25420,7 +27185,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsClaimResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25435,6 +27200,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("thread"u8))
 				{
 					reader.Read();
@@ -25445,7 +27211,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsClaimResponse(v0, v1);
 		}
@@ -25463,7 +27233,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25478,6 +27248,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("thread"u8))
 				{
 					reader.Read();
@@ -25488,7 +27259,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsGetResponse(v0, v1);
 		}
@@ -25522,7 +27297,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25537,6 +27312,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("thread"u8))
 				{
 					reader.Read();
@@ -25547,7 +27323,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsEditResponse(v0, v1);
 		}
@@ -25566,7 +27346,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25582,6 +27362,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -25597,7 +27378,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsDeleteResponse(v0, v1, v2);
 		}
@@ -25626,7 +27411,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsMoveResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25642,6 +27427,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -25657,7 +27443,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsMoveResponse(v0, v1, v2);
 		}
@@ -25670,7 +27460,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsBumpResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25686,6 +27476,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -25701,7 +27492,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsBumpResponse(v0, v1, v2);
 		}
@@ -25714,7 +27509,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsHideResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25730,6 +27525,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -25745,7 +27541,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsHideResponse(v0, v1, v2);
 		}
@@ -25758,7 +27558,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsStarResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25774,6 +27574,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -25789,7 +27590,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsStarResponse(v0, v1, v2);
 		}
@@ -25802,7 +27607,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsUnstarResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25818,6 +27623,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -25833,7 +27639,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsUnstarResponse(v0, v1, v2);
 		}
@@ -25845,7 +27655,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsFollowersResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25860,6 +27670,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -25879,19 +27690,23 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsFollowersResponse(v0, v1);
 		}
 	}
 
-	public sealed record ThreadsFollowersResponseUsersFollow(
+public sealed record ThreadsFollowersResponseUsersFollow(
 	[property: JsonPropertyName("alert")] bool Alert,
 	[property: JsonPropertyName("email")] bool Email
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowersResponseUsersFollow ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25906,6 +27721,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("alert"u8))
 			{
 				reader.Read();
@@ -25916,20 +27732,24 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowersResponseUsersFollow(v0, v1);
 	}
 }
 
-	public sealed record ThreadsFollowersResponseUsers(
+public sealed record ThreadsFollowersResponseUsers(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("follow")] ThreadsFollowersResponseUsersFollow Follow
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowersResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25945,6 +27765,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -25960,7 +27781,11 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v2 = reader.TokenType == JsonTokenType.Null ? null! : ThreadsFollowersResponseUsersFollow.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowersResponseUsers(v0, v1, v2);
 	}
@@ -25979,7 +27804,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsFollowResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25995,6 +27820,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -26010,7 +27836,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsFollowResponse(v0, v1, v2);
 		}
@@ -26023,7 +27853,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsUnfollowResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -26039,6 +27869,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -26054,7 +27885,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsUnfollowResponse(v0, v1, v2);
 		}
@@ -26075,7 +27910,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsFollowedResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -26091,6 +27926,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("threads"u8))
 				{
 					reader.Read();
@@ -26115,13 +27951,17 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsFollowedResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record ThreadsFollowedResponseThreadsFirstPostLikeUsers(
+public sealed record ThreadsFollowedResponseThreadsFirstPostLikeUsers(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
@@ -26130,7 +27970,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsFirstPostLikeUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26148,6 +27988,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -26173,13 +28014,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsFirstPostLikeUsers(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsFirstPostLinks(
+public sealed record ThreadsFollowedResponseThreadsFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -26191,7 +28036,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26212,6 +28057,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -26252,13 +28098,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsFirstPostPermissions(
+public sealed record ThreadsFollowedResponseThreadsFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -26269,7 +28119,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26289,6 +28139,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -26324,13 +28175,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsFirstPost(
+public sealed record ThreadsFollowedResponseThreadsFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -26356,7 +28211,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26391,6 +28246,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -26510,13 +28366,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v21 = reader.TokenType == JsonTokenType.Null ? null! : ThreadsFollowedResponseThreadsFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsThreadTags(
+public sealed record ThreadsFollowedResponseThreadsThreadTags(
 	[property: JsonPropertyName("1403")] string _1403,
 	[property: JsonPropertyName("8176")] string _8176,
 	[property: JsonPropertyName("38")] string _38,
@@ -26525,7 +28385,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsThreadTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26543,6 +28403,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1403"u8))
 			{
 				reader.Read();
@@ -26568,13 +28429,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsThreadTags(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsLinks(
+public sealed record ThreadsFollowedResponseThreadsLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -26587,7 +28452,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26609,6 +28474,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -26654,13 +28520,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsPermissions(
+public sealed record ThreadsFollowedResponseThreadsPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -26672,7 +28542,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26693,6 +28563,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -26733,13 +28604,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v7 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsPermissions(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsForumLinks(
+public sealed record ThreadsFollowedResponseThreadsForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -26749,7 +28624,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26768,6 +28643,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -26798,13 +28674,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsForumPermissions(
+public sealed record ThreadsFollowedResponseThreadsForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -26815,7 +28695,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26835,6 +28715,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -26870,13 +28751,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsForum(
+public sealed record ThreadsFollowedResponseThreadsForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -26891,7 +28776,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26915,6 +28800,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -26979,19 +28865,23 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreadsFollow(
+public sealed record ThreadsFollowedResponseThreadsFollow(
 	[property: JsonPropertyName("alert")] bool Alert,
 	[property: JsonPropertyName("email")] bool Email
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreadsFollow ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27006,6 +28896,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("alert"u8))
 			{
 				reader.Read();
@@ -27016,13 +28907,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreadsFollow(v0, v1);
 	}
 }
 
-	public sealed record ThreadsFollowedResponseThreads(
+public sealed record ThreadsFollowedResponseThreads(
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("thread_title")] string ThreadTitle,
@@ -27048,7 +28943,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsFollowedResponseThreads ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27083,6 +28978,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("thread_id"u8))
 			{
 				reader.Read();
@@ -27202,7 +29098,11 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v21 = reader.TokenType == JsonTokenType.Null ? null! : ThreadsFollowedResponseThreadsFollow.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsFollowedResponseThreads(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
 	}
@@ -27215,7 +29115,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsNavigationResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -27231,6 +29131,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("elements"u8))
 				{
 					reader.Read();
@@ -27255,13 +29156,17 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsNavigationResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record ThreadsNavigationResponseElementsLinks(
+public sealed record ThreadsNavigationResponseElementsLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -27270,7 +29175,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsNavigationResponseElementsLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27288,6 +29193,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -27313,20 +29219,24 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsNavigationResponseElementsLinks(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record ThreadsNavigationResponseElementsPermissions(
+public sealed record ThreadsNavigationResponseElementsPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsNavigationResponseElementsPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27342,6 +29252,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -27357,13 +29268,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsNavigationResponseElementsPermissions(v0, v1, v2);
 	}
 }
 
-	public sealed record ThreadsNavigationResponseElements(
+public sealed record ThreadsNavigationResponseElements(
 	[property: JsonPropertyName("category_id")] long CategoryId,
 	[property: JsonPropertyName("category_title")] string CategoryTitle,
 	[property: JsonPropertyName("category_description")] string CategoryDescription,
@@ -27377,7 +29292,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsNavigationResponseElements ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27400,6 +29315,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
@@ -27450,7 +29366,11 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v9 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsNavigationResponseElements(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
@@ -27462,7 +29382,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsPollGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -27477,6 +29397,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("poll"u8))
 				{
 					reader.Read();
@@ -27487,20 +29408,24 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsPollGetResponse(v0, v1);
 		}
 	}
 
-	public sealed record ThreadsPollGetResponsePollResponses(
+public sealed record ThreadsPollGetResponsePollResponses(
 	[property: JsonPropertyName("response_id")] long ResponseId,
 	[property: JsonPropertyName("response_answer")] string ResponseAnswer,
 	[property: JsonPropertyName("response_vote_count")] long ResponseVoteCount
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsPollGetResponsePollResponses ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27516,6 +29441,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("response_id"u8))
 			{
 				reader.Read();
@@ -27531,19 +29457,23 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsPollGetResponsePollResponses(v0, v1, v2);
 	}
 }
 
-	public sealed record ThreadsPollGetResponsePollPermissions(
+public sealed record ThreadsPollGetResponsePollPermissions(
 	[property: JsonPropertyName("vote")] bool Vote,
 	[property: JsonPropertyName("result")] bool Result
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsPollGetResponsePollPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27558,6 +29488,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("vote"u8))
 			{
 				reader.Read();
@@ -27568,18 +29499,22 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsPollGetResponsePollPermissions(v0, v1);
 	}
 }
 
-	public sealed record ThreadsPollGetResponsePollLinks(
+public sealed record ThreadsPollGetResponsePollLinks(
 	[property: JsonPropertyName("vote")] string Vote
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsPollGetResponsePollLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27593,18 +29528,23 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("vote"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsPollGetResponsePollLinks(v0);
 	}
 }
 
-	public sealed record ThreadsPollGetResponsePoll(
+public sealed record ThreadsPollGetResponsePoll(
 	[property: JsonPropertyName("poll_id")] long PollId,
 	[property: JsonPropertyName("poll_question")] string PollQuestion,
 	[property: JsonPropertyName("poll_vote_count")] long PollVoteCount,
@@ -27617,7 +29557,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsPollGetResponsePoll ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27639,6 +29579,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("poll_id"u8))
 			{
 				reader.Read();
@@ -27693,7 +29634,11 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v8 = reader.TokenType == JsonTokenType.Null ? null! : ThreadsPollGetResponsePollLinks.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsPollGetResponsePoll(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
@@ -27714,7 +29659,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsPollVoteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -27730,6 +29675,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -27745,7 +29691,11 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsPollVoteResponse(v0, v1, v2);
 		}
@@ -27768,7 +29718,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsUnreadResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -27784,6 +29734,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("threads"u8))
 				{
 					reader.Read();
@@ -27817,13 +29768,17 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsUnreadResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record ThreadsUnreadResponseDataFirstPostLikeUsers(
+public sealed record ThreadsUnreadResponseDataFirstPostLikeUsers(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
@@ -27832,7 +29787,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataFirstPostLikeUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27850,6 +29805,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -27875,13 +29831,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataFirstPostLikeUsers(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseDataFirstPostLinks(
+public sealed record ThreadsUnreadResponseDataFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -27893,7 +29853,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27914,6 +29874,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -27954,13 +29915,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseDataFirstPostPermissions(
+public sealed record ThreadsUnreadResponseDataFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -27971,7 +29936,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27991,6 +29956,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -28026,13 +29992,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseDataFirstPost(
+public sealed record ThreadsUnreadResponseDataFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -28058,7 +30028,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28093,6 +30063,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -28212,13 +30183,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v21 = reader.TokenType == JsonTokenType.Null ? null! : ThreadsUnreadResponseDataFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseDataLinks(
+public sealed record ThreadsUnreadResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -28232,7 +30207,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28255,6 +30230,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -28305,13 +30281,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseDataPermissions(
+public sealed record ThreadsUnreadResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -28321,7 +30301,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28340,6 +30320,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -28370,13 +30351,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseDataForumLinks(
+public sealed record ThreadsUnreadResponseDataForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -28386,7 +30371,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28405,6 +30390,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -28435,13 +30421,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseDataForumPermissions(
+public sealed record ThreadsUnreadResponseDataForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -28452,7 +30442,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28472,6 +30462,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -28507,13 +30498,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseDataForum(
+public sealed record ThreadsUnreadResponseDataForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -28528,7 +30523,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseDataForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28552,6 +30547,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -28616,13 +30612,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseDataForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record ThreadsUnreadResponseData(
+public sealed record ThreadsUnreadResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -28649,7 +30649,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsUnreadResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28685,6 +30685,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -28818,7 +30819,11 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v22 = reader.TokenType == JsonTokenType.Null ? null! : ThreadsUnreadResponseDataForum.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsUnreadResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
@@ -28843,7 +30848,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsRecentResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -28859,6 +30864,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("threads"u8))
 				{
 					reader.Read();
@@ -28892,13 +30898,17 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsRecentResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record ThreadsRecentResponseDataFirstPostLinks(
+public sealed record ThreadsRecentResponseDataFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -28910,7 +30920,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseDataFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28931,6 +30941,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -28971,13 +30982,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseDataFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record ThreadsRecentResponseDataFirstPostPermissions(
+public sealed record ThreadsRecentResponseDataFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -28988,7 +31003,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseDataFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29008,6 +31023,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -29043,13 +31059,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseDataFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ThreadsRecentResponseDataFirstPost(
+public sealed record ThreadsRecentResponseDataFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -29074,7 +31094,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseDataFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29108,6 +31128,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -29213,13 +31234,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v20 = reader.TokenType == JsonTokenType.Null ? null! : ThreadsRecentResponseDataFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseDataFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
 
-	public sealed record ThreadsRecentResponseDataLinks(
+public sealed record ThreadsRecentResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -29233,7 +31258,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29256,6 +31281,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -29306,13 +31332,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
-	public sealed record ThreadsRecentResponseDataPermissions(
+public sealed record ThreadsRecentResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -29322,7 +31352,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29341,6 +31371,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -29371,13 +31402,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseDataPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ThreadsRecentResponseDataForumLinks(
+public sealed record ThreadsRecentResponseDataForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -29387,7 +31422,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseDataForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29406,6 +31441,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -29436,13 +31472,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseDataForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ThreadsRecentResponseDataForumPermissions(
+public sealed record ThreadsRecentResponseDataForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -29453,7 +31493,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseDataForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29473,6 +31513,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -29508,13 +31549,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseDataForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ThreadsRecentResponseDataForum(
+public sealed record ThreadsRecentResponseDataForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -29529,7 +31574,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseDataForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29553,6 +31598,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -29617,13 +31663,17 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseDataForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record ThreadsRecentResponseData(
+public sealed record ThreadsRecentResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
@@ -29650,7 +31700,7 @@ public static class ThreadsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ThreadsRecentResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29686,6 +31736,7 @@ public static class ThreadsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -29819,7 +31870,11 @@ public static class ThreadsApiTypes
 				reader.Read();
 				v22 = reader.TokenType == JsonTokenType.Null ? null! : ThreadsRecentResponseDataForum.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ThreadsRecentResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
@@ -29832,7 +31887,7 @@ public static class ThreadsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ThreadsFinishResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -29848,6 +31903,7 @@ public static class ThreadsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -29863,11 +31919,16 @@ public static class ThreadsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ThreadsFinishResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── UsersApi Types ────────────────────────────────────────
@@ -29892,7 +31953,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -29909,6 +31970,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -29938,20 +32000,24 @@ public static class UsersApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersListResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record UsersListResponseLinks(
+public sealed record UsersListResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersListResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29967,6 +32033,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -29982,7 +32049,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersListResponseLinks(v0, v1, v2);
 	}
@@ -29994,7 +32065,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersFieldsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30009,6 +32080,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("fields"u8))
 				{
 					reader.Read();
@@ -30028,13 +32100,17 @@ public static class UsersApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersFieldsResponse(v0, v1);
 		}
 	}
 
-	public sealed record UsersFieldsResponseFields(
+public sealed record UsersFieldsResponseFields(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
@@ -30043,7 +32119,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFieldsResponseFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30061,6 +32137,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -30086,7 +32163,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v4 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFieldsResponseFields(v0, v1, v2, v3, v4);
 	}
@@ -30108,7 +32189,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersFindResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30123,6 +32204,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -30142,7 +32224,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersFindResponse(v0, v1);
 		}
@@ -30160,7 +32246,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30175,6 +32261,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("user"u8))
 				{
 					reader.Read();
@@ -30185,7 +32272,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersGetResponse(v0, v1);
 		}
@@ -30256,7 +32347,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30272,6 +32363,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -30287,7 +32379,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersEditResponse(v0, v1, v2);
 		}
@@ -30308,7 +32404,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersClaimsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30324,6 +32420,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("claims"u8))
 				{
 					reader.Read();
@@ -30348,13 +32445,17 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersClaimsResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record UsersClaimsResponseClaims(
+public sealed record UsersClaimsResponseClaims(
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("claim_date")] long ClaimDate,
 	[property: JsonPropertyName("claim_state")] string ClaimState,
@@ -30367,7 +32468,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersClaimsResponseClaims ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30389,6 +32490,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("thread_id"u8))
 			{
 				reader.Read();
@@ -30434,13 +32536,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModel.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersClaimsResponseClaims(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record UsersClaimsResponseStatsMarket(
+public sealed record UsersClaimsResponseStatsMarket(
 	[property: JsonPropertyName("total")] long Total,
 	[property: JsonPropertyName("solved")] long Solved,
 	[property: JsonPropertyName("settled")] long Settled,
@@ -30448,7 +32554,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersClaimsResponseStatsMarket ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30465,6 +32571,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("total"u8))
 			{
 				reader.Read();
@@ -30485,13 +32592,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v3 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersClaimsResponseStatsMarket(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record UsersClaimsResponseStatsNoMarket(
+public sealed record UsersClaimsResponseStatsNoMarket(
 	[property: JsonPropertyName("total")] long Total,
 	[property: JsonPropertyName("solved")] long Solved,
 	[property: JsonPropertyName("settled")] long Settled,
@@ -30499,7 +32610,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersClaimsResponseStatsNoMarket ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30516,6 +32627,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("total"u8))
 			{
 				reader.Read();
@@ -30536,19 +32648,23 @@ public static class UsersApiTypes
 				reader.Read();
 				v3 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersClaimsResponseStatsNoMarket(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record UsersClaimsResponseStats(
+public sealed record UsersClaimsResponseStats(
 	[property: JsonPropertyName("market")] UsersClaimsResponseStatsMarket Market,
 	[property: JsonPropertyName("noMarket")] UsersClaimsResponseStatsNoMarket NoMarket
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersClaimsResponseStats ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30563,6 +32679,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("market"u8))
 			{
 				reader.Read();
@@ -30573,7 +32690,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v1 = reader.TokenType == JsonTokenType.Null ? null! : UsersClaimsResponseStatsNoMarket.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersClaimsResponseStats(v0, v1);
 	}
@@ -30598,7 +32719,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersAvatarUploadResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30614,6 +32735,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -30629,7 +32751,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersAvatarUploadResponse(v0, v1, v2);
 		}
@@ -30642,7 +32768,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersAvatarDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30658,6 +32784,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -30673,7 +32800,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersAvatarDeleteResponse(v0, v1, v2);
 		}
@@ -30696,7 +32827,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersAvatarCropResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30712,6 +32843,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -30727,7 +32859,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersAvatarCropResponse(v0, v1, v2);
 		}
@@ -30752,7 +32888,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersBackgroundUploadResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30768,6 +32904,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -30783,7 +32920,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersBackgroundUploadResponse(v0, v1, v2);
 		}
@@ -30796,7 +32937,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersBackgroundDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30812,6 +32953,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -30827,7 +32969,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersBackgroundDeleteResponse(v0, v1, v2);
 		}
@@ -30850,7 +32996,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersBackgroundCropResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30866,6 +33012,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -30881,7 +33028,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersBackgroundCropResponse(v0, v1, v2);
 		}
@@ -30905,7 +33056,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersFollowersResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -30922,6 +33073,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -30951,13 +33103,17 @@ public static class UsersApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersFollowersResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record UsersFollowersResponseUsersLinks(
+public sealed record UsersFollowersResponseUsersLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("avatar")] string Avatar,
@@ -30970,7 +33126,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowersResponseUsersLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30992,6 +33148,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -31037,13 +33194,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowersResponseUsersLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record UsersFollowersResponseUsersPermissions(
+public sealed record UsersFollowersResponseUsersPermissions(
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("follow")] bool Follow,
 	[property: JsonPropertyName("ignore")] bool Ignore,
@@ -31051,7 +33212,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowersResponseUsersPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31068,6 +33229,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("edit"u8))
 			{
 				reader.Read();
@@ -31088,13 +33250,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowersResponseUsersPermissions(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record UsersFollowersResponseUsersCustomFields(
+public sealed record UsersFollowersResponseUsersCustomFields(
 	[property: JsonPropertyName("_4")] string _4,
 	[property: JsonPropertyName("lztInnovation20Link")] string LztInnovation20Link,
 	[property: JsonPropertyName("lztInnovation30Link")] string LztInnovation30Link,
@@ -31102,7 +33268,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowersResponseUsersCustomFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31119,6 +33285,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("_4"u8))
 			{
 				reader.Read();
@@ -31139,13 +33306,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowersResponseUsersCustomFields(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record UsersFollowersResponseUsers(
+public sealed record UsersFollowersResponseUsers(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("follow_date")] long FollowDate,
@@ -31176,7 +33347,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowersResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31216,6 +33387,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -31351,20 +33523,24 @@ public static class UsersApiTypes
 				reader.Read();
 				v26 = reader.TokenType == JsonTokenType.Null ? null! : UsersFollowersResponseUsersCustomFields.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowersResponseUsers(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26);
 	}
 }
 
-	public sealed record UsersFollowersResponseLinks(
+public sealed record UsersFollowersResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowersResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31380,6 +33556,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -31395,7 +33572,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowersResponseLinks(v0, v1, v2);
 	}
@@ -31408,7 +33589,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersFollowResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -31424,6 +33605,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -31439,7 +33621,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersFollowResponse(v0, v1, v2);
 		}
@@ -31452,7 +33638,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersUnfollowResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -31468,6 +33654,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -31483,7 +33670,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersUnfollowResponse(v0, v1, v2);
 		}
@@ -31506,7 +33697,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersFollowingsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -31522,6 +33713,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -31546,13 +33738,17 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersFollowingsResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record UsersFollowingsResponseUsersLinks(
+public sealed record UsersFollowingsResponseUsersLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("avatar")] string Avatar,
@@ -31565,7 +33761,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowingsResponseUsersLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31587,6 +33783,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -31632,13 +33829,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowingsResponseUsersLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record UsersFollowingsResponseUsersPermissions(
+public sealed record UsersFollowingsResponseUsersPermissions(
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("follow")] bool Follow,
 	[property: JsonPropertyName("ignore")] bool Ignore,
@@ -31646,7 +33847,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowingsResponseUsersPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31663,6 +33864,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("edit"u8))
 			{
 				reader.Read();
@@ -31683,13 +33885,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowingsResponseUsersPermissions(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record UsersFollowingsResponseUsersCustomFields(
+public sealed record UsersFollowingsResponseUsersCustomFields(
 	[property: JsonPropertyName("_4")] string _4,
 	[property: JsonPropertyName("allowSelfUnban")] List<JsonElement> AllowSelfUnban,
 	[property: JsonPropertyName("discord")] string Discord,
@@ -31714,7 +33920,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowingsResponseUsersCustomFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31748,6 +33954,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("_4"u8))
 			{
 				reader.Read();
@@ -31862,13 +34069,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v20 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowingsResponseUsersCustomFields(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
 
-	public sealed record UsersFollowingsResponseUsers(
+public sealed record UsersFollowingsResponseUsers(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("follow_date")] long FollowDate,
@@ -31900,7 +34111,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersFollowingsResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31941,6 +34152,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -32081,7 +34293,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v27 = reader.TokenType == JsonTokenType.Null ? null! : UsersFollowingsResponseUsersCustomFields.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersFollowingsResponseUsers(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27);
 	}
@@ -32117,7 +34333,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersLikesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -32136,6 +34352,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("page"u8))
 				{
 					reader.Read();
@@ -32166,13 +34383,17 @@ public static class UsersApiTypes
 					reader.Read();
 					v5 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersLikesResponse(v0, v1, v2, v3, v4, v5);
 		}
 	}
 
-	public sealed record UsersLikesResponseLikes1234567890(
+public sealed record UsersLikesResponseLikes1234567890(
 	[property: JsonPropertyName("like_id")] long LikeId,
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
@@ -32187,7 +34408,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersLikesResponseLikes1234567890 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32211,6 +34432,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("like_id"u8))
 			{
 				reader.Read();
@@ -32266,18 +34488,22 @@ public static class UsersApiTypes
 				reader.Read();
 				v10 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersLikesResponseLikes1234567890(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record UsersLikesResponseLikes(
+public sealed record UsersLikesResponseLikes(
 	[property: JsonPropertyName("1234567890")] UsersLikesResponseLikes1234567890 _1234567890
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersLikesResponseLikes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32291,12 +34517,17 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1234567890"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : UsersLikesResponseLikes1234567890.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersLikesResponseLikes(v0);
 	}
@@ -32314,7 +34545,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersIgnoredResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -32329,6 +34560,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
@@ -32348,13 +34580,17 @@ public static class UsersApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersIgnoredResponse(v0, v1);
 		}
 	}
 
-	public sealed record UsersIgnoredResponseUsersCustomFields(
+public sealed record UsersIgnoredResponseUsersCustomFields(
 	[property: JsonPropertyName("_4")] string _4,
 	[property: JsonPropertyName("scamURL")] JsonElement ScamURL,
 	[property: JsonPropertyName("lztLikesZeroing")] JsonElement LztLikesZeroing,
@@ -32371,7 +34607,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersIgnoredResponseUsersCustomFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32397,6 +34633,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("_4"u8))
 			{
 				reader.Read();
@@ -32462,20 +34699,24 @@ public static class UsersApiTypes
 				reader.Read();
 				v12 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersIgnoredResponseUsersCustomFields(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 	}
 }
 
-	public sealed record UsersIgnoredResponseUsersIgnoredInfo(
+public sealed record UsersIgnoredResponseUsersIgnoredInfo(
 	[property: JsonPropertyName("ignore_content")] long IgnoreContent,
 	[property: JsonPropertyName("ignore_conversations")] long IgnoreConversations,
 	[property: JsonPropertyName("restrict_view_profile")] long RestrictViewProfile
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersIgnoredResponseUsersIgnoredInfo ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32491,6 +34732,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("ignore_content"u8))
 			{
 				reader.Read();
@@ -32506,20 +34748,24 @@ public static class UsersApiTypes
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersIgnoredResponseUsersIgnoredInfo(v0, v1, v2);
 	}
 }
 
-	public sealed record UsersIgnoredResponseUsersRenderedAvatars(
+public sealed record UsersIgnoredResponseUsersRenderedAvatars(
 	[property: JsonPropertyName("l")] string L,
 	[property: JsonPropertyName("m")] string M,
 	[property: JsonPropertyName("s")] string S
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersIgnoredResponseUsersRenderedAvatars ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32535,6 +34781,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("l"u8))
 			{
 				reader.Read();
@@ -32550,13 +34797,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersIgnoredResponseUsersRenderedAvatars(v0, v1, v2);
 	}
 }
 
-	public sealed record UsersIgnoredResponseUsersRendered(
+public sealed record UsersIgnoredResponseUsersRendered(
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatars")] UsersIgnoredResponseUsersRenderedAvatars Avatars,
 	[property: JsonPropertyName("backgrounds")] List<JsonElement> Backgrounds,
@@ -32564,7 +34815,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersIgnoredResponseUsersRendered ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32581,6 +34832,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
@@ -32610,13 +34862,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersIgnoredResponseUsersRendered(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record UsersIgnoredResponseUsers(
+public sealed record UsersIgnoredResponseUsers(
 	[property: JsonPropertyName("can_edit")] bool CanEdit,
 	[property: JsonPropertyName("can_follow")] bool CanFollow,
 	[property: JsonPropertyName("can_ignore")] bool CanIgnore,
@@ -32654,7 +34910,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersIgnoredResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32701,6 +34957,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("can_edit"u8))
 			{
 				reader.Read();
@@ -32871,7 +35128,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v33 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersIgnoredResponseUsers(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33);
 	}
@@ -32884,7 +35145,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersIgnoreResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -32900,6 +35161,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -32915,7 +35177,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersIgnoreResponse(v0, v1, v2);
 		}
@@ -32938,7 +35204,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersIgnoreEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -32954,6 +35220,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -32969,7 +35236,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersIgnoreEditResponse(v0, v1, v2);
 		}
@@ -32982,7 +35253,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersUnignoreResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -32998,6 +35269,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -33013,7 +35285,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersUnignoreResponse(v0, v1, v2);
 		}
@@ -33036,7 +35312,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersContentsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -33054,6 +35330,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -33088,13 +35365,17 @@ public static class UsersApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersContentsResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record UsersContentsResponseDataLikeUsers(
+public sealed record UsersContentsResponseDataLikeUsers(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
@@ -33103,7 +35384,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersContentsResponseDataLikeUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33121,6 +35402,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -33146,13 +35428,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersContentsResponseDataLikeUsers(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record UsersContentsResponseDataLinks(
+public sealed record UsersContentsResponseDataLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -33164,7 +35450,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersContentsResponseDataLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33185,6 +35471,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -33225,13 +35512,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersContentsResponseDataLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record UsersContentsResponseDataPermissions(
+public sealed record UsersContentsResponseDataPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -33242,7 +35533,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersContentsResponseDataPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33262,6 +35553,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -33297,13 +35589,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersContentsResponseDataPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record UsersContentsResponseDataThreadLinks(
+public sealed record UsersContentsResponseDataThreadLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -33317,7 +35613,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersContentsResponseDataThreadLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33340,6 +35636,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -33390,13 +35687,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersContentsResponseDataThreadLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
-	public sealed record UsersContentsResponseDataThreadPermissions(
+public sealed record UsersContentsResponseDataThreadPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -33405,7 +35706,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersContentsResponseDataThreadPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33423,6 +35724,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -33448,13 +35750,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v4 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersContentsResponseDataThreadPermissions(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record UsersContentsResponseDataThread(
+public sealed record UsersContentsResponseDataThread(
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("thread_title")] string ThreadTitle,
@@ -33477,7 +35783,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersContentsResponseDataThread ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33509,6 +35815,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("thread_id"u8))
 			{
 				reader.Read();
@@ -33622,13 +35929,17 @@ public static class UsersApiTypes
 				reader.Read();
 				v18 = reader.TokenType == JsonTokenType.Null ? null! : UsersContentsResponseDataThreadPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersContentsResponseDataThread(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18);
 	}
 }
 
-	public sealed record UsersContentsResponseData(
+public sealed record UsersContentsResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
 	[property: JsonPropertyName("post_id")] long PostId,
@@ -33657,7 +35968,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersContentsResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33695,6 +36006,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("content_type"u8))
 			{
 				reader.Read();
@@ -33829,20 +36141,24 @@ public static class UsersApiTypes
 				reader.Read();
 				v24 = reader.TokenType == JsonTokenType.Null ? null! : UsersContentsResponseDataThread.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersContentsResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24);
 	}
 }
 
-	public sealed record UsersContentsResponseLinks(
+public sealed record UsersContentsResponseLinks(
 	[property: JsonPropertyName("pages")] long Pages,
 	[property: JsonPropertyName("page")] long Page,
 	[property: JsonPropertyName("next")] string Next
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersContentsResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33858,6 +36174,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
@@ -33873,7 +36190,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersContentsResponseLinks(v0, v1, v2);
 	}
@@ -33885,7 +36206,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersTrophiesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -33900,6 +36221,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("trophies"u8))
 				{
 					reader.Read();
@@ -33919,13 +36241,17 @@ public static class UsersApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersTrophiesResponse(v0, v1);
 		}
 	}
 
-	public sealed record UsersTrophiesResponseTrophies(
+public sealed record UsersTrophiesResponseTrophies(
 	[property: JsonPropertyName("trophy_id")] long TrophyId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
@@ -33933,7 +36259,7 @@ public static class UsersApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersTrophiesResponseTrophies ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33950,6 +36276,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("trophy_id"u8))
 			{
 				reader.Read();
@@ -33970,7 +36297,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersTrophiesResponseTrophies(v0, v1, v2, v3);
 	}
@@ -33982,7 +36313,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersSecretAnswerTypesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -33997,6 +36328,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
@@ -34016,19 +36348,23 @@ public static class UsersApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersSecretAnswerTypesResponse(v0, v1);
 		}
 	}
 
-	public sealed record UsersSecretAnswerTypesResponseData(
+public sealed record UsersSecretAnswerTypesResponseData(
 	[property: JsonPropertyName("sa_id")] long SaId,
 	[property: JsonPropertyName("renderedPhrase")] string RenderedPhrase
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UsersSecretAnswerTypesResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34043,6 +36379,7 @@ public static class UsersApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("sa_id"u8))
 			{
 				reader.Read();
@@ -34053,7 +36390,11 @@ public static class UsersApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UsersSecretAnswerTypesResponseData(v0, v1);
 	}
@@ -34066,7 +36407,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersSaResetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -34082,6 +36423,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("success"u8))
 				{
 					reader.Read();
@@ -34097,7 +36439,11 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersSaResetResponse(v0, v1, v2);
 		}
@@ -34110,7 +36456,7 @@ public static class UsersApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static UsersSaCancelResetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -34126,6 +36472,7 @@ public static class UsersApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -34141,10 +36488,15 @@ public static class UsersApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new UsersSaCancelResetResponse(v0, v1, v2);
 		}
 	}
+
 }
 

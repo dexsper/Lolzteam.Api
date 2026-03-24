@@ -39,7 +39,7 @@ internal static class Parser
 				var rawOperation = GetRawOperation(rawSpec, path, method);
 				var methodDef = Transforms.ExtractMethodDefinition(
 					operationId, methodName, method, path, operation,
-					rawOperation, rawSpec, componentSchemaNames
+					rawOperation, rawSpec
 				);
 
 				if (!groupMap.TryGetValue(group, out var methods))

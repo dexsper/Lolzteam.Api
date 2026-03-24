@@ -5,8 +5,6 @@ namespace Lolzteam.Codegen;
 /// <summary>Generates C# source files from parsed API definitions.</summary>
 internal static partial class Emitter
 {
-	// ─── Public Entry Points ──────────────────────────────────────────────────
-
 	/// <summary>
 	/// Generate the <c>Types.cs</c> file: enums, component-schema records,
 	/// and per-method query-param / body / response records.
@@ -106,8 +104,6 @@ internal static partial class Emitter
 		var interfaceFile = EmitClientInterface(groups, interfaceName, subPackage);
 		return (w.ToString(), interfaceFile);
 	}
-
-	// ─── Shared Utilities ─────────────────────────────────────────────────────
 
 	/// <summary>Ensure a property name is unique within its record by appending a numeric suffix.</summary>
 	private static string DeduplicateName(string name, HashSet<string> seen)

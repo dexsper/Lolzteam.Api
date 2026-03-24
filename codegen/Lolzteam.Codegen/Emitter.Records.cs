@@ -4,8 +4,6 @@ namespace Lolzteam.Codegen;
 
 internal static partial class Emitter
 {
-    // ─── Component Schema Records ─────────────────────────────────────────────
-
     private static void EmitComponentSchemaRecord(
         CodeWriter w, string name, JsonObject schema, JsonNode rawSpec,
         HashSet<string> componentSchemaNames)
@@ -25,8 +23,6 @@ internal static partial class Emitter
         foreach (var nested in nestedRecords)
             w.Line().Raw(nested);
     }
-
-    // ─── Response Records ─────────────────────────────────────────────────────
 
     private static void EmitResponseRecord(
         CodeWriter w, string group, MethodDefinition method, JsonNode rawSpec,
@@ -78,8 +74,6 @@ internal static partial class Emitter
         w.Close().Close().Line();
     }
 
-    // ─── Positional Record Builder ────────────────────────────────────────────
-
     /// <summary>
     /// Emit a <c>public sealed record T(…)</c> with generated
     /// <c>ReadFrom(ReadOnlyMemory&lt;byte&gt;)</c> and <c>ReadFromReader(ref Utf8JsonReader)</c> methods.
@@ -111,8 +105,6 @@ internal static partial class Emitter
         w.Close();
     }
 
-    // ─── Schema Entry Helpers ─────────────────────────────────────────────────
-
     private static HashSet<string> CollectRequiredSet(JsonNode schema)
     {
         var set = new HashSet<string>();
@@ -139,8 +131,6 @@ internal static partial class Emitter
 
         return entries;
     }
-
-    // ─── Property Type Resolution ─────────────────────────────────────────────
 
     /// <summary>
     /// Resolve the C# type for a property within a component schema or response record.

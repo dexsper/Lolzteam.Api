@@ -74,6 +74,7 @@ internal sealed record ResponseSchemaInfo(List<ResponseProperty> Properties);
 
 internal sealed record MethodDefinition(
     string OperationId,
+    string? Description,
     string MethodName,
     string HttpMethod,
     string Path,
@@ -85,9 +86,7 @@ internal sealed record MethodDefinition(
     bool BodyIsArray,
     string? BodyArrayItemType,
     string BodyEncoding,
-    ResponseSchemaInfo? ResponseSchema = null,
     JsonObject? RawResponseSchema = null,
     List<OneOfVariant>? BodyOneOfVariants = null,
-    bool ReturnsHtml = false,
-    string? Summary = null
+    bool ReturnsHtml = false
 );

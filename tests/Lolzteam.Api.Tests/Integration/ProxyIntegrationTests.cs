@@ -14,14 +14,6 @@ namespace Lolzteam.Api.Tests.Integration;
 /// </summary>
 public sealed class ProxyIntegrationTests
 {
-    // ─── Minimal in-process HTTP/1.1 forward-proxy server ────────────────────
-    //
-    // Behaviour: accepts one TCP connection, reads the request line + headers, writes a
-    // configurable HTTP response, and records what it received.
-    // HTTP (non-CONNECT) forward-proxy requests carry an absolute-URI request line, e.g.:
-    //   GET http://api.test/path HTTP/1.1
-    // That is how we detect the connection came through the proxy.
-
     private sealed class MiniProxy : IAsyncDisposable
     {
         private readonly TcpListener _listener;
@@ -117,10 +109,6 @@ public sealed class ProxyIntegrationTests
         }
     }
 
-    // ─── Minimal in-process HTTP/1.1 origin server ───────────────────────────
-    //
-    // Handles requests without any proxy semantics (relative request line).
-
     private sealed class MiniServer : IAsyncDisposable
     {
         private readonly TcpListener _listener;
@@ -197,8 +185,6 @@ public sealed class ProxyIntegrationTests
             _listener.Stop();
         }
     }
-
-    // ─── Tests ───────────────────────────────────────────────────────────────
 
     [Fact]
     public async Task BuildHandler_no_proxy_returns_working_handler()

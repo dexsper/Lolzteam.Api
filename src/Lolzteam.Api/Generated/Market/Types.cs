@@ -2654,7 +2654,7 @@ public enum ExtendedGuarantee : long
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<FieldsInclude>))]
 public enum FieldsInclude
 {
-	[Lolzteam.Api.Runtime.EnumValue("*")] Value815934146,
+	[Lolzteam.Api.Runtime.EnumValue("*")] Value60336541,
 	[Lolzteam.Api.Runtime.EnumValue("searchHistory")] SearchHistory,
 	[Lolzteam.Api.Runtime.EnumValue("savedSearch")] SavedSearch,
 }
@@ -13566,7 +13566,7 @@ public sealed record BalanceModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static BalanceModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13587,6 +13587,7 @@ public sealed record BalanceModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("balance"u8))
 			{
 				reader.Read();
@@ -13627,7 +13628,11 @@ public sealed record BalanceModel(
 				reader.Read();
 				v7 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new BalanceModel(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
@@ -13639,7 +13644,7 @@ public sealed record ConfirmationCodeModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ConfirmationCodeModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13654,6 +13659,7 @@ public sealed record ConfirmationCodeModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item"u8))
 			{
 				reader.Read();
@@ -13664,7 +13670,11 @@ public sealed record ConfirmationCodeModel(
 				reader.Read();
 				v1 = reader.TokenType == JsonTokenType.Null ? null! : ConfirmationCodeModelCodeData.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ConfirmationCodeModel(v0, v1);
 	}
@@ -13677,7 +13687,7 @@ public sealed record ConfirmationCodeModelCodeData(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ConfirmationCodeModelCodeData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13693,6 +13703,7 @@ public sealed record ConfirmationCodeModelCodeData(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("code"u8))
 			{
 				reader.Read();
@@ -13708,7 +13719,11 @@ public sealed record ConfirmationCodeModelCodeData(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ConfirmationCodeModelCodeData(v0, v1, v2);
 	}
@@ -13725,7 +13740,7 @@ public sealed record DiscountModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static DiscountModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13745,6 +13760,7 @@ public sealed record DiscountModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
@@ -13780,7 +13796,11 @@ public sealed record DiscountModel(
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new DiscountModel(v0, v1, v2, v3, v4, v5, v6);
 	}
@@ -13816,7 +13836,7 @@ public sealed record ExtraModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ExtraModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -13855,6 +13875,7 @@ public sealed record ExtraModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("proxy"u8))
 			{
 				reader.Read();
@@ -13985,7 +14006,11 @@ public sealed record ExtraModel(
 				reader.Read();
 				v25 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ExtraModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25);
 	}
@@ -14012,7 +14037,7 @@ public sealed record InvoiceModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static InvoiceModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14042,6 +14067,7 @@ public sealed record InvoiceModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("additional_data"u8))
 			{
 				reader.Read();
@@ -14127,7 +14153,11 @@ public sealed record InvoiceModel(
 				reader.Read();
 				v16 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new InvoiceModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16);
 	}
@@ -14182,7 +14212,7 @@ public sealed record ItemFromListModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemFromListModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14240,6 +14270,7 @@ public sealed record ItemFromListModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -14474,7 +14505,11 @@ public sealed record ItemFromListModel(
 				reader.Read();
 				v44 = reader.TokenType == JsonTokenType.Null ? null! : ItemFromListModelSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemFromListModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44);
 	}
@@ -14488,7 +14523,7 @@ public sealed record ItemFromListModelBumpSettings(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemFromListModelBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14505,6 +14540,7 @@ public sealed record ItemFromListModelBumpSettings(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -14525,7 +14561,11 @@ public sealed record ItemFromListModelBumpSettings(
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemFromListModelBumpSettings(v0, v1, v2, v3);
 	}
@@ -14544,7 +14584,7 @@ public sealed record ItemFromListModelSeller(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemFromListModelSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14566,6 +14606,7 @@ public sealed record ItemFromListModelSeller(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -14611,7 +14652,11 @@ public sealed record ItemFromListModelSeller(
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemFromListModelSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
@@ -14630,7 +14675,7 @@ public sealed record ItemListModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemListModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14652,6 +14697,7 @@ public sealed record ItemListModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("items"u8))
 			{
 				reader.Read();
@@ -14715,7 +14761,11 @@ public sealed record ItemListModel(
 				reader.Read();
 				v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemListModel(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
@@ -14825,7 +14875,7 @@ public sealed record ItemModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -14938,6 +14988,7 @@ public sealed record ItemModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -15474,7 +15525,11 @@ public sealed record ItemModel(
 				reader.Read();
 				v99 = reader.TokenType == JsonTokenType.Null ? null! : ItemModelSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91, v92, v93, v94, v95, v96, v97, v98, v99);
 	}
@@ -15494,7 +15549,7 @@ public sealed record ItemModelGuarantee(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelGuarantee ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15517,6 +15572,7 @@ public sealed record ItemModelGuarantee(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("duration"u8))
 			{
 				reader.Read();
@@ -15567,7 +15623,11 @@ public sealed record ItemModelGuarantee(
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelGuarantee(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
@@ -15584,7 +15644,7 @@ public sealed record ItemModelLoginData(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelLoginData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15604,6 +15664,7 @@ public sealed record ItemModelLoginData(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("raw"u8))
 			{
 				reader.Read();
@@ -15639,7 +15700,11 @@ public sealed record ItemModelLoginData(
 				reader.Read();
 				v6 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelLoginData(v0, v1, v2, v3, v4, v5, v6);
 	}
@@ -15652,7 +15717,7 @@ public sealed record ItemModelCopyFormatData(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelCopyFormatData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15668,6 +15733,7 @@ public sealed record ItemModelCopyFormatData(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title_link"u8))
 			{
 				reader.Read();
@@ -15683,7 +15749,11 @@ public sealed record ItemModelCopyFormatData(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelCopyFormatData(v0, v1, v2);
 	}
@@ -15703,7 +15773,7 @@ public sealed record ItemModelBuyer(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelBuyer ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15726,6 +15796,7 @@ public sealed record ItemModelBuyer(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -15776,7 +15847,11 @@ public sealed record ItemModelBuyer(
 				reader.Read();
 				v9 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelBuyer(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
@@ -15789,7 +15864,7 @@ public sealed record ItemModelAccountLinks(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15805,6 +15880,7 @@ public sealed record ItemModelAccountLinks(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -15820,7 +15896,11 @@ public sealed record ItemModelAccountLinks(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelAccountLinks(v0, v1, v2);
 	}
@@ -15835,7 +15915,7 @@ public sealed record ItemModelTags1234567890(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelTags1234567890 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15853,6 +15933,7 @@ public sealed record ItemModelTags1234567890(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -15878,7 +15959,11 @@ public sealed record ItemModelTags1234567890(
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelTags1234567890(v0, v1, v2, v3, v4);
 	}
@@ -15889,7 +15974,7 @@ public sealed record ItemModelTags(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15903,12 +15988,17 @@ public sealed record ItemModelTags(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1234567890"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : ItemModelTags1234567890.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelTags(v0);
 	}
@@ -15928,7 +16018,7 @@ public sealed record ItemModelCustomFields(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelCustomFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -15951,6 +16041,7 @@ public sealed record ItemModelCustomFields(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("_4"u8))
 			{
 				reader.Read();
@@ -16010,7 +16101,11 @@ public sealed record ItemModelCustomFields(
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelCustomFields(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
@@ -16023,7 +16118,7 @@ public sealed record ItemModelExtraPrices(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelExtraPrices ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16039,6 +16134,7 @@ public sealed record ItemModelExtraPrices(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("currency"u8))
 			{
 				reader.Read();
@@ -16054,7 +16150,11 @@ public sealed record ItemModelExtraPrices(
 				reader.Read();
 				v2 = reader.GetDouble();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelExtraPrices(v0, v1, v2);
 	}
@@ -16069,7 +16169,7 @@ public sealed record ItemModelBumpSettings(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16087,6 +16187,7 @@ public sealed record ItemModelBumpSettings(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -16112,7 +16213,11 @@ public sealed record ItemModelBumpSettings(
 				reader.Read();
 				v4 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelBumpSettings(v0, v1, v2, v3, v4);
 	}
@@ -16124,7 +16229,7 @@ public sealed record ItemModelSellerContacts(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelSellerContacts ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16139,6 +16244,7 @@ public sealed record ItemModelSellerContacts(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("ban_reason"u8))
 			{
 				reader.Read();
@@ -16149,7 +16255,11 @@ public sealed record ItemModelSellerContacts(
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelSellerContacts(v0, v1);
 	}
@@ -16172,7 +16282,7 @@ public sealed record ItemModelSeller(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ItemModelSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16198,6 +16308,7 @@ public sealed record ItemModelSeller(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -16263,7 +16374,11 @@ public sealed record ItemModelSeller(
 				reader.Read();
 				v12 = reader.TokenType == JsonTokenType.Null ? null! : ItemModelSellerContacts.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ItemModelSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 	}
@@ -16276,7 +16391,7 @@ public sealed record Resp_SystemInfo(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static Resp_SystemInfo ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16292,6 +16407,7 @@ public sealed record Resp_SystemInfo(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("visitor_id"u8))
 			{
 				reader.Read();
@@ -16307,7 +16423,11 @@ public sealed record Resp_SystemInfo(
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new Resp_SystemInfo(v0, v1, v2);
 	}
@@ -16379,7 +16499,7 @@ public sealed record UserModel(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16454,6 +16574,7 @@ public sealed record UserModel(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("active_items_count"u8))
 			{
 				reader.Read();
@@ -16791,7 +16912,11 @@ public sealed record UserModel(
 				reader.Read();
 				v61 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61);
 	}
@@ -16810,7 +16935,7 @@ public sealed record UserModelBalances(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelBalances ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16832,6 +16957,7 @@ public sealed record UserModelBalances(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("balance"u8))
 			{
 				reader.Read();
@@ -16877,7 +17003,11 @@ public sealed record UserModelBalances(
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelBalances(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
@@ -16908,7 +17038,7 @@ public sealed record UserModelCustomFields(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelCustomFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -16942,6 +17072,7 @@ public sealed record UserModelCustomFields(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("_4"u8))
 			{
 				reader.Read();
@@ -17056,7 +17187,11 @@ public sealed record UserModelCustomFields(
 				reader.Read();
 				v20 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelCustomFields(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
@@ -17069,7 +17204,7 @@ public sealed record UserModelDob(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelDob ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17085,6 +17220,7 @@ public sealed record UserModelDob(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("year"u8))
 			{
 				reader.Read();
@@ -17100,7 +17236,11 @@ public sealed record UserModelDob(
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelDob(v0, v1, v2);
 	}
@@ -17112,7 +17252,7 @@ public sealed record UserModelFeedbackData12345(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelFeedbackData12345 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17127,6 +17267,7 @@ public sealed record UserModelFeedbackData12345(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("positive"u8))
 			{
 				reader.Read();
@@ -17137,7 +17278,11 @@ public sealed record UserModelFeedbackData12345(
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelFeedbackData12345(v0, v1);
 	}
@@ -17148,7 +17293,7 @@ public sealed record UserModelFeedbackData(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelFeedbackData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17162,12 +17307,17 @@ public sealed record UserModelFeedbackData(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("12345"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : UserModelFeedbackData12345.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelFeedbackData(v0);
 	}
@@ -17181,7 +17331,7 @@ public sealed record UserModelImapDataDomainZone(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelImapDataDomainZone ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17198,6 +17348,7 @@ public sealed record UserModelImapDataDomainZone(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("domain"u8))
 			{
 				reader.Read();
@@ -17218,7 +17369,11 @@ public sealed record UserModelImapDataDomainZone(
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelImapDataDomainZone(v0, v1, v2, v3);
 	}
@@ -17229,7 +17384,7 @@ public sealed record UserModelImapData(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelImapData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17243,12 +17398,17 @@ public sealed record UserModelImapData(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("domain.zone"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : UserModelImapDataDomainZone.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelImapData(v0);
 	}
@@ -17261,7 +17421,7 @@ public sealed record UserModelPublicTags(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelPublicTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17277,6 +17437,7 @@ public sealed record UserModelPublicTags(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("background_color"u8))
 			{
 				reader.Read();
@@ -17292,7 +17453,11 @@ public sealed record UserModelPublicTags(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelPublicTags(v0, v1, v2);
 	}
@@ -17305,7 +17470,7 @@ public sealed record UserModelRenderedAvatars(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelRenderedAvatars ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17321,6 +17486,7 @@ public sealed record UserModelRenderedAvatars(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("l"u8))
 			{
 				reader.Read();
@@ -17336,7 +17502,11 @@ public sealed record UserModelRenderedAvatars(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelRenderedAvatars(v0, v1, v2);
 	}
@@ -17348,7 +17518,7 @@ public sealed record UserModelRenderedBackgrounds(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelRenderedBackgrounds ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17363,6 +17533,7 @@ public sealed record UserModelRenderedBackgrounds(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("l"u8))
 			{
 				reader.Read();
@@ -17373,7 +17544,11 @@ public sealed record UserModelRenderedBackgrounds(
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelRenderedBackgrounds(v0, v1);
 	}
@@ -17387,7 +17562,7 @@ public sealed record UserModelRendered(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelRendered ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17404,6 +17579,7 @@ public sealed record UserModelRendered(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
@@ -17424,7 +17600,11 @@ public sealed record UserModelRendered(
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelRendered(v0, v1, v2, v3);
 	}
@@ -17435,7 +17615,7 @@ public sealed record UserModelRestoreData(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelRestoreData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17449,12 +17629,17 @@ public sealed record UserModelRestoreData(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("12345"u8))
 			{
 				reader.Read();
 				v0 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelRestoreData(v0);
 	}
@@ -17469,7 +17654,7 @@ public sealed record UserModelTags(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17487,6 +17672,7 @@ public sealed record UserModelTags(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -17512,7 +17698,11 @@ public sealed record UserModelTags(
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelTags(v0, v1, v2, v3, v4);
 	}
@@ -17530,7 +17720,7 @@ public sealed record UserModelTelegramClient(
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static UserModelTelegramClient ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17551,6 +17741,7 @@ public sealed record UserModelTelegramClient(
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("telegram_api_id"u8))
 			{
 				reader.Read();
@@ -17591,7 +17782,11 @@ public sealed record UserModelTelegramClient(
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new UserModelTelegramClient(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
@@ -17607,7 +17802,7 @@ public static class AutoPaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static AutoPaymentsListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -17622,6 +17817,7 @@ public static class AutoPaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("payments"u8))
 				{
 					reader.Read();
@@ -17632,13 +17828,17 @@ public static class AutoPaymentsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new AutoPaymentsListResponse(v0, v1);
 		}
 	}
 
-	public sealed record AutoPaymentsListResponsePayments1234567890ReceiverLinks(
+public sealed record AutoPaymentsListResponsePayments1234567890ReceiverLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("avatar")] string Avatar,
@@ -17651,7 +17851,7 @@ public static class AutoPaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static AutoPaymentsListResponsePayments1234567890ReceiverLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17673,6 +17873,7 @@ public static class AutoPaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -17718,13 +17919,17 @@ public static class AutoPaymentsApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new AutoPaymentsListResponsePayments1234567890ReceiverLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record AutoPaymentsListResponsePayments1234567890ReceiverPermissions(
+public sealed record AutoPaymentsListResponsePayments1234567890ReceiverPermissions(
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("follow")] bool Follow,
 	[property: JsonPropertyName("ignore")] bool Ignore,
@@ -17732,7 +17937,7 @@ public static class AutoPaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static AutoPaymentsListResponsePayments1234567890ReceiverPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17749,6 +17954,7 @@ public static class AutoPaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("edit"u8))
 			{
 				reader.Read();
@@ -17769,13 +17975,17 @@ public static class AutoPaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new AutoPaymentsListResponsePayments1234567890ReceiverPermissions(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record AutoPaymentsListResponsePayments1234567890ReceiverFields(
+public sealed record AutoPaymentsListResponsePayments1234567890ReceiverFields(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
@@ -17785,7 +17995,7 @@ public static class AutoPaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static AutoPaymentsListResponsePayments1234567890ReceiverFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17804,6 +18014,7 @@ public static class AutoPaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -17834,13 +18045,17 @@ public static class AutoPaymentsApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new AutoPaymentsListResponsePayments1234567890ReceiverFields(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record AutoPaymentsListResponsePayments1234567890Receiver(
+public sealed record AutoPaymentsListResponsePayments1234567890Receiver(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("username_html")] string UsernameHtml,
@@ -17868,7 +18083,7 @@ public static class AutoPaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static AutoPaymentsListResponsePayments1234567890Receiver ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -17905,6 +18120,7 @@ public static class AutoPaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -18034,13 +18250,17 @@ public static class AutoPaymentsApiTypes
 					v23 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new AutoPaymentsListResponsePayments1234567890Receiver(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23);
 	}
 }
 
-	public sealed record AutoPaymentsListResponsePayments1234567890(
+public sealed record AutoPaymentsListResponsePayments1234567890(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("receiver_id")] long ReceiverId,
 	[property: JsonPropertyName("amount")] string Amount,
@@ -18053,7 +18273,7 @@ public static class AutoPaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static AutoPaymentsListResponsePayments1234567890 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18075,6 +18295,7 @@ public static class AutoPaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -18120,18 +18341,22 @@ public static class AutoPaymentsApiTypes
 				reader.Read();
 				v8 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePayments1234567890Receiver.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new AutoPaymentsListResponsePayments1234567890(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record AutoPaymentsListResponsePayments(
+public sealed record AutoPaymentsListResponsePayments(
 	[property: JsonPropertyName("1234567890")] AutoPaymentsListResponsePayments1234567890 _1234567890
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static AutoPaymentsListResponsePayments ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18145,12 +18370,17 @@ public static class AutoPaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1234567890"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePayments1234567890.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new AutoPaymentsListResponsePayments(v0);
 	}
@@ -18180,7 +18410,7 @@ public static class AutoPaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static AutoPaymentsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -18197,6 +18427,7 @@ public static class AutoPaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -18217,7 +18448,11 @@ public static class AutoPaymentsApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new AutoPaymentsCreateResponse(v0, v1, v2, v3);
 		}
@@ -18236,7 +18471,7 @@ public static class AutoPaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static AutoPaymentsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -18252,6 +18487,7 @@ public static class AutoPaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -18267,11 +18503,16 @@ public static class AutoPaymentsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new AutoPaymentsDeleteResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── BatchApi Types ────────────────────────────────────────
@@ -18284,7 +18525,7 @@ public static class BatchApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static BatchBatchResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -18299,6 +18540,7 @@ public static class BatchApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("jobs"u8))
 				{
 					reader.Read();
@@ -18309,19 +18551,23 @@ public static class BatchApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new BatchBatchResponse(v0, v1);
 		}
 	}
 
-	public sealed record BatchBatchResponseJobsJobId(
+public sealed record BatchBatchResponseJobsJobId(
 	[property: JsonPropertyName("_job_result")] string? JobResult,
 	[property: JsonPropertyName("_job_error")] string? JobError
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static BatchBatchResponseJobsJobId ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18336,6 +18582,7 @@ public static class BatchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("_job_result"u8))
 			{
 				reader.Read();
@@ -18346,18 +18593,22 @@ public static class BatchApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new BatchBatchResponseJobsJobId(v0, v1);
 	}
 }
 
-	public sealed record BatchBatchResponseJobs(
+public sealed record BatchBatchResponseJobs(
 	[property: JsonPropertyName("job_id")] BatchBatchResponseJobsJobId JobId
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static BatchBatchResponseJobs ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -18371,16 +18622,22 @@ public static class BatchApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("job_id"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : BatchBatchResponseJobsJobId.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new BatchBatchResponseJobs(v0);
 	}
 }
+
 }
 
 // ─── CartApi Types ────────────────────────────────────────
@@ -18448,7 +18705,7 @@ public static class CartApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CartGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -18470,6 +18727,7 @@ public static class CartApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -18533,7 +18791,11 @@ public static class CartApiTypes
 					reader.Read();
 					v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CartGetResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 		}
@@ -18551,7 +18813,7 @@ public static class CartApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CartAddResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -18566,6 +18828,7 @@ public static class CartApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("success"u8))
 				{
 					reader.Read();
@@ -18576,7 +18839,11 @@ public static class CartApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CartAddResponse(v0, v1);
 		}
@@ -18594,7 +18861,7 @@ public static class CartApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CartDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -18609,6 +18876,7 @@ public static class CartApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("success"u8))
 				{
 					reader.Read();
@@ -18619,11 +18887,16 @@ public static class CartApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CartDeleteResponse(v0, v1);
 		}
 	}
+
 }
 
 // ─── CategoryApi Types ────────────────────────────────────────
@@ -18689,7 +18962,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryAllResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -18711,6 +18984,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -18774,7 +19048,11 @@ public static class CategoryApiTypes
 					reader.Read();
 					v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryAllResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 		}
@@ -19040,7 +19318,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategorySteamResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -19066,6 +19344,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -19149,13 +19428,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategorySteamResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategorySteamResponseItemsSteamFullGamesList730(
+public sealed record CategorySteamResponseItemsSteamFullGamesList730(
 	[property: JsonPropertyName("appid")] long Appid,
 	[property: JsonPropertyName("playtime_forever")] double PlaytimeForever,
 	[property: JsonPropertyName("internal_game_id")] long InternalGameId,
@@ -19166,7 +19449,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsSteamFullGamesList730 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19186,6 +19469,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("appid"u8))
 			{
 				reader.Read();
@@ -19221,18 +19505,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsSteamFullGamesList730(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategorySteamResponseItemsSteamFullGamesList(
+public sealed record CategorySteamResponseItemsSteamFullGamesList(
 	[property: JsonPropertyName("730")] CategorySteamResponseItemsSteamFullGamesList730 _730
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsSteamFullGamesList ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19246,24 +19534,29 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("730"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategorySteamResponseItemsSteamFullGamesList730.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsSteamFullGamesList(v0);
 	}
 }
 
-	public sealed record CategorySteamResponseItemsSteamFullGames(
+public sealed record CategorySteamResponseItemsSteamFullGames(
 	[property: JsonPropertyName("list")] CategorySteamResponseItemsSteamFullGamesList List,
 	[property: JsonPropertyName("total")] long Total
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsSteamFullGames ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19278,6 +19571,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("list"u8))
 			{
 				reader.Read();
@@ -19288,13 +19582,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsSteamFullGames(v0, v1);
 	}
 }
 
-	public sealed record CategorySteamResponseItemsGuarantee(
+public sealed record CategorySteamResponseItemsGuarantee(
 	[property: JsonPropertyName("duration")] long Duration,
 	[property: JsonPropertyName("class")] string Class,
 	[property: JsonPropertyName("durationPhrase")] string DurationPhrase,
@@ -19305,7 +19603,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsGuarantee ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19325,6 +19623,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("duration"u8))
 			{
 				reader.Read();
@@ -19360,13 +19659,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsGuarantee(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategorySteamResponseItemsBumpSettings(
+public sealed record CategorySteamResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -19374,7 +19677,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19391,6 +19694,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -19411,18 +19715,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategorySteamResponseItemsSteamData(
+public sealed record CategorySteamResponseItemsSteamData(
 	[property: JsonPropertyName("steam_ban_type_id")] List<JsonElement> SteamBanTypeId
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsSteamData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19436,6 +19744,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("steam_ban_type_id"u8))
 			{
 				reader.Read();
@@ -19450,13 +19759,17 @@ public static class CategoryApiTypes
 					v0 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsSteamData(v0);
 	}
 }
 
-	public sealed record CategorySteamResponseItemsSteamTransactions(
+public sealed record CategorySteamResponseItemsSteamTransactions(
 	[property: JsonPropertyName("date")] string Date,
 	[property: JsonPropertyName("product")] string Product,
 	[property: JsonPropertyName("type")] string Type,
@@ -19465,7 +19778,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsSteamTransactions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19483,6 +19796,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("date"u8))
 			{
 				reader.Read();
@@ -19508,20 +19822,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsSteamTransactions(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record CategorySteamResponseItemsAccountLinks(
+public sealed record CategorySteamResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19537,6 +19855,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -19552,13 +19871,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategorySteamResponseItemsSeller(
+public sealed record CategorySteamResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -19571,7 +19894,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19593,6 +19916,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -19638,13 +19962,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategorySteamResponseItems(
+public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -19789,7 +20117,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySteamResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -19943,6 +20271,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -20711,7 +21040,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v140 = reader.TokenType == JsonTokenType.Null ? null! : CategorySteamResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySteamResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91, v92, v93, v94, v95, v96, v97, v98, v99, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v110, v111, v112, v113, v114, v115, v116, v117, v118, v119, v120, v121, v122, v123, v124, v125, v126, v127, v128, v129, v130, v131, v132, v133, v134, v135, v136, v137, v138, v139, v140);
 	}
@@ -20888,7 +21221,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryFortniteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -20914,6 +21247,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -20997,13 +21331,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryFortniteResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryFortniteResponseItemsBumpSettings(
+public sealed record CategoryFortniteResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -21011,7 +21349,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21028,6 +21366,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -21048,13 +21387,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItemsFortniteSkins(
+public sealed record CategoryFortniteResponseItemsFortniteSkins(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rarity")] string Rarity,
@@ -21063,7 +21406,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsFortniteSkins ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21081,6 +21424,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -21106,13 +21450,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v4 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsFortniteSkins(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItemsFortnitePickaxe(
+public sealed record CategoryFortniteResponseItemsFortnitePickaxe(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rarity")] string Rarity,
@@ -21121,7 +21469,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsFortnitePickaxe ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21139,6 +21487,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -21164,13 +21513,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v4 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsFortnitePickaxe(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItemsFortniteDance(
+public sealed record CategoryFortniteResponseItemsFortniteDance(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rarity")] string Rarity,
@@ -21179,7 +21532,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsFortniteDance ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21197,6 +21550,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -21222,13 +21576,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v4 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsFortniteDance(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItemsFortniteGliders(
+public sealed record CategoryFortniteResponseItemsFortniteGliders(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rarity")] string Rarity,
@@ -21237,7 +21595,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsFortniteGliders ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21255,6 +21613,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -21280,13 +21639,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v4 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsFortniteGliders(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItemsFortnitePastSeasons(
+public sealed record CategoryFortniteResponseItemsFortnitePastSeasons(
 	[property: JsonPropertyName("numWins")] long NumWins,
 	[property: JsonPropertyName("seasonXp")] long SeasonXp,
 	[property: JsonPropertyName("purchasedVIP")] bool PurchasedVIP,
@@ -21301,7 +21664,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsFortnitePastSeasons ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21325,6 +21688,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("numWins"u8))
 			{
 				reader.Read();
@@ -21380,13 +21744,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v10 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsFortnitePastSeasons(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItemsFortniteTransactions(
+public sealed record CategoryFortniteResponseItemsFortniteTransactions(
 	[property: JsonPropertyName("date")] long Date,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("presentmentTotal")] string PresentmentTotal,
@@ -21394,7 +21762,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsFortniteTransactions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21411,6 +21779,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("date"u8))
 			{
 				reader.Read();
@@ -21431,13 +21800,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsFortniteTransactions(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItemsShopCounts(
+public sealed record CategoryFortniteResponseItemsShopCounts(
 	[property: JsonPropertyName("shopSkinsCount")] long ShopSkinsCount,
 	[property: JsonPropertyName("shopPickaxesCount")] long ShopPickaxesCount,
 	[property: JsonPropertyName("shopDancesCount")] long ShopDancesCount,
@@ -21445,7 +21818,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsShopCounts ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21462,6 +21835,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("shopSkinsCount"u8))
 			{
 				reader.Read();
@@ -21482,13 +21856,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsShopCounts(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItemsSeller(
+public sealed record CategoryFortniteResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -21501,7 +21879,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21523,6 +21901,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -21568,13 +21947,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryFortniteResponseItems(
+public sealed record CategoryFortniteResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -21671,7 +22054,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryFortniteResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -21777,6 +22160,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -22314,7 +22698,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v92 = reader.TokenType == JsonTokenType.Null ? null! : CategoryFortniteResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryFortniteResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91, v92);
 	}
@@ -22505,7 +22893,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryMihoyoResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -22531,6 +22919,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -22614,13 +23003,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryMihoyoResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryMihoyoResponseItemsBumpSettings(
+public sealed record CategoryMihoyoResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -22628,7 +23021,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22645,6 +23038,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -22665,19 +23059,23 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsMihoyoLinkedAccounts(
+public sealed record CategoryMihoyoResponseItemsMihoyoLinkedAccounts(
 	[property: JsonPropertyName("links")] List<string> Links,
 	[property: JsonPropertyName("legacy")] bool Legacy
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsMihoyoLinkedAccounts ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22692,6 +23090,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("links"u8))
 			{
 				reader.Read();
@@ -22711,13 +23110,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsMihoyoLinkedAccounts(v0, v1);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsHonkaiCharactersEquip(
+public sealed record CategoryMihoyoResponseItemsHonkaiCharactersEquip(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("level")] long Level,
 	[property: JsonPropertyName("rank")] long Rank,
@@ -22728,7 +23131,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsHonkaiCharactersEquip ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22748,6 +23151,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -22783,20 +23187,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsHonkaiCharactersEquip(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsHonkaiCharactersRelicsMainProperty(
+public sealed record CategoryMihoyoResponseItemsHonkaiCharactersRelicsMainProperty(
 	[property: JsonPropertyName("property_type")] long PropertyType,
 	[property: JsonPropertyName("value")] string Value,
 	[property: JsonPropertyName("times")] long Times
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsHonkaiCharactersRelicsMainProperty ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22812,6 +23220,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("property_type"u8))
 			{
 				reader.Read();
@@ -22827,20 +23236,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsHonkaiCharactersRelicsMainProperty(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsHonkaiCharactersRelicsProperties(
+public sealed record CategoryMihoyoResponseItemsHonkaiCharactersRelicsProperties(
 	[property: JsonPropertyName("property_type")] long PropertyType,
 	[property: JsonPropertyName("value")] string Value,
 	[property: JsonPropertyName("times")] long Times
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsHonkaiCharactersRelicsProperties ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22856,6 +23269,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("property_type"u8))
 			{
 				reader.Read();
@@ -22871,13 +23285,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsHonkaiCharactersRelicsProperties(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsHonkaiCharactersRelics(
+public sealed record CategoryMihoyoResponseItemsHonkaiCharactersRelics(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("level")] long Level,
 	[property: JsonPropertyName("pos")] long Pos,
@@ -22890,7 +23308,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsHonkaiCharactersRelics ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22912,6 +23330,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -22966,20 +23385,24 @@ public static class CategoryApiTypes
 					v8 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsHonkaiCharactersRelics(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsHonkaiCharactersOrnamentsMainProperty(
+public sealed record CategoryMihoyoResponseItemsHonkaiCharactersOrnamentsMainProperty(
 	[property: JsonPropertyName("property_type")] long PropertyType,
 	[property: JsonPropertyName("value")] string Value,
 	[property: JsonPropertyName("times")] long Times
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsHonkaiCharactersOrnamentsMainProperty ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -22995,6 +23418,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("property_type"u8))
 			{
 				reader.Read();
@@ -23010,20 +23434,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsHonkaiCharactersOrnamentsMainProperty(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsHonkaiCharactersOrnamentsProperties(
+public sealed record CategoryMihoyoResponseItemsHonkaiCharactersOrnamentsProperties(
 	[property: JsonPropertyName("property_type")] long PropertyType,
 	[property: JsonPropertyName("value")] string Value,
 	[property: JsonPropertyName("times")] long Times
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsHonkaiCharactersOrnamentsProperties ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23039,6 +23467,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("property_type"u8))
 			{
 				reader.Read();
@@ -23054,13 +23483,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsHonkaiCharactersOrnamentsProperties(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsHonkaiCharactersOrnaments(
+public sealed record CategoryMihoyoResponseItemsHonkaiCharactersOrnaments(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("level")] long Level,
 	[property: JsonPropertyName("pos")] long Pos,
@@ -23073,7 +23506,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsHonkaiCharactersOrnaments ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23095,6 +23528,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -23149,13 +23583,17 @@ public static class CategoryApiTypes
 					v8 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsHonkaiCharactersOrnaments(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsHonkaiCharacters(
+public sealed record CategoryMihoyoResponseItemsHonkaiCharacters(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("level")] long Level,
 	[property: JsonPropertyName("name")] string Name,
@@ -23173,7 +23611,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsHonkaiCharacters ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23200,6 +23638,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -23288,13 +23727,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v13 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsHonkaiCharacters(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsGenshinCharactersWeapon(
+public sealed record CategoryMihoyoResponseItemsGenshinCharactersWeapon(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("icon")] string Icon,
@@ -23308,7 +23751,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsGenshinCharactersWeapon ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23331,6 +23774,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -23381,13 +23825,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v9 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsGenshinCharactersWeapon(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsGenshinCharactersReliquaries(
+public sealed record CategoryMihoyoResponseItemsGenshinCharactersReliquaries(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("icon")] string Icon,
@@ -23398,7 +23846,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsGenshinCharactersReliquaries ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23418,6 +23866,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -23453,13 +23902,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsGenshinCharactersReliquaries(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsGenshinCharacters(
+public sealed record CategoryMihoyoResponseItemsGenshinCharacters(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("image")] string Image,
 	[property: JsonPropertyName("icon")] string Icon,
@@ -23477,7 +23930,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsGenshinCharacters ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23504,6 +23957,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -23592,20 +24046,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v13 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsGenshinCharacters(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsZenlessCharactersWeaponProperties(
+public sealed record CategoryMihoyoResponseItemsZenlessCharactersWeaponProperties(
 	[property: JsonPropertyName("property_name")] string PropertyName,
 	[property: JsonPropertyName("property_id")] long PropertyId,
 	[property: JsonPropertyName("base")] string Base
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsZenlessCharactersWeaponProperties ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23621,6 +24079,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("property_name"u8))
 			{
 				reader.Read();
@@ -23636,20 +24095,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsZenlessCharactersWeaponProperties(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsZenlessCharactersWeaponMainProperties(
+public sealed record CategoryMihoyoResponseItemsZenlessCharactersWeaponMainProperties(
 	[property: JsonPropertyName("property_name")] string PropertyName,
 	[property: JsonPropertyName("property_id")] long PropertyId,
 	[property: JsonPropertyName("base")] string Base
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsZenlessCharactersWeaponMainProperties ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23665,6 +24128,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("property_name"u8))
 			{
 				reader.Read();
@@ -23680,13 +24144,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsZenlessCharactersWeaponMainProperties(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsZenlessCharactersWeapon(
+public sealed record CategoryMihoyoResponseItemsZenlessCharactersWeapon(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("level")] long Level,
 	[property: JsonPropertyName("name")] string Name,
@@ -23703,7 +24171,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsZenlessCharactersWeapon ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23729,6 +24197,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -23812,13 +24281,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v12 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsZenlessCharactersWeapon(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsZenlessCharacters(
+public sealed record CategoryMihoyoResponseItemsZenlessCharacters(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("level")] long Level,
 	[property: JsonPropertyName("name_mi18n")] string NameMi18n,
@@ -23836,7 +24309,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsZenlessCharacters ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23863,6 +24336,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -23933,20 +24407,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v13 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsZenlessCharacters(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsAccountLinks(
+public sealed record CategoryMihoyoResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -23962,6 +24440,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -23977,13 +24456,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItemsSeller(
+public sealed record CategoryMihoyoResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -23996,7 +24479,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24018,6 +24501,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -24063,13 +24547,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryMihoyoResponseItems(
+public sealed record CategoryMihoyoResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -24172,7 +24660,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMihoyoResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -24284,6 +24772,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -24824,7 +25313,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v98 = reader.TokenType == JsonTokenType.Null ? null! : CategoryMihoyoResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMihoyoResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91, v92, v93, v94, v95, v96, v97, v98);
 	}
@@ -25007,7 +25500,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryRiotResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -25033,6 +25526,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -25116,13 +25610,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryRiotResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryRiotResponseItemsBumpSettings(
+public sealed record CategoryRiotResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -25130,7 +25628,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRiotResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25147,6 +25645,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -25167,20 +25666,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRiotResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryRiotResponseItemsValorantInventory(
+public sealed record CategoryRiotResponseItemsValorantInventory(
 	[property: JsonPropertyName("WeaponSkins")] List<string> WeaponSkins,
 	[property: JsonPropertyName("Agent")] List<string> Agent,
 	[property: JsonPropertyName("Buddy")] List<string> Buddy
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRiotResponseItemsValorantInventory ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25196,6 +25699,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("WeaponSkins"u8))
 			{
 				reader.Read();
@@ -25238,19 +25742,23 @@ public static class CategoryApiTypes
 					v2 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRiotResponseItemsValorantInventory(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryRiotResponseItemsLolInventory(
+public sealed record CategoryRiotResponseItemsLolInventory(
 	[property: JsonPropertyName("Champion")] List<long> Champion,
 	[property: JsonPropertyName("Skin")] List<long> Skin
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRiotResponseItemsLolInventory ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25265,6 +25773,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("Champion"u8))
 			{
 				reader.Read();
@@ -25293,20 +25802,24 @@ public static class CategoryApiTypes
 					v1 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRiotResponseItemsLolInventory(v0, v1);
 	}
 }
 
-	public sealed record CategoryRiotResponseItemsAccountLinks(
+public sealed record CategoryRiotResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRiotResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25322,6 +25835,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -25337,13 +25851,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRiotResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryRiotResponseItemsSeller(
+public sealed record CategoryRiotResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -25356,7 +25874,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRiotResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25378,6 +25896,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -25423,13 +25942,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRiotResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryRiotResponseItems(
+public sealed record CategoryRiotResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -25535,7 +26058,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRiotResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -25650,6 +26173,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -26178,7 +26702,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v101 = reader.TokenType == JsonTokenType.Null ? null! : CategoryRiotResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRiotResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91, v92, v93, v94, v95, v96, v97, v98, v99, v100, v101);
 	}
@@ -26339,7 +26867,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryTelegramResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -26365,6 +26893,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -26448,13 +26977,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryTelegramResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryTelegramResponseItemsBumpSettings(
+public sealed record CategoryTelegramResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -26462,7 +26995,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryTelegramResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26479,6 +27012,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -26499,13 +27033,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryTelegramResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryTelegramResponseItemsTelegramGroupCounters(
+public sealed record CategoryTelegramResponseItemsTelegramGroupCounters(
 	[property: JsonPropertyName("chats")] long Chats,
 	[property: JsonPropertyName("channels")] long Channels,
 	[property: JsonPropertyName("conversations")] long Conversations,
@@ -26513,7 +27051,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryTelegramResponseItemsTelegramGroupCounters ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26530,6 +27068,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("chats"u8))
 			{
 				reader.Read();
@@ -26550,13 +27089,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryTelegramResponseItemsTelegramGroupCounters(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryTelegramResponseItemsSeller(
+public sealed record CategoryTelegramResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -26569,7 +27112,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryTelegramResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26591,6 +27134,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -26636,13 +27180,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryTelegramResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryTelegramResponseItems(
+public sealed record CategoryTelegramResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -26719,7 +27267,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryTelegramResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -26805,6 +27353,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -27188,7 +27737,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v72 = reader.TokenType == JsonTokenType.Null ? null! : CategoryTelegramResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryTelegramResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72);
 	}
@@ -27359,7 +27912,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategorySupercellResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -27385,6 +27938,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -27468,13 +28022,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategorySupercellResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategorySupercellResponseItemsBumpSettings(
+public sealed record CategorySupercellResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -27482,7 +28040,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySupercellResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27499,6 +28057,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -27519,20 +28078,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySupercellResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategorySupercellResponseItemsAccountLinks(
+public sealed record CategorySupercellResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySupercellResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27548,6 +28111,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -27563,13 +28127,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySupercellResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategorySupercellResponseItemsSeller(
+public sealed record CategorySupercellResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -27582,7 +28150,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySupercellResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27604,6 +28172,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -27649,13 +28218,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySupercellResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategorySupercellResponseItems(
+public sealed record CategorySupercellResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -27748,7 +28321,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySupercellResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -27850,6 +28423,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -28322,7 +28896,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v88 = reader.TokenType == JsonTokenType.Null ? null! : CategorySupercellResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySupercellResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88);
 	}
@@ -28433,7 +29011,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryEaResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -28459,6 +29037,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -28542,13 +29121,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryEaResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryEaResponseItemsEaGamesApexLegends(
+public sealed record CategoryEaResponseItemsEaGamesApexLegends(
 	[property: JsonPropertyName("game_id")] string GameId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("last_activity")] long LastActivity,
@@ -28557,7 +29140,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEaResponseItemsEaGamesApexLegends ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28575,6 +29158,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("game_id"u8))
 			{
 				reader.Read();
@@ -28600,18 +29184,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEaResponseItemsEaGamesApexLegends(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record CategoryEaResponseItemsEaGames(
+public sealed record CategoryEaResponseItemsEaGames(
 	[property: JsonPropertyName("apex-legends")] CategoryEaResponseItemsEaGamesApexLegends ApexLegends
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEaResponseItemsEaGames ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28625,18 +29213,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("apex-legends"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryEaResponseItemsEaGamesApexLegends.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEaResponseItemsEaGames(v0);
 	}
 }
 
-	public sealed record CategoryEaResponseItemsBumpSettings(
+public sealed record CategoryEaResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -28644,7 +29237,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEaResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28661,6 +29254,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -28681,20 +29275,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEaResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryEaResponseItemsAccountLinks(
+public sealed record CategoryEaResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEaResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28710,6 +29308,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -28725,13 +29324,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEaResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryEaResponseItemsSeller(
+public sealed record CategoryEaResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -28744,7 +29347,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEaResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28766,6 +29369,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -28811,13 +29415,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEaResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryEaResponseItems(
+public sealed record CategoryEaResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -28897,7 +29505,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEaResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -28986,6 +29594,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -29393,7 +30002,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v75 = reader.TokenType == JsonTokenType.Null ? null! : CategoryEaResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEaResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75);
 	}
@@ -29532,7 +30145,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryWotResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -29558,6 +30171,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -29641,13 +30255,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryWotResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryWotResponseItemsBumpSettings(
+public sealed record CategoryWotResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -29655,7 +30273,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29672,6 +30290,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -29692,13 +30311,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotTopPremiumTanks00000(
+public sealed record CategoryWotResponseItemsWotTopPremiumTanks00000(
 	[property: JsonPropertyName("tank_id")] long? TankId,
 	[property: JsonPropertyName("name")] string? Name,
 	[property: JsonPropertyName("is_premium")] long? IsPremium,
@@ -29708,7 +30331,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotTopPremiumTanks00000 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29727,6 +30350,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -29757,18 +30381,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotTopPremiumTanks00000(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotTopPremiumTanks(
+public sealed record CategoryWotResponseItemsWotTopPremiumTanks(
 	[property: JsonPropertyName("00000")] CategoryWotResponseItemsWotTopPremiumTanks00000 _00000
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotTopPremiumTanks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29782,18 +30410,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("00000"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotResponseItemsWotTopPremiumTanks00000.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotTopPremiumTanks(v0);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotTanks00000(
+public sealed record CategoryWotResponseItemsWotTanks00000(
 	[property: JsonPropertyName("tank_id")] long? TankId,
 	[property: JsonPropertyName("name")] string? Name,
 	[property: JsonPropertyName("is_premium")] long? IsPremium,
@@ -29803,7 +30436,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotTanks00000 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29822,6 +30455,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -29852,18 +30486,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotTanks00000(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotTanks(
+public sealed record CategoryWotResponseItemsWotTanks(
 	[property: JsonPropertyName("00000")] CategoryWotResponseItemsWotTanks00000 _00000
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotTanks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29877,18 +30515,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("00000"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotResponseItemsWotTanks00000.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotTanks(v0);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks30465(
+public sealed record CategoryWotResponseItemsWotPremiumTanks30465(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -29898,7 +30541,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks30465 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29917,6 +30560,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -29947,13 +30591,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks30465(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks60945(
+public sealed record CategoryWotResponseItemsWotPremiumTanks60945(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -29963,7 +30611,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks60945 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -29982,6 +30630,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30012,13 +30661,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks60945(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks51233(
+public sealed record CategoryWotResponseItemsWotPremiumTanks51233(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30028,7 +30681,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks51233 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30047,6 +30700,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30077,13 +30731,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks51233(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks57377(
+public sealed record CategoryWotResponseItemsWotPremiumTanks57377(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30093,7 +30751,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks57377 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30112,6 +30770,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30142,13 +30801,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks57377(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks62497(
+public sealed record CategoryWotResponseItemsWotPremiumTanks62497(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30158,7 +30821,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks62497 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30177,6 +30840,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30207,13 +30871,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks62497(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks55569(
+public sealed record CategoryWotResponseItemsWotPremiumTanks55569(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30223,7 +30891,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks55569 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30242,6 +30910,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30272,13 +30941,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks55569(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks7937025(
+public sealed record CategoryWotResponseItemsWotPremiumTanks7937025(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30288,7 +30961,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks7937025 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30307,6 +30980,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30337,13 +31011,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks7937025(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks50977(
+public sealed record CategoryWotResponseItemsWotPremiumTanks50977(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30353,7 +31031,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks50977 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30372,6 +31050,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30402,13 +31081,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks50977(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks51585(
+public sealed record CategoryWotResponseItemsWotPremiumTanks51585(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30418,7 +31101,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks51585 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30437,6 +31120,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30467,13 +31151,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks51585(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks46097(
+public sealed record CategoryWotResponseItemsWotPremiumTanks46097(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30483,7 +31171,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks46097 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30502,6 +31190,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30532,13 +31221,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks46097(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks47873(
+public sealed record CategoryWotResponseItemsWotPremiumTanks47873(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30548,7 +31241,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks47873 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30567,6 +31260,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30597,13 +31291,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks47873(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks43841(
+public sealed record CategoryWotResponseItemsWotPremiumTanks43841(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -30613,7 +31311,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks43841 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30632,6 +31330,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30662,13 +31361,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks43841(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotPremiumTanks(
+public sealed record CategoryWotResponseItemsWotPremiumTanks(
 	[property: JsonPropertyName("30465")] CategoryWotResponseItemsWotPremiumTanks30465 _30465,
 	[property: JsonPropertyName("60945")] CategoryWotResponseItemsWotPremiumTanks60945 _60945,
 	[property: JsonPropertyName("51233")] CategoryWotResponseItemsWotPremiumTanks51233 _51233,
@@ -30684,7 +31387,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotPremiumTanks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30709,6 +31412,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("30465"u8))
 			{
 				reader.Read();
@@ -30769,13 +31473,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v11 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotResponseItemsWotPremiumTanks43841.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotPremiumTanks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotTopTanks00000(
+public sealed record CategoryWotResponseItemsWotTopTanks00000(
 	[property: JsonPropertyName("tank_id")] long? TankId,
 	[property: JsonPropertyName("name")] string? Name,
 	[property: JsonPropertyName("is_premium")] long? IsPremium,
@@ -30785,7 +31493,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotTopTanks00000 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30804,6 +31512,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -30834,18 +31543,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotTopTanks00000(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsWotTopTanks(
+public sealed record CategoryWotResponseItemsWotTopTanks(
 	[property: JsonPropertyName("00000")] CategoryWotResponseItemsWotTopTanks00000 _00000
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsWotTopTanks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30859,18 +31572,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("00000"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotResponseItemsWotTopTanks00000.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsWotTopTanks(v0);
 	}
 }
 
-	public sealed record CategoryWotResponseItemsSeller(
+public sealed record CategoryWotResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -30883,7 +31601,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -30905,6 +31623,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -30950,13 +31669,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryWotResponseItems(
+public sealed record CategoryWotResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -31046,7 +31769,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31145,6 +31868,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -31593,7 +32317,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v85 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85);
 	}
@@ -31732,7 +32460,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryWotBlitzResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -31758,6 +32486,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -31841,13 +32570,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryWotBlitzResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryWotBlitzResponseItemsBumpSettings(
+public sealed record CategoryWotBlitzResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -31855,7 +32588,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31872,6 +32605,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -31892,13 +32626,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopPremiumTanks15697(
+public sealed record CategoryWotBlitzResponseItemsWotTopPremiumTanks15697(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -31909,7 +32647,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopPremiumTanks15697 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -31929,6 +32667,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -31964,13 +32703,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopPremiumTanks15697(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopPremiumTanks5681(
+public sealed record CategoryWotBlitzResponseItemsWotTopPremiumTanks5681(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -31981,7 +32724,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopPremiumTanks5681 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32001,6 +32744,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32036,13 +32780,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopPremiumTanks5681(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopPremiumTanks23313(
+public sealed record CategoryWotBlitzResponseItemsWotTopPremiumTanks23313(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32053,7 +32801,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopPremiumTanks23313 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32073,6 +32821,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32108,20 +32857,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopPremiumTanks23313(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopPremiumTanks(
+public sealed record CategoryWotBlitzResponseItemsWotTopPremiumTanks(
 	[property: JsonPropertyName("15697")] CategoryWotBlitzResponseItemsWotTopPremiumTanks15697 _15697,
 	[property: JsonPropertyName("5681")] CategoryWotBlitzResponseItemsWotTopPremiumTanks5681 _5681,
 	[property: JsonPropertyName("23313")] CategoryWotBlitzResponseItemsWotTopPremiumTanks23313 _23313
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopPremiumTanks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32137,6 +32890,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("15697"u8))
 			{
 				reader.Read();
@@ -32152,13 +32906,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotBlitzResponseItemsWotTopPremiumTanks23313.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopPremiumTanks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks12305(
+public sealed record CategoryWotBlitzResponseItemsWotTanks12305(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32169,7 +32927,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks12305 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32189,6 +32947,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32224,13 +32983,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks12305(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6753(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6753(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32241,7 +33004,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6753 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32261,6 +33024,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32296,13 +33060,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6753(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks18001(
+public sealed record CategoryWotBlitzResponseItemsWotTanks18001(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32313,7 +33081,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks18001 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32333,6 +33101,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32368,13 +33137,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks18001(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6449(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6449(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32385,7 +33158,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6449 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32405,6 +33178,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32440,13 +33214,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6449(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks15697(
+public sealed record CategoryWotBlitzResponseItemsWotTanks15697(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32457,7 +33235,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks15697 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32477,6 +33255,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32512,13 +33291,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks15697(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks4481(
+public sealed record CategoryWotBlitzResponseItemsWotTanks4481(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32529,7 +33312,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks4481 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32549,6 +33332,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32584,13 +33368,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks4481(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks13185(
+public sealed record CategoryWotBlitzResponseItemsWotTanks13185(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32601,7 +33389,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks13185 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32621,6 +33409,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32656,13 +33445,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks13185(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks14337(
+public sealed record CategoryWotBlitzResponseItemsWotTanks14337(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32673,7 +33466,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks14337 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32693,6 +33486,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32728,13 +33522,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks14337(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks3681(
+public sealed record CategoryWotBlitzResponseItemsWotTanks3681(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32745,7 +33543,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks3681 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32765,6 +33563,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32800,13 +33599,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks3681(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6145(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6145(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32817,7 +33620,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6145 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32837,6 +33640,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32872,13 +33676,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6145(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks5425(
+public sealed record CategoryWotBlitzResponseItemsWotTanks5425(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32889,7 +33697,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks5425 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32909,6 +33717,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -32944,13 +33753,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks5425(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks3649(
+public sealed record CategoryWotBlitzResponseItemsWotTanks3649(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -32961,7 +33774,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks3649 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -32981,6 +33794,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33016,13 +33830,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks3649(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks7169(
+public sealed record CategoryWotBlitzResponseItemsWotTanks7169(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33033,7 +33851,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks7169 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33053,6 +33871,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33088,13 +33907,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks7169(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks7249(
+public sealed record CategoryWotBlitzResponseItemsWotTanks7249(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33105,7 +33928,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks7249 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33125,6 +33948,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33160,13 +33984,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks7249(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks7297(
+public sealed record CategoryWotBlitzResponseItemsWotTanks7297(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33177,7 +34005,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks7297 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33197,6 +34025,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33232,13 +34061,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks7297(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks19537(
+public sealed record CategoryWotBlitzResponseItemsWotTanks19537(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33249,7 +34082,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks19537 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33269,6 +34102,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33304,13 +34138,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks19537(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks5681(
+public sealed record CategoryWotBlitzResponseItemsWotTanks5681(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33321,7 +34159,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks5681 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33341,6 +34179,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33376,13 +34215,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks5681(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6209(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6209(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33393,7 +34236,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6209 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33413,6 +34256,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33448,13 +34292,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6209(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks58641(
+public sealed record CategoryWotBlitzResponseItemsWotTanks58641(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33465,7 +34313,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks58641 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33485,6 +34333,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33520,13 +34369,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks58641(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks16897(
+public sealed record CategoryWotBlitzResponseItemsWotTanks16897(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33537,7 +34390,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks16897 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33557,6 +34410,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33592,13 +34446,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks16897(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks10369(
+public sealed record CategoryWotBlitzResponseItemsWotTanks10369(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33609,7 +34467,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks10369 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33629,6 +34487,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33664,13 +34523,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks10369(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks22817(
+public sealed record CategoryWotBlitzResponseItemsWotTanks22817(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33681,7 +34544,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks22817 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33701,6 +34564,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33736,13 +34600,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks22817(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks9489(
+public sealed record CategoryWotBlitzResponseItemsWotTanks9489(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33753,7 +34621,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks9489 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33773,6 +34641,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33808,13 +34677,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks9489(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks385(
+public sealed record CategoryWotBlitzResponseItemsWotTanks385(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33825,7 +34698,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks385 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33845,6 +34718,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33880,13 +34754,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks385(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks19217(
+public sealed record CategoryWotBlitzResponseItemsWotTanks19217(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33897,7 +34775,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks19217 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33917,6 +34795,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -33952,13 +34831,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks19217(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks9297(
+public sealed record CategoryWotBlitzResponseItemsWotTanks9297(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -33969,7 +34852,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks9297 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -33989,6 +34872,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34024,13 +34908,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks9297(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks13825(
+public sealed record CategoryWotBlitzResponseItemsWotTanks13825(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34041,7 +34929,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks13825 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34061,6 +34949,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34096,13 +34985,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks13825(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks5505(
+public sealed record CategoryWotBlitzResponseItemsWotTanks5505(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34113,7 +35006,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks5505 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34133,6 +35026,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34168,13 +35062,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks5505(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks13089(
+public sealed record CategoryWotBlitzResponseItemsWotTanks13089(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34185,7 +35083,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks13089 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34205,6 +35103,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34240,13 +35139,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks13089(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks12049(
+public sealed record CategoryWotBlitzResponseItemsWotTanks12049(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34257,7 +35160,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks12049 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34277,6 +35180,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34312,13 +35216,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks12049(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks13569(
+public sealed record CategoryWotBlitzResponseItemsWotTanks13569(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34329,7 +35237,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks13569 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34349,6 +35257,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34384,13 +35293,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks13569(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks4145(
+public sealed record CategoryWotBlitzResponseItemsWotTanks4145(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34401,7 +35314,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks4145 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34421,6 +35334,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34456,13 +35370,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks4145(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks24321(
+public sealed record CategoryWotBlitzResponseItemsWotTanks24321(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34473,7 +35391,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks24321 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34493,6 +35411,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34528,13 +35447,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks24321(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks23313(
+public sealed record CategoryWotBlitzResponseItemsWotTanks23313(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34545,7 +35468,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks23313 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34565,6 +35488,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34600,13 +35524,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks23313(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks20257(
+public sealed record CategoryWotBlitzResponseItemsWotTanks20257(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34617,7 +35545,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks20257 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34637,6 +35565,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34672,13 +35601,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks20257(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks14609(
+public sealed record CategoryWotBlitzResponseItemsWotTanks14609(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34689,7 +35622,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks14609 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34709,6 +35642,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34744,13 +35678,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks14609(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks10289(
+public sealed record CategoryWotBlitzResponseItemsWotTanks10289(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34761,7 +35699,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks10289 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34781,6 +35719,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34816,13 +35755,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks10289(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks14881(
+public sealed record CategoryWotBlitzResponseItemsWotTanks14881(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34833,7 +35776,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks14881 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34853,6 +35796,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34888,13 +35832,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks14881(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks3937(
+public sealed record CategoryWotBlitzResponseItemsWotTanks3937(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34905,7 +35853,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks3937 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34925,6 +35873,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -34960,13 +35909,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks3937(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks10785(
+public sealed record CategoryWotBlitzResponseItemsWotTanks10785(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -34977,7 +35930,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks10785 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -34997,6 +35950,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35032,13 +35986,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks10785(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6929(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6929(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35049,7 +36007,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6929 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35069,6 +36027,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35104,13 +36063,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6929(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks16401(
+public sealed record CategoryWotBlitzResponseItemsWotTanks16401(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35121,7 +36084,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks16401 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35141,6 +36104,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35176,13 +36140,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks16401(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks641(
+public sealed record CategoryWotBlitzResponseItemsWotTanks641(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35193,7 +36161,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks641 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35213,6 +36181,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35248,13 +36217,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks641(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks20001(
+public sealed record CategoryWotBlitzResponseItemsWotTanks20001(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35265,7 +36238,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks20001 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35285,6 +36258,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35320,13 +36294,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks20001(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks12545(
+public sealed record CategoryWotBlitzResponseItemsWotTanks12545(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35337,7 +36315,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks12545 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35357,6 +36335,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35392,13 +36371,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks12545(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks7953(
+public sealed record CategoryWotBlitzResponseItemsWotTanks7953(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35409,7 +36392,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks7953 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35429,6 +36412,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35464,13 +36448,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks7953(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks25361(
+public sealed record CategoryWotBlitzResponseItemsWotTanks25361(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35481,7 +36469,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks25361 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35501,6 +36489,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35536,13 +36525,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks25361(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks20481(
+public sealed record CategoryWotBlitzResponseItemsWotTanks20481(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35553,7 +36546,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks20481 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35573,6 +36566,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35608,13 +36602,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks20481(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks62737(
+public sealed record CategoryWotBlitzResponseItemsWotTanks62737(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35625,7 +36623,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks62737 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35645,6 +36643,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35680,13 +36679,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks62737(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks5137(
+public sealed record CategoryWotBlitzResponseItemsWotTanks5137(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35697,7 +36700,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks5137 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35717,6 +36720,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35752,13 +36756,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks5137(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks18753(
+public sealed record CategoryWotBlitzResponseItemsWotTanks18753(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35769,7 +36777,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks18753 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35789,6 +36797,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35824,13 +36833,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks18753(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks19025(
+public sealed record CategoryWotBlitzResponseItemsWotTanks19025(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35841,7 +36854,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks19025 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35861,6 +36874,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35896,13 +36910,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks19025(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks13345(
+public sealed record CategoryWotBlitzResponseItemsWotTanks13345(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35913,7 +36931,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks13345 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -35933,6 +36951,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -35968,13 +36987,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks13345(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks2945(
+public sealed record CategoryWotBlitzResponseItemsWotTanks2945(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -35985,7 +37008,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks2945 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36005,6 +37028,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36040,13 +37064,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks2945(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks16193(
+public sealed record CategoryWotBlitzResponseItemsWotTanks16193(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36057,7 +37085,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks16193 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36077,6 +37105,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36112,13 +37141,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks16193(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks18209(
+public sealed record CategoryWotBlitzResponseItemsWotTanks18209(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36129,7 +37162,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks18209 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36149,6 +37182,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36184,13 +37218,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks18209(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks19985(
+public sealed record CategoryWotBlitzResponseItemsWotTanks19985(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36201,7 +37239,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks19985 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36221,6 +37259,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36256,13 +37295,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks19985(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks19489(
+public sealed record CategoryWotBlitzResponseItemsWotTanks19489(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36273,7 +37316,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks19489 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36293,6 +37336,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36328,13 +37372,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks19489(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks20305(
+public sealed record CategoryWotBlitzResponseItemsWotTanks20305(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36345,7 +37393,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks20305 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36365,6 +37413,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36400,13 +37449,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks20305(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks20737(
+public sealed record CategoryWotBlitzResponseItemsWotTanks20737(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36417,7 +37470,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks20737 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36437,6 +37490,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36472,13 +37526,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks20737(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks21329(
+public sealed record CategoryWotBlitzResponseItemsWotTanks21329(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36489,7 +37547,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks21329 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36509,6 +37567,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36544,13 +37603,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks21329(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks53025(
+public sealed record CategoryWotBlitzResponseItemsWotTanks53025(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36561,7 +37624,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks53025 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36581,6 +37644,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36616,13 +37680,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks53025(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks18241(
+public sealed record CategoryWotBlitzResponseItemsWotTanks18241(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36633,7 +37701,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks18241 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36653,6 +37721,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36688,13 +37757,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks18241(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks10881(
+public sealed record CategoryWotBlitzResponseItemsWotTanks10881(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36705,7 +37778,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks10881 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36725,6 +37798,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36760,13 +37834,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks10881(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks21265(
+public sealed record CategoryWotBlitzResponseItemsWotTanks21265(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36777,7 +37855,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks21265 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36797,6 +37875,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36832,13 +37911,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks21265(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks20513(
+public sealed record CategoryWotBlitzResponseItemsWotTanks20513(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36849,7 +37932,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks20513 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36869,6 +37952,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36904,13 +37988,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks20513(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks12673(
+public sealed record CategoryWotBlitzResponseItemsWotTanks12673(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36921,7 +38009,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks12673 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -36941,6 +38029,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -36976,13 +38065,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks12673(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks16705(
+public sealed record CategoryWotBlitzResponseItemsWotTanks16705(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -36993,7 +38086,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks16705 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37013,6 +38106,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37048,13 +38142,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks16705(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6785(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6785(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37065,7 +38163,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6785 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37085,6 +38183,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37120,13 +38219,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6785(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks58881(
+public sealed record CategoryWotBlitzResponseItemsWotTanks58881(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37137,7 +38240,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks58881 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37157,6 +38260,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37192,13 +38296,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks58881(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks18513(
+public sealed record CategoryWotBlitzResponseItemsWotTanks18513(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37209,7 +38317,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks18513 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37229,6 +38337,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37264,13 +38373,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks18513(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks2849(
+public sealed record CategoryWotBlitzResponseItemsWotTanks2849(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37281,7 +38394,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks2849 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37301,6 +38414,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37336,13 +38450,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks2849(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks9073(
+public sealed record CategoryWotBlitzResponseItemsWotTanks9073(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37353,7 +38471,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks9073 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37373,6 +38491,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37408,13 +38527,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks9073(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks18769(
+public sealed record CategoryWotBlitzResponseItemsWotTanks18769(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37425,7 +38548,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks18769 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37445,6 +38568,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37480,13 +38604,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks18769(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks15953(
+public sealed record CategoryWotBlitzResponseItemsWotTanks15953(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37497,7 +38625,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks15953 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37517,6 +38645,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37552,13 +38681,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks15953(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6257(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6257(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37569,7 +38702,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6257 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37589,6 +38722,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37624,13 +38758,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6257(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6001(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6001(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37641,7 +38779,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6001 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37661,6 +38799,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37696,13 +38835,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6001(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks55297(
+public sealed record CategoryWotBlitzResponseItemsWotTanks55297(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37713,7 +38856,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks55297 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37733,6 +38876,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37768,13 +38912,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks55297(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks23841(
+public sealed record CategoryWotBlitzResponseItemsWotTanks23841(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37785,7 +38933,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks23841 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37805,6 +38953,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37840,13 +38989,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks23841(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks64529(
+public sealed record CategoryWotBlitzResponseItemsWotTanks64529(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37857,7 +39010,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks64529 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37877,6 +39030,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37912,13 +39066,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks64529(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks21025(
+public sealed record CategoryWotBlitzResponseItemsWotTanks21025(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -37929,7 +39087,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks21025 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -37949,6 +39107,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -37984,13 +39143,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks21025(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks23057(
+public sealed record CategoryWotBlitzResponseItemsWotTanks23057(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38001,7 +39164,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks23057 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38021,6 +39184,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38056,13 +39220,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks23057(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks7281(
+public sealed record CategoryWotBlitzResponseItemsWotTanks7281(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38073,7 +39241,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks7281 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38093,6 +39261,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38128,13 +39297,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks7281(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks23825(
+public sealed record CategoryWotBlitzResponseItemsWotTanks23825(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38145,7 +39318,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks23825 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38165,6 +39338,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38200,13 +39374,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks23825(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks8753(
+public sealed record CategoryWotBlitzResponseItemsWotTanks8753(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38217,7 +39395,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks8753 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38237,6 +39415,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38272,13 +39451,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks8753(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks59137(
+public sealed record CategoryWotBlitzResponseItemsWotTanks59137(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38289,7 +39472,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks59137 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38309,6 +39492,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38344,13 +39528,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks59137(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks10241(
+public sealed record CategoryWotBlitzResponseItemsWotTanks10241(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38361,7 +39549,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks10241 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38381,6 +39569,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38416,13 +39605,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks10241(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks7793(
+public sealed record CategoryWotBlitzResponseItemsWotTanks7793(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38433,7 +39626,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks7793 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38453,6 +39646,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38488,13 +39682,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks7793(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks5745(
+public sealed record CategoryWotBlitzResponseItemsWotTanks5745(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38505,7 +39703,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks5745 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38525,6 +39723,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38560,13 +39759,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks5745(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks11553(
+public sealed record CategoryWotBlitzResponseItemsWotTanks11553(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38577,7 +39780,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks11553 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38597,6 +39800,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38632,13 +39836,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks11553(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks625(
+public sealed record CategoryWotBlitzResponseItemsWotTanks625(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38649,7 +39857,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks625 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38669,6 +39877,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38704,13 +39913,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks625(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks20817(
+public sealed record CategoryWotBlitzResponseItemsWotTanks20817(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38721,7 +39934,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks20817 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38741,6 +39954,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38776,13 +39990,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks20817(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks23297(
+public sealed record CategoryWotBlitzResponseItemsWotTanks23297(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38793,7 +40011,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks23297 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38813,6 +40031,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38848,13 +40067,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks23297(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks2625(
+public sealed record CategoryWotBlitzResponseItemsWotTanks2625(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38865,7 +40088,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks2625 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38885,6 +40108,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38920,13 +40144,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks2625(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks19713(
+public sealed record CategoryWotBlitzResponseItemsWotTanks19713(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -38937,7 +40165,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks19713 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -38957,6 +40185,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -38992,13 +40221,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks19713(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks24849(
+public sealed record CategoryWotBlitzResponseItemsWotTanks24849(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39009,7 +40242,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks24849 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39029,6 +40262,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39064,13 +40298,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks24849(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks56097(
+public sealed record CategoryWotBlitzResponseItemsWotTanks56097(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39081,7 +40319,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks56097 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39101,6 +40339,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39136,13 +40375,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks56097(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks57105(
+public sealed record CategoryWotBlitzResponseItemsWotTanks57105(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39153,7 +40396,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks57105 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39173,6 +40416,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39208,13 +40452,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks57105(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks54785(
+public sealed record CategoryWotBlitzResponseItemsWotTanks54785(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39225,7 +40473,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks54785 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39245,6 +40493,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39280,13 +40529,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks54785(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks2609(
+public sealed record CategoryWotBlitzResponseItemsWotTanks2609(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39297,7 +40550,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks2609 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39317,6 +40570,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39352,13 +40606,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks2609(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks57361(
+public sealed record CategoryWotBlitzResponseItemsWotTanks57361(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39369,7 +40627,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks57361 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39389,6 +40647,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39424,13 +40683,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks57361(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks1409(
+public sealed record CategoryWotBlitzResponseItemsWotTanks1409(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39441,7 +40704,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks1409 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39461,6 +40724,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39496,13 +40760,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks1409(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks55889(
+public sealed record CategoryWotBlitzResponseItemsWotTanks55889(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39513,7 +40781,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks55889 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39533,6 +40801,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39568,13 +40837,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks55889(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks5393(
+public sealed record CategoryWotBlitzResponseItemsWotTanks5393(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39585,7 +40858,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks5393 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39605,6 +40878,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39640,13 +40914,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks5393(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks5489(
+public sealed record CategoryWotBlitzResponseItemsWotTanks5489(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39657,7 +40935,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks5489 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39677,6 +40955,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39712,13 +40991,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks5489(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks53761(
+public sealed record CategoryWotBlitzResponseItemsWotTanks53761(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39729,7 +41012,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks53761 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39749,6 +41032,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39784,13 +41068,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks53761(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks65377(
+public sealed record CategoryWotBlitzResponseItemsWotTanks65377(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39801,7 +41089,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks65377 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39821,6 +41109,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39856,13 +41145,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks65377(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks54545(
+public sealed record CategoryWotBlitzResponseItemsWotTanks54545(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39873,7 +41166,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks54545 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39893,6 +41186,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -39928,13 +41222,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks54545(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks51473(
+public sealed record CategoryWotBlitzResponseItemsWotTanks51473(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -39945,7 +41243,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks51473 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -39965,6 +41263,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -40000,13 +41299,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks51473(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks10273(
+public sealed record CategoryWotBlitzResponseItemsWotTanks10273(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -40017,7 +41320,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks10273 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -40037,6 +41340,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -40072,13 +41376,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks10273(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks3121(
+public sealed record CategoryWotBlitzResponseItemsWotTanks3121(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -40089,7 +41397,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks3121 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -40109,6 +41417,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -40144,13 +41453,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks3121(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks4881(
+public sealed record CategoryWotBlitzResponseItemsWotTanks4881(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -40161,7 +41474,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks4881 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -40181,6 +41494,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -40216,13 +41530,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks4881(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks51729(
+public sealed record CategoryWotBlitzResponseItemsWotTanks51729(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -40233,7 +41551,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks51729 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -40253,6 +41571,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -40288,13 +41607,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks51729(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks4369(
+public sealed record CategoryWotBlitzResponseItemsWotTanks4369(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -40305,7 +41628,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks4369 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -40325,6 +41648,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -40360,13 +41684,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks4369(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks6993(
+public sealed record CategoryWotBlitzResponseItemsWotTanks6993(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -40377,7 +41705,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks6993 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -40397,6 +41725,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -40432,13 +41761,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks6993(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTanks(
+public sealed record CategoryWotBlitzResponseItemsWotTanks(
 	[property: JsonPropertyName("12305")] CategoryWotBlitzResponseItemsWotTanks12305 _12305,
 	[property: JsonPropertyName("6753")] CategoryWotBlitzResponseItemsWotTanks6753 _6753,
 	[property: JsonPropertyName("18001")] CategoryWotBlitzResponseItemsWotTanks18001 _18001,
@@ -40557,7 +41890,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTanks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -40685,6 +42018,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("12305"u8))
 			{
 				reader.Read();
@@ -41260,13 +42594,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v114 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotBlitzResponseItemsWotTanks6993.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTanks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91, v92, v93, v94, v95, v96, v97, v98, v99, v100, v101, v102, v103, v104, v105, v106, v107, v108, v109, v110, v111, v112, v113, v114);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks5681(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks5681(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41277,7 +42615,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks5681 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41297,6 +42635,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41332,13 +42671,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks5681(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23313(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23313(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41349,7 +42692,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks23313 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41369,6 +42712,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41404,13 +42748,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks23313(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks15697(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks15697(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41421,7 +42769,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks15697 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41441,6 +42789,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41476,13 +42825,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks15697(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks25361(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks25361(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41493,7 +42846,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks25361 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41513,6 +42866,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41548,13 +42902,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks25361(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks12545(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks12545(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41565,7 +42923,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks12545 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41585,6 +42943,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41620,13 +42979,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks12545(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks62737(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks62737(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41637,7 +43000,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks62737 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41657,6 +43020,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41692,13 +43056,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks62737(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks18769(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks18769(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41709,7 +43077,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks18769 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41729,6 +43097,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41764,13 +43133,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks18769(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks53025(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks53025(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41781,7 +43154,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks53025 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41801,6 +43174,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41836,13 +43210,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks53025(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20737(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20737(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41853,7 +43231,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks20737 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41873,6 +43251,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41908,13 +43287,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks20737(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20481(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20481(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41925,7 +43308,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks20481 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -41945,6 +43328,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -41980,13 +43364,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks20481(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks18753(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks18753(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -41997,7 +43385,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks18753 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42017,6 +43405,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42052,13 +43441,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks18753(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks58881(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks58881(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42069,7 +43462,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks58881 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42089,6 +43482,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42124,13 +43518,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks58881(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks19025(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks19025(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42141,7 +43539,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks19025 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42161,6 +43559,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42196,13 +43595,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks19025(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks13345(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks13345(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42213,7 +43616,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks13345 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42233,6 +43636,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42268,13 +43672,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks13345(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks2945(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks2945(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42285,7 +43693,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks2945 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42305,6 +43713,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42340,13 +43749,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks2945(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks16193(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks16193(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42357,7 +43770,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks16193 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42377,6 +43790,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42412,13 +43826,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks16193(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks19985(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks19985(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42429,7 +43847,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks19985 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42449,6 +43867,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42484,13 +43903,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks19985(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks19489(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks19489(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42501,7 +43924,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks19489 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42521,6 +43944,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42556,13 +43980,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks19489(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20305(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20305(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42573,7 +44001,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks20305 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42593,6 +44021,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42628,13 +44057,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks20305(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks18241(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks18241(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42645,7 +44078,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks18241 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42665,6 +44098,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42700,13 +44134,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks18241(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks21329(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks21329(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42717,7 +44155,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks21329 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42737,6 +44175,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42772,13 +44211,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks21329(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks18513(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks18513(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42789,7 +44232,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks18513 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42809,6 +44252,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42844,13 +44288,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks18513(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks16705(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks16705(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42861,7 +44309,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks16705 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42881,6 +44329,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42916,13 +44365,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks16705(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks9073(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks9073(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -42933,7 +44386,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks9073 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -42953,6 +44406,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -42988,13 +44442,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks9073(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks12673(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks12673(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43005,7 +44463,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks12673 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43025,6 +44483,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43060,13 +44519,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks12673(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks6785(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks6785(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43077,7 +44540,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks6785 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43097,6 +44560,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43132,13 +44596,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks6785(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks21265(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks21265(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43149,7 +44617,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks21265 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43169,6 +44637,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43204,13 +44673,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks21265(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks2849(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks2849(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43221,7 +44694,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks2849 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43241,6 +44714,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43276,13 +44750,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks2849(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20513(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20513(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43293,7 +44771,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks20513 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43313,6 +44791,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43348,13 +44827,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks20513(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23057(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23057(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43365,7 +44848,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks23057 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43385,6 +44868,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43420,13 +44904,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks23057(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks64529(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks64529(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43437,7 +44925,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks64529 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43457,6 +44945,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43492,13 +44981,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks64529(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks7793(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks7793(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43509,7 +45002,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks7793 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43529,6 +45022,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43564,13 +45058,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks7793(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23841(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23841(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43581,7 +45079,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks23841 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43601,6 +45099,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43636,13 +45135,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks23841(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks21025(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks21025(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43653,7 +45156,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks21025 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43673,6 +45176,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43708,13 +45212,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks21025(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks6001(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks6001(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43725,7 +45233,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks6001 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43745,6 +45253,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43780,13 +45289,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks6001(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks55297(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks55297(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43797,7 +45310,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks55297 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43817,6 +45330,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43852,13 +45366,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks55297(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks6257(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks6257(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43869,7 +45387,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks6257 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43889,6 +45407,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43924,13 +45443,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks6257(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks8753(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks8753(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -43941,7 +45464,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks8753 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -43961,6 +45484,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -43996,13 +45520,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks8753(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23825(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23825(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44013,7 +45541,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks23825 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44033,6 +45561,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44068,13 +45597,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks23825(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks15953(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks15953(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44085,7 +45618,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks15953 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44105,6 +45638,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44140,13 +45674,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks15953(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks59137(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks59137(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44157,7 +45695,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks59137 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44177,6 +45715,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44212,13 +45751,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks59137(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks7281(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks7281(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44229,7 +45772,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks7281 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44249,6 +45792,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44284,13 +45828,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks7281(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20817(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks20817(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44301,7 +45849,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks20817 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44321,6 +45869,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44356,13 +45905,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks20817(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks5745(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks5745(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44373,7 +45926,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks5745 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44393,6 +45946,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44428,13 +45982,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks5745(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks625(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks625(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44445,7 +46003,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks625 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44465,6 +46023,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44500,13 +46059,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks625(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks19713(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks19713(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44517,7 +46080,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks19713 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44537,6 +46100,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44572,13 +46136,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks19713(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks57105(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks57105(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44589,7 +46157,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks57105 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44609,6 +46177,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44644,13 +46213,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks57105(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23297(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks23297(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44661,7 +46234,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks23297 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44681,6 +46254,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44716,13 +46290,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks23297(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks57361(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks57361(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44733,7 +46311,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks57361 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44753,6 +46331,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44788,13 +46367,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks57361(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks54785(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks54785(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44805,7 +46388,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks54785 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44825,6 +46408,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44860,13 +46444,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks54785(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks2609(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks2609(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44877,7 +46465,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks2609 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44897,6 +46485,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -44932,13 +46521,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks2609(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks55889(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks55889(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -44949,7 +46542,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks55889 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -44969,6 +46562,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45004,13 +46598,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks55889(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks56097(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks56097(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -45021,7 +46619,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks56097 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45041,6 +46639,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45076,13 +46675,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks56097(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks51473(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks51473(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -45093,7 +46696,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks51473 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45113,6 +46716,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45148,13 +46752,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks51473(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks65377(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks65377(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -45165,7 +46773,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks65377 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45185,6 +46793,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45220,13 +46829,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks65377(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks5489(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks5489(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -45237,7 +46850,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks5489 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45257,6 +46870,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45292,13 +46906,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks5489(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks53761(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks53761(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -45309,7 +46927,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks53761 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45329,6 +46947,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45364,13 +46983,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks53761(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks54545(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks54545(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -45381,7 +47004,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks54545 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45401,6 +47024,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45436,13 +47060,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks54545(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks51729(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks51729(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -45453,7 +47081,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks51729 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45473,6 +47101,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45508,13 +47137,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks51729(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks4881(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks4881(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -45525,7 +47158,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks4881 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45545,6 +47178,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -45580,13 +47214,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks4881(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks(
+public sealed record CategoryWotBlitzResponseItemsWotPremiumTanks(
 	[property: JsonPropertyName("5681")] CategoryWotBlitzResponseItemsWotPremiumTanks5681 _5681,
 	[property: JsonPropertyName("23313")] CategoryWotBlitzResponseItemsWotPremiumTanks23313 _23313,
 	[property: JsonPropertyName("15697")] CategoryWotBlitzResponseItemsWotPremiumTanks15697 _15697,
@@ -45650,7 +47288,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotPremiumTanks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -45723,6 +47361,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("5681"u8))
 			{
 				reader.Read();
@@ -46023,13 +47662,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v59 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotBlitzResponseItemsWotPremiumTanks4881.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotPremiumTanks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks5505(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks5505(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46040,7 +47683,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks5505 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46060,6 +47703,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46095,13 +47739,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks5505(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks13089(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks13089(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46112,7 +47760,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks13089 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46132,6 +47780,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46167,13 +47816,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks13089(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks13569(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks13569(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46184,7 +47837,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks13569 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46204,6 +47857,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46239,13 +47893,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks13569(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks4145(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks4145(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46256,7 +47914,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks4145 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46276,6 +47934,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46311,13 +47970,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks4145(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks10289(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks10289(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46328,7 +47991,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks10289 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46348,6 +48011,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46383,13 +48047,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks10289(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks3937(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks3937(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46400,7 +48068,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks3937 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46420,6 +48088,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46455,13 +48124,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks3937(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks3649(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks3649(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46472,7 +48145,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks3649 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46492,6 +48165,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46527,13 +48201,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks3649(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks18001(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks18001(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46544,7 +48222,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks18001 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46564,6 +48242,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46599,13 +48278,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks18001(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks6449(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks6449(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46616,7 +48299,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks6449 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46636,6 +48319,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46671,13 +48355,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks6449(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks15697(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks15697(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46688,7 +48376,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks15697 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46708,6 +48396,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46743,13 +48432,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks15697(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks12305(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks12305(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46760,7 +48453,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks12305 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46780,6 +48473,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46815,13 +48509,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks12305(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks4481(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks4481(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46832,7 +48530,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks4481 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46852,6 +48550,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46887,13 +48586,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks4481(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks6145(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks6145(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46904,7 +48607,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks6145 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46924,6 +48627,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -46959,13 +48663,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks6145(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks7249(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks7249(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -46976,7 +48684,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks7249 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -46996,6 +48704,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47031,13 +48740,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks7249(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks5681(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks5681(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47048,7 +48761,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks5681 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47068,6 +48781,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47103,13 +48817,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks5681(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks58641(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks58641(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47120,7 +48838,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks58641 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47140,6 +48858,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47175,13 +48894,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks58641(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks16897(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks16897(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47192,7 +48915,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks16897 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47212,6 +48935,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47247,13 +48971,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks16897(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks14337(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks14337(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47264,7 +48992,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks14337 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47284,6 +49012,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47319,13 +49048,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks14337(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks9489(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks9489(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47336,7 +49069,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks9489 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47356,6 +49089,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47391,13 +49125,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks9489(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks385(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks385(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47408,7 +49146,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks385 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47428,6 +49166,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47463,13 +49202,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks385(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks10785(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks10785(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47480,7 +49223,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks10785 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47500,6 +49243,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47535,13 +49279,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks10785(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks14609(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks14609(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47552,7 +49300,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks14609 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47572,6 +49320,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47607,13 +49356,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks14609(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks23313(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks23313(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47624,7 +49377,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks23313 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47644,6 +49397,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47679,13 +49433,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks23313(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks6929(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks6929(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47696,7 +49454,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks6929 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47716,6 +49474,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47751,13 +49510,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks6929(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks6209(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks6209(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47768,7 +49531,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks6209 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47788,6 +49551,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47823,13 +49587,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks6209(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks19537(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks19537(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47840,7 +49608,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks19537 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47860,6 +49628,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47895,13 +49664,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks19537(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks7297(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks7297(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47912,7 +49685,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks7297 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -47932,6 +49705,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -47967,13 +49741,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks7297(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks7169(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks7169(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -47984,7 +49762,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks7169 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48004,6 +49782,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48039,13 +49818,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks7169(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks5425(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks5425(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48056,7 +49839,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks5425 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48076,6 +49859,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48111,13 +49895,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks5425(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks6753(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks6753(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48128,7 +49916,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks6753 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48148,6 +49936,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48183,13 +49972,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks6753(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks3681(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks3681(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48200,7 +49993,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks3681 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48220,6 +50013,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48255,13 +50049,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks3681(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks13185(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks13185(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48272,7 +50070,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks13185 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48292,6 +50090,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48327,13 +50126,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks13185(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks10369(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks10369(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48344,7 +50147,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks10369 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48364,6 +50167,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48399,13 +50203,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks10369(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks22817(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks22817(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48416,7 +50224,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks22817 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48436,6 +50244,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48471,13 +50280,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks22817(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks14881(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks14881(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48488,7 +50301,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks14881 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48508,6 +50321,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48543,13 +50357,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks14881(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks20257(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks20257(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48560,7 +50378,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks20257 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48580,6 +50398,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48615,13 +50434,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks20257(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks24321(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks24321(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48632,7 +50455,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks24321 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48652,6 +50475,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48687,13 +50511,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks24321(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks12049(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks12049(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48704,7 +50532,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks12049 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48724,6 +50552,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48759,13 +50588,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks12049(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks13825(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks13825(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48776,7 +50609,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks13825 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48796,6 +50629,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48831,13 +50665,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks13825(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks9297(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks9297(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48848,7 +50686,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks9297 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48868,6 +50706,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48903,13 +50742,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks9297(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks19217(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks19217(
 	[property: JsonPropertyName("tank_id")] long TankId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("is_premium")] long IsPremium,
@@ -48920,7 +50763,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks19217 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -48940,6 +50783,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
@@ -48975,13 +50819,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks19217(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsWotTopTanks(
+public sealed record CategoryWotBlitzResponseItemsWotTopTanks(
 	[property: JsonPropertyName("5505")] CategoryWotBlitzResponseItemsWotTopTanks5505 _5505,
 	[property: JsonPropertyName("13089")] CategoryWotBlitzResponseItemsWotTopTanks13089 _13089,
 	[property: JsonPropertyName("13569")] CategoryWotBlitzResponseItemsWotTopTanks13569 _13569,
@@ -49026,7 +50874,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsWotTopTanks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -49080,6 +50928,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("5505"u8))
 			{
 				reader.Read();
@@ -49285,13 +51134,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v40 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotBlitzResponseItemsWotTopTanks19217.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsWotTopTanks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItemsSeller(
+public sealed record CategoryWotBlitzResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -49304,7 +51157,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -49326,6 +51179,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -49371,13 +51225,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryWotBlitzResponseItems(
+public sealed record CategoryWotBlitzResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -49467,7 +51325,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWotBlitzResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -49566,6 +51424,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -50014,7 +51873,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v85 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWotBlitzResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWotBlitzResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85);
 	}
@@ -50089,7 +51952,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryGiftsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -50115,6 +51978,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -50198,13 +52062,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryGiftsResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryGiftsResponseItemsBumpSettings(
+public sealed record CategoryGiftsResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -50212,7 +52080,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryGiftsResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -50229,6 +52097,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -50249,13 +52118,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryGiftsResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryGiftsResponseItemsSeller(
+public sealed record CategoryGiftsResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -50268,7 +52141,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryGiftsResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -50290,6 +52163,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -50335,13 +52209,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryGiftsResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryGiftsResponseItems(
+public sealed record CategoryGiftsResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -50406,7 +52284,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryGiftsResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -50480,6 +52358,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -50794,7 +52673,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v60 = reader.TokenType == JsonTokenType.Null ? null! : CategoryGiftsResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryGiftsResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60);
 	}
@@ -50897,7 +52780,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryEpicGamesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -50923,6 +52806,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -51006,13 +52890,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryEpicGamesResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryEpicGamesResponseItemsEgGames0(
+public sealed record CategoryEpicGamesResponseItemsEgGames0(
 	[property: JsonPropertyName("internal_game_id")] long InternalGameId,
 	[property: JsonPropertyName("app_id")] string AppId,
 	[property: JsonPropertyName("title")] string Title,
@@ -51026,7 +52914,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEpicGamesResponseItemsEgGames0 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -51049,6 +52937,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("internal_game_id"u8))
 			{
 				reader.Read();
@@ -51099,18 +52988,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEpicGamesResponseItemsEgGames0(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
-	public sealed record CategoryEpicGamesResponseItemsEgGames(
+public sealed record CategoryEpicGamesResponseItemsEgGames(
 	[property: JsonPropertyName("0")] CategoryEpicGamesResponseItemsEgGames0 _0
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEpicGamesResponseItemsEgGames ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -51124,18 +53017,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryEpicGamesResponseItemsEgGames0.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEpicGamesResponseItemsEgGames(v0);
 	}
 }
 
-	public sealed record CategoryEpicGamesResponseItemsBumpSettings(
+public sealed record CategoryEpicGamesResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -51143,7 +53041,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEpicGamesResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -51160,6 +53058,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -51180,13 +53079,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEpicGamesResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryEpicGamesResponseItemsEgTransactions(
+public sealed record CategoryEpicGamesResponseItemsEgTransactions(
 	[property: JsonPropertyName("date")] long Date,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("presentmentTotal")] string PresentmentTotal,
@@ -51194,7 +53097,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEpicGamesResponseItemsEgTransactions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -51211,6 +53114,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("date"u8))
 			{
 				reader.Read();
@@ -51231,13 +53135,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEpicGamesResponseItemsEgTransactions(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryEpicGamesResponseItemsSeller(
+public sealed record CategoryEpicGamesResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -51250,7 +53158,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEpicGamesResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -51272,6 +53180,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -51317,13 +53226,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEpicGamesResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryEpicGamesResponseItems(
+public sealed record CategoryEpicGamesResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -51405,7 +53318,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEpicGamesResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -51496,6 +53409,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -51940,7 +53854,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v77 = reader.TokenType == JsonTokenType.Null ? null! : CategoryEpicGamesResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEpicGamesResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77);
 	}
@@ -52029,7 +53947,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryEscapeFromTarkovResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -52055,6 +53973,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -52138,13 +54057,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryEscapeFromTarkovResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryEscapeFromTarkovResponseItemsBumpSettings(
+public sealed record CategoryEscapeFromTarkovResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -52152,7 +54075,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEscapeFromTarkovResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -52169,6 +54092,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -52189,13 +54113,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEscapeFromTarkovResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryEscapeFromTarkovResponseItemsSeller(
+public sealed record CategoryEscapeFromTarkovResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -52208,7 +54136,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEscapeFromTarkovResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -52230,6 +54158,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -52275,13 +54204,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEscapeFromTarkovResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryEscapeFromTarkovResponseItems(
+public sealed record CategoryEscapeFromTarkovResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -52368,7 +54301,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryEscapeFromTarkovResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -52464,6 +54397,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -52888,7 +54822,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v82 = reader.TokenType == JsonTokenType.Null ? null! : CategoryEscapeFromTarkovResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryEscapeFromTarkovResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82);
 	}
@@ -52973,7 +54911,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategorySocialClubResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -52999,6 +54937,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -53082,13 +55021,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategorySocialClubResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategorySocialClubResponseItemsSocialclubGames(
+public sealed record CategorySocialClubResponseItemsSocialclubGames(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("defaultPlatform")] string DefaultPlatform,
@@ -53105,7 +55048,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySocialClubResponseItemsSocialclubGames ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -53131,6 +55074,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -53196,13 +55140,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v12 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySocialClubResponseItemsSocialclubGames(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 	}
 }
 
-	public sealed record CategorySocialClubResponseItemsBumpSettings(
+public sealed record CategorySocialClubResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -53210,7 +55158,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySocialClubResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -53227,6 +55175,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -53247,13 +55196,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySocialClubResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategorySocialClubResponseItemsSeller(
+public sealed record CategorySocialClubResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -53266,7 +55219,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySocialClubResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -53288,6 +55241,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -53333,13 +55287,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySocialClubResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategorySocialClubResponseItems(
+public sealed record CategorySocialClubResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -53410,7 +55368,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategorySocialClubResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -53490,6 +55448,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -53852,7 +55811,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v66 = reader.TokenType == JsonTokenType.Null ? null! : CategorySocialClubResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategorySocialClubResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66);
 	}
@@ -53981,7 +55944,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryUplayResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -54007,6 +55970,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -54090,13 +56054,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryUplayResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryUplayResponseItemsUplayGamesFfffffffFfffFfffFfffFfffffffffff(
+public sealed record CategoryUplayResponseItemsUplayGamesFfffffffFfffFfffFfffFfffffffffff(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("img")] string Img,
 	[property: JsonPropertyName("pvpTimePlayed")] long PvpTimePlayed,
@@ -54106,7 +56074,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryUplayResponseItemsUplayGamesFfffffffFfffFfffFfffFfffffffffff ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -54125,6 +56093,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -54155,18 +56124,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryUplayResponseItemsUplayGamesFfffffffFfffFfffFfffFfffffffffff(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record CategoryUplayResponseItemsUplayGames(
+public sealed record CategoryUplayResponseItemsUplayGames(
 	[property: JsonPropertyName("ffffffff-ffff-ffff-ffff-ffffffffffff")] CategoryUplayResponseItemsUplayGamesFfffffffFfffFfffFfffFfffffffffff FfffffffFfffFfffFfffFfffffffffff
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryUplayResponseItemsUplayGames ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -54180,18 +56153,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("ffffffff-ffff-ffff-ffff-ffffffffffff"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryUplayResponseItemsUplayGamesFfffffffFfffFfffFfffFfffffffffff.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryUplayResponseItemsUplayGames(v0);
 	}
 }
 
-	public sealed record CategoryUplayResponseItemsBumpSettings(
+public sealed record CategoryUplayResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -54199,7 +56177,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryUplayResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -54216,6 +56194,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -54236,20 +56215,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryUplayResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryUplayResponseItemsR6Operators(
+public sealed record CategoryUplayResponseItemsR6Operators(
 	[property: JsonPropertyName("img")] string Img,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("url")] string Url
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryUplayResponseItemsR6Operators ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -54265,6 +56248,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("img"u8))
 			{
 				reader.Read();
@@ -54280,13 +56264,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryUplayResponseItemsR6Operators(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryUplayResponseItemsSeller(
+public sealed record CategoryUplayResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -54299,7 +56287,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryUplayResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -54321,6 +56309,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -54366,13 +56355,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryUplayResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryUplayResponseItems(
+public sealed record CategoryUplayResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -54462,7 +56455,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryUplayResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -54561,6 +56554,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -55018,7 +57012,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v85 = reader.TokenType == JsonTokenType.Null ? null! : CategoryUplayResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryUplayResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85);
 	}
@@ -55167,7 +57165,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryDiscordResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -55193,6 +57191,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -55276,13 +57275,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryDiscordResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryDiscordResponseItemsBumpSettings(
+public sealed record CategoryDiscordResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -55290,7 +57293,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryDiscordResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -55307,6 +57310,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -55327,13 +57331,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryDiscordResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryDiscordResponseItemsSeller(
+public sealed record CategoryDiscordResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -55346,7 +57354,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryDiscordResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -55368,6 +57376,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -55413,13 +57422,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryDiscordResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryDiscordResponseItems(
+public sealed record CategoryDiscordResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -55496,7 +57509,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryDiscordResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -55582,6 +57595,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -55956,7 +57970,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v72 = reader.TokenType == JsonTokenType.Null ? null! : CategoryDiscordResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryDiscordResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72);
 	}
@@ -56057,7 +58075,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryTikTokResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -56083,6 +58101,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -56166,13 +58185,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryTikTokResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryTikTokResponseItemsBumpSettings(
+public sealed record CategoryTikTokResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -56180,7 +58203,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryTikTokResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -56197,6 +58220,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -56217,20 +58241,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryTikTokResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryTikTokResponseItemsAccountLinks(
+public sealed record CategoryTikTokResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryTikTokResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -56246,6 +58274,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -56261,13 +58290,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryTikTokResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryTikTokResponseItemsSeller(
+public sealed record CategoryTikTokResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -56280,7 +58313,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryTikTokResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -56302,6 +58335,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -56347,13 +58381,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryTikTokResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryTikTokResponseItems(
+public sealed record CategoryTikTokResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -56435,7 +58473,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryTikTokResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -56526,6 +58564,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -56934,7 +58973,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v77 = reader.TokenType == JsonTokenType.Null ? null! : CategoryTikTokResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryTikTokResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77);
 	}
@@ -57029,7 +59072,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryInstagramResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -57055,6 +59098,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -57138,13 +59182,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryInstagramResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryInstagramResponseItemsBumpSettings(
+public sealed record CategoryInstagramResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -57152,7 +59200,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryInstagramResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -57169,6 +59217,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -57189,20 +59238,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryInstagramResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryInstagramResponseItemsAccountLinks(
+public sealed record CategoryInstagramResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryInstagramResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -57218,6 +59271,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -57233,13 +59287,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryInstagramResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryInstagramResponseItemsSeller(
+public sealed record CategoryInstagramResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -57252,7 +59310,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryInstagramResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -57274,6 +59332,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -57319,13 +59378,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryInstagramResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryInstagramResponseItems(
+public sealed record CategoryInstagramResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -57398,7 +59461,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryInstagramResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -57480,6 +59543,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -57843,7 +59907,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v68 = reader.TokenType == JsonTokenType.Null ? null! : CategoryInstagramResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryInstagramResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68);
 	}
@@ -57942,7 +60010,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryBattleNetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -57968,6 +60036,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -58051,13 +60120,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryBattleNetResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryBattleNetResponseItemsGuarantee(
+public sealed record CategoryBattleNetResponseItemsGuarantee(
 	[property: JsonPropertyName("duration")] long Duration,
 	[property: JsonPropertyName("class")] string Class,
 	[property: JsonPropertyName("durationPhrase")] string DurationPhrase,
@@ -58068,7 +60141,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryBattleNetResponseItemsGuarantee ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -58088,6 +60161,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("duration"u8))
 			{
 				reader.Read();
@@ -58123,13 +60197,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryBattleNetResponseItemsGuarantee(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record CategoryBattleNetResponseItemsBumpSettings(
+public sealed record CategoryBattleNetResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -58137,7 +60215,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryBattleNetResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -58154,6 +60232,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -58174,13 +60253,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryBattleNetResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryBattleNetResponseItemsBattlenetGames17459(
+public sealed record CategoryBattleNetResponseItemsBattlenetGames17459(
 	[property: JsonPropertyName("internal_game_id")] long InternalGameId,
 	[property: JsonPropertyName("app_id")] string AppId,
 	[property: JsonPropertyName("title")] string Title,
@@ -58192,7 +60275,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryBattleNetResponseItemsBattlenetGames17459 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -58213,6 +60296,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("internal_game_id"u8))
 			{
 				reader.Read();
@@ -58253,18 +60337,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v7 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryBattleNetResponseItemsBattlenetGames17459(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record CategoryBattleNetResponseItemsBattlenetGames(
+public sealed record CategoryBattleNetResponseItemsBattlenetGames(
 	[property: JsonPropertyName("17459")] CategoryBattleNetResponseItemsBattlenetGames17459 _17459
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryBattleNetResponseItemsBattlenetGames ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -58278,18 +60366,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("17459"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryBattleNetResponseItemsBattlenetGames17459.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryBattleNetResponseItemsBattlenetGames(v0);
 	}
 }
 
-	public sealed record CategoryBattleNetResponseItemsBattlenetTransactions(
+public sealed record CategoryBattleNetResponseItemsBattlenetTransactions(
 	[property: JsonPropertyName("date")] long Date,
 	[property: JsonPropertyName("productTitle")] string ProductTitle,
 	[property: JsonPropertyName("formattedTotal")] string FormattedTotal,
@@ -58297,7 +60390,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryBattleNetResponseItemsBattlenetTransactions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -58314,6 +60407,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("date"u8))
 			{
 				reader.Read();
@@ -58334,13 +60428,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryBattleNetResponseItemsBattlenetTransactions(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryBattleNetResponseItemsSeller(
+public sealed record CategoryBattleNetResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -58353,7 +60451,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryBattleNetResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -58375,6 +60473,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -58420,13 +60519,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryBattleNetResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryBattleNetResponseItems(
+public sealed record CategoryBattleNetResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -58507,7 +60610,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryBattleNetResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -58597,6 +60700,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -59009,7 +61113,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v76 = reader.TokenType == JsonTokenType.Null ? null! : CategoryBattleNetResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryBattleNetResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76);
 	}
@@ -59104,7 +61212,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryChatGPTResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -59130,6 +61238,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -59213,18 +61322,22 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryChatGPTResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryChatGPTResponseItemsCopyFormatData(
+public sealed record CategoryChatGPTResponseItemsCopyFormatData(
 	[property: JsonPropertyName("title_link")] string TitleLink
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryChatGPTResponseItemsCopyFormatData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -59238,18 +61351,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title_link"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryChatGPTResponseItemsCopyFormatData(v0);
 	}
 }
 
-	public sealed record CategoryChatGPTResponseItemsBumpSettings(
+public sealed record CategoryChatGPTResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -59257,7 +61375,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryChatGPTResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -59274,6 +61392,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -59294,13 +61413,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryChatGPTResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryChatGPTResponseItemsSeller(
+public sealed record CategoryChatGPTResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -59313,7 +61436,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryChatGPTResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -59335,6 +61458,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -59380,13 +61504,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryChatGPTResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryChatGPTResponseItems(
+public sealed record CategoryChatGPTResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -59460,7 +61588,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryChatGPTResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -59543,6 +61671,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -59902,7 +62031,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v69 = reader.TokenType == JsonTokenType.Null ? null! : CategoryChatGPTResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryChatGPTResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69);
 	}
@@ -59979,7 +62112,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryVpnResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -60005,6 +62138,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -60088,13 +62222,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryVpnResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryVpnResponseItemsBumpSettings(
+public sealed record CategoryVpnResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -60102,7 +62240,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryVpnResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -60119,6 +62257,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -60139,13 +62278,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryVpnResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryVpnResponseItemsSeller(
+public sealed record CategoryVpnResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -60158,7 +62301,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryVpnResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -60180,6 +62323,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -60225,13 +62369,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryVpnResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryVpnResponseItems(
+public sealed record CategoryVpnResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -60297,7 +62445,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryVpnResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -60372,6 +62520,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -60691,7 +62840,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v61 = reader.TokenType == JsonTokenType.Null ? null! : CategoryVpnResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryVpnResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61);
 	}
@@ -60834,7 +62987,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryRobloxResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -60860,6 +63013,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -60943,13 +63097,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryRobloxResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryRobloxResponseItemsBumpSettings(
+public sealed record CategoryRobloxResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -60957,7 +63115,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRobloxResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -60974,6 +63132,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -60994,20 +63153,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRobloxResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryRobloxResponseItemsRobloxGameDonations(
+public sealed record CategoryRobloxResponseItemsRobloxGameDonations(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("amount")] long Amount
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRobloxResponseItemsRobloxGameDonations ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -61023,6 +63186,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -61038,20 +63202,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRobloxResponseItemsRobloxGameDonations(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryRobloxResponseItemsRobloxGameDonationsDetails(
+public sealed record CategoryRobloxResponseItemsRobloxGameDonationsDetails(
 	[property: JsonPropertyName("product")] string Product,
 	[property: JsonPropertyName("amount")] long Amount,
 	[property: JsonPropertyName("type")] string Type
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRobloxResponseItemsRobloxGameDonationsDetails ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -61067,6 +63235,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("product"u8))
 			{
 				reader.Read();
@@ -61082,20 +63251,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRobloxResponseItemsRobloxGameDonationsDetails(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryRobloxResponseItemsAccountLinks(
+public sealed record CategoryRobloxResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRobloxResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -61111,6 +63284,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -61126,13 +63300,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRobloxResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryRobloxResponseItemsSeller(
+public sealed record CategoryRobloxResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -61145,7 +63323,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRobloxResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -61167,6 +63345,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -61212,13 +63391,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRobloxResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryRobloxResponseItems(
+public sealed record CategoryRobloxResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -61309,7 +63492,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryRobloxResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -61409,6 +63592,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -61880,7 +64064,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v86 = reader.TokenType == JsonTokenType.Null ? null! : CategoryRobloxResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryRobloxResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86);
 	}
@@ -61969,7 +64157,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryWarfaceResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -61995,6 +64183,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -62078,13 +64267,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryWarfaceResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryWarfaceResponseItemsBumpSettings(
+public sealed record CategoryWarfaceResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -62092,7 +64285,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWarfaceResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -62109,6 +64302,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -62129,20 +64323,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWarfaceResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryWarfaceResponseItemsWfServers(
+public sealed record CategoryWarfaceResponseItemsWfServers(
 	[property: JsonPropertyName("id")] long Id,
 	[property: JsonPropertyName("rank")] long Rank,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWarfaceResponseItemsWfServers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -62158,6 +64356,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -62173,13 +64372,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWarfaceResponseItemsWfServers(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryWarfaceResponseItemsSeller(
+public sealed record CategoryWarfaceResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -62192,7 +64395,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWarfaceResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -62214,6 +64417,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -62259,13 +64463,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWarfaceResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryWarfaceResponseItems(
+public sealed record CategoryWarfaceResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -62342,7 +64550,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryWarfaceResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -62428,6 +64636,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -62811,7 +65020,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v72 = reader.TokenType == JsonTokenType.Null ? null! : CategoryWarfaceResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryWarfaceResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72);
 	}
@@ -62950,7 +65163,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryMinecraftResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -62976,6 +65189,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -63059,13 +65273,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryMinecraftResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryMinecraftResponseItemsBumpSettings(
+public sealed record CategoryMinecraftResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -63073,7 +65291,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMinecraftResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -63090,6 +65308,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -63110,20 +65329,24 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMinecraftResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryMinecraftResponseItemsAccountLinks(
+public sealed record CategoryMinecraftResponseItemsAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMinecraftResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -63139,6 +65362,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -63154,13 +65378,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMinecraftResponseItemsAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryMinecraftResponseItemsSeller(
+public sealed record CategoryMinecraftResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -63173,7 +65401,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMinecraftResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -63195,6 +65423,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -63240,13 +65469,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMinecraftResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryMinecraftResponseItems(
+public sealed record CategoryMinecraftResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -63334,7 +65567,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryMinecraftResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -63431,6 +65664,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -63878,7 +66112,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v83 = reader.TokenType == JsonTokenType.Null ? null! : CategoryMinecraftResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryMinecraftResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83);
 	}
@@ -63953,7 +66191,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryHytaleResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -63979,6 +66217,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -64062,13 +66301,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryHytaleResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-	public sealed record CategoryHytaleResponseItemsCategory(
+public sealed record CategoryHytaleResponseItemsCategory(
 	[property: JsonPropertyName("category_id")] long CategoryId,
 	[property: JsonPropertyName("category_title")] string CategoryTitle,
 	[property: JsonPropertyName("category_name")] string CategoryName,
@@ -64076,7 +66319,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryHytaleResponseItemsCategory ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -64093,6 +66336,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
@@ -64113,18 +66357,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryHytaleResponseItemsCategory(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryHytaleResponseItemsCopyFormatData(
+public sealed record CategoryHytaleResponseItemsCopyFormatData(
 	[property: JsonPropertyName("title_link")] string TitleLink
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryHytaleResponseItemsCopyFormatData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -64138,18 +66386,23 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title_link"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryHytaleResponseItemsCopyFormatData(v0);
 	}
 }
 
-	public sealed record CategoryHytaleResponseItemsSeller(
+public sealed record CategoryHytaleResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -64162,7 +66415,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryHytaleResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -64184,6 +66437,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -64229,13 +66483,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryHytaleResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record CategoryHytaleResponseItems(
+public sealed record CategoryHytaleResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -64314,7 +66572,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryHytaleResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -64402,6 +66660,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -64795,7 +67054,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v74 = reader.TokenType == JsonTokenType.Null ? null! : CategoryHytaleResponseItemsSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryHytaleResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74);
 	}
@@ -64813,7 +67076,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -64828,6 +67091,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("category"u8))
 				{
 					reader.Read();
@@ -64838,13 +67102,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryListResponse(v0, v1);
 		}
 	}
 
-	public sealed record CategoryListResponseCategoryLinks(
+public sealed record CategoryListResponseCategoryLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -64852,7 +67120,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryListResponseCategoryLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -64869,6 +67137,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -64889,13 +67158,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryListResponseCategoryLinks(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryListResponseCategory(
+public sealed record CategoryListResponseCategory(
 	[property: JsonPropertyName("category_id")] long CategoryId,
 	[property: JsonPropertyName("category_title")] string CategoryTitle,
 	[property: JsonPropertyName("category_description")] string CategoryDescription,
@@ -64903,7 +67176,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryListResponseCategory ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -64920,6 +67193,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
@@ -64940,7 +67214,11 @@ public static class CategoryApiTypes
 				reader.Read();
 				v3 = reader.TokenType == JsonTokenType.Null ? null! : CategoryListResponseCategoryLinks.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryListResponseCategory(v0, v1, v2, v3);
 	}
@@ -64954,7 +67232,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryParamsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -64971,6 +67249,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("category"u8))
 				{
 					reader.Read();
@@ -65000,13 +67279,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryParamsResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record CategoryParamsResponseCategory(
+public sealed record CategoryParamsResponseCategory(
 	[property: JsonPropertyName("category_id")] long CategoryId,
 	[property: JsonPropertyName("sub_category_id")] long SubCategoryId,
 	[property: JsonPropertyName("category_order")] long CategoryOrder,
@@ -65045,7 +67328,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryParamsResponseCategory ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -65093,6 +67376,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
@@ -65268,13 +67552,17 @@ public static class CategoryApiTypes
 				reader.Read();
 				v34 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryParamsResponseCategory(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34);
 	}
 }
 
-	public sealed record CategoryParamsResponseParams(
+public sealed record CategoryParamsResponseParams(
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("input")] string Input,
 	[property: JsonPropertyName("description")] string Description,
@@ -65282,7 +67570,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryParamsResponseParams ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -65299,6 +67587,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("name"u8))
 			{
 				reader.Read();
@@ -65328,20 +67617,24 @@ public static class CategoryApiTypes
 					v3 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryParamsResponseParams(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record CategoryParamsResponseBaseParams0(
+public sealed record CategoryParamsResponseBaseParams0(
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("input")] string Input,
 	[property: JsonPropertyName("description")] string Description
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryParamsResponseBaseParams0 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -65357,6 +67650,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("name"u8))
 			{
 				reader.Read();
@@ -65372,18 +67666,22 @@ public static class CategoryApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryParamsResponseBaseParams0(v0, v1, v2);
 	}
 }
 
-	public sealed record CategoryParamsResponseBaseParams(
+public sealed record CategoryParamsResponseBaseParams(
 	[property: JsonPropertyName("0")] CategoryParamsResponseBaseParams0 _0
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryParamsResponseBaseParams ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -65397,12 +67695,17 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryParamsResponseBaseParams0.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryParamsResponseBaseParams(v0);
 	}
@@ -65414,7 +67717,7 @@ public static class CategoryApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CategoryGamesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -65429,6 +67732,7 @@ public static class CategoryApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("games"u8))
 				{
 					reader.Read();
@@ -65448,13 +67752,17 @@ public static class CategoryApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CategoryGamesResponse(v0, v1);
 		}
 	}
 
-	public sealed record CategoryGamesResponseGames(
+public sealed record CategoryGamesResponseGames(
 	[property: JsonPropertyName("app_id")] string AppId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("abbr")] string Abbr,
@@ -65465,7 +67773,7 @@ public static class CategoryApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static CategoryGamesResponseGames ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -65485,6 +67793,7 @@ public static class CategoryApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("app_id"u8))
 			{
 				reader.Read();
@@ -65520,11 +67829,16 @@ public static class CategoryApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new CategoryGamesResponseGames(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
+
 }
 
 // ─── CustomDiscountsApi Types ────────────────────────────────────────
@@ -65538,7 +67852,7 @@ public static class CustomDiscountsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CustomDiscountsGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -65554,6 +67868,7 @@ public static class CustomDiscountsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("discounts"u8))
 				{
 					reader.Read();
@@ -65578,7 +67893,11 @@ public static class CustomDiscountsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CustomDiscountsGetResponse(v0, v1, v2);
 		}
@@ -65607,7 +67926,7 @@ public static class CustomDiscountsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CustomDiscountsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -65623,6 +67942,7 @@ public static class CustomDiscountsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("discount"u8))
 				{
 					reader.Read();
@@ -65638,7 +67958,11 @@ public static class CustomDiscountsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CustomDiscountsCreateResponse(v0, v1, v2);
 		}
@@ -65663,7 +67987,7 @@ public static class CustomDiscountsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CustomDiscountsEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -65679,6 +68003,7 @@ public static class CustomDiscountsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("discounts"u8))
 				{
 					reader.Read();
@@ -65703,7 +68028,11 @@ public static class CustomDiscountsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CustomDiscountsEditResponse(v0, v1, v2);
 		}
@@ -65722,7 +68051,7 @@ public static class CustomDiscountsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static CustomDiscountsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -65738,6 +68067,7 @@ public static class CustomDiscountsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -65753,11 +68083,16 @@ public static class CustomDiscountsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new CustomDiscountsDeleteResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── ImapApi Types ────────────────────────────────────────
@@ -65783,7 +68118,7 @@ public static class ImapApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ImapCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -65799,6 +68134,7 @@ public static class ImapApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -65814,7 +68150,11 @@ public static class ImapApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ImapCreateResponse(v0, v1, v2);
 		}
@@ -65833,7 +68173,7 @@ public static class ImapApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ImapDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -65849,6 +68189,7 @@ public static class ImapApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -65864,11 +68205,16 @@ public static class ImapApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ImapDeleteResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── ListApi Types ────────────────────────────────────────
@@ -65944,7 +68290,7 @@ public static class ListApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ListUserResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -65966,6 +68312,7 @@ public static class ListApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -66029,7 +68376,11 @@ public static class ListApiTypes
 					reader.Read();
 					v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ListUserResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 		}
@@ -66082,7 +68433,7 @@ public static class ListApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ListOrdersResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -66104,6 +68455,7 @@ public static class ListApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -66167,7 +68519,11 @@ public static class ListApiTypes
 					reader.Read();
 					v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ListOrdersResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 		}
@@ -66185,7 +68541,7 @@ public static class ListApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ListStatesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -66200,6 +68556,7 @@ public static class ListApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("userItemStates"u8))
 				{
 					reader.Read();
@@ -66210,13 +68567,17 @@ public static class ListApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ListStatesResponse(v0, v1);
 		}
 	}
 
-	public sealed record ListStatesResponseUserItemStatesStickied(
+public sealed record ListStatesResponseUserItemStatesStickied(
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("title")] string Title,
@@ -66224,7 +68585,7 @@ public static class ListApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesStickied ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66241,6 +68602,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
@@ -66261,20 +68623,24 @@ public static class ListApiTypes
 				reader.Read();
 				v3 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesStickied(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesDiscountRequest(
+public sealed record ListStatesResponseUserItemStatesDiscountRequest(
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesDiscountRequest ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66290,6 +68656,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
@@ -66305,20 +68672,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesDiscountRequest(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesInBuyersFavorites(
+public sealed record ListStatesResponseUserItemStatesInBuyersFavorites(
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesInBuyersFavorites ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66334,6 +68705,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
@@ -66349,20 +68721,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesInBuyersFavorites(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesActive(
+public sealed record ListStatesResponseUserItemStatesActive(
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesActive ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66378,6 +68754,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_count"u8))
 			{
 				reader.Read();
@@ -66393,20 +68770,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesActive(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesPaid(
+public sealed record ListStatesResponseUserItemStatesPaid(
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesPaid ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66422,6 +68803,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_count"u8))
 			{
 				reader.Read();
@@ -66437,20 +68819,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesPaid(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesClosed(
+public sealed record ListStatesResponseUserItemStatesClosed(
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesClosed ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66466,6 +68852,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
@@ -66481,20 +68868,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesClosed(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesDeleted(
+public sealed record ListStatesResponseUserItemStatesDeleted(
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesDeleted ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66510,6 +68901,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_count"u8))
 			{
 				reader.Read();
@@ -66525,20 +68917,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesDeleted(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesAwaiting(
+public sealed record ListStatesResponseUserItemStatesAwaiting(
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesAwaiting ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66554,6 +68950,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_count"u8))
 			{
 				reader.Read();
@@ -66569,20 +68966,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesAwaiting(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesPreActive(
+public sealed record ListStatesResponseUserItemStatesPreActive(
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesPreActive ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66598,6 +68999,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
@@ -66613,20 +69015,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesPreActive(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesPreUpload(
+public sealed record ListStatesResponseUserItemStatesPreUpload(
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesPreUpload ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66642,6 +69048,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
@@ -66657,20 +69064,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesPreUpload(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesPendingDeletion(
+public sealed record ListStatesResponseUserItemStatesPendingDeletion(
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesPendingDeletion ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66686,6 +69097,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
@@ -66701,20 +69113,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesPendingDeletion(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesClosedInactive(
+public sealed record ListStatesResponseUserItemStatesClosedInactive(
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesClosedInactive ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66730,6 +69146,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_count"u8))
 			{
 				reader.Read();
@@ -66745,20 +69162,24 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesClosedInactive(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStatesAutoBump(
+public sealed record ListStatesResponseUserItemStatesAutoBump(
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("item_count")] long ItemCount,
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStatesAutoBump ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66774,6 +69195,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
@@ -66789,13 +69211,17 @@ public static class ListApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStatesAutoBump(v0, v1, v2);
 	}
 }
 
-	public sealed record ListStatesResponseUserItemStates(
+public sealed record ListStatesResponseUserItemStates(
 	[property: JsonPropertyName("stickied")] ListStatesResponseUserItemStatesStickied Stickied,
 	[property: JsonPropertyName("discount_request")] ListStatesResponseUserItemStatesDiscountRequest DiscountRequest,
 	[property: JsonPropertyName("in_buyers_favorites")] ListStatesResponseUserItemStatesInBuyersFavorites InBuyersFavorites,
@@ -66812,7 +69238,7 @@ public static class ListApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ListStatesResponseUserItemStates ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -66838,6 +69264,7 @@ public static class ListApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("stickied"u8))
 			{
 				reader.Read();
@@ -66903,7 +69330,11 @@ public static class ListApiTypes
 				reader.Read();
 				v12 = reader.TokenType == JsonTokenType.Null ? null! : ListStatesResponseUserItemStatesAutoBump.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ListStatesResponseUserItemStates(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 	}
@@ -67008,7 +69439,7 @@ public static class ListApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ListFavoritesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -67030,6 +69461,7 @@ public static class ListApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -67093,7 +69525,11 @@ public static class ListApiTypes
 					reader.Read();
 					v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ListFavoritesResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 		}
@@ -67140,7 +69576,7 @@ public static class ListApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ListViewedResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -67162,6 +69598,7 @@ public static class ListApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -67225,11 +69662,16 @@ public static class ListApiTypes
 					reader.Read();
 					v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ListViewedResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 		}
 	}
+
 }
 
 // ─── ManagingApi Types ────────────────────────────────────────
@@ -67267,7 +69709,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -67301,6 +69743,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("item"u8))
 				{
 					reader.Read();
@@ -67415,7 +69858,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v20 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingGetResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 		}
@@ -67434,7 +69881,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -67450,6 +69897,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -67465,7 +69913,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingDeleteResponse(v0, v1, v2);
 		}
@@ -67485,7 +69937,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingCreateClaimResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -67500,6 +69952,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("thread"u8))
 				{
 					reader.Read();
@@ -67510,13 +69963,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingCreateClaimResponseSystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingCreateClaimResponse(v0, v1);
 		}
 	}
 
-	public sealed record ManagingCreateClaimResponseThreadFirstPostLikeUsers(
+public sealed record ManagingCreateClaimResponseThreadFirstPostLikeUsers(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("display_style_group_id")] long? DisplayStyleGroupId,
@@ -67525,7 +69982,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadFirstPostLikeUsers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -67543,6 +70000,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -67568,13 +70026,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadFirstPostLikeUsers(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadFirstPostLinks(
+public sealed record ManagingCreateClaimResponseThreadFirstPostLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("thread")] string Thread,
@@ -67586,7 +70048,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -67607,6 +70069,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -67647,13 +70110,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadFirstPostLinks(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadFirstPostPermissions(
+public sealed record ManagingCreateClaimResponseThreadFirstPostPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -67664,7 +70131,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -67684,6 +70151,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -67719,13 +70187,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadFirstPostPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadFirstPost(
+public sealed record ManagingCreateClaimResponseThreadFirstPost(
 	[property: JsonPropertyName("post_id")] long PostId,
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
@@ -67750,7 +70222,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadFirstPost ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -67784,6 +70256,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("post_id"u8))
 			{
 				reader.Read();
@@ -67898,13 +70371,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v20 = reader.TokenType == JsonTokenType.Null ? null! : ManagingCreateClaimResponseThreadFirstPostPermissions.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadLinks(
+public sealed record ManagingCreateClaimResponseThreadLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("followers")] string Followers,
@@ -67918,7 +70395,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -67941,6 +70418,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -67991,13 +70469,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadPermissions(
+public sealed record ManagingCreateClaimResponseThreadPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("delete")] bool Delete,
 	[property: JsonPropertyName("follow")] bool Follow,
@@ -68007,7 +70489,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68026,6 +70508,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -68056,19 +70539,23 @@ public static class ManagingApiTypes
 				reader.Read();
 				v5 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadForumForumPrefixesGroupPrefixes(
+public sealed record ManagingCreateClaimResponseThreadForumForumPrefixesGroupPrefixes(
 	[property: JsonPropertyName("prefix_id")] long PrefixId,
 	[property: JsonPropertyName("prefix_title")] string PrefixTitle
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadForumForumPrefixesGroupPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68083,6 +70570,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
@@ -68093,19 +70581,23 @@ public static class ManagingApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadForumForumPrefixesGroupPrefixes(v0, v1);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadForumForumPrefixes(
+public sealed record ManagingCreateClaimResponseThreadForumForumPrefixes(
 	[property: JsonPropertyName("group_title")] string GroupTitle,
 	[property: JsonPropertyName("group_prefixes")] List<ManagingCreateClaimResponseThreadForumForumPrefixesGroupPrefixes> GroupPrefixes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadForumForumPrefixes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68120,6 +70612,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("group_title"u8))
 			{
 				reader.Read();
@@ -68139,13 +70632,17 @@ public static class ManagingApiTypes
 					v1 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadForumForumPrefixes(v0, v1);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadForumLinks(
+public sealed record ManagingCreateClaimResponseThreadForumLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("sub-categories")] string SubCategories,
@@ -68155,7 +70652,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadForumLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68174,6 +70671,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -68204,13 +70702,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v5 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadForumLinks(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadForumPermissions(
+public sealed record ManagingCreateClaimResponseThreadForumPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
@@ -68221,7 +70723,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadForumPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68241,6 +70743,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("view"u8))
 			{
 				reader.Read();
@@ -68276,13 +70779,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v6 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadForumPermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThreadForum(
+public sealed record ManagingCreateClaimResponseThreadForum(
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("forum_title")] string ForumTitle,
 	[property: JsonPropertyName("forum_description")] string ForumDescription,
@@ -68297,7 +70804,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThreadForum ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68321,6 +70828,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("forum_id"u8))
 			{
 				reader.Read();
@@ -68385,13 +70893,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThreadForum(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseThread(
+public sealed record ManagingCreateClaimResponseThread(
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("forum_id")] long ForumId,
 	[property: JsonPropertyName("thread_title")] string ThreadTitle,
@@ -68415,7 +70927,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseThread ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68448,6 +70960,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("thread_id"u8))
 			{
 				reader.Read();
@@ -68566,19 +71079,23 @@ public static class ManagingApiTypes
 				reader.Read();
 				v19 = reader.TokenType == JsonTokenType.Null ? null! : ManagingCreateClaimResponseThreadForum.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseThread(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19);
 	}
 }
 
-	public sealed record ManagingCreateClaimResponseSystemInfo(
+public sealed record ManagingCreateClaimResponseSystemInfo(
 	[property: JsonPropertyName("visitor_id")] long VisitorId,
 	[property: JsonPropertyName("time")] long Time
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingCreateClaimResponseSystemInfo ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68593,6 +71110,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("visitor_id"u8))
 			{
 				reader.Read();
@@ -68603,7 +71121,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingCreateClaimResponseSystemInfo(v0, v1);
 	}
@@ -68624,7 +71146,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingBulkGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -68640,6 +71162,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("items"u8))
 				{
 					reader.Read();
@@ -68673,18 +71196,22 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingBulkGetResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record ManagingBulkGetResponseItems(
+public sealed record ManagingBulkGetResponseItems(
 	[property: JsonPropertyName("0")] ItemModel? _0
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingBulkGetResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68698,12 +71225,17 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : ItemModel.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingBulkGetResponseItems(v0);
 	}
@@ -68727,7 +71259,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingSteamInventoryValueResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -68744,6 +71276,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("query"u8))
 				{
 					reader.Read();
@@ -68764,13 +71297,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingSteamInventoryValueResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record ManagingSteamInventoryValueResponseDataItems0Stickers(
+public sealed record ManagingSteamInventoryValueResponseDataItems0Stickers(
 	[property: JsonPropertyName("stickerCount")] long StickerCount,
 	[property: JsonPropertyName("count")] long Count,
 	[property: JsonPropertyName("images")] List<string> Images,
@@ -68778,7 +71315,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamInventoryValueResponseDataItems0Stickers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68795,6 +71332,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("stickerCount"u8))
 			{
 				reader.Read();
@@ -68824,13 +71362,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamInventoryValueResponseDataItems0Stickers(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record ManagingSteamInventoryValueResponseDataItems0(
+public sealed record ManagingSteamInventoryValueResponseDataItems0(
 	[property: JsonPropertyName("classid")] string Classid,
 	[property: JsonPropertyName("tradable")] long Tradable,
 	[property: JsonPropertyName("marketable")] long Marketable,
@@ -68845,7 +71387,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamInventoryValueResponseDataItems0 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68869,6 +71411,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("classid"u8))
 			{
 				reader.Read();
@@ -68924,18 +71467,22 @@ public static class ManagingApiTypes
 				reader.Read();
 				v10 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamInventoryValueResponseDataItems0Stickers.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamInventoryValueResponseDataItems0(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record ManagingSteamInventoryValueResponseDataItems(
+public sealed record ManagingSteamInventoryValueResponseDataItems(
 	[property: JsonPropertyName("0")] ManagingSteamInventoryValueResponseDataItems0? _0
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamInventoryValueResponseDataItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68949,18 +71496,23 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamInventoryValueResponseDataItems0.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamInventoryValueResponseDataItems(v0);
 	}
 }
 
-	public sealed record ManagingSteamInventoryValueResponseData(
+public sealed record ManagingSteamInventoryValueResponseData(
 	[property: JsonPropertyName("items")] ManagingSteamInventoryValueResponseDataItems Items,
 	[property: JsonPropertyName("steam_id")] string SteamId,
 	[property: JsonPropertyName("appId")] long AppId,
@@ -68975,7 +71527,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamInventoryValueResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -68999,6 +71551,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("items"u8))
 			{
 				reader.Read();
@@ -69054,7 +71607,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v10 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamInventoryValueResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
@@ -69080,7 +71637,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingSteamValueResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69097,6 +71654,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("query"u8))
 				{
 					reader.Read();
@@ -69117,13 +71675,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingSteamValueResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record ManagingSteamValueResponseDataItems0Stickers(
+public sealed record ManagingSteamValueResponseDataItems0Stickers(
 	[property: JsonPropertyName("stickerCount")] long StickerCount,
 	[property: JsonPropertyName("count")] long Count,
 	[property: JsonPropertyName("images")] List<string> Images,
@@ -69131,7 +71693,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamValueResponseDataItems0Stickers ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -69148,6 +71710,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("stickerCount"u8))
 			{
 				reader.Read();
@@ -69177,13 +71740,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamValueResponseDataItems0Stickers(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record ManagingSteamValueResponseDataItems0(
+public sealed record ManagingSteamValueResponseDataItems0(
 	[property: JsonPropertyName("classid")] string Classid,
 	[property: JsonPropertyName("tradable")] long Tradable,
 	[property: JsonPropertyName("marketable")] long Marketable,
@@ -69198,7 +71765,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamValueResponseDataItems0 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -69222,6 +71789,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("classid"u8))
 			{
 				reader.Read();
@@ -69277,18 +71845,22 @@ public static class ManagingApiTypes
 				reader.Read();
 				v10 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamValueResponseDataItems0Stickers.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamValueResponseDataItems0(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record ManagingSteamValueResponseDataItems(
+public sealed record ManagingSteamValueResponseDataItems(
 	[property: JsonPropertyName("0")] ManagingSteamValueResponseDataItems0? _0
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamValueResponseDataItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -69302,18 +71874,23 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamValueResponseDataItems0.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamValueResponseDataItems(v0);
 	}
 }
 
-	public sealed record ManagingSteamValueResponseData(
+public sealed record ManagingSteamValueResponseData(
 	[property: JsonPropertyName("items")] ManagingSteamValueResponseDataItems Items,
 	[property: JsonPropertyName("steam_id")] string SteamId,
 	[property: JsonPropertyName("appId")] long AppId,
@@ -69328,7 +71905,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamValueResponseData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -69352,6 +71929,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("items"u8))
 			{
 				reader.Read();
@@ -69407,7 +71985,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v10 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamValueResponseData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
@@ -69454,7 +72036,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69470,6 +72052,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -69485,7 +72068,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingEditResponse(v0, v1, v2);
 		}
@@ -69497,7 +72084,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingAIPriceResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69512,6 +72099,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("price"u8))
 				{
 					reader.Read();
@@ -69522,7 +72110,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingAIPriceResponse(v0, v1);
 		}
@@ -69534,7 +72126,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingAutoBuyPriceResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69549,6 +72141,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("price"u8))
 				{
 					reader.Read();
@@ -69559,7 +72152,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingAutoBuyPriceResponse(v0, v1);
 		}
@@ -69578,7 +72175,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingNoteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69594,6 +72191,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -69609,7 +72207,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingNoteResponse(v0, v1, v2);
 		}
@@ -69632,7 +72234,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingSteamUpdateValueResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69648,6 +72250,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -69663,7 +72266,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingSteamUpdateValueResponse(v0, v1, v2);
 		}
@@ -69676,7 +72283,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingBumpResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69692,6 +72299,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -69707,7 +72315,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingBumpResponse(v0, v1, v2);
 		}
@@ -69726,7 +72338,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingAutoBumpResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69742,6 +72354,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -69757,7 +72370,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingAutoBumpResponse(v0, v1, v2);
 		}
@@ -69770,7 +72387,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingAutoBumpDisableResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69786,6 +72403,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -69801,7 +72419,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingAutoBumpDisableResponse(v0, v1, v2);
 		}
@@ -69814,7 +72436,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingOpenResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69830,6 +72452,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -69845,7 +72468,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingOpenResponse(v0, v1, v2);
 		}
@@ -69858,7 +72485,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingCloseResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69874,6 +72501,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -69889,7 +72517,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingCloseResponse(v0, v1, v2);
 		}
@@ -69907,7 +72539,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingImageResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69922,6 +72554,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("base64"u8))
 				{
 					reader.Read();
@@ -69932,7 +72565,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingImageResponse(v0, v1);
 		}
@@ -69944,7 +72581,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingEmailCodeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -69959,6 +72596,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("item"u8))
 				{
 					reader.Read();
@@ -69969,20 +72607,24 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingEmailCodeResponseCodeData.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingEmailCodeResponse(v0, v1);
 		}
 	}
 
-	public sealed record ManagingEmailCodeResponseCodeData(
+public sealed record ManagingEmailCodeResponseCodeData(
 	[property: JsonPropertyName("code")] string Code,
 	[property: JsonPropertyName("date")] long Date,
 	[property: JsonPropertyName("textPlain")] string TextPlain
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingEmailCodeResponseCodeData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -69998,6 +72640,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("code"u8))
 			{
 				reader.Read();
@@ -70013,7 +72656,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingEmailCodeResponseCodeData(v0, v1, v2);
 	}
@@ -70038,7 +72685,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingGetLetters2Response ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70054,6 +72701,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("email"u8))
 				{
 					reader.Read();
@@ -70078,13 +72726,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingGetLetters2Response(v0, v1, v2);
 		}
 	}
 
-	public sealed record ManagingGetLetters2ResponseLetters(
+public sealed record ManagingGetLetters2ResponseLetters(
 	[property: JsonPropertyName("textHtml")] string TextHtml,
 	[property: JsonPropertyName("textPlain")] string TextPlain,
 	[property: JsonPropertyName("from")] string From,
@@ -70092,7 +72744,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingGetLetters2ResponseLetters ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -70109,6 +72761,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("textHtml"u8))
 			{
 				reader.Read();
@@ -70129,7 +72782,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v3 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingGetLetters2ResponseLetters(v0, v1, v2, v3);
 	}
@@ -70141,7 +72798,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingSteamGetMafileResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70156,6 +72813,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("maFile"u8))
 				{
 					reader.Read();
@@ -70166,13 +72824,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingSteamGetMafileResponse(v0, v1);
 		}
 	}
 
-	public sealed record ManagingSteamGetMafileResponseMaFileSession(
+public sealed record ManagingSteamGetMafileResponseMaFileSession(
 	[property: JsonPropertyName("SessionID")] string SessionID,
 	[property: JsonPropertyName("AccessToken")] string AccessToken,
 	[property: JsonPropertyName("RefreshToken")] string RefreshToken,
@@ -70181,7 +72843,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamGetMafileResponseMaFileSession ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -70199,6 +72861,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("SessionID"u8))
 			{
 				reader.Read();
@@ -70224,13 +72887,17 @@ public static class ManagingApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamGetMafileResponseMaFileSession(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record ManagingSteamGetMafileResponseMaFile(
+public sealed record ManagingSteamGetMafileResponseMaFile(
 	[property: JsonPropertyName("shared_secret")] string SharedSecret,
 	[property: JsonPropertyName("serial_number")] long SerialNumber,
 	[property: JsonPropertyName("revocation_code")] string RevocationCode,
@@ -70245,7 +72912,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamGetMafileResponseMaFile ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -70269,6 +72936,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("shared_secret"u8))
 			{
 				reader.Read();
@@ -70324,7 +72992,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v10 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamGetMafileResponseMaFileSession.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamGetMafileResponseMaFile(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
@@ -70338,7 +73010,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingSteamAddMafileResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70355,6 +73027,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -70375,7 +73048,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingSteamAddMafileResponse(v0, v1, v2, v3);
 		}
@@ -70389,7 +73066,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingSteamRemoveMafileResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70406,6 +73083,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -70426,7 +73104,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingSteamRemoveMafileResponse(v0, v1, v2, v3);
 		}
@@ -70438,7 +73120,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingSteamMafileCodeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70453,6 +73135,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("item"u8))
 				{
 					reader.Read();
@@ -70463,20 +73146,24 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamMafileCodeResponseCodeData.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingSteamMafileCodeResponse(v0, v1);
 		}
 	}
 
-	public sealed record ManagingSteamMafileCodeResponseCodeData(
+public sealed record ManagingSteamMafileCodeResponseCodeData(
 	[property: JsonPropertyName("code")] string Code,
 	[property: JsonPropertyName("date")] long Date,
 	[property: JsonPropertyName("textPlain")] string TextPlain
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingSteamMafileCodeResponseCodeData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -70492,6 +73179,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("code"u8))
 			{
 				reader.Read();
@@ -70507,7 +73195,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingSteamMafileCodeResponseCodeData(v0, v1, v2);
 	}
@@ -70528,7 +73220,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingSteamSDAResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70544,6 +73236,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -70559,7 +73252,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingSteamSDAResponse(v0, v1, v2);
 		}
@@ -70571,7 +73268,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingTelegramCodeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70586,6 +73283,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("item"u8))
 				{
 					reader.Read();
@@ -70596,19 +73294,23 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingTelegramCodeResponseCodes.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingTelegramCodeResponse(v0, v1);
 		}
 	}
 
-	public sealed record ManagingTelegramCodeResponseCodes(
+public sealed record ManagingTelegramCodeResponseCodes(
 	[property: JsonPropertyName("code")] string? Code,
 	[property: JsonPropertyName("date")] long? Date
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingTelegramCodeResponseCodes ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -70623,6 +73325,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("code"u8))
 			{
 				reader.Read();
@@ -70633,7 +73336,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingTelegramCodeResponseCodes(v0, v1);
 	}
@@ -70646,7 +73353,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingTelegramResetAuthResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70662,6 +73369,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -70677,7 +73385,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingTelegramResetAuthResponse(v0, v1, v2);
 		}
@@ -70690,7 +73402,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingRefuseGuaranteeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70706,6 +73418,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -70721,7 +73434,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingRefuseGuaranteeResponse(v0, v1, v2);
 		}
@@ -70740,7 +73457,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingDeclineVideoRecordingResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70756,6 +73473,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -70771,7 +73489,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingDeclineVideoRecordingResponse(v0, v1, v2);
 		}
@@ -70783,7 +73505,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingCheckGuaranteeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70798,6 +73520,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
@@ -70808,7 +73531,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingCheckGuaranteeResponse(v0, v1);
 		}
@@ -70827,7 +73554,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingChangePasswordResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70843,6 +73570,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -70858,7 +73586,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.GetString()!;
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingChangePasswordResponse(v0, v1, v2);
 		}
@@ -70869,7 +73601,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingTempEmailPasswordResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70883,23 +73615,28 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("item"u8))
 				{
 					reader.Read();
 					v0 = reader.TokenType == JsonTokenType.Null ? null! : ManagingTempEmailPasswordResponseItem.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingTempEmailPasswordResponse(v0);
 		}
 	}
 
-	public sealed record ManagingTempEmailPasswordResponseItem(
+public sealed record ManagingTempEmailPasswordResponseItem(
 	[property: JsonPropertyName("account")] string Account
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingTempEmailPasswordResponseItem ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -70913,12 +73650,17 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("account"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingTempEmailPasswordResponseItem(v0);
 	}
@@ -70939,7 +73681,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingTagResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -70957,6 +73699,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("itemId"u8))
 				{
 					reader.Read();
@@ -70991,13 +73734,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingTagResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ManagingTagResponseTag(
+public sealed record ManagingTagResponseTag(
 	[property: JsonPropertyName("tag_id")] long TagId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isDefault")] bool IsDefault,
@@ -71006,7 +73753,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingTagResponseTag ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -71024,6 +73771,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -71049,7 +73797,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingTagResponseTag(v0, v1, v2, v3, v4);
 	}
@@ -71070,7 +73822,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingUntagResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71088,6 +73840,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("itemId"u8))
 				{
 					reader.Read();
@@ -71122,13 +73875,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingUntagResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ManagingUntagResponseTag(
+public sealed record ManagingUntagResponseTag(
 	[property: JsonPropertyName("tag_id")] long TagId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isDefault")] bool IsDefault,
@@ -71137,7 +73894,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingUntagResponseTag ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -71155,6 +73912,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -71180,7 +73938,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingUntagResponseTag(v0, v1, v2, v3, v4);
 	}
@@ -71201,7 +73963,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingPublicTagResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71219,6 +73981,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("itemId"u8))
 				{
 					reader.Read();
@@ -71253,13 +74016,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingPublicTagResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ManagingPublicTagResponseTag(
+public sealed record ManagingPublicTagResponseTag(
 	[property: JsonPropertyName("tag_id")] long TagId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isDefault")] bool IsDefault,
@@ -71268,7 +74035,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingPublicTagResponseTag ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -71286,6 +74053,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -71311,7 +74079,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingPublicTagResponseTag(v0, v1, v2, v3, v4);
 	}
@@ -71332,7 +74104,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingPublicUntagResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71350,6 +74122,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("itemId"u8))
 				{
 					reader.Read();
@@ -71384,13 +74157,17 @@ public static class ManagingApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingPublicUntagResponse(v0, v1, v2, v3, v4);
 		}
 	}
 
-	public sealed record ManagingPublicUntagResponseTag(
+public sealed record ManagingPublicUntagResponseTag(
 	[property: JsonPropertyName("tag_id")] long TagId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isDefault")] bool IsDefault,
@@ -71399,7 +74176,7 @@ public static class ManagingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ManagingPublicUntagResponseTag ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -71417,6 +74194,7 @@ public static class ManagingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -71442,7 +74220,11 @@ public static class ManagingApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ManagingPublicUntagResponseTag(v0, v1, v2, v3, v4);
 	}
@@ -71455,7 +74237,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingFavoriteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71471,6 +74253,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -71486,7 +74269,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingFavoriteResponse(v0, v1, v2);
 		}
@@ -71499,7 +74286,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingUnfavoriteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71515,6 +74302,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -71530,7 +74318,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingUnfavoriteResponse(v0, v1, v2);
 		}
@@ -71543,7 +74335,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingStickResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71559,6 +74351,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -71574,7 +74367,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingStickResponse(v0, v1, v2);
 		}
@@ -71587,7 +74384,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingUnstickResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71603,6 +74400,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -71618,7 +74416,11 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingUnstickResponse(v0, v1, v2);
 		}
@@ -71639,7 +74441,7 @@ public static class ManagingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ManagingTransferResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71655,6 +74457,7 @@ public static class ManagingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -71670,11 +74473,16 @@ public static class ManagingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ManagingTransferResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── PaymentsApi Types ────────────────────────────────────────
@@ -71695,7 +74503,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsInvoiceGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71710,6 +74518,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("invoice"u8))
 				{
 					reader.Read();
@@ -71720,7 +74529,11 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsInvoiceGetResponse(v0, v1);
 		}
@@ -71761,7 +74574,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsInvoiceCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71776,6 +74589,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("invoice"u8))
 				{
 					reader.Read();
@@ -71786,7 +74600,11 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsInvoiceCreateResponse(v0, v1);
 		}
@@ -71815,7 +74633,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsInvoiceListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71833,6 +74651,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("invoices"u8))
 				{
 					reader.Read();
@@ -71867,7 +74686,11 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsInvoiceListResponse(v0, v1, v2, v3, v4);
 		}
@@ -71881,7 +74704,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsCurrencyResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -71898,6 +74721,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("currencyList"u8))
 				{
 					reader.Read();
@@ -71918,13 +74742,17 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsCurrencyResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record PaymentsCurrencyResponseCurrencyListBTC(
+public sealed record PaymentsCurrencyResponseCurrencyListBTC(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -71932,7 +74760,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListBTC ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -71949,6 +74777,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -71969,13 +74798,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListBTC(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListETH(
+public sealed record PaymentsCurrencyResponseCurrencyListETH(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -71983,7 +74816,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListETH ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72000,6 +74833,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72020,13 +74854,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListETH(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListBNB(
+public sealed record PaymentsCurrencyResponseCurrencyListBNB(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72034,7 +74872,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListBNB ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72051,6 +74889,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72071,13 +74910,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListBNB(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListBCH(
+public sealed record PaymentsCurrencyResponseCurrencyListBCH(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72085,7 +74928,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListBCH ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72102,6 +74945,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72122,13 +74966,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListBCH(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListXMR(
+public sealed record PaymentsCurrencyResponseCurrencyListXMR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72136,7 +74984,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListXMR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72153,6 +75001,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72173,13 +75022,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListXMR(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListSOL(
+public sealed record PaymentsCurrencyResponseCurrencyListSOL(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72187,7 +75040,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListSOL ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72204,6 +75057,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72224,13 +75078,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListSOL(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListLTC(
+public sealed record PaymentsCurrencyResponseCurrencyListLTC(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72238,7 +75096,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListLTC ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72255,6 +75113,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72275,13 +75134,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListLTC(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListDASH(
+public sealed record PaymentsCurrencyResponseCurrencyListDASH(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72289,7 +75152,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListDASH ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72306,6 +75169,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72326,13 +75190,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListDASH(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListTON(
+public sealed record PaymentsCurrencyResponseCurrencyListTON(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72340,7 +75208,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListTON ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72357,6 +75225,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72377,13 +75246,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListTON(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListUSDT(
+public sealed record PaymentsCurrencyResponseCurrencyListUSDT(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72391,7 +75264,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListUSDT ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72408,6 +75281,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72428,13 +75302,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListUSDT(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListMATIC(
+public sealed record PaymentsCurrencyResponseCurrencyListMATIC(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72442,7 +75320,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListMATIC ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72459,6 +75337,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72479,13 +75358,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListMATIC(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListTRX(
+public sealed record PaymentsCurrencyResponseCurrencyListTRX(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72493,7 +75376,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListTRX ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72510,6 +75393,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72530,13 +75414,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListTRX(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListDOGE(
+public sealed record PaymentsCurrencyResponseCurrencyListDOGE(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72544,7 +75432,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListDOGE ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72561,6 +75449,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72581,13 +75470,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListDOGE(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListKWD(
+public sealed record PaymentsCurrencyResponseCurrencyListKWD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72595,7 +75488,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListKWD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72612,6 +75505,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72632,13 +75526,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListKWD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListGBP(
+public sealed record PaymentsCurrencyResponseCurrencyListGBP(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72646,7 +75544,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListGBP ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72663,6 +75561,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72683,13 +75582,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListGBP(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListCHF(
+public sealed record PaymentsCurrencyResponseCurrencyListCHF(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72697,7 +75600,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListCHF ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72714,6 +75617,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72734,13 +75638,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListCHF(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListEUR(
+public sealed record PaymentsCurrencyResponseCurrencyListEUR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72748,7 +75656,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListEUR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72765,6 +75673,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72785,13 +75694,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListEUR(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListUSD(
+public sealed record PaymentsCurrencyResponseCurrencyListUSD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72799,7 +75712,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListUSD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72816,6 +75729,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72836,13 +75750,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListUSD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListSGD(
+public sealed record PaymentsCurrencyResponseCurrencyListSGD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72850,7 +75768,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListSGD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72867,6 +75785,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72887,13 +75806,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListSGD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListCAD(
+public sealed record PaymentsCurrencyResponseCurrencyListCAD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72901,7 +75824,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListCAD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72918,6 +75841,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72938,13 +75862,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListCAD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListAUD(
+public sealed record PaymentsCurrencyResponseCurrencyListAUD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -72952,7 +75880,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListAUD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -72969,6 +75897,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -72989,13 +75918,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListAUD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListNZD(
+public sealed record PaymentsCurrencyResponseCurrencyListNZD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73003,7 +75936,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListNZD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73020,6 +75953,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73040,13 +75974,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListNZD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListBGN(
+public sealed record PaymentsCurrencyResponseCurrencyListBGN(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73054,7 +75992,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListBGN ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73071,6 +76009,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73091,13 +76030,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListBGN(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListGEL(
+public sealed record PaymentsCurrencyResponseCurrencyListGEL(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73105,7 +76048,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListGEL ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73122,6 +76065,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73142,13 +76086,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListGEL(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListILS(
+public sealed record PaymentsCurrencyResponseCurrencyListILS(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73156,7 +76104,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListILS ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73173,6 +76121,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73193,13 +76142,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListILS(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListQAR(
+public sealed record PaymentsCurrencyResponseCurrencyListQAR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73207,7 +76160,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListQAR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73224,6 +76177,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73244,13 +76198,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListQAR(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListPEN(
+public sealed record PaymentsCurrencyResponseCurrencyListPEN(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73258,7 +76216,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListPEN ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73275,6 +76233,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73295,13 +76254,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListPEN(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListAED(
+public sealed record PaymentsCurrencyResponseCurrencyListAED(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73309,7 +76272,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListAED ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73326,6 +76289,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73346,13 +76310,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListAED(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListSAR(
+public sealed record PaymentsCurrencyResponseCurrencyListSAR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73360,7 +76328,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListSAR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73377,6 +76345,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73397,13 +76366,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListSAR(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListPLN(
+public sealed record PaymentsCurrencyResponseCurrencyListPLN(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73411,7 +76384,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListPLN ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73428,6 +76401,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73448,13 +76422,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListPLN(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListMYR(
+public sealed record PaymentsCurrencyResponseCurrencyListMYR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73462,7 +76440,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListMYR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73479,6 +76457,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73499,13 +76478,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListMYR(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListRON(
+public sealed record PaymentsCurrencyResponseCurrencyListRON(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73513,7 +76496,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListRON ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73530,6 +76513,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73550,13 +76534,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListRON(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListBRL(
+public sealed record PaymentsCurrencyResponseCurrencyListBRL(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73564,7 +76552,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListBRL ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73581,6 +76569,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73601,13 +76590,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListBRL(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListDKK(
+public sealed record PaymentsCurrencyResponseCurrencyListDKK(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73615,7 +76608,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListDKK ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73632,6 +76625,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73652,13 +76646,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListDKK(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListCNY(
+public sealed record PaymentsCurrencyResponseCurrencyListCNY(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73666,7 +76664,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListCNY ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73683,6 +76681,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73703,13 +76702,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListCNY(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListHKD(
+public sealed record PaymentsCurrencyResponseCurrencyListHKD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73717,7 +76720,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListHKD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73734,6 +76737,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73754,13 +76758,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListHKD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListSEK(
+public sealed record PaymentsCurrencyResponseCurrencyListSEK(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73768,7 +76776,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListSEK ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73785,6 +76793,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73805,13 +76814,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListSEK(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListNOK(
+public sealed record PaymentsCurrencyResponseCurrencyListNOK(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73819,7 +76832,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListNOK ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73836,6 +76849,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73856,13 +76870,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListNOK(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListZAR(
+public sealed record PaymentsCurrencyResponseCurrencyListZAR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73870,7 +76888,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListZAR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73887,6 +76905,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73907,13 +76926,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListZAR(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListMXN(
+public sealed record PaymentsCurrencyResponseCurrencyListMXN(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73921,7 +76944,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListMXN ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73938,6 +76961,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -73958,13 +76982,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListMXN(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListCZK(
+public sealed record PaymentsCurrencyResponseCurrencyListCZK(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -73972,7 +77000,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListCZK ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -73989,6 +77017,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74009,13 +77038,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListCZK(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListTWD(
+public sealed record PaymentsCurrencyResponseCurrencyListTWD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74023,7 +77056,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListTWD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74040,6 +77073,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74060,13 +77094,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListTWD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListTHB(
+public sealed record PaymentsCurrencyResponseCurrencyListTHB(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74074,7 +77112,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListTHB ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74091,6 +77129,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74111,13 +77150,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListTHB(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListTRY(
+public sealed record PaymentsCurrencyResponseCurrencyListTRY(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74125,7 +77168,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListTRY ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74142,6 +77185,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74162,13 +77206,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListTRY(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListUAH(
+public sealed record PaymentsCurrencyResponseCurrencyListUAH(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74176,7 +77224,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListUAH ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74193,6 +77241,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74213,13 +77262,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListUAH(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListUYU(
+public sealed record PaymentsCurrencyResponseCurrencyListUYU(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74227,7 +77280,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListUYU ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74244,6 +77297,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74264,13 +77318,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListUYU(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListPHP(
+public sealed record PaymentsCurrencyResponseCurrencyListPHP(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74278,7 +77336,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListPHP ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74295,6 +77353,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74315,13 +77374,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListPHP(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListINR(
+public sealed record PaymentsCurrencyResponseCurrencyListINR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74329,7 +77392,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListINR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74346,6 +77409,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74366,13 +77430,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListINR(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListRUB(
+public sealed record PaymentsCurrencyResponseCurrencyListRUB(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] long Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74380,7 +77448,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListRUB ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74397,6 +77465,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74417,13 +77486,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListRUB(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListRSD(
+public sealed record PaymentsCurrencyResponseCurrencyListRSD(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74431,7 +77504,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListRSD ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74448,6 +77521,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74468,13 +77542,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListRSD(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListJPY(
+public sealed record PaymentsCurrencyResponseCurrencyListJPY(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74482,7 +77560,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListJPY ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74499,6 +77577,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74519,13 +77598,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListJPY(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListHUF(
+public sealed record PaymentsCurrencyResponseCurrencyListHUF(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74533,7 +77616,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListHUF ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74550,6 +77633,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74570,13 +77654,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListHUF(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListKZT(
+public sealed record PaymentsCurrencyResponseCurrencyListKZT(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74584,7 +77672,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListKZT ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74601,6 +77689,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74621,13 +77710,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListKZT(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListCRC(
+public sealed record PaymentsCurrencyResponseCurrencyListCRC(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74635,7 +77728,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListCRC ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74652,6 +77745,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74672,13 +77766,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListCRC(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListCLP(
+public sealed record PaymentsCurrencyResponseCurrencyListCLP(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74686,7 +77784,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListCLP ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74703,6 +77801,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74723,13 +77822,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListCLP(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListARS(
+public sealed record PaymentsCurrencyResponseCurrencyListARS(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74737,7 +77840,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListARS ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74754,6 +77857,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74774,13 +77878,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListARS(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListKRW(
+public sealed record PaymentsCurrencyResponseCurrencyListKRW(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74788,7 +77896,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListKRW ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74805,6 +77913,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74825,13 +77934,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListKRW(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListCOP(
+public sealed record PaymentsCurrencyResponseCurrencyListCOP(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74839,7 +77952,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListCOP ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74856,6 +77969,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74876,13 +77990,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListCOP(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListIDR(
+public sealed record PaymentsCurrencyResponseCurrencyListIDR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74890,7 +78008,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListIDR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74907,6 +78025,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74927,13 +78046,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListIDR(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyListVND(
+public sealed record PaymentsCurrencyResponseCurrencyListVND(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("rate")] double Rate,
 	[property: JsonPropertyName("formattedRate")] string FormattedRate,
@@ -74941,7 +78064,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyListVND ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -74958,6 +78081,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -74978,13 +78102,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyListVND(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsCurrencyResponseCurrencyList(
+public sealed record PaymentsCurrencyResponseCurrencyList(
 	[property: JsonPropertyName("BTC")] PaymentsCurrencyResponseCurrencyListBTC BTC,
 	[property: JsonPropertyName("ETH")] PaymentsCurrencyResponseCurrencyListETH ETH,
 	[property: JsonPropertyName("BNB")] PaymentsCurrencyResponseCurrencyListBNB BNB,
@@ -75048,7 +78176,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsCurrencyResponseCurrencyList ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -75121,6 +78249,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("BTC"u8))
 			{
 				reader.Read();
@@ -75421,7 +78550,11 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v59 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsCurrencyResponseCurrencyListVND.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsCurrencyResponseCurrencyList(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59);
 	}
@@ -75434,7 +78567,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsBalanceListResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -75450,6 +78583,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("from"u8))
 				{
 					reader.Read();
@@ -75465,13 +78599,17 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsBalanceListResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record PaymentsBalanceListResponseFromBalance(
+public sealed record PaymentsBalanceListResponseFromBalance(
 	[property: JsonPropertyName("balance")] string Balance,
 	[property: JsonPropertyName("convertedBalance")] long ConvertedBalance,
 	[property: JsonPropertyName("fullTitle")] string FullTitle,
@@ -75480,7 +78618,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsBalanceListResponseFromBalance ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -75498,6 +78636,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("balance"u8))
 			{
 				reader.Read();
@@ -75523,19 +78662,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsBalanceListResponseFromBalance(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record PaymentsBalanceListResponseFrom(
+public sealed record PaymentsBalanceListResponseFrom(
 	[property: JsonPropertyName("balance")] PaymentsBalanceListResponseFromBalance Balance,
 	[property: JsonPropertyName("12345")] BalanceModel _12345
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsBalanceListResponseFrom ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -75550,6 +78693,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("balance"u8))
 			{
 				reader.Read();
@@ -75560,18 +78704,22 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.TokenType == JsonTokenType.Null ? null! : BalanceModel.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsBalanceListResponseFrom(v0, v1);
 	}
 }
 
-	public sealed record PaymentsBalanceListResponseTo(
+public sealed record PaymentsBalanceListResponseTo(
 	[property: JsonPropertyName("balance")] UserModel Balance
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsBalanceListResponseTo ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -75585,12 +78733,17 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("balance"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : UserModel.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsBalanceListResponseTo(v0);
 	}
@@ -75613,7 +78766,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsBalanceExchangeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -75629,6 +78782,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("from"u8))
 				{
 					reader.Read();
@@ -75644,13 +78798,17 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsBalanceExchangeResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record PaymentsBalanceExchangeResponseFromBalance(
+public sealed record PaymentsBalanceExchangeResponseFromBalance(
 	[property: JsonPropertyName("balance")] string Balance,
 	[property: JsonPropertyName("convertedBalance")] long ConvertedBalance,
 	[property: JsonPropertyName("fullTitle")] string FullTitle,
@@ -75659,7 +78817,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsBalanceExchangeResponseFromBalance ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -75677,6 +78835,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("balance"u8))
 			{
 				reader.Read();
@@ -75702,19 +78861,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsBalanceExchangeResponseFromBalance(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record PaymentsBalanceExchangeResponseFrom(
+public sealed record PaymentsBalanceExchangeResponseFrom(
 	[property: JsonPropertyName("balance")] PaymentsBalanceExchangeResponseFromBalance Balance,
 	[property: JsonPropertyName("12345")] BalanceModel _12345
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsBalanceExchangeResponseFrom ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -75729,6 +78892,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("balance"u8))
 			{
 				reader.Read();
@@ -75739,18 +78903,22 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.TokenType == JsonTokenType.Null ? null! : BalanceModel.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsBalanceExchangeResponseFrom(v0, v1);
 	}
 }
 
-	public sealed record PaymentsBalanceExchangeResponseTo(
+public sealed record PaymentsBalanceExchangeResponseTo(
 	[property: JsonPropertyName("balance")] UserModel Balance
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsBalanceExchangeResponseTo ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -75764,12 +78932,17 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("balance"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : UserModel.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsBalanceExchangeResponseTo(v0);
 	}
@@ -75806,7 +78979,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsTransferResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -75822,6 +78995,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -75837,7 +79011,11 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsTransferResponse(v0, v1, v2);
 		}
@@ -75857,7 +79035,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsFeeResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -75874,6 +79052,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("commission_percentage"u8))
 				{
 					reader.Read();
@@ -75894,20 +79073,24 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsFeeResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record PaymentsFeeResponseCalculator(
+public sealed record PaymentsFeeResponseCalculator(
 	[property: JsonPropertyName("inputAmount")] long InputAmount,
 	[property: JsonPropertyName("commissionAmount")] long CommissionAmount,
 	[property: JsonPropertyName("totalOutputAmount")] long TotalOutputAmount
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsFeeResponseCalculator ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -75923,6 +79106,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("inputAmount"u8))
 			{
 				reader.Read();
@@ -75938,7 +79122,11 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v2 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsFeeResponseCalculator(v0, v1, v2);
 	}
@@ -75957,7 +79145,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsCancelResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -75973,6 +79161,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -75988,7 +79177,11 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsCancelResponse(v0, v1, v2);
 		}
@@ -76046,7 +79239,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsHistoryResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -76073,6 +79266,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("payments"u8))
 				{
 					reader.Read();
@@ -76143,13 +79337,17 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v13 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsHistoryResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
 		}
 	}
 
-	public sealed record PaymentsHistoryResponsePayments1234567890Data(
+public sealed record PaymentsHistoryResponsePayments1234567890Data(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("comment")] string Comment,
@@ -76169,7 +79367,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsHistoryResponsePayments1234567890Data ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76198,6 +79396,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -76278,18 +79477,22 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v15 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsHistoryResponsePayments1234567890Data(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
 }
 
-	public sealed record PaymentsHistoryResponsePayments1234567890Label(
+public sealed record PaymentsHistoryResponsePayments1234567890Label(
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsHistoryResponsePayments1234567890Label ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76303,18 +79506,23 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsHistoryResponsePayments1234567890Label(v0);
 	}
 }
 
-	public sealed record PaymentsHistoryResponsePayments1234567890Merchant(
+public sealed record PaymentsHistoryResponsePayments1234567890Merchant(
 	[property: JsonPropertyName("merchant_id")] long MerchantId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("user_id")] long UserId,
@@ -76325,7 +79533,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsHistoryResponsePayments1234567890Merchant ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76345,6 +79553,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("merchant_id"u8))
 			{
 				reader.Read();
@@ -76380,13 +79589,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsHistoryResponsePayments1234567890Merchant(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record PaymentsHistoryResponsePayments1234567890User(
+public sealed record PaymentsHistoryResponsePayments1234567890User(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("user_balance")] string UserBalance,
 	[property: JsonPropertyName("user_hold")] string UserHold,
@@ -76394,7 +79607,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsHistoryResponsePayments1234567890User ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76411,6 +79624,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -76431,13 +79645,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v3 = reader.GetDouble();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsHistoryResponsePayments1234567890User(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PaymentsHistoryResponsePayments1234567890(
+public sealed record PaymentsHistoryResponsePayments1234567890(
 	[property: JsonPropertyName("operation_id")] long OperationId,
 	[property: JsonPropertyName("operation_date")] long OperationDate,
 	[property: JsonPropertyName("operation_type")] string OperationType,
@@ -76469,7 +79687,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsHistoryResponsePayments1234567890 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76510,6 +79728,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("operation_id"u8))
 			{
 				reader.Read();
@@ -76659,18 +79878,22 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v27 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePayments1234567890User.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsHistoryResponsePayments1234567890(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27);
 	}
 }
 
-	public sealed record PaymentsHistoryResponsePayments(
+public sealed record PaymentsHistoryResponsePayments(
 	[property: JsonPropertyName("1234567890")] PaymentsHistoryResponsePayments1234567890 _1234567890
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsHistoryResponsePayments ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76684,25 +79907,30 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1234567890"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePayments1234567890.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsHistoryResponsePayments(v0);
 	}
 }
 
-	public sealed record PaymentsHistoryResponsePageNavParams(
+public sealed record PaymentsHistoryResponsePageNavParams(
 	[property: JsonPropertyName("type")] string Type,
 	[property: JsonPropertyName("startDate")] string StartDate,
 	[property: JsonPropertyName("endDate")] string EndDate
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsHistoryResponsePageNavParams ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76718,6 +79946,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("type"u8))
 			{
 				reader.Read();
@@ -76733,13 +79962,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsHistoryResponsePageNavParams(v0, v1, v2);
 	}
 }
 
-	public sealed record PaymentsHistoryResponseInput(
+public sealed record PaymentsHistoryResponseInput(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("type")] string Type,
 	[property: JsonPropertyName("startDate")] string StartDate,
@@ -76759,7 +79992,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsHistoryResponseInput ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76788,6 +80021,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -76868,7 +80102,11 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v15 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsHistoryResponseInput(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
@@ -76880,7 +80118,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsPayoutServicesResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -76895,6 +80133,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("systems"u8))
 				{
 					reader.Read();
@@ -76914,19 +80153,23 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsPayoutServicesResponse(v0, v1);
 		}
 	}
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersBEP20(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersBEP20(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersBEP20 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76941,6 +80184,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -76951,19 +80195,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersBEP20(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersTRC20(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersTRC20(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersTRC20 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -76978,6 +80226,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -76988,19 +80237,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersTRC20(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersERC20(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersERC20(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersERC20 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77015,6 +80268,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77025,19 +80279,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersERC20(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersTRX(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersTRX(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersTRX ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77052,6 +80310,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77062,19 +80321,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersTRX(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersBTC(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersBTC(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersBTC ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77089,6 +80352,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77099,19 +80363,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersBTC(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersTON(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersTON(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersTON ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77126,6 +80394,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77136,19 +80405,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersTON(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersETH(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersETH(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersETH ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77163,6 +80436,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77173,19 +80447,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersETH(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersLTC(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersLTC(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersLTC ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77200,6 +80478,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77210,19 +80489,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersLTC(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersBNB(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersBNB(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersBNB ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77237,6 +80520,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77247,19 +80531,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersBNB(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersDASH(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersDASH(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersDASH ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77274,6 +80562,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77284,19 +80573,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersDASH(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersDOGE(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersDOGE(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersDOGE ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77311,6 +80604,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77321,19 +80615,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersDOGE(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersXMR(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersXMR(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersXMR ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77348,6 +80646,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77358,19 +80657,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersXMR(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersSOL(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersSOL(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersSOL ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77385,6 +80688,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77395,19 +80699,23 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersSOL(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProvidersBCH(
+public sealed record PaymentsPayoutServicesResponseSystemsProvidersBCH(
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isUnavailable")] bool IsUnavailable
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProvidersBCH ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77422,6 +80730,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
@@ -77432,13 +80741,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProvidersBCH(v0, v1);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystemsProviders(
+public sealed record PaymentsPayoutServicesResponseSystemsProviders(
 	[property: JsonPropertyName("BEP20")] PaymentsPayoutServicesResponseSystemsProvidersBEP20 BEP20,
 	[property: JsonPropertyName("TRC20")] PaymentsPayoutServicesResponseSystemsProvidersTRC20 TRC20,
 	[property: JsonPropertyName("ERC20")] PaymentsPayoutServicesResponseSystemsProvidersERC20 ERC20,
@@ -77456,7 +80769,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystemsProviders ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77483,6 +80796,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("BEP20"u8))
 			{
 				reader.Read();
@@ -77553,13 +80867,17 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v13 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsPayoutServicesResponseSystemsProvidersBCH.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystemsProviders(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
 	}
 }
 
-	public sealed record PaymentsPayoutServicesResponseSystems(
+public sealed record PaymentsPayoutServicesResponseSystems(
 	[property: JsonPropertyName("system")] string System,
 	[property: JsonPropertyName("commission")] string Commission,
 	[property: JsonPropertyName("min")] long Min,
@@ -77573,7 +80891,7 @@ public static class PaymentsApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PaymentsPayoutServicesResponseSystems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77596,6 +80914,7 @@ public static class PaymentsApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("system"u8))
 			{
 				reader.Read();
@@ -77646,7 +80965,11 @@ public static class PaymentsApiTypes
 				reader.Read();
 				v9 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsPayoutServicesResponseSystemsProviders.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PaymentsPayoutServicesResponseSystems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
@@ -77675,7 +80998,7 @@ public static class PaymentsApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PaymentsPayoutResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -77691,6 +81014,7 @@ public static class PaymentsApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -77706,11 +81030,16 @@ public static class PaymentsApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PaymentsPayoutResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── ProfileApi Types ────────────────────────────────────────
@@ -77732,7 +81061,7 @@ public static class ProfileApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfileClaimsResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -77748,6 +81077,7 @@ public static class ProfileApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("claims"u8))
 				{
 					reader.Read();
@@ -77772,13 +81102,17 @@ public static class ProfileApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfileClaimsResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record ProfileClaimsResponseClaimsAuthorLinks(
+public sealed record ProfileClaimsResponseClaimsAuthorLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("avatar")] string Avatar,
@@ -77791,7 +81125,7 @@ public static class ProfileApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfileClaimsResponseClaimsAuthorLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77813,6 +81147,7 @@ public static class ProfileApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("permalink"u8))
 			{
 				reader.Read();
@@ -77858,20 +81193,24 @@ public static class ProfileApiTypes
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfileClaimsResponseClaimsAuthorLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-	public sealed record ProfileClaimsResponseClaimsAuthorPermissions(
+public sealed record ProfileClaimsResponseClaimsAuthorPermissions(
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("follow")] bool Follow,
 	[property: JsonPropertyName("ignore")] bool Ignore
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfileClaimsResponseClaimsAuthorPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77887,6 +81226,7 @@ public static class ProfileApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("edit"u8))
 			{
 				reader.Read();
@@ -77902,13 +81242,17 @@ public static class ProfileApiTypes
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfileClaimsResponseClaimsAuthorPermissions(v0, v1, v2);
 	}
 }
 
-	public sealed record ProfileClaimsResponseClaimsAuthorFields(
+public sealed record ProfileClaimsResponseClaimsAuthorFields(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
@@ -77917,7 +81261,7 @@ public static class ProfileApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfileClaimsResponseClaimsAuthorFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -77935,6 +81279,7 @@ public static class ProfileApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("id"u8))
 			{
 				reader.Read();
@@ -77960,13 +81305,17 @@ public static class ProfileApiTypes
 				reader.Read();
 				v4 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfileClaimsResponseClaimsAuthorFields(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record ProfileClaimsResponseClaimsAuthor(
+public sealed record ProfileClaimsResponseClaimsAuthor(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("username_html")] string UsernameHtml,
@@ -77993,7 +81342,7 @@ public static class ProfileApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfileClaimsResponseClaimsAuthor ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -78029,6 +81378,7 @@ public static class ProfileApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -78153,13 +81503,17 @@ public static class ProfileApiTypes
 					v22 = __lst;
 				}
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfileClaimsResponseClaimsAuthor(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
 	}
 }
 
-	public sealed record ProfileClaimsResponseClaims(
+public sealed record ProfileClaimsResponseClaims(
 	[property: JsonPropertyName("thread_id")] long ThreadId,
 	[property: JsonPropertyName("claim_date")] long ClaimDate,
 	[property: JsonPropertyName("claim_state")] string ClaimState,
@@ -78169,7 +81523,7 @@ public static class ProfileApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfileClaimsResponseClaims ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -78188,6 +81542,7 @@ public static class ProfileApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("thread_id"u8))
 			{
 				reader.Read();
@@ -78218,13 +81573,17 @@ public static class ProfileApiTypes
 				reader.Read();
 				v5 = reader.TokenType == JsonTokenType.Null ? null! : ProfileClaimsResponseClaimsAuthor.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfileClaimsResponseClaims(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-	public sealed record ProfileClaimsResponseStatsMarket(
+public sealed record ProfileClaimsResponseStatsMarket(
 	[property: JsonPropertyName("total")] long Total,
 	[property: JsonPropertyName("solved")] long Solved,
 	[property: JsonPropertyName("settled")] long Settled,
@@ -78232,7 +81591,7 @@ public static class ProfileApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfileClaimsResponseStatsMarket ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -78249,6 +81608,7 @@ public static class ProfileApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("total"u8))
 			{
 				reader.Read();
@@ -78269,13 +81629,17 @@ public static class ProfileApiTypes
 				reader.Read();
 				v3 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfileClaimsResponseStatsMarket(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record ProfileClaimsResponseStatsNoMarket(
+public sealed record ProfileClaimsResponseStatsNoMarket(
 	[property: JsonPropertyName("total")] long Total,
 	[property: JsonPropertyName("solved")] long Solved,
 	[property: JsonPropertyName("settled")] long Settled,
@@ -78283,7 +81647,7 @@ public static class ProfileApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfileClaimsResponseStatsNoMarket ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -78300,6 +81664,7 @@ public static class ProfileApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("total"u8))
 			{
 				reader.Read();
@@ -78320,19 +81685,23 @@ public static class ProfileApiTypes
 				reader.Read();
 				v3 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfileClaimsResponseStatsNoMarket(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record ProfileClaimsResponseStats(
+public sealed record ProfileClaimsResponseStats(
 	[property: JsonPropertyName("market")] ProfileClaimsResponseStatsMarket Market,
 	[property: JsonPropertyName("noMarket")] ProfileClaimsResponseStatsNoMarket NoMarket
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProfileClaimsResponseStats ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -78347,6 +81716,7 @@ public static class ProfileApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("market"u8))
 			{
 				reader.Read();
@@ -78357,7 +81727,11 @@ public static class ProfileApiTypes
 				reader.Read();
 				v1 = reader.TokenType == JsonTokenType.Null ? null! : ProfileClaimsResponseStatsNoMarket.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProfileClaimsResponseStats(v0, v1);
 	}
@@ -78375,7 +81749,7 @@ public static class ProfileApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfileGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -78390,6 +81764,7 @@ public static class ProfileApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("user"u8))
 				{
 					reader.Read();
@@ -78400,7 +81775,11 @@ public static class ProfileApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfileGetResponse(v0, v1);
 		}
@@ -78441,7 +81820,7 @@ public static class ProfileApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProfileEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -78457,6 +81836,7 @@ public static class ProfileApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -78472,11 +81852,16 @@ public static class ProfileApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProfileEditResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── ProxyApi Types ────────────────────────────────────────
@@ -78489,7 +81874,7 @@ public static class ProxyApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProxyGetResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -78504,6 +81889,7 @@ public static class ProxyApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("proxies"u8))
 				{
 					reader.Read();
@@ -78523,13 +81909,17 @@ public static class ProxyApiTypes
 					reader.Read();
 					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProxyGetResponse(v0, v1);
 		}
 	}
 
-	public sealed record ProxyGetResponseProxiesProxy(
+public sealed record ProxyGetResponseProxiesProxy(
 	[property: JsonPropertyName("proxy_id")] long ProxyId,
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("proxy_ip")] string ProxyIp,
@@ -78540,7 +81930,7 @@ public static class ProxyApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProxyGetResponseProxiesProxy ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -78560,6 +81950,7 @@ public static class ProxyApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("proxy_id"u8))
 			{
 				reader.Read();
@@ -78595,18 +81986,22 @@ public static class ProxyApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProxyGetResponseProxiesProxy(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record ProxyGetResponseProxies(
+public sealed record ProxyGetResponseProxies(
 	[property: JsonPropertyName("proxy")] ProxyGetResponseProxiesProxy Proxy
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static ProxyGetResponseProxies ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -78620,12 +82015,17 @@ public static class ProxyApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("proxy"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : ProxyGetResponseProxiesProxy.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new ProxyGetResponseProxies(v0);
 	}
@@ -78652,7 +82052,7 @@ public static class ProxyApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProxyAddResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -78668,6 +82068,7 @@ public static class ProxyApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -78683,7 +82084,11 @@ public static class ProxyApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProxyAddResponse(v0, v1, v2);
 		}
@@ -78704,7 +82109,7 @@ public static class ProxyApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static ProxyDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -78720,6 +82125,7 @@ public static class ProxyApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -78735,11 +82141,16 @@ public static class ProxyApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new ProxyDeleteResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── PublishingApi Types ────────────────────────────────────────
@@ -78795,7 +82206,7 @@ public static class PublishingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PublishingFastSellResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -78811,6 +82222,7 @@ public static class PublishingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("item"u8))
 				{
 					reader.Read();
@@ -78826,7 +82238,11 @@ public static class PublishingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PublishingFastSellResponse(v0, v1, v2);
 		}
@@ -78877,7 +82293,7 @@ public static class PublishingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PublishingAddResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -78893,6 +82309,7 @@ public static class PublishingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -78908,7 +82325,11 @@ public static class PublishingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PublishingAddResponse(v0, v1, v2);
 		}
@@ -78943,7 +82364,7 @@ public static class PublishingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PublishingCheckResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -78959,6 +82380,7 @@ public static class PublishingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -78974,13 +82396,17 @@ public static class PublishingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PublishingCheckResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record PublishingCheckResponseItemGuarantee(
+public sealed record PublishingCheckResponseItemGuarantee(
 	[property: JsonPropertyName("duration")] long Duration,
 	[property: JsonPropertyName("class")] string Class,
 	[property: JsonPropertyName("durationPhrase")] string DurationPhrase,
@@ -78992,7 +82418,7 @@ public static class PublishingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemGuarantee ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79013,6 +82439,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("duration"u8))
 			{
 				reader.Read();
@@ -79053,13 +82480,17 @@ public static class PublishingApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemGuarantee(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemLoginData(
+public sealed record PublishingCheckResponseItemLoginData(
 	[property: JsonPropertyName("raw")] string Raw,
 	[property: JsonPropertyName("encodedRaw")] string EncodedRaw,
 	[property: JsonPropertyName("login")] string Login,
@@ -79070,7 +82501,7 @@ public static class PublishingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemLoginData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79090,6 +82521,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("raw"u8))
 			{
 				reader.Read();
@@ -79125,13 +82557,17 @@ public static class PublishingApiTypes
 				reader.Read();
 				v6 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemLoginData(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemEmailLoginData(
+public sealed record PublishingCheckResponseItemEmailLoginData(
 	[property: JsonPropertyName("raw")] string Raw,
 	[property: JsonPropertyName("encodedRaw")] string EncodedRaw,
 	[property: JsonPropertyName("login")] string Login,
@@ -79142,7 +82578,7 @@ public static class PublishingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemEmailLoginData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79162,6 +82598,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("raw"u8))
 			{
 				reader.Read();
@@ -79197,13 +82634,17 @@ public static class PublishingApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemEmailLoginData(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemBuyer(
+public sealed record PublishingCheckResponseItemBuyer(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("operation_date")] long OperationDate,
 	[property: JsonPropertyName("visitorIsBuyer")] bool VisitorIsBuyer,
@@ -79215,7 +82656,7 @@ public static class PublishingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemBuyer ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79236,6 +82677,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -79276,20 +82718,24 @@ public static class PublishingApiTypes
 				reader.Read();
 				v7 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemBuyer(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemAccountLinks(
+public sealed record PublishingCheckResponseItemAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79305,6 +82751,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -79320,13 +82767,17 @@ public static class PublishingApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemTags1(
+public sealed record PublishingCheckResponseItemTags1(
 	[property: JsonPropertyName("tag_id")] long TagId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isDefault")] bool IsDefault,
@@ -79335,7 +82786,7 @@ public static class PublishingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemTags1 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79353,6 +82804,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -79378,18 +82830,22 @@ public static class PublishingApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemTags1(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemTags(
+public sealed record PublishingCheckResponseItemTags(
 	[property: JsonPropertyName("1")] PublishingCheckResponseItemTags1 _1
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79403,24 +82859,29 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : PublishingCheckResponseItemTags1.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemTags(v0);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemExtraPrices(
+public sealed record PublishingCheckResponseItemExtraPrices(
 	[property: JsonPropertyName("currency")] string Currency,
 	[property: JsonPropertyName("price")] string Price
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemExtraPrices ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79435,6 +82896,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("currency"u8))
 			{
 				reader.Read();
@@ -79445,13 +82907,17 @@ public static class PublishingApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemExtraPrices(v0, v1);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemBumpSettings(
+public sealed record PublishingCheckResponseItemBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -79459,7 +82925,7 @@ public static class PublishingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79476,6 +82942,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -79496,13 +82963,17 @@ public static class PublishingApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PublishingCheckResponseItemSeller(
+public sealed record PublishingCheckResponseItemSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
@@ -79517,7 +82988,7 @@ public static class PublishingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItemSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79541,6 +83012,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -79596,13 +83068,17 @@ public static class PublishingApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItemSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record PublishingCheckResponseItem(
+public sealed record PublishingCheckResponseItem(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -79683,7 +83159,7 @@ public static class PublishingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PublishingCheckResponseItem ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -79773,6 +83249,7 @@ public static class PublishingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -80194,7 +83671,11 @@ public static class PublishingApiTypes
 				reader.Read();
 				v76 = reader.TokenType == JsonTokenType.Null ? null! : PublishingCheckResponseItemSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PublishingCheckResponseItem(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76);
 	}
@@ -80219,7 +83700,7 @@ public static class PublishingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PublishingExternalResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -80235,6 +83716,7 @@ public static class PublishingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -80250,11 +83732,16 @@ public static class PublishingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PublishingExternalResponse(v0, v1, v2);
 		}
 	}
+
 }
 
 // ─── PurchasingApi Types ────────────────────────────────────────
@@ -80276,7 +83763,7 @@ public static class PurchasingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PurchasingFastBuyResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -80292,6 +83779,7 @@ public static class PurchasingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -80307,13 +83795,17 @@ public static class PurchasingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PurchasingFastBuyResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record PurchasingFastBuyResponseItemGuarantee(
+public sealed record PurchasingFastBuyResponseItemGuarantee(
 	[property: JsonPropertyName("duration")] long Duration,
 	[property: JsonPropertyName("class")] string Class,
 	[property: JsonPropertyName("durationPhrase")] string DurationPhrase,
@@ -80325,7 +83817,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemGuarantee ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80346,6 +83838,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("duration"u8))
 			{
 				reader.Read();
@@ -80386,13 +83879,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemGuarantee(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemLoginData(
+public sealed record PurchasingFastBuyResponseItemLoginData(
 	[property: JsonPropertyName("raw")] string Raw,
 	[property: JsonPropertyName("encodedRaw")] string EncodedRaw,
 	[property: JsonPropertyName("login")] string Login,
@@ -80403,7 +83900,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemLoginData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80423,6 +83920,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("raw"u8))
 			{
 				reader.Read();
@@ -80458,13 +83956,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v6 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemLoginData(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemEmailLoginData(
+public sealed record PurchasingFastBuyResponseItemEmailLoginData(
 	[property: JsonPropertyName("raw")] string Raw,
 	[property: JsonPropertyName("encodedRaw")] string EncodedRaw,
 	[property: JsonPropertyName("login")] string Login,
@@ -80475,7 +83977,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemEmailLoginData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80495,6 +83997,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("raw"u8))
 			{
 				reader.Read();
@@ -80530,13 +84033,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v6 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemEmailLoginData(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemBuyer(
+public sealed record PurchasingFastBuyResponseItemBuyer(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("operation_date")] long OperationDate,
 	[property: JsonPropertyName("visitorIsBuyer")] bool VisitorIsBuyer,
@@ -80548,7 +84055,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemBuyer ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80569,6 +84076,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -80609,20 +84117,24 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v7 = reader.GetInt64();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemBuyer(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemAccountLinks(
+public sealed record PurchasingFastBuyResponseItemAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80638,6 +84150,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -80653,13 +84166,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemTags1(
+public sealed record PurchasingFastBuyResponseItemTags1(
 	[property: JsonPropertyName("tag_id")] long TagId,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("isDefault")] bool IsDefault,
@@ -80668,7 +84185,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemTags1 ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80686,6 +84203,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("tag_id"u8))
 			{
 				reader.Read();
@@ -80711,18 +84229,22 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemTags1(v0, v1, v2, v3, v4);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemTags(
+public sealed record PurchasingFastBuyResponseItemTags(
 	[property: JsonPropertyName("1")] PurchasingFastBuyResponseItemTags1 _1
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemTags ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80736,24 +84258,29 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("1"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : PurchasingFastBuyResponseItemTags1.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemTags(v0);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemExtraPrices(
+public sealed record PurchasingFastBuyResponseItemExtraPrices(
 	[property: JsonPropertyName("currency")] string Currency,
 	[property: JsonPropertyName("price")] string Price
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemExtraPrices ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80768,6 +84295,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("currency"u8))
 			{
 				reader.Read();
@@ -80778,13 +84306,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemExtraPrices(v0, v1);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemBumpSettings(
+public sealed record PurchasingFastBuyResponseItemBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -80792,7 +84324,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80809,6 +84341,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -80829,13 +84362,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItemSeller(
+public sealed record PurchasingFastBuyResponseItemSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
@@ -80850,7 +84387,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItemSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -80874,6 +84411,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -80929,13 +84467,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItemSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record PurchasingFastBuyResponseItem(
+public sealed record PurchasingFastBuyResponseItem(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -81016,7 +84558,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingFastBuyResponseItem ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -81106,6 +84648,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -81527,7 +85070,11 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v76 = reader.TokenType == JsonTokenType.Null ? null! : PurchasingFastBuyResponseItemSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingFastBuyResponseItem(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76);
 	}
@@ -81541,7 +85088,7 @@ public static class PurchasingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PurchasingCheckResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -81558,6 +85105,7 @@ public static class PurchasingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -81578,13 +85126,17 @@ public static class PurchasingApiTypes
 					reader.Read();
 					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PurchasingCheckResponse(v0, v1, v2, v3);
 		}
 	}
 
-	public sealed record PurchasingCheckResponseItemGuarantee(
+public sealed record PurchasingCheckResponseItemGuarantee(
 	[property: JsonPropertyName("duration")] long Duration,
 	[property: JsonPropertyName("class")] string Class,
 	[property: JsonPropertyName("durationPhrase")] string DurationPhrase,
@@ -81595,7 +85147,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingCheckResponseItemGuarantee ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -81615,6 +85167,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("duration"u8))
 			{
 				reader.Read();
@@ -81650,20 +85203,24 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v6 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingCheckResponseItemGuarantee(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-	public sealed record PurchasingCheckResponseItemAccountLinks(
+public sealed record PurchasingCheckResponseItemAccountLinks(
 	[property: JsonPropertyName("link")] string Link,
 	[property: JsonPropertyName("text")] string Text,
 	[property: JsonPropertyName("iconClass")] string IconClass
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingCheckResponseItemAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -81679,6 +85236,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
@@ -81694,19 +85252,23 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingCheckResponseItemAccountLinks(v0, v1, v2);
 	}
 }
 
-	public sealed record PurchasingCheckResponseItemExtraPrices(
+public sealed record PurchasingCheckResponseItemExtraPrices(
 	[property: JsonPropertyName("currency")] string Currency,
 	[property: JsonPropertyName("price")] string Price
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingCheckResponseItemExtraPrices ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -81721,6 +85283,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("currency"u8))
 			{
 				reader.Read();
@@ -81731,13 +85294,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v1 = reader.GetString()!;
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingCheckResponseItemExtraPrices(v0, v1);
 	}
 }
 
-	public sealed record PurchasingCheckResponseItemBumpSettings(
+public sealed record PurchasingCheckResponseItemBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -81745,7 +85312,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingCheckResponseItemBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -81762,6 +85329,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
@@ -81782,13 +85350,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingCheckResponseItemBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-	public sealed record PurchasingCheckResponseItemSeller(
+public sealed record PurchasingCheckResponseItemSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
@@ -81803,7 +85375,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingCheckResponseItemSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -81827,6 +85399,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
@@ -81882,13 +85455,17 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v10 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingCheckResponseItemSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
-	public sealed record PurchasingCheckResponseItem(
+public sealed record PurchasingCheckResponseItem(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -81978,7 +85555,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingCheckResponseItem ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -82077,6 +85654,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
@@ -82552,7 +86130,11 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v85 = reader.TokenType == JsonTokenType.Null ? null! : PurchasingCheckResponseItemSeller.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingCheckResponseItem(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85);
 	}
@@ -82573,7 +86155,7 @@ public static class PurchasingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PurchasingConfirmResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -82589,6 +86171,7 @@ public static class PurchasingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -82604,13 +86187,17 @@ public static class PurchasingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PurchasingConfirmResponse(v0, v1, v2);
 		}
 	}
 
-	public sealed record PurchasingConfirmResponseItemLoginData(
+public sealed record PurchasingConfirmResponseItemLoginData(
 	[property: JsonPropertyName("raw")] string Raw,
 	[property: JsonPropertyName("encodedRaw")] string EncodedRaw,
 	[property: JsonPropertyName("login")] string Login,
@@ -82622,7 +86209,7 @@ public static class PurchasingApiTypes
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingConfirmResponseItemLoginData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -82643,6 +86230,7 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("raw"u8))
 			{
 				reader.Read();
@@ -82683,18 +86271,22 @@ public static class PurchasingApiTypes
 				reader.Read();
 				v7 = reader.GetBoolean();
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingConfirmResponseItemLoginData(v0, v1, v2, v3, v4, v5, v6, v7);
 	}
 }
 
-	public sealed record PurchasingConfirmResponseItem(
+public sealed record PurchasingConfirmResponseItem(
 	[property: JsonPropertyName("loginData")] PurchasingConfirmResponseItemLoginData LoginData
 )
 {
 
-	/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 	public static PurchasingConfirmResponseItem ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
@@ -82708,12 +86300,17 @@ public static class PurchasingApiTypes
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 			if (reader.ValueTextEquals("loginData"u8))
 			{
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : PurchasingConfirmResponseItemLoginData.ReadFromReader(ref reader);
 			}
-			else { reader.Read(); reader.Skip(); }
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
 		}
 		return new PurchasingConfirmResponseItem(v0);
 	}
@@ -82734,7 +86331,7 @@ public static class PurchasingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PurchasingDiscountRequestResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -82750,6 +86347,7 @@ public static class PurchasingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -82765,7 +86363,11 @@ public static class PurchasingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PurchasingDiscountRequestResponse(v0, v1, v2);
 		}
@@ -82778,7 +86380,7 @@ public static class PurchasingApiTypes
 	)
 	{
 
-		/// <summary>Deserialize from raw UTF-8 JSON bytes without JsonDocument or reflection.</summary>
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
 		public static PurchasingDiscountCancelResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
@@ -82794,6 +86396,7 @@ public static class PurchasingApiTypes
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
@@ -82809,10 +86412,15 @@ public static class PurchasingApiTypes
 					reader.Read();
 					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
-				else { reader.Read(); reader.Skip(); }
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
 			}
 			return new PurchasingDiscountCancelResponse(v0, v1, v2);
 		}
 	}
+
 }
 

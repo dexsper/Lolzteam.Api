@@ -3,7 +3,7 @@
 
 namespace Lolzteam.Api.Generated.Market;
 
-/// <summary>Interface for the MarketClient — enables mocking and DI substitution.</summary>
+/// <summary>Interface for the MarketClient.</summary>
 public interface IMarketClient : System.IDisposable
 {
 	/// <summary>AutoPayments API operations.</summary>

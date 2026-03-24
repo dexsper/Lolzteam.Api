@@ -3,7 +3,7 @@
 
 namespace Lolzteam.Api.Generated.Forum;
 
-/// <summary>Interface for the ForumClient — enables mocking and DI substitution.</summary>
+/// <summary>Interface for the ForumClient.</summary>
 public interface IForumClient : System.IDisposable
 {
 	/// <summary>Assets API operations.</summary>
