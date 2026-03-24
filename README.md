@@ -58,19 +58,18 @@ var config = new ClientConfig
 
 using var forum = new ForumClient(config);
 
-// Get a thread by ID
-var thread = await forum.Threads.GetAsync(threadId: 12345);
-Console.WriteLine(thread.Thread?.Title);
+var thread = await forum.Threads.GetAsync(12345);
+Console.WriteLine(thread.Thread.ThreadTitle);
 
-// List threads in a forum node
 var list = await forum.Threads.ListAsync(new() { ForumId = 7 });
-foreach (var t in list.Threads ?? [])
-    Console.WriteLine($"{t.ThreadId}: {t.Title}");
+foreach (var t in list.Threads)
+    Console.WriteLine($"{t.ThreadId}: {t.ThreadTitle}");
 ```
 
 Market client works the same way:
 
 ```csharp
+using Lolzteam.Api.Runtime;
 using Lolzteam.Api.Generated.Market;
 
 using var market = new MarketClient(new ClientConfig
@@ -80,10 +79,7 @@ using var market = new MarketClient(new ClientConfig
 });
 
 // Browse account listings
-var listing = await market.List.GetListingAsync(new() { CategoryId = 1, Page = 1 });
-
-// Purchase an account
-await market.Purchasing.BuyAsync(itemId: 99999, new() { Price = listing.Items?[0].Price });
+var listing = await market.List.UserAsync(new() { CategoryId = CategoryId.V10, Page = 1 });
 ```
 
 Both clients implement `IDisposable`. `using` or `using var` is recommended when lifetime is scoped; for singleton use omit the `using`.
@@ -93,6 +89,8 @@ Configuration
 `ClientConfig` is an immutable C# record. All properties except `Token` are optional.
 
 ```csharp
+using Lolzteam.Api.Runtime;
+
 var config = new ClientConfig
 {
     // Required
@@ -120,7 +118,7 @@ var config = new ClientConfig
     Timeout = TimeSpan.FromSeconds(30),
 
     // Callback invoked before each retry attempt (for logging, metrics, etc.)
-    OnRetry = ctx => Console.WriteLine($"Retry {ctx.Attempt}/{ctx.MaxRetries} — {ctx.Exception.Message}"),
+    OnRetry = ctx => Console.WriteLine($"Retry — {ctx.Exception.Message}"),
 };
 ```
 
