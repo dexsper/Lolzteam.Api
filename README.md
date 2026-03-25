@@ -1,6 +1,6 @@
 Lolzteam.Api
 ===
-[![Build](https://github.com/lolzteam/Lolzteam.Api/actions/workflows/pr.yml/badge.svg)](https://github.com/lolzteam/Lolzteam.Api/actions) ![Coverage](https://img.shields.io/badge/coverage-80%25-brightgreen) [![NuGet](https://img.shields.io/nuget/v/Lolzteam.Api.svg)](https://www.nuget.org/packages/Lolzteam.Api) [![NuGet](https://img.shields.io/nuget/v/Lolzteam.Api.DependencyInjection.svg?label=Lolzteam.Api.DependencyInjection)](https://www.nuget.org/packages/Lolzteam.Api.DependencyInjection)
+[![Build](https://github.com/dexsper/Lolzteam.Api/actions/workflows/pr.yml/badge.svg)](https://github.com/dexsper/Lolzteam.Api/actions) ![Coverage](https://img.shields.io/badge/coverage-80%25-brightgreen) [![NuGet](https://img.shields.io/nuget/v/Lolzteam.Api.svg)](https://www.nuget.org/packages/Lolzteam.Api) [![NuGet](https://img.shields.io/nuget/v/Lolzteam.Api.DependencyInjection.svg?label=Lolzteam.Api.DependencyInjection)](https://www.nuget.org/packages/Lolzteam.Api.DependencyInjection)
 
 Production-grade C# client for the [Lolzteam Forum](https://prod-api.lolz.live) and [Market](https://prod-api.lzt.market) APIs.
 

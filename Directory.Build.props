@@ -9,13 +9,21 @@
     <Deterministic>true</Deterministic>
     <Authors>LZT Contributors</Authors>
     <Copyright>Copyright © 2025 LZT Contributors</Copyright>
-    <RepositoryUrl>https://github.com/lolzteam/lolzteam-csharp</RepositoryUrl>
+    <RepositoryUrl>https://github.com/dexsper/Lolzteam.Api</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/dexsper/Lolzteam.Api</PackageProjectUrl>
+    <PackageTags>lolzteam;lzt;forum;market;api;http;client;openapi</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- Tags are v1.2.3; MinVer strips this prefix when matching (https://github.com/adamralph/minver#options) -->
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsTestProject)' != 'true' and '$(IsBenchmarkProject)' != 'true' and '$(IsCodegenProject)' != 'true'">
+    <EnablePackageValidation>true</EnablePackageValidation>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IsTestProject)' != 'true' and '$(IsBenchmarkProject)' != 'true' and '$(IsCodegenProject)' != 'true'">
