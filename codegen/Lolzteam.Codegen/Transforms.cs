@@ -5,8 +5,21 @@ namespace Lolzteam.Codegen;
 
 internal static partial class Transforms
 {
+    private const string TypeStringOrLong = "Lolzteam.Api.Runtime.StringOrLong";
+
+    private const string ContentJson = "application/json";
+    private const string ContentForm = "application/x-www-form-urlencoded";
+    private const string ContentMultipart = "multipart/form-data";
+    private const string ContentHtml = "text/html";
+
     [GeneratedRegex(@"^Array<(.+)>$")]
     private static partial Regex ArrayTypePattern();
+
+    /// <summary>Pick the best available request body media type: form → json → multipart.</summary>
+    private static JsonNode? PickRequestMediaType(JsonObject content)
+    {
+        return content[ContentForm] ?? content[ContentJson] ?? content[ContentMultipart];
+    }
 
     private static string? StringProp(JsonNode? node, string key)
     {
@@ -19,6 +32,54 @@ internal static partial class Transforms
         return value.TryGetValue<string>(out var result)
             ? result
             : null;
+    }
+
+    /// <summary>Collect the "required" array from a schema node into a set.</summary>
+    private static HashSet<string> GetRequiredSet(JsonNode? schema)
+    {
+        if (schema is not JsonObject obj || obj["required"] is not JsonArray arr)
+            return [];
+
+        return [..arr.Select(r => r!.GetValue<string>())];
+    }
+
+    /// <summary>
+    /// Extract enum values from a schema, falling back to the <c>items</c> schema
+    /// when the schema itself is an array type.
+    /// </summary>
+    private static List<EnumVariant>? EnumValuesForSchema(JsonNode? schema, JsonNode spec)
+    {
+        var values = ExtractEnumValues(schema, spec);
+        if (values is not null)
+            return values;
+
+        if (schema is not JsonObject obj)
+            return null;
+
+        return StringProp(obj, "type") != "array" ? null : ExtractEnumValues(obj["items"], spec);
+    }
+
+    /// <summary>
+    /// Navigate to the first successful response content object
+    /// (<c>responses/200</c> or <c>201</c>) and return it, or <see langword="null"/>.
+    /// </summary>
+    private static JsonObject? GetSuccessContent(JsonNode? operation, JsonNode spec)
+    {
+        if (operation is not JsonObject opObj)
+            return null;
+
+        if (opObj["responses"] is not JsonObject responses)
+            return null;
+
+        var rawSuccess = responses["200"] ?? responses["201"];
+        if (rawSuccess is null)
+            return null;
+
+        var success = DerefShallow(rawSuccess, spec);
+        if (success is not JsonObject successObj)
+            return null;
+
+        return successObj["content"] as JsonObject;
     }
 
     /// <summary>Follow a JSON pointer path like #/components/schemas/Foo.</summary>
@@ -199,23 +260,19 @@ internal static partial class Transforms
             return "Array<" + itemType + ">";
         }
 
-        if (type == "object" || sObj["properties"] is not null)
-        {
-            var props = sObj["properties"];
-            if (props is not null && props is JsonObject propsObj && propsObj.Count != 0)
-                return "{}";
+        if (type != "object" && sObj["properties"] is null)
+            return type is not null ? PrimitiveType(type) : "unknown";
 
-            var addlProps = sObj["additionalProperties"];
-            if (addlProps is null || addlProps is JsonValue)
-                return "Record<string, unknown>";
+        var props = sObj["properties"];
+        if (props is JsonObject propsObj && propsObj.Count != 0)
+            return "{}";
 
-            var valType = SchemaToTypeString(addlProps, spec);
-            return "Record<string, " + valType + ">";
-        }
+        var additionalProps = sObj["additionalProperties"];
+        if (additionalProps is null or JsonValue)
+            return "Record<string, unknown>";
 
-        if (type is not null) return PrimitiveType(type);
-
-        return "unknown";
+        var valType = SchemaToTypeString(additionalProps, spec);
+        return "Record<string, " + valType + ">";
     }
 
     private static string PrimitiveType(string t) => t switch
@@ -235,28 +292,17 @@ internal static partial class Transforms
         if (tsType.Contains(" | ") || tsType.Contains(" & "))
         {
             var parts = tsType.Split(" | ");
-            var nonNull = new List<string>();
-            foreach (var p in parts)
-            {
-                var trimmed = p.Trim();
-                if (trimmed != "null")
-                {
-                    nonNull.Add(trimmed);
-                }
-            }
+            var nonNull = parts.Select(p => p.Trim()).Where(p => p != "null").ToList();
 
             if (nonNull.Count == 1 && parts.Length > nonNull.Count)
                 return ToCSharpType(nonNull[0]);
 
-            // All string literals → string
             if (nonNull.Count > 0 && nonNull.TrueForAll(s => s.StartsWith('"') && s.EndsWith('"')))
                 return "string";
 
             var sorted = nonNull.OrderBy(s => s).ToList();
             if (sorted is ["integer", "string"])
-            {
-                return "Lolzteam.Api.Runtime.StringOrLong";
-            }
+                return TypeStringOrLong;
 
             return "JsonElement";
         }
@@ -308,13 +354,7 @@ internal static partial class Transforms
         var enumArr = sObj["enum"];
         if (enumArr is not JsonArray arr || arr.Count == 0) return null;
 
-        var typeNode = sObj["type"];
-        string? type = null;
-        if (typeNode is JsonValue tv && tv.TryGetValue<string>(out var ts))
-        {
-            type = ts;
-        }
-
+        var type = StringProp(sObj, "type");
         var values = new List<EnumVariant>();
         foreach (var el in arr)
         {
@@ -374,42 +414,23 @@ internal static partial class Transforms
             var param = DerefShallow(rawParam, spec);
             if (param is not JsonObject paramObj) continue;
 
-            var inNode = paramObj["in"];
-            string? inValue = null;
-            if (inNode is JsonValue inVal && inVal.TryGetValue<string>(out var iv))
-            {
-                inValue = iv;
-            }
-
-            if (inValue is null || inValue == "header" || inValue == "cookie") continue;
+            var inValue = StringProp(paramObj, "in");
+            if (inValue is null or "header" or "cookie")
+                continue;
 
             var nameNode = paramObj["name"];
-            if (nameNode is null) continue;
+            if (nameNode is null)
+                continue;
+
             var name = nameNode.GetValue<string>();
+            var requiredNode = paramObj["required"];
             var paramSchema = paramObj["schema"];
             var type = SchemaToTypeString(paramSchema, spec);
-            var requiredNode = paramObj["required"];
-            var required = requiredNode is JsonValue rv && rv.TryGetValue<bool>(out var rBool) && rBool;
-            var enumValues = ExtractEnumValues(paramSchema, spec);
             var description = StringProp(paramObj, "description");
-
-            // For array params, extract enum values from items schema
-            if (enumValues is null && paramSchema is JsonObject paramSchemaObj)
-            {
-                var paramTypeNode = paramSchemaObj["type"];
-                if (paramTypeNode is JsonValue ptv && ptv.TryGetValue<string>(out var paramType) &&
-                    paramType == "array")
-                {
-                    var itemsSchema = paramSchemaObj["items"];
-                    if (itemsSchema is not null)
-                    {
-                        enumValues = ExtractEnumValues(itemsSchema, spec);
-                    }
-                }
-            }
+            var enumValues = EnumValuesForSchema(paramSchema, spec);
+            var required = requiredNode is JsonValue rv && rv.TryGetValue<bool>(out var rBool) && rBool;
 
             var defaultValue = ExtractDefaultValue(paramSchema);
-
             var parsed = new ParsedParameter(
                 name,
                 type,
@@ -452,9 +473,12 @@ internal static partial class Transforms
 
         foreach (var kvp in firstProps)
         {
-            if (kvp.Value is not JsonObject propSchema) continue;
+            if (kvp.Value is not JsonObject propSchema)
+                continue;
+
             var enumArr = propSchema["enum"];
-            if (enumArr is not JsonArray ea || ea.Count != 1) continue;
+            if (enumArr is not JsonArray { Count: 1 })
+                continue;
 
             var allMatch = true;
             for (var i = 1; i < oneOfArr.Count; i++)
@@ -492,13 +516,7 @@ internal static partial class Transforms
             var title = vObj["title"]?.GetValue<string>() ?? "Unknown";
             var props = (JsonObject)vObj["properties"]!;
 
-            var requiredSet = new HashSet<string>();
-            var reqArr = vObj["required"];
-            if (reqArr is JsonArray rArr)
-            {
-                foreach (var r in rArr) requiredSet.Add(r!.GetValue<string>());
-            }
-
+            var requiredSet = GetRequiredSet(vObj);
             var discProp = (JsonObject)props[discriminatorField]!;
             var discEnum = (JsonArray)discProp["enum"]!;
             var discValue = discEnum[0]!.ToString();
@@ -539,10 +557,7 @@ internal static partial class Transforms
         var content = rbObj["content"];
         if (content is not JsonObject contentObj) return null;
 
-        JsonNode? mediaType = contentObj["application/x-www-form-urlencoded"];
-        mediaType ??= contentObj["application/json"];
-        mediaType ??= contentObj["multipart/form-data"];
-        if (mediaType is not JsonObject mtObj) return null;
+        if (PickRequestMediaType(contentObj) is not JsonObject mtObj) return null;
 
         var schema = mtObj["schema"];
         if (schema is not JsonObject schemaObj) return null;
@@ -567,40 +582,24 @@ internal static partial class Transforms
         if (content is not JsonObject contentObj) return empty;
 
         // 3-way content-type detection
-        var hasForm = contentObj["application/x-www-form-urlencoded"] is not null;
-        var hasJson = contentObj["application/json"] is not null;
-        var hasMultipart = contentObj["multipart/form-data"] is not null;
+        var hasForm = contentObj[ContentForm] is not null;
+        var hasJson = contentObj[ContentJson] is not null;
+        var hasMultipart = contentObj[ContentMultipart] is not null;
 
-        string bodyEncoding;
-        if (hasMultipart && !hasForm)
+        var bodyEncoding = (hasMultipart && !hasForm, hasJson && !hasForm) switch
         {
-            bodyEncoding = "multipart";
-        }
-        else if (hasJson && !hasForm)
-        {
-            bodyEncoding = "json";
-        }
-        else
-        {
-            bodyEncoding = "form";
-        }
+            (true, _) => "multipart",
+            (_, true) => "json",
+            _ => "form",
+        };
 
-        // Pick schema from best available content type
-        JsonNode? mediaType = contentObj["application/x-www-form-urlencoded"];
-        mediaType ??= contentObj["application/json"];
-        mediaType ??= contentObj["multipart/form-data"];
-        if (mediaType is not JsonObject mtObj) return empty;
+        if (PickRequestMediaType(contentObj) is not JsonObject mtObj) return empty;
 
         var schema = mtObj["schema"];
         if (schema is not JsonObject schemaObj) return empty;
 
         // Array body
-        var schemaTypeNode = schemaObj["type"];
-        string? schemaType = null;
-        if (schemaTypeNode is JsonValue stv && stv.TryGetValue<string>(out var st))
-        {
-            schemaType = st;
-        }
+        var schemaType = StringProp(schemaObj, "type");
 
         if (schemaType == "array" && schemaObj["properties"] is null)
         {
@@ -650,7 +649,8 @@ internal static partial class Transforms
             {
                 // Intersection: required only if present in ALL variants
                 var isRequired = variantRequiredSets.Count > 0 &&
-                                 variantRequiredSets.TrueForAll(rs => rs.Contains(kvp.Key));
+                                 variantRequiredSets.TrueForAll(rs => rs.Contains(kvp.Key)
+                                 );
 
                 // Merge schemas: if all have enums, merge enum values
                 JsonNode mergedSchema;
@@ -715,54 +715,26 @@ internal static partial class Transforms
         else
         {
             var properties = schemaObj["properties"];
-            if (properties is JsonObject propsObj)
+            if (properties is not JsonObject propsObj)
             {
-                var requiredSet = new HashSet<string>();
-                var requiredArr = schemaObj["required"];
-                if (requiredArr is JsonArray reqArr)
-                {
-                    foreach (var r in reqArr)
-                    {
-                        requiredSet.Add(r!.GetValue<string>());
-                    }
-                }
+                return new BodyExtractionResult(bodyProperties, false, null, bodyEncoding);
+            }
 
-                foreach (var kvp in propsObj)
-                {
-                    var propName = kvp.Key;
-                    var propSchema = kvp.Value!;
-                    string? format = null;
-                    if (propSchema is JsonObject psObj)
-                    {
-                        var fmtNode = psObj["format"];
-                        if (fmtNode is JsonValue fv && fv.TryGetValue<string>(out var fmt))
-                        {
-                            format = fmt;
-                        }
-                    }
+            var requiredSet = GetRequiredSet(schemaObj);
+            foreach (var kvp in propsObj)
+            {
+                var propName = kvp.Key;
+                var propSchema = kvp.Value!;
+                var format = StringProp(propSchema, "format");
+                var propType = format == "binary" ? "Blob" : SchemaToTypeString(propSchema, spec);
+                var propEnumValues = format == "binary" ? null : EnumValuesForSchema(propSchema, spec);
 
-                    var propType = format == "binary" ? "Blob" : SchemaToTypeString(propSchema, spec);
-                    var propEnumValues = format == "binary" ? null : ExtractEnumValues(propSchema, spec);
-                    // For array properties, extract enum values from items schema
-                    if (propEnumValues is null && propSchema is JsonObject propSchemaObj2)
-                    {
-                        var propTypeNode = propSchemaObj2["type"];
-                        if (propTypeNode is JsonValue ptv2 && ptv2.TryGetValue<string>(out var pt2) && pt2 == "array")
-                        {
-                            var itemsSchema = propSchemaObj2["items"];
-                            if (itemsSchema is not null)
-                            {
-                                propEnumValues = ExtractEnumValues(itemsSchema, spec);
-                            }
-                        }
-                    }
+                var propDefaultValue = format == "binary" ? null : ExtractDefaultValue(propSchema);
+                var propDescription = StringProp(propSchema, "description");
 
-                    var propDefaultValue = format == "binary" ? null : ExtractDefaultValue(propSchema);
-                    var propDescription = StringProp(propSchema, "description");
-                    bodyProperties.Add(new BodyProperty(propName, propType, requiredSet.Contains(propName),
-                        propEnumValues, propDefaultValue, propDescription)
-                    );
-                }
+                bodyProperties.Add(new BodyProperty(propName, propType, requiredSet.Contains(propName),
+                    propEnumValues, propDefaultValue, propDescription)
+                );
             }
         }
 
@@ -772,74 +744,33 @@ internal static partial class Transforms
     /// <summary>Check if the response content type is text/html (not application/json).</summary>
     private static bool IsHtmlResponse(JsonNode operation, JsonNode spec)
     {
-        var responses = (operation as JsonObject)?["responses"];
-        if (responses is not JsonObject respObj) return false;
-        var rawSuccess = respObj["200"] ?? respObj["201"];
-        if (rawSuccess is null) return false;
-        var success = DerefShallow(rawSuccess, spec);
-        if (success is not JsonObject successObj) return false;
-        var content = successObj["content"];
-        if (content is not JsonObject contentObj) return false;
-        return contentObj["text/html"] is not null && contentObj["application/json"] is null;
+        var content = GetSuccessContent(operation, spec);
+        if (content is null)
+            return false;
+
+        return content[ContentHtml] is not null && content[ContentJson] is null;
     }
 
     private static string ExtractResponseType(JsonNode operation, JsonNode spec)
     {
-        var responses = (operation as JsonObject)?["responses"];
-        if (responses is not JsonObject respObj)
+        var content = GetSuccessContent(operation, spec);
+        if (content is null)
             return "unknown";
 
-        var rawSuccess = respObj["200"] ?? respObj["201"];
-        if (rawSuccess is null)
-            return "unknown";
-
-        var success = DerefShallow(rawSuccess, spec);
-        if (success is not JsonObject successObj)
-            return "unknown";
-
-        var content = successObj["content"];
-        if (content is not JsonObject contentObj)
-            return "unknown";
-
-        var jsonContent = contentObj["application/json"];
-        if (jsonContent is not JsonObject jsonObj)
+        if (content[ContentJson] is not JsonObject jsonObj)
             return "unknown";
 
         var rawSchema = jsonObj["schema"];
-        if (rawSchema is null)
-            return "unknown";
-
-        var schema = DerefShallow(rawSchema, spec);
-        return SchemaToTypeString(schema, spec);
+        return rawSchema is null ? "unknown" : SchemaToTypeString(DerefShallow(rawSchema, spec), spec);
     }
 
     /// <summary>
-    /// Extract typed response schema info from the raw (pre-deref) operation,
-    /// preserving component schema $ref names.
+    /// Extract raw resolved response schema object for nested record generation.
     /// </summary>
-    internal static ResponseSchemaInfo? ExtractResponseSchema(JsonNode? rawOperation, JsonNode rawSpec,
-        HashSet<string> componentSchemaNames)
+    private static JsonObject? ExtractResponseSchemaRaw(JsonNode? rawOperation, JsonNode rawSpec)
     {
-        if (rawOperation is not JsonObject rawOpObj) return null;
-
-        var responses = rawOpObj["responses"];
-        if (responses is not JsonObject respObj)
-            return null;
-
-        var rawSuccess = respObj["200"] ?? respObj["201"];
-        if (rawSuccess is null)
-            return null;
-
-        var success = DerefShallow(rawSuccess, rawSpec);
-        if (success is not JsonObject successObj)
-            return null;
-
-        var content = successObj["content"];
-        if (content is not JsonObject contentObj)
-            return null;
-
-        var jsonContent = contentObj["application/json"];
-        if (jsonContent is not JsonObject jsonObj)
+        var contentObj = GetSuccessContent(rawOperation, rawSpec);
+        if (contentObj?[ContentJson] is not JsonObject jsonObj)
             return null;
 
         var rawSchema = jsonObj["schema"];
@@ -850,165 +781,10 @@ internal static partial class Transforms
         if (schema is not JsonObject schemaObj)
             return null;
 
-        var properties = schemaObj["properties"];
-        if (properties is not JsonObject propsObj || propsObj.Count == 0) return null;
-
-        var requiredSet = new HashSet<string>();
-        var requiredArr = schemaObj["required"];
-        if (requiredArr is JsonArray reqArr)
-        {
-            foreach (var r in reqArr)
-            {
-                requiredSet.Add(r!.GetValue<string>());
-            }
-        }
-
-        var result = new List<ResponseProperty>();
-        foreach (var kvp in propsObj)
-        {
-            var propName = kvp.Key;
-            var propSchema = kvp.Value;
-            if (propSchema is null) continue;
-
-            var required = requiredSet.Contains(propName);
-            var (csharpType, componentRef) = ResolvePropertyType(propSchema, rawSpec, componentSchemaNames);
-            result.Add(new ResponseProperty(propName, csharpType, required, componentRef));
-        }
-
-        return result.Count > 0 ? new ResponseSchemaInfo(result) : null;
-    }
-
-    /// <summary>
-    /// Extract raw resolved response schema object for nested record generation.
-    /// </summary>
-    private static JsonObject? ExtractResponseSchemaRaw(JsonNode? rawOperation, JsonNode rawSpec)
-    {
-        if (rawOperation is not JsonObject rawOpObj) return null;
-
-        var responses = rawOpObj["responses"];
-        if (responses is not JsonObject respObj) return null;
-
-        var rawSuccess = respObj["200"] ?? respObj["201"];
-        if (rawSuccess is null) return null;
-
-        var success = DerefShallow(rawSuccess, rawSpec);
-        if (success is not JsonObject successObj) return null;
-
-        var content = successObj["content"];
-        if (content is not JsonObject contentObj) return null;
-
-        var jsonContent = contentObj["application/json"];
-        if (jsonContent is not JsonObject jsonObj) return null;
-
-        var rawSchema = jsonObj["schema"];
-        if (rawSchema is null) return null;
-
-        var schema = DerefShallow(rawSchema, rawSpec);
-        if (schema is not JsonObject schemaObj) return null;
-
-        var properties = schemaObj["properties"];
-        if (properties is not JsonObject propsObj || propsObj.Count == 0) return null;
+        if (schemaObj["properties"] is not JsonObject { Count: > 0 })
+            return null;
 
         return schemaObj.DeepClone() as JsonObject;
-    }
-
-    /// <summary>
-    /// Resolve a property schema to a C# type, preserving component schema references.
-    /// Returns (csharpType, componentSchemaRef or null).
-    /// </summary>
-    private static (string CSharpType, string? ComponentRef) ResolvePropertyType(
-        JsonNode schema, JsonNode rawSpec, HashSet<string> componentSchemaNames)
-    {
-        // Direct $ref to component schema
-        if (schema is JsonObject refObj)
-        {
-            var refNode = refObj["$ref"];
-            if (refNode is JsonValue jv && jv.TryGetValue<string>(out var refStr))
-            {
-                if (refStr.StartsWith("#/components/schemas/"))
-                {
-                    var schemaName = refStr["#/components/schemas/".Length..];
-                    if (componentSchemaNames.Contains(schemaName))
-                    {
-                        return (schemaName, schemaName);
-                    }
-                }
-
-                // Resolve and recurse
-                var resolved = ResolveRef(refStr, rawSpec);
-                if (resolved is not null)
-                {
-                    return ResolvePropertyType(resolved, rawSpec, componentSchemaNames);
-                }
-            }
-        }
-
-        if (schema is not JsonObject sObj) return ("JsonElement", null);
-
-        // Multi-type array: type: ['string', 'integer'] → StringOrLong, etc.
-        var typeEl = sObj["type"];
-        if (typeEl is JsonArray typeArr)
-        {
-            var nonNullTypes = new List<string>();
-            foreach (var t in typeArr)
-            {
-                var ts = t!.GetValue<string>();
-                if (ts != "null") nonNullTypes.Add(ts);
-            }
-
-            var sortedTypes = nonNullTypes.OrderBy(s => s).ToList();
-            if (sortedTypes is ["integer", "string"])
-            {
-                return ("Lolzteam.Api.Runtime.StringOrLong", null);
-            }
-
-            return ("JsonElement", null);
-        }
-
-        string? type = null;
-        if (typeEl is JsonValue typeVal && typeVal.TryGetValue<string>(out var tv))
-        {
-            type = tv;
-        }
-
-        // Array — check if items ref a component schema
-        if (type == "array")
-        {
-            var items = sObj["items"];
-            if (items is null) return ("List<JsonElement>", null);
-
-            var (itemType, itemRef) = ResolvePropertyType(items, rawSpec, componentSchemaNames);
-            return ($"List<{itemType}>", itemRef);
-        }
-
-        // Object with properties → inline object (will be JsonElement for now, could be nested record)
-        if (type == "object" || sObj["properties"] is not null)
-        {
-            return ("JsonElement", null);
-        }
-
-        // Primitives
-        if (type is not null)
-        {
-            var csharp = type switch
-            {
-                "string" => "string",
-                "integer" => "long",
-                "number" => "double",
-                "boolean" => "bool",
-                _ => "JsonElement",
-            };
-            return (csharp, null);
-        }
-
-        // enum → string
-        var enumValues = sObj["enum"];
-        if (enumValues is JsonArray { Count: > 0 })
-        {
-            return ("string", null);
-        }
-
-        return ("JsonElement", null);
     }
 
     internal static MethodDefinition ExtractMethodDefinition(
@@ -1020,11 +796,7 @@ internal static partial class Transforms
         JsonNode? rawOperation,
         JsonNode rawSpec)
     {
-        string? operationDescription = "";
-
-        var operationDescNode = operation["description"];
-        if (operationDescNode is JsonValue opDescVal)
-            opDescVal.TryGetValue(out operationDescription);
+        var operationDescription = StringProp(operation, "description");
 
         var emptySpec = new JsonObject();
         var parameters = ExtractParameters(operation, emptySpec);
