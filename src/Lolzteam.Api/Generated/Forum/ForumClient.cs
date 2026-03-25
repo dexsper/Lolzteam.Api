@@ -42,9 +42,11 @@ public sealed class BatchApi
 
 	/// <summary>
 	/// Execute multiple API requests at once (Separated by comma). Maximum batch jobs is 10.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + Same as called API requests.
+	/// <list type="bullet">
+	/// <item><description>Same as called API requests.</description></item>
+	/// </list>
 	/// </summary>
 	public async Task<BatchApiTypes.BatchExecuteResponse> ExecuteAsync(List<JsonElement>? body = null, CancellationToken cancellationToken = default)
 	{
@@ -70,9 +72,11 @@ public sealed class CategoriesApi
 
 	/// <summary>
 	/// List of all categories in the system.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<CategoriesApiTypes.CategoriesListResponse> ListAsync(CategoriesApiTypes.CategoriesListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -87,9 +91,11 @@ public sealed class CategoriesApi
 
 	/// <summary>
 	/// Detail information of a category.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<CategoriesApiTypes.CategoriesGetResponse> GetAsync(long CategoryId, CancellationToken cancellationToken = default)
 	{
@@ -113,9 +119,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Get chat rooms.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxIndexResponse> IndexAsync(ChatboxApiTypes.ChatboxIndexParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -130,9 +138,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Get chat messages.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxGetMessagesResponse> GetMessagesAsync(ChatboxApiTypes.ChatboxGetMessagesParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -147,9 +157,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Create chat message.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxPostMessageResponse> PostMessageAsync(ChatboxApiTypes.ChatboxPostMessageBody body, CancellationToken cancellationToken = default)
 	{
@@ -165,9 +177,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Edit chat message.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxEditMessageResponse> EditMessageAsync(ChatboxApiTypes.ChatboxEditMessageBody body, CancellationToken cancellationToken = default)
 	{
@@ -183,9 +197,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Delete chat message.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxDeleteMessageResponse> DeleteMessageAsync(ChatboxApiTypes.ChatboxDeleteMessageBody body, CancellationToken cancellationToken = default)
 	{
@@ -201,9 +217,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Get chat Online Users.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxOnlineResponse> OnlineAsync(ChatboxApiTypes.ChatboxOnlineParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -218,9 +236,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Report chat message.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxReportReasonsResponse> ReportReasonsAsync(ChatboxApiTypes.ChatboxReportReasonsParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -235,9 +255,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Report chat message.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxReportResponse> ReportAsync(ChatboxApiTypes.ChatboxReportBody body, CancellationToken cancellationToken = default)
 	{
@@ -253,9 +275,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Get chat leaderboard.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxGetLeaderboardResponse> GetLeaderboardAsync(ChatboxApiTypes.ChatboxGetLeaderboardParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -270,9 +294,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Get list of ignored chat users.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxGetIgnoreResponse> GetIgnoreAsync(CancellationToken cancellationToken = default)
 	{
@@ -286,9 +312,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Ignore chat user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxPostIgnoreResponse> PostIgnoreAsync(ChatboxApiTypes.ChatboxPostIgnoreBody body, CancellationToken cancellationToken = default)
 	{
@@ -304,9 +332,11 @@ public sealed class ChatboxApi
 
 	/// <summary>
 	/// Unignore chat user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **chatbox**
+	/// <list type="bullet">
+	/// <item><description><b>chatbox</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxDeleteIgnoreResponse> DeleteIgnoreAsync(ChatboxApiTypes.ChatboxDeleteIgnoreBody body, CancellationToken cancellationToken = default)
 	{
@@ -332,10 +362,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// List of conversations (with pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsListResponse> ListAsync(ConversationsApiTypes.ConversationsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -350,10 +382,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Create a new conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsCreateResponse> CreateAsync(ConversationsApiTypes.ConversationsCreateBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -369,9 +403,11 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Edit conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsUpdateResponse> UpdateAsync(ConversationsApiTypes.ConversationsUpdateBody body, CancellationToken cancellationToken = default)
 	{
@@ -387,10 +423,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Leave the conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsDeleteResponse> DeleteAsync(ConversationsApiTypes.ConversationsDeleteBody body, CancellationToken cancellationToken = default)
 	{
@@ -406,9 +444,11 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Start a new conversation with a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsStartResponse> StartAsync(ConversationsApiTypes.ConversationsStartBody body, CancellationToken cancellationToken = default)
 	{
@@ -424,9 +464,11 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Send content to Saved Messages.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsSaveResponse> SaveAsync(ConversationsApiTypes.ConversationsSaveBody body, CancellationToken cancellationToken = default)
 	{
@@ -442,10 +484,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Detail information of a conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsGetResponse> GetAsync(long ConversationId, CancellationToken cancellationToken = default)
 	{
@@ -459,10 +503,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// List of messages in a conversation (with pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesListResponse> MessagesListAsync(long ConversationId, ConversationsApiTypes.ConversationsMessagesListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -477,10 +523,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Create a new conversation message.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesCreateResponse> MessagesCreateAsync(long ConversationId, ConversationsApiTypes.ConversationsMessagesCreateBody body, CancellationToken cancellationToken = default)
 	{
@@ -496,10 +544,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Search for conversations messages or recipients.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsSearchResponse> SearchAsync(ConversationsApiTypes.ConversationsSearchBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -515,10 +565,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Detail information of a message.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesGetResponse> MessagesGetAsync(long MessageId, CancellationToken cancellationToken = default)
 	{
@@ -532,10 +584,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Edit a message.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesEditResponse> MessagesEditAsync(long ConversationId, long MessageId, ConversationsApiTypes.ConversationsMessagesEditBody body, CancellationToken cancellationToken = default)
 	{
@@ -551,9 +605,11 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Deletes a message from a conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesDeleteResponse> MessagesDeleteAsync(long ConversationId, long MessageId, CancellationToken cancellationToken = default)
 	{
@@ -567,10 +623,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Invite one or more users to an existing conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **conversate**
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>conversate</b></description></item>
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsInviteResponse> InviteAsync(long ConversationId, ConversationsApiTypes.ConversationsInviteBody body, CancellationToken cancellationToken = default)
 	{
@@ -586,9 +644,11 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Kicks a user from a conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsKickResponse> KickAsync(long ConversationId, ConversationsApiTypes.ConversationsKickBody body, CancellationToken cancellationToken = default)
 	{
@@ -604,9 +664,11 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Read a specific conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsReadResponse> ReadAsync(long ConversationId, CancellationToken cancellationToken = default)
 	{
@@ -620,10 +682,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Mark all conversations as read.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsReadAllResponse> ReadAllAsync(CancellationToken cancellationToken = default)
 	{
@@ -637,10 +701,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Stick a message in a conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesStickResponse> MessagesStickAsync(long ConversationId, long MessageId, CancellationToken cancellationToken = default)
 	{
@@ -654,10 +720,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Unstick a message in a conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesUnstickResponse> MessagesUnstickAsync(long ConversationId, long MessageId, CancellationToken cancellationToken = default)
 	{
@@ -671,10 +739,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Star conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsStarResponse> StarAsync(long ConversationId, CancellationToken cancellationToken = default)
 	{
@@ -688,10 +758,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Unstar conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsUnstarResponse> UnstarAsync(long ConversationId, CancellationToken cancellationToken = default)
 	{
@@ -705,10 +777,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Enable alerts for conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsAlertsEnableResponse> AlertsEnableAsync(long ConversationId, CancellationToken cancellationToken = default)
 	{
@@ -722,10 +796,12 @@ public sealed class ConversationsApi
 
 	/// <summary>
 	/// Disable alerts for conversation.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
-	/// + **conversate**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsAlertsDisableResponse> AlertsDisableAsync(long ConversationId, CancellationToken cancellationToken = default)
 	{
@@ -788,9 +864,11 @@ public sealed class ForumsApi
 
 	/// <summary>
 	/// List of all forums in the system.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsListResponse> ListAsync(ForumsApiTypes.ForumsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -805,9 +883,11 @@ public sealed class ForumsApi
 
 	/// <summary>
 	/// Returns grouped forums.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsGroupedResponse> GroupedAsync(CancellationToken cancellationToken = default)
 	{
@@ -821,9 +901,11 @@ public sealed class ForumsApi
 
 	/// <summary>
 	/// Detail information of a forum.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsGetResponse> GetAsync(long ForumId, CancellationToken cancellationToken = default)
 	{
@@ -836,10 +918,12 @@ public sealed class ForumsApi
 	}
 
 	/// <summary>
-	/// List of a forum&apos;s followers. For privacy reason, only the current user will be included in the list (if the user follows the specified forum).
-	/// 
+	/// List of a forum's followers. For privacy reason, only the current user will be included in the list (if the user follows the specified forum).
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsFollowersResponse> FollowersAsync(long ForumId, CancellationToken cancellationToken = default)
 	{
@@ -853,9 +937,11 @@ public sealed class ForumsApi
 
 	/// <summary>
 	/// Follow a forum.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsFollowResponse> FollowAsync(long ForumId, ForumsApiTypes.ForumsFollowBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -871,9 +957,11 @@ public sealed class ForumsApi
 
 	/// <summary>
 	/// Unfollow a forum.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsUnfollowResponse> UnfollowAsync(long ForumId, CancellationToken cancellationToken = default)
 	{
@@ -887,9 +975,11 @@ public sealed class ForumsApi
 
 	/// <summary>
 	/// List of followed forums by current user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsFollowedResponse> FollowedAsync(ForumsApiTypes.ForumsFollowedParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -904,9 +994,11 @@ public sealed class ForumsApi
 
 	/// <summary>
 	/// Returns available options for the forums feed.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsGetFeedOptionsResponse> GetFeedOptionsAsync(CancellationToken cancellationToken = default)
 	{
@@ -920,9 +1012,11 @@ public sealed class ForumsApi
 
 	/// <summary>
 	/// Edit feed options.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsEditFeedOptionsResponse> EditFeedOptionsAsync(ForumsApiTypes.ForumsEditFeedOptionsBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -948,9 +1042,11 @@ public sealed class LinksApi
 
 	/// <summary>
 	/// List of all link forums.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<LinksApiTypes.LinksListResponse> ListAsync(CancellationToken cancellationToken = default)
 	{
@@ -964,9 +1060,11 @@ public sealed class LinksApi
 
 	/// <summary>
 	/// Detail information of a link forum.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<LinksApiTypes.LinksGetResponse> GetAsync(long LinkId, CancellationToken cancellationToken = default)
 	{
@@ -990,9 +1088,11 @@ public sealed class NavigationApi
 
 	/// <summary>
 	/// List of navigation elements within the system.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<NavigationApiTypes.NavigationListResponse> ListAsync(NavigationApiTypes.NavigationListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1017,9 +1117,11 @@ public sealed class NotificationsApi
 
 	/// <summary>
 	/// List of notifications (both read and unread).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<NotificationsApiTypes.NotificationsListResponse> ListAsync(NotificationsApiTypes.NotificationsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1034,9 +1136,11 @@ public sealed class NotificationsApi
 
 	/// <summary>
 	/// Get associated content of notification. The response depends on the content type.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<NotificationsApiTypes.NotificationsGetResponse> GetAsync(long NotificationId, CancellationToken cancellationToken = default)
 	{
@@ -1050,9 +1154,11 @@ public sealed class NotificationsApi
 
 	/// <summary>
 	/// Mark single notification or all existing notifications read.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<NotificationsApiTypes.NotificationsReadResponse> ReadAsync(NotificationsApiTypes.NotificationsReadBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1078,12 +1184,14 @@ public sealed class OAuthApi
 
 	/// <summary>
 	/// Obtain an access token using various grant types.
-	/// 
+	/// <para/>
 	/// Supports the following grant types:
-	/// - Client Credentials
-	/// - Authorization Code
-	/// - Refresh Token
-	/// - Password
+	/// <list type="bullet">
+	/// <item><description>Client Credentials</description></item>
+	/// <item><description>Authorization Code</description></item>
+	/// <item><description>Refresh Token</description></item>
+	/// <item><description>Password</description></item>
+	/// </list>
 	/// </summary>
 	public async Task<OAuthApiTypes.OAuthTokenResponse> TokenAsync(OAuthApiTypes.OAuthTokenBody body, CancellationToken cancellationToken = default)
 	{
@@ -1109,9 +1217,11 @@ public sealed class PagesApi
 
 	/// <summary>
 	/// List of all pages in the system.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PagesApiTypes.PagesListResponse> ListAsync(PagesApiTypes.PagesListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1126,9 +1236,11 @@ public sealed class PagesApi
 
 	/// <summary>
 	/// Detail information of a page.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PagesApiTypes.PagesGetResponse> GetAsync(long PageId, CancellationToken cancellationToken = default)
 	{
@@ -1152,9 +1264,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// List of posts in a thread (with pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsListResponse> ListAsync(PostsApiTypes.PostsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1169,9 +1283,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Create a new post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCreateResponse> CreateAsync(PostsApiTypes.PostsCreateBody body, CancellationToken cancellationToken = default)
 	{
@@ -1187,9 +1303,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Detail information of a post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsGetResponse> GetAsync(long PostId, CancellationToken cancellationToken = default)
 	{
@@ -1203,9 +1321,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Edit a post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsEditResponse> EditAsync(long PostId, PostsApiTypes.PostsEditBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1221,9 +1341,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Delete a post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsDeleteResponse> DeleteAsync(long PostId, PostsApiTypes.PostsDeleteBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1239,9 +1361,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// List of users who liked a post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsLikesResponse> LikesAsync(long PostId, PostsApiTypes.PostsLikesParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1256,9 +1380,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Like a post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsLikeResponse> LikeAsync(long PostId, CancellationToken cancellationToken = default)
 	{
@@ -1272,9 +1398,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Unlike a post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsUnlikeResponse> UnlikeAsync(long PostId, CancellationToken cancellationToken = default)
 	{
@@ -1288,9 +1416,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Get post report reasons.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsReportReasonsResponse> ReportReasonsAsync(long PostId, CancellationToken cancellationToken = default)
 	{
@@ -1304,9 +1434,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Report a post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsReportResponse> ReportAsync(long PostId, PostsApiTypes.PostsReportBody body, CancellationToken cancellationToken = default)
 	{
@@ -1322,9 +1454,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// List of post comments in a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsGetResponse> CommentsGetAsync(PostsApiTypes.PostsCommentsGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1339,9 +1473,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Create a post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsCreateResponse> CommentsCreateAsync(PostsApiTypes.PostsCommentsCreateBody body, CancellationToken cancellationToken = default)
 	{
@@ -1357,9 +1493,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Edit a post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsEditResponse> CommentsEditAsync(PostsApiTypes.PostsCommentsEditBody body, CancellationToken cancellationToken = default)
 	{
@@ -1375,9 +1513,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Delete a post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsDeleteResponse> CommentsDeleteAsync(PostsApiTypes.PostsCommentsDeleteBody body, CancellationToken cancellationToken = default)
 	{
@@ -1393,9 +1533,11 @@ public sealed class PostsApi
 
 	/// <summary>
 	/// Report a post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsReportResponse> CommentsReportAsync(PostsApiTypes.PostsCommentsReportBody body, CancellationToken cancellationToken = default)
 	{
@@ -1421,9 +1563,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// List of profile posts (with pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsListResponse> ListAsync(Lolzteam.Api.Runtime.StringOrLong UserId, ProfilePostsApiTypes.ProfilePostsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1438,9 +1582,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Detail information of a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsGetResponse> GetAsync(long ProfilePostId, CancellationToken cancellationToken = default)
 	{
@@ -1454,9 +1600,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Edit a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsEditResponse> EditAsync(long ProfilePostId, ProfilePostsApiTypes.ProfilePostsEditBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1472,9 +1620,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Delete a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsDeleteResponse> DeleteAsync(long ProfilePostId, ProfilePostsApiTypes.ProfilePostsDeleteParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1489,9 +1639,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Get Profile Post Report Reasons.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsReportReasonsResponse> ReportReasonsAsync(long ProfilePostId, CancellationToken cancellationToken = default)
 	{
@@ -1505,9 +1657,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Report a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsReportResponse> ReportAsync(long ProfilePostId, ProfilePostsApiTypes.ProfilePostsReportBody body, CancellationToken cancellationToken = default)
 	{
@@ -1523,9 +1677,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Create a profile post on a user profile.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCreateResponse> CreateAsync(ProfilePostsApiTypes.ProfilePostsCreateBody body, CancellationToken cancellationToken = default)
 	{
@@ -1541,9 +1697,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Stick a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsStickResponse> StickAsync(long ProfilePostId, CancellationToken cancellationToken = default)
 	{
@@ -1557,9 +1715,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Unstick a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsUnstickResponse> UnstickAsync(long ProfilePostId, CancellationToken cancellationToken = default)
 	{
@@ -1573,9 +1733,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// List of users who liked a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsLikesResponse> LikesAsync(long ProfilePostId, CancellationToken cancellationToken = default)
 	{
@@ -1589,9 +1751,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Like a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsLikeResponse> LikeAsync(long ProfilePostId, CancellationToken cancellationToken = default)
 	{
@@ -1605,9 +1769,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Unlike a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsUnlikeResponse> UnlikeAsync(long ProfilePostId, CancellationToken cancellationToken = default)
 	{
@@ -1621,9 +1787,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// List of comments of a profile post.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsListResponse> CommentsListAsync(ProfilePostsApiTypes.ProfilePostsCommentsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1638,9 +1806,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Create a new profile post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsCreateResponse> CommentsCreateAsync(ProfilePostsApiTypes.ProfilePostsCommentsCreateBody body, CancellationToken cancellationToken = default)
 	{
@@ -1656,9 +1826,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Edit a profile post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsEditResponse> CommentsEditAsync(ProfilePostsApiTypes.ProfilePostsCommentsEditBody body, CancellationToken cancellationToken = default)
 	{
@@ -1674,9 +1846,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Delete a profile post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsDeleteResponse> CommentsDeleteAsync(ProfilePostsApiTypes.ProfilePostsCommentsDeleteBody body, CancellationToken cancellationToken = default)
 	{
@@ -1692,9 +1866,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Detail information of a profile post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsGetResponse> CommentsGetAsync(long ProfilePostId, long CommentId, CancellationToken cancellationToken = default)
 	{
@@ -1708,9 +1884,11 @@ public sealed class ProfilePostsApi
 
 	/// <summary>
 	/// Report a profile post comment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsReportResponse> CommentsReportAsync(long CommentId, ProfilePostsApiTypes.ProfilePostsCommentsReportBody body, CancellationToken cancellationToken = default)
 	{
@@ -1736,9 +1914,11 @@ public sealed class SearchApi
 
 	/// <summary>
 	/// Search for all supported contents.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<SearchApiTypes.SearchAllResponse> AllAsync(SearchApiTypes.SearchAllBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1754,9 +1934,11 @@ public sealed class SearchApi
 
 	/// <summary>
 	/// Search for threads.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<SearchApiTypes.SearchThreadsResponse> ThreadsAsync(SearchApiTypes.SearchThreadsBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1772,9 +1954,11 @@ public sealed class SearchApi
 
 	/// <summary>
 	/// Search for posts.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<SearchApiTypes.SearchPostsResponse> PostsAsync(SearchApiTypes.SearchPostsBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1790,9 +1974,11 @@ public sealed class SearchApi
 
 	/// <summary>
 	/// Search for users.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<SearchApiTypes.SearchUsersResponse> UsersAsync(SearchApiTypes.SearchUsersBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1808,9 +1994,11 @@ public sealed class SearchApi
 
 	/// <summary>
 	/// Search for profile posts.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<SearchApiTypes.SearchProfilePostsResponse> ProfilePostsAsync(SearchApiTypes.SearchProfilePostsBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1826,9 +2014,11 @@ public sealed class SearchApi
 
 	/// <summary>
 	/// Search for tagged contents.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<SearchApiTypes.SearchTaggedResponse> TaggedAsync(SearchApiTypes.SearchTaggedBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1844,9 +2034,11 @@ public sealed class SearchApi
 
 	/// <summary>
 	/// List of search results (with pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **get**
+	/// <list type="bullet">
+	/// <item><description><b>get</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<SearchApiTypes.SearchResultsResponse> ResultsAsync(Lolzteam.Api.Runtime.StringOrLong SearchId, SearchApiTypes.SearchResultsParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1871,9 +2063,11 @@ public sealed class TagsApi
 
 	/// <summary>
 	/// List of popular tags (no pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<TagsApiTypes.TagsPopularResponse> PopularAsync(CancellationToken cancellationToken = default)
 	{
@@ -1887,9 +2081,11 @@ public sealed class TagsApi
 
 	/// <summary>
 	/// List of tags.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<TagsApiTypes.TagsListResponse> ListAsync(TagsApiTypes.TagsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1904,9 +2100,11 @@ public sealed class TagsApi
 
 	/// <summary>
 	/// List of tagged contents.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<TagsApiTypes.TagsGetResponse> GetAsync(long TagId, TagsApiTypes.TagsGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1921,9 +2119,11 @@ public sealed class TagsApi
 
 	/// <summary>
 	/// Filtered list of tags.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<TagsApiTypes.TagsFindResponse> FindAsync(TagsApiTypes.TagsFindParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1948,9 +2148,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// List of threads in a forum (with pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsListResponse> ListAsync(ThreadsApiTypes.ThreadsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1965,9 +2167,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Create a new thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsCreateResponse> CreateAsync(ThreadsApiTypes.ThreadsCreateBody body, CancellationToken cancellationToken = default)
 	{
@@ -1983,9 +2187,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Create a new contest.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsCreateContestResponse> CreateContestAsync(ThreadsApiTypes.ThreadsCreateContestBody body, CancellationToken cancellationToken = default)
 	{
@@ -2001,9 +2207,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Create a Claim.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsClaimResponse> ClaimAsync(ThreadsApiTypes.ThreadsClaimBody body, CancellationToken cancellationToken = default)
 	{
@@ -2019,9 +2227,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Detail information of a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsGetResponse> GetAsync(long ThreadId, ThreadsApiTypes.ThreadsGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2036,9 +2246,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Edit a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsEditResponse> EditAsync(long ThreadId, ThreadsApiTypes.ThreadsEditBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -2054,9 +2266,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Delete a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsDeleteResponse> DeleteAsync(long ThreadId, ThreadsApiTypes.ThreadsDeleteBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -2072,9 +2286,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Move a thread to another forum.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsMoveResponse> MoveAsync(long ThreadId, ThreadsApiTypes.ThreadsMoveBody body, CancellationToken cancellationToken = default)
 	{
@@ -2090,9 +2306,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Bump a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsBumpResponse> BumpAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2106,9 +2324,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Hide a thread from your feed.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsHideResponse> HideAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2122,9 +2342,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Bookmark a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsStarResponse> StarAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2138,9 +2360,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Unbookmark a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsUnstarResponse> UnstarAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2153,10 +2377,12 @@ public sealed class ThreadsApi
 	}
 
 	/// <summary>
-	/// List of a thread&apos;s followers. For privacy reason, only the current user will be included in the list.
-	/// 
+	/// List of a thread's followers. For privacy reason, only the current user will be included in the list.
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsFollowersResponse> FollowersAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2170,9 +2396,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Follow a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsFollowResponse> FollowAsync(long ThreadId, ThreadsApiTypes.ThreadsFollowBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -2188,9 +2416,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Unfollow a thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsUnfollowResponse> UnfollowAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2204,9 +2434,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// List of followed threads by current user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsFollowedResponse> FollowedAsync(ThreadsApiTypes.ThreadsFollowedParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2221,9 +2453,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// List of navigation elements to reach the specified thread.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsNavigationResponse> NavigationAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2237,9 +2471,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Detail information of a poll.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsPollGetResponse> PollGetAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2253,9 +2489,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Vote on a thread poll.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsPollVoteResponse> PollVoteAsync(long ThreadId, ThreadsApiTypes.ThreadsPollVoteBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -2271,9 +2509,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// List of unread threads (must be logged in).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsUnreadResponse> UnreadAsync(ThreadsApiTypes.ThreadsUnreadParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2288,9 +2528,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// List of recent threads.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsRecentResponse> RecentAsync(ThreadsApiTypes.ThreadsRecentParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2305,9 +2547,11 @@ public sealed class ThreadsApi
 
 	/// <summary>
 	/// Finishes a contest.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsFinishResponse> FinishAsync(long ThreadId, CancellationToken cancellationToken = default)
 	{
@@ -2331,9 +2575,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// List of users (with pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersListResponse> ListAsync(UsersApiTypes.UsersListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2348,9 +2594,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// List of user fields.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersFieldsResponse> FieldsAsync(CancellationToken cancellationToken = default)
 	{
@@ -2364,9 +2612,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// List of users filtered by username, email or custom fields.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersFindResponse> FindAsync(UsersApiTypes.UsersFindParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2381,10 +2631,12 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Detail information of a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
-	/// + **basic**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// <item><description><b>basic</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersGetResponse> GetAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2399,9 +2651,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Edit a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersEditResponse> EditAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersEditBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -2417,9 +2671,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Get user claims.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersClaimsResponse> ClaimsAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersClaimsParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2434,9 +2690,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Upload avatar for a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersAvatarUploadResponse> AvatarUploadAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersAvatarUploadBody body, CancellationToken cancellationToken = default)
 	{
@@ -2459,9 +2717,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Delete avatar for a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersAvatarDeleteResponse> AvatarDeleteAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
 	{
@@ -2475,9 +2735,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Crop avatar for a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersAvatarCropResponse> AvatarCropAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersAvatarCropBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -2493,9 +2755,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Upload background for a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersBackgroundUploadResponse> BackgroundUploadAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersBackgroundUploadBody body, CancellationToken cancellationToken = default)
 	{
@@ -2518,9 +2782,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Delete background for a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersBackgroundDeleteResponse> BackgroundDeleteAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
 	{
@@ -2534,9 +2800,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Crop background for a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersBackgroundCropResponse> BackgroundCropAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersBackgroundCropBody body, CancellationToken cancellationToken = default)
 	{
@@ -2551,10 +2819,12 @@ public sealed class UsersApi
 	}
 
 	/// <summary>
-	/// List of a user&apos;s followers.
-	/// 
+	/// List of a user's followers.
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersFollowersResponse> FollowersAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersFollowersParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2569,9 +2839,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Follow a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersFollowResponse> FollowAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
 	{
@@ -2585,9 +2857,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Unfollow a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersUnfollowResponse> UnfollowAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
 	{
@@ -2601,9 +2875,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// List of users whom are followed by a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersFollowingsResponse> FollowingsAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersFollowingsParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2618,9 +2894,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Get information about user likes.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersLikesResponse> LikesAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersLikesParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2635,9 +2913,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// List of ignored users of current user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersIgnoredResponse> IgnoredAsync(UsersApiTypes.UsersIgnoredParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2652,9 +2932,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Ignore a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersIgnoreResponse> IgnoreAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
 	{
@@ -2668,9 +2950,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Edit ignoring options.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersIgnoreEditResponse> IgnoreEditAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersIgnoreEditParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2685,9 +2969,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Stop ignoring a user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersUnignoreResponse> UnignoreAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
 	{
@@ -2701,9 +2987,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// List of contents created by user (with pagination).
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersContentsResponse> ContentsAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersContentsParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -2718,9 +3006,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// List of user trophies.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersTrophiesResponse> TrophiesAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
 	{
@@ -2734,9 +3024,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Get available secret answer types for user account security.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **read**
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersSecretAnswerTypesResponse> SecretAnswerTypesAsync(CancellationToken cancellationToken = default)
 	{
@@ -2750,9 +3042,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Request a reset of the secret answer for the account.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersSaResetResponse> SaResetAsync(CancellationToken cancellationToken = default)
 	{
@@ -2766,9 +3060,11 @@ public sealed class UsersApi
 
 	/// <summary>
 	/// Cancel a pending secret answer reset request for the account.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **post**
+	/// <list type="bullet">
+	/// <item><description><b>post</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<UsersApiTypes.UsersSaCancelResetResponse> SaCancelResetAsync(CancellationToken cancellationToken = default)
 	{

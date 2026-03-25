@@ -160,14 +160,8 @@ internal static partial class Emitter
 
         w.Line("/// <summary>");
 
-        var descriptionLines = definition.Description
-            .Replace("\r\n", "\n")
-            .Replace("\r", "\n")
-            .Split('\n')
-            .ToList();
-
-        foreach (var line in descriptionLines)
-            w.Line($"/// {System.Security.SecurityElement.Escape(line)}");
+        foreach (var line in DescriptionDoc.ToXmlDocLines(definition.Description))
+            w.Line(string.IsNullOrEmpty(line) ? "///" : $"/// {line}");
 
         w.Line("/// </summary>");
     }

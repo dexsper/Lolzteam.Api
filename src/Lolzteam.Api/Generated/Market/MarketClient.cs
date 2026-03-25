@@ -18,9 +18,11 @@ public sealed class AutoPaymentsApi
 
 	/// <summary>
 	/// Get auto payments list.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **payment**
+	/// <list type="bullet">
+	/// <item><description><b>payment</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<AutoPaymentsApiTypes.AutoPaymentsListResponse> ListAsync(CancellationToken cancellationToken = default)
 	{
@@ -34,9 +36,11 @@ public sealed class AutoPaymentsApi
 
 	/// <summary>
 	/// Creates auto payment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **payment**
+	/// <list type="bullet">
+	/// <item><description><b>payment</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<AutoPaymentsApiTypes.AutoPaymentsCreateResponse> CreateAsync(AutoPaymentsApiTypes.AutoPaymentsCreateBody body, CancellationToken cancellationToken = default)
 	{
@@ -52,9 +56,11 @@ public sealed class AutoPaymentsApi
 
 	/// <summary>
 	/// Deletes an auto payment.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **payment**
+	/// <list type="bullet">
+	/// <item><description><b>payment</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<AutoPaymentsApiTypes.AutoPaymentsDeleteResponse> DeleteAsync(AutoPaymentsApiTypes.AutoPaymentsDeleteBody body, CancellationToken cancellationToken = default)
 	{
@@ -81,8 +87,10 @@ public sealed class BatchApi
 	/// <summary>
 	/// Execute multiple API requests at once (separated by comma). Maximum batch jobs is 10.
 	/// Following methods are unavailable in Batch:
-	/// - GET /{item_id}/image
-	/// - /item/fast-sell
+	/// <list type="bullet">
+	/// <item><description>GET /{item_id}/image</description></item>
+	/// <item><description>/item/fast-sell</description></item>
+	/// </list>
 	/// </summary>
 	public async Task<BatchApiTypes.BatchBatchResponse> BatchAsync(List<JsonElement> body, CancellationToken cancellationToken = default)
 	{
@@ -1048,8 +1056,8 @@ public sealed class ManagingApi
 
 	/// <summary>
 	/// Gets confirmation code or link.
-	/// 
-	/// &gt; ❗️ If you receive a &quot;retry_request&quot; error, you should repeat the same request (up to a maximum of 100 times)
+	/// <para/>
+	/// &gt; ❗️ If you receive a "retry_request" error, you should repeat the same request (up to a maximum of 100 times)
 	/// </summary>
 	public async Task<ManagingApiTypes.ManagingEmailCodeResponse> EmailCodeAsync(long ItemId, CancellationToken cancellationToken = default)
 	{
@@ -1063,8 +1071,8 @@ public sealed class ManagingApi
 
 	/// <summary>
 	/// Returns account letters.
-	/// 
-	/// &gt; ❗️ If you receive a &quot;retry_request&quot; error, you should repeat the same request (up to a maximum of 100 times)
+	/// <para/>
+	/// &gt; ❗️ If you receive a "retry_request" error, you should repeat the same request (up to a maximum of 100 times)
 	/// </summary>
 	public async Task<ManagingApiTypes.ManagingGetLetters2Response> GetLetters2Async(ManagingApiTypes.ManagingGetLetters2Params? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1133,9 +1141,9 @@ public sealed class ManagingApi
 
 	/// <summary>
 	/// Confirm steam action. 
-	/// 
-	///  Don&apos;t set **id** and **nonce** parameters to get list of available confirmation requests. 
-	/// 
+	/// <para/>
+	///  Don't set <b>id</b> and <b>nonce</b> parameters to get list of available confirmation requests. 
+	/// <para/>
 	/// &gt; ❗️ This action is cancelling active account guarantee
 	/// </summary>
 	public async Task<ManagingApiTypes.ManagingSteamSDAResponse> SteamSDAAsync(long ItemId, ManagingApiTypes.ManagingSteamSDABody? body = null, CancellationToken cancellationToken = default)
@@ -1385,9 +1393,11 @@ public sealed class PaymentsApi
 
 	/// <summary>
 	/// Get invoice.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **invoice**
+	/// <list type="bullet">
+	/// <item><description><b>invoice</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PaymentsApiTypes.PaymentsInvoiceGetResponse> InvoiceGetAsync(PaymentsApiTypes.PaymentsInvoiceGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1402,9 +1412,11 @@ public sealed class PaymentsApi
 
 	/// <summary>
 	/// Create invoice.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **invoice**
+	/// <list type="bullet">
+	/// <item><description><b>invoice</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PaymentsApiTypes.PaymentsInvoiceCreateResponse> InvoiceCreateAsync(PaymentsApiTypes.PaymentsInvoiceCreateBody body, CancellationToken cancellationToken = default)
 	{
@@ -1420,9 +1432,11 @@ public sealed class PaymentsApi
 
 	/// <summary>
 	/// Get invoice list.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **invoice**
+	/// <list type="bullet">
+	/// <item><description><b>invoice</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PaymentsApiTypes.PaymentsInvoiceListResponse> InvoiceListAsync(PaymentsApiTypes.PaymentsInvoiceListParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1478,9 +1492,11 @@ public sealed class PaymentsApi
 
 	/// <summary>
 	/// Transfer money to any user.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **payment**
+	/// <list type="bullet">
+	/// <item><description><b>payment</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PaymentsApiTypes.PaymentsTransferResponse> TransferAsync(PaymentsApiTypes.PaymentsTransferBody body, CancellationToken cancellationToken = default)
 	{
@@ -1496,9 +1512,11 @@ public sealed class PaymentsApi
 
 	/// <summary>
 	/// Get transfer limits and get fee amount for transfer.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **payment**
+	/// <list type="bullet">
+	/// <item><description><b>payment</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PaymentsApiTypes.PaymentsFeeResponse> FeeAsync(PaymentsApiTypes.PaymentsFeeParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1513,9 +1531,11 @@ public sealed class PaymentsApi
 
 	/// <summary>
 	/// Cancels a transfer with a hold that was sent to your account.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **payment**
+	/// <list type="bullet">
+	/// <item><description><b>payment</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PaymentsApiTypes.PaymentsCancelResponse> CancelAsync(PaymentsApiTypes.PaymentsCancelBody body, CancellationToken cancellationToken = default)
 	{
@@ -1531,9 +1551,11 @@ public sealed class PaymentsApi
 
 	/// <summary>
 	/// Displays list of your payments.
-	/// 
+	/// <para/>
 	/// Required scopes:
-	/// + **payment**
+	/// <list type="bullet">
+	/// <item><description><b>payment</b></description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PaymentsApiTypes.PaymentsHistoryResponse> HistoryAsync(PaymentsApiTypes.PaymentsHistoryParams? @params = null, CancellationToken cancellationToken = default)
 	{
@@ -1652,20 +1674,24 @@ public sealed class ProxyApi
 
 	/// <summary>
 	/// Add single proxy or proxy list.
-	/// 
-	/// 
+	/// <para/>
+	/// <para/>
 	/// To add single proxy use this parameters:
-	/// 
-	/// 
-	/// + **proxy_ip** (required) - proxy ip or host
-	/// + **proxy_port** (required) - proxy port
-	/// + **proxy_user** (optional) - proxy username
-	/// + **proxy_pass** (optional) - proxy password
-	/// 
+	/// <para/>
+	/// <para/>
+	/// <list type="bullet">
+	/// <item><description><b>proxy_ip</b> (required) - proxy ip or host</description></item>
+	/// <item><description><b>proxy_port</b> (required) - proxy port</description></item>
+	/// <item><description><b>proxy_user</b> (optional) - proxy username</description></item>
+	/// <item><description><b>proxy_pass</b> (optional) - proxy password</description></item>
+	/// </list>
+	/// <para/>
 	/// To add proxy list use this parameters:
-	/// 
-	/// 
-	/// + **proxy_row** (required) - proxy list in String format ip:port:user:pass. Each proxy must be start with new line (use \n separator)
+	/// <para/>
+	/// <para/>
+	/// <list type="bullet">
+	/// <item><description><b>proxy_row</b> (required) - proxy list in String format ip:port:user:pass. Each proxy must be start with new line (use \n separator)</description></item>
+	/// </list>
 	/// </summary>
 	public async Task<ProxyApiTypes.ProxyAddResponse> AddAsync(ProxyApiTypes.ProxyAddBody body, CancellationToken cancellationToken = default)
 	{
@@ -1706,8 +1732,8 @@ public sealed class PublishingApi
 
 	/// <summary>
 	/// Adds and checks the account for validity.
-	/// 
-	/// &gt; ❗️ If you receive a &quot;retry_request&quot; error, you should repeat the same request (up to a maximum of 100 times).
+	/// <para/>
+	/// &gt; ❗️ If you receive a "retry_request" error, you should repeat the same request (up to a maximum of 100 times).
 	/// </summary>
 	public async Task<PublishingApiTypes.PublishingFastSellResponse> FastSellAsync(PublishingApiTypes.PublishingFastSellBody body, CancellationToken cancellationToken = default)
 	{
@@ -1723,11 +1749,13 @@ public sealed class PublishingApi
 
 	/// <summary>
 	/// Adds account on the market.
-	/// 
+	/// <para/>
 	/// Required email login data categories:
-	/// + 9 - Fortnite
-	/// + 12 - Epic games
-	/// + 18 - Escape from Tarkov
+	/// <list type="bullet">
+	/// <item><description>9 - Fortnite</description></item>
+	/// <item><description>12 - Epic games</description></item>
+	/// <item><description>18 - Escape from Tarkov</description></item>
+	/// </list>
 	/// </summary>
 	public async Task<PublishingApiTypes.PublishingAddResponse> AddAsync(PublishingApiTypes.PublishingAddBody body, CancellationToken cancellationToken = default)
 	{
@@ -1743,8 +1771,8 @@ public sealed class PublishingApi
 
 	/// <summary>
 	/// Check and put up to sale not published account OR update account information existing account.
-	/// 
-	/// &gt; ❗️ If you receive a &quot;retry_request&quot; error, you should repeat the same request (up to a maximum of 100 times).
+	/// <para/>
+	/// &gt; ❗️ If you receive a "retry_request" error, you should repeat the same request (up to a maximum of 100 times).
 	/// </summary>
 	public async Task<PublishingApiTypes.PublishingCheckResponse> CheckAsync(long ItemId, PublishingApiTypes.PublishingCheckBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1760,8 +1788,8 @@ public sealed class PublishingApi
 
 	/// <summary>
 	/// Check and add an external account to your item.
-	/// 
-	/// &gt; ❗️ Please note that if you&apos;re linking a Social Club account to Steam, it will update the last activity on your account (This is a limitation of Steam). If Social Club Games does not have a linked account, do not enter any data.
+	/// <para/>
+	/// &gt; ❗️ Please note that if you're linking a Social Club account to Steam, it will update the last activity on your account (This is a limitation of Steam). If Social Club Games does not have a linked account, do not enter any data.
 	/// </summary>
 	public async Task<PublishingApiTypes.PublishingExternalResponse> ExternalAsync(long ItemId, PublishingApiTypes.PublishingExternalBody body, CancellationToken cancellationToken = default)
 	{
@@ -1787,8 +1815,8 @@ public sealed class PurchasingApi
 
 	/// <summary>
 	/// Check and buy account.
-	/// 
-	/// &gt; ❗️ If you receive a &quot;retry_request&quot; error, you should repeat the same request (up to a maximum of 100 times).
+	/// <para/>
+	/// &gt; ❗️ If you receive a "retry_request" error, you should repeat the same request (up to a maximum of 100 times).
 	/// </summary>
 	public async Task<PurchasingApiTypes.PurchasingFastBuyResponse> FastBuyAsync(long ItemId, PurchasingApiTypes.PurchasingFastBuyBody? body = null, CancellationToken cancellationToken = default)
 	{
@@ -1804,8 +1832,8 @@ public sealed class PurchasingApi
 
 	/// <summary>
 	/// Checking account for validity.
-	/// 
-	/// &gt; ❗️ If you receive a &quot;retry_request&quot; error, you should repeat the same request (up to a maximum of 100 times).
+	/// <para/>
+	/// &gt; ❗️ If you receive a "retry_request" error, you should repeat the same request (up to a maximum of 100 times).
 	/// </summary>
 	public async Task<PurchasingApiTypes.PurchasingCheckResponse> CheckAsync(long ItemId, CancellationToken cancellationToken = default)
 	{
@@ -1819,8 +1847,8 @@ public sealed class PurchasingApi
 
 	/// <summary>
 	/// Confirm buy.
-	/// 
-	/// &gt; ❗️ This method doesn&apos;t check account for validity. If you want to confirm validity before buying, you should use [FastBuy](https://lzt-market.readme.io/reference/purchasingfastbuy) method
+	/// <para/>
+	/// &gt; ❗️ This method doesn't check account for validity. If you want to confirm validity before buying, you should use <see href="https://lzt-market.readme.io/reference/purchasingfastbuy">FastBuy</see> method
 	/// </summary>
 	public async Task<PurchasingApiTypes.PurchasingConfirmResponse> ConfirmAsync(long ItemId, PurchasingApiTypes.PurchasingConfirmBody? body = null, CancellationToken cancellationToken = default)
 	{
