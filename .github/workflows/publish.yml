@@ -16,7 +16,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # MinVer needs full tag history
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -76,9 +77,9 @@ jobs:
             cp "${src_di}/Lolzteam.Api.DependencyInjection.xml" "${staging}/" 2>/dev/null || true
             cp "${src_di}/Lolzteam.Api.DependencyInjection.pdb" "${staging}/" 2>/dev/null || true
 
-            zip_name="dist/lolzteam-api-${VERSION}-${tfm}.zip"
-            (cd "${staging}" && zip -r "../../../../${zip_name}" .)
-            echo "Created ${zip_name}"
+            archive="lolzteam-api-${VERSION}-${tfm}.zip"
+            (cd "${staging}" && zip -r "../../${archive}" .)
+            echo "Created dist/${archive}"
           done
 
       # ─── GitHub Release ───────────────────────────────────────────────────
