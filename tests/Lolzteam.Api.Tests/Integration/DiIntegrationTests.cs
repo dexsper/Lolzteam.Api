@@ -59,8 +59,48 @@ public sealed class DiIntegrationTests
     [Fact]
     public void AddLolzteamClient_throws_when_config_is_null()
     {
-        var act = () => new ServiceCollection().AddLolzteamClient<MarkerClient>(null!);
+        var act = () => new ServiceCollection().AddLolzteamClient<MarkerClient>((ClientConfig)null!);
         act.Should().Throw<ArgumentNullException>();
+    }
+
+    [Fact]
+    public void AddLolzteamClient_throws_when_configure_is_null()
+    {
+        var act = () => new ServiceCollection().AddLolzteamClient<MarkerClient>((Action<ClientConfigBuilder>)null!);
+        act.Should().Throw<ArgumentNullException>();
+    }
+
+    [Fact]
+    public void AddLolzteamClient_fluent_throws_when_token_not_set()
+    {
+        var act = () => new ServiceCollection().AddLolzteamClient<MarkerClient>(_ => { });
+        act.Should().Throw<InvalidOperationException>().WithMessage("*Token*");
+    }
+
+    [Fact]
+    public async Task AddLolzteamClient_fluent_resolves_and_executes_request()
+    {
+        var services = new ServiceCollection();
+
+        services.AddLolzteamClient<MarkerClient>(b => b
+            .WithToken("di-test-token")
+            .WithBaseUrl("http://di.test")
+        );
+
+        services.AddHttpClient(nameof(MarkerClient)).ConfigurePrimaryHttpMessageHandler(() =>
+            new StubDelegatingHandler(_ => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("{\"fluent\":true}", Encoding.UTF8, "application/json"),
+            }))
+        );
+
+        await using var sp = services.BuildServiceProvider();
+        using var scope = sp.CreateScope();
+
+        var client = scope.ServiceProvider.GetRequiredService<LolzteamHttpClient>();
+        var result = await client.RequestAsync(new RequestOptions { Method = "GET", Path = "/di-test" });
+
+        result.GetProperty("fluent").GetBoolean().Should().BeTrue();
     }
 }
 

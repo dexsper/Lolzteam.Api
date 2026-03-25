@@ -1,4 +1,7 @@
+using System.Runtime.CompilerServices;
 using Lolzteam.Api.Runtime;
+
+[assembly: InternalsVisibleTo("Lolzteam.Api.Tests")]
 
 namespace Lolzteam.Api.DependencyInjection;
 
