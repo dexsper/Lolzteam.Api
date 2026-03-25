@@ -43,22 +43,33 @@ foreach (var config in apis)
     var rawSpec = JsonNode.Parse(File.ReadAllText(config.SchemaPath))!;
     var result = Parser.ParseSpec(rawSpec);
 
+    var typesDir = Path.Combine(config.OutputDir, "Types");
     Directory.CreateDirectory(config.OutputDir);
+    Directory.CreateDirectory(typesDir);
+
     foreach (var file in Directory.GetFiles(config.OutputDir, "*.cs"))
     {
         File.Delete(file);
         Console.WriteLine($"  Deleted {Path.GetFileName(file)}");
     }
+    foreach (var file in Directory.GetFiles(typesDir, "*.cs"))
+    {
+        File.Delete(file);
+        Console.WriteLine($"  Deleted Types/{Path.GetFileName(file)}");
+    }
 
     var (enumDefs, paramToEnumType) = EnumCollector.Collect(result.Groups);
     Console.WriteLine($"  Enums: {enumDefs.Count} types");
 
-    var typesContent = Emitter.EmitCSharpTypesFile(
+    var typeFiles = Emitter.EmitCSharpTypeFiles(
         result.Groups, config.SubPackage, result.ComponentSchemas, rawSpec, enumDefs, paramToEnumType
     );
 
-    File.WriteAllText(Path.Combine(config.OutputDir, "Types.cs"), typesContent);
-    Console.WriteLine("  Types.cs");
+    foreach (var (fileName, content) in typeFiles)
+    {
+        File.WriteAllText(Path.Combine(typesDir, fileName), content);
+        Console.WriteLine($"  Types/{fileName}");
+    }
 
     var (clientContent, interfaceContent) = Emitter.EmitCSharpClientFile(
         result.Groups, config.ClientName, config.InterfaceName,

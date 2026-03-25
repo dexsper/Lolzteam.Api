@@ -6,56 +6,38 @@ namespace Lolzteam.Codegen;
 internal static partial class Emitter
 {
 	/// <summary>
-	/// Generate the <c>Types.cs</c> file: enums, component-schema records,
-	/// and per-method query-param / body / response records.
+	/// Generate per-file content for the <c>Types/</c> directory:
+	/// <c>Enums.cs</c>, <c>Schemas.cs</c>, and one <c>{ClassName}Types.cs</c> per group.
+	/// Returns a dictionary of <c>filename → content</c>.
 	/// </summary>
-	internal static string EmitCSharpTypesFile(
+	internal static Dictionary<string, string> EmitCSharpTypeFiles(
 		List<ParsedGroup> groups, string subPackage,
 		SortedDictionary<string, JsonObject> componentSchemas, JsonNode rawSpec,
 		List<EnumDefinition> enumDefs, Dictionary<string, string> paramToEnumType)
 	{
-		var w = new CodeWriter();
 		var ns = "Lolzteam.Api.Generated." + Naming.CapitalizeFirst(subPackage);
 		var componentSchemaNames = new HashSet<string>(componentSchemas.Keys);
-
-		w.Line("// Auto-generated. Do not edit manually.")
-		 .Line("#nullable enable")
-		 .Line("#pragma warning disable CS1591, CA1707")
-		 .Line()
-		 .Line("using System.Collections.Generic;")
-		 .Line("using System.Text.Json;")
-		 .Line("using System.Text.Json.Serialization;")
-		 .Line()
-		 .Line($"namespace {ns};")
-		 .Line();
+		var files = new Dictionary<string, string>();
 
 		if (enumDefs.Count > 0)
 		{
-			w.Line("// ─── Enums ────────────────────────────────────────────────────").Line();
-			foreach (var def in enumDefs)
-			{
-				EmitEnumDefinition(w, def);
-				w.Line();
-			}
+			var w = MakeTypeFileHeader(ns);
+			foreach (var def in enumDefs) { EmitEnumDefinition(w, def); w.Line(); }
+			files["Enums.cs"] = w.ToString();
 		}
 
 		if (componentSchemas.Count > 0)
 		{
-			w.Line("// ─── Component Schemas ────────────────────────────────────────").Line();
-			foreach (var kvp in componentSchemas)
-			{
-				EmitComponentSchemaRecord(w, kvp.Key, kvp.Value, rawSpec, componentSchemaNames);
-				w.Line();
-			}
+			var w = MakeTypeFileHeader(ns);
+			foreach (var kvp in componentSchemas) { EmitComponentSchemaRecord(w, kvp.Key, kvp.Value, rawSpec, componentSchemaNames); w.Line(); }
+			files["Schemas.cs"] = w.ToString();
 		}
 
 		foreach (var group in groups)
 		{
 			var className = Naming.GroupToClassName(group.GroupName);
-
-			w.Line($"// ─── {className} Types ────────────────────────────────────────")
-			 .Line()
-			 .Open($"public static class {className}Types");
+			var w = MakeTypeFileHeader(ns);
+			w.Open($"public static class {className}Types");
 
 			foreach (var method in group.Methods)
 			{
@@ -64,11 +46,27 @@ internal static partial class Emitter
 				EmitResponseRecord(w, group.GroupName, method, rawSpec, componentSchemaNames);
 			}
 
-			w.Close().Line();
+			w.Close();
+			files[$"{className}Types.cs"] = w.ToString();
 		}
 
-		return w.ToString();
+		return files;
 	}
+
+    private static CodeWriter MakeTypeFileHeader(string ns)
+    {
+		return new CodeWriter()
+			.Line("// Auto-generated. Do not edit manually.")
+			.Line("#nullable enable")
+			.Line("#pragma warning disable CS1591, CA1707")
+			.Line()
+			.Line("using System.Collections.Generic;")
+			.Line("using System.Text.Json;")
+			.Line("using System.Text.Json.Serialization;")
+			.Line()
+			.Line($"namespace {ns};")
+			.Line();
+    }
 
 	/// <summary>
 	/// Generate the <c>Client.cs</c> and <c>Interface.cs</c> files.
