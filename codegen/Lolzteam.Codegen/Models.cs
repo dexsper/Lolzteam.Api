@@ -36,24 +36,30 @@ internal sealed record ParsedParameter(
     string Type,
     bool Required,
     List<EnumVariant>? EnumValues = null,
-    string? DefaultValue = null);
+    string? DefaultValue = null,
+    string? Description = null
+);
 
 internal sealed record OperationParameters(
     List<ParsedParameter> PathParams,
-    List<ParsedParameter> QueryParams);
+    List<ParsedParameter> QueryParams
+);
 
 internal sealed record BodyProperty(
     string Name,
     string Type,
     bool Required,
     List<EnumVariant>? EnumValues = null,
-    string? DefaultValue = null);
+    string? DefaultValue = null,
+    string? Description = null
+);
 
 internal sealed record OneOfVariant(
     string Title,
     string DiscriminatorField,
     string DiscriminatorValue,
-    List<BodyProperty> Properties);
+    List<BodyProperty> Properties
+);
 
 internal sealed record BodyExtractionResult(
     List<BodyProperty> Properties,

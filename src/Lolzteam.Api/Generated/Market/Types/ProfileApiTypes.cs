@@ -12,8 +12,14 @@ public static class ProfileApiTypes
 {
 	public sealed record ProfileClaimsParams
 	{
+		/// <summary>
+		/// Filter claims by their type.
+		/// </summary>
 		[JsonPropertyName("type")]
 		public ProfileType? Type { get; init; }
+		/// <summary>
+		/// Filter claims by their state.
+		/// </summary>
 		[JsonPropertyName("claim_state")]
 		public ClaimState? ClaimState { get; init; }
 	}
@@ -703,6 +709,9 @@ public sealed record ProfileClaimsResponseStats(
 
 	public sealed record ProfileGetParams
 	{
+		/// <summary>
+		/// List of hidden fields to include.
+		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<FieldsInclude>? FieldsInclude { get; init; }
 	}
@@ -755,24 +764,54 @@ public sealed record ProfileClaimsResponseStats(
 		public JsonElement? User { get; init; }
 		[JsonPropertyName("option")]
 		public JsonElement? Option { get; init; }
+		/// <summary>
+		/// Usernames who can transfer market accounts to you. Separate values with a comma.
+		/// </summary>
 		[JsonPropertyName("allow_accept_accounts")]
 		public List<string>? AllowAcceptAccounts { get; init; }
+		/// <summary>
+		/// Telegram api id.
+		/// </summary>
 		[JsonPropertyName("telegram_api_id")]
 		public string? TelegramApiId { get; init; }
+		/// <summary>
+		/// Telegram api hash.
+		/// </summary>
 		[JsonPropertyName("telegram_api_hash")]
 		public string? TelegramApiHash { get; init; }
+		/// <summary>
+		/// Telegram device model.
+		/// </summary>
 		[JsonPropertyName("telegram_device_model")]
 		public string? TelegramDeviceModel { get; init; }
+		/// <summary>
+		/// Telegram system version.
+		/// </summary>
 		[JsonPropertyName("telegram_system_version")]
 		public string? TelegramSystemVersion { get; init; }
+		/// <summary>
+		/// Telegram app version.
+		/// </summary>
 		[JsonPropertyName("telegram_app_version")]
 		public string? TelegramAppVersion { get; init; }
+		/// <summary>
+		/// Telegram lang pack.
+		/// </summary>
 		[JsonPropertyName("telegram_lang_pack")]
 		public string? TelegramLangPack { get; init; }
+		/// <summary>
+		/// Telegram lang code.
+		/// </summary>
 		[JsonPropertyName("telegram_lang_code")]
 		public string? TelegramLangCode { get; init; }
+		/// <summary>
+		/// Telegram system lang code.
+		/// </summary>
 		[JsonPropertyName("telegram_system_lang_code")]
 		public string? TelegramSystemLangCode { get; init; }
+		/// <summary>
+		/// Clear Telegram data.
+		/// </summary>
 		[JsonPropertyName("clear_telegram_client")]
 		public bool? ClearTelegramClient { get; init; }
 	}

@@ -12,40 +12,93 @@ public static class PublishingApiTypes
 {
 	public sealed record PublishingFastSellBody
 	{
+		/// <summary>
+		/// Title of account. If <b>title</b> specified and <b>title_en</b> is empty, <b>title_en</b> will be automatically translated to English language.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// English title of account. If <b>title_en</b> specified and <b>title</b> is empty, <b>title</b> will be automatically translated to Russian language.
+		/// </summary>
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
+		/// <summary>
+		/// Current price of account in your currency.
+		/// </summary>
 		[JsonPropertyName("price")]
 		public required double? Price { get; init; }
+		/// <summary>
+		/// Accounts category.
+		/// </summary>
 		[JsonPropertyName("category_id")]
 		public required CategoryId CategoryId { get; init; }
 		[JsonPropertyName("currency")]
 		public required Currency Currency { get; init; }
+		/// <summary>
+		/// Account origin. Where did you get it from.
+		/// </summary>
 		[JsonPropertyName("item_origin")]
 		public required PublishingItemOrigin ItemOrigin { get; init; }
+		/// <summary>
+		/// Guarantee type.
+		/// </summary>
 		[JsonPropertyName("extended_guarantee")]
 		public ExtendedGuarantee? ExtendedGuarantee { get; init; }
+		/// <summary>
+		/// Allow users to ask discount for this account.
+		/// </summary>
 		[JsonPropertyName("allow_ask_discount")]
 		public bool? AllowAskDiscount { get; init; }
+		/// <summary>
+		/// Proxy id that will be used to check account.
+		/// </summary>
 		[JsonPropertyName("proxy_id")]
 		public long? ProxyId { get; init; }
+		/// <summary>
+		/// Set this parameter to <b>true</b> so that the Market will take a random proxy from its pool for each of your requests.
+		/// Otherwise, if this parameter is set to <b>false</b> or not set, the Market will take a specific proxy from its pool, which is predefined for each item.
+		/// &gt; This parameter only works with proxies from the Market pool. If you want to use your own proxies, use the proxy_id or extra[proxy] parameter.
+		/// </summary>
 		[JsonPropertyName("random_proxy")]
 		public bool? RandomProxy { get; init; }
+		/// <summary>
+		/// Account public description.
+		/// </summary>
 		[JsonPropertyName("description")]
 		public string? Description { get; init; }
+		/// <summary>
+		/// Account private information (visible only for buyer).
+		/// </summary>
 		[JsonPropertyName("information")]
 		public string? Information { get; init; }
+		/// <summary>
+		/// Account login (or email).
+		/// </summary>
 		[JsonPropertyName("login")]
 		public string? Login { get; init; }
+		/// <summary>
+		/// Account password.
+		/// </summary>
 		[JsonPropertyName("password")]
 		public string? Password { get; init; }
+		/// <summary>
+		/// Account login data (login:password format).
+		/// </summary>
 		[JsonPropertyName("login_password")]
 		public string? LoginPassword { get; init; }
+		/// <summary>
+		/// Required if a <b>category</b> is one of list of Required email login data categories.
+		/// </summary>
 		[JsonPropertyName("has_email_login_data")]
 		public bool? HasEmailLoginData { get; init; }
+		/// <summary>
+		/// Required if a <b>category</b> is one of list of Required email login data categories. Email login data (email:password format).
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public string? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type")]
 		public EmailType? EmailType { get; init; }
 		[JsonPropertyName("extra")]
@@ -103,38 +156,88 @@ public static class PublishingApiTypes
 
 	public sealed record PublishingAddBody
 	{
+		/// <summary>
+		/// Title of account. If <b>title</b> specified and <b>title_en</b> is empty, <b>title_en</b> will be automatically translated to English language.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// English title of account. If <b>title_en</b> specified and <b>title</b> is empty, <b>title</b> will be automatically translated to Russian language.
+		/// </summary>
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
+		/// <summary>
+		/// Current price of account in your currency.
+		/// </summary>
 		[JsonPropertyName("price")]
 		public required double? Price { get; init; }
+		/// <summary>
+		/// Accounts category.
+		/// </summary>
 		[JsonPropertyName("category_id")]
 		public required CategoryId CategoryId { get; init; }
 		[JsonPropertyName("currency")]
 		public required Currency Currency { get; init; }
+		/// <summary>
+		/// Account origin. Where did you get it from.
+		/// </summary>
 		[JsonPropertyName("item_origin")]
 		public required PublishingItemOrigin ItemOrigin { get; init; }
+		/// <summary>
+		/// Guarantee type.
+		/// </summary>
 		[JsonPropertyName("extended_guarantee")]
 		public ExtendedGuarantee? ExtendedGuarantee { get; init; }
+		/// <summary>
+		/// Account public description.
+		/// </summary>
 		[JsonPropertyName("description")]
 		public string? Description { get; init; }
+		/// <summary>
+		/// Account private information (visible only for buyer).
+		/// </summary>
 		[JsonPropertyName("information")]
 		public string? Information { get; init; }
+		/// <summary>
+		/// Get temporary email if not required by category. Available for Supercell, Fortnite and Epic Games categories.
+		/// </summary>
 		[JsonPropertyName("forceTempEmail")]
 		public bool? ForceTempEmail { get; init; }
+		/// <summary>
+		/// Put item id, if you are trying to resell item. This is useful to pass temporary email from reselling item to new item. You will get same temporary email from reselling account.
+		/// </summary>
 		[JsonPropertyName("resell_item_id")]
 		public long? ResellItemId { get; init; }
+		/// <summary>
+		/// Required if a <b>category</b> is one of list of Required email login data categories.
+		/// </summary>
 		[JsonPropertyName("has_email_login_data")]
 		public bool? HasEmailLoginData { get; init; }
+		/// <summary>
+		/// Required if a <b>category</b> is one of list of Required email login data categories. Email login data (email:password format).
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public string? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type")]
 		public EmailType? EmailType { get; init; }
+		/// <summary>
+		/// Allow users to ask discount for this account.
+		/// </summary>
 		[JsonPropertyName("allow_ask_discount")]
 		public bool? AllowAskDiscount { get; init; }
+		/// <summary>
+		/// Proxy id that will be used to check account.
+		/// </summary>
 		[JsonPropertyName("proxy_id")]
 		public long? ProxyId { get; init; }
+		/// <summary>
+		/// Set this parameter to <b>true</b> so that the Market will take a random proxy from its pool for each of your requests.
+		/// Otherwise, if this parameter is set to <b>false</b> or not set, the Market will take a specific proxy from its pool, which is predefined for each item.
+		/// &gt; This parameter only works with proxies from the Market pool. If you want to use your own proxies, use the proxy_id or extra[proxy] parameter.
+		/// </summary>
 		[JsonPropertyName("random_proxy")]
 		public bool? RandomProxy { get; init; }
 	}
@@ -190,20 +293,46 @@ public static class PublishingApiTypes
 
 	public sealed record PublishingCheckBody
 	{
+		/// <summary>
+		/// Put if you are trying to resell an account.
+		/// </summary>
 		[JsonPropertyName("resell_item_id")]
 		public long? ResellItemId { get; init; }
+		/// <summary>
+		/// Set this parameter to <b>true</b> so that the Market will take a random proxy from its pool for each of your requests.
+		/// Otherwise, if this parameter is set to <b>false</b> or not set, the Market will take a specific proxy from its pool, which is predefined for each item.
+		/// &gt; This parameter only works with proxies from the Market pool. If you want to use your own proxies, use the proxy_id or extra[proxy] parameter.
+		/// </summary>
 		[JsonPropertyName("random_proxy")]
 		public bool? RandomProxy { get; init; }
+		/// <summary>
+		/// Account login (or email).
+		/// </summary>
 		[JsonPropertyName("login")]
 		public string? Login { get; init; }
+		/// <summary>
+		/// Account password.
+		/// </summary>
 		[JsonPropertyName("password")]
 		public string? Password { get; init; }
+		/// <summary>
+		/// Account login data (login:password format).
+		/// </summary>
 		[JsonPropertyName("login_password")]
 		public string? LoginPassword { get; init; }
+		/// <summary>
+		/// Required if a <b>category</b> is one of list of Required email login data categories.
+		/// </summary>
 		[JsonPropertyName("has_email_login_data")]
 		public bool? HasEmailLoginData { get; init; }
+		/// <summary>
+		/// Required if a <b>category</b> is one of list of Required email login data categories. Email login data (email:password format).
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public string? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type")]
 		public EmailType? EmailType { get; init; }
 		[JsonPropertyName("extra")]
@@ -1536,12 +1665,24 @@ public sealed record PublishingCheckResponseItem(
 
 	public sealed record PublishingExternalBody
 	{
+		/// <summary>
+		/// External account type.
+		/// </summary>
 		[JsonPropertyName("type")]
 		public required PublishingType Type { get; init; }
+		/// <summary>
+		/// Account login data (login:password format).
+		/// </summary>
 		[JsonPropertyName("login")]
 		public string? Login { get; init; }
+		/// <summary>
+		/// Email login data (email:password format).
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public string? EmailLoginData { get; init; }
+		/// <summary>
+		/// Cookies.
+		/// </summary>
 		[JsonPropertyName("cookies")]
 		public string? Cookies { get; init; }
 	}

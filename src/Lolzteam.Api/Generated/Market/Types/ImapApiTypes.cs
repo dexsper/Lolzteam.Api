@@ -12,12 +12,24 @@ public static class ImapApiTypes
 {
 	public sealed record ImapCreateBody
 	{
+		/// <summary>
+		/// Domain to delete IMAP configuration for.
+		/// </summary>
 		[JsonPropertyName("domain")]
 		public required string Domain { get; init; }
+		/// <summary>
+		/// IMAP server address.
+		/// </summary>
 		[JsonPropertyName("imap_server")]
 		public required string ImapServer { get; init; }
+		/// <summary>
+		/// IMAP server port.
+		/// </summary>
 		[JsonPropertyName("port")]
 		public required long? Port { get; init; }
+		/// <summary>
+		/// Whether to use a secure connection.
+		/// </summary>
 		[JsonPropertyName("secure")]
 		public required bool? Secure { get; init; }
 	}
@@ -73,6 +85,9 @@ public static class ImapApiTypes
 
 	public sealed record ImapDeleteBody
 	{
+		/// <summary>
+		/// Domain to delete IMAP configuration for.
+		/// </summary>
 		[JsonPropertyName("domain")]
 		public required string Domain { get; init; }
 	}

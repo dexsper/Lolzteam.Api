@@ -12,10 +12,19 @@ public static class ConversationsApiTypes
 {
 	public sealed record ConversationsListParams
 	{
+		/// <summary>
+		/// Filter conversations by folder.
+		/// </summary>
 		[JsonPropertyName("folder")]
 		public Folder? Folder { get; init; }
+		/// <summary>
+		/// Page number of conversations.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of conversations in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -201,23 +210,51 @@ public sealed record ConversationsListResponseLinks(
 
 	public sealed record ConversationsCreateBody
 	{
+		/// <summary>
+		/// Id of recipient. Required if <b>is_group=false</b>.
+		/// </summary>
 		[JsonPropertyName("recipient_id")]
 		public long? RecipientId { get; init; }
+		/// <summary>
+		/// List of recipients username's. Max recipients count is 10. Required if <b>is_group=true</b>.
+		/// </summary>
 		[JsonPropertyName("recipients")]
 		public List<string>? Recipients { get; init; }
-		/// <summary>Default: false</summary>
+		/// <summary>
+		/// Is group. Set <b>false</b> if personal conversation, or set <b>true</b> if group.
+		/// <para/>
+		/// Default: <c>false</c>
+		/// </summary>
 		[JsonPropertyName("is_group")]
 		public bool? IsGroup { get; init; } = false;
+		/// <summary>
+		/// The title of new conversation. Required if <b>is_group=1</b>.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Open invite.
+		/// </summary>
 		[JsonPropertyName("open_invite")]
 		public bool? OpenInvite { get; init; }
+		/// <summary>
+		/// Allow edit messages.
+		/// </summary>
 		[JsonPropertyName("allow_edit_messages")]
 		public bool? AllowEditMessages { get; init; }
+		/// <summary>
+		/// Allow members to stick messages.
+		/// </summary>
 		[JsonPropertyName("allow_sticky_messages")]
 		public bool? AllowStickyMessages { get; init; }
+		/// <summary>
+		/// Allow members to delete their own messages.
+		/// </summary>
 		[JsonPropertyName("allow_delete_own_messages")]
 		public bool? AllowDeleteOwnMessages { get; init; }
+		/// <summary>
+		/// First message. Required if <b>is_group</b>=false
+		/// </summary>
 		[JsonPropertyName("message_body")]
 		public string? MessageBody { get; init; }
 	}
@@ -266,18 +303,39 @@ public sealed record ConversationsListResponseLinks(
 
 	public sealed record ConversationsUpdateBody
 	{
+		/// <summary>
+		/// Id of conversation.
+		/// </summary>
 		[JsonPropertyName("conversation_id")]
 		public required long? ConversationId { get; init; }
+		/// <summary>
+		/// New conversation title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Allow members to invite others.
+		/// </summary>
 		[JsonPropertyName("open_invite")]
 		public bool? OpenInvite { get; init; }
+		/// <summary>
+		/// Make conversation history visible to new members.
+		/// </summary>
 		[JsonPropertyName("history_open")]
 		public bool? HistoryOpen { get; init; }
+		/// <summary>
+		/// Allow members to edit their own messages.
+		/// </summary>
 		[JsonPropertyName("allow_edit_messages")]
 		public bool? AllowEditMessages { get; init; }
+		/// <summary>
+		/// Allow members to stick messages.
+		/// </summary>
 		[JsonPropertyName("allow_sticky_messages")]
 		public bool? AllowStickyMessages { get; init; }
+		/// <summary>
+		/// Allow members to delete their own messages.
+		/// </summary>
 		[JsonPropertyName("allow_delete_own_messages")]
 		public bool? AllowDeleteOwnMessages { get; init; }
 	}
@@ -326,8 +384,14 @@ public sealed record ConversationsListResponseLinks(
 
 	public sealed record ConversationsDeleteBody
 	{
+		/// <summary>
+		/// Id of conversation.
+		/// </summary>
 		[JsonPropertyName("conversation_id")]
 		public required long? ConversationId { get; init; }
+		/// <summary>
+		/// Deletion type.
+		/// </summary>
 		[JsonPropertyName("delete_type")]
 		public required DeleteType DeleteType { get; init; }
 	}
@@ -431,6 +495,9 @@ public sealed record ConversationsListResponseLinks(
 
 	public sealed record ConversationsSaveBody
 	{
+		/// <summary>
+		/// Content url.
+		/// </summary>
 		[JsonPropertyName("link")]
 		public required string Link { get; init; }
 	}
@@ -528,14 +595,29 @@ public sealed record ConversationsListResponseLinks(
 
 	public sealed record ConversationsMessagesListParams
 	{
+		/// <summary>
+		/// Page number of messages.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of messages in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// Ordering of messages.
+		/// </summary>
 		[JsonPropertyName("order")]
 		public ConversationsOrder? Order { get; init; }
+		/// <summary>
+		/// Date to get older messages.
+		/// </summary>
 		[JsonPropertyName("before")]
 		public long? Before { get; init; }
+		/// <summary>
+		/// Date to get newer messages.
+		/// </summary>
 		[JsonPropertyName("after")]
 		public long? After { get; init; }
 	}
@@ -656,8 +738,14 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 	public sealed record ConversationsMessagesCreateBody
 	{
+		/// <summary>
+		/// ID of the message being replied to.
+		/// </summary>
 		[JsonPropertyName("reply_message_id")]
 		public long? ReplyMessageId { get; init; }
+		/// <summary>
+		/// Content of the new message.
+		/// </summary>
 		[JsonPropertyName("message_body")]
 		public required string MessageBody { get; init; }
 	}
@@ -706,10 +794,19 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 	public sealed record ConversationsSearchBody
 	{
+		/// <summary>
+		/// Search query string.
+		/// </summary>
 		[JsonPropertyName("q")]
 		public string? Q { get; init; }
+		/// <summary>
+		/// Id of conversation.
+		/// </summary>
 		[JsonPropertyName("conversation_id")]
 		public long? ConversationId { get; init; }
+		/// <summary>
+		/// Search for recipients.
+		/// </summary>
 		[JsonPropertyName("search_recipients")]
 		public bool? SearchRecipients { get; init; }
 	}
@@ -816,6 +913,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 	public sealed record ConversationsMessagesEditBody
 	{
+		/// <summary>
+		/// New content of the message.
+		/// </summary>
 		[JsonPropertyName("message_body")]
 		public required string MessageBody { get; init; }
 	}
@@ -913,6 +1013,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 	public sealed record ConversationsInviteBody
 	{
+		/// <summary>
+		/// List of recipients username's.
+		/// </summary>
 		[JsonPropertyName("recipients")]
 		public required List<string> Recipients { get; init; }
 	}
@@ -968,6 +1071,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 	public sealed record ConversationsKickBody
 	{
+		/// <summary>
+		/// Id of user to kick from conversation.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public required long? UserId { get; init; }
 	}

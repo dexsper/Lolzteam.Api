@@ -12,8 +12,14 @@ public static class PaymentsApiTypes
 {
 	public sealed record PaymentsInvoiceGetParams
 	{
+		/// <summary>
+		/// Invoice ID.
+		/// </summary>
 		[JsonPropertyName("invoice_id")]
 		public long? InvoiceId { get; init; }
+		/// <summary>
+		/// Payment ID.
+		/// </summary>
 		[JsonPropertyName("payment_id")]
 		public string? PaymentId { get; init; }
 	}
@@ -64,27 +70,61 @@ public static class PaymentsApiTypes
 	{
 		[JsonPropertyName("currency")]
 		public required Currency Currency { get; init; }
+		/// <summary>
+		/// Invoice amount.
+		/// </summary>
 		[JsonPropertyName("amount")]
 		public required double? Amount { get; init; }
+		/// <summary>
+		/// Payment ID in your system (must be unique within the merchant / invoices).
+		/// </summary>
 		[JsonPropertyName("payment_id")]
 		public required string PaymentId { get; init; }
+		/// <summary>
+		/// Comment to the invoice.
+		/// </summary>
 		[JsonPropertyName("comment")]
 		public required string Comment { get; init; }
+		/// <summary>
+		/// URL to redirect to after successful payment.
+		/// </summary>
 		[JsonPropertyName("url_success")]
 		public required string UrlSuccess { get; init; }
+		/// <summary>
+		/// Callback url.
+		/// </summary>
 		[JsonPropertyName("url_callback")]
 		public string? UrlCallback { get; init; }
+		/// <summary>
+		/// Merchant ID.
+		/// </summary>
 		[JsonPropertyName("merchant_id")]
 		public required long? MerchantId { get; init; }
+		/// <summary>
+		/// Telegram User ID for which the invoice was created.
+		/// </summary>
 		[JsonPropertyName("required_telegram_id")]
 		public long? RequiredTelegramId { get; init; }
+		/// <summary>
+		/// Telegram Username (including @) for which the invoice was created (if any).
+		/// </summary>
 		[JsonPropertyName("required_telegram_username")]
 		public string? RequiredTelegramUsername { get; init; }
-		/// <summary>Default: 3600</summary>
+		/// <summary>
+		/// Invoice lifetime.
+		/// <para/>
+		/// Default: <c>3600</c>
+		/// </summary>
 		[JsonPropertyName("lifetime")]
 		public double? Lifetime { get; init; } = 3600;
+		/// <summary>
+		/// Additional information for you.
+		/// </summary>
 		[JsonPropertyName("additional_data")]
 		public string? AdditionalData { get; init; }
+		/// <summary>
+		/// Create a test invoice.
+		/// </summary>
 		[JsonPropertyName("is_test")]
 		public bool? IsTest { get; init; }
 	}
@@ -133,14 +173,29 @@ public static class PaymentsApiTypes
 
 	public sealed record PaymentsInvoiceListParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Currency of the created invoice.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Status of the invoice.
+		/// </summary>
 		[JsonPropertyName("status")]
 		public Status? Status { get; init; }
+		/// <summary>
+		/// Invoice amount.
+		/// </summary>
 		[JsonPropertyName("amount")]
 		public double? Amount { get; init; }
+		/// <summary>
+		/// Merchant ID.
+		/// </summary>
 		[JsonPropertyName("merchant_id")]
 		public long? MerchantId { get; init; }
 	}
@@ -4272,10 +4327,19 @@ public sealed record PaymentsBalanceListResponseTo(
 
 	public sealed record PaymentsBalanceExchangeBody
 	{
+		/// <summary>
+		/// Source balance type
+		/// </summary>
 		[JsonPropertyName("from_balance")]
 		public required string FromBalance { get; init; }
+		/// <summary>
+		/// Target balance type
+		/// </summary>
 		[JsonPropertyName("to_balance")]
 		public required string ToBalance { get; init; }
+		/// <summary>
+		/// Amount to exchange
+		/// </summary>
 		[JsonPropertyName("amount")]
 		public required long? Amount { get; init; }
 	}
@@ -4471,24 +4535,51 @@ public sealed record PaymentsBalanceExchangeResponseTo(
 
 	public sealed record PaymentsTransferBody
 	{
+		/// <summary>
+		/// User id of receiver. If <b>user_id</b> specified, <b>username</b> is not required.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Username of receiver. If <b>username</b> specified, <b>user_id</b> is not required.
+		/// </summary>
 		[JsonPropertyName("username")]
 		public string? Username { get; init; }
+		/// <summary>
+		/// Amount to send in your currency.
+		/// </summary>
 		[JsonPropertyName("amount")]
 		public required long? Amount { get; init; }
 		[JsonPropertyName("currency")]
 		public required Currency Currency { get; init; }
+		/// <summary>
+		/// Transfer comment.
+		/// </summary>
 		[JsonPropertyName("comment")]
 		public string? Comment { get; init; }
+		/// <summary>
+		/// Is the deal happening on Telegram? 
+		/// </summary>
 		[JsonPropertyName("telegram_deal")]
 		public bool? TelegramDeal { get; init; }
+		/// <summary>
+		/// Telegram username of the user you are dialoguing with.
+		/// </summary>
 		[JsonPropertyName("telegram_username")]
 		public string? TelegramUsername { get; init; }
+		/// <summary>
+		/// Hold transfer or not.
+		/// </summary>
 		[JsonPropertyName("transfer_hold")]
 		public bool? TransferHold { get; init; }
+		/// <summary>
+		/// Hold length value.
+		/// </summary>
 		[JsonPropertyName("hold_length_value")]
 		public long? HoldLengthValue { get; init; }
+		/// <summary>
+		/// Hold length option.
+		/// </summary>
 		[JsonPropertyName("hold_length_option")]
 		public HoldLengthOption? HoldLengthOption { get; init; }
 	}
@@ -4544,6 +4635,9 @@ public sealed record PaymentsBalanceExchangeResponseTo(
 
 	public sealed record PaymentsFeeParams
 	{
+		/// <summary>
+		/// Amount you want to send in your currency.
+		/// </summary>
 		[JsonPropertyName("amount")]
 		public double? Amount { get; init; }
 	}
@@ -4655,6 +4749,9 @@ public sealed record PaymentsFeeResponseCalculator(
 
 	public sealed record PaymentsCancelBody
 	{
+		/// <summary>
+		/// Payment id.
+		/// </summary>
 		[JsonPropertyName("payment_id")]
 		public required long? PaymentId { get; init; }
 	}
@@ -4710,34 +4807,79 @@ public sealed record PaymentsFeeResponseCalculator(
 
 	public sealed record PaymentsHistoryParams
 	{
+		/// <summary>
+		/// Type of operation.
+		/// </summary>
 		[JsonPropertyName("type")]
 		public PaymentsType? Type { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// Currency.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Id of the operation from which the result begins.
+		/// </summary>
 		[JsonPropertyName("operation_id_lt")]
 		public long? OperationIdLt { get; init; }
+		/// <summary>
+		/// Username of user, which receive money from you.
+		/// </summary>
 		[JsonPropertyName("receiver")]
 		public string? Receiver { get; init; }
+		/// <summary>
+		/// Username of user, which sent money to you.
+		/// </summary>
 		[JsonPropertyName("sender")]
 		public string? Sender { get; init; }
+		/// <summary>
+		/// Returns payments that are done via API.
+		/// </summary>
 		[JsonPropertyName("is_api")]
 		public bool? IsApi { get; init; }
+		/// <summary>
+		/// Start date of operation (RFC 3339 date format).
+		/// </summary>
 		[JsonPropertyName("startDate")]
 		public string? StartDate { get; init; }
+		/// <summary>
+		/// End date of operation (RFC 3339 date format).
+		/// </summary>
 		[JsonPropertyName("endDate")]
 		public string? EndDate { get; init; }
+		/// <summary>
+		/// Wallet, which used for money payouts.
+		/// </summary>
 		[JsonPropertyName("wallet")]
 		public string? Wallet { get; init; }
+		/// <summary>
+		/// Comment for money transfers.
+		/// </summary>
 		[JsonPropertyName("comment")]
 		public string? Comment { get; init; }
+		/// <summary>
+		/// Display hold operations.
+		/// </summary>
 		[JsonPropertyName("is_hold")]
 		public bool? IsHold { get; init; }
+		/// <summary>
+		/// Display payment stats for selected period (outgoing value, incoming value).
+		/// </summary>
 		[JsonPropertyName("show_payment_stats")]
 		public bool? ShowPaymentStats { get; init; }
 	}

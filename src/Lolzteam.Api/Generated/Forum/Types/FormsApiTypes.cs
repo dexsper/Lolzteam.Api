@@ -12,6 +12,9 @@ public static class FormsApiTypes
 {
 	public sealed record FormsListParams
 	{
+		/// <summary>
+		/// Page number of forms.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
 	}

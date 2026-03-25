@@ -12,16 +12,31 @@ public static class SearchApiTypes
 {
 	public sealed record SearchAllBody
 	{
+		/// <summary>
+		/// Search query. Can be skipped if <b>user_id</b> is set.
+		/// </summary>
 		[JsonPropertyName("q")]
 		public string? Q { get; init; }
+		/// <summary>
+		/// Tag to search for tagged contents.
+		/// </summary>
 		[JsonPropertyName("tag")]
 		public string? Tag { get; init; }
+		/// <summary>
+		/// Id of the container forum to search for contents. Child forums of the specified forum will be included in the search.
+		/// </summary>
 		[JsonPropertyName("forum_id")]
 		public long? ForumId { get; init; }
 		[JsonPropertyName("user_id")]
 		public Lolzteam.Api.Runtime.StringOrLong? UserId { get; init; }
+		/// <summary>
+		/// Page number of results.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of results in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -1536,18 +1551,36 @@ public sealed record SearchAllResponseLinks(
 
 	public sealed record SearchThreadsBody
 	{
+		/// <summary>
+		/// Search query. Can be skipped if <b>user_id</b> is set.
+		/// </summary>
 		[JsonPropertyName("q")]
 		public string? Q { get; init; }
+		/// <summary>
+		/// Tag to search for tagged contents.
+		/// </summary>
 		[JsonPropertyName("tag")]
 		public string? Tag { get; init; }
+		/// <summary>
+		/// Id of the container forum to search for contents. Child forums of the specified forum will be included in the search.
+		/// </summary>
 		[JsonPropertyName("forum_id")]
 		public long? ForumId { get; init; }
 		[JsonPropertyName("user_id")]
 		public Lolzteam.Api.Runtime.StringOrLong? UserId { get; init; }
+		/// <summary>
+		/// Page number of results.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of results in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// Number of thread data to be returned.
+		/// </summary>
 		[JsonPropertyName("data_limit")]
 		public long? DataLimit { get; init; }
 	}
@@ -2633,18 +2666,36 @@ public sealed record SearchThreadsResponseLinks(
 
 	public sealed record SearchPostsBody
 	{
+		/// <summary>
+		/// Search query. Can be skipped if <b>user_id</b> is set.
+		/// </summary>
 		[JsonPropertyName("q")]
 		public string? Q { get; init; }
+		/// <summary>
+		/// Tag to search for tagged contents.
+		/// </summary>
 		[JsonPropertyName("tag")]
 		public string? Tag { get; init; }
+		/// <summary>
+		/// Id of the container forum to search for contents. Child forums of the specified forum will be included in the search.
+		/// </summary>
 		[JsonPropertyName("forum_id")]
 		public long? ForumId { get; init; }
 		[JsonPropertyName("user_id")]
 		public Lolzteam.Api.Runtime.StringOrLong? UserId { get; init; }
+		/// <summary>
+		/// Page number of results.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of results in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// Number of post data to be returned.
+		/// </summary>
 		[JsonPropertyName("data_limit")]
 		public long? DataLimit { get; init; }
 	}
@@ -3730,6 +3781,9 @@ public sealed record SearchPostsResponseLinks(
 
 	public sealed record SearchUsersBody
 	{
+		/// <summary>
+		/// Search query.
+		/// </summary>
 		[JsonPropertyName("q")]
 		public string? Q { get; init; }
 	}
@@ -3787,12 +3841,24 @@ public sealed record SearchPostsResponseLinks(
 
 	public sealed record SearchProfilePostsBody
 	{
+		/// <summary>
+		/// Search query. Can be skipped if <b>user_id</b> is set.
+		/// </summary>
 		[JsonPropertyName("q")]
 		public string? Q { get; init; }
+		/// <summary>
+		/// User ID to filter profile posts.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Page number of results.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of results in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -4228,12 +4294,24 @@ public sealed record SearchProfilePostsResponseLinks(
 
 	public sealed record SearchTaggedBody
 	{
+		/// <summary>
+		/// Tag to search for tagged contents.
+		/// </summary>
 		[JsonPropertyName("tag")]
 		public string? Tag { get; init; }
+		/// <summary>
+		/// Array of tags to search for tagged contents.
+		/// </summary>
 		[JsonPropertyName("tags")]
 		public List<string>? Tags { get; init; }
+		/// <summary>
+		/// Page number of results.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of results in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -5438,8 +5516,14 @@ public sealed record SearchTaggedResponseSearchTags(
 
 	public sealed record SearchResultsParams
 	{
+		/// <summary>
+		/// Page number of results.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of results in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}

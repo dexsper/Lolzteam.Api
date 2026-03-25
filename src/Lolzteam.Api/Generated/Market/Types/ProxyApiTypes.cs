@@ -175,14 +175,29 @@ public sealed record ProxyGetResponseProxies(
 
 	public sealed record ProxyAddBody
 	{
+		/// <summary>
+		/// Proxy ip or host. Required if <b>proxy_row</b> is not specified.
+		/// </summary>
 		[JsonPropertyName("proxy_ip")]
 		public string? ProxyIp { get; init; }
+		/// <summary>
+		/// Proxy port. Required if <b>proxy_row</b> is not specified.
+		/// </summary>
 		[JsonPropertyName("proxy_port")]
 		public long? ProxyPort { get; init; }
+		/// <summary>
+		/// Proxy username. Required if <b>proxy_row</b> is not specified.
+		/// </summary>
 		[JsonPropertyName("proxy_user")]
 		public string? ProxyUser { get; init; }
+		/// <summary>
+		/// Proxy password. Required if <b>proxy_row</b> is not specified.
+		/// </summary>
 		[JsonPropertyName("proxy_pass")]
 		public string? ProxyPass { get; init; }
+		/// <summary>
+		/// Proxy list in String format ip:port:user:pass. Each proxy must be start with new line (use \r\n separator)
+		/// </summary>
 		[JsonPropertyName("proxy_row")]
 		public string? ProxyRow { get; init; }
 	}
@@ -238,8 +253,14 @@ public sealed record ProxyGetResponseProxies(
 
 	public sealed record ProxyDeleteBody
 	{
+		/// <summary>
+		/// Id of an existing proxy.
+		/// </summary>
 		[JsonPropertyName("proxy_id")]
 		public long? ProxyId { get; init; }
+		/// <summary>
+		/// Delete all proxies.
+		/// </summary>
 		[JsonPropertyName("delete_all")]
 		public bool? DeleteAll { get; init; }
 	}

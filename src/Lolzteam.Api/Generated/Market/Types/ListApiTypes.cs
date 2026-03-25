@@ -12,56 +12,134 @@ public static class ListApiTypes
 {
 	public sealed record ListUserParams
 	{
+		/// <summary>
+		/// User id.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Accounts category.
+		/// </summary>
 		[JsonPropertyName("category_id")]
 		public CategoryId? CategoryId { get; init; }
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Account status.
+		/// </summary>
 		[JsonPropertyName("show")]
 		public Show? Show { get; init; }
+		/// <summary>
+		/// Delete reason. (Only if <b>show</b> is set to <b>deleted</b>)
+		/// </summary>
 		[JsonPropertyName("delete_reason")]
 		public string? DeleteReason { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// Login.
+		/// </summary>
 		[JsonPropertyName("login")]
 		public string? Login { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Username of buyer. (If <b>show</b> is <b>paid</b>)
+		/// </summary>
 		[JsonPropertyName("username")]
 		public string? Username { get; init; }
+		/// <summary>
+		/// Start date for filtering by publication date.
+		/// </summary>
 		[JsonPropertyName("published_startDate")]
 		public string? PublishedStartDate { get; init; }
+		/// <summary>
+		/// End date for filtering by publication date.
+		/// </summary>
 		[JsonPropertyName("published_endDate")]
 		public string? PublishedEndDate { get; init; }
+		/// <summary>
+		/// Enable filtering by publication date.
+		/// </summary>
 		[JsonPropertyName("filter_by_published_date")]
 		public bool? FilterByPublishedDate { get; init; }
+		/// <summary>
+		/// Start date for filtering by buyer operation date.
+		/// </summary>
 		[JsonPropertyName("paid_startDate")]
 		public string? PaidStartDate { get; init; }
+		/// <summary>
+		/// End date for filtering by buyer operation date.
+		/// </summary>
 		[JsonPropertyName("paid_endDate")]
 		public string? PaidEndDate { get; init; }
+		/// <summary>
+		/// Enable filtering by buyer operation date.
+		/// </summary>
 		[JsonPropertyName("filter_by_buyer_operation_date")]
 		public bool? FilterByBuyerOperationDate { get; init; }
+		/// <summary>
+		/// Start date for filtering by deletion date.
+		/// </summary>
 		[JsonPropertyName("delete_startDate")]
 		public string? DeleteStartDate { get; init; }
+		/// <summary>
+		/// End date for filtering by deletion date.
+		/// </summary>
 		[JsonPropertyName("delete_endDate")]
 		public string? DeleteEndDate { get; init; }
+		/// <summary>
+		/// Enable filtering by deletion date.
+		/// </summary>
 		[JsonPropertyName("filter_by_delete_date")]
 		public bool? FilterByDeleteDate { get; init; }
 	}
@@ -177,34 +255,79 @@ public static class ListApiTypes
 
 	public sealed record ListOrdersParams
 	{
+		/// <summary>
+		/// User id.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Accounts category.
+		/// </summary>
 		[JsonPropertyName("category_id")]
 		public CategoryId? CategoryId { get; init; }
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Account status.
+		/// </summary>
 		[JsonPropertyName("show")]
 		public Show? Show { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// Login.
+		/// </summary>
 		[JsonPropertyName("login")]
 		public string? Login { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
 	}
@@ -320,6 +443,9 @@ public static class ListApiTypes
 
 	public sealed record ListStatesParams
 	{
+		/// <summary>
+		/// User ID.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public Lolzteam.Api.Runtime.StringOrLong? UserId { get; init; }
 	}
@@ -1131,56 +1257,134 @@ public sealed record ListStatesResponseUserItemStates(
 
 	public sealed record ListDownloadParams
 	{
+		/// <summary>
+		/// Format of the downloaded accounts.
+		/// </summary>
 		[JsonPropertyName("format")]
 		public Format? Format { get; init; }
+		/// <summary>
+		/// Custom format string for download. (Required if <b>format</b> is set to <b>custom</b>)
+		/// </summary>
 		[JsonPropertyName("custom_format")]
 		public string? CustomFormat { get; init; }
+		/// <summary>
+		/// Accounts category.
+		/// </summary>
 		[JsonPropertyName("category_id")]
 		public CategoryId? CategoryId { get; init; }
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Account status.
+		/// </summary>
 		[JsonPropertyName("show")]
 		public Show? Show { get; init; }
+		/// <summary>
+		/// Delete reason. (Only if <b>show</b> is set to <b>deleted</b>)
+		/// </summary>
 		[JsonPropertyName("delete_reason")]
 		public string? DeleteReason { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Username of buyer. (If <b>show</b> is <b>paid</b>)
+		/// </summary>
 		[JsonPropertyName("username")]
 		public string? Username { get; init; }
+		/// <summary>
+		/// Start date for filtering by publication date.
+		/// </summary>
 		[JsonPropertyName("published_startDate")]
 		public string? PublishedStartDate { get; init; }
+		/// <summary>
+		/// End date for filtering by publication date.
+		/// </summary>
 		[JsonPropertyName("published_endDate")]
 		public string? PublishedEndDate { get; init; }
+		/// <summary>
+		/// Enable filtering by publication date.
+		/// </summary>
 		[JsonPropertyName("filter_by_published_date")]
 		public bool? FilterByPublishedDate { get; init; }
+		/// <summary>
+		/// Start date for filtering by buyer operation date.
+		/// </summary>
 		[JsonPropertyName("paid_startDate")]
 		public string? PaidStartDate { get; init; }
+		/// <summary>
+		/// End date for filtering by buyer operation date.
+		/// </summary>
 		[JsonPropertyName("paid_endDate")]
 		public string? PaidEndDate { get; init; }
+		/// <summary>
+		/// Enable filtering by buyer operation date.
+		/// </summary>
 		[JsonPropertyName("filter_by_buyer_operation_date")]
 		public bool? FilterByBuyerOperationDate { get; init; }
+		/// <summary>
+		/// Start date for filtering by deletion date.
+		/// </summary>
 		[JsonPropertyName("delete_startDate")]
 		public string? DeleteStartDate { get; init; }
+		/// <summary>
+		/// End date for filtering by deletion date.
+		/// </summary>
 		[JsonPropertyName("delete_endDate")]
 		public string? DeleteEndDate { get; init; }
+		/// <summary>
+		/// Enable filtering by deletion date.
+		/// </summary>
 		[JsonPropertyName("filter_by_delete_date")]
 		public bool? FilterByDeleteDate { get; init; }
 	}
@@ -1189,28 +1393,64 @@ public sealed record ListStatesResponseUserItemStates(
 
 	public sealed record ListFavoritesParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Account status.
+		/// </summary>
 		[JsonPropertyName("show")]
 		public Show? Show { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
 	}
@@ -1326,28 +1566,64 @@ public sealed record ListStatesResponseUserItemStates(
 
 	public sealed record ListViewedParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Account status.
+		/// </summary>
 		[JsonPropertyName("show")]
 		public Show? Show { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
 	}

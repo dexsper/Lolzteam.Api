@@ -12,12 +12,24 @@ public static class ProfilePostsApiTypes
 {
 	public sealed record ProfilePostsListParams
 	{
+		/// <summary>
+		/// Filter to get only posts from the specified user.
+		/// </summary>
 		[JsonPropertyName("posts_user_id")]
 		public long? PostsUserId { get; init; }
+		/// <summary>
+		/// Page number of contents.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of contents in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// List of fields to include.
+		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<ProfilePostsFieldsInclude>? FieldsInclude { get; init; }
 	}
@@ -187,8 +199,14 @@ public sealed record ProfilePostsListResponseLinks(
 
 	public sealed record ProfilePostsEditBody
 	{
+		/// <summary>
+		/// New content of the profile post.
+		/// </summary>
 		[JsonPropertyName("post_body")]
 		public string? PostBody { get; init; }
+		/// <summary>
+		/// Disable comments.
+		/// </summary>
 		[JsonPropertyName("disable_comments")]
 		public bool? DisableComments { get; init; }
 	}
@@ -531,6 +549,9 @@ public sealed record ProfilePostsEditResponseProfilePost(
 
 	public sealed record ProfilePostsDeleteParams
 	{
+		/// <summary>
+		/// Reason of the profile post removal.
+		/// </summary>
 		[JsonPropertyName("reason")]
 		public string? Reason { get; init; }
 	}
@@ -637,6 +658,9 @@ public sealed record ProfilePostsEditResponseProfilePost(
 
 	public sealed record ProfilePostsReportBody
 	{
+		/// <summary>
+		/// Reason of the report.
+		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
 	}
@@ -694,6 +718,9 @@ public sealed record ProfilePostsEditResponseProfilePost(
 	{
 		[JsonPropertyName("user_id")]
 		public required Lolzteam.Api.Runtime.StringOrLong UserId { get; init; }
+		/// <summary>
+		/// Content of a profile post.
+		/// </summary>
 		[JsonPropertyName("post_body")]
 		public required string PostBody { get; init; }
 	}
@@ -1325,10 +1352,19 @@ public sealed record ProfilePostsLikesResponseUsers(
 
 	public sealed record ProfilePostsCommentsListParams
 	{
+		/// <summary>
+		/// Id of profile post.
+		/// </summary>
 		[JsonPropertyName("profile_post_id")]
 		public required long? ProfilePostId { get; init; }
+		/// <summary>
+		/// Date to get older comments. Please note that this entry point does not support the page parameter but it still does support <b>limit</b>.
+		/// </summary>
 		[JsonPropertyName("before")]
 		public long? Before { get; init; }
+		/// <summary>
+		/// Number of profile posts in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -1701,8 +1737,14 @@ public sealed record ProfilePostsCommentsListResponseProfilePost(
 
 	public sealed record ProfilePostsCommentsCreateBody
 	{
+		/// <summary>
+		/// Id of profile post.
+		/// </summary>
 		[JsonPropertyName("profile_post_id")]
 		public required long? ProfilePostId { get; init; }
+		/// <summary>
+		/// Content of the new profile post comment.
+		/// </summary>
 		[JsonPropertyName("comment_body")]
 		public required string CommentBody { get; init; }
 	}
@@ -1968,8 +2010,14 @@ public sealed record ProfilePostsCommentsCreateResponseComment(
 
 	public sealed record ProfilePostsCommentsEditBody
 	{
+		/// <summary>
+		/// Id of profile post comment.
+		/// </summary>
 		[JsonPropertyName("comment_id")]
 		public required long? CommentId { get; init; }
+		/// <summary>
+		/// New content for the profile post comment.
+		/// </summary>
 		[JsonPropertyName("comment_body")]
 		public required string CommentBody { get; init; }
 	}
@@ -2235,6 +2283,9 @@ public sealed record ProfilePostsCommentsEditResponseComment(
 
 	public sealed record ProfilePostsCommentsDeleteBody
 	{
+		/// <summary>
+		/// Id of profile post comment.
+		/// </summary>
 		[JsonPropertyName("comment_id")]
 		public required long? CommentId { get; init; }
 	}
@@ -2332,6 +2383,9 @@ public sealed record ProfilePostsCommentsEditResponseComment(
 
 	public sealed record ProfilePostsCommentsReportBody
 	{
+		/// <summary>
+		/// Reason of the report.
+		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
 	}

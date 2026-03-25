@@ -24,7 +24,8 @@ internal static partial class Emitter
                 : null;
 
             EmitPropertyDecl(w, csharpType, propName, param.Name, param.Required, defaultLiteral,
-                docComment: param.DefaultValue is not null ? $"Default: {FormatDefaultValue(param.DefaultValue)}" : null
+                description: param.Description,
+                defaultNote: param.DefaultValue is not null ? FormatDefaultValue(param.DefaultValue) : null
             );
         }
 
@@ -61,7 +62,8 @@ internal static partial class Emitter
                 : null;
 
             EmitPropertyDecl(w, csharpType, propName, prop.Name, prop.Required, defaultLiteral,
-                docComment: prop.DefaultValue is not null ? $"Default: {FormatDefaultValue(prop.DefaultValue)}" : null
+                description: prop.Description,
+                defaultNote: prop.DefaultValue is not null ? FormatDefaultValue(prop.DefaultValue) : null
             );
         }
 
@@ -108,9 +110,8 @@ internal static partial class Emitter
                     : null;
 
                 EmitPropertyDecl(w, csharpType, propName, prop.Name, prop.Required, defaultLiteral,
-                    docComment: prop.DefaultValue is not null
-                        ? $"Default: {FormatDefaultValue(prop.DefaultValue)}"
-                        : null
+                    description: prop.Description,
+                    defaultNote: prop.DefaultValue is not null ? FormatDefaultValue(prop.DefaultValue) : null
                 );
             }
 
@@ -127,10 +128,22 @@ internal static partial class Emitter
     /// </summary>
     private static void EmitPropertyDecl(
         CodeWriter w, string csharpType, string propName, string jsonName,
-        bool required, string? defaultLiteral, string? docComment = null)
+        bool required, string? defaultLiteral,
+        string? description = null, string? defaultNote = null)
     {
-        if (docComment is not null)
-            w.Line($"/// <summary>{docComment}</summary>");
+        if (description is not null || defaultNote is not null)
+        {
+            w.Line("/// <summary>");
+            if (description is not null)
+                foreach (var line in DescriptionDoc.ToXmlDocLines(description))
+                    w.Line(string.IsNullOrEmpty(line) ? "///" : $"/// {line}");
+            if (defaultNote is not null)
+            {
+                if (description is not null) w.Line("/// <para/>");
+                w.Line($"/// Default: <c>{defaultNote}</c>");
+            }
+            w.Line("/// </summary>");
+        }
 
         if (Naming.NeedsJsonPropertyName(jsonName))
             w.Line($"[JsonPropertyName(\"{jsonName}\")]");

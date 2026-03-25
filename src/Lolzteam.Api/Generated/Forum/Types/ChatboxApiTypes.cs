@@ -12,6 +12,9 @@ public static class ChatboxApiTypes
 {
 	public sealed record ChatboxIndexParams
 	{
+		/// <summary>
+		/// Room id.
+		/// </summary>
 		[JsonPropertyName("room_id")]
 		public RoomId? RoomId { get; init; }
 	}
@@ -577,8 +580,14 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 
 	public sealed record ChatboxGetMessagesParams
 	{
+		/// <summary>
+		/// Room id.
+		/// </summary>
 		[JsonPropertyName("room_id")]
 		public required RoomId RoomId { get; init; }
+		/// <summary>
+		/// Message id to get older chat messages.
+		/// </summary>
 		[JsonPropertyName("before_message_id")]
 		public long? BeforeMessageId { get; init; }
 	}
@@ -636,10 +645,19 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 
 	public sealed record ChatboxPostMessageBody
 	{
+		/// <summary>
+		/// Room ID.
+		/// </summary>
 		[JsonPropertyName("room_id")]
 		public required RoomId RoomId { get; init; }
+		/// <summary>
+		/// ID of the message being replied to.
+		/// </summary>
 		[JsonPropertyName("reply_message_id")]
 		public long? ReplyMessageId { get; init; }
+		/// <summary>
+		/// Content of the chat message.
+		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
 	}
@@ -688,8 +706,14 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 
 	public sealed record ChatboxEditMessageBody
 	{
+		/// <summary>
+		/// Message id.
+		/// </summary>
 		[JsonPropertyName("message_id")]
 		public required long? MessageId { get; init; }
+		/// <summary>
+		/// New content of the chat message.
+		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
 	}
@@ -738,6 +762,9 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 
 	public sealed record ChatboxDeleteMessageBody
 	{
+		/// <summary>
+		/// Message id.
+		/// </summary>
 		[JsonPropertyName("message_id")]
 		public required long? MessageId { get; init; }
 	}
@@ -793,6 +820,9 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 
 	public sealed record ChatboxOnlineParams
 	{
+		/// <summary>
+		/// Room id.
+		/// </summary>
 		[JsonPropertyName("room_id")]
 		public required RoomId RoomId { get; init; }
 	}
@@ -1193,6 +1223,9 @@ public sealed record ChatboxOnlineResponseUsers(
 
 	public sealed record ChatboxReportReasonsParams
 	{
+		/// <summary>
+		/// Message id.
+		/// </summary>
 		[JsonPropertyName("message_id")]
 		public required long? MessageId { get; init; }
 	}
@@ -1250,8 +1283,14 @@ public sealed record ChatboxOnlineResponseUsers(
 
 	public sealed record ChatboxReportBody
 	{
+		/// <summary>
+		/// Message id.
+		/// </summary>
 		[JsonPropertyName("message_id")]
 		public required long? MessageId { get; init; }
+		/// <summary>
+		/// Report reason.
+		/// </summary>
 		[JsonPropertyName("reason")]
 		public required string Reason { get; init; }
 	}
@@ -1307,6 +1346,9 @@ public sealed record ChatboxOnlineResponseUsers(
 
 	public sealed record ChatboxGetLeaderboardParams
 	{
+		/// <summary>
+		/// Duration.
+		/// </summary>
 		[JsonPropertyName("duration")]
 		public Duration? Duration { get; init; }
 	}

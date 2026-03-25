@@ -89,8 +89,14 @@ public sealed record TagsPopularResponseTags(
 
 	public sealed record TagsListParams
 	{
+		/// <summary>
+		/// Page number of tags list.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of results in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -363,8 +369,14 @@ public sealed record TagsListResponseLinks(
 
 	public sealed record TagsGetParams
 	{
+		/// <summary>
+		/// Page number of tagged contents.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of tagged contents in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -1730,6 +1742,9 @@ public sealed record TagsGetResponseLinks(
 
 	public sealed record TagsFindParams
 	{
+		/// <summary>
+		/// tag to filter. Tags start with the query will be returned.
+		/// </summary>
 		[JsonPropertyName("tag")]
 		public required string Tag { get; init; }
 	}

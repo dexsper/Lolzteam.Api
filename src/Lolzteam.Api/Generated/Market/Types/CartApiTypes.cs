@@ -12,48 +12,114 @@ public static class CartApiTypes
 {
 	public sealed record CartGetParams
 	{
+		/// <summary>
+		/// Accounts category.
+		/// </summary>
 		[JsonPropertyName("category_id")]
 		public CategoryId? CategoryId { get; init; }
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
 	}
@@ -169,6 +235,9 @@ public static class CartApiTypes
 
 	public sealed record CartAddBody
 	{
+		/// <summary>
+		/// Item id.
+		/// </summary>
 		[JsonPropertyName("item_id")]
 		public required long? ItemId { get; init; }
 	}
@@ -217,6 +286,9 @@ public static class CartApiTypes
 
 	public sealed record CartDeleteBody
 	{
+		/// <summary>
+		/// Item id.
+		/// </summary>
 		[JsonPropertyName("item_id")]
 		public long? ItemId { get; init; }
 	}

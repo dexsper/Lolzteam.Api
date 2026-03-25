@@ -602,16 +602,31 @@ public sealed record AutoPaymentsListResponsePayments(
 
 	public sealed record AutoPaymentsCreateBody
 	{
+		/// <summary>
+		/// Secret answer.
+		/// </summary>
 		[JsonPropertyName("secret_answer")]
 		public string? SecretAnswer { get; init; }
+		/// <summary>
+		/// Username of the payment receiver.
+		/// </summary>
 		[JsonPropertyName("username_receiver")]
 		public required string UsernameReceiver { get; init; }
+		/// <summary>
+		/// Day of the month for the payment. (Use "0" for the last day of the month)
+		/// </summary>
 		[JsonPropertyName("day")]
 		public required Day Day { get; init; }
+		/// <summary>
+		/// Amount to be transferred.
+		/// </summary>
 		[JsonPropertyName("amount")]
 		public required double? Amount { get; init; }
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Payment description.
+		/// </summary>
 		[JsonPropertyName("description")]
 		public string? Description { get; init; }
 	}
@@ -674,6 +689,9 @@ public sealed record AutoPaymentsListResponsePayments(
 
 	public sealed record AutoPaymentsDeleteBody
 	{
+		/// <summary>
+		/// Auto payment ID.
+		/// </summary>
 		[JsonPropertyName("auto_payment_id")]
 		public required long? AutoPaymentId { get; init; }
 	}

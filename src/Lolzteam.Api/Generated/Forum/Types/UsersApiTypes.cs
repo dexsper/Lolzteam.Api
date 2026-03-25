@@ -12,10 +12,19 @@ public static class UsersApiTypes
 {
 	public sealed record UsersListParams
 	{
+		/// <summary>
+		/// Page number of users.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of users in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// List of fields to include.
+		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<UsersFieldsInclude>? FieldsInclude { get; init; }
 	}
@@ -250,10 +259,19 @@ public sealed record UsersFieldsResponseFields(
 
 	public sealed record UsersFindParams
 	{
+		/// <summary>
+		/// Username to filter. Usernames start with the query will be returned.
+		/// </summary>
 		[JsonPropertyName("username")]
 		public string? Username { get; init; }
+		/// <summary>
+		/// Custom fields to filter. Example: <b>custom_fields[telegram]=telegramLogin</b>.
+		/// </summary>
 		[JsonPropertyName("custom_fields")]
 		public JsonElement? CustomFields { get; init; }
+		/// <summary>
+		/// List of fields to include.
+		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<UsersFieldsInclude>? FieldsInclude { get; init; }
 	}
@@ -311,6 +329,9 @@ public sealed record UsersFieldsResponseFields(
 
 	public sealed record UsersGetParams
 	{
+		/// <summary>
+		/// List of fields to include.
+		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<UsersFieldsInclude>? FieldsInclude { get; init; }
 	}
@@ -359,58 +380,139 @@ public sealed record UsersFieldsResponseFields(
 
 	public sealed record UsersEditBody
 	{
+		/// <summary>
+		/// New username.
+		/// </summary>
 		[JsonPropertyName("username")]
 		public string? Username { get; init; }
+		/// <summary>
+		/// New custom title of the user.
+		/// </summary>
 		[JsonPropertyName("user_title")]
 		public string? UserTitle { get; init; }
+		/// <summary>
+		/// Id of the group you want to display.
+		/// </summary>
 		[JsonPropertyName("display_group_id")]
 		public long? DisplayGroupId { get; init; }
+		/// <summary>
+		/// Id of the icon group you want to display.
+		/// </summary>
 		[JsonPropertyName("display_icon_group_id")]
 		public long? DisplayIconGroupId { get; init; }
+		/// <summary>
+		/// Id of the banner you want to display.
+		/// </summary>
 		[JsonPropertyName("display_banner_id")]
 		public long? DisplayBannerId { get; init; }
+		/// <summary>
+		/// This message is shown when someone wants to write to you.
+		/// </summary>
 		[JsonPropertyName("conv_welcome_message")]
 		public string? ConvWelcomeMessage { get; init; }
+		/// <summary>
+		/// Your date of birth (day).
+		/// </summary>
 		[JsonPropertyName("user_dob_day")]
 		public long? UserDobDay { get; init; }
+		/// <summary>
+		/// Your date of birth (month).
+		/// </summary>
 		[JsonPropertyName("user_dob_month")]
 		public long? UserDobMonth { get; init; }
+		/// <summary>
+		/// Your date of birth (year).
+		/// </summary>
 		[JsonPropertyName("user_dob_year")]
 		public long? UserDobYear { get; init; }
+		/// <summary>
+		/// Secret answer.
+		/// </summary>
 		[JsonPropertyName("secret_answer")]
 		public string? SecretAnswer { get; init; }
+		/// <summary>
+		/// Secret answer type.
+		/// </summary>
 		[JsonPropertyName("secret_answer_type")]
 		public long? SecretAnswerType { get; init; }
+		/// <summary>
+		/// Profile short link.
+		/// </summary>
 		[JsonPropertyName("short_link")]
 		public string? ShortLink { get; init; }
+		/// <summary>
+		/// User interface language ID.
+		/// </summary>
 		[JsonPropertyName("language_id")]
 		public LanguageId? LanguageId { get; init; }
+		/// <summary>
+		/// User gender.
+		/// </summary>
 		[JsonPropertyName("gender")]
 		public Gender? Gender { get; init; }
+		/// <summary>
+		/// User timezone.
+		/// </summary>
 		[JsonPropertyName("timezone")]
 		public Timezone? Timezone { get; init; }
+		/// <summary>
+		/// Whether to receive admin emails.
+		/// </summary>
 		[JsonPropertyName("receive_admin_email")]
 		public bool? ReceiveAdminEmail { get; init; }
+		/// <summary>
+		/// Whether user activity is visible.
+		/// </summary>
 		[JsonPropertyName("activity_visible")]
 		public bool? ActivityVisible { get; init; }
+		/// <summary>
+		/// Show date of birth (day and month).
+		/// </summary>
 		[JsonPropertyName("show_dob_date")]
 		public bool? ShowDobDate { get; init; }
+		/// <summary>
+		/// Show year of birth.
+		/// </summary>
 		[JsonPropertyName("show_dob_year")]
 		public bool? ShowDobYear { get; init; }
+		/// <summary>
+		/// Hide username change logs.
+		/// </summary>
 		[JsonPropertyName("hide_username_change_logs")]
 		public bool? HideUsernameChangeLogs { get; init; }
+		/// <summary>
+		/// Who can view your profile.
+		/// </summary>
 		[JsonPropertyName("allow_view_profile")]
 		public AllowViewProfile? AllowViewProfile { get; init; }
+		/// <summary>
+		/// Who can post on your profile.
+		/// </summary>
 		[JsonPropertyName("allow_post_profile")]
 		public AllowPostProfile? AllowPostProfile { get; init; }
+		/// <summary>
+		/// Who can send you personal conversations.
+		/// </summary>
 		[JsonPropertyName("allow_send_personal_conversation")]
 		public AllowSendPersonalConversation? AllowSendPersonalConversation { get; init; }
+		/// <summary>
+		/// Who can invite you to groups.
+		/// </summary>
 		[JsonPropertyName("allow_invite_group")]
 		public AllowInviteGroup? AllowInviteGroup { get; init; }
+		/// <summary>
+		/// Who can see your news feed.
+		/// </summary>
 		[JsonPropertyName("allow_receive_news_feed")]
 		public AllowReceiveNewsFeed? AllowReceiveNewsFeed { get; init; }
+		/// <summary>
+		/// Alert settings.
+		/// </summary>
 		[JsonPropertyName("alert")]
 		public JsonElement? Alert { get; init; }
+		/// <summary>
+		/// Custom user profile fields.
+		/// </summary>
 		[JsonPropertyName("fields")]
 		public JsonElement? Fields { get; init; }
 	}
@@ -466,8 +568,14 @@ public sealed record UsersFieldsResponseFields(
 
 	public sealed record UsersClaimsParams
 	{
+		/// <summary>
+		/// Filter claims by their type.
+		/// </summary>
 		[JsonPropertyName("type")]
 		public NotificationsType? Type { get; init; }
+		/// <summary>
+		/// Filter claims by their state.
+		/// </summary>
 		[JsonPropertyName("claim_state")]
 		public ClaimState? ClaimState { get; init; }
 	}
@@ -777,12 +885,24 @@ public sealed record UsersClaimsResponseStats(
 
 	public sealed record UsersAvatarUploadBody
 	{
+		/// <summary>
+		/// Binary data of the avatar.
+		/// </summary>
 		[JsonPropertyName("avatar")]
 		public required byte[] Avatar { get; init; }
+		/// <summary>
+		/// The starting point of the selection by width. Default value - 0
+		/// </summary>
 		[JsonPropertyName("x")]
 		public long? X { get; init; }
+		/// <summary>
+		/// The starting point of the selection by height. Default value - 0
+		/// </summary>
 		[JsonPropertyName("y")]
 		public long? Y { get; init; }
+		/// <summary>
+		/// Selection size.
+		/// </summary>
 		[JsonPropertyName("crop")]
 		public long? Crop { get; init; }
 	}
@@ -887,10 +1007,19 @@ public sealed record UsersClaimsResponseStats(
 
 	public sealed record UsersAvatarCropBody
 	{
+		/// <summary>
+		/// The starting point of the selection by width. Default value - 0
+		/// </summary>
 		[JsonPropertyName("x")]
 		public long? X { get; init; }
+		/// <summary>
+		/// The starting point of the selection by height. Default value - 0
+		/// </summary>
 		[JsonPropertyName("y")]
 		public long? Y { get; init; }
+		/// <summary>
+		/// Selection size.
+		/// </summary>
 		[JsonPropertyName("crop")]
 		public long? Crop { get; init; }
 	}
@@ -946,12 +1075,24 @@ public sealed record UsersClaimsResponseStats(
 
 	public sealed record UsersBackgroundUploadBody
 	{
+		/// <summary>
+		/// Binary data of the background. Background image must be 1920x1080 pixels
+		/// </summary>
 		[JsonPropertyName("background")]
 		public required byte[] Background { get; init; }
+		/// <summary>
+		/// The starting point of the selection by width. Default value - 0
+		/// </summary>
 		[JsonPropertyName("x")]
 		public long? X { get; init; }
+		/// <summary>
+		/// The starting point of the selection by height. Default value - 0
+		/// </summary>
 		[JsonPropertyName("y")]
 		public long? Y { get; init; }
+		/// <summary>
+		/// Selection size.
+		/// </summary>
 		[JsonPropertyName("crop")]
 		public long? Crop { get; init; }
 	}
@@ -1056,10 +1197,19 @@ public sealed record UsersClaimsResponseStats(
 
 	public sealed record UsersBackgroundCropBody
 	{
+		/// <summary>
+		/// The starting point of the selection by width. Default value - 0
+		/// </summary>
 		[JsonPropertyName("x")]
 		public long? X { get; init; }
+		/// <summary>
+		/// The starting point of the selection by height. Default value - 0
+		/// </summary>
 		[JsonPropertyName("y")]
 		public long? Y { get; init; }
+		/// <summary>
+		/// Selection size.
+		/// </summary>
 		[JsonPropertyName("crop")]
 		public long? Crop { get; init; }
 	}
@@ -1115,10 +1265,19 @@ public sealed record UsersClaimsResponseStats(
 
 	public sealed record UsersFollowersParams
 	{
+		/// <summary>
+		/// Ordering of followers.
+		/// </summary>
 		[JsonPropertyName("order")]
 		public UsersOrder? Order { get; init; }
+		/// <summary>
+		/// Page number of followers.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of followers in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -1757,10 +1916,19 @@ public sealed record UsersFollowersResponseLinks(
 
 	public sealed record UsersFollowingsParams
 	{
+		/// <summary>
+		/// Ordering of users.
+		/// </summary>
 		[JsonPropertyName("order")]
 		public UsersOrder? Order { get; init; }
+		/// <summary>
+		/// Page number of users.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of users in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -2380,20 +2548,43 @@ public sealed record UsersFollowingsResponseUsers(
 
 	public sealed record UsersLikesParams
 	{
+		/// <summary>
+		/// Filter by forum section.
+		/// </summary>
 		[JsonPropertyName("node_id")]
 		public long? NodeId { get; init; }
+		/// <summary>
+		/// Like type.
+		/// </summary>
 		[JsonPropertyName("like_type")]
 		public LikeType? LikeType { get; init; }
-		/// <summary>Default: gotten</summary>
+		/// <summary>
+		/// Likes type.
+		/// <para/>
+		/// Default: <c>gotten</c>
+		/// </summary>
 		[JsonPropertyName("type")]
 		public UsersType? Type { get; init; } = UsersType.Gotten;
+		/// <summary>
+		/// Page number.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
-		/// <summary>Default: post</summary>
+		/// <summary>
+		/// Content type.
+		/// <para/>
+		/// Default: <c>post</c>
+		/// </summary>
 		[JsonPropertyName("content_type")]
 		public ContentType? ContentType { get; init; }
+		/// <summary>
+		/// Get only likes from specified user.
+		/// </summary>
 		[JsonPropertyName("search_user_id")]
 		public long? SearchUserId { get; init; }
+		/// <summary>
+		/// Show weekly statistics.
+		/// </summary>
 		[JsonPropertyName("stats")]
 		public bool? Stats { get; init; }
 	}
@@ -2610,6 +2801,9 @@ public sealed record UsersLikesResponseLikes(
 
 	public sealed record UsersIgnoredParams
 	{
+		/// <summary>
+		/// If included in the request, only the user count is returned as <b>users_total</b>.
+		/// </summary>
 		[JsonPropertyName("total")]
 		public bool? Total { get; init; }
 	}
@@ -3264,10 +3458,19 @@ public sealed record UsersIgnoredResponseUsers(
 
 	public sealed record UsersIgnoreEditParams
 	{
+		/// <summary>
+		/// Ignore user's conversations.
+		/// </summary>
 		[JsonPropertyName("ignore_conversations")]
 		public bool? IgnoreConversations { get; init; }
+		/// <summary>
+		/// Ignore user's content.
+		/// </summary>
 		[JsonPropertyName("ignore_content")]
 		public bool? IgnoreContent { get; init; }
+		/// <summary>
+		/// Restrict user from viewing your profile.
+		/// </summary>
 		[JsonPropertyName("restrict_view_profile")]
 		public bool? RestrictViewProfile { get; init; }
 	}
@@ -3372,8 +3575,14 @@ public sealed record UsersIgnoredResponseUsers(
 
 	public sealed record UsersContentsParams
 	{
+		/// <summary>
+		/// Page number of contents.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of contents in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}

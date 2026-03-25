@@ -12,6 +12,9 @@ public static class AssetsApiTypes
 {
 	public sealed record AssetsCssParams
 	{
+		/// <summary>
+		/// The names or identifiers of the CSS selectors to retrieve.
+		/// </summary>
 		[JsonPropertyName("css")]
 		public List<string>? Css { get; init; }
 	}

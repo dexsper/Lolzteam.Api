@@ -12,40 +12,94 @@ public static class ThreadsApiTypes
 {
 	public sealed record ThreadsListParams
 	{
+		/// <summary>
+		/// Id of the containing forum.
+		/// </summary>
 		[JsonPropertyName("forum_id")]
 		public long? ForumId { get; init; }
+		/// <summary>
+		/// Tab to get threads from.
+		/// </summary>
 		[JsonPropertyName("tab")]
 		public string? Tab { get; init; }
+		/// <summary>
+		/// Thread state. Works only if <b>forum_id</b> is set.
+		/// </summary>
 		[JsonPropertyName("state")]
 		public State? State { get; init; }
+		/// <summary>
+		/// Filter to get only threads created within the selected period. Works only if <b>forum_id</b> is set.
+		/// </summary>
 		[JsonPropertyName("period")]
 		public Period? Period { get; init; }
+		/// <summary>
+		/// Thread title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Search only in titles.
+		/// </summary>
 		[JsonPropertyName("title_only")]
 		public bool? TitleOnly { get; init; }
+		/// <summary>
+		/// Filter to get only threads created by the specified user.
+		/// </summary>
 		[JsonPropertyName("creator_user_id")]
 		public long? CreatorUserId { get; init; }
+		/// <summary>
+		/// Filter to get only sticky or non-sticky threads. By default, all threads will be included and sticky ones will be at the top of the result on the first page. In mixed mode, sticky threads are not counted towards <b>threads_total</b> and does not affect pagination.
+		/// </summary>
 		[JsonPropertyName("sticky")]
 		public bool? Sticky { get; init; }
+		/// <summary>
+		/// Filter to get only threads with the specified prefix.
+		/// </summary>
 		[JsonPropertyName("prefix_ids[]")]
 		public List<long?>? PrefixIds { get; init; }
+		/// <summary>
+		/// Filter to get only threads without the specified prefix.
+		/// </summary>
 		[JsonPropertyName("prefix_ids_not[]")]
 		public List<long?>? PrefixIdsNot { get; init; }
+		/// <summary>
+		/// Filter to get only threads with the specified tag.
+		/// </summary>
 		[JsonPropertyName("thread_tag_id")]
 		public long? ThreadTagId { get; init; }
+		/// <summary>
+		/// Page number of threads.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of threads in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// Ordering of threads.
+		/// </summary>
 		[JsonPropertyName("order")]
 		public ThreadsOrder? Order { get; init; }
+		/// <summary>
+		/// Direction of threads ordering.
+		/// </summary>
 		[JsonPropertyName("direction")]
 		public Direction? Direction { get; init; }
+		/// <summary>
+		/// Filter threads by creation date. Only works with 'thread<i>create</i>date' and 'thread<i>create</i>date_reverse' ordering.
+		/// </summary>
 		[JsonPropertyName("thread_create_date")]
 		public long? ThreadCreateDate { get; init; }
+		/// <summary>
+		/// Filter threads by update date. Only works with 'thread<i>update</i>date' and 'thread<i>update</i>date_reverse' ordering.
+		/// </summary>
 		[JsonPropertyName("thread_update_date")]
 		public long? ThreadUpdateDate { get; init; }
+		/// <summary>
+		/// List of fields to include.
+		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<ThreadsFieldsInclude>? FieldsInclude { get; init; }
 	}
@@ -434,37 +488,86 @@ public sealed record ThreadsListResponseLinks(
 
 	public sealed record ThreadsCreateBody
 	{
+		/// <summary>
+		/// Content of the new thread.
+		/// </summary>
 		[JsonPropertyName("post_body")]
 		public required string PostBody { get; init; }
+		/// <summary>
+		/// Id of the target forum.
+		/// </summary>
 		[JsonPropertyName("forum_id")]
 		public required long? ForumId { get; init; }
+		/// <summary>
+		/// Thread title. Can be skipped if <b>title_en</b> set.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Thread english title. Can be skipped if <b>title</b> set.
+		/// </summary>
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
+		/// <summary>
+		/// Prefix ids.
+		/// </summary>
 		[JsonPropertyName("prefix_id")]
 		public List<long?>? PrefixId { get; init; }
+		/// <summary>
+		/// Thread tags.
+		/// </summary>
 		[JsonPropertyName("tags")]
 		public List<string>? Tags { get; init; }
+		/// <summary>
+		/// Hide contacts.
+		/// </summary>
 		[JsonPropertyName("hide_contacts")]
 		public bool? HideContacts { get; init; }
+		/// <summary>
+		/// Allow ask hidden content.
+		/// </summary>
 		[JsonPropertyName("allow_ask_hidden_content")]
 		public bool? AllowAskHiddenContent { get; init; }
-		/// <summary>Default: 2</summary>
+		/// <summary>
+		/// Allow to reply only users with chosen or higher group.
+		/// <para/>
+		/// Default: <c>2</c>
+		/// </summary>
 		[JsonPropertyName("reply_group")]
 		public ReplyGroup? ReplyGroup { get; init; }
+		/// <summary>
+		/// Allow commenting if user can't post in thread.
+		/// </summary>
 		[JsonPropertyName("comment_ignore_group")]
 		public bool? CommentIgnoreGroup { get; init; }
+		/// <summary>
+		/// Don't alert followers about thread creation.
+		/// </summary>
 		[JsonPropertyName("dont_alert_followers")]
 		public bool? DontAlertFollowers { get; init; }
+		/// <summary>
+		/// Date to schedule thread creation (format: <c>DD-MM-YYYY</c>).
+		/// </summary>
 		[JsonPropertyName("schedule_date")]
 		public string? ScheduleDate { get; init; }
+		/// <summary>
+		/// Time to schedule thread creation (format: <c>HH:MM</c>).
+		/// </summary>
 		[JsonPropertyName("schedule_time")]
 		public string? ScheduleTime { get; init; }
+		/// <summary>
+		/// Watch thread state.
+		/// </summary>
 		[JsonPropertyName("watch_thread_state")]
 		public bool? WatchThreadState { get; init; }
+		/// <summary>
+		/// Receive forum notifications of new posts in this thread.
+		/// </summary>
 		[JsonPropertyName("watch_thread")]
 		public bool? WatchThread { get; init; }
+		/// <summary>
+		/// Receive email notifications of new posts in this thread.
+		/// </summary>
 		[JsonPropertyName("watch_thread_email")]
 		public bool? WatchThreadEmail { get; init; }
 	}
@@ -513,58 +616,138 @@ public sealed record ThreadsListResponseLinks(
 
 	public sealed record ThreadsCreateContestBody
 	{
+		/// <summary>
+		/// Content of the new contest.
+		/// </summary>
 		[JsonPropertyName("post_body")]
 		public required string PostBody { get; init; }
+		/// <summary>
+		/// Thread title. Can be skipped if <b>title_en</b> set.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Thread english title. Can be skipped if <b>title</b> set.
+		/// </summary>
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
-		/// <summary>Default: by_finish_date</summary>
+		/// <summary>
+		/// Contest type.
+		/// <para/>
+		/// Default: <c>by_finish_date</c>
+		/// </summary>
 		[JsonPropertyName("contest_type")]
 		public required ContestType ContestType { get; init; }
+		/// <summary>
+		/// Giveaway duration value. The maximum duration is 3 days. Required if <b>contest_type</b> is <b>by<i>finish</i>date</b>.
+		/// </summary>
 		[JsonPropertyName("length_value")]
 		public long? LengthValue { get; init; }
+		/// <summary>
+		/// Giveaway duration type. The maximum duration is 3 days. Required if <b>contest_type</b> is <b>by<i>finish</i>date</b>.
+		/// </summary>
 		[JsonPropertyName("length_option")]
 		public LengthOption? LengthOption { get; init; }
+		/// <summary>
+		/// Prize type.
+		/// </summary>
 		[JsonPropertyName("prize_type")]
 		public required PrizeType PrizeType { get; init; }
+		/// <summary>
+		/// Winner count (prize count). Optional if <b>prize_type</b> is <b>money</b>.
+		/// </summary>
 		[JsonPropertyName("count_winners")]
 		public long? CountWinners { get; init; }
+		/// <summary>
+		/// How much money will each winner receive. Optional if <b>prize_type</b> is <b>money</b>.
+		/// </summary>
 		[JsonPropertyName("prize_data_money")]
 		public double? PrizeDataMoney { get; init; }
+		/// <summary>
+		/// Enable the distribution of money prizes by places. Optional if <b>prize_type</b> is <b>money</b>.
+		/// </summary>
 		[JsonPropertyName("is_money_places")]
 		public bool? IsMoneyPlaces { get; init; }
+		/// <summary>
+		/// How much money will receive each place. Required if <b>is<i>money</i>places</b> is <b>1</b>.
+		/// </summary>
 		[JsonPropertyName("prize_data_places")]
 		public List<double?>? PrizeDataPlaces { get; init; }
+		/// <summary>
+		/// Which upgrade will each winner receive. Required if <b>prize_type</b> is <b>upgrades</b>.
+		/// </summary>
 		[JsonPropertyName("prize_data_upgrade")]
 		public PrizeDataUpgrade? PrizeDataUpgrade { get; init; }
+		/// <summary>
+		/// Sympathies for this week.
+		/// </summary>
 		[JsonPropertyName("require_like_count")]
 		public required long? RequireLikeCount { get; init; }
+		/// <summary>
+		/// Sympathies for all time.
+		/// </summary>
 		[JsonPropertyName("require_total_like_count")]
 		public required long? RequireTotalLikeCount { get; init; }
+		/// <summary>
+		/// Secret answer of your account.
+		/// </summary>
 		[JsonPropertyName("secret_answer")]
 		public string? SecretAnswer { get; init; }
+		/// <summary>
+		/// Thread tags.
+		/// </summary>
 		[JsonPropertyName("tags")]
 		public List<string>? Tags { get; init; }
-		/// <summary>Default: 2</summary>
+		/// <summary>
+		/// Allow to reply only users with chosen or higher group.
+		/// <para/>
+		/// Default: <c>2</c>
+		/// </summary>
 		[JsonPropertyName("reply_group")]
 		public ReplyGroup? ReplyGroup { get; init; }
+		/// <summary>
+		/// Allow commenting if user can't post in thread.
+		/// </summary>
 		[JsonPropertyName("comment_ignore_group")]
 		public bool? CommentIgnoreGroup { get; init; }
+		/// <summary>
+		/// Don't alert followers about thread creation.
+		/// </summary>
 		[JsonPropertyName("dont_alert_followers")]
 		public bool? DontAlertFollowers { get; init; }
+		/// <summary>
+		/// Hide contacts.
+		/// </summary>
 		[JsonPropertyName("hide_contacts")]
 		public bool? HideContacts { get; init; }
+		/// <summary>
+		/// Allow ask hidden content.
+		/// </summary>
 		[JsonPropertyName("allow_ask_hidden_content")]
 		public bool? AllowAskHiddenContent { get; init; }
+		/// <summary>
+		/// Date to schedule thread creation (format: <c>DD-MM-YYYY</c>).
+		/// </summary>
 		[JsonPropertyName("schedule_date")]
 		public string? ScheduleDate { get; init; }
+		/// <summary>
+		/// Time to schedule thread creation (format: <c>HH:MM</c>).
+		/// </summary>
 		[JsonPropertyName("schedule_time")]
 		public string? ScheduleTime { get; init; }
+		/// <summary>
+		/// Watch thread state.
+		/// </summary>
 		[JsonPropertyName("watch_thread_state")]
 		public bool? WatchThreadState { get; init; }
+		/// <summary>
+		/// Receive forum notifications of new posts in this thread.
+		/// </summary>
 		[JsonPropertyName("watch_thread")]
 		public bool? WatchThread { get; init; }
+		/// <summary>
+		/// Receive email notifications of new posts in this thread.
+		/// </summary>
 		[JsonPropertyName("watch_thread_email")]
 		public bool? WatchThreadEmail { get; init; }
 	}
@@ -613,49 +796,130 @@ public sealed record ThreadsListResponseLinks(
 
 	public sealed record ThreadsClaimBody
 	{
+		/// <summary>
+		/// To whom the complaint is filed. Specify a nickname or a link to the profile.
+		/// </summary>
 		[JsonPropertyName("as_responder")]
 		public required string AsResponder { get; init; }
+		/// <summary>
+		/// Did you buy account on the market?
+		/// </summary>
 		[JsonPropertyName("as_is_market_deal")]
 		public required bool? AsIsMarketDeal { get; init; }
+		/// <summary>
+		/// Market item id.
+		/// Required if <b>as<i>is</i>market_deal</b> is 1.
+		/// </summary>
 		[JsonPropertyName("as_market_item_id")]
 		public long? AsMarketItemId { get; init; }
+		/// <summary>
+		/// Contacts and wallets of the responder. Specify the known data about the responder, if any.
+		/// Optional if <b>as<i>is</i>market_deal</b> is 0.
+		/// </summary>
 		[JsonPropertyName("as_data")]
 		public string? AsData { get; init; }
+		/// <summary>
+		/// Indicate the amount by which the responder deceived you.
+		/// </summary>
 		[JsonPropertyName("as_amount")]
 		public required double? AsAmount { get; init; }
+		/// <summary>
+		/// Currency of Claim.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// The transaction took place through a guarantor or there was a transfer to the market with a hold?
+		/// Required if <b>as<i>is</i>market_deal</b> is 0.
+		/// </summary>
 		[JsonPropertyName("transfer_type")]
 		public required TransferType TransferType { get; init; }
+		/// <summary>
+		/// Pay claim fee now or later. (Only for <b>transfer_type</b> = <b>notsafe</b>)
+		/// </summary>
 		[JsonPropertyName("pay_claim")]
 		public PayClaim? PayClaim { get; init; }
+		/// <summary>
+		/// Funds transfer receipt.
+		/// Upload a receipt for the transfer of funds, use the "View receipt" button in your wallet. May be uploaded to <see href="https://imgur.com/upload">Imgur</see>. Write "no" if you have not paid.
+		/// Required if <b>as<i>is</i>market_deal</b> is 0.
+		/// </summary>
 		[JsonPropertyName("as_funds_receipt")]
 		public string? AsFundsReceipt { get; init; }
+		/// <summary>
+		/// Screenshot showing the respondent's Telegram login.
+		/// If the correspondence was conducted in Telegram, upload a screenshot that will display the respondent's Telegram login against the background of your dialogue. The screenshot may be uploaded to <see href="https://imgur.com/upload">Imgur</see>. If the correspondence was conducted elsewhere, write "no".
+		/// </summary>
 		[JsonPropertyName("as_tg_login_screenshot")]
 		public string? AsTgLoginScreenshot { get; init; }
+		/// <summary>
+		/// Thread tags.
+		/// </summary>
 		[JsonPropertyName("tags")]
 		public List<string>? Tags { get; init; }
+		/// <summary>
+		/// Hide contacts.
+		/// </summary>
 		[JsonPropertyName("hide_contacts")]
 		public bool? HideContacts { get; init; }
+		/// <summary>
+		/// Allow ask hidden content.
+		/// </summary>
 		[JsonPropertyName("allow_ask_hidden_content")]
 		public bool? AllowAskHiddenContent { get; init; }
-		/// <summary>Default: 2</summary>
+		/// <summary>
+		/// Allow to reply only users with chosen or higher group.
+		/// <para/>
+		/// Default: <c>2</c>
+		/// </summary>
 		[JsonPropertyName("reply_group")]
 		public ReplyGroup? ReplyGroup { get; init; }
+		/// <summary>
+		/// Allow commenting if user can't post in thread.
+		/// </summary>
 		[JsonPropertyName("comment_ignore_group")]
 		public bool? CommentIgnoreGroup { get; init; }
+		/// <summary>
+		/// Don't alert followers about thread creation.
+		/// </summary>
 		[JsonPropertyName("dont_alert_followers")]
 		public bool? DontAlertFollowers { get; init; }
+		/// <summary>
+		/// Date to schedule thread creation (format: <c>DD-MM-YYYY</c>).
+		/// </summary>
 		[JsonPropertyName("schedule_date")]
 		public string? ScheduleDate { get; init; }
+		/// <summary>
+		/// Time to schedule thread creation (format: <c>HH:MM</c>).
+		/// </summary>
 		[JsonPropertyName("schedule_time")]
 		public string? ScheduleTime { get; init; }
+		/// <summary>
+		/// Watch thread state.
+		/// </summary>
 		[JsonPropertyName("watch_thread_state")]
 		public bool? WatchThreadState { get; init; }
+		/// <summary>
+		/// Receive forum notifications of new posts in this thread.
+		/// </summary>
 		[JsonPropertyName("watch_thread")]
 		public bool? WatchThread { get; init; }
+		/// <summary>
+		/// Receive email notifications of new posts in this thread.
+		/// </summary>
 		[JsonPropertyName("watch_thread_email")]
 		public bool? WatchThreadEmail { get; init; }
+		/// <summary>
+		/// You should describe what's happened.
+		/// <list type="bullet">
+		/// <item><description>describe the situation in a nutshell. If you wish, you can describe the situation in more detail using the "Spoiler" function.</description></item>
+		/// <item><description>attach screenshots of correspondence. You may upload to the site <see href="https://imgur.com/upload">Imgur</see> - for convenience, use Ctrl + V when uploading screenshots to the album.</description></item>
+		/// <item><description>other evidence;</description></item>
+		/// <item><description>notify the respondent about the complaint you created, familiarize him with hidden content</description></item>
+		/// </list>
+		/// <para/>
+		/// Describe the situation in as much detail as possible.
+		/// </summary>
 		[JsonPropertyName("post_body")]
 		public required string PostBody { get; init; }
 	}
@@ -704,6 +968,9 @@ public sealed record ThreadsListResponseLinks(
 
 	public sealed record ThreadsGetParams
 	{
+		/// <summary>
+		/// List of fields to include.
+		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<ThreadsFieldsInclude>? FieldsInclude { get; init; }
 	}
@@ -752,22 +1019,49 @@ public sealed record ThreadsListResponseLinks(
 
 	public sealed record ThreadsEditBody
 	{
+		/// <summary>
+		/// Thread title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Thread title english.
+		/// </summary>
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
+		/// <summary>
+		/// Prefix ids. Set "0" to remove all thread prefixes.
+		/// </summary>
 		[JsonPropertyName("prefix_id")]
 		public List<long?>? PrefixId { get; init; }
+		/// <summary>
+		/// Thread tags.
+		/// </summary>
 		[JsonPropertyName("tags")]
 		public List<string>? Tags { get; init; }
+		/// <summary>
+		/// Discussion state.
+		/// </summary>
 		[JsonPropertyName("discussion_open")]
 		public bool? DiscussionOpen { get; init; }
+		/// <summary>
+		/// Hide contacts.
+		/// </summary>
 		[JsonPropertyName("hide_contacts")]
 		public bool? HideContacts { get; init; }
+		/// <summary>
+		/// Allow ask hidden content.
+		/// </summary>
 		[JsonPropertyName("allow_ask_hidden_content")]
 		public bool? AllowAskHiddenContent { get; init; }
+		/// <summary>
+		/// Allow to reply only users with chosen or higher group.
+		/// </summary>
 		[JsonPropertyName("reply_group")]
 		public ReplyGroup? ReplyGroup { get; init; }
+		/// <summary>
+		/// Allow commenting if user can't post in thread.
+		/// </summary>
 		[JsonPropertyName("comment_ignore_group")]
 		public bool? CommentIgnoreGroup { get; init; }
 	}
@@ -816,6 +1110,9 @@ public sealed record ThreadsListResponseLinks(
 
 	public sealed record ThreadsDeleteBody
 	{
+		/// <summary>
+		/// Reason of the thread removal.
+		/// </summary>
 		[JsonPropertyName("reason")]
 		public string? Reason { get; init; }
 	}
@@ -871,16 +1168,34 @@ public sealed record ThreadsListResponseLinks(
 
 	public sealed record ThreadsMoveBody
 	{
+		/// <summary>
+		/// Forum id.
+		/// </summary>
 		[JsonPropertyName("node_id")]
 		public required string NodeId { get; init; }
+		/// <summary>
+		/// Thread title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Thread title english.
+		/// </summary>
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
+		/// <summary>
+		/// Prefix ids. Set "0" to remove all thread prefixes.
+		/// </summary>
 		[JsonPropertyName("prefix_id")]
 		public List<long?>? PrefixId { get; init; }
+		/// <summary>
+		/// Apply thread prefix.
+		/// </summary>
 		[JsonPropertyName("apply_thread_prefix")]
 		public bool? ApplyThreadPrefix { get; init; }
+		/// <summary>
+		/// Send a notification to users who are followed to target node.
+		/// </summary>
 		[JsonPropertyName("send_alert")]
 		public bool? SendAlert { get; init; }
 	}
@@ -1274,6 +1589,9 @@ public sealed record ThreadsFollowersResponseUsers(
 
 	public sealed record ThreadsFollowBody
 	{
+		/// <summary>
+		/// Whether to receive notification as email.
+		/// </summary>
 		[JsonPropertyName("email")]
 		public bool? Email { get; init; }
 	}
@@ -1378,8 +1696,14 @@ public sealed record ThreadsFollowersResponseUsers(
 
 	public sealed record ThreadsFollowedParams
 	{
+		/// <summary>
+		/// If included in the request, only the thread count is returned as <b>threads_total</b>.
+		/// </summary>
 		[JsonPropertyName("total")]
 		public bool? Total { get; init; }
+		/// <summary>
+		/// List of fields to include.
+		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<ThreadsFieldsInclude>? FieldsInclude { get; init; }
 	}
@@ -3127,8 +3451,14 @@ public sealed record ThreadsPollGetResponsePoll(
 
 	public sealed record ThreadsPollVoteBody
 	{
+		/// <summary>
+		/// The id of the response to vote for. Can be skipped if <b>response_ids</b> set.
+		/// </summary>
 		[JsonPropertyName("response_id")]
 		public long? ResponseId { get; init; }
+		/// <summary>
+		/// An array of ids of responses (if the poll allows multiple choices).
+		/// </summary>
 		[JsonPropertyName("response_ids")]
 		public List<long?>? ResponseIds { get; init; }
 	}
@@ -3184,10 +3514,19 @@ public sealed record ThreadsPollGetResponsePoll(
 
 	public sealed record ThreadsUnreadParams
 	{
+		/// <summary>
+		/// Maximum number of result threads. The limit may get decreased if the value is too large (depending on the system configuration).
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// Id of the container forum to search for threads. Child forums of the specified forum will be included in the search.
+		/// </summary>
 		[JsonPropertyName("forum_id")]
 		public long? ForumId { get; init; }
+		/// <summary>
+		/// Number of thread data to be returned. Default value is 20.
+		/// </summary>
 		[JsonPropertyName("data_limit")]
 		public long? DataLimit { get; init; }
 	}
@@ -4312,12 +4651,24 @@ public sealed record ThreadsUnreadResponseData(
 
 	public sealed record ThreadsRecentParams
 	{
+		/// <summary>
+		/// Maximum number of days to search for threads.
+		/// </summary>
 		[JsonPropertyName("days")]
 		public long? Days { get; init; }
+		/// <summary>
+		/// Maximum number of result threads. The limit may get decreased if the value is too large.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// Id of the container forum to search for threads. Child forums of the specified forum will be included in the search.
+		/// </summary>
 		[JsonPropertyName("forum_id")]
 		public long? ForumId { get; init; }
+		/// <summary>
+		/// Number of thread data to be returned. Default value is 20.
+		/// </summary>
 		[JsonPropertyName("data_limit")]
 		public long? DataLimit { get; init; }
 	}

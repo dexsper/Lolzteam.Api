@@ -12,6 +12,9 @@ public static class ManagingApiTypes
 {
 	public sealed record ManagingGetParams
 	{
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
 	}
@@ -202,6 +205,9 @@ public static class ManagingApiTypes
 
 	public sealed record ManagingDeleteBody
 	{
+		/// <summary>
+		/// Delete reason.
+		/// </summary>
 		[JsonPropertyName("reason")]
 		public required string Reason { get; init; }
 	}
@@ -257,8 +263,22 @@ public static class ManagingApiTypes
 
 	public sealed record ManagingCreateClaimBody
 	{
+		/// <summary>
+		/// Item id.
+		/// </summary>
 		[JsonPropertyName("item_id")]
 		public required long? ItemId { get; init; }
+		/// <summary>
+		/// You should describe what's happened.
+		/// <list type="bullet">
+		/// <item><description>describe the situation in a nutshell. If you wish, you can describe the situation in more detail using the "Spoiler" function.</description></item>
+		/// <item><description>attach screenshots of correspondence. You must upload to the site <see href="https://imgur.com/upload">Imgur</see></description></item>
+		/// <item><description>other evidence;</description></item>
+		/// <item><description>notify the respondent about the complaint you created, familiarize him with hidden content</description></item>
+		/// </list>
+		/// <para/>
+		/// Describe the situation in as much detail as possible.
+		/// </summary>
 		[JsonPropertyName("post_body")]
 		public required string PostBody { get; init; }
 	}
@@ -1465,8 +1485,14 @@ public sealed record ManagingCreateClaimResponseSystemInfo(
 
 	public sealed record ManagingBulkGetBody
 	{
+		/// <summary>
+		/// Item id.
+		/// </summary>
 		[JsonPropertyName("item_id")]
 		public List<long?>? ItemId { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
 	}
@@ -1575,10 +1601,19 @@ public sealed record ManagingBulkGetResponseItems(
 
 	public sealed record ManagingSteamInventoryValueParams
 	{
+		/// <summary>
+		/// Application id.
+		/// </summary>
 		[JsonPropertyName("app_id")]
 		public AppId? AppId { get; init; }
+		/// <summary>
+		/// Currency in which the inventory value will be returned
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Ignore cache.
+		/// </summary>
 		[JsonPropertyName("ignore_cache")]
 		public bool? IgnoreCache { get; init; }
 	}
@@ -1951,12 +1986,24 @@ public sealed record ManagingSteamInventoryValueResponseData(
 
 	public sealed record ManagingSteamValueParams
 	{
+		/// <summary>
+		/// Link or id of account. Can be [<b>https://lzt.market/{item-id}/</b>, <b>https://steamcommunity.com/id/{steam-name}</b>, <b>https://steamcommunity.com/profiles/{steam-id}</b>, <b>{steam-id}</b>].
+		/// </summary>
 		[JsonPropertyName("link")]
 		public required string Link { get; init; }
+		/// <summary>
+		/// Application id.
+		/// </summary>
 		[JsonPropertyName("app_id")]
 		public AppId? AppId { get; init; }
+		/// <summary>
+		/// Currency in which the inventory value will be returned
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Ignore cache.
+		/// </summary>
 		[JsonPropertyName("ignore_cache")]
 		public bool? IgnoreCache { get; init; }
 	}
@@ -2329,6 +2376,9 @@ public sealed record ManagingSteamValueResponseData(
 
 	public sealed record ManagingSteamPreviewParams
 	{
+		/// <summary>
+		/// Type of page.
+		/// </summary>
 		[JsonPropertyName("type")]
 		public ManagingType? Type { get; init; }
 	}
@@ -2337,26 +2387,56 @@ public sealed record ManagingSteamValueResponseData(
 
 	public sealed record ManagingEditBody
 	{
+		/// <summary>
+		/// Title of account. If <b>title</b> specified and <b>title_en</b> is empty, <b>title_en</b> will be automatically translated to English language.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// English title of account. If <b>title_en</b> specified and <b>title</b> is empty, <b>title</b> will be automatically translated to Russian language.
+		/// </summary>
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
+		/// <summary>
+		/// Current price of account in your currency.
+		/// </summary>
 		[JsonPropertyName("price")]
 		public long? Price { get; init; }
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Account origin. Where did you get it from.
+		/// </summary>
 		[JsonPropertyName("item_origin")]
 		public ManagingItemOrigin? ItemOrigin { get; init; }
+		/// <summary>
+		/// Email login data (email:password format).
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public string? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type")]
 		public EmailType? EmailType { get; init; }
+		/// <summary>
+		/// Allow users to ask discount for this account.
+		/// </summary>
 		[JsonPropertyName("allow_ask_discount")]
 		public bool? AllowAskDiscount { get; init; }
+		/// <summary>
+		/// Using proxy id for account checking. See GET or POST /proxy to get or edit proxy list.
+		/// </summary>
 		[JsonPropertyName("proxy_id")]
 		public long? ProxyId { get; init; }
+		/// <summary>
+		/// Account public description.
+		/// </summary>
 		[JsonPropertyName("description")]
 		public string? Description { get; init; }
+		/// <summary>
+		/// Account private information (visible only for buyer).
+		/// </summary>
 		[JsonPropertyName("information")]
 		public string? Information { get; init; }
 	}
@@ -2496,6 +2576,9 @@ public sealed record ManagingSteamValueResponseData(
 
 	public sealed record ManagingNoteBody
 	{
+		/// <summary>
+		/// Text of note.
+		/// </summary>
 		[JsonPropertyName("text")]
 		public string? Text { get; init; }
 	}
@@ -2551,10 +2634,19 @@ public sealed record ManagingSteamValueResponseData(
 
 	public sealed record ManagingSteamUpdateValueBody
 	{
+		/// <summary>
+		/// Update the entire Steam inventory.
+		/// </summary>
 		[JsonPropertyName("all")]
 		public bool? All { get; init; }
+		/// <summary>
+		/// Application id.
+		/// </summary>
 		[JsonPropertyName("app_id")]
 		public AppId? AppId { get; init; }
+		/// <summary>
+		/// Parse inventory when authorized (Parse trade banned items).
+		/// </summary>
 		[JsonPropertyName("authorize")]
 		public bool? Authorize { get; init; }
 	}
@@ -2659,6 +2751,9 @@ public sealed record ManagingSteamValueResponseData(
 
 	public sealed record ManagingAutoBumpBody
 	{
+		/// <summary>
+		/// Interval in hours
+		/// </summary>
 		[JsonPropertyName("hour")]
 		public required long? Hour { get; init; }
 	}
@@ -2861,6 +2956,9 @@ public sealed record ManagingSteamValueResponseData(
 
 	public sealed record ManagingImageParams
 	{
+		/// <summary>
+		/// Type of image.
+		/// </summary>
 		[JsonPropertyName("type")]
 		public required ManagingType2 Type { get; init; }
 	}
@@ -3000,12 +3098,24 @@ public sealed record ManagingEmailCodeResponseCodeData(
 
 	public sealed record ManagingGetLetters2Params
 	{
+		/// <summary>
+		/// Email login data (email:password format). Required if both *email* and *password* are not provided.
+		/// </summary>
 		[JsonPropertyName("email_password")]
 		public string? EmailPassword { get; init; }
+		/// <summary>
+		/// Email. Required if *email_password* is not provided.
+		/// </summary>
 		[JsonPropertyName("email")]
 		public string? Email { get; init; }
+		/// <summary>
+		/// Password. Required if *email_password* is not provided.
+		/// </summary>
 		[JsonPropertyName("password")]
 		public string? Password { get; init; }
+		/// <summary>
+		/// Number of letters to return.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -3539,8 +3649,14 @@ public sealed record ManagingSteamMafileCodeResponseCodeData(
 
 	public sealed record ManagingSteamSDABody
 	{
+		/// <summary>
+		/// Confirmation id. (Required along with <b>nonce</b> if you want to confirm action).
+		/// </summary>
 		[JsonPropertyName("id")]
 		public long? Id { get; init; }
+		/// <summary>
+		/// Confirmation nonce. (Required along with <b>id</b> if you want to confirm action).
+		/// </summary>
 		[JsonPropertyName("nonce")]
 		public long? Nonce { get; init; }
 	}
@@ -3778,6 +3894,9 @@ public sealed record ManagingTelegramCodeResponseCodes(
 
 	public sealed record ManagingDeclineVideoRecordingBody
 	{
+		/// <summary>
+		/// You voluntarily and with full awareness of your actions waive any claims regarding this account.
+		/// </summary>
 		[JsonPropertyName("i_voluntarily_and_with_full_awareness_of_my_actions_waive_any_claims_regarding_this_item")]
 		public required bool? IVoluntarilyAndWithFullAwarenessOfMyActionsWaiveAnyClaimsRegardingThisItem { get; init; }
 	}
@@ -3875,6 +3994,9 @@ public sealed record ManagingTelegramCodeResponseCodes(
 
 	public sealed record ManagingChangePasswordBody
 	{
+		/// <summary>
+		/// Cancel change password recommendation. It will be helpful, if you don't want to change password and get login data.
+		/// </summary>
 		[JsonPropertyName("_cancel")]
 		public Cancel? Cancel { get; init; }
 	}
@@ -4000,6 +4122,9 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 
 	public sealed record ManagingTagBody
 	{
+		/// <summary>
+		/// Tag ID.
+		/// </summary>
 		[JsonPropertyName("tag_id")]
 		public required long? TagId { get; init; }
 	}
@@ -4141,6 +4266,9 @@ public sealed record ManagingTagResponseTag(
 
 	public sealed record ManagingUntagBody
 	{
+		/// <summary>
+		/// Tag ID.
+		/// </summary>
 		[JsonPropertyName("tag_id")]
 		public required long? TagId { get; init; }
 	}
@@ -4282,6 +4410,9 @@ public sealed record ManagingUntagResponseTag(
 
 	public sealed record ManagingPublicTagBody
 	{
+		/// <summary>
+		/// Tag ID.
+		/// </summary>
 		[JsonPropertyName("tag_id")]
 		public required long? TagId { get; init; }
 	}
@@ -4423,6 +4554,9 @@ public sealed record ManagingPublicTagResponseTag(
 
 	public sealed record ManagingPublicUntagBody
 	{
+		/// <summary>
+		/// Tag ID.
+		/// </summary>
 		[JsonPropertyName("tag_id")]
 		public required long? TagId { get; init; }
 	}
@@ -4760,8 +4894,14 @@ public sealed record ManagingPublicUntagResponseTag(
 
 	public sealed record ManagingTransferBody
 	{
+		/// <summary>
+		/// The username of the new account owner.
+		/// </summary>
 		[JsonPropertyName("username")]
 		public required string Username { get; init; }
+		/// <summary>
+		/// Secret answer of your account.
+		/// </summary>
 		[JsonPropertyName("secret_answer")]
 		public required string SecretAnswer { get; init; }
 	}

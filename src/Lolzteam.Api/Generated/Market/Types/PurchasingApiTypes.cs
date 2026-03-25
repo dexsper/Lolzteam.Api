@@ -12,8 +12,14 @@ public static class PurchasingApiTypes
 {
 	public sealed record PurchasingFastBuyBody
 	{
+		/// <summary>
+		/// Current price of account in your currency.
+		/// </summary>
 		[JsonPropertyName("price")]
 		public double? Price { get; init; }
+		/// <summary>
+		/// Balance ID that will be used to purchase specified item.
+		/// </summary>
 		[JsonPropertyName("balance_id")]
 		public long? BalanceId { get; init; }
 	}
@@ -2404,8 +2410,14 @@ public sealed record PurchasingCheckResponseItem(
 
 	public sealed record PurchasingConfirmBody
 	{
+		/// <summary>
+		/// Current price of account in your currency.
+		/// </summary>
 		[JsonPropertyName("price")]
 		public long? Price { get; init; }
+		/// <summary>
+		/// Balance ID that will be used to purchase specified item.
+		/// </summary>
 		[JsonPropertyName("balance_id")]
 		public long? BalanceId { get; init; }
 	}
@@ -2580,8 +2592,14 @@ public sealed record PurchasingConfirmResponseItem(
 
 	public sealed record PurchasingDiscountRequestBody
 	{
+		/// <summary>
+		/// Requested discounted price.
+		/// </summary>
 		[JsonPropertyName("discount_price")]
 		public required double? DiscountPrice { get; init; }
+		/// <summary>
+		/// Message to the seller.
+		/// </summary>
 		[JsonPropertyName("message")]
 		public string? Message { get; init; }
 	}

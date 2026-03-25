@@ -22,10 +22,19 @@ public static class OAuthApiTypes
 	{
 		[JsonPropertyName("grant_type")]
 		public string GrantType => "client_credentials";
+		/// <summary>
+		/// Client ID.
+		/// </summary>
 		[JsonPropertyName("client_id")]
 		public required string ClientId { get; init; }
+		/// <summary>
+		/// Client secret.
+		/// </summary>
 		[JsonPropertyName("client_secret")]
 		public required string ClientSecret { get; init; }
+		/// <summary>
+		/// Scope.
+		/// </summary>
 		[JsonPropertyName("scope")]
 		public required JsonElement Scope { get; init; }
 	}
@@ -34,14 +43,29 @@ public static class OAuthApiTypes
 	{
 		[JsonPropertyName("grant_type")]
 		public string GrantType => "authorization_code";
+		/// <summary>
+		/// Authorization code.
+		/// </summary>
 		[JsonPropertyName("code")]
 		public required string Code { get; init; }
+		/// <summary>
+		/// Client ID.
+		/// </summary>
 		[JsonPropertyName("client_id")]
 		public required string ClientId { get; init; }
+		/// <summary>
+		/// Client secret.
+		/// </summary>
 		[JsonPropertyName("client_secret")]
 		public required string ClientSecret { get; init; }
+		/// <summary>
+		/// Redirect URI.
+		/// </summary>
 		[JsonPropertyName("redirect_uri")]
 		public required string RedirectUri { get; init; }
+		/// <summary>
+		/// Scope.
+		/// </summary>
 		[JsonPropertyName("scope")]
 		public required JsonElement Scope { get; init; }
 	}
@@ -50,10 +74,19 @@ public static class OAuthApiTypes
 	{
 		[JsonPropertyName("grant_type")]
 		public string GrantType => "refresh_token";
+		/// <summary>
+		/// Refresh token.
+		/// </summary>
 		[JsonPropertyName("refresh_token")]
 		public required string RefreshToken { get; init; }
+		/// <summary>
+		/// Client ID.
+		/// </summary>
 		[JsonPropertyName("client_id")]
 		public required string ClientId { get; init; }
+		/// <summary>
+		/// Client secret.
+		/// </summary>
 		[JsonPropertyName("client_secret")]
 		public required string ClientSecret { get; init; }
 	}
@@ -62,14 +95,29 @@ public static class OAuthApiTypes
 	{
 		[JsonPropertyName("grant_type")]
 		public string GrantType => "password";
+		/// <summary>
+		/// Account username/email.
+		/// </summary>
 		[JsonPropertyName("username")]
 		public required string Username { get; init; }
+		/// <summary>
+		/// Account password.
+		/// </summary>
 		[JsonPropertyName("password")]
 		public required string Password { get; init; }
+		/// <summary>
+		/// Client ID.
+		/// </summary>
 		[JsonPropertyName("client_id")]
 		public required string ClientId { get; init; }
+		/// <summary>
+		/// Client secret.
+		/// </summary>
 		[JsonPropertyName("client_secret")]
 		public required string ClientSecret { get; init; }
+		/// <summary>
+		/// Scope.
+		/// </summary>
 		[JsonPropertyName("scope")]
 		public required JsonElement Scope { get; init; }
 	}

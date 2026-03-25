@@ -8,6 +8,19 @@ internal static partial class Transforms
     [GeneratedRegex(@"^Array<(.+)>$")]
     private static partial Regex ArrayTypePattern();
 
+    private static string? StringProp(JsonNode? node, string key)
+    {
+        if (node is not JsonObject obj)
+            return null;
+
+        if (obj[key] is not JsonValue value)
+            return null;
+
+        return value.TryGetValue<string>(out var result)
+            ? result
+            : null;
+    }
+
     /// <summary>Follow a JSON pointer path like #/components/schemas/Foo.</summary>
     internal static JsonNode? ResolveRef(string reference, JsonNode spec)
     {
@@ -378,6 +391,8 @@ internal static partial class Transforms
             var requiredNode = paramObj["required"];
             var required = requiredNode is JsonValue rv && rv.TryGetValue<bool>(out var rBool) && rBool;
             var enumValues = ExtractEnumValues(paramSchema, spec);
+            var description = StringProp(paramObj, "description");
+
             // For array params, extract enum values from items schema
             if (enumValues is null && paramSchema is JsonObject paramSchemaObj)
             {
@@ -400,16 +415,18 @@ internal static partial class Transforms
                 type,
                 inValue == "path" || required,
                 enumValues,
-                defaultValue
+                defaultValue,
+                description
             );
 
-            if (inValue == "path")
+            switch (inValue)
             {
-                pathParams.Add(parsed);
-            }
-            else if (inValue == "query")
-            {
-                queryParams.Add(parsed);
+                case "path":
+                    pathParams.Add(parsed);
+                    break;
+                case "query":
+                    queryParams.Add(parsed);
+                    break;
             }
         }
 
@@ -459,11 +476,11 @@ internal static partial class Transforms
                 }
             }
 
-            if (allMatch)
-            {
-                discriminatorField = kvp.Key;
-                break;
-            }
+            if (!allMatch)
+                continue;
+
+            discriminatorField = kvp.Key;
+            break;
         }
 
         if (discriminatorField is null) return null;
@@ -492,12 +509,15 @@ internal static partial class Transforms
                 if (kvp.Key == discriminatorField) continue;
                 var propEnumValues = ExtractEnumValues(kvp.Value, spec);
                 var propDefaultValue = ExtractDefaultValue(kvp.Value);
+                var propDescription = StringProp(kvp.Value, "description");
+
                 bodyProps.Add(new BodyProperty(
                     kvp.Key,
                     SchemaToTypeString(kvp.Value, spec),
                     requiredSet.Contains(kvp.Key),
                     propEnumValues,
-                    propDefaultValue
+                    propDefaultValue,
+                    propDescription
                 ));
             }
 
@@ -738,8 +758,10 @@ internal static partial class Transforms
                     }
 
                     var propDefaultValue = format == "binary" ? null : ExtractDefaultValue(propSchema);
+                    var propDescription = StringProp(propSchema, "description");
                     bodyProperties.Add(new BodyProperty(propName, propType, requiredSet.Contains(propName),
-                        propEnumValues, propDefaultValue));
+                        propEnumValues, propDefaultValue, propDescription)
+                    );
                 }
             }
         }
@@ -764,17 +786,29 @@ internal static partial class Transforms
     private static string ExtractResponseType(JsonNode operation, JsonNode spec)
     {
         var responses = (operation as JsonObject)?["responses"];
-        if (responses is not JsonObject respObj) return "unknown";
+        if (responses is not JsonObject respObj)
+            return "unknown";
+
         var rawSuccess = respObj["200"] ?? respObj["201"];
-        if (rawSuccess is null) return "unknown";
+        if (rawSuccess is null)
+            return "unknown";
+
         var success = DerefShallow(rawSuccess, spec);
-        if (success is not JsonObject successObj) return "unknown";
+        if (success is not JsonObject successObj)
+            return "unknown";
+
         var content = successObj["content"];
-        if (content is not JsonObject contentObj) return "unknown";
+        if (content is not JsonObject contentObj)
+            return "unknown";
+
         var jsonContent = contentObj["application/json"];
-        if (jsonContent is not JsonObject jsonObj) return "unknown";
+        if (jsonContent is not JsonObject jsonObj)
+            return "unknown";
+
         var rawSchema = jsonObj["schema"];
-        if (rawSchema is null) return "unknown";
+        if (rawSchema is null)
+            return "unknown";
+
         var schema = DerefShallow(rawSchema, spec);
         return SchemaToTypeString(schema, spec);
     }
@@ -789,19 +823,32 @@ internal static partial class Transforms
         if (rawOperation is not JsonObject rawOpObj) return null;
 
         var responses = rawOpObj["responses"];
-        if (responses is not JsonObject respObj) return null;
+        if (responses is not JsonObject respObj)
+            return null;
+
         var rawSuccess = respObj["200"] ?? respObj["201"];
-        if (rawSuccess is null) return null;
+        if (rawSuccess is null)
+            return null;
+
         var success = DerefShallow(rawSuccess, rawSpec);
-        if (success is not JsonObject successObj) return null;
+        if (success is not JsonObject successObj)
+            return null;
+
         var content = successObj["content"];
-        if (content is not JsonObject contentObj) return null;
+        if (content is not JsonObject contentObj)
+            return null;
+
         var jsonContent = contentObj["application/json"];
-        if (jsonContent is not JsonObject jsonObj) return null;
+        if (jsonContent is not JsonObject jsonObj)
+            return null;
+
         var rawSchema = jsonObj["schema"];
-        if (rawSchema is null) return null;
+        if (rawSchema is null)
+            return null;
+
         var schema = DerefShallow(rawSchema, rawSpec);
-        if (schema is not JsonObject schemaObj) return null;
+        if (schema is not JsonObject schemaObj)
+            return null;
 
         var properties = schemaObj["properties"];
         if (properties is not JsonObject propsObj || propsObj.Count == 0) return null;
@@ -928,13 +975,10 @@ internal static partial class Transforms
         if (type == "array")
         {
             var items = sObj["items"];
-            if (items is not null)
-            {
-                var (itemType, itemRef) = ResolvePropertyType(items, rawSpec, componentSchemaNames);
-                return ($"List<{itemType}>", itemRef);
-            }
+            if (items is null) return ("List<JsonElement>", null);
 
-            return ("List<JsonElement>", null);
+            var (itemType, itemRef) = ResolvePropertyType(items, rawSpec, componentSchemaNames);
+            return ($"List<{itemType}>", itemRef);
         }
 
         // Object with properties → inline object (will be JsonElement for now, could be nested record)
@@ -999,7 +1043,8 @@ internal static partial class Transforms
             var combined = new List<ParsedParameter>(parameters.QueryParams);
             foreach (var prop in body.Properties)
             {
-                combined.Add(new ParsedParameter(prop.Name, prop.Type, false, prop.EnumValues, prop.DefaultValue));
+                combined.Add(new ParsedParameter(prop.Name, prop.Type, false, prop.EnumValues, prop.DefaultValue,
+                    prop.Description));
             }
 
             effectiveQueryParams = combined;

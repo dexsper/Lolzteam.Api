@@ -12,46 +12,109 @@ public static class CategoryApiTypes
 {
 	public sealed record CategoryAllParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
 	}
@@ -167,243 +230,601 @@ public static class CategoryApiTypes
 
 	public sealed record CategorySteamParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType>? EmailType { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// List of games.
+		/// </summary>
 		[JsonPropertyName("game[]")]
 		public List<long?>? Game { get; init; }
+		/// <summary>
+		/// List of minimum hours played by game.
+		/// </summary>
 		[JsonPropertyName("hours_played")]
 		public JsonElement? HoursPlayed { get; init; }
+		/// <summary>
+		/// List of maximum hours played by game.
+		/// </summary>
 		[JsonPropertyName("hours_played_max")]
 		public JsonElement? HoursPlayedMax { get; init; }
+		/// <summary>
+		/// Guarantee type.
+		/// </summary>
 		[JsonPropertyName("eg")]
 		public CategoryEg? Eg { get; init; }
+		/// <summary>
+		/// List of VAC bans by game.
+		/// </summary>
 		[JsonPropertyName("vac[]")]
 		public List<long?>? Vac { get; init; }
+		/// <summary>
+		/// Don't check game existence while checking for vac.
+		/// </summary>
 		[JsonPropertyName("vac_skip_game_check")]
 		public bool? VacSkipGameCheck { get; init; }
-		/// <summary>Default: no</summary>
+		/// <summary>
+		/// Has community ban.
+		/// <para/>
+		/// Default: <c>no</c>
+		/// </summary>
 		[JsonPropertyName("rt")]
 		public Rt? Rt { get; init; }
+		/// <summary>
+		/// Has lifetime trade ban.
+		/// </summary>
 		[JsonPropertyName("trade_ban")]
 		public TradeBan? TradeBan { get; init; }
+		/// <summary>
+		/// Has temporary trade limit.
+		/// </summary>
 		[JsonPropertyName("trade_limit")]
 		public TradeLimit? TradeLimit { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Has 5 $ limit.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public Limit? Limit { get; init; }
+		/// <summary>
+		/// Has .mafile (Steam Guard Authenticator).
+		/// </summary>
 		[JsonPropertyName("mafile")]
 		public Mafile? Mafile { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// Minimum level.
+		/// </summary>
 		[JsonPropertyName("lmin")]
 		public long? Lmin { get; init; }
+		/// <summary>
+		/// Maximum level.
+		/// </summary>
 		[JsonPropertyName("lmax")]
 		public long? Lmax { get; init; }
+		/// <summary>
+		/// Minimum rank in CS2 Matchmaking.
+		/// </summary>
 		[JsonPropertyName("rmin")]
 		public long? Rmin { get; init; }
+		/// <summary>
+		/// Maximum rank in CS2 Matchmaking.
+		/// </summary>
 		[JsonPropertyName("rmax")]
 		public long? Rmax { get; init; }
+		/// <summary>
+		/// Minimum rank in CS2 Wingman.
+		/// </summary>
 		[JsonPropertyName("wingman_rmin")]
 		public long? WingmanRmin { get; init; }
+		/// <summary>
+		/// Maximum rank in CS2 Wingman.
+		/// </summary>
 		[JsonPropertyName("wingman_rmax")]
 		public long? WingmanRmax { get; init; }
+		/// <summary>
+		/// Has no VAC ban.
+		/// </summary>
 		[JsonPropertyName("no_vac")]
 		public bool? NoVac { get; init; }
+		/// <summary>
+		/// Has CS2 Matchmaking ban.
+		/// </summary>
 		[JsonPropertyName("mm_ban")]
 		public MmBan? MmBan { get; init; }
+		/// <summary>
+		/// Minimum balance.
+		/// </summary>
 		[JsonPropertyName("balance_min")]
 		public long? BalanceMin { get; init; }
+		/// <summary>
+		/// Maximum balance.
+		/// </summary>
 		[JsonPropertyName("balance_max")]
 		public long? BalanceMax { get; init; }
+		/// <summary>
+		/// Game ID to check inventory price.
+		/// </summary>
 		[JsonPropertyName("inv_game")]
 		public long? InvGame { get; init; }
+		/// <summary>
+		/// Minimum inventory price for game.
+		/// </summary>
 		[JsonPropertyName("inv_min")]
 		public double? InvMin { get; init; }
+		/// <summary>
+		/// Maximum inventory price for game.
+		/// </summary>
 		[JsonPropertyName("inv_max")]
 		public double? InvMax { get; init; }
+		/// <summary>
+		/// Minimum number of friends.
+		/// </summary>
 		[JsonPropertyName("friends_min")]
 		public long? FriendsMin { get; init; }
+		/// <summary>
+		/// Maximum number of friends.
+		/// </summary>
 		[JsonPropertyName("friends_max")]
 		public long? FriendsMax { get; init; }
+		/// <summary>
+		/// Minimum number of games.
+		/// </summary>
 		[JsonPropertyName("gmin")]
 		public long? Gmin { get; init; }
+		/// <summary>
+		/// Maximum number of games.
+		/// </summary>
 		[JsonPropertyName("gmax")]
 		public long? Gmax { get; init; }
+		/// <summary>
+		/// Minimum number of wins.
+		/// </summary>
 		[JsonPropertyName("win_count_min")]
 		public long? WinCountMin { get; init; }
+		/// <summary>
+		/// Maximum number of wins.
+		/// </summary>
 		[JsonPropertyName("win_count_max")]
 		public long? WinCountMax { get; init; }
+		/// <summary>
+		/// List of medal IDs.
+		/// </summary>
 		[JsonPropertyName("medal_id[]")]
 		public List<MedalId>? MedalId { get; init; }
+		/// <summary>
+		/// Search for medals using "OR" instead of "AND".
+		/// </summary>
 		[JsonPropertyName("medal_operator_or")]
 		public bool? MedalOperatorOr { get; init; }
+		/// <summary>
+		/// Minimum number of medals.
+		/// </summary>
 		[JsonPropertyName("medal_min")]
 		public long? MedalMin { get; init; }
+		/// <summary>
+		/// Maximum number of medals.
+		/// </summary>
 		[JsonPropertyName("medal_max")]
 		public long? MedalMax { get; init; }
+		/// <summary>
+		/// List of gifts.
+		/// </summary>
 		[JsonPropertyName("gift[]")]
 		public List<Gift>? Gift { get; init; }
+		/// <summary>
+		/// Minimum number of gifts.
+		/// </summary>
 		[JsonPropertyName("gift_min")]
 		public long? GiftMin { get; init; }
+		/// <summary>
+		/// Maximum number of gifts.
+		/// </summary>
 		[JsonPropertyName("gift_max")]
 		public long? GiftMax { get; init; }
+		/// <summary>
+		/// Minimum number of recently played hours.
+		/// </summary>
 		[JsonPropertyName("recently_hours_min")]
 		public long? RecentlyHoursMin { get; init; }
+		/// <summary>
+		/// Maximum number of recently played hours.
+		/// </summary>
 		[JsonPropertyName("recently_hours_max")]
 		public long? RecentlyHoursMax { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Minimum CS2 rank.
+		/// </summary>
 		[JsonPropertyName("cs2_profile_rank_min")]
 		public long? Cs2ProfileRankMin { get; init; }
+		/// <summary>
+		/// Maximum CS2 rank.
+		/// </summary>
 		[JsonPropertyName("cs2_profile_rank_max")]
 		public long? Cs2ProfileRankMax { get; init; }
+		/// <summary>
+		/// Minimum number of Dota 2 MMR.
+		/// </summary>
 		[JsonPropertyName("solommr_min")]
 		public long? SolommrMin { get; init; }
+		/// <summary>
+		/// Maximum number of Dota 2 MMR.
+		/// </summary>
 		[JsonPropertyName("solommr_max")]
 		public long? SolommrMax { get; init; }
+		/// <summary>
+		/// Minimum number of Dota 2 games.
+		/// </summary>
 		[JsonPropertyName("d2_game_count_min")]
 		public long? D2GameCountMin { get; init; }
+		/// <summary>
+		/// Maximum number of Dota 2 games.
+		/// </summary>
 		[JsonPropertyName("d2_game_count_max")]
 		public long? D2GameCountMax { get; init; }
+		/// <summary>
+		/// Minimum number of Dota 2 wins.
+		/// </summary>
 		[JsonPropertyName("d2_win_count_min")]
 		public long? D2WinCountMin { get; init; }
+		/// <summary>
+		/// Maximum number of Dota 2 wins.
+		/// </summary>
 		[JsonPropertyName("d2_win_count_max")]
 		public long? D2WinCountMax { get; init; }
+		/// <summary>
+		/// Minimum number of Dota 2 behavior.
+		/// </summary>
 		[JsonPropertyName("d2_behavior_min")]
 		public long? D2BehaviorMin { get; init; }
+		/// <summary>
+		/// Maximum number of Dota 2 behavior.
+		/// </summary>
 		[JsonPropertyName("d2_behavior_max")]
 		public long? D2BehaviorMax { get; init; }
+		/// <summary>
+		/// Minimum FACEIT level.
+		/// </summary>
 		[JsonPropertyName("faceit_lvl_min")]
 		public long? FaceitLvlMin { get; init; }
+		/// <summary>
+		/// Maximum FACEIT level.
+		/// </summary>
 		[JsonPropertyName("faceit_lvl_max")]
 		public long? FaceitLvlMax { get; init; }
+		/// <summary>
+		/// Minimum number of Steam points.
+		/// </summary>
 		[JsonPropertyName("points_min")]
 		public long? PointsMin { get; init; }
+		/// <summary>
+		/// Maximum number of Steam points.
+		/// </summary>
 		[JsonPropertyName("points_max")]
 		public long? PointsMax { get; init; }
+		/// <summary>
+		/// Minimum number of relevant games.
+		/// </summary>
 		[JsonPropertyName("relevant_gmin")]
 		public long? RelevantGmin { get; init; }
+		/// <summary>
+		/// Maximum number of relevant games.
+		/// </summary>
 		[JsonPropertyName("relevant_gmax")]
 		public long? RelevantGmax { get; init; }
+		/// <summary>
+		/// How old is last transaction.
+		/// </summary>
 		[JsonPropertyName("last_trans_date")]
 		public long? LastTransDate { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("last_trans_date_period")]
 		public LastTransDatePeriod? LastTransDatePeriod { get; init; }
+		/// <summary>
+		/// How new is last transaction.
+		/// </summary>
 		[JsonPropertyName("last_trans_date_later")]
 		public long? LastTransDateLater { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("last_trans_date_period_later")]
 		public LastTransDatePeriodLater? LastTransDatePeriodLater { get; init; }
+		/// <summary>
+		/// Has no transactions.
+		/// </summary>
 		[JsonPropertyName("no_trans")]
 		public bool? NoTrans { get; init; }
+		/// <summary>
+		/// Has transactions.
+		/// </summary>
 		[JsonPropertyName("trans")]
 		public bool? Trans { get; init; }
+		/// <summary>
+		/// Minimum amount spent on gifts.
+		/// </summary>
 		[JsonPropertyName("gifts_purchase_min")]
 		public double? GiftsPurchaseMin { get; init; }
+		/// <summary>
+		/// Maximum amount spent on gifts.
+		/// </summary>
 		[JsonPropertyName("gifts_purchase_max")]
 		public double? GiftsPurchaseMax { get; init; }
+		/// <summary>
+		/// Minimum amount of refunds.
+		/// </summary>
 		[JsonPropertyName("refunds_purchase_min")]
 		public double? RefundsPurchaseMin { get; init; }
+		/// <summary>
+		/// Minimum amount of refunds.
+		/// </summary>
 		[JsonPropertyName("refunds_purchase_max")]
 		public double? RefundsPurchaseMax { get; init; }
+		/// <summary>
+		/// Minimum spend amount on in-game purchases.
+		/// </summary>
 		[JsonPropertyName("ingame_purchase_min")]
 		public double? IngamePurchaseMin { get; init; }
+		/// <summary>
+		/// Maximum spend amount on in-game purchases.
+		/// </summary>
 		[JsonPropertyName("ingame_purchase_max")]
 		public double? IngamePurchaseMax { get; init; }
+		/// <summary>
+		/// Minimum spend amount on all purchases.
+		/// </summary>
 		[JsonPropertyName("games_purchase_min")]
 		public double? GamesPurchaseMin { get; init; }
+		/// <summary>
+		/// Maximum spend amount on all purchases.
+		/// </summary>
 		[JsonPropertyName("games_purchase_max")]
 		public double? GamesPurchaseMax { get; init; }
+		/// <summary>
+		/// Minimum spend amount on all purchases.
+		/// </summary>
 		[JsonPropertyName("purchase_min")]
 		public double? PurchaseMin { get; init; }
+		/// <summary>
+		/// Maximum spend amount on all purchases.
+		/// </summary>
 		[JsonPropertyName("purchase_max")]
 		public double? PurchaseMax { get; init; }
+		/// <summary>
+		/// Has activated keys.
+		/// </summary>
 		[JsonPropertyName("has_activated_keys")]
 		public HasActivatedKeys? HasActivatedKeys { get; init; }
+		/// <summary>
+		/// Minimum Premier ELO in CS2.
+		/// </summary>
 		[JsonPropertyName("elo_min")]
 		public long? EloMin { get; init; }
+		/// <summary>
+		/// Maximum Premier ELO in CS2.
+		/// </summary>
 		[JsonPropertyName("elo_max")]
 		public long? EloMax { get; init; }
+		/// <summary>
+		/// Map for rank in CS2.
+		/// </summary>
 		[JsonPropertyName("cs2_map_rank")]
 		public Cs2MapRank? Cs2MapRank { get; init; }
+		/// <summary>
+		/// Minimum rank in CS2 on a certain map.
+		/// </summary>
 		[JsonPropertyName("cs2_map_rmin")]
 		public long? Cs2MapRmin { get; init; }
+		/// <summary>
+		/// Maximum rank in CS2 on a certain map.
+		/// </summary>
 		[JsonPropertyName("cs2_map_rmax")]
 		public long? Cs2MapRmax { get; init; }
+		/// <summary>
+		/// Has FACEIT account.
+		/// </summary>
 		[JsonPropertyName("has_faceit")]
 		public HasFaceit? HasFaceit { get; init; }
+		/// <summary>
+		/// Minimum FACEIT level.
+		/// </summary>
 		[JsonPropertyName("faceit_csgo_lvl_min")]
 		public long? FaceitCsgoLvlMin { get; init; }
+		/// <summary>
+		/// Maximum FACEIT level.
+		/// </summary>
 		[JsonPropertyName("faceit_csgo_lvl_max")]
 		public long? FaceitCsgoLvlMax { get; init; }
+		/// <summary>
+		/// Minimum number of Rust deaths
+		/// </summary>
 		[JsonPropertyName("rust_deaths_min")]
 		public long? RustDeathsMin { get; init; }
+		/// <summary>
+		/// Maximum number of Rust deaths
+		/// </summary>
 		[JsonPropertyName("rust_deaths_max")]
 		public long? RustDeathsMax { get; init; }
+		/// <summary>
+		/// Minimum number of Rust kills
+		/// </summary>
 		[JsonPropertyName("rust_kills_min")]
 		public long? RustKillsMin { get; init; }
+		/// <summary>
+		/// Maximum number of Rust kills
+		/// </summary>
 		[JsonPropertyName("rust_kills_max")]
 		public long? RustKillsMax { get; init; }
+		/// <summary>
+		/// How old is last match of Dota 2.
+		/// </summary>
 		[JsonPropertyName("d2_last_match_date")]
 		public long? D2LastMatchDate { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("d2_last_match_date_period")]
 		public D2LastMatchDatePeriod? D2LastMatchDatePeriod { get; init; }
+		/// <summary>
+		/// Minimum number of available to collect trading cards.
+		/// </summary>
 		[JsonPropertyName("cards_min")]
 		public long? CardsMin { get; init; }
+		/// <summary>
+		/// Maximum number of available to collect trading cards.
+		/// </summary>
 		[JsonPropertyName("cards_max")]
 		public long? CardsMax { get; init; }
+		/// <summary>
+		/// Minimum number of available games with available to collect trading cards.
+		/// </summary>
 		[JsonPropertyName("cards_games_min")]
 		public long? CardsGamesMin { get; init; }
+		/// <summary>
+		/// Maximum number of available games with available to collect trading cards.
+		/// </summary>
 		[JsonPropertyName("cards_games_max")]
 		public long? CardsGamesMax { get; init; }
+		/// <summary>
+		/// Ignore inventory value if game has VAC ban.
+		/// </summary>
 		[JsonPropertyName("skip_vac_inv")]
 		public bool? SkipVacInv { get; init; }
 	}
@@ -2159,154 +2580,379 @@ public sealed record CategorySteamResponseItems(
 
 	public sealed record CategoryFortniteParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType2>? EmailType { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Access to market temp mail.
+		/// </summary>
 		[JsonPropertyName("temp_email")]
 		public TempEmail? TempEmail { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Guarantee type.
+		/// </summary>
 		[JsonPropertyName("eg")]
 		public CategoryEg2? Eg { get; init; }
+		/// <summary>
+		/// Minimum number of skins.
+		/// </summary>
 		[JsonPropertyName("smin")]
 		public long? Smin { get; init; }
+		/// <summary>
+		/// Maximum number of skins.
+		/// </summary>
 		[JsonPropertyName("smax")]
 		public long? Smax { get; init; }
+		/// <summary>
+		/// Minimum number of V-Bucks.
+		/// </summary>
 		[JsonPropertyName("vbmin")]
 		public long? Vbmin { get; init; }
+		/// <summary>
+		/// Maximum number of V-Bucks.
+		/// </summary>
 		[JsonPropertyName("vbmax")]
 		public long? Vbmax { get; init; }
+		/// <summary>
+		/// Skins.
+		/// </summary>
 		[JsonPropertyName("skin[]")]
 		public List<Skin>? Skin { get; init; }
+		/// <summary>
+		/// Pickaxes.
+		/// </summary>
 		[JsonPropertyName("pickaxe[]")]
 		public List<Pickaxe>? Pickaxe { get; init; }
+		/// <summary>
+		/// Gliders.
+		/// </summary>
 		[JsonPropertyName("glider[]")]
 		public List<Glider>? Glider { get; init; }
+		/// <summary>
+		/// Dances.
+		/// </summary>
 		[JsonPropertyName("dance[]")]
 		public List<Dance>? Dance { get; init; }
+		/// <summary>
+		/// Can change email.
+		/// </summary>
 		[JsonPropertyName("change_email")]
 		public ChangeEmail? ChangeEmail { get; init; }
+		/// <summary>
+		/// Platform.
+		/// </summary>
 		[JsonPropertyName("platform[]")]
 		public List<Platform>? Platform { get; init; }
+		/// <summary>
+		/// Minimum number of shop skins.
+		/// </summary>
 		[JsonPropertyName("skins_shop_min")]
 		public long? SkinsShopMin { get; init; }
+		/// <summary>
+		/// Maximum number of shop skins.
+		/// </summary>
 		[JsonPropertyName("skins_shop_max")]
 		public long? SkinsShopMax { get; init; }
+		/// <summary>
+		/// Minimum number of shop pickaxes.
+		/// </summary>
 		[JsonPropertyName("pickaxes_shop_min")]
 		public long? PickaxesShopMin { get; init; }
+		/// <summary>
+		/// Maximum number of shop pickaxes.
+		/// </summary>
 		[JsonPropertyName("pickaxes_shop_max")]
 		public long? PickaxesShopMax { get; init; }
+		/// <summary>
+		/// Minimum number of shop dances.
+		/// </summary>
 		[JsonPropertyName("dances_shop_min")]
 		public long? DancesShopMin { get; init; }
+		/// <summary>
+		/// Maximum number of shop dances.
+		/// </summary>
 		[JsonPropertyName("dances_shop_max")]
 		public long? DancesShopMax { get; init; }
+		/// <summary>
+		/// Minimum number of shop gliders.
+		/// </summary>
 		[JsonPropertyName("gliders_shop_min")]
 		public long? GlidersShopMin { get; init; }
+		/// <summary>
+		/// Maximum number of shop gliders.
+		/// </summary>
 		[JsonPropertyName("gliders_shop_max")]
 		public long? GlidersShopMax { get; init; }
+		/// <summary>
+		/// Minimum total cost of all skins in the shop in V-Bucks.
+		/// </summary>
 		[JsonPropertyName("skins_shop_vbmin")]
 		public long? SkinsShopVbmin { get; init; }
+		/// <summary>
+		/// Maximum total cost of all skins in the shop in V-Bucks.
+		/// </summary>
 		[JsonPropertyName("skins_shop_vbmax")]
 		public long? SkinsShopVbmax { get; init; }
+		/// <summary>
+		/// Minimum total cost of all pickaxes in the shop in V-Bucks.
+		/// </summary>
 		[JsonPropertyName("pickaxes_shop_vbmin")]
 		public long? PickaxesShopVbmin { get; init; }
+		/// <summary>
+		/// Maximum total cost of all pickaxes in the shop in V-Bucks.
+		/// </summary>
 		[JsonPropertyName("pickaxes_shop_vbmax")]
 		public long? PickaxesShopVbmax { get; init; }
+		/// <summary>
+		/// Minimum total cost of all dances in the shop in V-Bucks.
+		/// </summary>
 		[JsonPropertyName("dances_shop_vbmin")]
 		public long? DancesShopVbmin { get; init; }
+		/// <summary>
+		/// Maximum total cost of all dances in the shop in V-Bucks.
+		/// </summary>
 		[JsonPropertyName("dances_shop_vbmax")]
 		public long? DancesShopVbmax { get; init; }
+		/// <summary>
+		/// Minimum total cost of all gliders in the shop in V-Bucks.
+		/// </summary>
 		[JsonPropertyName("gliders_shop_vbmin")]
 		public long? GlidersShopVbmin { get; init; }
+		/// <summary>
+		/// Maximum total cost of all gliders in the shop in V-Bucks.
+		/// </summary>
 		[JsonPropertyName("gliders_shop_vbmax")]
 		public long? GlidersShopVbmax { get; init; }
+		/// <summary>
+		/// Has Battle Pass.
+		/// </summary>
 		[JsonPropertyName("bp")]
 		public Bp? Bp { get; init; }
+		/// <summary>
+		/// Minimum level.
+		/// </summary>
 		[JsonPropertyName("lmin")]
 		public long? Lmin { get; init; }
+		/// <summary>
+		/// Maximum level.
+		/// </summary>
 		[JsonPropertyName("lmax")]
 		public long? Lmax { get; init; }
+		/// <summary>
+		/// Minimum level of Battle Pass.
+		/// </summary>
 		[JsonPropertyName("bp_lmin")]
 		public long? BpLmin { get; init; }
+		/// <summary>
+		/// Maximum level of Battle Pass.
+		/// </summary>
 		[JsonPropertyName("bp_lmax")]
 		public long? BpLmax { get; init; }
+		/// <summary>
+		/// How old is last transaction.
+		/// </summary>
 		[JsonPropertyName("last_trans_date")]
 		public long? LastTransDate { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("last_trans_date_period")]
 		public LastTransDatePeriod? LastTransDatePeriod { get; init; }
+		/// <summary>
+		/// Has no transactions.
+		/// </summary>
 		[JsonPropertyName("no_trans")]
 		public bool? NoTrans { get; init; }
+		/// <summary>
+		/// Can be linked to Xbox.
+		/// </summary>
 		[JsonPropertyName("xbox_linkable")]
 		public XboxLinkable? XboxLinkable { get; init; }
+		/// <summary>
+		/// Can be linked to PSN.
+		/// </summary>
 		[JsonPropertyName("psn_linkable")]
 		public PsnLinkable? PsnLinkable { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Has Rocket League purchases.
+		/// </summary>
 		[JsonPropertyName("rl_purchases")]
 		public bool? RlPurchases { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// Minimum number of available refund credits.
+		/// </summary>
 		[JsonPropertyName("refund_credits_min")]
 		public long? RefundCreditsMin { get; init; }
+		/// <summary>
+		/// Maximum number of available refund credits.
+		/// </summary>
 		[JsonPropertyName("refund_credits_max")]
 		public long? RefundCreditsMax { get; init; }
+		/// <summary>
+		/// Minimum number of pickaxes.
+		/// </summary>
 		[JsonPropertyName("pickaxe_min")]
 		public long? PickaxeMin { get; init; }
+		/// <summary>
+		/// Maximum number of pickaxes.
+		/// </summary>
 		[JsonPropertyName("pickaxe_max")]
 		public long? PickaxeMax { get; init; }
+		/// <summary>
+		/// Minimum number of dances.
+		/// </summary>
 		[JsonPropertyName("dmin")]
 		public long? Dmin { get; init; }
+		/// <summary>
+		/// Maximum number of dances.
+		/// </summary>
 		[JsonPropertyName("dmax")]
 		public long? Dmax { get; init; }
+		/// <summary>
+		/// Minimum number of gliders.
+		/// </summary>
 		[JsonPropertyName("gmin")]
 		public long? Gmin { get; init; }
+		/// <summary>
+		/// Maximum number of gliders.
+		/// </summary>
 		[JsonPropertyName("gmax")]
 		public long? Gmax { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
 	}
@@ -3817,168 +4463,414 @@ public sealed record CategoryFortniteResponseItems(
 
 	public sealed record CategoryMihoyoParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Has linked email.
+		/// </summary>
 		[JsonPropertyName("email")]
 		public Email? Email { get; init; }
+		/// <summary>
+		/// Has linked external accounts.
+		/// </summary>
 		[JsonPropertyName("ea")]
 		public Ea? Ea { get; init; }
+		/// <summary>
+		/// Region.
+		/// </summary>
 		[JsonPropertyName("region")]
 		public List<CategoryRegion>? Region { get; init; }
+		/// <summary>
+		/// List of disallowed regions.
+		/// </summary>
 		[JsonPropertyName("not_region")]
 		public List<NotRegion>? NotRegion { get; init; }
+		/// <summary>
+		/// List of characters.
+		/// </summary>
 		[JsonPropertyName("genshin_character[]")]
 		public List<GenshinCharacter>? GenshinCharacter { get; init; }
+		/// <summary>
+		/// List of minimum constellations on characters.
+		/// </summary>
 		[JsonPropertyName("genshin_character_constellations")]
 		public JsonElement? GenshinCharacterConstellations { get; init; }
+		/// <summary>
+		/// List of maximum constellations on characters.
+		/// </summary>
 		[JsonPropertyName("genshin_character_constellations_max")]
 		public JsonElement? GenshinCharacterConstellationsMax { get; init; }
+		/// <summary>
+		/// List of weapons.
+		/// </summary>
 		[JsonPropertyName("genshin_weapon[]")]
 		public List<GenshinWeapon>? GenshinWeapon { get; init; }
+		/// <summary>
+		/// Minimum number of characters.
+		/// </summary>
 		[JsonPropertyName("genshin_char_min")]
 		public long? GenshinCharMin { get; init; }
+		/// <summary>
+		/// Maximum number of characters.
+		/// </summary>
 		[JsonPropertyName("genshin_char_max")]
 		public long? GenshinCharMax { get; init; }
+		/// <summary>
+		/// Minimum number of legendary characters.
+		/// </summary>
 		[JsonPropertyName("genshin_legendary_min")]
 		public long? GenshinLegendaryMin { get; init; }
+		/// <summary>
+		/// Maximum number of legendary characters.
+		/// </summary>
 		[JsonPropertyName("genshin_legendary_max")]
 		public long? GenshinLegendaryMax { get; init; }
+		/// <summary>
+		/// Minimum level.
+		/// </summary>
 		[JsonPropertyName("genshin_level_min")]
 		public long? GenshinLevelMin { get; init; }
+		/// <summary>
+		/// Maximum level.
+		/// </summary>
 		[JsonPropertyName("genshin_level_max")]
 		public long? GenshinLevelMax { get; init; }
+		/// <summary>
+		/// Minimum number of legendary weapon characters.
+		/// </summary>
 		[JsonPropertyName("genshin_legendary_weapon_min")]
 		public long? GenshinLegendaryWeaponMin { get; init; }
+		/// <summary>
+		/// Maximum number of legendary weapon characters.
+		/// </summary>
 		[JsonPropertyName("genshin_legendary_weapon_max")]
 		public long? GenshinLegendaryWeaponMax { get; init; }
+		/// <summary>
+		/// Minimum number of constellations on legendary characters.
+		/// </summary>
 		[JsonPropertyName("constellations_min")]
 		public long? ConstellationsMin { get; init; }
+		/// <summary>
+		/// Maximum number of constellations on legendary characters.
+		/// </summary>
 		[JsonPropertyName("constellations_max")]
 		public long? ConstellationsMax { get; init; }
+		/// <summary>
+		/// Minimum number of achievements.
+		/// </summary>
 		[JsonPropertyName("genshin_achievement_min")]
 		public long? GenshinAchievementMin { get; init; }
+		/// <summary>
+		/// Maximum number of achievements.
+		/// </summary>
 		[JsonPropertyName("genshin_achievement_max")]
 		public long? GenshinAchievementMax { get; init; }
+		/// <summary>
+		/// Minimum number of primogems.
+		/// </summary>
 		[JsonPropertyName("genshin_currency_min")]
 		public long? GenshinCurrencyMin { get; init; }
+		/// <summary>
+		/// Maximum number of primogems.
+		/// </summary>
 		[JsonPropertyName("genshin_currency_max")]
 		public long? GenshinCurrencyMax { get; init; }
+		/// <summary>
+		/// List of characters.
+		/// </summary>
 		[JsonPropertyName("honkai_character[]")]
 		public List<HonkaiCharacter>? HonkaiCharacter { get; init; }
+		/// <summary>
+		/// List of minimum eidolons on characters.
+		/// </summary>
 		[JsonPropertyName("honkai_character_eidolons")]
 		public JsonElement? HonkaiCharacterEidolons { get; init; }
+		/// <summary>
+		/// List of maximum eidolons on characters.
+		/// </summary>
 		[JsonPropertyName("honkai_character_eidolons_max")]
 		public JsonElement? HonkaiCharacterEidolonsMax { get; init; }
+		/// <summary>
+		/// List of weapons.
+		/// </summary>
 		[JsonPropertyName("honkai_weapon[]")]
 		public List<HonkaiWeapon>? HonkaiWeapon { get; init; }
+		/// <summary>
+		/// Minimum number of characters.
+		/// </summary>
 		[JsonPropertyName("honkai_char_min")]
 		public long? HonkaiCharMin { get; init; }
+		/// <summary>
+		/// Maximum number of characters.
+		/// </summary>
 		[JsonPropertyName("honkai_char_max")]
 		public long? HonkaiCharMax { get; init; }
+		/// <summary>
+		/// Minimum number of legendary characters.
+		/// </summary>
 		[JsonPropertyName("honkai_legendary_min")]
 		public long? HonkaiLegendaryMin { get; init; }
+		/// <summary>
+		/// Maximum number of legendary characters.
+		/// </summary>
 		[JsonPropertyName("honkai_legendary_max")]
 		public long? HonkaiLegendaryMax { get; init; }
+		/// <summary>
+		/// Minimum level.
+		/// </summary>
 		[JsonPropertyName("honkai_level_min")]
 		public long? HonkaiLevelMin { get; init; }
+		/// <summary>
+		/// Maximum level.
+		/// </summary>
 		[JsonPropertyName("honkai_level_max")]
 		public long? HonkaiLevelMax { get; init; }
+		/// <summary>
+		/// Minimum number of legendary weapon characters.
+		/// </summary>
 		[JsonPropertyName("honkai_legendary_weapon_min")]
 		public long? HonkaiLegendaryWeaponMin { get; init; }
+		/// <summary>
+		/// Maximum number of legendary weapon characters.
+		/// </summary>
 		[JsonPropertyName("honkai_legendary_weapon_max")]
 		public long? HonkaiLegendaryWeaponMax { get; init; }
+		/// <summary>
+		/// Minimum number of constellations on Honkai: Star Rail legendary characters.
+		/// </summary>
 		[JsonPropertyName("eidolons_min")]
 		public long? EidolonsMin { get; init; }
+		/// <summary>
+		/// Maximum number of legendary Honkai: Star Rail weapon characters.
+		/// </summary>
 		[JsonPropertyName("eidolons_max")]
 		public long? EidolonsMax { get; init; }
+		/// <summary>
+		/// Minimum number of achievements.
+		/// </summary>
 		[JsonPropertyName("honkai_achievement_min")]
 		public long? HonkaiAchievementMin { get; init; }
+		/// <summary>
+		/// Maximum number of achievements.
+		/// </summary>
 		[JsonPropertyName("honkai_achievement_max")]
 		public long? HonkaiAchievementMax { get; init; }
+		/// <summary>
+		/// Minimum number of Stellar Jade.
+		/// </summary>
 		[JsonPropertyName("honkai_currency_min")]
 		public long? HonkaiCurrencyMin { get; init; }
+		/// <summary>
+		/// Maximum number of Stellar Jade.
+		/// </summary>
 		[JsonPropertyName("honkai_currency_max")]
 		public long? HonkaiCurrencyMax { get; init; }
+		/// <summary>
+		/// List of Zenless Zone Zero characters.
+		/// </summary>
 		[JsonPropertyName("zenless_character[]")]
 		public List<ZenlessCharacter>? ZenlessCharacter { get; init; }
+		/// <summary>
+		/// List of minimum cinemas on characters.
+		/// </summary>
 		[JsonPropertyName("zenless_character_cinemas")]
 		public JsonElement? ZenlessCharacterCinemas { get; init; }
+		/// <summary>
+		/// List of maximum cinemas on characters.
+		/// </summary>
 		[JsonPropertyName("zenless_character_cinemas_max")]
 		public JsonElement? ZenlessCharacterCinemasMax { get; init; }
+		/// <summary>
+		/// List of Zenless Zone Zero weapons.
+		/// </summary>
 		[JsonPropertyName("zenless_weapon[]")]
 		public List<ZenlessWeapon>? ZenlessWeapon { get; init; }
+		/// <summary>
+		/// Minimum number of Zenless Zone Zero legendary characters.
+		/// </summary>
 		[JsonPropertyName("zenless_legendary_min")]
 		public long? ZenlessLegendaryMin { get; init; }
+		/// <summary>
+		/// Maximum number of Zenless Zone Zero legendary characters.
+		/// </summary>
 		[JsonPropertyName("zenless_legendary_max")]
 		public long? ZenlessLegendaryMax { get; init; }
+		/// <summary>
+		/// Minimum number of cinemas on Zenless Zone Zero characters.
+		/// </summary>
 		[JsonPropertyName("cinemas_min")]
 		public long? CinemasMin { get; init; }
+		/// <summary>
+		/// Maximum number of cinemas on Zenless Zone Zero characters.
+		/// </summary>
 		[JsonPropertyName("cinemas_max")]
 		public long? CinemasMax { get; init; }
+		/// <summary>
+		/// Minimum number of legendary Zenless Zone Zero weapon characters.
+		/// </summary>
 		[JsonPropertyName("zenless_legendary_weapon_min")]
 		public long? ZenlessLegendaryWeaponMin { get; init; }
+		/// <summary>
+		/// Maximum number of legendary Zenless Zone Zero weapon characters.
+		/// </summary>
 		[JsonPropertyName("zenless_legendary_weapon_max")]
 		public long? ZenlessLegendaryWeaponMax { get; init; }
+		/// <summary>
+		/// Minimum number of Zenless Zone Zero characters.
+		/// </summary>
 		[JsonPropertyName("zenless_char_min")]
 		public long? ZenlessCharMin { get; init; }
+		/// <summary>
+		/// Maximum number of Zenless Zone Zero characters.
+		/// </summary>
 		[JsonPropertyName("zenless_char_max")]
 		public long? ZenlessCharMax { get; init; }
+		/// <summary>
+		/// Minimum Zenless Zone Zero level.
+		/// </summary>
 		[JsonPropertyName("zenless_level_min")]
 		public long? ZenlessLevelMin { get; init; }
+		/// <summary>
+		/// Maximum Zenless Zone Zero level.
+		/// </summary>
 		[JsonPropertyName("zenless_level_max")]
 		public long? ZenlessLevelMax { get; init; }
+		/// <summary>
+		/// Minimum count of Zenless Zone Zero achievements.
+		/// </summary>
 		[JsonPropertyName("zenless_achievement_min")]
 		public long? ZenlessAchievementMin { get; init; }
+		/// <summary>
+		/// Maximum count of Zenless Zone Zero achievements.
+		/// </summary>
 		[JsonPropertyName("zenless_achievement_max")]
 		public long? ZenlessAchievementMax { get; init; }
+		/// <summary>
+		/// Minimum count of Zenless Zone Zero polychrome.
+		/// </summary>
 		[JsonPropertyName("zenless_currency_min")]
 		public long? ZenlessCurrencyMin { get; init; }
+		/// <summary>
+		/// Maximum count of Zenless Zone Zero polychrome.
+		/// </summary>
 		[JsonPropertyName("zenless_currency_max")]
 		public long? ZenlessCurrencyMax { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
 	}
@@ -6432,160 +7324,394 @@ public sealed record CategoryMihoyoResponseItems(
 
 	public sealed record CategoryRiotParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Minimum valorant rank.
+		/// </summary>
 		[JsonPropertyName("rmin")]
 		public long? Rmin { get; init; }
+		/// <summary>
+		/// Maximum valorant rank.
+		/// </summary>
 		[JsonPropertyName("rmax")]
 		public long? Rmax { get; init; }
+		/// <summary>
+		/// Last minimum valorant rank.
+		/// </summary>
 		[JsonPropertyName("last_rmin")]
 		public long? LastRmin { get; init; }
+		/// <summary>
+		/// Last maximum valorant rank.
+		/// </summary>
 		[JsonPropertyName("last_rmax")]
 		public long? LastRmax { get; init; }
+		/// <summary>
+		/// Previous minimum rank.
+		/// </summary>
 		[JsonPropertyName("previous_rmin")]
 		public long? PreviousRmin { get; init; }
+		/// <summary>
+		/// Previous maximum rank.
+		/// </summary>
 		[JsonPropertyName("previous_rmax")]
 		public long? PreviousRmax { get; init; }
+		/// <summary>
+		/// List of weapon skins.
+		/// </summary>
 		[JsonPropertyName("weaponSkin[]")]
 		public List<string>? WeaponSkin { get; init; }
+		/// <summary>
+		/// List of buddies.
+		/// </summary>
 		[JsonPropertyName("buddy[]")]
 		public List<string>? Buddy { get; init; }
+		/// <summary>
+		/// List of agents.
+		/// </summary>
 		[JsonPropertyName("agent[]")]
 		public List<string>? Agent { get; init; }
+		/// <summary>
+		/// List of champions.
+		/// </summary>
 		[JsonPropertyName("champion[]")]
 		public List<string>? Champion { get; init; }
+		/// <summary>
+		/// List of LoL skins.
+		/// </summary>
 		[JsonPropertyName("skin[]")]
 		public List<string>? Skin { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Minimum level in Valorant.
+		/// </summary>
 		[JsonPropertyName("valorant_level_min")]
 		public long? ValorantLevelMin { get; init; }
+		/// <summary>
+		/// Maximum level in Valorant.
+		/// </summary>
 		[JsonPropertyName("valorant_level_max")]
 		public long? ValorantLevelMax { get; init; }
+		/// <summary>
+		/// Minimum level in LoL.
+		/// </summary>
 		[JsonPropertyName("lol_level_min")]
 		public long? LolLevelMin { get; init; }
+		/// <summary>
+		/// Maximum level in LoL.
+		/// </summary>
 		[JsonPropertyName("lol_level_max")]
 		public long? LolLevelMax { get; init; }
+		/// <summary>
+		/// Minimum inventory value.
+		/// </summary>
 		[JsonPropertyName("inv_min")]
 		public long? InvMin { get; init; }
+		/// <summary>
+		/// Maximum inventory value.
+		/// </summary>
 		[JsonPropertyName("inv_max")]
 		public long? InvMax { get; init; }
+		/// <summary>
+		/// Minimum number of Valorant points.
+		/// </summary>
 		[JsonPropertyName("vp_min")]
 		public long? VpMin { get; init; }
+		/// <summary>
+		/// Maximum number of Valorant points.
+		/// </summary>
 		[JsonPropertyName("vp_max")]
 		public long? VpMax { get; init; }
+		/// <summary>
+		/// Minimum number of skins.
+		/// </summary>
 		[JsonPropertyName("valorant_smin")]
 		public long? ValorantSmin { get; init; }
+		/// <summary>
+		/// Maximum number of skins.
+		/// </summary>
 		[JsonPropertyName("valorant_smax")]
 		public long? ValorantSmax { get; init; }
+		/// <summary>
+		/// List of allowed rank types.
+		/// </summary>
 		[JsonPropertyName("valorant_rank_type[]")]
 		public List<ValorantRankType>? ValorantRankType { get; init; }
+		/// <summary>
+		/// Minimum amount of agents.
+		/// </summary>
 		[JsonPropertyName("amin")]
 		public long? Amin { get; init; }
+		/// <summary>
+		/// Maximum amount of agents.
+		/// </summary>
 		[JsonPropertyName("amax")]
 		public long? Amax { get; init; }
+		/// <summary>
+		/// List of allowed regions in Valorant.
+		/// </summary>
 		[JsonPropertyName("valorant_region[]")]
 		public List<string>? ValorantRegion { get; init; }
+		/// <summary>
+		/// List of disallowed regions in Valorant.
+		/// </summary>
 		[JsonPropertyName("valorant_not_region[]")]
 		public List<string>? ValorantNotRegion { get; init; }
+		/// <summary>
+		/// List of allowed regions in LoL.
+		/// </summary>
 		[JsonPropertyName("lol_region[]")]
 		public List<string>? LolRegion { get; init; }
+		/// <summary>
+		/// List of disallowed regions in LoL.
+		/// </summary>
 		[JsonPropertyName("lol_not_region[]")]
 		public List<string>? LolNotRegion { get; init; }
+		/// <summary>
+		/// Has any knife.
+		/// </summary>
 		[JsonPropertyName("knife")]
 		public bool? Knife { get; init; }
+		/// <summary>
+		/// Minimum number of skins in LoL.
+		/// </summary>
 		[JsonPropertyName("lol_smin")]
 		public long? LolSmin { get; init; }
+		/// <summary>
+		/// Maximum number of skins in LoL.
+		/// </summary>
 		[JsonPropertyName("lol_smax")]
 		public long? LolSmax { get; init; }
+		/// <summary>
+		/// Minimum number of champions.
+		/// </summary>
 		[JsonPropertyName("champion_min")]
 		public long? ChampionMin { get; init; }
+		/// <summary>
+		/// Maximum number of champions.
+		/// </summary>
 		[JsonPropertyName("champion_max")]
 		public long? ChampionMax { get; init; }
+		/// <summary>
+		/// Minimum win-rate.
+		/// </summary>
 		[JsonPropertyName("win_rate_min")]
 		public long? WinRateMin { get; init; }
+		/// <summary>
+		/// Maximum win-rate.
+		/// </summary>
 		[JsonPropertyName("win_rate_max")]
 		public long? WinRateMax { get; init; }
+		/// <summary>
+		/// Minimum wallet blue balance.
+		/// </summary>
 		[JsonPropertyName("blue_min")]
 		public long? BlueMin { get; init; }
+		/// <summary>
+		/// Maximum wallet blue balance.
+		/// </summary>
 		[JsonPropertyName("blue_max")]
 		public long? BlueMax { get; init; }
+		/// <summary>
+		/// Minimum wallet orange balance.
+		/// </summary>
 		[JsonPropertyName("orange_min")]
 		public long? OrangeMin { get; init; }
+		/// <summary>
+		/// Maximum wallet orange balance.
+		/// </summary>
 		[JsonPropertyName("orange_max")]
 		public long? OrangeMax { get; init; }
+		/// <summary>
+		/// Minimum wallet mythic balance.
+		/// </summary>
 		[JsonPropertyName("mythic_min")]
 		public long? MythicMin { get; init; }
+		/// <summary>
+		/// Maximum wallet mythic balance.
+		/// </summary>
 		[JsonPropertyName("mythic_max")]
 		public long? MythicMax { get; init; }
+		/// <summary>
+		/// Minimum wallet riot balance.
+		/// </summary>
 		[JsonPropertyName("riot_min")]
 		public long? RiotMin { get; init; }
+		/// <summary>
+		/// Maximum wallet riot balance.
+		/// </summary>
 		[JsonPropertyName("riot_max")]
 		public long? RiotMax { get; init; }
+		/// <summary>
+		/// Has linked email.
+		/// </summary>
 		[JsonPropertyName("email")]
 		public Email? Email { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Minimum knifes in Valorant.
+		/// </summary>
 		[JsonPropertyName("valorant_knife_min")]
 		public long? ValorantKnifeMin { get; init; }
+		/// <summary>
+		/// Maximum knifes in Valorant.
+		/// </summary>
 		[JsonPropertyName("valorant_knife_max")]
 		public long? ValorantKnifeMax { get; init; }
+		/// <summary>
+		/// Minimum number of Valorant Radiant Points.
+		/// </summary>
 		[JsonPropertyName("rp_min")]
 		public long? RpMin { get; init; }
+		/// <summary>
+		/// Maximum number of Valorant Radiant Points.
+		/// </summary>
 		[JsonPropertyName("rp_max")]
 		public long? RpMax { get; init; }
+		/// <summary>
+		/// Minimum number of Valorant free agents.
+		/// </summary>
 		[JsonPropertyName("fa_min")]
 		public long? FaMin { get; init; }
+		/// <summary>
+		/// Maximum number of Valorant free agents.
+		/// </summary>
 		[JsonPropertyName("fa_max")]
 		public long? FaMax { get; init; }
+		/// <summary>
+		/// List of allowed ranks in LoL.
+		/// </summary>
 		[JsonPropertyName("lol_rank[]")]
 		public List<LolRank>? LolRank { get; init; }
 	}
@@ -7821,138 +8947,339 @@ public sealed record CategoryRiotResponseItems(
 
 	public sealed record CategoryTelegramParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CategoryOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CategoryNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Has a spam ban.
+		/// </summary>
 		[JsonPropertyName("spam")]
 		public Spam? Spam { get; init; }
+		/// <summary>
+		/// Has a cloud password.
+		/// </summary>
 		[JsonPropertyName("password")]
 		public Password? Password { get; init; }
+		/// <summary>
+		/// Has a premium subscription.
+		/// </summary>
 		[JsonPropertyName("premium")]
 		public Premium? Premium { get; init; }
+		/// <summary>
+		/// When premium subscription will be active
+		/// </summary>
 		[JsonPropertyName("premium_expiration")]
 		public long? PremiumExpiration { get; init; }
+		/// <summary>
+		/// In what notation is time measured
+		/// </summary>
 		[JsonPropertyName("premium_expiration_period")]
 		public PremiumExpirationPeriod? PremiumExpirationPeriod { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Minimum number of channels.
+		/// </summary>
 		[JsonPropertyName("min_channels")]
 		public long? MinChannels { get; init; }
+		/// <summary>
+		/// Maximum number of channels.
+		/// </summary>
 		[JsonPropertyName("max_channels")]
 		public long? MaxChannels { get; init; }
+		/// <summary>
+		/// Minimum number of chats.
+		/// </summary>
 		[JsonPropertyName("min_chats")]
 		public long? MinChats { get; init; }
+		/// <summary>
+		/// Maximum number of chats.
+		/// </summary>
 		[JsonPropertyName("max_chats")]
 		public long? MaxChats { get; init; }
+		/// <summary>
+		/// Minimum number of conversations.
+		/// </summary>
 		[JsonPropertyName("min_conversations")]
 		public long? MinConversations { get; init; }
+		/// <summary>
+		/// Maximum number of conversations.
+		/// </summary>
 		[JsonPropertyName("max_conversations")]
 		public long? MaxConversations { get; init; }
+		/// <summary>
+		/// Minimum number of channels, where account is administrator/owner.
+		/// </summary>
 		[JsonPropertyName("min_admin")]
 		public long? MinAdmin { get; init; }
+		/// <summary>
+		/// Maximum number of channels, where account is administrator/owner.
+		/// </summary>
 		[JsonPropertyName("max_admin")]
 		public long? MaxAdmin { get; init; }
+		/// <summary>
+		/// Minimum number of subscribers in channel, where account is administrator/owner.
+		/// </summary>
 		[JsonPropertyName("min_admin_sub")]
 		public long? MinAdminSub { get; init; }
+		/// <summary>
+		/// Maximum number of subscribers in channel, where account is administrator/owner.
+		/// </summary>
 		[JsonPropertyName("max_admin_sub")]
 		public long? MaxAdminSub { get; init; }
+		/// <summary>
+		/// Minimum number of digits in ID.
+		/// </summary>
 		[JsonPropertyName("dig_min")]
 		public long? DigMin { get; init; }
+		/// <summary>
+		/// Maximum number of digits in ID.
+		/// </summary>
 		[JsonPropertyName("dig_max")]
 		public long? DigMax { get; init; }
+		/// <summary>
+		/// Minimum number of contacts.
+		/// </summary>
 		[JsonPropertyName("min_contacts")]
 		public long? MinContacts { get; init; }
+		/// <summary>
+		/// Maximum number of contacts.
+		/// </summary>
 		[JsonPropertyName("max_contacts")]
 		public long? MaxContacts { get; init; }
+		/// <summary>
+		/// Minimum number of Telegram Stars.
+		/// </summary>
 		[JsonPropertyName("min_stars")]
 		public long? MinStars { get; init; }
+		/// <summary>
+		/// Maximum number of Telegram Stars.
+		/// </summary>
 		[JsonPropertyName("max_stars")]
 		public long? MaxStars { get; init; }
+		/// <summary>
+		/// Birthday was X time before.
+		/// </summary>
 		[JsonPropertyName("birthday")]
 		public long? Birthday { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("birthday_period")]
 		public BirthdayPeriod? BirthdayPeriod { get; init; }
+		/// <summary>
+		/// Birthday was X time after.
+		/// </summary>
 		[JsonPropertyName("birthday_after")]
 		public long? BirthdayAfter { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("birthday_after_period")]
 		public BirthdayAfterPeriod? BirthdayAfterPeriod { get; init; }
+		/// <summary>
+		/// Minimum ID of account, will be rounded down till nearest 10k. Available if your balance is higher than 100000 RUB.
+		/// </summary>
 		[JsonPropertyName("min_id")]
 		public long? MinId { get; init; }
+		/// <summary>
+		/// Maximum ID of account, will be rounded down till nearest 10k. Available if your balance is higher than 100000 RUB.
+		/// </summary>
 		[JsonPropertyName("max_id")]
 		public long? MaxId { get; init; }
+		/// <summary>
+		/// Allow geo spam block in search with spam=no.
+		/// </summary>
 		[JsonPropertyName("allow_geo_spamblock")]
 		public bool? AllowGeoSpamblock { get; init; }
+		/// <summary>
+		/// Minimum number of Telegram gifts on account.
+		/// </summary>
 		[JsonPropertyName("min_gifts")]
 		public long? MinGifts { get; init; }
+		/// <summary>
+		/// Maximum number of Telegram gifts on account.
+		/// </summary>
 		[JsonPropertyName("max_gifts")]
 		public long? MaxGifts { get; init; }
+		/// <summary>
+		/// Minimum number of Telegram NFT gifts on account.
+		/// </summary>
 		[JsonPropertyName("min_nft_gifts")]
 		public long? MinNftGifts { get; init; }
+		/// <summary>
+		/// Maximum number of Telegram NFT gifts on account.
+		/// </summary>
 		[JsonPropertyName("max_nft_gifts")]
 		public long? MaxNftGifts { get; init; }
+		/// <summary>
+		/// Minimum value of all Stars gifts.
+		/// </summary>
 		[JsonPropertyName("min_gifts_stars")]
 		public long? MinGiftsStars { get; init; }
+		/// <summary>
+		/// Maximum value of all Stars gifts.
+		/// </summary>
 		[JsonPropertyName("max_gifts_stars")]
 		public long? MaxGiftsStars { get; init; }
+		/// <summary>
+		/// Minimum value of all Stars gifts after convert.
+		/// </summary>
 		[JsonPropertyName("min_gifts_convert_stars")]
 		public long? MinGiftsConvertStars { get; init; }
+		/// <summary>
+		/// Maximum value of all Stars gifts after convert.
+		/// </summary>
 		[JsonPropertyName("max_gifts_convert_stars")]
 		public long? MaxGiftsConvertStars { get; init; }
+		/// <summary>
+		/// List of allowed DC ID.
+		/// </summary>
 		[JsonPropertyName("dc_id[]")]
 		public List<long?>? DcId { get; init; }
+		/// <summary>
+		/// List of disallowed DC ID.
+		/// </summary>
 		[JsonPropertyName("not_dc_id[]")]
 		public List<long?>? NotDcId { get; init; }
+		/// <summary>
+		/// Has linked email.
+		/// </summary>
 		[JsonPropertyName("email")]
 		public Email? Email { get; init; }
+		/// <summary>
+		/// Minimum number of bots.
+		/// </summary>
 		[JsonPropertyName("min_bots")]
 		public long? MinBots { get; init; }
+		/// <summary>
+		/// Maximum number of bots.
+		/// </summary>
 		[JsonPropertyName("max_bots")]
 		public long? MaxBots { get; init; }
+		/// <summary>
+		/// Minimum active users in bot.
+		/// </summary>
 		[JsonPropertyName("min_bot_active_users")]
 		public long? MinBotActiveUsers { get; init; }
+		/// <summary>
+		/// Maximum active users in bot.
+		/// </summary>
 		[JsonPropertyName("max_bot_active_users")]
 		public long? MaxBotActiveUsers { get; init; }
 	}
@@ -8856,148 +10183,364 @@ public sealed record CategoryTelegramResponseItems(
 
 	public sealed record CategorySupercellParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Guarantee type.
+		/// </summary>
 		[JsonPropertyName("eg")]
 		public CategoryEg2? Eg { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Minimum Brawl Stars level.
+		/// </summary>
 		[JsonPropertyName("brawl_level_min")]
 		public long? BrawlLevelMin { get; init; }
+		/// <summary>
+		/// Maximum Brawl Stars level.
+		/// </summary>
 		[JsonPropertyName("brawl_level_max")]
 		public long? BrawlLevelMax { get; init; }
+		/// <summary>
+		/// Minimum number of Brawl Stars trophies.
+		/// </summary>
 		[JsonPropertyName("brawl_cup_min")]
 		public long? BrawlCupMin { get; init; }
+		/// <summary>
+		/// Maximum number of Brawl Stars trophies.
+		/// </summary>
 		[JsonPropertyName("brawl_cup_max")]
 		public long? BrawlCupMax { get; init; }
+		/// <summary>
+		/// Minimum number of Brawl Stars wins.
+		/// </summary>
 		[JsonPropertyName("brawl_wins_min")]
 		public long? BrawlWinsMin { get; init; }
+		/// <summary>
+		/// Maximum number of Brawl Stars wins.
+		/// </summary>
 		[JsonPropertyName("brawl_wins_max")]
 		public long? BrawlWinsMax { get; init; }
+		/// <summary>
+		/// Has Brawl Pass.
+		/// </summary>
 		[JsonPropertyName("brawl_pass")]
 		public BrawlPass? BrawlPass { get; init; }
+		/// <summary>
+		/// List of brawlers.
+		/// </summary>
 		[JsonPropertyName("brawler[]")]
 		public List<Brawler>? Brawler { get; init; }
+		/// <summary>
+		/// Minimum number of brawlers.
+		/// </summary>
 		[JsonPropertyName("brawlers_min")]
 		public long? BrawlersMin { get; init; }
+		/// <summary>
+		/// Maximum number of brawlers.
+		/// </summary>
 		[JsonPropertyName("brawlers_max")]
 		public long? BrawlersMax { get; init; }
+		/// <summary>
+		/// Minimum number of legendary brawlers.
+		/// </summary>
 		[JsonPropertyName("legendary_brawlers_min")]
 		public long? LegendaryBrawlersMin { get; init; }
+		/// <summary>
+		/// Maximum number of legendary brawlers.
+		/// </summary>
 		[JsonPropertyName("legendary_brawlers_max")]
 		public long? LegendaryBrawlersMax { get; init; }
+		/// <summary>
+		/// Minimum Clash Royale level.
+		/// </summary>
 		[JsonPropertyName("royale_level_min")]
 		public long? RoyaleLevelMin { get; init; }
+		/// <summary>
+		/// Maximum Clash Royale level.
+		/// </summary>
 		[JsonPropertyName("royale_level_max")]
 		public long? RoyaleLevelMax { get; init; }
+		/// <summary>
+		/// Minimum number of Clash Royale trophies.
+		/// </summary>
 		[JsonPropertyName("royale_cup_min")]
 		public long? RoyaleCupMin { get; init; }
+		/// <summary>
+		/// Maximum number of Clash Royale trophies.
+		/// </summary>
 		[JsonPropertyName("royale_cup_max")]
 		public long? RoyaleCupMax { get; init; }
+		/// <summary>
+		/// Minimum number of Clash Royale wins.
+		/// </summary>
 		[JsonPropertyName("royale_wins_min")]
 		public long? RoyaleWinsMin { get; init; }
+		/// <summary>
+		/// Maximum number of Clash Royale wins.
+		/// </summary>
 		[JsonPropertyName("royale_wins_max")]
 		public long? RoyaleWinsMax { get; init; }
+		/// <summary>
+		/// Minimum King level in Clash Royale.
+		/// </summary>
 		[JsonPropertyName("king_level_min")]
 		public long? KingLevelMin { get; init; }
+		/// <summary>
+		/// Maximum King level in Clash Royale.
+		/// </summary>
 		[JsonPropertyName("king_level_max")]
 		public long? KingLevelMax { get; init; }
+		/// <summary>
+		/// Has Royale Pass.
+		/// </summary>
 		[JsonPropertyName("royale_pass")]
 		public RoyalePass? RoyalePass { get; init; }
+		/// <summary>
+		/// Minimum Clash of Clans level.
+		/// </summary>
 		[JsonPropertyName("clash_level_min")]
 		public long? ClashLevelMin { get; init; }
+		/// <summary>
+		/// Maximum Clash of Clans level.
+		/// </summary>
 		[JsonPropertyName("clash_level_max")]
 		public long? ClashLevelMax { get; init; }
+		/// <summary>
+		/// Minimum number of Clash of Clans trophies.
+		/// </summary>
 		[JsonPropertyName("clash_cup_min")]
 		public long? ClashCupMin { get; init; }
+		/// <summary>
+		/// Maximum number of Clash of Clans trophies.
+		/// </summary>
 		[JsonPropertyName("clash_cup_max")]
 		public long? ClashCupMax { get; init; }
+		/// <summary>
+		/// Minimum number of Clash of Clans wins.
+		/// </summary>
 		[JsonPropertyName("clash_wins_min")]
 		public long? ClashWinsMin { get; init; }
+		/// <summary>
+		/// Maximum number of Clash of Clans wins.
+		/// </summary>
 		[JsonPropertyName("clash_wins_max")]
 		public long? ClashWinsMax { get; init; }
+		/// <summary>
+		/// Has Battle Pass.
+		/// </summary>
 		[JsonPropertyName("clash_pass")]
 		public ClashPass? ClashPass { get; init; }
+		/// <summary>
+		/// Minimum total heroes level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_heroes_level_min")]
 		public long? TotalHeroesLevelMin { get; init; }
+		/// <summary>
+		/// Maximum total heroes level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_heroes_level_max")]
 		public long? TotalHeroesLevelMax { get; init; }
+		/// <summary>
+		/// Minimum total troops level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_troops_level_min")]
 		public long? TotalTroopsLevelMin { get; init; }
+		/// <summary>
+		/// Maximum total troops level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_troops_level_max")]
 		public long? TotalTroopsLevelMax { get; init; }
+		/// <summary>
+		/// Minimum total spells level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_spells_level_min")]
 		public long? TotalSpellsLevelMin { get; init; }
+		/// <summary>
+		/// Maximum total spells level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_spells_level_max")]
 		public long? TotalSpellsLevelMax { get; init; }
+		/// <summary>
+		/// Minimum total builder village heroes level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_builder_heroes_level_min")]
 		public long? TotalBuilderHeroesLevelMin { get; init; }
+		/// <summary>
+		/// Maximum total builder village heroes level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_builder_heroes_level_max")]
 		public long? TotalBuilderHeroesLevelMax { get; init; }
+		/// <summary>
+		/// Minimum total builder village troops level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_builder_troops_level_min")]
 		public long? TotalBuilderTroopsLevelMin { get; init; }
+		/// <summary>
+		/// Maximum total builder village troops level count in Clash of Clans.
+		/// </summary>
 		[JsonPropertyName("total_builder_troops_level_max")]
 		public long? TotalBuilderTroopsLevelMax { get; init; }
+		/// <summary>
+		/// Minimum level of town hall.
+		/// </summary>
 		[JsonPropertyName("town_hall_level_min")]
 		public long? TownHallLevelMin { get; init; }
+		/// <summary>
+		/// Maximum level of town hall.
+		/// </summary>
 		[JsonPropertyName("town_hall_level_max")]
 		public long? TownHallLevelMax { get; init; }
+		/// <summary>
+		/// Minimum level of builder hall.
+		/// </summary>
 		[JsonPropertyName("builder_hall_level_min")]
 		public long? BuilderHallLevelMin { get; init; }
+		/// <summary>
+		/// Maximum level of builder hall.
+		/// </summary>
 		[JsonPropertyName("builder_hall_level_max")]
 		public long? BuilderHallLevelMax { get; init; }
+		/// <summary>
+		/// Minimum number of builder hall cups.
+		/// </summary>
 		[JsonPropertyName("builder_hall_cup_min")]
 		public long? BuilderHallCupMin { get; init; }
+		/// <summary>
+		/// Maximum number of builder hall cups.
+		/// </summary>
 		[JsonPropertyName("builder_hall_cup_max")]
 		public long? BuilderHallCupMax { get; init; }
+		/// <summary>
+		/// Minimum account creation year (e.g. 2023).
+		/// </summary>
 		[JsonPropertyName("creation_year_min")]
 		public long? CreationYearMin { get; init; }
+		/// <summary>
+		/// Maximum account creation year (e.g. 2024).
+		/// </summary>
 		[JsonPropertyName("creation_year_max")]
 		public long? CreationYearMax { get; init; }
 	}
@@ -10015,88 +11558,214 @@ public sealed record CategorySupercellResponseItems(
 
 	public sealed record CategoryEaParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// List of games.
+		/// </summary>
 		[JsonPropertyName("game[]")]
 		public List<string>? Game { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Minimum count of games.
+		/// </summary>
 		[JsonPropertyName("gmin")]
 		public long? Gmin { get; init; }
+		/// <summary>
+		/// Maximum count of games.
+		/// </summary>
 		[JsonPropertyName("gmax")]
 		public long? Gmax { get; init; }
+		/// <summary>
+		/// Minimum rank points in Apex Legends.
+		/// </summary>
 		[JsonPropertyName("al_rank_min")]
 		public long? AlRankMin { get; init; }
+		/// <summary>
+		/// Maximum rank points in Apex Legends.
+		/// </summary>
 		[JsonPropertyName("al_rank_max")]
 		public long? AlRankMax { get; init; }
+		/// <summary>
+		/// Minimum level in Apex Legends.
+		/// </summary>
 		[JsonPropertyName("al_level_min")]
 		public long? AlLevelMin { get; init; }
+		/// <summary>
+		/// Maximum level in Apex Legends.
+		/// </summary>
 		[JsonPropertyName("al_level_max")]
 		public long? AlLevelMax { get; init; }
+		/// <summary>
+		/// Has a ban in any game.
+		/// </summary>
 		[JsonPropertyName("has_ban")]
 		public HasBan? HasBan { get; init; }
+		/// <summary>
+		/// Xbox connected to account.
+		/// </summary>
 		[JsonPropertyName("xbox_connected")]
 		public XboxConnected? XboxConnected { get; init; }
+		/// <summary>
+		/// Steam connected to account.
+		/// </summary>
 		[JsonPropertyName("steam_connected")]
 		public SteamConnected? SteamConnected { get; init; }
+		/// <summary>
+		/// PSN connected to account.
+		/// </summary>
 		[JsonPropertyName("psn_connected")]
 		public PsnConnected? PsnConnected { get; init; }
+		/// <summary>
+		/// Name of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription")]
 		public CategorySubscription? Subscription { get; init; }
+		/// <summary>
+		/// Length of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription_length")]
 		public long? SubscriptionLength { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("subscription_period")]
 		public SubscriptionPeriod? SubscriptionPeriod { get; init; }
+		/// <summary>
+		/// List of minimum hours played by game.
+		/// </summary>
 		[JsonPropertyName("hours_played")]
 		public JsonElement? HoursPlayed { get; init; }
+		/// <summary>
+		/// List of maximum hours played by game.
+		/// </summary>
 		[JsonPropertyName("hours_played_max")]
 		public JsonElement? HoursPlayedMax { get; init; }
+		/// <summary>
+		/// Has transactions.
+		/// </summary>
 		[JsonPropertyName("transactions")]
 		public Transactions? Transactions { get; init; }
 	}
@@ -11121,116 +12790,284 @@ public sealed record CategoryEaResponseItems(
 
 	public sealed record CategoryWotParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Minimum number of battles.
+		/// </summary>
 		[JsonPropertyName("battles_min")]
 		public long? BattlesMin { get; init; }
+		/// <summary>
+		/// Maximum number of battles.
+		/// </summary>
 		[JsonPropertyName("battles_max")]
 		public long? BattlesMax { get; init; }
+		/// <summary>
+		/// Minimum number of gold.
+		/// </summary>
 		[JsonPropertyName("gold_min")]
 		public long? GoldMin { get; init; }
+		/// <summary>
+		/// Maximum number of gold.
+		/// </summary>
 		[JsonPropertyName("gold_max")]
 		public long? GoldMax { get; init; }
+		/// <summary>
+		/// Minimum number of silver.
+		/// </summary>
 		[JsonPropertyName("silver_min")]
 		public long? SilverMin { get; init; }
+		/// <summary>
+		/// Maximum number of silver.
+		/// </summary>
 		[JsonPropertyName("silver_max")]
 		public long? SilverMax { get; init; }
+		/// <summary>
+		/// Minimum number of top tanks.
+		/// </summary>
 		[JsonPropertyName("top_min")]
 		public long? TopMin { get; init; }
+		/// <summary>
+		/// Maximum number of top tanks.
+		/// </summary>
 		[JsonPropertyName("top_max")]
 		public long? TopMax { get; init; }
+		/// <summary>
+		/// Minimum number of premium tanks.
+		/// </summary>
 		[JsonPropertyName("prem_min")]
 		public long? PremMin { get; init; }
+		/// <summary>
+		/// Maximum number of premium tanks.
+		/// </summary>
 		[JsonPropertyName("prem_max")]
 		public long? PremMax { get; init; }
+		/// <summary>
+		/// Minimum number of top premium tanks.
+		/// </summary>
 		[JsonPropertyName("top_prem_min")]
 		public long? TopPremMin { get; init; }
+		/// <summary>
+		/// Maximum number of top premium tanks.
+		/// </summary>
 		[JsonPropertyName("top_prem_max")]
 		public long? TopPremMax { get; init; }
+		/// <summary>
+		/// Minimum number of wins.
+		/// </summary>
 		[JsonPropertyName("win_pmin")]
 		public long? WinPmin { get; init; }
+		/// <summary>
+		/// Maximum number of wins.
+		/// </summary>
 		[JsonPropertyName("win_pmax")]
 		public long? WinPmax { get; init; }
+		/// <summary>
+		/// List of tanks.
+		/// </summary>
 		[JsonPropertyName("tank[]")]
 		public List<long?>? Tank { get; init; }
+		/// <summary>
+		/// Region.
+		/// </summary>
 		[JsonPropertyName("region[]")]
 		public List<Region>? Region { get; init; }
+		/// <summary>
+		/// Exclude region.
+		/// </summary>
 		[JsonPropertyName("not_region[]")]
 		public List<NotRegion2>? NotRegion { get; init; }
+		/// <summary>
+		/// Has a premium subscription.
+		/// </summary>
 		[JsonPropertyName("premium")]
 		public Premium? Premium { get; init; }
+		/// <summary>
+		/// When premium subscription will be active
+		/// </summary>
 		[JsonPropertyName("premium_expiration")]
 		public long? PremiumExpiration { get; init; }
+		/// <summary>
+		/// In what notation is time measured
+		/// </summary>
 		[JsonPropertyName("premium_expiration_period")]
 		public PremiumExpirationPeriod? PremiumExpirationPeriod { get; init; }
+		/// <summary>
+		/// Has clan.
+		/// </summary>
 		[JsonPropertyName("clan")]
 		public Clan? Clan { get; init; }
+		/// <summary>
+		/// List of allowed clan role.
+		/// </summary>
 		[JsonPropertyName("clan_role[]")]
 		public List<ClanRole>? ClanRole { get; init; }
+		/// <summary>
+		/// List of disallowed clan role.
+		/// </summary>
 		[JsonPropertyName("not_clan_role[]")]
 		public List<NotClanRole>? NotClanRole { get; init; }
+		/// <summary>
+		/// Minimum number of gold in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_gold_min")]
 		public long? ClanGoldMin { get; init; }
+		/// <summary>
+		/// Maximum number of gold in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_gold_max")]
 		public long? ClanGoldMax { get; init; }
+		/// <summary>
+		/// Minimum number of credits in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_credits_min")]
 		public long? ClanCreditsMin { get; init; }
+		/// <summary>
+		/// Maximum number of credits in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_credits_max")]
 		public long? ClanCreditsMax { get; init; }
+		/// <summary>
+		/// Minimum number of crystal in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_crystal_min")]
 		public long? ClanCrystalMin { get; init; }
+		/// <summary>
+		/// Maximum number of crystal in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_crystal_max")]
 		public long? ClanCrystalMax { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
 	}
@@ -13436,116 +15273,284 @@ public sealed record CategoryWotResponseItems(
 
 	public sealed record CategoryWotBlitzParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Minimum number of battles.
+		/// </summary>
 		[JsonPropertyName("battles_min")]
 		public long? BattlesMin { get; init; }
+		/// <summary>
+		/// Maximum number of battles.
+		/// </summary>
 		[JsonPropertyName("battles_max")]
 		public long? BattlesMax { get; init; }
+		/// <summary>
+		/// Minimum number of gold.
+		/// </summary>
 		[JsonPropertyName("gold_min")]
 		public long? GoldMin { get; init; }
+		/// <summary>
+		/// Maximum number of gold.
+		/// </summary>
 		[JsonPropertyName("gold_max")]
 		public long? GoldMax { get; init; }
+		/// <summary>
+		/// Minimum number of silver.
+		/// </summary>
 		[JsonPropertyName("silver_min")]
 		public long? SilverMin { get; init; }
+		/// <summary>
+		/// Maximum number of silver.
+		/// </summary>
 		[JsonPropertyName("silver_max")]
 		public long? SilverMax { get; init; }
+		/// <summary>
+		/// Minimum number of top tanks.
+		/// </summary>
 		[JsonPropertyName("top_min")]
 		public long? TopMin { get; init; }
+		/// <summary>
+		/// Maximum number of top tanks.
+		/// </summary>
 		[JsonPropertyName("top_max")]
 		public long? TopMax { get; init; }
+		/// <summary>
+		/// Minimum number of premium tanks.
+		/// </summary>
 		[JsonPropertyName("prem_min")]
 		public long? PremMin { get; init; }
+		/// <summary>
+		/// Maximum number of premium tanks.
+		/// </summary>
 		[JsonPropertyName("prem_max")]
 		public long? PremMax { get; init; }
+		/// <summary>
+		/// Minimum number of top premium tanks.
+		/// </summary>
 		[JsonPropertyName("top_prem_min")]
 		public long? TopPremMin { get; init; }
+		/// <summary>
+		/// Maximum number of top premium tanks.
+		/// </summary>
 		[JsonPropertyName("top_prem_max")]
 		public long? TopPremMax { get; init; }
+		/// <summary>
+		/// Minimum number of wins.
+		/// </summary>
 		[JsonPropertyName("win_pmin")]
 		public long? WinPmin { get; init; }
+		/// <summary>
+		/// Maximum number of wins.
+		/// </summary>
 		[JsonPropertyName("win_pmax")]
 		public long? WinPmax { get; init; }
+		/// <summary>
+		/// List of tanks.
+		/// </summary>
 		[JsonPropertyName("tank[]")]
 		public List<long?>? Tank { get; init; }
+		/// <summary>
+		/// Region.
+		/// </summary>
 		[JsonPropertyName("region[]")]
 		public List<Region>? Region { get; init; }
+		/// <summary>
+		/// Exclude region.
+		/// </summary>
 		[JsonPropertyName("not_region[]")]
 		public List<NotRegion2>? NotRegion { get; init; }
+		/// <summary>
+		/// Has a premium subscription.
+		/// </summary>
 		[JsonPropertyName("premium")]
 		public Premium? Premium { get; init; }
+		/// <summary>
+		/// When premium subscription will be active
+		/// </summary>
 		[JsonPropertyName("premium_expiration")]
 		public long? PremiumExpiration { get; init; }
+		/// <summary>
+		/// In what notation is time measured
+		/// </summary>
 		[JsonPropertyName("premium_expiration_period")]
 		public PremiumExpirationPeriod? PremiumExpirationPeriod { get; init; }
+		/// <summary>
+		/// Has clan.
+		/// </summary>
 		[JsonPropertyName("clan")]
 		public Clan? Clan { get; init; }
+		/// <summary>
+		/// List of allowed clan role.
+		/// </summary>
 		[JsonPropertyName("clan_role[]")]
 		public List<ClanRole>? ClanRole { get; init; }
+		/// <summary>
+		/// List of disallowed clan role.
+		/// </summary>
 		[JsonPropertyName("not_clan_role[]")]
 		public List<NotClanRole>? NotClanRole { get; init; }
+		/// <summary>
+		/// Minimum number of gold in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_gold_min")]
 		public long? ClanGoldMin { get; init; }
+		/// <summary>
+		/// Maximum number of gold in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_gold_max")]
 		public long? ClanGoldMax { get; init; }
+		/// <summary>
+		/// Minimum number of credits in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_credits_min")]
 		public long? ClanCreditsMin { get; init; }
+		/// <summary>
+		/// Maximum number of credits in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_credits_max")]
 		public long? ClanCreditsMax { get; init; }
+		/// <summary>
+		/// Minimum number of crystal in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_crystal_min")]
 		public long? ClanCrystalMin { get; init; }
+		/// <summary>
+		/// Maximum number of crystal in clan treasure.
+		/// </summary>
 		[JsonPropertyName("clan_crystal_max")]
 		public long? ClanCrystalMax { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
 	}
@@ -32992,52 +34997,124 @@ public sealed record CategoryWotBlitzResponseItems(
 
 	public sealed record CategoryGiftsParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Name of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription")]
 		public CategorySubscription2? Subscription { get; init; }
+		/// <summary>
+		/// Length of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription_length")]
 		public long? SubscriptionLength { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("subscription_period")]
 		public SubscriptionPeriod? SubscriptionPeriod { get; init; }
 	}
@@ -33792,80 +35869,194 @@ public sealed record CategoryGiftsResponseItems(
 
 	public sealed record CategoryEpicGamesParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType2>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Guarantee type.
+		/// </summary>
 		[JsonPropertyName("eg")]
 		public CategoryEg2? Eg { get; init; }
+		/// <summary>
+		/// List of games.
+		/// </summary>
 		[JsonPropertyName("game[]")]
 		public List<string>? Game { get; init; }
+		/// <summary>
+		/// Can change email.
+		/// </summary>
 		[JsonPropertyName("change_email")]
 		public ChangeEmail? ChangeEmail { get; init; }
+		/// <summary>
+		/// Has Rocket League purchases.
+		/// </summary>
 		[JsonPropertyName("rl_purchases")]
 		public bool? RlPurchases { get; init; }
+		/// <summary>
+		/// Minimum epic wallet balance.
+		/// </summary>
 		[JsonPropertyName("balance_min")]
 		public double? BalanceMin { get; init; }
+		/// <summary>
+		/// Maximum epic wallet balance.
+		/// </summary>
 		[JsonPropertyName("balance_max")]
 		public double? BalanceMax { get; init; }
+		/// <summary>
+		/// Minimum rewards balance.
+		/// </summary>
 		[JsonPropertyName("rewards_balance_min")]
 		public double? RewardsBalanceMin { get; init; }
+		/// <summary>
+		/// Maximum rewards balance.
+		/// </summary>
 		[JsonPropertyName("rewards_balance_max")]
 		public double? RewardsBalanceMax { get; init; }
+		/// <summary>
+		/// Minimum number of games.
+		/// </summary>
 		[JsonPropertyName("gmin")]
 		public long? Gmin { get; init; }
+		/// <summary>
+		/// Maximum number of games.
+		/// </summary>
 		[JsonPropertyName("gmax")]
 		public long? Gmax { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// List of minimum hours played by game.
+		/// </summary>
 		[JsonPropertyName("hours_played")]
 		public JsonElement? HoursPlayed { get; init; }
+		/// <summary>
+		/// List of maximum hours played by game.
+		/// </summary>
 		[JsonPropertyName("hours_played_max")]
 		public JsonElement? HoursPlayedMax { get; init; }
 	}
@@ -34973,66 +37164,159 @@ public sealed record CategoryEpicGamesResponseItems(
 
 	public sealed record CategoryEscapeFromTarkovParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Region.
+		/// </summary>
 		[JsonPropertyName("region")]
 		public CategoryRegion2? Region { get; init; }
+		/// <summary>
+		/// List of versions.
+		/// </summary>
 		[JsonPropertyName("version[]")]
 		public List<Version>? Version { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// Minimum level.
+		/// </summary>
 		[JsonPropertyName("level_min")]
 		public long? LevelMin { get; init; }
+		/// <summary>
+		/// Maximum level.
+		/// </summary>
 		[JsonPropertyName("level_max")]
 		public long? LevelMax { get; init; }
+		/// <summary>
+		/// Access to pve.
+		/// </summary>
 		[JsonPropertyName("pve")]
 		public Pve? Pve { get; init; }
+		/// <summary>
+		/// Side in current wipe.
+		/// </summary>
 		[JsonPropertyName("side")]
 		public Side? Side { get; init; }
 	}
@@ -35941,62 +38225,149 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 
 	public sealed record CategorySocialClubParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Minimum number of Social Club level.
+		/// </summary>
 		[JsonPropertyName("level_min")]
 		public long? LevelMin { get; init; }
+		/// <summary>
+		/// Maximum number of Social Club level.
+		/// </summary>
 		[JsonPropertyName("level_max")]
 		public long? LevelMax { get; init; }
+		/// <summary>
+		/// Minimum number of GTA V cash
+		/// </summary>
 		[JsonPropertyName("cash_min")]
 		public long? CashMin { get; init; }
+		/// <summary>
+		/// Maximum number of GTA V cash
+		/// </summary>
 		[JsonPropertyName("cash_max")]
 		public long? CashMax { get; init; }
+		/// <summary>
+		/// Minimum number of GTA V bank cash
+		/// </summary>
 		[JsonPropertyName("bank_cash_min")]
 		public long? BankCashMin { get; init; }
+		/// <summary>
+		/// Maximum number of GTA V bank cash
+		/// </summary>
 		[JsonPropertyName("bank_cash_max")]
 		public long? BankCashMax { get; init; }
+		/// <summary>
+		/// List of games.
+		/// </summary>
 		[JsonPropertyName("game[]")]
 		public List<string>? Game { get; init; }
 	}
@@ -36930,106 +39301,259 @@ public sealed record CategorySocialClubResponseItems(
 
 	public sealed record CategoryUplayParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// List of games.
+		/// </summary>
 		[JsonPropertyName("game[]")]
 		public List<string>? Game { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Minimum count of games.
+		/// </summary>
 		[JsonPropertyName("gmin")]
 		public long? Gmin { get; init; }
+		/// <summary>
+		/// Maximum count of games.
+		/// </summary>
 		[JsonPropertyName("gmax")]
 		public long? Gmax { get; init; }
+		/// <summary>
+		/// Name of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription")]
 		public CategorySubscription3? Subscription { get; init; }
+		/// <summary>
+		/// Length of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription_length")]
 		public long? SubscriptionLength { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("subscription_period")]
 		public SubscriptionPeriod? SubscriptionPeriod { get; init; }
+		/// <summary>
+		/// Minimum level in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_level_min")]
 		public long? R6LevelMin { get; init; }
+		/// <summary>
+		/// Maximum level in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_level_max")]
 		public long? R6LevelMax { get; init; }
+		/// <summary>
+		/// Minimum rank points in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_rank_min")]
 		public long? R6RankMin { get; init; }
+		/// <summary>
+		/// Maximum rank points in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_rank_max")]
 		public long? R6RankMax { get; init; }
+		/// <summary>
+		/// Minimum count of operators in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_operators_min")]
 		public long? R6OperatorsMin { get; init; }
+		/// <summary>
+		/// Maximum count of operators in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_operators_max")]
 		public long? R6OperatorsMax { get; init; }
+		/// <summary>
+		/// Is account banned in Tom Clancy's Rainbow Six Siege
+		/// </summary>
 		[JsonPropertyName("r6_ban")]
 		public R6Ban? R6Ban { get; init; }
+		/// <summary>
+		/// Minimum number of skins in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_smin")]
 		public long? R6Smin { get; init; }
+		/// <summary>
+		/// Maximum number of skins in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_smax")]
 		public long? R6Smax { get; init; }
+		/// <summary>
+		/// List of weapon skins in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_skin[]")]
 		public List<string>? R6Skin { get; init; }
+		/// <summary>
+		/// List of operators in Tom Clancy's Rainbow Six Siege.
+		/// </summary>
 		[JsonPropertyName("r6_operator[]")]
 		public List<string>? R6Operator { get; init; }
+		/// <summary>
+		/// Xbox connected to account.
+		/// </summary>
 		[JsonPropertyName("xbox_connected")]
 		public XboxConnected? XboxConnected { get; init; }
+		/// <summary>
+		/// PSN connected to account.
+		/// </summary>
 		[JsonPropertyName("psn_connected")]
 		public PsnConnected? PsnConnected { get; init; }
+		/// <summary>
+		/// Steam connected to account.
+		/// </summary>
 		[JsonPropertyName("steam_connected")]
 		public SteamConnected? SteamConnected { get; init; }
+		/// <summary>
+		/// Minimum balance.
+		/// </summary>
 		[JsonPropertyName("balance_min")]
 		public double? BalanceMin { get; init; }
+		/// <summary>
+		/// Maximum balance.
+		/// </summary>
 		[JsonPropertyName("balance_max")]
 		public double? BalanceMax { get; init; }
+		/// <summary>
+		/// Has transactions.
+		/// </summary>
 		[JsonPropertyName("transactions")]
 		public Transactions? Transactions { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
 	}
@@ -38131,126 +40655,309 @@ public sealed record CategoryUplayResponseItems(
 
 	public sealed record CategoryDiscordParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Has nitro.
+		/// </summary>
 		[JsonPropertyName("nitro")]
 		public Nitro? Nitro { get; init; }
+		/// <summary>
+		/// Nitro type.
+		/// </summary>
 		[JsonPropertyName("nitro_type[]")]
 		public List<NitroType>? NitroType { get; init; }
+		/// <summary>
+		/// Length of nitro.
+		/// </summary>
 		[JsonPropertyName("nitro_length")]
 		public long? NitroLength { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("nitro_period")]
 		public NitroPeriod? NitroPeriod { get; init; }
+		/// <summary>
+		/// Minimum number of boosts.
+		/// </summary>
 		[JsonPropertyName("boosts_min")]
 		public long? BoostsMin { get; init; }
+		/// <summary>
+		/// Maximum number of boosts.
+		/// </summary>
 		[JsonPropertyName("boosts_max")]
 		public long? BoostsMax { get; init; }
+		/// <summary>
+		/// Has billing.
+		/// </summary>
 		[JsonPropertyName("billing")]
 		public Billing? Billing { get; init; }
+		/// <summary>
+		/// Has gifts.
+		/// </summary>
 		[JsonPropertyName("gifts")]
 		public Gifts? Gifts { get; init; }
+		/// <summary>
+		/// Has transactions.
+		/// </summary>
 		[JsonPropertyName("transactions")]
 		public Transactions? Transactions { get; init; }
+		/// <summary>
+		/// List of badges.
+		/// </summary>
 		[JsonPropertyName("badge[]")]
 		public List<Badge>? Badge { get; init; }
+		/// <summary>
+		/// List of account conditions.
+		/// </summary>
 		[JsonPropertyName("condition[]")]
 		public List<Condition>? Condition { get; init; }
+		/// <summary>
+		/// Minimum number of chats.
+		/// </summary>
 		[JsonPropertyName("chat_min")]
 		public long? ChatMin { get; init; }
+		/// <summary>
+		/// Maximum number of chats.
+		/// </summary>
 		[JsonPropertyName("chat_max")]
 		public long? ChatMax { get; init; }
+		/// <summary>
+		/// Minimum number of subscribers in server, where account is administrator/owner.
+		/// </summary>
 		[JsonPropertyName("min_admin_members")]
 		public long? MinAdminMembers { get; init; }
+		/// <summary>
+		/// Maximum number of subscribers in server, where account is administrator/owner.
+		/// </summary>
 		[JsonPropertyName("max_admin_members")]
 		public long? MaxAdminMembers { get; init; }
+		/// <summary>
+		/// Minimum number of servers, where account is administrator/owner.
+		/// </summary>
 		[JsonPropertyName("min_admin")]
 		public long? MinAdmin { get; init; }
+		/// <summary>
+		/// Maximum number of servers, where account is administrator/owner.
+		/// </summary>
 		[JsonPropertyName("max_admin")]
 		public long? MaxAdmin { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// List of languages.
+		/// </summary>
 		[JsonPropertyName("language[]")]
 		public List<string>? Language { get; init; }
+		/// <summary>
+		/// List of languages that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_language[]")]
 		public List<string>? NotLanguage { get; init; }
+		/// <summary>
+		/// Has clans.
+		/// </summary>
 		[JsonPropertyName("clans")]
 		public Clans? Clans { get; init; }
+		/// <summary>
+		/// Minimum number of clans, where account is administrator.
+		/// </summary>
 		[JsonPropertyName("min_admin_clans")]
 		public long? MinAdminClans { get; init; }
+		/// <summary>
+		/// Maximum number of clans, where account is administrator.
+		/// </summary>
 		[JsonPropertyName("max_admin_clans")]
 		public long? MaxAdminClans { get; init; }
+		/// <summary>
+		/// Minimum number of clans, where account is owner.
+		/// </summary>
 		[JsonPropertyName("min_owner_clans")]
 		public long? MinOwnerClans { get; init; }
+		/// <summary>
+		/// Maximum number of clans, where account is owner.
+		/// </summary>
 		[JsonPropertyName("max_owner_clans")]
 		public long? MaxOwnerClans { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Minimum count of servers.
+		/// </summary>
 		[JsonPropertyName("min_servers")]
 		public long? MinServers { get; init; }
+		/// <summary>
+		/// Maximum count of servers.
+		/// </summary>
 		[JsonPropertyName("max_servers")]
 		public long? MaxServers { get; init; }
+		/// <summary>
+		/// Has two-factor authentication.
+		/// </summary>
 		[JsonPropertyName("2fa")]
 		public E2fa? _2fa { get; init; }
+		/// <summary>
+		/// Minimum number of Nitro full credits.
+		/// </summary>
 		[JsonPropertyName("min_full_credits")]
 		public long? MinFullCredits { get; init; }
+		/// <summary>
+		/// Maximum number of Nitro full credits.
+		/// </summary>
 		[JsonPropertyName("max_full_credits")]
 		public long? MaxFullCredits { get; init; }
+		/// <summary>
+		/// Minimum number of Nitro basic credits.
+		/// </summary>
 		[JsonPropertyName("min_basic_credits")]
 		public long? MinBasicCredits { get; init; }
+		/// <summary>
+		/// Maximum number of Nitro basic credits.
+		/// </summary>
 		[JsonPropertyName("max_basic_credits")]
 		public long? MaxBasicCredits { get; init; }
+		/// <summary>
+		/// Minimum number of Discord Orbs.
+		/// </summary>
 		[JsonPropertyName("min_orbs")]
 		public long? MinOrbs { get; init; }
+		/// <summary>
+		/// Maximum number of Discord Orbs.
+		/// </summary>
 		[JsonPropertyName("max_orbs")]
 		public long? MaxOrbs { get; init; }
 	}
@@ -39089,78 +41796,189 @@ public sealed record CategoryDiscordResponseItems(
 
 	public sealed record CategoryTikTokParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// Minimum number of followers.
+		/// </summary>
 		[JsonPropertyName("followers_min")]
 		public long? FollowersMin { get; init; }
+		/// <summary>
+		/// Maximum number of followers.
+		/// </summary>
 		[JsonPropertyName("followers_max")]
 		public long? FollowersMax { get; init; }
+		/// <summary>
+		/// Minimum number of posts.
+		/// </summary>
 		[JsonPropertyName("post_min")]
 		public long? PostMin { get; init; }
+		/// <summary>
+		/// Maximum number of posts.
+		/// </summary>
 		[JsonPropertyName("post_max")]
 		public long? PostMax { get; init; }
+		/// <summary>
+		/// Minimum number of likes.
+		/// </summary>
 		[JsonPropertyName("like_min")]
 		public long? LikeMin { get; init; }
+		/// <summary>
+		/// Maximum number of likes.
+		/// </summary>
 		[JsonPropertyName("like_max")]
 		public long? LikeMax { get; init; }
+		/// <summary>
+		/// Minimum number of coins.
+		/// </summary>
 		[JsonPropertyName("coins_min")]
 		public long? CoinsMin { get; init; }
+		/// <summary>
+		/// Maximum number of coins.
+		/// </summary>
 		[JsonPropertyName("coins_max")]
 		public long? CoinsMax { get; init; }
+		/// <summary>
+		/// Login by cookies.
+		/// </summary>
 		[JsonPropertyName("cookie_login")]
 		public CookieLogin? CookieLogin { get; init; }
+		/// <summary>
+		/// Has verified.
+		/// </summary>
 		[JsonPropertyName("verified")]
 		public Verified? Verified { get; init; }
+		/// <summary>
+		/// Has linked email.
+		/// </summary>
 		[JsonPropertyName("email")]
 		public Email? Email { get; init; }
 	}
@@ -40092,72 +42910,174 @@ public sealed record CategoryTikTokResponseItems(
 
 	public sealed record CategoryInstagramParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType3>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Login by cookies.
+		/// </summary>
 		[JsonPropertyName("cookies")]
 		public Cookies? Cookies { get; init; }
+		/// <summary>
+		/// Login without cookies.
+		/// </summary>
 		[JsonPropertyName("login_without_cookies")]
 		public LoginWithoutCookies? LoginWithoutCookies { get; init; }
+		/// <summary>
+		/// Minimum number of followers.
+		/// </summary>
 		[JsonPropertyName("followers_min")]
 		public long? FollowersMin { get; init; }
+		/// <summary>
+		/// Maximum number of followers.
+		/// </summary>
 		[JsonPropertyName("followers_max")]
 		public long? FollowersMax { get; init; }
+		/// <summary>
+		/// Minimum number of posts.
+		/// </summary>
 		[JsonPropertyName("post_min")]
 		public long? PostMin { get; init; }
+		/// <summary>
+		/// Maximum number of posts.
+		/// </summary>
 		[JsonPropertyName("post_max")]
 		public long? PostMax { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
 	}
@@ -41026,76 +43946,184 @@ public sealed record CategoryInstagramResponseItems(
 
 	public sealed record CategoryBattleNetParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType4>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// Guarantee type.
+		/// </summary>
 		[JsonPropertyName("eg")]
 		public CategoryEg3? Eg { get; init; }
+		/// <summary>
+		/// List of games.
+		/// </summary>
 		[JsonPropertyName("game[]")]
 		public List<long?>? Game { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Can edit BattleTag.
+		/// </summary>
 		[JsonPropertyName("edit_btag")]
 		public EditBtag? EditBtag { get; init; }
+		/// <summary>
+		/// Can edit full name.
+		/// </summary>
 		[JsonPropertyName("changeable_fn")]
 		public ChangeableFn? ChangeableFn { get; init; }
+		/// <summary>
+		/// Real id.
+		/// </summary>
 		[JsonPropertyName("real_id")]
 		public RealId? RealId { get; init; }
+		/// <summary>
+		/// Has disabled parent control.
+		/// </summary>
 		[JsonPropertyName("parent_control")]
 		public ParentControl? ParentControl { get; init; }
+		/// <summary>
+		/// Has no bans.
+		/// </summary>
 		[JsonPropertyName("no_bans")]
 		public NoBans? NoBans { get; init; }
+		/// <summary>
+		/// Minimum balance.
+		/// </summary>
 		[JsonPropertyName("balance_min")]
 		public long? BalanceMin { get; init; }
+		/// <summary>
+		/// Maximum balance.
+		/// </summary>
 		[JsonPropertyName("balance_max")]
 		public long? BalanceMax { get; init; }
 	}
@@ -42232,72 +45260,174 @@ public sealed record CategoryBattleNetResponseItems(
 
 	public sealed record CategoryChatGPTParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Email type.
+		/// </summary>
 		[JsonPropertyName("email_type[]")]
 		public List<CategoryEmailType4>? EmailType { get; init; }
+		/// <summary>
+		/// Domain of native/autoreg email.
+		/// </summary>
 		[JsonPropertyName("item_domain")]
 		public string? ItemDomain { get; init; }
+		/// <summary>
+		/// List of allowed subscriptions.
+		/// </summary>
 		[JsonPropertyName("subscription[]")]
 		public List<Subscription>? Subscription { get; init; }
+		/// <summary>
+		/// Length of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription_length")]
 		public long? SubscriptionLength { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("subscription_period")]
 		public SubscriptionPeriod? SubscriptionPeriod { get; init; }
+		/// <summary>
+		/// Is auto renewal enabled.
+		/// </summary>
 		[JsonPropertyName("autorenewal")]
 		public Autorenewal? Autorenewal { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Has transactions.
+		/// </summary>
 		[JsonPropertyName("transactions")]
 		public Transactions? Transactions { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// List of allowed tiers.
+		/// </summary>
 		[JsonPropertyName("openai_tier[]")]
 		public List<OpenaiTier>? OpenaiTier { get; init; }
+		/// <summary>
+		/// Minimum OpenAI credit balance.
+		/// </summary>
 		[JsonPropertyName("openai_balance_min")]
 		public long? OpenaiBalanceMin { get; init; }
+		/// <summary>
+		/// Maximum OpenAI credit balance.
+		/// </summary>
 		[JsonPropertyName("openai_balance_max")]
 		public long? OpenaiBalanceMax { get; init; }
 	}
@@ -43150,54 +46280,129 @@ public sealed record CategoryChatGPTResponseItems(
 
 	public sealed record CategoryVpnParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// List of allowed VPN services.
+		/// </summary>
 		[JsonPropertyName("service[]")]
 		public List<Service>? Service { get; init; }
+		/// <summary>
+		/// Length of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription_length")]
 		public long? SubscriptionLength { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("subscription_period")]
 		public SubscriptionPeriod? SubscriptionPeriod { get; init; }
+		/// <summary>
+		/// Is auto renewal enabled.
+		/// </summary>
 		[JsonPropertyName("autorenewal")]
 		public Autorenewal? Autorenewal { get; init; }
 	}
@@ -43959,120 +47164,294 @@ public sealed record CategoryVpnResponseItems(
 
 	public sealed record CategoryRobloxParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Has verified email.
+		/// </summary>
 		[JsonPropertyName("email")]
 		public Email? Email { get; init; }
+		/// <summary>
+		/// Minimum robux.
+		/// </summary>
 		[JsonPropertyName("robux_min")]
 		public long? RobuxMin { get; init; }
+		/// <summary>
+		/// Maximum robux.
+		/// </summary>
 		[JsonPropertyName("robux_max")]
 		public long? RobuxMax { get; init; }
+		/// <summary>
+		/// Minimum friends.
+		/// </summary>
 		[JsonPropertyName("friends_min")]
 		public long? FriendsMin { get; init; }
+		/// <summary>
+		/// Maximum friends.
+		/// </summary>
 		[JsonPropertyName("friends_max")]
 		public long? FriendsMax { get; init; }
+		/// <summary>
+		/// Minimum number of followers.
+		/// </summary>
 		[JsonPropertyName("followers_min")]
 		public long? FollowersMin { get; init; }
+		/// <summary>
+		/// Maximum number of followers.
+		/// </summary>
 		[JsonPropertyName("followers_max")]
 		public long? FollowersMax { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// Name of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription")]
 		public CategorySubscription4? Subscription { get; init; }
+		/// <summary>
+		/// Length of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription_length")]
 		public long? SubscriptionLength { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("subscription_period")]
 		public SubscriptionPeriod? SubscriptionPeriod { get; init; }
+		/// <summary>
+		/// Is auto renewal enabled.
+		/// </summary>
 		[JsonPropertyName("autorenewal")]
 		public Autorenewal? Autorenewal { get; init; }
+		/// <summary>
+		/// Xbox connected to account.
+		/// </summary>
 		[JsonPropertyName("xbox_connected")]
 		public XboxConnected? XboxConnected { get; init; }
+		/// <summary>
+		/// PSN connected to account.
+		/// </summary>
 		[JsonPropertyName("psn_connected")]
 		public PsnConnected? PsnConnected { get; init; }
+		/// <summary>
+		/// Has verified.
+		/// </summary>
 		[JsonPropertyName("verified")]
 		public Verified? Verified { get; init; }
+		/// <summary>
+		/// Account is age verified via documents.
+		/// </summary>
 		[JsonPropertyName("age_verified")]
 		public AgeVerified? AgeVerified { get; init; }
+		/// <summary>
+		/// Minimum amount of incoming robux.
+		/// </summary>
 		[JsonPropertyName("incoming_robux_total_min")]
 		public long? IncomingRobuxTotalMin { get; init; }
+		/// <summary>
+		/// Maximum amount of incoming robux.
+		/// </summary>
 		[JsonPropertyName("incoming_robux_total_max")]
 		public long? IncomingRobuxTotalMax { get; init; }
+		/// <summary>
+		/// Minimum limited items value.
+		/// </summary>
 		[JsonPropertyName("limited_price_min")]
 		public long? LimitedPriceMin { get; init; }
+		/// <summary>
+		/// Maximum limited items value.
+		/// </summary>
 		[JsonPropertyName("limited_price_max")]
 		public long? LimitedPriceMax { get; init; }
+		/// <summary>
+		/// Minimum total Robux cost of all game passes in popular Roblox games..
+		/// </summary>
 		[JsonPropertyName("gamepass_min")]
 		public long? GamepassMin { get; init; }
+		/// <summary>
+		/// Maximum total Robux cost of all game passes in popular Roblox games..
+		/// </summary>
 		[JsonPropertyName("gamepass_max")]
 		public long? GamepassMax { get; init; }
+		/// <summary>
+		/// Has game donations.
+		/// </summary>
 		[JsonPropertyName("game_donations")]
 		public GameDonations? GameDonations { get; init; }
+		/// <summary>
+		/// Minimum inventory value.
+		/// </summary>
 		[JsonPropertyName("inv_min")]
 		public long? InvMin { get; init; }
+		/// <summary>
+		/// Maximum inventory value.
+		/// </summary>
 		[JsonPropertyName("inv_max")]
 		public long? InvMax { get; init; }
+		/// <summary>
+		/// Minimum UGC limited items value.
+		/// </summary>
 		[JsonPropertyName("ugc_limited_price_min")]
 		public long? UgcLimitedPriceMin { get; init; }
+		/// <summary>
+		/// Maximum UGC limited items value.
+		/// </summary>
 		[JsonPropertyName("ugc_limited_price_max")]
 		public long? UgcLimitedPriceMax { get; init; }
+		/// <summary>
+		/// Minimum credit balance.
+		/// </summary>
 		[JsonPropertyName("credit_balance_min")]
 		public long? CreditBalanceMin { get; init; }
+		/// <summary>
+		/// Maximum credit balance.
+		/// </summary>
 		[JsonPropertyName("credit_balance_max")]
 		public long? CreditBalanceMax { get; init; }
+		/// <summary>
+		/// Minimum offsale items count.
+		/// </summary>
 		[JsonPropertyName("offsale_min")]
 		public long? OffsaleMin { get; init; }
+		/// <summary>
+		/// Maximum offsale items count.
+		/// </summary>
 		[JsonPropertyName("offsale_max")]
 		public long? OffsaleMax { get; init; }
+		/// <summary>
+		/// Voice chat is available.
+		/// </summary>
 		[JsonPropertyName("voice")]
 		public Voice? Voice { get; init; }
+		/// <summary>
+		/// List of allowed age groups.
+		/// </summary>
 		[JsonPropertyName("age_group[]")]
 		public List<string>? AgeGroup { get; init; }
+		/// <summary>
+		/// List of disallowed age groups.
+		/// </summary>
 		[JsonPropertyName("not_age_group[]")]
 		public List<string>? NotAgeGroup { get; init; }
 	}
@@ -45183,66 +48562,159 @@ public sealed record CategoryRobloxResponseItems(
 
 	public sealed record CategoryWarfaceParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Minimum rank.
+		/// </summary>
 		[JsonPropertyName("rank_min")]
 		public long? RankMin { get; init; }
+		/// <summary>
+		/// Maximum rank.
+		/// </summary>
 		[JsonPropertyName("rank_max")]
 		public long? RankMax { get; init; }
+		/// <summary>
+		/// Minimum bonus rank.
+		/// </summary>
 		[JsonPropertyName("bonus_rank_min")]
 		public long? BonusRankMin { get; init; }
+		/// <summary>
+		/// Maximum bonus rank.
+		/// </summary>
 		[JsonPropertyName("bonus_rank_max")]
 		public long? BonusRankMax { get; init; }
+		/// <summary>
+		/// Has linked mobile.
+		/// </summary>
 		[JsonPropertyName("tel")]
 		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Number of days the account has been offline.
+		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// Minimum amount of Kredits.
+		/// </summary>
 		[JsonPropertyName("kredits_min")]
 		public long? KreditsMin { get; init; }
+		/// <summary>
+		/// Maximum amount of Kredits.
+		/// </summary>
 		[JsonPropertyName("kredits_max")]
 		public long? KreditsMax { get; init; }
+		/// <summary>
+		/// Minimum total donated Kredits.
+		/// </summary>
 		[JsonPropertyName("total_kredits_min")]
 		public long? TotalKreditsMin { get; init; }
+		/// <summary>
+		/// Maximum total donated Kredits.
+		/// </summary>
 		[JsonPropertyName("total_kredits_max")]
 		public long? TotalKreditsMax { get; init; }
 	}
@@ -46139,116 +49611,284 @@ public sealed record CategoryWarfaceResponseItems(
 
 	public sealed record CategoryMinecraftParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// Name of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription")]
 		public CategorySubscription5? Subscription { get; init; }
+		/// <summary>
+		/// Length of subscription.
+		/// </summary>
 		[JsonPropertyName("subscription_length")]
 		public long? SubscriptionLength { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("subscription_period")]
 		public SubscriptionPeriod? SubscriptionPeriod { get; init; }
+		/// <summary>
+		/// Is auto renewal enabled.
+		/// </summary>
 		[JsonPropertyName("autorenewal")]
 		public Autorenewal? Autorenewal { get; init; }
+		/// <summary>
+		/// Has java edition.
+		/// </summary>
 		[JsonPropertyName("java")]
 		public Java? Java { get; init; }
+		/// <summary>
+		/// Has bedrock edition.
+		/// </summary>
 		[JsonPropertyName("bedrock")]
 		public Bedrock? Bedrock { get; init; }
+		/// <summary>
+		/// Has Minecraft Dungeons.
+		/// </summary>
 		[JsonPropertyName("dungeons")]
 		public Dungeons? Dungeons { get; init; }
+		/// <summary>
+		/// Has Minecraft Legends.
+		/// </summary>
 		[JsonPropertyName("legends")]
 		public Legends? Legends { get; init; }
+		/// <summary>
+		/// Can change nickname.
+		/// </summary>
 		[JsonPropertyName("change_nickname")]
 		public ChangeNickname? ChangeNickname { get; init; }
+		/// <summary>
+		/// List of capes.
+		/// </summary>
 		[JsonPropertyName("capes[]")]
 		public List<string>? Capes { get; init; }
+		/// <summary>
+		/// Minimum number of capes.
+		/// </summary>
 		[JsonPropertyName("capes_min")]
 		public long? CapesMin { get; init; }
+		/// <summary>
+		/// Maximum number of capes.
+		/// </summary>
 		[JsonPropertyName("capes_max")]
 		public long? CapesMax { get; init; }
+		/// <summary>
+		/// List of allowed countries.
+		/// </summary>
 		[JsonPropertyName("country[]")]
 		public List<string>? Country { get; init; }
+		/// <summary>
+		/// List of disallowed countries.
+		/// </summary>
 		[JsonPropertyName("not_country[]")]
 		public List<string>? NotCountry { get; init; }
+		/// <summary>
+		/// Has active Hypixel ban.
+		/// </summary>
 		[JsonPropertyName("hypixel_ban")]
 		public HypixelBan? HypixelBan { get; init; }
+		/// <summary>
+		/// Is API enabled in Hypixel Skyblock.
+		/// </summary>
 		[JsonPropertyName("hypixel_skyblock_api_enabled")]
 		public HypixelSkyblockApiEnabled? HypixelSkyblockApiEnabled { get; init; }
+		/// <summary>
+		/// Rank on hypixel.
+		/// </summary>
 		[JsonPropertyName("rank_hypixel[]")]
 		public List<RankHypixel>? RankHypixel { get; init; }
+		/// <summary>
+		/// Minimum number of level hypixel.
+		/// </summary>
 		[JsonPropertyName("level_hypixel_min")]
 		public long? LevelHypixelMin { get; init; }
+		/// <summary>
+		/// Maximum number of level hypixel.
+		/// </summary>
 		[JsonPropertyName("level_hypixel_max")]
 		public long? LevelHypixelMax { get; init; }
+		/// <summary>
+		/// Minimum number of achievement hypixel.
+		/// </summary>
 		[JsonPropertyName("achievement_hypixel_min")]
 		public long? AchievementHypixelMin { get; init; }
+		/// <summary>
+		/// Maximum number of achievement hypixel.
+		/// </summary>
 		[JsonPropertyName("achievement_hypixel_max")]
 		public long? AchievementHypixelMax { get; init; }
+		/// <summary>
+		/// Minimum level on Hypixel SkyBlock.
+		/// </summary>
 		[JsonPropertyName("level_hypixel_skyblock_min")]
 		public long? LevelHypixelSkyblockMin { get; init; }
+		/// <summary>
+		/// Maximum level on Hypixel SkyBlock.
+		/// </summary>
 		[JsonPropertyName("level_hypixel_skyblock_max")]
 		public long? LevelHypixelSkyblockMax { get; init; }
+		/// <summary>
+		/// Minimum net worth on Hypixel SkyBlock.
+		/// </summary>
 		[JsonPropertyName("net_worth_hypixel_skyblock_min")]
 		public long? NetWorthHypixelSkyblockMin { get; init; }
+		/// <summary>
+		/// Maximum net worth on Hypixel SkyBlock.
+		/// </summary>
 		[JsonPropertyName("net_worth_hypixel_skyblock_max")]
 		public long? NetWorthHypixelSkyblockMax { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
 		[JsonPropertyName("reg")]
 		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// How old is the last login account.
+		/// </summary>
 		[JsonPropertyName("last_login_hypixel")]
 		public long? LastLoginHypixel { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
 		[JsonPropertyName("last_login_hypixel_period")]
 		public LastLoginHypixelPeriod? LastLoginHypixelPeriod { get; init; }
+		/// <summary>
+		/// Can change details.
+		/// </summary>
 		[JsonPropertyName("can_change_details")]
 		public CanChangeDetails? CanChangeDetails { get; init; }
+		/// <summary>
+		/// Minimum number of characters in nickname.
+		/// </summary>
 		[JsonPropertyName("nickname_length_min")]
 		public long? NicknameLengthMin { get; init; }
+		/// <summary>
+		/// Maximum number of characters in nickname.
+		/// </summary>
 		[JsonPropertyName("nickname_length_max")]
 		public long? NicknameLengthMax { get; init; }
+		/// <summary>
+		/// Was Hypixel ban parsed by Market.
+		/// </summary>
 		[JsonPropertyName("hypixel_ban_parsed")]
 		public HypixelBanParsed? HypixelBanParsed { get; init; }
+		/// <summary>
+		/// Minimum number of Minecoins.
+		/// </summary>
 		[JsonPropertyName("minecoins_min")]
 		public long? MinecoinsMin { get; init; }
+		/// <summary>
+		/// Maximum number of Minecoins.
+		/// </summary>
 		[JsonPropertyName("minecoins_max")]
 		public long? MinecoinsMax { get; init; }
 	}
@@ -47231,52 +50871,124 @@ public sealed record CategoryMinecraftResponseItems(
 
 	public sealed record CategoryHytaleParams
 	{
+		/// <summary>
+		/// The number of the page to display results from.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Minimal price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmin")]
 		public long? Pmin { get; init; }
+		/// <summary>
+		/// Maximum price of account (Inclusive).
+		/// </summary>
 		[JsonPropertyName("pmax")]
 		public long? Pmax { get; init; }
+		/// <summary>
+		/// The word or words contained in the account title.
+		/// </summary>
 		[JsonPropertyName("title")]
 		public string? Title { get; init; }
+		/// <summary>
+		/// Order by.
+		/// </summary>
 		[JsonPropertyName("order_by")]
 		public OrderBy? OrderBy { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("tag_id[]")]
 		public List<long?>? TagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_tag_id[]")]
 		public List<long?>? NotTagId { get; init; }
+		/// <summary>
+		/// List of tag ids (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("public_tag_id[]")]
 		public List<long?>? PublicTagId { get; init; }
+		/// <summary>
+		/// List of tag ids that won't be included (Tag list is available via <b>GET /me</b>).
+		/// </summary>
 		[JsonPropertyName("not_public_tag_id[]")]
 		public List<long?>? NotPublicTagId { get; init; }
+		/// <summary>
+		/// List of account origins.
+		/// </summary>
 		[JsonPropertyName("origin[]")]
 		public List<CartOrigin>? Origin { get; init; }
+		/// <summary>
+		/// List of account origins that won't be included.
+		/// </summary>
 		[JsonPropertyName("not_origin[]")]
 		public List<CartNotOrigin>? NotOrigin { get; init; }
+		/// <summary>
+		/// Search accounts of user.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public long? UserId { get; init; }
+		/// <summary>
+		/// Not sold before.
+		/// </summary>
 		[JsonPropertyName("nsb")]
 		public bool? Nsb { get; init; }
+		/// <summary>
+		/// Sold before.
+		/// </summary>
 		[JsonPropertyName("sb")]
 		public bool? Sb { get; init; }
+		/// <summary>
+		/// Not sold by me before.
+		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+		/// <summary>
+		/// Sold by me before.
+		/// </summary>
 		[JsonPropertyName("sb_by_me")]
 		public bool? SbByMe { get; init; }
+		/// <summary>
+		/// Currency in which the cost of the account will be searched.
+		/// </summary>
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+		/// <summary>
+		/// Has email login data.
+		/// </summary>
 		[JsonPropertyName("email_login_data")]
 		public bool? EmailLoginData { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("email_provider[]")]
 		public List<EmailProvider>? EmailProvider { get; init; }
+		/// <summary>
+		/// Email provider.
+		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
 		public NotEmailProvider? NotEmailProvider { get; init; }
+		/// <summary>
+		/// Parse same item ids.
+		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+		/// <summary>
+		/// List of allowed editions.
+		/// </summary>
 		[JsonPropertyName("edition[]")]
 		public List<Edition>? Edition { get; init; }
+		/// <summary>
+		/// Minimum number of profiles with game.
+		/// </summary>
 		[JsonPropertyName("profiles_min")]
 		public long? ProfilesMin { get; init; }
+		/// <summary>
+		/// Maximum number of profiles with game.
+		/// </summary>
 		[JsonPropertyName("profiles_max")]
 		public long? ProfilesMax { get; init; }
 	}
@@ -48173,6 +51885,9 @@ public sealed record CategoryHytaleResponseItems(
 
 	public sealed record CategoryListParams
 	{
+		/// <summary>
+		/// Display top queries for per category.
+		/// </summary>
 		[JsonPropertyName("top_queries")]
 		public bool? TopQueries { get; init; }
 	}

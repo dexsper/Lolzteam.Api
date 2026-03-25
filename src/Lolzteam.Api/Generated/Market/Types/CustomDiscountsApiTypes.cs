@@ -70,14 +70,29 @@ public static class CustomDiscountsApiTypes
 
 	public sealed record CustomDiscountsCreateBody
 	{
+		/// <summary>
+		/// User ID.
+		/// </summary>
 		[JsonPropertyName("user_id")]
 		public required long? UserId { get; init; }
+		/// <summary>
+		/// Accounts category.
+		/// </summary>
 		[JsonPropertyName("category_id")]
 		public required CategoryId CategoryId { get; init; }
+		/// <summary>
+		/// Discount percent to apply.
+		/// </summary>
 		[JsonPropertyName("discount_percent")]
 		public required double? DiscountPercent { get; init; }
+		/// <summary>
+		/// Minimum accounts price for which the discount applies.
+		/// </summary>
 		[JsonPropertyName("min_price")]
 		public required double? MinPrice { get; init; }
+		/// <summary>
+		/// Maximum accounts price for which the discount applies.
+		/// </summary>
 		[JsonPropertyName("max_price")]
 		public double? MaxPrice { get; init; }
 		[JsonPropertyName("currency")]
@@ -135,12 +150,24 @@ public static class CustomDiscountsApiTypes
 
 	public sealed record CustomDiscountsEditBody
 	{
+		/// <summary>
+		/// ID of the discount to edit.
+		/// </summary>
 		[JsonPropertyName("discount_id")]
 		public required long? DiscountId { get; init; }
+		/// <summary>
+		/// Discount percent to apply.
+		/// </summary>
 		[JsonPropertyName("discount_percent")]
 		public double? DiscountPercent { get; init; }
+		/// <summary>
+		/// Minimum price for which the discount applies.
+		/// </summary>
 		[JsonPropertyName("min_price")]
 		public double? MinPrice { get; init; }
+		/// <summary>
+		/// Maximum price for which the discount applies.
+		/// </summary>
 		[JsonPropertyName("max_price")]
 		public double? MaxPrice { get; init; }
 	}
@@ -205,6 +232,9 @@ public static class CustomDiscountsApiTypes
 
 	public sealed record CustomDiscountsDeleteBody
 	{
+		/// <summary>
+		/// ID of the discount to delete.
+		/// </summary>
 		[JsonPropertyName("discount_id")]
 		public required long? DiscountId { get; init; }
 	}

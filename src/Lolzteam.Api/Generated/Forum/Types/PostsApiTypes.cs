@@ -12,14 +12,29 @@ public static class PostsApiTypes
 {
 	public sealed record PostsListParams
 	{
+		/// <summary>
+		/// Id of the containing thread.
+		/// </summary>
 		[JsonPropertyName("thread_id")]
 		public long? ThreadId { get; init; }
+		/// <summary>
+		/// Id of a post, posts that are in the same page with the specified post will be returned. <b>thread_id</b> may be skipped.
+		/// </summary>
 		[JsonPropertyName("page_of_post_id")]
 		public long? PageOfPostId { get; init; }
+		/// <summary>
+		/// Page number of posts.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of posts in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+		/// <summary>
+		/// Ordering of posts.
+		/// </summary>
 		[JsonPropertyName("order")]
 		public PostsOrder? Order { get; init; }
 	}
@@ -91,10 +106,19 @@ public static class PostsApiTypes
 
 	public sealed record PostsCreateBody
 	{
+		/// <summary>
+		/// Content of the new post.
+		/// </summary>
 		[JsonPropertyName("post_body")]
 		public required string PostBody { get; init; }
+		/// <summary>
+		/// Id of the target thread. <b>quote<i>post</i>id</b> can be skipped if this parameter is provided.
+		/// </summary>
 		[JsonPropertyName("thread_id")]
 		public long? ThreadId { get; init; }
+		/// <summary>
+		/// Id of the quote post. <b>thread_id</b> can be skipped if this parameter is provided.
+		/// </summary>
 		[JsonPropertyName("quote_post_id")]
 		public long? QuotePostId { get; init; }
 	}
@@ -185,6 +209,9 @@ public static class PostsApiTypes
 
 	public sealed record PostsEditBody
 	{
+		/// <summary>
+		/// Content of the post.
+		/// </summary>
 		[JsonPropertyName("post_body")]
 		public string? PostBody { get; init; }
 	}
@@ -233,6 +260,9 @@ public static class PostsApiTypes
 
 	public sealed record PostsDeleteBody
 	{
+		/// <summary>
+		/// Reason of the post removal.
+		/// </summary>
 		[JsonPropertyName("reason")]
 		public string? Reason { get; init; }
 	}
@@ -288,8 +318,14 @@ public static class PostsApiTypes
 
 	public sealed record PostsLikesParams
 	{
+		/// <summary>
+		/// Page number of users.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of users in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -538,6 +574,9 @@ public sealed record PostsLikesResponseUsers(
 
 	public sealed record PostsReportBody
 	{
+		/// <summary>
+		/// Reason of the report.
+		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
 	}
@@ -593,10 +632,19 @@ public sealed record PostsLikesResponseUsers(
 
 	public sealed record PostsCommentsGetParams
 	{
+		/// <summary>
+		/// Id of post.
+		/// </summary>
 		[JsonPropertyName("post_id")]
 		public required long? PostId { get; init; }
+		/// <summary>
+		/// The time in milliseconds (e.g. 1652177794083) before last comment date.
+		/// </summary>
 		[JsonPropertyName("before")]
 		public long? Before { get; init; }
+		/// <summary>
+		/// Comment id to get older comments.
+		/// </summary>
 		[JsonPropertyName("before_comment")]
 		public long? BeforeComment { get; init; }
 	}
@@ -654,8 +702,14 @@ public sealed record PostsLikesResponseUsers(
 
 	public sealed record PostsCommentsCreateBody
 	{
+		/// <summary>
+		/// Id of post.
+		/// </summary>
 		[JsonPropertyName("post_id")]
 		public required long? PostId { get; init; }
+		/// <summary>
+		/// Content of the a post comment.
+		/// </summary>
 		[JsonPropertyName("comment_body")]
 		public required string CommentBody { get; init; }
 	}
@@ -998,8 +1052,14 @@ public sealed record PostsCommentsCreateResponseComment(
 
 	public sealed record PostsCommentsEditBody
 	{
+		/// <summary>
+		/// Id of post.
+		/// </summary>
 		[JsonPropertyName("post_comment_id")]
 		public required long? PostCommentId { get; init; }
+		/// <summary>
+		/// Content of the new post comment.
+		/// </summary>
 		[JsonPropertyName("comment_body")]
 		public required string CommentBody { get; init; }
 	}
@@ -1342,8 +1402,14 @@ public sealed record PostsCommentsEditResponseComment(
 
 	public sealed record PostsCommentsDeleteBody
 	{
+		/// <summary>
+		/// Id of post comment.
+		/// </summary>
 		[JsonPropertyName("post_comment_id")]
 		public required long? PostCommentId { get; init; }
+		/// <summary>
+		/// Reason of a post comment removal.
+		/// </summary>
 		[JsonPropertyName("reason")]
 		public string? Reason { get; init; }
 	}
@@ -1399,8 +1465,14 @@ public sealed record PostsCommentsEditResponseComment(
 
 	public sealed record PostsCommentsReportBody
 	{
+		/// <summary>
+		/// Id of post comment.
+		/// </summary>
 		[JsonPropertyName("post_comment_id")]
 		public required long? PostCommentId { get; init; }
+		/// <summary>
+		/// Reason of the report.
+		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
 	}

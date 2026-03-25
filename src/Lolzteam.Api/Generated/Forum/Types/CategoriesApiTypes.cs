@@ -12,10 +12,19 @@ public static class CategoriesApiTypes
 {
 	public sealed record CategoriesListParams
 	{
+		/// <summary>
+		/// Id of parent category. If exists, filter categories that are direct children of that category.
+		/// </summary>
 		[JsonPropertyName("parent_category_id")]
 		public long? ParentCategoryId { get; init; }
+		/// <summary>
+		/// Id of parent forum. If exists, filter categories that are direct children of that forum.
+		/// </summary>
 		[JsonPropertyName("parent_forum_id")]
 		public long? ParentForumId { get; init; }
+		/// <summary>
+		/// Ordering of categories.
+		/// </summary>
 		[JsonPropertyName("order")]
 		public CategoriesOrder? Order { get; init; }
 	}

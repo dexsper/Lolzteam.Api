@@ -12,10 +12,19 @@ public static class NotificationsApiTypes
 {
 	public sealed record NotificationsListParams
 	{
+		/// <summary>
+		/// Filter notifications by their type.
+		/// </summary>
 		[JsonPropertyName("type")]
 		public NotificationsType? Type { get; init; }
+		/// <summary>
+		/// Page number of notifications.
+		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+		/// <summary>
+		/// Number of notifications in a page.
+		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
 	}
@@ -192,6 +201,9 @@ public sealed record NotificationsListResponseLinks(
 
 	public sealed record NotificationsReadBody
 	{
+		/// <summary>
+		/// If notification_id is omitted, it's mark all existing notifications as read.
+		/// </summary>
 		[JsonPropertyName("notification_id")]
 		public long? NotificationId { get; init; }
 	}

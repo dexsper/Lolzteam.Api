@@ -12,8 +12,14 @@ public static class PagesApiTypes
 {
 	public sealed record PagesListParams
 	{
+		/// <summary>
+		/// Id of parent page. If exists, filter pages that are direct children of that page.
+		/// </summary>
 		[JsonPropertyName("parent_page_id")]
 		public long? ParentPageId { get; init; }
+		/// <summary>
+		/// Ordering of pages.
+		/// </summary>
 		[JsonPropertyName("order")]
 		public CategoriesOrder? Order { get; init; }
 	}

@@ -12,10 +12,19 @@ public static class ForumsApiTypes
 {
 	public sealed record ForumsListParams
 	{
+		/// <summary>
+		/// Id of parent category. If exists, filter forums that are direct children of that category.
+		/// </summary>
 		[JsonPropertyName("parent_category_id")]
 		public long? ParentCategoryId { get; init; }
+		/// <summary>
+		/// Id of parent forum. If exists, filter forums that are direct children of that forum.
+		/// </summary>
 		[JsonPropertyName("parent_forum_id")]
 		public long? ParentForumId { get; init; }
+		/// <summary>
+		/// Ordering of forums.
+		/// </summary>
 		[JsonPropertyName("order")]
 		public CategoriesOrder? Order { get; init; }
 	}
@@ -1459,14 +1468,29 @@ public sealed record ForumsFollowersResponseUsers(
 
 	public sealed record ForumsFollowBody
 	{
+		/// <summary>
+		/// Whether to receive notification for post.
+		/// </summary>
 		[JsonPropertyName("post")]
 		public bool? Post { get; init; }
+		/// <summary>
+		/// Whether to receive notification as alert.
+		/// </summary>
 		[JsonPropertyName("alert")]
 		public bool? Alert { get; init; }
+		/// <summary>
+		/// Whether to receive notification as email.
+		/// </summary>
 		[JsonPropertyName("email")]
 		public bool? Email { get; init; }
+		/// <summary>
+		/// Prefix ids.
+		/// </summary>
 		[JsonPropertyName("prefix_ids")]
 		public List<long?>? PrefixIds { get; init; }
+		/// <summary>
+		/// Minimal contest amount. (Only for 766 forumId)
+		/// </summary>
 		[JsonPropertyName("minimal_contest_amount")]
 		public long? MinimalContestAmount { get; init; }
 	}
@@ -1571,6 +1595,9 @@ public sealed record ForumsFollowersResponseUsers(
 
 	public sealed record ForumsFollowedParams
 	{
+		/// <summary>
+		/// If included in the request, only the forum count is returned as <b>forums_total</b>.
+		/// </summary>
 		[JsonPropertyName("total")]
 		public bool? Total { get; init; }
 	}
@@ -2352,8 +2379,14 @@ public sealed record ForumsGetFeedOptionsResponseForums(
 
 	public sealed record ForumsEditFeedOptionsBody
 	{
+		/// <summary>
+		/// Array of forum ids to exclude from the feed.
+		/// </summary>
 		[JsonPropertyName("node_ids")]
 		public List<long?>? NodeIds { get; init; }
+		/// <summary>
+		/// List of keywords to exclude specific threads from the feed.
+		/// </summary>
 		[JsonPropertyName("keywords")]
 		public List<string>? Keywords { get; init; }
 	}

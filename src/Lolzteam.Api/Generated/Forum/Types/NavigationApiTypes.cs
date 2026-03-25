@@ -12,6 +12,9 @@ public static class NavigationApiTypes
 {
 	public sealed record NavigationListParams
 	{
+		/// <summary>
+		/// Id of parent element. If exists, filter elements that are direct children of that element.
+		/// </summary>
 		[JsonPropertyName("parent")]
 		public long? Parent { get; init; }
 	}
