@@ -236,7 +236,7 @@ public enum PrizeType
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ProfilePostsFieldsInclude>))]
 public enum ProfilePostsFieldsInclude
 {
-	[Lolzteam.Api.Runtime.EnumValue("*")] Value1122396928,
+	[Lolzteam.Api.Runtime.EnumValue("*")] All,
 	[Lolzteam.Api.Runtime.EnumValue("latest_comments")] LatestComments,
 }
 
@@ -270,7 +270,7 @@ public enum State
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ThreadsFieldsInclude>))]
 public enum ThreadsFieldsInclude
 {
-	[Lolzteam.Api.Runtime.EnumValue("*")] Value1122396928,
+	[Lolzteam.Api.Runtime.EnumValue("*")] All,
 	[Lolzteam.Api.Runtime.EnumValue("latest_posts")] LatestPosts,
 }
 
@@ -394,7 +394,7 @@ public enum TransferType
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<UsersFieldsInclude>))]
 public enum UsersFieldsInclude
 {
-	[Lolzteam.Api.Runtime.EnumValue("*")] Value1122396928,
+	[Lolzteam.Api.Runtime.EnumValue("*")] All,
 	[Lolzteam.Api.Runtime.EnumValue("alerts")] Alerts,
 }
 

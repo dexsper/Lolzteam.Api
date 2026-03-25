@@ -20,15 +20,15 @@ public enum AgeVerified
 
 public enum AppId : long
 {
-	V730 = 730,
-	V578080 = 578080,
-	V753 = 753,
-	V570 = 570,
-	V440 = 440,
-	V252490 = 252490,
-	V304930 = 304930,
-	V232090 = 232090,
-	V322330 = 322330,
+	CS2 = 730,
+	Pubg = 578080,
+	Steam = 753,
+	Dota2 = 570,
+	TF2 = 440,
+	Rust = 252490,
+	Unturned = 304930,
+	KillingFloor2 = 232090,
+	DontStarveTogether = 322330,
 }
 
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<Autorenewal>))]
@@ -2654,7 +2654,7 @@ public enum ExtendedGuarantee : long
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<FieldsInclude>))]
 public enum FieldsInclude
 {
-	[Lolzteam.Api.Runtime.EnumValue("*")] Value1122396928,
+	[Lolzteam.Api.Runtime.EnumValue("*")] All,
 	[Lolzteam.Api.Runtime.EnumValue("searchHistory")] SearchHistory,
 	[Lolzteam.Api.Runtime.EnumValue("savedSearch")] SavedSearch,
 }
