@@ -60,4 +60,43 @@ public static class ServiceCollectionExtensions
 
         return services;
     }
+
+    /// <summary>
+    /// Register a named <see cref="LolzteamHttpClient"/> using <see cref="IHttpClientFactory"/>,
+    /// configured via a fluent <see cref="ClientConfigBuilder"/>.
+    /// </summary>
+    /// <typeparam name="TClient">
+    /// A marker type used to name the underlying <see cref="HttpClient"/> in the factory pool
+    /// (typically the generated <c>ForumClient</c> or <c>MarketClient</c>).
+    /// </typeparam>
+    /// <param name="services">The service collection.</param>
+    /// <param name="configure">A delegate that configures the client using <see cref="ClientConfigBuilder"/>.</param>
+    /// <returns>The service collection for chaining.</returns>
+    /// <example>
+    /// <code>
+    /// services.AddLolzteamClient&lt;ForumClient&gt;(b => b
+    ///     .WithToken("mytoken")
+    ///     .WithProxy("socks5://proxy:1080")
+    ///     .WithTimeout(TimeSpan.FromSeconds(60))
+    ///     .WithRateLimit(300)
+    /// );
+    /// </code>
+    /// </example>
+    public static IServiceCollection AddLolzteamClient<TClient>(
+        this IServiceCollection services,
+        Action<ClientConfigBuilder> configure)
+        where TClient : class
+    {
+#if NET6_0_OR_GREATER
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configure);
+#else
+        if (services is null) throw new ArgumentNullException(nameof(services));
+        if (configure is null) throw new ArgumentNullException(nameof(configure));
+#endif
+
+        var builder = new ClientConfigBuilder();
+        configure(builder);
+        return AddLolzteamClient<TClient>(services, builder.Build());
+    }
 }
