@@ -183,27 +183,39 @@ Dependency Injection
 ---
 Install `Lolzteam.Api.DependencyInjection` and call `AddLolzteamClient<TClient>` in your `Program.cs`. This registers a named `HttpClient` via `IHttpClientFactory` for proper socket lifecycle management in hosted applications.
 
+You can configure the client either with a pre-built `ClientConfig`:
+
 ```csharp
 // Program.cs
 builder.Services.AddLolzteamClient<ForumClient>(new ClientConfig
 {
     Token   = builder.Configuration["Lolzteam:Token"]!,
-    BaseUrl = "https://prod-api.lolz.live",
     Retry   = new RetryConfig { MaxRetries = 3 },
 });
+```
 
-// Resolve in your service
-public class ThreadService(LolzteamHttpClient http)
+Or with the fluent builder, which is more convenient when reading values from configuration:
+
+```csharp
+builder.Services.AddLolzteamClient<ForumClient>(b => b
+    .WithToken(builder.Configuration["Lolzteam:Token"]!)
+    .WithProxy("socks5://proxy:1080")
+    .WithRateLimit(300)
+    .WithTimeout(TimeSpan.FromSeconds(60))
+);
+```
+
+Resolve the client in your services via constructor injection:
+
+```csharp
+public class ThreadService(ForumClient forum)
 {
-    private readonly ForumClient _forum = new(new ClientConfig
-    {
-        Token = "...",
-        HttpClient = http.Inner, // reuse the factory-managed HttpClient
-    });
+    public Task<ThreadsResponse> GetLatestAsync()
+        => forum.Threads.ListAsync(new() { ForumId = 7 });
 }
 ```
 
-> When using `IHttpClientFactory` the `HttpClient` lifetime is managed by the factory. Do **not** dispose the injected `LolzteamHttpClient` in this case.
+> When using `IHttpClientFactory` the `HttpClient` lifetime is managed by the factory. Do **not** dispose the injected client in this case.
 
 Error Handling
 ---
@@ -294,10 +306,11 @@ dotnet run --project codegen/Lolzteam.Codegen
 
 The generator will:
 1. Parse `schemas/forum.json` and `schemas/market.json`
-2. Delete existing `.cs` files in each `Generated/` subdirectory
-3. Emit fresh `Types.cs`, `ForumClient.cs` / `MarketClient.cs`, and `IForumClient.cs` / `IMarketClient.cs`
+2. Delete existing `.cs` files in each `Generated/` subdirectory and its `Types/` sub-directory
+3. Emit per-type files into `Generated/<Api>/Types/<Class>.cs` (enums, schemas, and per-group input DTOs as separate files)
+4. Emit `ForumClient.cs` / `MarketClient.cs` and `IForumClient.cs` / `IMarketClient.cs`
 
-Generated files are committed to the repository so the library builds without running the codegen.
+Splitting types across multiple files keeps IDE analysers responsive on large schemas. Generated files are committed to the repository so the library builds without running the codegen.
 
 License
 ---
