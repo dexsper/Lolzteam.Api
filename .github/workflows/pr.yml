@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    tags-ignore:
+      - 'v*'
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # MinVer needs full tag history
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.x
+            8.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Test (with coverage)
+        run: dotnet test --no-build --configuration Release
+
+      - name: Install ReportGenerator
+        if: always()
+        run: dotnet tool install -g dotnet-reportgenerator-globaltool
+
+      - name: Generate HTML coverage report
+        if: always()
+        run: |
+          reportgenerator \
+            -reports:"tests/Lolzteam.Api.Tests/coverage/coverage.opencover.xml" \
+            -targetdir:"coverage-html" \
+            -reporttypes:Html \
+            -title:"Lolzteam.Api Coverage" \
+            -assemblyfilters:"-Lolzteam.Api.Generated.*"
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report-${{ github.run_id }}
+          path: coverage-html/
+          retention-days: 30
