@@ -66,12 +66,12 @@ public static class CartApiTypes
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -116,7 +116,7 @@ public static class CartApiTypes
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>

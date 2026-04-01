@@ -61,12 +61,12 @@ public static class CategoryApiTypes
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -111,7 +111,7 @@ public static class CategoryApiTypes
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -279,12 +279,12 @@ public static class CategoryApiTypes
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -334,7 +334,7 @@ public static class CategoryApiTypes
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -354,12 +354,12 @@ public static class CategoryApiTypes
 		/// List of minimum hours played by game.
 		/// </summary>
 		[JsonPropertyName("hours_played")]
-		public JsonElement? HoursPlayed { get; init; }
+		public Dictionary<string, long?>? HoursPlayed { get; init; }
 		/// <summary>
 		/// List of maximum hours played by game.
 		/// </summary>
 		[JsonPropertyName("hours_played_max")]
-		public JsonElement? HoursPlayedMax { get; init; }
+		public Dictionary<string, long?>? HoursPlayedMax { get; init; }
 		/// <summary>
 		/// Guarantee type.
 		/// </summary>
@@ -2629,12 +2629,12 @@ public sealed record CategorySteamResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -2684,7 +2684,7 @@ public sealed record CategorySteamResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -4512,12 +4512,12 @@ public sealed record CategoryFortniteResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -4562,7 +4562,7 @@ public sealed record CategoryFortniteResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Email type.
 		/// </summary>
@@ -4607,12 +4607,12 @@ public sealed record CategoryFortniteResponseItems(
 		/// List of minimum constellations on characters.
 		/// </summary>
 		[JsonPropertyName("genshin_character_constellations")]
-		public JsonElement? GenshinCharacterConstellations { get; init; }
+		public Dictionary<string, long?>? GenshinCharacterConstellations { get; init; }
 		/// <summary>
 		/// List of maximum constellations on characters.
 		/// </summary>
 		[JsonPropertyName("genshin_character_constellations_max")]
-		public JsonElement? GenshinCharacterConstellationsMax { get; init; }
+		public Dictionary<string, long?>? GenshinCharacterConstellationsMax { get; init; }
 		/// <summary>
 		/// List of weapons.
 		/// </summary>
@@ -4697,12 +4697,12 @@ public sealed record CategoryFortniteResponseItems(
 		/// List of minimum eidolons on characters.
 		/// </summary>
 		[JsonPropertyName("honkai_character_eidolons")]
-		public JsonElement? HonkaiCharacterEidolons { get; init; }
+		public Dictionary<string, long?>? HonkaiCharacterEidolons { get; init; }
 		/// <summary>
 		/// List of maximum eidolons on characters.
 		/// </summary>
 		[JsonPropertyName("honkai_character_eidolons_max")]
-		public JsonElement? HonkaiCharacterEidolonsMax { get; init; }
+		public Dictionary<string, long?>? HonkaiCharacterEidolonsMax { get; init; }
 		/// <summary>
 		/// List of weapons.
 		/// </summary>
@@ -4787,12 +4787,12 @@ public sealed record CategoryFortniteResponseItems(
 		/// List of minimum cinemas on characters.
 		/// </summary>
 		[JsonPropertyName("zenless_character_cinemas")]
-		public JsonElement? ZenlessCharacterCinemas { get; init; }
+		public Dictionary<string, long?>? ZenlessCharacterCinemas { get; init; }
 		/// <summary>
 		/// List of maximum cinemas on characters.
 		/// </summary>
 		[JsonPropertyName("zenless_character_cinemas_max")]
-		public JsonElement? ZenlessCharacterCinemasMax { get; init; }
+		public Dictionary<string, long?>? ZenlessCharacterCinemasMax { get; init; }
 		/// <summary>
 		/// List of Zenless Zone Zero weapons.
 		/// </summary>
@@ -7373,12 +7373,12 @@ public sealed record CategoryMihoyoResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -7423,7 +7423,7 @@ public sealed record CategoryMihoyoResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -8996,12 +8996,12 @@ public sealed record CategoryRiotResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CategoryOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CategoryNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -9046,7 +9046,7 @@ public sealed record CategoryRiotResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -10232,12 +10232,12 @@ public sealed record CategoryTelegramResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -10282,7 +10282,7 @@ public sealed record CategoryTelegramResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -11607,12 +11607,12 @@ public sealed record CategorySupercellResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -11657,7 +11657,7 @@ public sealed record CategorySupercellResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -11757,12 +11757,12 @@ public sealed record CategorySupercellResponseItems(
 		/// List of minimum hours played by game.
 		/// </summary>
 		[JsonPropertyName("hours_played")]
-		public JsonElement? HoursPlayed { get; init; }
+		public Dictionary<string, long?>? HoursPlayed { get; init; }
 		/// <summary>
 		/// List of maximum hours played by game.
 		/// </summary>
 		[JsonPropertyName("hours_played_max")]
-		public JsonElement? HoursPlayedMax { get; init; }
+		public Dictionary<string, long?>? HoursPlayedMax { get; init; }
 		/// <summary>
 		/// Has transactions.
 		/// </summary>
@@ -12839,12 +12839,12 @@ public sealed record CategoryEaResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -12889,7 +12889,7 @@ public sealed record CategoryEaResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -15322,12 +15322,12 @@ public sealed record CategoryWotResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -15372,7 +15372,7 @@ public sealed record CategoryWotResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -35046,12 +35046,12 @@ public sealed record CategoryWotBlitzResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -35096,7 +35096,7 @@ public sealed record CategoryWotBlitzResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -35918,12 +35918,12 @@ public sealed record CategoryGiftsResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -35968,7 +35968,7 @@ public sealed record CategoryGiftsResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -36053,12 +36053,12 @@ public sealed record CategoryGiftsResponseItems(
 		/// List of minimum hours played by game.
 		/// </summary>
 		[JsonPropertyName("hours_played")]
-		public JsonElement? HoursPlayed { get; init; }
+		public Dictionary<string, long?>? HoursPlayed { get; init; }
 		/// <summary>
 		/// List of maximum hours played by game.
 		/// </summary>
 		[JsonPropertyName("hours_played_max")]
-		public JsonElement? HoursPlayedMax { get; init; }
+		public Dictionary<string, long?>? HoursPlayedMax { get; init; }
 	}
 
 	public sealed record CategoryEpicGamesResponse(
@@ -37213,12 +37213,12 @@ public sealed record CategoryEpicGamesResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -37263,7 +37263,7 @@ public sealed record CategoryEpicGamesResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -38274,12 +38274,12 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -38324,7 +38324,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -39350,12 +39350,12 @@ public sealed record CategorySocialClubResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -39400,7 +39400,7 @@ public sealed record CategorySocialClubResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -40704,12 +40704,12 @@ public sealed record CategoryUplayResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -40754,7 +40754,7 @@ public sealed record CategoryUplayResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -41845,12 +41845,12 @@ public sealed record CategoryDiscordResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -41895,7 +41895,7 @@ public sealed record CategoryDiscordResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -42959,12 +42959,12 @@ public sealed record CategoryTikTokResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -43009,7 +43009,7 @@ public sealed record CategoryTikTokResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -43995,12 +43995,12 @@ public sealed record CategoryInstagramResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -44045,7 +44045,7 @@ public sealed record CategoryInstagramResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -45309,12 +45309,12 @@ public sealed record CategoryBattleNetResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -45359,7 +45359,7 @@ public sealed record CategoryBattleNetResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -46329,12 +46329,12 @@ public sealed record CategoryChatGPTResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -46379,7 +46379,7 @@ public sealed record CategoryChatGPTResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -47213,12 +47213,12 @@ public sealed record CategoryVpnResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -47263,7 +47263,7 @@ public sealed record CategoryVpnResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -48611,12 +48611,12 @@ public sealed record CategoryRobloxResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -48661,7 +48661,7 @@ public sealed record CategoryRobloxResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -49660,12 +49660,12 @@ public sealed record CategoryWarfaceResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -49710,7 +49710,7 @@ public sealed record CategoryWarfaceResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>
@@ -50920,12 +50920,12 @@ public sealed record CategoryMinecraftResponseItems(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Search accounts of user.
 		/// </summary>
@@ -50970,7 +50970,7 @@ public sealed record CategoryMinecraftResponseItems(
 		/// Email provider.
 		/// </summary>
 		[JsonPropertyName("not_email_provider[]")]
-		public NotEmailProvider? NotEmailProvider { get; init; }
+		public List<NotEmailProvider>? NotEmailProvider { get; init; }
 		/// <summary>
 		/// Parse same item ids.
 		/// </summary>

@@ -175,9 +175,20 @@ internal static partial class Emitter
                 .OrderBy(t => t)
                 .ToList();
 
-            return nonNull is ["integer", "string"]
-                ? "Lolzteam.Api.Runtime.StringOrLong"
-                : "JsonElement";
+            if (nonNull is ["integer", "string"])
+                return "Lolzteam.Api.Runtime.StringOrLong";
+
+            // Single non-null type combined with null → resolve as that base type
+            // (nullability is applied by the caller via MakeNullable)
+            if (nonNull.Count == 1)
+            {
+                return ResolveComponentPropertyType(
+                    new JsonObject { ["type"] = nonNull[0] },
+                    rawSpec, componentSchemaNames, parentTypeName, propName, nestedRecords
+                );
+            }
+
+            return "JsonElement";
         }
 
         string? type = null;
@@ -197,11 +208,29 @@ internal static partial class Emitter
             return "List<JsonElement>";
         }
 
-        if (type == "object" || sObj["properties"] is not null)
+        var properties = sObj["properties"];
+        var additionalProps = sObj["additionalProperties"];
+
+        if (type == "object" || properties is not null)
         {
-            if (sObj["properties"] is not JsonObject { Count: > 0 } innerProps
-                || parentTypeName is null || propName is null ||
-                nestedRecords is null)
+            if (additionalProps is JsonObject additionalPropsSchema && properties is null or JsonObject { Count: 0 })
+            {
+                var valType = ResolveComponentPropertyType(
+                    additionalPropsSchema,
+                    rawSpec,
+                    componentSchemaNames,
+                    parentTypeName,
+                    propName,
+                    nestedRecords
+                );
+
+                return $"Dictionary<string, {valType}>";
+            }
+
+            if (properties is not JsonObject { Count: > 0 } innerProps)
+                return "JsonElement";
+
+            if (parentTypeName is null || propName is null || nestedRecords is null)
                 return "JsonElement";
 
             var nestedName = parentTypeName + Naming.SnakeToPascal(Naming.SanitizeName(propName));

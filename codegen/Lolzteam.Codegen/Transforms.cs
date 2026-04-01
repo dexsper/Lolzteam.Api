@@ -15,6 +15,9 @@ internal static partial class Transforms
     [GeneratedRegex(@"^Array<(.+)>$")]
     private static partial Regex ArrayTypePattern();
 
+    [GeneratedRegex(@"^Record<string,\s*(.+)>$")]
+    private static partial Regex RecordTypePattern();
+
     /// <summary>Pick the best available request body media type: form → json → multipart.</summary>
     private static JsonNode? PickRequestMediaType(JsonObject content)
     {
@@ -257,7 +260,7 @@ internal static partial class Transforms
         if (type == "array")
         {
             var itemType = SchemaToTypeString(sObj["items"], spec);
-            return "Array<" + itemType + ">";
+            return $"Array<{itemType}>";
         }
 
         if (type != "object" && sObj["properties"] is null)
@@ -272,7 +275,7 @@ internal static partial class Transforms
             return "Record<string, unknown>";
 
         var valType = SchemaToTypeString(additionalProps, spec);
-        return "Record<string, " + valType + ">";
+        return $"Record<string, {valType}>";
     }
 
     private static string PrimitiveType(string t) => t switch
@@ -301,36 +304,36 @@ internal static partial class Transforms
                 return "string";
 
             var sorted = nonNull.OrderBy(s => s).ToList();
-            if (sorted is ["integer", "string"])
-                return TypeStringOrLong;
-
-            return "JsonElement";
+            return sorted is ["integer", "string"] ? TypeStringOrLong : "JsonElement";
         }
 
         // Array<T>
         var arrayMatch = ArrayTypePattern().Match(tsType);
         if (arrayMatch.Success)
-        {
-            return "List<" + ToCSharpType(arrayMatch.Groups[1].Value) + ">";
-        }
+            return $"List<{ToCSharpType(arrayMatch.Groups[1].Value)}>";
 
-        // Inline objects
-        if (tsType.StartsWith('{') || tsType.Contains("Record<"))
-        {
+        // Inline objects (unnamed)
+        if (tsType.StartsWith('{'))
             return "JsonElement";
+
+        // Map / dictionary types
+        var recordMatch = RecordTypePattern().Match(tsType);
+        if (!recordMatch.Success)
+        {
+            return tsType switch
+            {
+                "string" => "string",
+                "number" => "double?",
+                "integer" => "long?",
+                "boolean" => "bool?",
+                "unknown" => "JsonElement",
+                "Blob" => "byte[]",
+                _ when tsType.StartsWith('"') || Regex.IsMatch(tsType, @"^\d+$") => "string",
+                _ => "JsonElement",
+            };
         }
 
-        return tsType switch
-        {
-            "string" => "string",
-            "number" => "double?",
-            "integer" => "long?",
-            "boolean" => "bool?",
-            "unknown" => "JsonElement",
-            "Blob" => "byte[]",
-            _ when tsType.StartsWith('"') || Regex.IsMatch(tsType, @"^\d+$") => "string",
-            _ => "JsonElement",
-        };
+        return $"Dictionary<string, {ToCSharpType(recordMatch.Groups[1].Value.Trim())}>";
     }
 
     /// <summary>Extract raw enum values from a schema node (after deref).</summary>
@@ -425,7 +428,10 @@ internal static partial class Transforms
             var name = nameNode.GetValue<string>();
             var requiredNode = paramObj["required"];
             var paramSchema = paramObj["schema"];
-            var type = SchemaToTypeString(paramSchema, spec);
+            var baseType = SchemaToTypeString(paramSchema, spec);
+            // name ends with [] → multi-value array param (style: form, explode: true)
+            // only wrap if the schema isn't already typed as an array
+            var type = name.EndsWith("[]") && !baseType.StartsWith("Array<") ? $"Array<{baseType}>" : baseType;
             var description = StringProp(paramObj, "description");
             var enumValues = EnumValuesForSchema(paramSchema, spec);
             var required = requiredNode is JsonValue rv && rv.TryGetValue<bool>(out var rBool) && rBool;

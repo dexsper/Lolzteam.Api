@@ -61,12 +61,12 @@ public static class ListApiTypes
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Order by.
 		/// </summary>
@@ -299,12 +299,12 @@ public static class ListApiTypes
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Order by.
 		/// </summary>
@@ -1306,12 +1306,12 @@ public sealed record ListStatesResponseUserItemStates(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Order by.
 		/// </summary>
@@ -1422,12 +1422,12 @@ public sealed record ListStatesResponseUserItemStates(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Order by.
 		/// </summary>
@@ -1595,12 +1595,12 @@ public sealed record ListStatesResponseUserItemStates(
 		/// List of account origins.
 		/// </summary>
 		[JsonPropertyName("origin[]")]
-		public List<CartOrigin>? Origin { get; init; }
+		public List<Origin>? Origin { get; init; }
 		/// <summary>
 		/// List of account origins that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_origin[]")]
-		public List<CartNotOrigin>? NotOrigin { get; init; }
+		public List<NotOrigin>? NotOrigin { get; init; }
 		/// <summary>
 		/// Order by.
 		/// </summary>

@@ -216,36 +216,6 @@ public enum CanChangeDetails
 	[Lolzteam.Api.Runtime.EnumValue("nomatter")] Nomatter,
 }
 
-[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<CartNotOrigin>))]
-public enum CartNotOrigin
-{
-	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
-	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
-	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
-	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
-	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
-	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
-	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
-	[Lolzteam.Api.Runtime.EnumValue("retrieve")] Retrieve,
-	[Lolzteam.Api.Runtime.EnumValue("retrieve_via_support")] RetrieveViaSupport,
-	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
-}
-
-[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<CartOrigin>))]
-public enum CartOrigin
-{
-	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
-	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
-	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
-	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
-	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
-	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
-	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
-	[Lolzteam.Api.Runtime.EnumValue("retrieve")] Retrieve,
-	[Lolzteam.Api.Runtime.EnumValue("retrieve_via_support")] RetrieveViaSupport,
-	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
-}
-
 public enum CategoryEg : long
 {
 	Neg1 = -1,
@@ -326,32 +296,6 @@ public enum CategoryId : long
 	V28 = 28,
 	V30 = 30,
 	V31 = 31,
-}
-
-[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<CategoryNotOrigin>))]
-public enum CategoryNotOrigin
-{
-	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
-	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
-	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
-	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
-	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
-	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
-	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
-	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
-}
-
-[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<CategoryOrigin>))]
-public enum CategoryOrigin
-{
-	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
-	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
-	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
-	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
-	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
-	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
-	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
-	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
 }
 
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<CategoryRegion>))]
@@ -7672,6 +7616,20 @@ public enum HypixelSkyblockApiEnabled
 	[Lolzteam.Api.Runtime.EnumValue("nomatter")] Nomatter,
 }
 
+[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ItemOrigin>))]
+public enum ItemOrigin
+{
+	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
+	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
+	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
+	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
+	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
+	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
+	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
+	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
+	[Lolzteam.Api.Runtime.EnumValue("retrieve_via_support")] RetrieveViaSupport,
+}
+
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<Java>))]
 public enum Java
 {
@@ -7771,18 +7729,6 @@ public enum Mafile
 	[Lolzteam.Api.Runtime.EnumValue("yes")] Yes,
 	[Lolzteam.Api.Runtime.EnumValue("no")] No,
 	[Lolzteam.Api.Runtime.EnumValue("nomatter")] Nomatter,
-}
-
-[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ManagingItemOrigin>))]
-public enum ManagingItemOrigin
-{
-	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
-	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
-	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
-	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
-	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
-	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
-	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
 }
 
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ManagingType>))]
@@ -8060,6 +8006,20 @@ public enum NotEmailProvider
 	[Lolzteam.Api.Runtime.EnumValue("mail_ru")] MailRu,
 }
 
+[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<NotOrigin>))]
+public enum NotOrigin
+{
+	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
+	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
+	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
+	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
+	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
+	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
+	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
+	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
+	[Lolzteam.Api.Runtime.EnumValue("retrieve_via_support")] RetrieveViaSupport,
+}
+
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<NotRegion>))]
 public enum NotRegion
 {
@@ -8101,6 +8061,20 @@ public enum OrderBy
 	[Lolzteam.Api.Runtime.EnumValue("edate_to_down")] EdateToDown,
 	[Lolzteam.Api.Runtime.EnumValue("ddate_to_up")] DdateToUp,
 	[Lolzteam.Api.Runtime.EnumValue("ddate_to_down")] DdateToDown,
+}
+
+[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<Origin>))]
+public enum Origin
+{
+	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
+	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
+	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
+	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
+	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
+	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
+	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
+	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
+	[Lolzteam.Api.Runtime.EnumValue("retrieve_via_support")] RetrieveViaSupport,
 }
 
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ParentControl>))]
@@ -10250,19 +10224,6 @@ public enum PsnLinkable
 	[Lolzteam.Api.Runtime.EnumValue("yes")] Yes,
 	[Lolzteam.Api.Runtime.EnumValue("no")] No,
 	[Lolzteam.Api.Runtime.EnumValue("nomatter")] Nomatter,
-}
-
-[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<PublishingItemOrigin>))]
-public enum PublishingItemOrigin
-{
-	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
-	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
-	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
-	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
-	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
-	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
-	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
-	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
 }
 
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<PublishingType>))]

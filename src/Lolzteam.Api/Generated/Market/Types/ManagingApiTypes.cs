@@ -2405,10 +2405,10 @@ public sealed record ManagingSteamValueResponseData(
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
 		/// <summary>
-		/// Account origin. Where did you get it from.
+		/// Account origin.
 		/// </summary>
 		[JsonPropertyName("item_origin")]
-		public ManagingItemOrigin? ItemOrigin { get; init; }
+		public ItemOrigin? ItemOrigin { get; init; }
 		/// <summary>
 		/// Email login data (email:password format).
 		/// </summary>

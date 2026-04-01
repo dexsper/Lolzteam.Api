@@ -35,10 +35,10 @@ public static class PublishingApiTypes
 		[JsonPropertyName("currency")]
 		public required Currency Currency { get; init; }
 		/// <summary>
-		/// Account origin. Where did you get it from.
+		/// Account origin.
 		/// </summary>
 		[JsonPropertyName("item_origin")]
-		public required PublishingItemOrigin ItemOrigin { get; init; }
+		public required ItemOrigin ItemOrigin { get; init; }
 		/// <summary>
 		/// Guarantee type.
 		/// </summary>
@@ -179,10 +179,10 @@ public static class PublishingApiTypes
 		[JsonPropertyName("currency")]
 		public required Currency Currency { get; init; }
 		/// <summary>
-		/// Account origin. Where did you get it from.
+		/// Account origin.
 		/// </summary>
 		[JsonPropertyName("item_origin")]
-		public required PublishingItemOrigin ItemOrigin { get; init; }
+		public required ItemOrigin ItemOrigin { get; init; }
 		/// <summary>
 		/// Guarantee type.
 		/// </summary>

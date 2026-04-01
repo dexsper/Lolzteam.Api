@@ -268,7 +268,7 @@ public sealed record UsersFieldsResponseFields(
 		/// Custom fields to filter. Example: <b>custom_fields[telegram]=telegramLogin</b>.
 		/// </summary>
 		[JsonPropertyName("custom_fields")]
-		public JsonElement? CustomFields { get; init; }
+		public Dictionary<string, string>? CustomFields { get; init; }
 		/// <summary>
 		/// List of fields to include.
 		/// </summary>
@@ -509,7 +509,7 @@ public sealed record UsersFieldsResponseFields(
 		/// Alert settings.
 		/// </summary>
 		[JsonPropertyName("alert")]
-		public JsonElement? Alert { get; init; }
+		public Dictionary<string, bool?>? Alert { get; init; }
 		/// <summary>
 		/// Custom user profile fields.
 		/// </summary>
@@ -3883,346 +3883,6 @@ public sealed record UsersContentsResponseDataPermissions(
 	}
 }
 
-public sealed record UsersContentsResponseDataThreadLinks(
-	[property: JsonPropertyName("permalink")] string Permalink,
-	[property: JsonPropertyName("detail")] string Detail,
-	[property: JsonPropertyName("followers")] string Followers,
-	[property: JsonPropertyName("forum")] string Forum,
-	[property: JsonPropertyName("posts")] string Posts,
-	[property: JsonPropertyName("first_poster")] string FirstPoster,
-	[property: JsonPropertyName("first_poster_avatar")] string FirstPosterAvatar,
-	[property: JsonPropertyName("first_post")] string FirstPost,
-	[property: JsonPropertyName("last_poster")] string LastPoster,
-	[property: JsonPropertyName("last_post")] string LastPost
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static UsersContentsResponseDataThreadLinks ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static UsersContentsResponseDataThreadLinks ReadFromReader(ref Utf8JsonReader reader)
-	{
-		string v0 = null!;
-		string v1 = null!;
-		string v2 = null!;
-		string v3 = null!;
-		string v4 = null!;
-		string v5 = null!;
-		string v6 = null!;
-		string v7 = null!;
-		string v8 = null!;
-		string v9 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("permalink"u8))
-			{
-				reader.Read();
-				v0 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("detail"u8))
-			{
-				reader.Read();
-				v1 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("followers"u8))
-			{
-				reader.Read();
-				v2 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("forum"u8))
-			{
-				reader.Read();
-				v3 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("posts"u8))
-			{
-				reader.Read();
-				v4 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("first_poster"u8))
-			{
-				reader.Read();
-				v5 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("first_poster_avatar"u8))
-			{
-				reader.Read();
-				v6 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("first_post"u8))
-			{
-				reader.Read();
-				v7 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("last_poster"u8))
-			{
-				reader.Read();
-				v8 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("last_post"u8))
-			{
-				reader.Read();
-				v9 = reader.GetString()!;
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new UsersContentsResponseDataThreadLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
-	}
-}
-
-public sealed record UsersContentsResponseDataThreadPermissions(
-	[property: JsonPropertyName("view")] bool View,
-	[property: JsonPropertyName("delete")] bool Delete,
-	[property: JsonPropertyName("follow")] bool Follow,
-	[property: JsonPropertyName("post")] bool Post,
-	[property: JsonPropertyName("upload_attachment")] bool UploadAttachment
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static UsersContentsResponseDataThreadPermissions ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static UsersContentsResponseDataThreadPermissions ReadFromReader(ref Utf8JsonReader reader)
-	{
-		bool v0 = default;
-		bool v1 = default;
-		bool v2 = default;
-		bool v3 = default;
-		bool v4 = default;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("view"u8))
-			{
-				reader.Read();
-				v0 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("delete"u8))
-			{
-				reader.Read();
-				v1 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("follow"u8))
-			{
-				reader.Read();
-				v2 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("post"u8))
-			{
-				reader.Read();
-				v3 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("upload_attachment"u8))
-			{
-				reader.Read();
-				v4 = reader.GetBoolean();
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new UsersContentsResponseDataThreadPermissions(v0, v1, v2, v3, v4);
-	}
-}
-
-public sealed record UsersContentsResponseDataThread(
-	[property: JsonPropertyName("thread_id")] long ThreadId,
-	[property: JsonPropertyName("forum_id")] long ForumId,
-	[property: JsonPropertyName("thread_title")] string ThreadTitle,
-	[property: JsonPropertyName("thread_view_count")] long ThreadViewCount,
-	[property: JsonPropertyName("creator_user_id")] long CreatorUserId,
-	[property: JsonPropertyName("creator_username")] string CreatorUsername,
-	[property: JsonPropertyName("creator_username_html")] string CreatorUsernameHtml,
-	[property: JsonPropertyName("thread_create_date")] long ThreadCreateDate,
-	[property: JsonPropertyName("thread_update_date")] long ThreadUpdateDate,
-	[property: JsonPropertyName("user_is_ignored")] bool UserIsIgnored,
-	[property: JsonPropertyName("thread_post_count")] long ThreadPostCount,
-	[property: JsonPropertyName("thread_is_published")] bool ThreadIsPublished,
-	[property: JsonPropertyName("thread_is_deleted")] bool ThreadIsDeleted,
-	[property: JsonPropertyName("thread_is_sticky")] bool ThreadIsSticky,
-	[property: JsonPropertyName("thread_is_followed")] bool ThreadIsFollowed,
-	[property: JsonPropertyName("thread_prefixes")] List<JsonElement> ThreadPrefixes,
-	[property: JsonPropertyName("thread_tags")] List<JsonElement> ThreadTags,
-	[property: JsonPropertyName("links")] UsersContentsResponseDataThreadLinks Links,
-	[property: JsonPropertyName("permissions")] UsersContentsResponseDataThreadPermissions Permissions
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static UsersContentsResponseDataThread ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static UsersContentsResponseDataThread ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		long v1 = default;
-		string v2 = null!;
-		long v3 = default;
-		long v4 = default;
-		string v5 = null!;
-		string v6 = null!;
-		long v7 = default;
-		long v8 = default;
-		bool v9 = default;
-		long v10 = default;
-		bool v11 = default;
-		bool v12 = default;
-		bool v13 = default;
-		bool v14 = default;
-		List<JsonElement> v15 = null!;
-		List<JsonElement> v16 = null!;
-		UsersContentsResponseDataThreadLinks v17 = null!;
-		UsersContentsResponseDataThreadPermissions v18 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("thread_id"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("forum_id"u8))
-			{
-				reader.Read();
-				v1 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("thread_title"u8))
-			{
-				reader.Read();
-				v2 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("thread_view_count"u8))
-			{
-				reader.Read();
-				v3 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("creator_user_id"u8))
-			{
-				reader.Read();
-				v4 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("creator_username"u8))
-			{
-				reader.Read();
-				v5 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("creator_username_html"u8))
-			{
-				reader.Read();
-				v6 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("thread_create_date"u8))
-			{
-				reader.Read();
-				v7 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("thread_update_date"u8))
-			{
-				reader.Read();
-				v8 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("user_is_ignored"u8))
-			{
-				reader.Read();
-				v9 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("thread_post_count"u8))
-			{
-				reader.Read();
-				v10 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("thread_is_published"u8))
-			{
-				reader.Read();
-				v11 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("thread_is_deleted"u8))
-			{
-				reader.Read();
-				v12 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("thread_is_sticky"u8))
-			{
-				reader.Read();
-				v13 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("thread_is_followed"u8))
-			{
-				reader.Read();
-				v14 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("thread_prefixes"u8))
-			{
-				reader.Read();
-				if (reader.TokenType == JsonTokenType.StartArray)
-				{
-					var __lst = new List<JsonElement>();
-					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
-					{
-						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
-						__lst.Add(__item);
-					}
-					v15 = __lst;
-				}
-			}
-			else if (reader.ValueTextEquals("thread_tags"u8))
-			{
-				reader.Read();
-				if (reader.TokenType == JsonTokenType.StartArray)
-				{
-					var __lst = new List<JsonElement>();
-					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
-					{
-						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
-						__lst.Add(__item);
-					}
-					v16 = __lst;
-				}
-			}
-			else if (reader.ValueTextEquals("links"u8))
-			{
-				reader.Read();
-				v17 = reader.TokenType == JsonTokenType.Null ? null! : UsersContentsResponseDataThreadLinks.ReadFromReader(ref reader);
-			}
-			else if (reader.ValueTextEquals("permissions"u8))
-			{
-				reader.Read();
-				v18 = reader.TokenType == JsonTokenType.Null ? null! : UsersContentsResponseDataThreadPermissions.ReadFromReader(ref reader);
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new UsersContentsResponseDataThread(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18);
-	}
-}
-
 public sealed record UsersContentsResponseData(
 	[property: JsonPropertyName("content_type")] string ContentType,
 	[property: JsonPropertyName("content_id")] long ContentId,
@@ -4248,7 +3908,7 @@ public sealed record UsersContentsResponseData(
 	[property: JsonPropertyName("post_is_first_post")] bool PostIsFirstPost,
 	[property: JsonPropertyName("links")] UsersContentsResponseDataLinks Links,
 	[property: JsonPropertyName("permissions")] UsersContentsResponseDataPermissions Permissions,
-	[property: JsonPropertyName("thread")] UsersContentsResponseDataThread Thread
+	[property: JsonPropertyName("thread")] Resp_ThreadModel Thread
 )
 {
 
@@ -4286,7 +3946,7 @@ public sealed record UsersContentsResponseData(
 		bool v21 = default;
 		UsersContentsResponseDataLinks v22 = null!;
 		UsersContentsResponseDataPermissions v23 = null!;
-		UsersContentsResponseDataThread v24 = null!;
+		Resp_ThreadModel v24 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4423,7 +4083,7 @@ public sealed record UsersContentsResponseData(
 			else if (reader.ValueTextEquals("thread"u8))
 			{
 				reader.Read();
-				v24 = reader.TokenType == JsonTokenType.Null ? null! : UsersContentsResponseDataThread.ReadFromReader(ref reader);
+				v24 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModel.ReadFromReader(ref reader);
 			}
 			else
 			{
