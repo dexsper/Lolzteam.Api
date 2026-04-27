@@ -544,6 +544,21 @@ public sealed class CategoryApi
 	}
 
 	/// <summary>
+	/// Displays a list of accounts in a specific category according to your parameters.
+	/// </summary>
+	public async Task<CategoryApiTypes.CategoryCursorResponse> CursorAsync(CategoryApiTypes.CategoryCursorParams? @params = null, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/cursor",
+			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			IsSearch = true,
+		};
+		return await _http.RequestAsync(__opts, CategoryApiTypes.CategoryCursorResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
 	/// Display category list.
 	/// </summary>
 	public async Task<CategoryApiTypes.CategoryListResponse> ListAsync(CategoryApiTypes.CategoryListParams? @params = null, CancellationToken cancellationToken = default)

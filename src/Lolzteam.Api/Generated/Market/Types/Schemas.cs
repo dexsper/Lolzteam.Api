@@ -272,12 +272,13 @@ public sealed record ExtraModel(
 	[property: JsonPropertyName("cookie_login")] bool? CookieLogin,
 	[property: JsonPropertyName("mfa_file")] string? MfaFile,
 	[property: JsonPropertyName("dota2_mmr")] long? Dota2Mmr,
-	[property: JsonPropertyName("ea_games")] bool? EaGames,
 	[property: JsonPropertyName("uplay_games")] bool? UplayGames,
-	[property: JsonPropertyName("the_quarry")] bool? TheQuarry,
-	[property: JsonPropertyName("warframe")] bool? Warframe,
+	[property: JsonPropertyName("ea_games")] bool? EaGames,
 	[property: JsonPropertyName("ark")] bool? Ark,
 	[property: JsonPropertyName("ark_ascended")] bool? ArkAscended,
+	[property: JsonPropertyName("warframe")] bool? Warframe,
+	[property: JsonPropertyName("the_quarry")] bool? TheQuarry,
+	[property: JsonPropertyName("brawlhalla")] bool? Brawlhalla,
 	[property: JsonPropertyName("genshin_currency")] long? GenshinCurrency,
 	[property: JsonPropertyName("honkai_currency")] long? HonkaiCurrency,
 	[property: JsonPropertyName("zenless_currency")] long? ZenlessCurrency,
@@ -317,15 +318,16 @@ public sealed record ExtraModel(
 		bool v14 = default;
 		bool v15 = default;
 		bool v16 = default;
-		long v17 = default;
+		bool v17 = default;
 		long v18 = default;
 		long v19 = default;
-		string v20 = null!;
+		long v20 = default;
 		string v21 = null!;
 		string v22 = null!;
-		bool v23 = default;
+		string v23 = null!;
 		bool v24 = default;
 		bool v25 = default;
+		bool v26 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -385,80 +387,85 @@ public sealed record ExtraModel(
 				reader.Read();
 				v10 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("ea_games"u8))
+			else if (reader.ValueTextEquals("uplay_games"u8))
 			{
 				reader.Read();
 				v11 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("uplay_games"u8))
+			else if (reader.ValueTextEquals("ea_games"u8))
 			{
 				reader.Read();
 				v12 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("the_quarry"u8))
+			else if (reader.ValueTextEquals("ark"u8))
 			{
 				reader.Read();
 				v13 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("warframe"u8))
+			else if (reader.ValueTextEquals("ark_ascended"u8))
 			{
 				reader.Read();
 				v14 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("ark"u8))
+			else if (reader.ValueTextEquals("warframe"u8))
 			{
 				reader.Read();
 				v15 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("ark_ascended"u8))
+			else if (reader.ValueTextEquals("the_quarry"u8))
 			{
 				reader.Read();
 				v16 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("genshin_currency"u8))
+			else if (reader.ValueTextEquals("brawlhalla"u8))
 			{
 				reader.Read();
-				v17 = reader.GetInt64();
+				v17 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("honkai_currency"u8))
+			else if (reader.ValueTextEquals("genshin_currency"u8))
 			{
 				reader.Read();
 				v18 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("zenless_currency"u8))
+			else if (reader.ValueTextEquals("honkai_currency"u8))
 			{
 				reader.Read();
 				v19 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("password"u8))
+			else if (reader.ValueTextEquals("zenless_currency"u8))
 			{
 				reader.Read();
-				v20 = reader.GetString()!;
+				v20 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("telegramClient"u8))
+			else if (reader.ValueTextEquals("password"u8))
 			{
 				reader.Read();
 				v21 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("telegramJson"u8))
+			else if (reader.ValueTextEquals("telegramClient"u8))
 			{
 				reader.Read();
 				v22 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("checkChannels"u8))
+			else if (reader.ValueTextEquals("telegramJson"u8))
 			{
 				reader.Read();
-				v23 = reader.GetBoolean();
+				v23 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("checkSpam"u8))
+			else if (reader.ValueTextEquals("checkChannels"u8))
 			{
 				reader.Read();
 				v24 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("checkHypixelBan"u8))
+			else if (reader.ValueTextEquals("checkSpam"u8))
 			{
 				reader.Read();
 				v25 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("checkHypixelBan"u8))
+			{
+				reader.Read();
+				v26 = reader.GetBoolean();
 			}
 			else
 			{
@@ -466,7 +473,7 @@ public sealed record ExtraModel(
 				reader.Skip();
 			}
 		}
-		return new ExtraModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25);
+		return new ExtraModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26);
 	}
 }
 
