@@ -125,6 +125,7 @@ public static class ChatboxApiTypes
 
 public sealed record ChatboxIndexResponseRooms(
 	[property: JsonPropertyName("can_report")] bool CanReport,
+	[property: JsonPropertyName("deal_id")] JsonElement DealId,
 	[property: JsonPropertyName("eng")] bool Eng,
 	[property: JsonPropertyName("market")] bool Market,
 	[property: JsonPropertyName("room_id")] long RoomId,
@@ -143,10 +144,11 @@ public sealed record ChatboxIndexResponseRooms(
 	internal static ChatboxIndexResponseRooms ReadFromReader(ref Utf8JsonReader reader)
 	{
 		bool v0 = default;
-		bool v1 = default;
+		JsonElement v1 = default;
 		bool v2 = default;
-		long v3 = default;
-		string v4 = null!;
+		bool v3 = default;
+		long v4 = default;
+		string v5 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -156,25 +158,30 @@ public sealed record ChatboxIndexResponseRooms(
 				reader.Read();
 				v0 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("eng"u8))
+			else if (reader.ValueTextEquals("deal_id"u8))
 			{
 				reader.Read();
-				v1 = reader.GetBoolean();
+				v1 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else if (reader.ValueTextEquals("market"u8))
+			else if (reader.ValueTextEquals("eng"u8))
 			{
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
+			else if (reader.ValueTextEquals("market"u8))
+			{
+				reader.Read();
+				v3 = reader.GetBoolean();
+			}
 			else if (reader.ValueTextEquals("room_id"u8))
 			{
 				reader.Read();
-				v3 = reader.GetInt64();
+				v4 = reader.GetInt64();
 			}
 			else if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v5 = reader.GetString()!;
 			}
 			else
 			{
@@ -182,7 +189,147 @@ public sealed record ChatboxIndexResponseRooms(
 				reader.Skip();
 			}
 		}
-		return new ChatboxIndexResponseRooms(v0, v1, v2, v3, v4);
+		return new ChatboxIndexResponseRooms(v0, v1, v2, v3, v4, v5);
+	}
+}
+
+public sealed record ChatboxIndexResponseIgnoreCustomFields(
+	[property: JsonPropertyName("_4")] JsonElement _4,
+	[property: JsonPropertyName("scamURL")] JsonElement ScamURL,
+	[property: JsonPropertyName("favoritePorn")] JsonElement FavoritePorn,
+	[property: JsonPropertyName("favoriteVape")] JsonElement FavoriteVape,
+	[property: JsonPropertyName("favoriteAnime")] JsonElement FavoriteAnime,
+	[property: JsonPropertyName("lztLikesZeroing")] JsonElement LztLikesZeroing,
+	[property: JsonPropertyName("lztLikesIncreasing")] JsonElement LztLikesIncreasing,
+	[property: JsonPropertyName("lztSympathyZeroing")] JsonElement LztSympathyZeroing,
+	[property: JsonPropertyName("lztSympathyIncreasing")] JsonElement LztSympathyIncreasing,
+	[property: JsonPropertyName("telegram")] JsonElement Telegram,
+	[property: JsonPropertyName("vk")] JsonElement Vk,
+	[property: JsonPropertyName("discord")] JsonElement Discord,
+	[property: JsonPropertyName("steam")] JsonElement Steam,
+	[property: JsonPropertyName("matrix")] JsonElement Matrix,
+	[property: JsonPropertyName("jabber")] JsonElement Jabber,
+	[property: JsonPropertyName("github")] JsonElement Github
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static ChatboxIndexResponseIgnoreCustomFields ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static ChatboxIndexResponseIgnoreCustomFields ReadFromReader(ref Utf8JsonReader reader)
+	{
+		JsonElement v0 = default;
+		JsonElement v1 = default;
+		JsonElement v2 = default;
+		JsonElement v3 = default;
+		JsonElement v4 = default;
+		JsonElement v5 = default;
+		JsonElement v6 = default;
+		JsonElement v7 = default;
+		JsonElement v8 = default;
+		JsonElement v9 = default;
+		JsonElement v10 = default;
+		JsonElement v11 = default;
+		JsonElement v12 = default;
+		JsonElement v13 = default;
+		JsonElement v14 = default;
+		JsonElement v15 = default;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("_4"u8))
+			{
+				reader.Read();
+				v0 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("scamURL"u8))
+			{
+				reader.Read();
+				v1 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("favoritePorn"u8))
+			{
+				reader.Read();
+				v2 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("favoriteVape"u8))
+			{
+				reader.Read();
+				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("favoriteAnime"u8))
+			{
+				reader.Read();
+				v4 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("lztLikesZeroing"u8))
+			{
+				reader.Read();
+				v5 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("lztLikesIncreasing"u8))
+			{
+				reader.Read();
+				v6 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("lztSympathyZeroing"u8))
+			{
+				reader.Read();
+				v7 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("lztSympathyIncreasing"u8))
+			{
+				reader.Read();
+				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("telegram"u8))
+			{
+				reader.Read();
+				v9 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("vk"u8))
+			{
+				reader.Read();
+				v10 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("discord"u8))
+			{
+				reader.Read();
+				v11 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("steam"u8))
+			{
+				reader.Read();
+				v12 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("matrix"u8))
+			{
+				reader.Read();
+				v13 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("jabber"u8))
+			{
+				reader.Read();
+				v14 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("github"u8))
+			{
+				reader.Read();
+				v15 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new ChatboxIndexResponseIgnoreCustomFields(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
 }
 
@@ -238,7 +385,9 @@ public sealed record ChatboxIndexResponseIgnoreRenderedAvatars(
 public sealed record ChatboxIndexResponseIgnoreRendered(
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("avatars")] ChatboxIndexResponseIgnoreRenderedAvatars Avatars,
-	[property: JsonPropertyName("link")] string Link
+	[property: JsonPropertyName("backgrounds")] List<JsonElement> Backgrounds,
+	[property: JsonPropertyName("link")] string Link,
+	[property: JsonPropertyName("status")] string Status
 )
 {
 
@@ -254,7 +403,9 @@ public sealed record ChatboxIndexResponseIgnoreRendered(
 	{
 		string v0 = null!;
 		ChatboxIndexResponseIgnoreRenderedAvatars v1 = null!;
-		string v2 = null!;
+		List<JsonElement> v2 = null!;
+		string v3 = null!;
+		string v4 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -269,10 +420,29 @@ public sealed record ChatboxIndexResponseIgnoreRendered(
 				reader.Read();
 				v1 = reader.TokenType == JsonTokenType.Null ? null! : ChatboxIndexResponseIgnoreRenderedAvatars.ReadFromReader(ref reader);
 			}
+			else if (reader.ValueTextEquals("backgrounds"u8))
+			{
+				reader.Read();
+				if (reader.TokenType == JsonTokenType.StartArray)
+				{
+					var __lst = new List<JsonElement>();
+					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+					{
+						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+						__lst.Add(__item);
+					}
+					v2 = __lst;
+				}
+			}
 			else if (reader.ValueTextEquals("link"u8))
 			{
 				reader.Read();
-				v2 = reader.GetString()!;
+				v3 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("status"u8))
+			{
+				reader.Read();
+				v4 = reader.GetString()!;
 			}
 			else
 			{
@@ -280,34 +450,49 @@ public sealed record ChatboxIndexResponseIgnoreRendered(
 				reader.Skip();
 			}
 		}
-		return new ChatboxIndexResponseIgnoreRendered(v0, v1, v2);
+		return new ChatboxIndexResponseIgnoreRendered(v0, v1, v2, v3, v4);
 	}
 }
 
 public sealed record ChatboxIndexResponseIgnore(
-	[property: JsonPropertyName("avatar_date")] long AvatarDate,
-	[property: JsonPropertyName("background_date")] long BackgroundDate,
+	[property: JsonPropertyName("can_edit")] bool CanEdit,
+	[property: JsonPropertyName("can_follow")] bool CanFollow,
+	[property: JsonPropertyName("can_ignore")] bool CanIgnore,
+	[property: JsonPropertyName("can_post_profile")] bool CanPostProfile,
+	[property: JsonPropertyName("can_view_profile")] bool CanViewProfile,
+	[property: JsonPropertyName("can_view_profile_posts")] bool CanViewProfilePosts,
+	[property: JsonPropertyName("can_warn")] bool CanWarn,
 	[property: JsonPropertyName("contest_count")] long ContestCount,
-	[property: JsonPropertyName("custom_title")] string CustomTitle,
+	[property: JsonPropertyName("conv_auto_reply_message")] string ConvAutoReplyMessage,
+	[property: JsonPropertyName("conv_welcome_message")] string ConvWelcomeMessage,
+	[property: JsonPropertyName("convertedDeposit")] long ConvertedDeposit,
+	[property: JsonPropertyName("custom_fields")] ChatboxIndexResponseIgnoreCustomFields CustomFields,
+	[property: JsonPropertyName("deposit")] long Deposit,
 	[property: JsonPropertyName("display_banner_id")] long DisplayBannerId,
 	[property: JsonPropertyName("display_icon_group_id")] long DisplayIconGroupId,
-	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
+	[property: JsonPropertyName("gender")] string Gender,
+	[property: JsonPropertyName("homepage")] string Homepage,
 	[property: JsonPropertyName("is_admin")] bool IsAdmin,
 	[property: JsonPropertyName("is_banned")] bool IsBanned,
+	[property: JsonPropertyName("is_followed")] bool IsFollowed,
+	[property: JsonPropertyName("is_ignored")] bool IsIgnored,
 	[property: JsonPropertyName("is_moderator")] bool IsModerator,
 	[property: JsonPropertyName("is_staff")] bool IsStaff,
 	[property: JsonPropertyName("last_activity")] long LastActivity,
 	[property: JsonPropertyName("like2_count")] long Like2Count,
 	[property: JsonPropertyName("like_count")] long LikeCount,
+	[property: JsonPropertyName("location")] string Location,
 	[property: JsonPropertyName("message_count")] long MessageCount,
+	[property: JsonPropertyName("occupation")] string Occupation,
 	[property: JsonPropertyName("register_date")] long RegisterDate,
 	[property: JsonPropertyName("rendered")] ChatboxIndexResponseIgnoreRendered Rendered,
 	[property: JsonPropertyName("short_link")] JsonElement ShortLink,
 	[property: JsonPropertyName("trophy_points")] long TrophyPoints,
-	[property: JsonPropertyName("uniq_banner")] JsonElement UniqBanner,
-	[property: JsonPropertyName("uniq_username_css")] string UniqUsernameCss,
 	[property: JsonPropertyName("user_id")] long UserId,
-	[property: JsonPropertyName("username")] string Username
+	[property: JsonPropertyName("user_title")] string UserTitle,
+	[property: JsonPropertyName("username")] string Username,
+	[property: JsonPropertyName("view_url")] string ViewUrl,
+	[property: JsonPropertyName("warning_points")] long WarningPoints
 )
 {
 
@@ -321,147 +506,237 @@ public sealed record ChatboxIndexResponseIgnore(
 
 	internal static ChatboxIndexResponseIgnore ReadFromReader(ref Utf8JsonReader reader)
 	{
-		long v0 = default;
-		long v1 = default;
-		long v2 = default;
-		string v3 = null!;
-		long v4 = default;
-		long v5 = default;
-		long v6 = default;
-		bool v7 = default;
-		bool v8 = default;
-		bool v9 = default;
-		bool v10 = default;
-		long v11 = default;
+		bool v0 = default;
+		bool v1 = default;
+		bool v2 = default;
+		bool v3 = default;
+		bool v4 = default;
+		bool v5 = default;
+		bool v6 = default;
+		long v7 = default;
+		string v8 = null!;
+		string v9 = null!;
+		long v10 = default;
+		ChatboxIndexResponseIgnoreCustomFields v11 = null!;
 		long v12 = default;
 		long v13 = default;
 		long v14 = default;
-		long v15 = default;
-		ChatboxIndexResponseIgnoreRendered v16 = null!;
-		JsonElement v17 = default;
-		long v18 = default;
-		JsonElement v19 = default;
-		string v20 = null!;
-		long v21 = default;
-		string v22 = null!;
+		string v15 = null!;
+		string v16 = null!;
+		bool v17 = default;
+		bool v18 = default;
+		bool v19 = default;
+		bool v20 = default;
+		bool v21 = default;
+		bool v22 = default;
+		long v23 = default;
+		long v24 = default;
+		long v25 = default;
+		string v26 = null!;
+		long v27 = default;
+		string v28 = null!;
+		long v29 = default;
+		ChatboxIndexResponseIgnoreRendered v30 = null!;
+		JsonElement v31 = default;
+		long v32 = default;
+		long v33 = default;
+		string v34 = null!;
+		string v35 = null!;
+		string v36 = null!;
+		long v37 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
 
-			if (reader.ValueTextEquals("avatar_date"u8))
+			if (reader.ValueTextEquals("can_edit"u8))
 			{
 				reader.Read();
-				v0 = reader.GetInt64();
+				v0 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("background_date"u8))
+			else if (reader.ValueTextEquals("can_follow"u8))
 			{
 				reader.Read();
-				v1 = reader.GetInt64();
+				v1 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("can_ignore"u8))
+			{
+				reader.Read();
+				v2 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("can_post_profile"u8))
+			{
+				reader.Read();
+				v3 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("can_view_profile"u8))
+			{
+				reader.Read();
+				v4 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("can_view_profile_posts"u8))
+			{
+				reader.Read();
+				v5 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("can_warn"u8))
+			{
+				reader.Read();
+				v6 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("contest_count"u8))
 			{
 				reader.Read();
-				v2 = reader.GetInt64();
+				v7 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("custom_title"u8))
+			else if (reader.ValueTextEquals("conv_auto_reply_message"u8))
 			{
 				reader.Read();
-				v3 = reader.GetString()!;
+				v8 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("display_banner_id"u8))
+			else if (reader.ValueTextEquals("conv_welcome_message"u8))
 			{
 				reader.Read();
-				v4 = reader.GetInt64();
+				v9 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("display_icon_group_id"u8))
+			else if (reader.ValueTextEquals("convertedDeposit"u8))
 			{
 				reader.Read();
-				v5 = reader.GetInt64();
+				v10 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("display_style_group_id"u8))
+			else if (reader.ValueTextEquals("custom_fields"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v11 = reader.TokenType == JsonTokenType.Null ? null! : ChatboxIndexResponseIgnoreCustomFields.ReadFromReader(ref reader);
 			}
-			else if (reader.ValueTextEquals("is_admin"u8))
-			{
-				reader.Read();
-				v7 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("is_banned"u8))
-			{
-				reader.Read();
-				v8 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("is_moderator"u8))
-			{
-				reader.Read();
-				v9 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("is_staff"u8))
-			{
-				reader.Read();
-				v10 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("last_activity"u8))
-			{
-				reader.Read();
-				v11 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("like2_count"u8))
+			else if (reader.ValueTextEquals("deposit"u8))
 			{
 				reader.Read();
 				v12 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("like_count"u8))
+			else if (reader.ValueTextEquals("display_banner_id"u8))
 			{
 				reader.Read();
 				v13 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("message_count"u8))
+			else if (reader.ValueTextEquals("display_icon_group_id"u8))
 			{
 				reader.Read();
 				v14 = reader.GetInt64();
 			}
+			else if (reader.ValueTextEquals("gender"u8))
+			{
+				reader.Read();
+				v15 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("homepage"u8))
+			{
+				reader.Read();
+				v16 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("is_admin"u8))
+			{
+				reader.Read();
+				v17 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("is_banned"u8))
+			{
+				reader.Read();
+				v18 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("is_followed"u8))
+			{
+				reader.Read();
+				v19 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("is_ignored"u8))
+			{
+				reader.Read();
+				v20 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("is_moderator"u8))
+			{
+				reader.Read();
+				v21 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("is_staff"u8))
+			{
+				reader.Read();
+				v22 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("last_activity"u8))
+			{
+				reader.Read();
+				v23 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("like2_count"u8))
+			{
+				reader.Read();
+				v24 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("like_count"u8))
+			{
+				reader.Read();
+				v25 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("location"u8))
+			{
+				reader.Read();
+				v26 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("message_count"u8))
+			{
+				reader.Read();
+				v27 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("occupation"u8))
+			{
+				reader.Read();
+				v28 = reader.GetString()!;
+			}
 			else if (reader.ValueTextEquals("register_date"u8))
 			{
 				reader.Read();
-				v15 = reader.GetInt64();
+				v29 = reader.GetInt64();
 			}
 			else if (reader.ValueTextEquals("rendered"u8))
 			{
 				reader.Read();
-				v16 = reader.TokenType == JsonTokenType.Null ? null! : ChatboxIndexResponseIgnoreRendered.ReadFromReader(ref reader);
+				v30 = reader.TokenType == JsonTokenType.Null ? null! : ChatboxIndexResponseIgnoreRendered.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("short_link"u8))
 			{
 				reader.Read();
-				v17 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				v31 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
 			else if (reader.ValueTextEquals("trophy_points"u8))
 			{
 				reader.Read();
-				v18 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("uniq_banner"u8))
-			{
-				reader.Read();
-				v19 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
-			}
-			else if (reader.ValueTextEquals("uniq_username_css"u8))
-			{
-				reader.Read();
-				v20 = reader.GetString()!;
+				v32 = reader.GetInt64();
 			}
 			else if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
-				v21 = reader.GetInt64();
+				v33 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("user_title"u8))
+			{
+				reader.Read();
+				v34 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
-				v22 = reader.GetString()!;
+				v35 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("view_url"u8))
+			{
+				reader.Read();
+				v36 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("warning_points"u8))
+			{
+				reader.Read();
+				v37 = reader.GetInt64();
 			}
 			else
 			{
@@ -469,17 +744,18 @@ public sealed record ChatboxIndexResponseIgnore(
 				reader.Skip();
 			}
 		}
-		return new ChatboxIndexResponseIgnore(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22);
+		return new ChatboxIndexResponseIgnore(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37);
 	}
 }
 
 public sealed record ChatboxIndexResponsePermissions(
-	[property: JsonPropertyName("deleteAnyMessage")] bool DeleteAnyMessage,
-	[property: JsonPropertyName("editAnyMessage")] bool EditAnyMessage,
-	[property: JsonPropertyName("viewAnyMessage")] bool ViewAnyMessage,
 	[property: JsonPropertyName("viewMessages")] bool ViewMessages,
+	[property: JsonPropertyName("viewAnyMessage")] bool ViewAnyMessage,
+	[property: JsonPropertyName("editAnyMessage")] bool EditAnyMessage,
+	[property: JsonPropertyName("deleteAnyMessage")] bool DeleteAnyMessage,
+	[property: JsonPropertyName("ban")] bool Ban,
 	[property: JsonPropertyName("postMessage")] bool PostMessage,
-	[property: JsonPropertyName("ban")] bool Ban
+	[property: JsonPropertyName("report")] bool Report
 )
 {
 
@@ -499,39 +775,45 @@ public sealed record ChatboxIndexResponsePermissions(
 		bool v3 = default;
 		bool v4 = default;
 		bool v5 = default;
+		bool v6 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
 
-			if (reader.ValueTextEquals("deleteAnyMessage"u8))
+			if (reader.ValueTextEquals("viewMessages"u8))
 			{
 				reader.Read();
 				v0 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("editAnyMessage"u8))
+			else if (reader.ValueTextEquals("viewAnyMessage"u8))
 			{
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("viewAnyMessage"u8))
+			else if (reader.ValueTextEquals("editAnyMessage"u8))
 			{
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("viewMessages"u8))
+			else if (reader.ValueTextEquals("deleteAnyMessage"u8))
 			{
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("postMessage"u8))
+			else if (reader.ValueTextEquals("ban"u8))
 			{
 				reader.Read();
 				v4 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("ban"u8))
+			else if (reader.ValueTextEquals("postMessage"u8))
 			{
 				reader.Read();
 				v5 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("report"u8))
+			{
+				reader.Read();
+				v6 = reader.GetBoolean();
 			}
 			else
 			{
@@ -539,12 +821,15 @@ public sealed record ChatboxIndexResponsePermissions(
 				reader.Skip();
 			}
 		}
-		return new ChatboxIndexResponsePermissions(v0, v1, v2, v3, v4, v5);
+		return new ChatboxIndexResponsePermissions(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
 public sealed record ChatboxIndexResponseRoomsOnline(
-	[property: JsonPropertyName("chat:0")] long Chat_0
+	[property: JsonPropertyName("chat:1")] long Chat_1,
+	[property: JsonPropertyName("chat:2")] long Chat_2,
+	[property: JsonPropertyName("chat:3")] long Chat_3,
+	[property: JsonPropertyName("chat:4")] long Chat_4
 )
 {
 
@@ -559,14 +844,32 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 	internal static ChatboxIndexResponseRoomsOnline ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
+		long v1 = default;
+		long v2 = default;
+		long v3 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
 
-			if (reader.ValueTextEquals("chat:0"u8))
+			if (reader.ValueTextEquals("chat:1"u8))
 			{
 				reader.Read();
 				v0 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("chat:2"u8))
+			{
+				reader.Read();
+				v1 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("chat:3"u8))
+			{
+				reader.Read();
+				v2 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("chat:4"u8))
+			{
+				reader.Read();
+				v3 = reader.GetInt64();
 			}
 			else
 			{
@@ -574,7 +877,7 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 				reader.Skip();
 			}
 		}
-		return new ChatboxIndexResponseRoomsOnline(v0);
+		return new ChatboxIndexResponseRoomsOnline(v0, v1, v2, v3);
 	}
 }
 

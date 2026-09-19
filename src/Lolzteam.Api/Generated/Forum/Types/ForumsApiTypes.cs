@@ -235,18 +235,21 @@ public sealed record ForumsListResponseTabs(
 	}
 
 public sealed record ForumsGroupedResponseTabs(
-	[property: JsonPropertyName("node_ids")] string NodeIds,
-	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("link_title")] string LinkTitle,
-	[property: JsonPropertyName("isExtendedTab")] bool IsExtendedTab,
-	[property: JsonPropertyName("prefixes")] List<JsonElement> Prefixes,
-	[property: JsonPropertyName("prefixes_not")] List<JsonElement> PrefixesNot,
-	[property: JsonPropertyName("order")] string Order,
-	[property: JsonPropertyName("direction")] string Direction,
-	[property: JsonPropertyName("period")] string Period,
-	[property: JsonPropertyName("state")] string State,
-	[property: JsonPropertyName("q")] string Q,
-	[property: JsonPropertyName("tabLink")] string TabLink
+	[property: JsonPropertyName("isDefault")] bool? IsDefault,
+	[property: JsonPropertyName("title")] string Title,
+	[property: JsonPropertyName("isHidden")] bool? IsHidden,
+	[property: JsonPropertyName("tabLink")] string? TabLink,
+	[property: JsonPropertyName("isDynamicTitle")] bool? IsDynamicTitle,
+	[property: JsonPropertyName("node_ids")] string? NodeIds,
+	[property: JsonPropertyName("isExtendedTab")] bool? IsExtendedTab,
+	[property: JsonPropertyName("prefixes")] List<JsonElement>? Prefixes,
+	[property: JsonPropertyName("prefixes_not")] List<JsonElement>? PrefixesNot,
+	[property: JsonPropertyName("order")] string? Order,
+	[property: JsonPropertyName("direction")] string? Direction,
+	[property: JsonPropertyName("period")] string? Period,
+	[property: JsonPropertyName("state")] string? State,
+	[property: JsonPropertyName("q")] string? Q
 )
 {
 
@@ -261,40 +264,63 @@ public sealed record ForumsGroupedResponseTabs(
 	internal static ForumsGroupedResponseTabs ReadFromReader(ref Utf8JsonReader reader)
 	{
 		string v0 = null!;
-		string v1 = null!;
+		bool v1 = default;
 		string v2 = null!;
 		bool v3 = default;
-		List<JsonElement> v4 = null!;
-		List<JsonElement> v5 = null!;
+		string v4 = null!;
+		bool v5 = default;
 		string v6 = null!;
-		string v7 = null!;
-		string v8 = null!;
-		string v9 = null!;
+		bool v7 = default;
+		List<JsonElement> v8 = null!;
+		List<JsonElement> v9 = null!;
 		string v10 = null!;
 		string v11 = null!;
+		string v12 = null!;
+		string v13 = null!;
+		string v14 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
 
-			if (reader.ValueTextEquals("node_ids"u8))
+			if (reader.ValueTextEquals("link_title"u8))
 			{
 				reader.Read();
 				v0 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("title"u8))
+			else if (reader.ValueTextEquals("isDefault"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("link_title"u8))
+			else if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("isExtendedTab"u8))
+			else if (reader.ValueTextEquals("isHidden"u8))
 			{
 				reader.Read();
 				v3 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("tabLink"u8))
+			{
+				reader.Read();
+				v4 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("isDynamicTitle"u8))
+			{
+				reader.Read();
+				v5 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("node_ids"u8))
+			{
+				reader.Read();
+				v6 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("isExtendedTab"u8))
+			{
+				reader.Read();
+				v7 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("prefixes"u8))
 			{
@@ -307,7 +333,7 @@ public sealed record ForumsGroupedResponseTabs(
 						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 						__lst.Add(__item);
 					}
-					v4 = __lst;
+					v8 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("prefixes_not"u8))
@@ -321,38 +347,33 @@ public sealed record ForumsGroupedResponseTabs(
 						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 						__lst.Add(__item);
 					}
-					v5 = __lst;
+					v9 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("order"u8))
 			{
 				reader.Read();
-				v6 = reader.GetString()!;
+				v10 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("direction"u8))
 			{
 				reader.Read();
-				v7 = reader.GetString()!;
+				v11 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("period"u8))
 			{
 				reader.Read();
-				v8 = reader.GetString()!;
+				v12 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("state"u8))
 			{
 				reader.Read();
-				v9 = reader.GetString()!;
+				v13 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("q"u8))
 			{
 				reader.Read();
-				v10 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("tabLink"u8))
-			{
-				reader.Read();
-				v11 = reader.GetString()!;
+				v14 = reader.GetString()!;
 			}
 			else
 			{
@@ -360,7 +381,7 @@ public sealed record ForumsGroupedResponseTabs(
 				reader.Skip();
 			}
 		}
-		return new ForumsGroupedResponseTabs(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
+		return new ForumsGroupedResponseTabs(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14);
 	}
 }
 
@@ -407,7 +428,9 @@ public sealed record ForumsGroupedResponseTabs(
 	}
 
 	public sealed record ForumsFollowersResponse(
-		[property: JsonPropertyName("users")] List<ForumsFollowersResponseUsers> Users,
+		[property: JsonPropertyName("users")] Resp_UserModel Users,
+		[property: JsonPropertyName("users_total")] long? UsersTotal,
+		[property: JsonPropertyName("links")] ForumsFollowersResponseLinks? Links,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
 	{
@@ -422,8 +445,10 @@ public sealed record ForumsGroupedResponseTabs(
 
 		internal static ForumsFollowersResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			List<ForumsFollowersResponseUsers> v0 = null!;
-			Resp_SystemInfo v1 = null!;
+			Resp_UserModel v0 = null!;
+			long v1 = default;
+			ForumsFollowersResponseLinks v2 = null!;
+			Resp_SystemInfo v3 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -431,21 +456,22 @@ public sealed record ForumsGroupedResponseTabs(
 				if (reader.ValueTextEquals("users"u8))
 				{
 					reader.Read();
-					if (reader.TokenType == JsonTokenType.StartArray)
-					{
-						var __lst = new List<ForumsFollowersResponseUsers>();
-						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
-						{
-							var __item = ForumsFollowersResponseUsers.ReadFromReader(ref reader);
-							__lst.Add(__item);
-						}
-						v0 = __lst;
-					}
+					v0 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModel.ReadFromReader(ref reader);
+				}
+				else if (reader.ValueTextEquals("users_total"u8))
+				{
+					reader.Read();
+					v1 = reader.GetInt64();
+				}
+				else if (reader.ValueTextEquals("links"u8))
+				{
+					reader.Read();
+					v2 = reader.TokenType == JsonTokenType.Null ? null! : ForumsFollowersResponseLinks.ReadFromReader(ref reader);
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -453,97 +479,48 @@ public sealed record ForumsGroupedResponseTabs(
 					reader.Skip();
 				}
 			}
-			return new ForumsFollowersResponse(v0, v1);
+			return new ForumsFollowersResponse(v0, v1, v2, v3);
 		}
 	}
 
-public sealed record ForumsFollowersResponseUsersFollow(
-	[property: JsonPropertyName("post")] bool Post,
-	[property: JsonPropertyName("alert")] bool Alert,
-	[property: JsonPropertyName("email")] bool Email
+public sealed record ForumsFollowersResponseLinks(
+	[property: JsonPropertyName("pages")] long Pages,
+	[property: JsonPropertyName("page")] long Page,
+	[property: JsonPropertyName("next")] string Next
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static ForumsFollowersResponseUsersFollow ReadFrom(ReadOnlyMemory<byte> json)
+	public static ForumsFollowersResponseLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static ForumsFollowersResponseUsersFollow ReadFromReader(ref Utf8JsonReader reader)
-	{
-		bool v0 = default;
-		bool v1 = default;
-		bool v2 = default;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("post"u8))
-			{
-				reader.Read();
-				v0 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("alert"u8))
-			{
-				reader.Read();
-				v1 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("email"u8))
-			{
-				reader.Read();
-				v2 = reader.GetBoolean();
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new ForumsFollowersResponseUsersFollow(v0, v1, v2);
-	}
-}
-
-public sealed record ForumsFollowersResponseUsers(
-	[property: JsonPropertyName("user_id")] long UserId,
-	[property: JsonPropertyName("username")] string Username,
-	[property: JsonPropertyName("follow")] ForumsFollowersResponseUsersFollow Follow
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static ForumsFollowersResponseUsers ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static ForumsFollowersResponseUsers ReadFromReader(ref Utf8JsonReader reader)
+	internal static ForumsFollowersResponseLinks ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
-		string v1 = null!;
-		ForumsFollowersResponseUsersFollow v2 = null!;
+		long v1 = default;
+		string v2 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
 
-			if (reader.ValueTextEquals("user_id"u8))
+			if (reader.ValueTextEquals("pages"u8))
 			{
 				reader.Read();
 				v0 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("username"u8))
+			else if (reader.ValueTextEquals("page"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("follow"u8))
+			else if (reader.ValueTextEquals("next"u8))
 			{
 				reader.Read();
-				v2 = reader.TokenType == JsonTokenType.Null ? null! : ForumsFollowersResponseUsersFollow.ReadFromReader(ref reader);
+				v2 = reader.GetString()!;
 			}
 			else
 			{
@@ -551,7 +528,7 @@ public sealed record ForumsFollowersResponseUsers(
 				reader.Skip();
 			}
 		}
-		return new ForumsFollowersResponseUsers(v0, v1, v2);
+		return new ForumsFollowersResponseLinks(v0, v1, v2);
 	}
 }
 

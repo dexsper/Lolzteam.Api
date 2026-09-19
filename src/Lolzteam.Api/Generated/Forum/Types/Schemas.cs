@@ -8,6 +8,631 @@ using System.Text.Json.Serialization;
 
 namespace Lolzteam.Api.Generated.Forum;
 
+public sealed record _SearchContentPost(
+	[property: JsonPropertyName("content_type")] string ContentType,
+	[property: JsonPropertyName("content_id")] long ContentId,
+	[property: JsonPropertyName("node_title")] string NodeTitle,
+	[property: JsonPropertyName("thread_prefixes")] List<_SearchContentPostThreadPrefixes> ThreadPrefixes,
+	[property: JsonPropertyName("thread")] Resp_ThreadModel Thread
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static _SearchContentPost ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static _SearchContentPost ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		long v1 = default;
+		string v2 = null!;
+		List<_SearchContentPostThreadPrefixes> v3 = null!;
+		Resp_ThreadModel v4 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("content_type"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("content_id"u8))
+			{
+				reader.Read();
+				v1 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("node_title"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("thread_prefixes"u8))
+			{
+				reader.Read();
+				if (reader.TokenType == JsonTokenType.StartArray)
+				{
+					var __lst = new List<_SearchContentPostThreadPrefixes>();
+					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+					{
+						var __item = _SearchContentPostThreadPrefixes.ReadFromReader(ref reader);
+						__lst.Add(__item);
+					}
+					v3 = __lst;
+				}
+			}
+			else if (reader.ValueTextEquals("thread"u8))
+			{
+				reader.Read();
+				v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModel.ReadFromReader(ref reader);
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new _SearchContentPost(v0, v1, v2, v3, v4);
+	}
+}
+
+public sealed record _SearchContentPostThreadPrefixes(
+	[property: JsonPropertyName("prefix_id")] long PrefixId,
+	[property: JsonPropertyName("css_class")] string CssClass,
+	[property: JsonPropertyName("prefix_title")] string PrefixTitle
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static _SearchContentPostThreadPrefixes ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static _SearchContentPostThreadPrefixes ReadFromReader(ref Utf8JsonReader reader)
+	{
+		long v0 = default;
+		string v1 = null!;
+		string v2 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("prefix_id"u8))
+			{
+				reader.Read();
+				v0 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("css_class"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("prefix_title"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new _SearchContentPostThreadPrefixes(v0, v1, v2);
+	}
+}
+
+public sealed record _SearchContentProfilePost(
+	[property: JsonPropertyName("content_type")] string ContentType,
+	[property: JsonPropertyName("content_id")] long ContentId,
+	[property: JsonPropertyName("node_title")] string NodeTitle
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static _SearchContentProfilePost ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static _SearchContentProfilePost ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		long v1 = default;
+		string v2 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("content_type"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("content_id"u8))
+			{
+				reader.Read();
+				v1 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("node_title"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new _SearchContentProfilePost(v0, v1, v2);
+	}
+}
+
+public sealed record _SearchContentProfilePostComment(
+	[property: JsonPropertyName("content_type")] string ContentType,
+	[property: JsonPropertyName("content_id")] long ContentId,
+	[property: JsonPropertyName("node_title")] string NodeTitle
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static _SearchContentProfilePostComment ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static _SearchContentProfilePostComment ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		long v1 = default;
+		string v2 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("content_type"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("content_id"u8))
+			{
+				reader.Read();
+				v1 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("node_title"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new _SearchContentProfilePostComment(v0, v1, v2);
+	}
+}
+
+public sealed record _SearchContentThread(
+	[property: JsonPropertyName("content_type")] string ContentType,
+	[property: JsonPropertyName("content_id")] long ContentId,
+	[property: JsonPropertyName("node_title")] string NodeTitle
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static _SearchContentThread ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static _SearchContentThread ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		long v1 = default;
+		string v2 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("content_type"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("content_id"u8))
+			{
+				reader.Read();
+				v1 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("node_title"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new _SearchContentThread(v0, v1, v2);
+	}
+}
+
+public sealed record CategoryModel(
+	[property: JsonPropertyName("category_id")] long CategoryId,
+	[property: JsonPropertyName("category_title")] string CategoryTitle,
+	[property: JsonPropertyName("category_description")] string CategoryDescription,
+	[property: JsonPropertyName("icon_content")] string IconContent,
+	[property: JsonPropertyName("active_icon_content")] string ActiveIconContent,
+	[property: JsonPropertyName("links")] CategoryModelLinks Links,
+	[property: JsonPropertyName("permissions")] CategoryModelPermissions Permissions
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static CategoryModel ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static CategoryModel ReadFromReader(ref Utf8JsonReader reader)
+	{
+		long v0 = default;
+		string v1 = null!;
+		string v2 = null!;
+		string v3 = null!;
+		string v4 = null!;
+		CategoryModelLinks v5 = null!;
+		CategoryModelPermissions v6 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("category_id"u8))
+			{
+				reader.Read();
+				v0 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("category_title"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("category_description"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("icon_content"u8))
+			{
+				reader.Read();
+				v3 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("active_icon_content"u8))
+			{
+				reader.Read();
+				v4 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("links"u8))
+			{
+				reader.Read();
+				v5 = reader.TokenType == JsonTokenType.Null ? null! : CategoryModelLinks.ReadFromReader(ref reader);
+			}
+			else if (reader.ValueTextEquals("permissions"u8))
+			{
+				reader.Read();
+				v6 = reader.TokenType == JsonTokenType.Null ? null! : CategoryModelPermissions.ReadFromReader(ref reader);
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new CategoryModel(v0, v1, v2, v3, v4, v5, v6);
+	}
+}
+
+public sealed record CategoryModelLinks(
+	[property: JsonPropertyName("permalink")] string Permalink,
+	[property: JsonPropertyName("detail")] string Detail,
+	[property: JsonPropertyName("sub-categories")] string SubCategories,
+	[property: JsonPropertyName("sub-forums")] string SubForums
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static CategoryModelLinks ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static CategoryModelLinks ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		string v1 = null!;
+		string v2 = null!;
+		string v3 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("permalink"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("detail"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("sub-categories"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("sub-forums"u8))
+			{
+				reader.Read();
+				v3 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new CategoryModelLinks(v0, v1, v2, v3);
+	}
+}
+
+public sealed record CategoryModelPermissions(
+	[property: JsonPropertyName("view")] bool View,
+	[property: JsonPropertyName("edit")] bool Edit,
+	[property: JsonPropertyName("delete")] bool Delete
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static CategoryModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static CategoryModelPermissions ReadFromReader(ref Utf8JsonReader reader)
+	{
+		bool v0 = default;
+		bool v1 = default;
+		bool v2 = default;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("view"u8))
+			{
+				reader.Read();
+				v0 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("edit"u8))
+			{
+				reader.Read();
+				v1 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("delete"u8))
+			{
+				reader.Read();
+				v2 = reader.GetBoolean();
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new CategoryModelPermissions(v0, v1, v2);
+	}
+}
+
+public sealed record PageModel(
+	[property: JsonPropertyName("page_id")] long PageId,
+	[property: JsonPropertyName("page_title")] string PageTitle,
+	[property: JsonPropertyName("page_description")] string PageDescription,
+	[property: JsonPropertyName("icon_content")] string IconContent,
+	[property: JsonPropertyName("active_icon_content")] string ActiveIconContent,
+	[property: JsonPropertyName("links")] PageModelLinks Links,
+	[property: JsonPropertyName("permissions")] PageModelPermissions Permissions
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static PageModel ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static PageModel ReadFromReader(ref Utf8JsonReader reader)
+	{
+		long v0 = default;
+		string v1 = null!;
+		string v2 = null!;
+		string v3 = null!;
+		string v4 = null!;
+		PageModelLinks v5 = null!;
+		PageModelPermissions v6 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("page_id"u8))
+			{
+				reader.Read();
+				v0 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("page_title"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("page_description"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("icon_content"u8))
+			{
+				reader.Read();
+				v3 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("active_icon_content"u8))
+			{
+				reader.Read();
+				v4 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("links"u8))
+			{
+				reader.Read();
+				v5 = reader.TokenType == JsonTokenType.Null ? null! : PageModelLinks.ReadFromReader(ref reader);
+			}
+			else if (reader.ValueTextEquals("permissions"u8))
+			{
+				reader.Read();
+				v6 = reader.TokenType == JsonTokenType.Null ? null! : PageModelPermissions.ReadFromReader(ref reader);
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new PageModel(v0, v1, v2, v3, v4, v5, v6);
+	}
+}
+
+public sealed record PageModelLinks(
+	[property: JsonPropertyName("permalink")] string Permalink,
+	[property: JsonPropertyName("detail")] string Detail,
+	[property: JsonPropertyName("sub-pages")] string SubPages
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static PageModelLinks ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static PageModelLinks ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		string v1 = null!;
+		string v2 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("permalink"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("detail"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("sub-pages"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new PageModelLinks(v0, v1, v2);
+	}
+}
+
+public sealed record PageModelPermissions(
+	[property: JsonPropertyName("view")] bool View,
+	[property: JsonPropertyName("edit")] bool Edit,
+	[property: JsonPropertyName("delete")] bool Delete
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static PageModelPermissions ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static PageModelPermissions ReadFromReader(ref Utf8JsonReader reader)
+	{
+		bool v0 = default;
+		bool v1 = default;
+		bool v2 = default;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("view"u8))
+			{
+				reader.Read();
+				v0 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("edit"u8))
+			{
+				reader.Read();
+				v1 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("delete"u8))
+			{
+				reader.Read();
+				v2 = reader.GetBoolean();
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new PageModelPermissions(v0, v1, v2);
+	}
+}
+
 public sealed record Resp_ChatboxMessageModel(
 	[property: JsonPropertyName("can_report")] bool CanReport,
 	[property: JsonPropertyName("date")] long Date,
@@ -1253,12 +1878,14 @@ public sealed record Resp_ForumModel(
 	[property: JsonPropertyName("icon_content")] string IconContent,
 	[property: JsonPropertyName("active_icon_content")] string ActiveIconContent,
 	[property: JsonPropertyName("forum_rules_thread_id")] long ForumRulesThreadId,
+	[property: JsonPropertyName("isLike2Node")] bool IsLike2Node,
 	[property: JsonPropertyName("forum_prefixes")] List<Resp_ForumModelForumPrefixes> ForumPrefixes,
 	[property: JsonPropertyName("thread_default_prefix_id")] long ThreadDefaultPrefixId,
 	[property: JsonPropertyName("thread_prefix_is_required")] bool ThreadPrefixIsRequired,
 	[property: JsonPropertyName("links")] Resp_ForumModelLinks Links,
 	[property: JsonPropertyName("permissions")] Resp_ForumModelPermissions Permissions,
-	[property: JsonPropertyName("forum_is_followed")] bool ForumIsFollowed
+	[property: JsonPropertyName("forum_is_followed")] bool ForumIsFollowed,
+	[property: JsonPropertyName("forum_moderators")] List<JsonElement> ForumModerators
 )
 {
 
@@ -1282,12 +1909,14 @@ public sealed record Resp_ForumModel(
 		string v7 = null!;
 		string v8 = null!;
 		long v9 = default;
-		List<Resp_ForumModelForumPrefixes> v10 = null!;
-		long v11 = default;
-		bool v12 = default;
-		Resp_ForumModelLinks v13 = null!;
-		Resp_ForumModelPermissions v14 = null!;
-		bool v15 = default;
+		bool v10 = default;
+		List<Resp_ForumModelForumPrefixes> v11 = null!;
+		long v12 = default;
+		bool v13 = default;
+		Resp_ForumModelLinks v14 = null!;
+		Resp_ForumModelPermissions v15 = null!;
+		bool v16 = default;
+		List<JsonElement> v17 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1342,6 +1971,11 @@ public sealed record Resp_ForumModel(
 				reader.Read();
 				v9 = reader.GetInt64();
 			}
+			else if (reader.ValueTextEquals("isLike2Node"u8))
+			{
+				reader.Read();
+				v10 = reader.GetBoolean();
+			}
 			else if (reader.ValueTextEquals("forum_prefixes"u8))
 			{
 				reader.Read();
@@ -1353,33 +1987,47 @@ public sealed record Resp_ForumModel(
 						var __item = Resp_ForumModelForumPrefixes.ReadFromReader(ref reader);
 						__lst.Add(__item);
 					}
-					v10 = __lst;
+					v11 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("thread_default_prefix_id"u8))
 			{
 				reader.Read();
-				v11 = reader.GetInt64();
+				v12 = reader.GetInt64();
 			}
 			else if (reader.ValueTextEquals("thread_prefix_is_required"u8))
 			{
 				reader.Read();
-				v12 = reader.GetBoolean();
+				v13 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("links"u8))
 			{
 				reader.Read();
-				v13 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ForumModelLinks.ReadFromReader(ref reader);
+				v14 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ForumModelLinks.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("permissions"u8))
 			{
 				reader.Read();
-				v14 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ForumModelPermissions.ReadFromReader(ref reader);
+				v15 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ForumModelPermissions.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("forum_is_followed"u8))
 			{
 				reader.Read();
-				v15 = reader.GetBoolean();
+				v16 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("forum_moderators"u8))
+			{
+				reader.Read();
+				if (reader.TokenType == JsonTokenType.StartArray)
+				{
+					var __lst = new List<JsonElement>();
+					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+					{
+						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+						__lst.Add(__item);
+					}
+					v17 = __lst;
+				}
 			}
 			else
 			{
@@ -1387,7 +2035,7 @@ public sealed record Resp_ForumModel(
 				reader.Skip();
 			}
 		}
-		return new Resp_ForumModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
+		return new Resp_ForumModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17);
 	}
 }
 
@@ -1635,6 +2283,8 @@ public sealed record Resp_LinkModel(
 	[property: JsonPropertyName("link_id")] long LinkId,
 	[property: JsonPropertyName("link_title")] string LinkTitle,
 	[property: JsonPropertyName("link_description")] string LinkDescription,
+	[property: JsonPropertyName("icon_content")] string IconContent,
+	[property: JsonPropertyName("active_icon_content")] string ActiveIconContent,
 	[property: JsonPropertyName("links")] Resp_LinkModelLinks Links,
 	[property: JsonPropertyName("permissions")] Resp_LinkModelPermissions Permissions
 )
@@ -1653,8 +2303,10 @@ public sealed record Resp_LinkModel(
 		long v0 = default;
 		string v1 = null!;
 		string v2 = null!;
-		Resp_LinkModelLinks v3 = null!;
-		Resp_LinkModelPermissions v4 = null!;
+		string v3 = null!;
+		string v4 = null!;
+		Resp_LinkModelLinks v5 = null!;
+		Resp_LinkModelPermissions v6 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1674,15 +2326,25 @@ public sealed record Resp_LinkModel(
 				reader.Read();
 				v2 = reader.GetString()!;
 			}
+			else if (reader.ValueTextEquals("icon_content"u8))
+			{
+				reader.Read();
+				v3 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("active_icon_content"u8))
+			{
+				reader.Read();
+				v4 = reader.GetString()!;
+			}
 			else if (reader.ValueTextEquals("links"u8))
 			{
 				reader.Read();
-				v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_LinkModelLinks.ReadFromReader(ref reader);
+				v5 = reader.TokenType == JsonTokenType.Null ? null! : Resp_LinkModelLinks.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("permissions"u8))
 			{
 				reader.Read();
-				v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_LinkModelPermissions.ReadFromReader(ref reader);
+				v6 = reader.TokenType == JsonTokenType.Null ? null! : Resp_LinkModelPermissions.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -1690,7 +2352,7 @@ public sealed record Resp_LinkModel(
 				reader.Skip();
 			}
 		}
-		return new Resp_LinkModel(v0, v1, v2, v3, v4);
+		return new Resp_LinkModel(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
@@ -2232,6 +2894,8 @@ public sealed record Resp_PostModel(
 	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
 	[property: JsonPropertyName("poster_username")] string PosterUsername,
 	[property: JsonPropertyName("poster_username_html")] string PosterUsernameHtml,
+	[property: JsonPropertyName("poster_is_banned")] long PosterIsBanned,
+	[property: JsonPropertyName("poster_is_staff")] long PosterIsStaff,
 	[property: JsonPropertyName("post_create_date")] long PostCreateDate,
 	[property: JsonPropertyName("post_body")] string PostBody,
 	[property: JsonPropertyName("post_body_html")] string PostBodyHtml,
@@ -2240,14 +2904,19 @@ public sealed record Resp_PostModel(
 	[property: JsonPropertyName("signature_html")] string SignatureHtml,
 	[property: JsonPropertyName("signature_plain_text")] string SignaturePlainText,
 	[property: JsonPropertyName("post_like_count")] long PostLikeCount,
+	[property: JsonPropertyName("delete_info")] Resp_PostModelDeleteInfo? DeleteInfo,
 	[property: JsonPropertyName("user_is_ignored")] bool UserIsIgnored,
+	[property: JsonPropertyName("post_is_sticked")] bool PostIsSticked,
 	[property: JsonPropertyName("post_is_published")] bool PostIsPublished,
 	[property: JsonPropertyName("post_is_deleted")] bool PostIsDeleted,
 	[property: JsonPropertyName("post_update_date")] long PostUpdateDate,
 	[property: JsonPropertyName("post_is_first_post")] bool PostIsFirstPost,
+	[property: JsonPropertyName("post_is_liked")] bool PostIsLiked,
 	[property: JsonPropertyName("links")] Resp_PostModelLinks Links,
 	[property: JsonPropertyName("permissions")] Resp_PostModelPermissions Permissions,
-	[property: JsonPropertyName("thread_is_deleted")] bool ThreadIsDeleted
+	[property: JsonPropertyName("thread_is_deleted")] bool ThreadIsDeleted,
+	[property: JsonPropertyName("thread_is_closed")] bool ThreadIsClosed,
+	[property: JsonPropertyName("thread")] Resp_ThreadModel Thread
 )
 {
 
@@ -2267,21 +2936,28 @@ public sealed record Resp_PostModel(
 		string v3 = null!;
 		string v4 = null!;
 		long v5 = default;
-		string v6 = null!;
-		string v7 = null!;
+		long v6 = default;
+		long v7 = default;
 		string v8 = null!;
 		string v9 = null!;
 		string v10 = null!;
 		string v11 = null!;
-		long v12 = default;
-		bool v13 = default;
-		bool v14 = default;
-		bool v15 = default;
-		long v16 = default;
+		string v12 = null!;
+		string v13 = null!;
+		long v14 = default;
+		Resp_PostModelDeleteInfo v15 = null!;
+		bool v16 = default;
 		bool v17 = default;
-		Resp_PostModelLinks v18 = null!;
-		Resp_PostModelPermissions v19 = null!;
-		bool v20 = default;
+		bool v18 = default;
+		bool v19 = default;
+		long v20 = default;
+		bool v21 = default;
+		bool v22 = default;
+		Resp_PostModelLinks v23 = null!;
+		Resp_PostModelPermissions v24 = null!;
+		bool v25 = default;
+		bool v26 = default;
+		Resp_ThreadModel v27 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2311,85 +2987,120 @@ public sealed record Resp_PostModel(
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("post_create_date"u8))
+			else if (reader.ValueTextEquals("poster_is_banned"u8))
 			{
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
+			else if (reader.ValueTextEquals("poster_is_staff"u8))
+			{
+				reader.Read();
+				v6 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("post_create_date"u8))
+			{
+				reader.Read();
+				v7 = reader.GetInt64();
+			}
 			else if (reader.ValueTextEquals("post_body"u8))
-			{
-				reader.Read();
-				v6 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("post_body_html"u8))
-			{
-				reader.Read();
-				v7 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("post_body_plain_text"u8))
 			{
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("signature"u8))
+			else if (reader.ValueTextEquals("post_body_html"u8))
 			{
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("signature_html"u8))
+			else if (reader.ValueTextEquals("post_body_plain_text"u8))
 			{
 				reader.Read();
 				v10 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("signature_plain_text"u8))
+			else if (reader.ValueTextEquals("signature"u8))
 			{
 				reader.Read();
 				v11 = reader.GetString()!;
 			}
+			else if (reader.ValueTextEquals("signature_html"u8))
+			{
+				reader.Read();
+				v12 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("signature_plain_text"u8))
+			{
+				reader.Read();
+				v13 = reader.GetString()!;
+			}
 			else if (reader.ValueTextEquals("post_like_count"u8))
 			{
 				reader.Read();
-				v12 = reader.GetInt64();
+				v14 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("delete_info"u8))
+			{
+				reader.Read();
+				v15 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModelDeleteInfo.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("user_is_ignored"u8))
 			{
 				reader.Read();
-				v13 = reader.GetBoolean();
+				v16 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("post_is_published"u8))
-			{
-				reader.Read();
-				v14 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("post_is_deleted"u8))
-			{
-				reader.Read();
-				v15 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("post_update_date"u8))
-			{
-				reader.Read();
-				v16 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("post_is_first_post"u8))
+			else if (reader.ValueTextEquals("post_is_sticked"u8))
 			{
 				reader.Read();
 				v17 = reader.GetBoolean();
 			}
+			else if (reader.ValueTextEquals("post_is_published"u8))
+			{
+				reader.Read();
+				v18 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("post_is_deleted"u8))
+			{
+				reader.Read();
+				v19 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("post_update_date"u8))
+			{
+				reader.Read();
+				v20 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("post_is_first_post"u8))
+			{
+				reader.Read();
+				v21 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("post_is_liked"u8))
+			{
+				reader.Read();
+				v22 = reader.GetBoolean();
+			}
 			else if (reader.ValueTextEquals("links"u8))
 			{
 				reader.Read();
-				v18 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModelLinks.ReadFromReader(ref reader);
+				v23 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModelLinks.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("permissions"u8))
 			{
 				reader.Read();
-				v19 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModelPermissions.ReadFromReader(ref reader);
+				v24 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModelPermissions.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("thread_is_deleted"u8))
 			{
 				reader.Read();
-				v20 = reader.GetBoolean();
+				v25 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_closed"u8))
+			{
+				reader.Read();
+				v26 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread"u8))
+			{
+				reader.Read();
+				v27 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModel.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -2397,7 +3108,70 @@ public sealed record Resp_PostModel(
 				reader.Skip();
 			}
 		}
-		return new Resp_PostModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20);
+		return new Resp_PostModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27);
+	}
+}
+
+public sealed record Resp_PostModelDeleteInfo(
+	[property: JsonPropertyName("user_id")] long UserId,
+	[property: JsonPropertyName("username")] string Username,
+	[property: JsonPropertyName("username_html")] string UsernameHtml,
+	[property: JsonPropertyName("date")] long Date,
+	[property: JsonPropertyName("reason")] string Reason
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static Resp_PostModelDeleteInfo ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static Resp_PostModelDeleteInfo ReadFromReader(ref Utf8JsonReader reader)
+	{
+		long v0 = default;
+		string v1 = null!;
+		string v2 = null!;
+		long v3 = default;
+		string v4 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("user_id"u8))
+			{
+				reader.Read();
+				v0 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("username"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("username_html"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("date"u8))
+			{
+				reader.Read();
+				v3 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("reason"u8))
+			{
+				reader.Read();
+				v4 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new Resp_PostModelDeleteInfo(v0, v1, v2, v3, v4);
 	}
 }
 
@@ -2482,9 +3256,12 @@ public sealed record Resp_PostModelPermissions(
 	[property: JsonPropertyName("view")] bool View,
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("delete")] bool Delete,
+	[property: JsonPropertyName("undelete")] bool Undelete,
 	[property: JsonPropertyName("reply")] bool Reply,
 	[property: JsonPropertyName("like")] bool Like,
-	[property: JsonPropertyName("report")] bool Report
+	[property: JsonPropertyName("report")] bool Report,
+	[property: JsonPropertyName("stick")] bool Stick,
+	[property: JsonPropertyName("unstick")] bool Unstick
 )
 {
 
@@ -2504,6 +3281,9 @@ public sealed record Resp_PostModelPermissions(
 		bool v3 = default;
 		bool v4 = default;
 		bool v5 = default;
+		bool v6 = default;
+		bool v7 = default;
+		bool v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2523,20 +3303,35 @@ public sealed record Resp_PostModelPermissions(
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("reply"u8))
+			else if (reader.ValueTextEquals("undelete"u8))
 			{
 				reader.Read();
 				v3 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("like"u8))
+			else if (reader.ValueTextEquals("reply"u8))
 			{
 				reader.Read();
 				v4 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("report"u8))
+			else if (reader.ValueTextEquals("like"u8))
 			{
 				reader.Read();
 				v5 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("report"u8))
+			{
+				reader.Read();
+				v6 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("stick"u8))
+			{
+				reader.Read();
+				v7 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("unstick"u8))
+			{
+				reader.Read();
+				v8 = reader.GetBoolean();
 			}
 			else
 			{
@@ -2544,7 +3339,7 @@ public sealed record Resp_PostModelPermissions(
 				reader.Skip();
 			}
 		}
-		return new Resp_PostModelPermissions(v0, v1, v2, v3, v4, v5);
+		return new Resp_PostModelPermissions(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
@@ -2554,10 +3349,13 @@ public sealed record Resp_ProfilePostCommentModel(
 	[property: JsonPropertyName("comment_user_id")] long CommentUserId,
 	[property: JsonPropertyName("comment_username")] string CommentUsername,
 	[property: JsonPropertyName("comment_username_html")] string CommentUsernameHtml,
+	[property: JsonPropertyName("comment_is_banned")] long CommentIsBanned,
 	[property: JsonPropertyName("comment_create_date")] long CommentCreateDate,
 	[property: JsonPropertyName("comment_body")] string CommentBody,
 	[property: JsonPropertyName("comment_body_html")] string CommentBodyHtml,
 	[property: JsonPropertyName("comment_body_plain_text")] string CommentBodyPlainText,
+	[property: JsonPropertyName("post_comment_is_published")] bool PostCommentIsPublished,
+	[property: JsonPropertyName("post_comment_is_deleted")] bool PostCommentIsDeleted,
 	[property: JsonPropertyName("user_is_ignored")] bool UserIsIgnored,
 	[property: JsonPropertyName("timeline_user_id")] long TimelineUserId,
 	[property: JsonPropertyName("links")] Resp_ProfilePostCommentModelLinks Links,
@@ -2581,13 +3379,16 @@ public sealed record Resp_ProfilePostCommentModel(
 		string v3 = null!;
 		string v4 = null!;
 		long v5 = default;
-		string v6 = null!;
+		long v6 = default;
 		string v7 = null!;
 		string v8 = null!;
-		bool v9 = default;
-		long v10 = default;
-		Resp_ProfilePostCommentModelLinks v11 = null!;
-		Resp_ProfilePostCommentModelPermissions v12 = null!;
+		string v9 = null!;
+		bool v10 = default;
+		bool v11 = default;
+		bool v12 = default;
+		long v13 = default;
+		Resp_ProfilePostCommentModelLinks v14 = null!;
+		Resp_ProfilePostCommentModelPermissions v15 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2617,45 +3418,60 @@ public sealed record Resp_ProfilePostCommentModel(
 				reader.Read();
 				v4 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("comment_create_date"u8))
+			else if (reader.ValueTextEquals("comment_is_banned"u8))
 			{
 				reader.Read();
 				v5 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("comment_body"u8))
+			else if (reader.ValueTextEquals("comment_create_date"u8))
 			{
 				reader.Read();
-				v6 = reader.GetString()!;
+				v6 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("comment_body_html"u8))
+			else if (reader.ValueTextEquals("comment_body"u8))
 			{
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("comment_body_plain_text"u8))
+			else if (reader.ValueTextEquals("comment_body_html"u8))
 			{
 				reader.Read();
 				v8 = reader.GetString()!;
 			}
+			else if (reader.ValueTextEquals("comment_body_plain_text"u8))
+			{
+				reader.Read();
+				v9 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("post_comment_is_published"u8))
+			{
+				reader.Read();
+				v10 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("post_comment_is_deleted"u8))
+			{
+				reader.Read();
+				v11 = reader.GetBoolean();
+			}
 			else if (reader.ValueTextEquals("user_is_ignored"u8))
 			{
 				reader.Read();
-				v9 = reader.GetBoolean();
+				v12 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("timeline_user_id"u8))
 			{
 				reader.Read();
-				v10 = reader.GetInt64();
+				v13 = reader.GetInt64();
 			}
 			else if (reader.ValueTextEquals("links"u8))
 			{
 				reader.Read();
-				v11 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ProfilePostCommentModelLinks.ReadFromReader(ref reader);
+				v14 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ProfilePostCommentModelLinks.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("permissions"u8))
 			{
 				reader.Read();
-				v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ProfilePostCommentModelPermissions.ReadFromReader(ref reader);
+				v15 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ProfilePostCommentModelPermissions.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -2663,7 +3479,7 @@ public sealed record Resp_ProfilePostCommentModel(
 				reader.Skip();
 			}
 		}
-		return new Resp_ProfilePostCommentModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
+		return new Resp_ProfilePostCommentModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
 }
 
@@ -2739,7 +3555,10 @@ public sealed record Resp_ProfilePostCommentModelLinks(
 
 public sealed record Resp_ProfilePostCommentModelPermissions(
 	[property: JsonPropertyName("view")] bool View,
-	[property: JsonPropertyName("delete")] bool Delete
+	[property: JsonPropertyName("delete")] bool Delete,
+	[property: JsonPropertyName("undelete")] bool Undelete,
+	[property: JsonPropertyName("report")] bool Report,
+	[property: JsonPropertyName("edit")] bool Edit
 )
 {
 
@@ -2755,6 +3574,9 @@ public sealed record Resp_ProfilePostCommentModelPermissions(
 	{
 		bool v0 = default;
 		bool v1 = default;
+		bool v2 = default;
+		bool v3 = default;
+		bool v4 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2769,13 +3591,28 @@ public sealed record Resp_ProfilePostCommentModelPermissions(
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
+			else if (reader.ValueTextEquals("undelete"u8))
+			{
+				reader.Read();
+				v2 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("report"u8))
+			{
+				reader.Read();
+				v3 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("edit"u8))
+			{
+				reader.Read();
+				v4 = reader.GetBoolean();
+			}
 			else
 			{
 				reader.Read();
 				reader.Skip();
 			}
 		}
-		return new Resp_ProfilePostCommentModelPermissions(v0, v1);
+		return new Resp_ProfilePostCommentModelPermissions(v0, v1, v2, v3, v4);
 	}
 }
 
@@ -3124,7 +3961,8 @@ public sealed record Resp_ProfilePostModelPermissions(
 
 public sealed record Resp_SystemInfo(
 	[property: JsonPropertyName("visitor_id")] long VisitorId,
-	[property: JsonPropertyName("time")] long Time
+	[property: JsonPropertyName("time")] long Time,
+	[property: JsonPropertyName("log_id")] long LogId
 )
 {
 
@@ -3140,6 +3978,7 @@ public sealed record Resp_SystemInfo(
 	{
 		long v0 = default;
 		long v1 = default;
+		long v2 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -3154,13 +3993,18 @@ public sealed record Resp_SystemInfo(
 				reader.Read();
 				v1 = reader.GetInt64();
 			}
+			else if (reader.ValueTextEquals("log_id"u8))
+			{
+				reader.Read();
+				v2 = reader.GetInt64();
+			}
 			else
 			{
 				reader.Read();
 				reader.Skip();
 			}
 		}
-		return new Resp_SystemInfo(v0, v1);
+		return new Resp_SystemInfo(v0, v1, v2);
 	}
 }
 
@@ -3174,22 +4018,28 @@ public sealed record Resp_ThreadModel(
 	[property: JsonPropertyName("creator_username_html")] string CreatorUsernameHtml,
 	[property: JsonPropertyName("thread_create_date")] long ThreadCreateDate,
 	[property: JsonPropertyName("thread_update_date")] long ThreadUpdateDate,
+	[property: JsonPropertyName("thread_reply_group_id")] long ThreadReplyGroupId,
+	[property: JsonPropertyName("thread_comment_ignore_group")] long ThreadCommentIgnoreGroup,
+	[property: JsonPropertyName("thread_last_bump_date")] long ThreadLastBumpDate,
 	[property: JsonPropertyName("user_is_ignored")] bool UserIsIgnored,
 	[property: JsonPropertyName("thread_post_count")] long ThreadPostCount,
+	[property: JsonPropertyName("thread_is_liked")] bool ThreadIsLiked,
+	[property: JsonPropertyName("thread_is_bumped")] bool ThreadIsBumped,
 	[property: JsonPropertyName("thread_is_published")] bool ThreadIsPublished,
 	[property: JsonPropertyName("thread_is_deleted")] bool ThreadIsDeleted,
 	[property: JsonPropertyName("thread_is_sticky")] bool ThreadIsSticky,
 	[property: JsonPropertyName("thread_is_closed")] bool ThreadIsClosed,
 	[property: JsonPropertyName("thread_is_followed")] bool ThreadIsFollowed,
 	[property: JsonPropertyName("thread_is_starred")] bool ThreadIsStarred,
-	[property: JsonPropertyName("first_post")] Resp_ThreadModelFirstPost FirstPost,
+	[property: JsonPropertyName("thread_hide_contacts")] bool? ThreadHideContacts,
+	[property: JsonPropertyName("thread_allow_ask_hidden_content")] bool? ThreadAllowAskHiddenContent,
+	[property: JsonPropertyName("first_post")] Resp_PostModel FirstPost,
 	[property: JsonPropertyName("thread_prefixes")] List<Resp_ThreadModelThreadPrefixes> ThreadPrefixes,
 	[property: JsonPropertyName("thread_tags")] Dictionary<string, string> ThreadTags,
 	[property: JsonPropertyName("links")] Resp_ThreadModelLinks Links,
 	[property: JsonPropertyName("permissions")] Resp_ThreadModelPermissions Permissions,
 	[property: JsonPropertyName("node_title")] string NodeTitle,
-	[property: JsonPropertyName("forum")] Resp_ForumModel? Forum,
-	[property: JsonPropertyName("restrictions")] Resp_ThreadModelRestrictions? Restrictions,
+	[property: JsonPropertyName("last_post")] Resp_PostModel? LastPost,
 	[property: JsonPropertyName("contest")] Resp_ThreadModelContest? Contest
 )
 {
@@ -3213,23 +4063,29 @@ public sealed record Resp_ThreadModel(
 		string v6 = null!;
 		long v7 = default;
 		long v8 = default;
-		bool v9 = default;
+		long v9 = default;
 		long v10 = default;
-		bool v11 = default;
+		long v11 = default;
 		bool v12 = default;
-		bool v13 = default;
+		long v13 = default;
 		bool v14 = default;
 		bool v15 = default;
 		bool v16 = default;
-		Resp_ThreadModelFirstPost v17 = null!;
-		List<Resp_ThreadModelThreadPrefixes> v18 = null!;
-		Dictionary<string, string> v19 = null!;
-		Resp_ThreadModelLinks v20 = null!;
-		Resp_ThreadModelPermissions v21 = null!;
-		string v22 = null!;
-		Resp_ForumModel v23 = null!;
-		Resp_ThreadModelRestrictions v24 = null!;
-		Resp_ThreadModelContest v25 = null!;
+		bool v17 = default;
+		bool v18 = default;
+		bool v19 = default;
+		bool v20 = default;
+		bool v21 = default;
+		bool v22 = default;
+		bool v23 = default;
+		Resp_PostModel v24 = null!;
+		List<Resp_ThreadModelThreadPrefixes> v25 = null!;
+		Dictionary<string, string> v26 = null!;
+		Resp_ThreadModelLinks v27 = null!;
+		Resp_ThreadModelPermissions v28 = null!;
+		string v29 = null!;
+		Resp_PostModel v30 = null!;
+		Resp_ThreadModelContest v31 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -3279,50 +4135,85 @@ public sealed record Resp_ThreadModel(
 				reader.Read();
 				v8 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("user_is_ignored"u8))
+			else if (reader.ValueTextEquals("thread_reply_group_id"u8))
 			{
 				reader.Read();
-				v9 = reader.GetBoolean();
+				v9 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("thread_post_count"u8))
+			else if (reader.ValueTextEquals("thread_comment_ignore_group"u8))
 			{
 				reader.Read();
 				v10 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("thread_is_published"u8))
+			else if (reader.ValueTextEquals("thread_last_bump_date"u8))
 			{
 				reader.Read();
-				v11 = reader.GetBoolean();
+				v11 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("thread_is_deleted"u8))
+			else if (reader.ValueTextEquals("user_is_ignored"u8))
 			{
 				reader.Read();
 				v12 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("thread_is_sticky"u8))
+			else if (reader.ValueTextEquals("thread_post_count"u8))
 			{
 				reader.Read();
-				v13 = reader.GetBoolean();
+				v13 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("thread_is_closed"u8))
+			else if (reader.ValueTextEquals("thread_is_liked"u8))
 			{
 				reader.Read();
 				v14 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("thread_is_followed"u8))
+			else if (reader.ValueTextEquals("thread_is_bumped"u8))
 			{
 				reader.Read();
 				v15 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("thread_is_starred"u8))
+			else if (reader.ValueTextEquals("thread_is_published"u8))
 			{
 				reader.Read();
 				v16 = reader.GetBoolean();
 			}
+			else if (reader.ValueTextEquals("thread_is_deleted"u8))
+			{
+				reader.Read();
+				v17 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_sticky"u8))
+			{
+				reader.Read();
+				v18 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_closed"u8))
+			{
+				reader.Read();
+				v19 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_followed"u8))
+			{
+				reader.Read();
+				v20 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_starred"u8))
+			{
+				reader.Read();
+				v21 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_hide_contacts"u8))
+			{
+				reader.Read();
+				v22 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_allow_ask_hidden_content"u8))
+			{
+				reader.Read();
+				v23 = reader.GetBoolean();
+			}
 			else if (reader.ValueTextEquals("first_post"u8))
 			{
 				reader.Read();
-				v17 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelFirstPost.ReadFromReader(ref reader);
+				v24 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModel.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("thread_prefixes"u8))
 			{
@@ -3335,7 +4226,7 @@ public sealed record Resp_ThreadModel(
 						var __item = Resp_ThreadModelThreadPrefixes.ReadFromReader(ref reader);
 						__lst.Add(__item);
 					}
-					v18 = __lst;
+					v25 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("thread_tags"u8))
@@ -3352,38 +4243,33 @@ public sealed record Resp_ThreadModel(
 						var __val = reader.GetString()!;
 						__dict[__key] = __val;
 					}
-					v19 = __dict;
+					v26 = __dict;
 				}
 			}
 			else if (reader.ValueTextEquals("links"u8))
 			{
 				reader.Read();
-				v20 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelLinks.ReadFromReader(ref reader);
+				v27 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelLinks.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("permissions"u8))
 			{
 				reader.Read();
-				v21 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelPermissions.ReadFromReader(ref reader);
+				v28 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelPermissions.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("node_title"u8))
 			{
 				reader.Read();
-				v22 = reader.GetString()!;
+				v29 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("forum"u8))
+			else if (reader.ValueTextEquals("last_post"u8))
 			{
 				reader.Read();
-				v23 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ForumModel.ReadFromReader(ref reader);
-			}
-			else if (reader.ValueTextEquals("restrictions"u8))
-			{
-				reader.Read();
-				v24 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelRestrictions.ReadFromReader(ref reader);
+				v30 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModel.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("contest"u8))
 			{
 				reader.Read();
-				v25 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelContest.ReadFromReader(ref reader);
+				v31 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelContest.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -3391,342 +4277,13 @@ public sealed record Resp_ThreadModel(
 				reader.Skip();
 			}
 		}
-		return new Resp_ThreadModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25);
-	}
-}
-
-public sealed record Resp_ThreadModelFirstPostLinks(
-	[property: JsonPropertyName("permalink")] string Permalink,
-	[property: JsonPropertyName("detail")] string Detail,
-	[property: JsonPropertyName("thread")] string Thread,
-	[property: JsonPropertyName("poster")] string Poster,
-	[property: JsonPropertyName("likes")] string Likes,
-	[property: JsonPropertyName("report")] string Report,
-	[property: JsonPropertyName("poster_avatar")] string PosterAvatar
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static Resp_ThreadModelFirstPostLinks ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static Resp_ThreadModelFirstPostLinks ReadFromReader(ref Utf8JsonReader reader)
-	{
-		string v0 = null!;
-		string v1 = null!;
-		string v2 = null!;
-		string v3 = null!;
-		string v4 = null!;
-		string v5 = null!;
-		string v6 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("permalink"u8))
-			{
-				reader.Read();
-				v0 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("detail"u8))
-			{
-				reader.Read();
-				v1 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("thread"u8))
-			{
-				reader.Read();
-				v2 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("poster"u8))
-			{
-				reader.Read();
-				v3 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("likes"u8))
-			{
-				reader.Read();
-				v4 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("report"u8))
-			{
-				reader.Read();
-				v5 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("poster_avatar"u8))
-			{
-				reader.Read();
-				v6 = reader.GetString()!;
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new Resp_ThreadModelFirstPostLinks(v0, v1, v2, v3, v4, v5, v6);
-	}
-}
-
-public sealed record Resp_ThreadModelFirstPostPermissions(
-	[property: JsonPropertyName("view")] bool View,
-	[property: JsonPropertyName("edit")] bool Edit,
-	[property: JsonPropertyName("delete")] bool Delete,
-	[property: JsonPropertyName("reply")] bool Reply,
-	[property: JsonPropertyName("like")] bool Like,
-	[property: JsonPropertyName("report")] bool Report
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static Resp_ThreadModelFirstPostPermissions ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static Resp_ThreadModelFirstPostPermissions ReadFromReader(ref Utf8JsonReader reader)
-	{
-		bool v0 = default;
-		bool v1 = default;
-		bool v2 = default;
-		bool v3 = default;
-		bool v4 = default;
-		bool v5 = default;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("view"u8))
-			{
-				reader.Read();
-				v0 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("edit"u8))
-			{
-				reader.Read();
-				v1 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("delete"u8))
-			{
-				reader.Read();
-				v2 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("reply"u8))
-			{
-				reader.Read();
-				v3 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("like"u8))
-			{
-				reader.Read();
-				v4 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("report"u8))
-			{
-				reader.Read();
-				v5 = reader.GetBoolean();
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new Resp_ThreadModelFirstPostPermissions(v0, v1, v2, v3, v4, v5);
-	}
-}
-
-public sealed record Resp_ThreadModelFirstPost(
-	[property: JsonPropertyName("post_id")] long PostId,
-	[property: JsonPropertyName("thread_id")] long ThreadId,
-	[property: JsonPropertyName("poster_user_id")] long PosterUserId,
-	[property: JsonPropertyName("poster_username")] string PosterUsername,
-	[property: JsonPropertyName("poster_username_html")] string PosterUsernameHtml,
-	[property: JsonPropertyName("post_create_date")] long PostCreateDate,
-	[property: JsonPropertyName("post_body")] string PostBody,
-	[property: JsonPropertyName("post_body_html")] string PostBodyHtml,
-	[property: JsonPropertyName("post_body_plain_text")] string PostBodyPlainText,
-	[property: JsonPropertyName("signature")] string Signature,
-	[property: JsonPropertyName("signature_html")] string SignatureHtml,
-	[property: JsonPropertyName("signature_plain_text")] string SignaturePlainText,
-	[property: JsonPropertyName("post_like_count")] long PostLikeCount,
-	[property: JsonPropertyName("user_is_ignored")] bool UserIsIgnored,
-	[property: JsonPropertyName("post_is_published")] bool PostIsPublished,
-	[property: JsonPropertyName("post_is_deleted")] bool PostIsDeleted,
-	[property: JsonPropertyName("post_update_date")] long PostUpdateDate,
-	[property: JsonPropertyName("post_is_first_post")] bool PostIsFirstPost,
-	[property: JsonPropertyName("post_is_liked")] bool PostIsLiked,
-	[property: JsonPropertyName("links")] Resp_ThreadModelFirstPostLinks Links,
-	[property: JsonPropertyName("permissions")] Resp_ThreadModelFirstPostPermissions Permissions,
-	[property: JsonPropertyName("thread_is_deleted")] bool ThreadIsDeleted
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static Resp_ThreadModelFirstPost ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static Resp_ThreadModelFirstPost ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		long v1 = default;
-		long v2 = default;
-		string v3 = null!;
-		string v4 = null!;
-		long v5 = default;
-		string v6 = null!;
-		string v7 = null!;
-		string v8 = null!;
-		string v9 = null!;
-		string v10 = null!;
-		string v11 = null!;
-		long v12 = default;
-		bool v13 = default;
-		bool v14 = default;
-		bool v15 = default;
-		long v16 = default;
-		bool v17 = default;
-		bool v18 = default;
-		Resp_ThreadModelFirstPostLinks v19 = null!;
-		Resp_ThreadModelFirstPostPermissions v20 = null!;
-		bool v21 = default;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("post_id"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("thread_id"u8))
-			{
-				reader.Read();
-				v1 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("poster_user_id"u8))
-			{
-				reader.Read();
-				v2 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("poster_username"u8))
-			{
-				reader.Read();
-				v3 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("poster_username_html"u8))
-			{
-				reader.Read();
-				v4 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("post_create_date"u8))
-			{
-				reader.Read();
-				v5 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("post_body"u8))
-			{
-				reader.Read();
-				v6 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("post_body_html"u8))
-			{
-				reader.Read();
-				v7 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("post_body_plain_text"u8))
-			{
-				reader.Read();
-				v8 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("signature"u8))
-			{
-				reader.Read();
-				v9 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("signature_html"u8))
-			{
-				reader.Read();
-				v10 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("signature_plain_text"u8))
-			{
-				reader.Read();
-				v11 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("post_like_count"u8))
-			{
-				reader.Read();
-				v12 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("user_is_ignored"u8))
-			{
-				reader.Read();
-				v13 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("post_is_published"u8))
-			{
-				reader.Read();
-				v14 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("post_is_deleted"u8))
-			{
-				reader.Read();
-				v15 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("post_update_date"u8))
-			{
-				reader.Read();
-				v16 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("post_is_first_post"u8))
-			{
-				reader.Read();
-				v17 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("post_is_liked"u8))
-			{
-				reader.Read();
-				v18 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("links"u8))
-			{
-				reader.Read();
-				v19 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelFirstPostLinks.ReadFromReader(ref reader);
-			}
-			else if (reader.ValueTextEquals("permissions"u8))
-			{
-				reader.Read();
-				v20 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelFirstPostPermissions.ReadFromReader(ref reader);
-			}
-			else if (reader.ValueTextEquals("thread_is_deleted"u8))
-			{
-				reader.Read();
-				v21 = reader.GetBoolean();
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new Resp_ThreadModelFirstPost(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21);
+		return new Resp_ThreadModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31);
 	}
 }
 
 public sealed record Resp_ThreadModelThreadPrefixes(
-	[property: JsonPropertyName("prefix_id")] long PrefixId,
-	[property: JsonPropertyName("prefix_title")] string PrefixTitle
+	[property: JsonPropertyName("prefix_id")] long? PrefixId,
+	[property: JsonPropertyName("prefix_title")] string? PrefixTitle
 )
 {
 
@@ -3775,7 +4332,8 @@ public sealed record Resp_ThreadModelLinks(
 	[property: JsonPropertyName("first_poster")] string FirstPoster,
 	[property: JsonPropertyName("first_poster_avatar")] string FirstPosterAvatar,
 	[property: JsonPropertyName("first_post")] string FirstPost,
-	[property: JsonPropertyName("last_post")] string LastPost
+	[property: JsonPropertyName("last_poster")] string? LastPoster,
+	[property: JsonPropertyName("last_post")] string? LastPost
 )
 {
 
@@ -3798,6 +4356,7 @@ public sealed record Resp_ThreadModelLinks(
 		string v6 = null!;
 		string v7 = null!;
 		string v8 = null!;
+		string v9 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -3842,10 +4401,15 @@ public sealed record Resp_ThreadModelLinks(
 				reader.Read();
 				v7 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("last_post"u8))
+			else if (reader.ValueTextEquals("last_poster"u8))
 			{
 				reader.Read();
 				v8 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("last_post"u8))
+			{
+				reader.Read();
+				v9 = reader.GetString()!;
 			}
 			else
 			{
@@ -3853,7 +4417,7 @@ public sealed record Resp_ThreadModelLinks(
 				reader.Skip();
 			}
 		}
-		return new Resp_ThreadModelLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+		return new Resp_ThreadModelLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9);
 	}
 }
 
@@ -3919,8 +4483,6 @@ public sealed record Resp_ThreadModelPermissions(
 	[property: JsonPropertyName("follow")] bool Follow,
 	[property: JsonPropertyName("post")] bool Post,
 	[property: JsonPropertyName("edit")] bool Edit,
-	[property: JsonPropertyName("edit_title")] bool EditTitle,
-	[property: JsonPropertyName("edit_tags")] bool EditTags,
 	[property: JsonPropertyName("bump")] Resp_ThreadModelPermissionsBump Bump
 )
 {
@@ -3940,9 +4502,7 @@ public sealed record Resp_ThreadModelPermissions(
 		bool v2 = default;
 		bool v3 = default;
 		bool v4 = default;
-		bool v5 = default;
-		bool v6 = default;
-		Resp_ThreadModelPermissionsBump v7 = null!;
+		Resp_ThreadModelPermissionsBump v5 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -3972,20 +4532,10 @@ public sealed record Resp_ThreadModelPermissions(
 				reader.Read();
 				v4 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("edit_title"u8))
-			{
-				reader.Read();
-				v5 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("edit_tags"u8))
-			{
-				reader.Read();
-				v6 = reader.GetBoolean();
-			}
 			else if (reader.ValueTextEquals("bump"u8))
 			{
 				reader.Read();
-				v7 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelPermissionsBump.ReadFromReader(ref reader);
+				v5 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelPermissionsBump.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -3993,56 +4543,13 @@ public sealed record Resp_ThreadModelPermissions(
 				reader.Skip();
 			}
 		}
-		return new Resp_ThreadModelPermissions(v0, v1, v2, v3, v4, v5, v6, v7);
-	}
-}
-
-public sealed record Resp_ThreadModelRestrictions(
-	[property: JsonPropertyName("reply_delay")] long ReplyDelay,
-	[property: JsonPropertyName("max_reply_count")] long MaxReplyCount
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static Resp_ThreadModelRestrictions ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static Resp_ThreadModelRestrictions ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		long v1 = default;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("reply_delay"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("max_reply_count"u8))
-			{
-				reader.Read();
-				v1 = reader.GetInt64();
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new Resp_ThreadModelRestrictions(v0, v1);
+		return new Resp_ThreadModelPermissions(v0, v1, v2, v3, v4, v5);
 	}
 }
 
 public sealed record Resp_ThreadModelContestPermissions(
 	[property: JsonPropertyName("can_finish")] bool CanFinish,
 	[property: JsonPropertyName("can_participate")] bool CanParticipate,
-	[property: JsonPropertyName("can_participate_error")] string CanParticipateError,
 	[property: JsonPropertyName("can_view_user_list")] bool CanViewUserList
 )
 {
@@ -4059,8 +4566,7 @@ public sealed record Resp_ThreadModelContestPermissions(
 	{
 		bool v0 = default;
 		bool v1 = default;
-		string v2 = null!;
-		bool v3 = default;
+		bool v2 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4075,15 +4581,10 @@ public sealed record Resp_ThreadModelContestPermissions(
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("can_participate_error"u8))
-			{
-				reader.Read();
-				v2 = reader.GetString()!;
-			}
 			else if (reader.ValueTextEquals("can_view_user_list"u8))
 			{
 				reader.Read();
-				v3 = reader.GetBoolean();
+				v2 = reader.GetBoolean();
 			}
 			else
 			{
@@ -4091,7 +4592,7 @@ public sealed record Resp_ThreadModelContestPermissions(
 				reader.Skip();
 			}
 		}
-		return new Resp_ThreadModelContestPermissions(v0, v1, v2, v3);
+		return new Resp_ThreadModelContestPermissions(v0, v1, v2);
 	}
 }
 
@@ -4106,10 +4607,12 @@ public sealed record Resp_ThreadModelContest(
 	[property: JsonPropertyName("require_total_like_count")] long RequireTotalLikeCount,
 	[property: JsonPropertyName("prize_type")] string PrizeType,
 	[property: JsonPropertyName("prize_type_phrase")] string PrizeTypePhrase,
-	[property: JsonPropertyName("prize_data")] long PrizeData,
+	[property: JsonPropertyName("prize_data")] JsonElement PrizeData,
+	[property: JsonPropertyName("prize_cost")] long PrizeCost,
 	[property: JsonPropertyName("is_money_places")] long IsMoneyPlaces,
 	[property: JsonPropertyName("chance_to_win")] double ChanceToWin,
-	[property: JsonPropertyName("winners")] List<long>? Winners,
+	[property: JsonPropertyName("prize_per_winner")] long PrizePerWinner,
+	[property: JsonPropertyName("prize_places")] JsonElement PrizePlaces,
 	[property: JsonPropertyName("already_participate")] bool AlreadyParticipate,
 	[property: JsonPropertyName("permissions")] Resp_ThreadModelContestPermissions Permissions
 )
@@ -4135,12 +4638,14 @@ public sealed record Resp_ThreadModelContest(
 		long v7 = default;
 		string v8 = null!;
 		string v9 = null!;
-		long v10 = default;
+		JsonElement v10 = default;
 		long v11 = default;
-		double v12 = default;
-		List<long> v13 = null!;
-		bool v14 = default;
-		Resp_ThreadModelContestPermissions v15 = null!;
+		long v12 = default;
+		double v13 = default;
+		long v14 = default;
+		JsonElement v15 = default;
+		bool v16 = default;
+		Resp_ThreadModelContestPermissions v17 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4198,41 +4703,42 @@ public sealed record Resp_ThreadModelContest(
 			else if (reader.ValueTextEquals("prize_data"u8))
 			{
 				reader.Read();
-				v10 = reader.GetInt64();
+				v10 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else if (reader.ValueTextEquals("is_money_places"u8))
+			else if (reader.ValueTextEquals("prize_cost"u8))
 			{
 				reader.Read();
 				v11 = reader.GetInt64();
 			}
+			else if (reader.ValueTextEquals("is_money_places"u8))
+			{
+				reader.Read();
+				v12 = reader.GetInt64();
+			}
 			else if (reader.ValueTextEquals("chance_to_win"u8))
 			{
 				reader.Read();
-				v12 = reader.GetDouble();
+				v13 = reader.GetDouble();
 			}
-			else if (reader.ValueTextEquals("winners"u8))
+			else if (reader.ValueTextEquals("prize_per_winner"u8))
 			{
 				reader.Read();
-				if (reader.TokenType == JsonTokenType.StartArray)
-				{
-					var __lst = new List<long>();
-					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
-					{
-						var __item = reader.GetInt64();
-						__lst.Add(__item);
-					}
-					v13 = __lst;
-				}
+				v14 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("prize_places"u8))
+			{
+				reader.Read();
+				v15 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
 			else if (reader.ValueTextEquals("already_participate"u8))
 			{
 				reader.Read();
-				v14 = reader.GetBoolean();
+				v16 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("permissions"u8))
 			{
 				reader.Read();
-				v15 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelContestPermissions.ReadFromReader(ref reader);
+				v17 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelContestPermissions.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -4240,7 +4746,7 @@ public sealed record Resp_ThreadModelContest(
 				reader.Skip();
 			}
 		}
-		return new Resp_ThreadModelContest(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
+		return new Resp_ThreadModelContest(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17);
 	}
 }
 
@@ -4266,6 +4772,8 @@ public sealed record Resp_UserModel(
 	[property: JsonPropertyName("user_unread_notification_count")] long UserUnreadNotificationCount,
 	[property: JsonPropertyName("user_unread_conversation_count")] long UserUnreadConversationCount,
 	[property: JsonPropertyName("conv_welcome_message")] string ConvWelcomeMessage,
+	[property: JsonPropertyName("show_dob_dateshow_dob_date")] long? ShowDobDateshowDobDate,
+	[property: JsonPropertyName("show_dob_year")] long ShowDobYear,
 	[property: JsonPropertyName("user_title")] string UserTitle,
 	[property: JsonPropertyName("user_deposit")] long UserDeposit,
 	[property: JsonPropertyName("user_is_valid")] bool UserIsValid,
@@ -4284,11 +4792,12 @@ public sealed record Resp_UserModel(
 	[property: JsonPropertyName("user_external_authentications")] List<Resp_UserModelUserExternalAuthentications> UserExternalAuthentications,
 	[property: JsonPropertyName("self_permissions")] Resp_UserModelSelfPermissions SelfPermissions,
 	[property: JsonPropertyName("edit_permissions")] Resp_UserModelEditPermissions EditPermissions,
-	[property: JsonPropertyName("birthday")] Resp_UserModelBirthday Birthday,
+	[property: JsonPropertyName("birthday")] JsonElement Birthday,
 	[property: JsonPropertyName("secret_answer_rendered")] string SecretAnswerRendered,
 	[property: JsonPropertyName("secret_answer_first_letter")] string SecretAnswerFirstLetter,
 	[property: JsonPropertyName("user_following")] Resp_UserModelUserFollowing UserFollowing,
 	[property: JsonPropertyName("user_followers")] Resp_UserModelUserFollowers UserFollowers,
+	[property: JsonPropertyName("profile_threads")] List<Resp_UserModelProfileThreads> ProfileThreads,
 	[property: JsonPropertyName("banner")] string Banner
 )
 {
@@ -4324,30 +4833,33 @@ public sealed record Resp_UserModel(
 		long v18 = default;
 		long v19 = default;
 		string v20 = null!;
-		string v21 = null!;
+		long v21 = default;
 		long v22 = default;
-		bool v23 = default;
-		bool v24 = default;
+		string v23 = null!;
+		long v24 = default;
 		bool v25 = default;
-		long v26 = default;
-		Resp_UserModelLinks v27 = null!;
-		Resp_UserModelPermissions v28 = null!;
-		bool v29 = default;
-		bool v30 = default;
-		long v31 = default;
-		List<string> v32 = null!;
-		List<Resp_UserModelUserGroups> v33 = null!;
-		List<Resp_UserModelFields> v34 = null!;
-		long v35 = default;
-		List<Resp_UserModelUserExternalAuthentications> v36 = null!;
-		Resp_UserModelSelfPermissions v37 = null!;
-		Resp_UserModelEditPermissions v38 = null!;
-		Resp_UserModelBirthday v39 = null!;
-		string v40 = null!;
-		string v41 = null!;
-		Resp_UserModelUserFollowing v42 = null!;
-		Resp_UserModelUserFollowers v43 = null!;
-		string v44 = null!;
+		bool v26 = default;
+		bool v27 = default;
+		long v28 = default;
+		Resp_UserModelLinks v29 = null!;
+		Resp_UserModelPermissions v30 = null!;
+		bool v31 = default;
+		bool v32 = default;
+		long v33 = default;
+		List<string> v34 = null!;
+		List<Resp_UserModelUserGroups> v35 = null!;
+		List<Resp_UserModelFields> v36 = null!;
+		long v37 = default;
+		List<Resp_UserModelUserExternalAuthentications> v38 = null!;
+		Resp_UserModelSelfPermissions v39 = null!;
+		Resp_UserModelEditPermissions v40 = null!;
+		JsonElement v41 = default;
+		string v42 = null!;
+		string v43 = null!;
+		Resp_UserModelUserFollowing v44 = null!;
+		Resp_UserModelUserFollowers v45 = null!;
+		List<Resp_UserModelProfileThreads> v46 = null!;
+		string v47 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4457,60 +4969,70 @@ public sealed record Resp_UserModel(
 				reader.Read();
 				v20 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("user_title"u8))
+			else if (reader.ValueTextEquals("show_dob_dateshow_dob_date"u8))
 			{
 				reader.Read();
-				v21 = reader.GetString()!;
+				v21 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("user_deposit"u8))
+			else if (reader.ValueTextEquals("show_dob_year"u8))
 			{
 				reader.Read();
 				v22 = reader.GetInt64();
 			}
+			else if (reader.ValueTextEquals("user_title"u8))
+			{
+				reader.Read();
+				v23 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("user_deposit"u8))
+			{
+				reader.Read();
+				v24 = reader.GetInt64();
+			}
 			else if (reader.ValueTextEquals("user_is_valid"u8))
-			{
-				reader.Read();
-				v23 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("user_is_verified"u8))
-			{
-				reader.Read();
-				v24 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("user_is_followed"u8))
 			{
 				reader.Read();
 				v25 = reader.GetBoolean();
 			}
+			else if (reader.ValueTextEquals("user_is_verified"u8))
+			{
+				reader.Read();
+				v26 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("user_is_followed"u8))
+			{
+				reader.Read();
+				v27 = reader.GetBoolean();
+			}
 			else if (reader.ValueTextEquals("user_last_seen_date"u8))
 			{
 				reader.Read();
-				v26 = reader.GetInt64();
+				v28 = reader.GetInt64();
 			}
 			else if (reader.ValueTextEquals("links"u8))
 			{
 				reader.Read();
-				v27 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelLinks.ReadFromReader(ref reader);
+				v29 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelLinks.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("permissions"u8))
 			{
 				reader.Read();
-				v28 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelPermissions.ReadFromReader(ref reader);
+				v30 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelPermissions.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("user_is_ignored"u8))
 			{
 				reader.Read();
-				v29 = reader.GetBoolean();
+				v31 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("user_is_visitor"u8))
 			{
 				reader.Read();
-				v30 = reader.GetBoolean();
+				v32 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("user_group_id"u8))
 			{
 				reader.Read();
-				v31 = reader.GetInt64();
+				v33 = reader.GetInt64();
 			}
 			else if (reader.ValueTextEquals("curator_titles"u8))
 			{
@@ -4523,7 +5045,7 @@ public sealed record Resp_UserModel(
 						var __item = reader.GetString()!;
 						__lst.Add(__item);
 					}
-					v32 = __lst;
+					v34 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("user_groups"u8))
@@ -4537,7 +5059,7 @@ public sealed record Resp_UserModel(
 						var __item = Resp_UserModelUserGroups.ReadFromReader(ref reader);
 						__lst.Add(__item);
 					}
-					v33 = __lst;
+					v35 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("fields"u8))
@@ -4551,13 +5073,13 @@ public sealed record Resp_UserModel(
 						var __item = Resp_UserModelFields.ReadFromReader(ref reader);
 						__lst.Add(__item);
 					}
-					v34 = __lst;
+					v36 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("user_timezone_offset"u8))
 			{
 				reader.Read();
-				v35 = reader.GetInt64();
+				v37 = reader.GetInt64();
 			}
 			else if (reader.ValueTextEquals("user_external_authentications"u8))
 			{
@@ -4570,48 +5092,62 @@ public sealed record Resp_UserModel(
 						var __item = Resp_UserModelUserExternalAuthentications.ReadFromReader(ref reader);
 						__lst.Add(__item);
 					}
-					v36 = __lst;
+					v38 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("self_permissions"u8))
 			{
 				reader.Read();
-				v37 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelSelfPermissions.ReadFromReader(ref reader);
+				v39 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelSelfPermissions.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("edit_permissions"u8))
 			{
 				reader.Read();
-				v38 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelEditPermissions.ReadFromReader(ref reader);
+				v40 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelEditPermissions.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("birthday"u8))
 			{
 				reader.Read();
-				v39 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelBirthday.ReadFromReader(ref reader);
+				v41 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
 			else if (reader.ValueTextEquals("secret_answer_rendered"u8))
 			{
 				reader.Read();
-				v40 = reader.GetString()!;
+				v42 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("secret_answer_first_letter"u8))
 			{
 				reader.Read();
-				v41 = reader.GetString()!;
+				v43 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("user_following"u8))
 			{
 				reader.Read();
-				v42 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelUserFollowing.ReadFromReader(ref reader);
+				v44 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelUserFollowing.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("user_followers"u8))
 			{
 				reader.Read();
-				v43 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelUserFollowers.ReadFromReader(ref reader);
+				v45 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelUserFollowers.ReadFromReader(ref reader);
+			}
+			else if (reader.ValueTextEquals("profile_threads"u8))
+			{
+				reader.Read();
+				if (reader.TokenType == JsonTokenType.StartArray)
+				{
+					var __lst = new List<Resp_UserModelProfileThreads>();
+					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+					{
+						var __item = Resp_UserModelProfileThreads.ReadFromReader(ref reader);
+						__lst.Add(__item);
+					}
+					v46 = __lst;
+				}
 			}
 			else if (reader.ValueTextEquals("banner"u8))
 			{
 				reader.Read();
-				v44 = reader.GetString()!;
+				v47 = reader.GetString()!;
 			}
 			else
 			{
@@ -4619,7 +5155,7 @@ public sealed record Resp_UserModel(
 				reader.Skip();
 			}
 		}
-		return new Resp_UserModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44);
+		return new Resp_UserModel(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47);
 	}
 }
 
@@ -4634,7 +5170,6 @@ public sealed record Resp_UserModelLinks(
 	[property: JsonPropertyName("ignore")] string Ignore,
 	[property: JsonPropertyName("background_l")] string BackgroundL,
 	[property: JsonPropertyName("background_m")] string BackgroundM,
-	[property: JsonPropertyName("status")] string Status,
 	[property: JsonPropertyName("timeline")] string Timeline
 )
 {
@@ -4660,7 +5195,6 @@ public sealed record Resp_UserModelLinks(
 		string v8 = null!;
 		string v9 = null!;
 		string v10 = null!;
-		string v11 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4715,15 +5249,10 @@ public sealed record Resp_UserModelLinks(
 				reader.Read();
 				v9 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("status"u8))
-			{
-				reader.Read();
-				v10 = reader.GetString()!;
-			}
 			else if (reader.ValueTextEquals("timeline"u8))
 			{
 				reader.Read();
-				v11 = reader.GetString()!;
+				v10 = reader.GetString()!;
 			}
 			else
 			{
@@ -4731,13 +5260,14 @@ public sealed record Resp_UserModelLinks(
 				reader.Skip();
 			}
 		}
-		return new Resp_UserModelLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
+		return new Resp_UserModelLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
 public sealed record Resp_UserModelPermissions(
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("follow")] bool Follow,
+	[property: JsonPropertyName("create_conversation")] bool CreateConversation,
 	[property: JsonPropertyName("ignore")] bool Ignore,
 	[property: JsonPropertyName("profile_post")] bool ProfilePost
 )
@@ -4757,6 +5287,7 @@ public sealed record Resp_UserModelPermissions(
 		bool v1 = default;
 		bool v2 = default;
 		bool v3 = default;
+		bool v4 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4771,15 +5302,20 @@ public sealed record Resp_UserModelPermissions(
 				reader.Read();
 				v1 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("ignore"u8))
+			else if (reader.ValueTextEquals("create_conversation"u8))
 			{
 				reader.Read();
 				v2 = reader.GetBoolean();
 			}
-			else if (reader.ValueTextEquals("profile_post"u8))
+			else if (reader.ValueTextEquals("ignore"u8))
 			{
 				reader.Read();
 				v3 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("profile_post"u8))
+			{
+				reader.Read();
+				v4 = reader.GetBoolean();
 			}
 			else
 			{
@@ -4787,7 +5323,7 @@ public sealed record Resp_UserModelPermissions(
 				reader.Skip();
 			}
 		}
-		return new Resp_UserModelPermissions(v0, v1, v2, v3);
+		return new Resp_UserModelPermissions(v0, v1, v2, v3, v4);
 	}
 }
 
@@ -4944,7 +5480,9 @@ public sealed record Resp_UserModelFields(
 	[property: JsonPropertyName("description")] string Description,
 	[property: JsonPropertyName("position")] string Position,
 	[property: JsonPropertyName("is_required")] bool IsRequired,
+	[property: JsonPropertyName("is_system")] bool IsSystem,
 	[property: JsonPropertyName("value")] string? Value,
+	[property: JsonPropertyName("editable")] bool Editable,
 	[property: JsonPropertyName("is_multi_choice")] bool IsMultiChoice,
 	[property: JsonPropertyName("choices")] List<Resp_UserModelFieldsChoices> Choices,
 	[property: JsonPropertyName("values")] List<JsonElement> Values
@@ -4966,10 +5504,12 @@ public sealed record Resp_UserModelFields(
 		string v2 = null!;
 		string v3 = null!;
 		bool v4 = default;
-		string v5 = null!;
-		bool v6 = default;
-		List<Resp_UserModelFieldsChoices> v7 = null!;
-		List<JsonElement> v8 = null!;
+		bool v5 = default;
+		string v6 = null!;
+		bool v7 = default;
+		bool v8 = default;
+		List<Resp_UserModelFieldsChoices> v9 = null!;
+		List<JsonElement> v10 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4999,15 +5539,25 @@ public sealed record Resp_UserModelFields(
 				reader.Read();
 				v4 = reader.GetBoolean();
 			}
+			else if (reader.ValueTextEquals("is_system"u8))
+			{
+				reader.Read();
+				v5 = reader.GetBoolean();
+			}
 			else if (reader.ValueTextEquals("value"u8))
 			{
 				reader.Read();
-				v5 = reader.GetString()!;
+				v6 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("editable"u8))
+			{
+				reader.Read();
+				v7 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("is_multi_choice"u8))
 			{
 				reader.Read();
-				v6 = reader.GetBoolean();
+				v8 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("choices"u8))
 			{
@@ -5020,7 +5570,7 @@ public sealed record Resp_UserModelFields(
 						var __item = Resp_UserModelFieldsChoices.ReadFromReader(ref reader);
 						__lst.Add(__item);
 					}
-					v7 = __lst;
+					v9 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("values"u8))
@@ -5034,7 +5584,7 @@ public sealed record Resp_UserModelFields(
 						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 						__lst.Add(__item);
 					}
-					v8 = __lst;
+					v10 = __lst;
 				}
 			}
 			else
@@ -5043,7 +5593,7 @@ public sealed record Resp_UserModelFields(
 				reader.Skip();
 			}
 		}
-		return new Resp_UserModelFields(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+		return new Resp_UserModelFields(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10);
 	}
 }
 
@@ -5233,104 +5783,6 @@ public sealed record Resp_UserModelEditPermissions(
 			}
 		}
 		return new Resp_UserModelEditPermissions(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11);
-	}
-}
-
-public sealed record Resp_UserModelBirthdayTimeStamp(
-	[property: JsonPropertyName("date")] string Date,
-	[property: JsonPropertyName("timezone_type")] long TimezoneType,
-	[property: JsonPropertyName("timezone")] string Timezone
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static Resp_UserModelBirthdayTimeStamp ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static Resp_UserModelBirthdayTimeStamp ReadFromReader(ref Utf8JsonReader reader)
-	{
-		string v0 = null!;
-		long v1 = default;
-		string v2 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("date"u8))
-			{
-				reader.Read();
-				v0 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("timezone_type"u8))
-			{
-				reader.Read();
-				v1 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("timezone"u8))
-			{
-				reader.Read();
-				v2 = reader.GetString()!;
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new Resp_UserModelBirthdayTimeStamp(v0, v1, v2);
-	}
-}
-
-public sealed record Resp_UserModelBirthday(
-	[property: JsonPropertyName("age")] long Age,
-	[property: JsonPropertyName("timeStamp")] Resp_UserModelBirthdayTimeStamp TimeStamp,
-	[property: JsonPropertyName("format")] string Format
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static Resp_UserModelBirthday ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static Resp_UserModelBirthday ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		Resp_UserModelBirthdayTimeStamp v1 = null!;
-		string v2 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("age"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("timeStamp"u8))
-			{
-				reader.Read();
-				v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelBirthdayTimeStamp.ReadFromReader(ref reader);
-			}
-			else if (reader.ValueTextEquals("format"u8))
-			{
-				reader.Read();
-				v2 = reader.GetString()!;
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new Resp_UserModelBirthday(v0, v1, v2);
 	}
 }
 
@@ -5545,6 +5997,512 @@ public sealed record Resp_UserModelUserFollowers(
 			}
 		}
 		return new Resp_UserModelUserFollowers(v0, v1);
+	}
+}
+
+public sealed record Resp_UserModelProfileThreadsThreadTags(
+	[property: JsonPropertyName("1403")] string _1403,
+	[property: JsonPropertyName("8176")] string _8176,
+	[property: JsonPropertyName("38")] string _38,
+	[property: JsonPropertyName("1953")] string _1953,
+	[property: JsonPropertyName("523")] string _523
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static Resp_UserModelProfileThreadsThreadTags ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static Resp_UserModelProfileThreadsThreadTags ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		string v1 = null!;
+		string v2 = null!;
+		string v3 = null!;
+		string v4 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("1403"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("8176"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("38"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("1953"u8))
+			{
+				reader.Read();
+				v3 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("523"u8))
+			{
+				reader.Read();
+				v4 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new Resp_UserModelProfileThreadsThreadTags(v0, v1, v2, v3, v4);
+	}
+}
+
+public sealed record Resp_UserModelProfileThreadsLinks(
+	[property: JsonPropertyName("permalink")] string Permalink,
+	[property: JsonPropertyName("detail")] string Detail,
+	[property: JsonPropertyName("followers")] string Followers,
+	[property: JsonPropertyName("forum")] string Forum,
+	[property: JsonPropertyName("posts")] string Posts,
+	[property: JsonPropertyName("first_poster")] string FirstPoster,
+	[property: JsonPropertyName("first_poster_avatar")] string FirstPosterAvatar,
+	[property: JsonPropertyName("first_post")] string FirstPost,
+	[property: JsonPropertyName("last_post")] string LastPost
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static Resp_UserModelProfileThreadsLinks ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static Resp_UserModelProfileThreadsLinks ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		string v1 = null!;
+		string v2 = null!;
+		string v3 = null!;
+		string v4 = null!;
+		string v5 = null!;
+		string v6 = null!;
+		string v7 = null!;
+		string v8 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("permalink"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("detail"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("followers"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("forum"u8))
+			{
+				reader.Read();
+				v3 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("posts"u8))
+			{
+				reader.Read();
+				v4 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("first_poster"u8))
+			{
+				reader.Read();
+				v5 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("first_poster_avatar"u8))
+			{
+				reader.Read();
+				v6 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("first_post"u8))
+			{
+				reader.Read();
+				v7 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("last_post"u8))
+			{
+				reader.Read();
+				v8 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new Resp_UserModelProfileThreadsLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+	}
+}
+
+public sealed record Resp_UserModelProfileThreadsPermissionsBump(
+	[property: JsonPropertyName("can")] bool Can,
+	[property: JsonPropertyName("available_count")] long AvailableCount,
+	[property: JsonPropertyName("error")] JsonElement Error,
+	[property: JsonPropertyName("next_available_time")] JsonElement NextAvailableTime
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static Resp_UserModelProfileThreadsPermissionsBump ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static Resp_UserModelProfileThreadsPermissionsBump ReadFromReader(ref Utf8JsonReader reader)
+	{
+		bool v0 = default;
+		long v1 = default;
+		JsonElement v2 = default;
+		JsonElement v3 = default;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("can"u8))
+			{
+				reader.Read();
+				v0 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("available_count"u8))
+			{
+				reader.Read();
+				v1 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("error"u8))
+			{
+				reader.Read();
+				v2 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else if (reader.ValueTextEquals("next_available_time"u8))
+			{
+				reader.Read();
+				v3 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new Resp_UserModelProfileThreadsPermissionsBump(v0, v1, v2, v3);
+	}
+}
+
+public sealed record Resp_UserModelProfileThreadsPermissions(
+	[property: JsonPropertyName("view")] bool View,
+	[property: JsonPropertyName("delete")] bool Delete,
+	[property: JsonPropertyName("follow")] bool Follow,
+	[property: JsonPropertyName("post")] bool Post,
+	[property: JsonPropertyName("bump")] Resp_UserModelProfileThreadsPermissionsBump Bump
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static Resp_UserModelProfileThreadsPermissions ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static Resp_UserModelProfileThreadsPermissions ReadFromReader(ref Utf8JsonReader reader)
+	{
+		bool v0 = default;
+		bool v1 = default;
+		bool v2 = default;
+		bool v3 = default;
+		Resp_UserModelProfileThreadsPermissionsBump v4 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("view"u8))
+			{
+				reader.Read();
+				v0 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("delete"u8))
+			{
+				reader.Read();
+				v1 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("follow"u8))
+			{
+				reader.Read();
+				v2 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("post"u8))
+			{
+				reader.Read();
+				v3 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("bump"u8))
+			{
+				reader.Read();
+				v4 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelProfileThreadsPermissionsBump.ReadFromReader(ref reader);
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new Resp_UserModelProfileThreadsPermissions(v0, v1, v2, v3, v4);
+	}
+}
+
+public sealed record Resp_UserModelProfileThreads(
+	[property: JsonPropertyName("thread_id")] long ThreadId,
+	[property: JsonPropertyName("forum_id")] long ForumId,
+	[property: JsonPropertyName("thread_title")] string ThreadTitle,
+	[property: JsonPropertyName("thread_view_count")] long ThreadViewCount,
+	[property: JsonPropertyName("creator_user_id")] long CreatorUserId,
+	[property: JsonPropertyName("creator_username")] string CreatorUsername,
+	[property: JsonPropertyName("creator_username_html")] string CreatorUsernameHtml,
+	[property: JsonPropertyName("thread_create_date")] long ThreadCreateDate,
+	[property: JsonPropertyName("thread_update_date")] long ThreadUpdateDate,
+	[property: JsonPropertyName("thread_reply_group_id")] long ThreadReplyGroupId,
+	[property: JsonPropertyName("thread_comment_ignore_group")] long ThreadCommentIgnoreGroup,
+	[property: JsonPropertyName("thread_last_bump_date")] long ThreadLastBumpDate,
+	[property: JsonPropertyName("thread_hide_contacts")] long ThreadHideContacts,
+	[property: JsonPropertyName("thread_allow_ask_hidden_content")] long ThreadAllowAskHiddenContent,
+	[property: JsonPropertyName("user_is_ignored")] bool UserIsIgnored,
+	[property: JsonPropertyName("thread_post_count")] long ThreadPostCount,
+	[property: JsonPropertyName("thread_is_bumped")] bool ThreadIsBumped,
+	[property: JsonPropertyName("thread_is_published")] bool ThreadIsPublished,
+	[property: JsonPropertyName("thread_is_deleted")] bool ThreadIsDeleted,
+	[property: JsonPropertyName("thread_is_sticky")] bool ThreadIsSticky,
+	[property: JsonPropertyName("thread_is_closed")] bool ThreadIsClosed,
+	[property: JsonPropertyName("thread_is_followed")] bool ThreadIsFollowed,
+	[property: JsonPropertyName("thread_is_starred")] bool ThreadIsStarred,
+	[property: JsonPropertyName("thread_prefixes")] List<JsonElement> ThreadPrefixes,
+	[property: JsonPropertyName("thread_tags")] Resp_UserModelProfileThreadsThreadTags ThreadTags,
+	[property: JsonPropertyName("links")] Resp_UserModelProfileThreadsLinks Links,
+	[property: JsonPropertyName("permissions")] Resp_UserModelProfileThreadsPermissions Permissions,
+	[property: JsonPropertyName("node_title")] string NodeTitle
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static Resp_UserModelProfileThreads ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static Resp_UserModelProfileThreads ReadFromReader(ref Utf8JsonReader reader)
+	{
+		long v0 = default;
+		long v1 = default;
+		string v2 = null!;
+		long v3 = default;
+		long v4 = default;
+		string v5 = null!;
+		string v6 = null!;
+		long v7 = default;
+		long v8 = default;
+		long v9 = default;
+		long v10 = default;
+		long v11 = default;
+		long v12 = default;
+		long v13 = default;
+		bool v14 = default;
+		long v15 = default;
+		bool v16 = default;
+		bool v17 = default;
+		bool v18 = default;
+		bool v19 = default;
+		bool v20 = default;
+		bool v21 = default;
+		bool v22 = default;
+		List<JsonElement> v23 = null!;
+		Resp_UserModelProfileThreadsThreadTags v24 = null!;
+		Resp_UserModelProfileThreadsLinks v25 = null!;
+		Resp_UserModelProfileThreadsPermissions v26 = null!;
+		string v27 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("thread_id"u8))
+			{
+				reader.Read();
+				v0 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("forum_id"u8))
+			{
+				reader.Read();
+				v1 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("thread_title"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("thread_view_count"u8))
+			{
+				reader.Read();
+				v3 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("creator_user_id"u8))
+			{
+				reader.Read();
+				v4 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("creator_username"u8))
+			{
+				reader.Read();
+				v5 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("creator_username_html"u8))
+			{
+				reader.Read();
+				v6 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("thread_create_date"u8))
+			{
+				reader.Read();
+				v7 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("thread_update_date"u8))
+			{
+				reader.Read();
+				v8 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("thread_reply_group_id"u8))
+			{
+				reader.Read();
+				v9 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("thread_comment_ignore_group"u8))
+			{
+				reader.Read();
+				v10 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("thread_last_bump_date"u8))
+			{
+				reader.Read();
+				v11 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("thread_hide_contacts"u8))
+			{
+				reader.Read();
+				v12 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("thread_allow_ask_hidden_content"u8))
+			{
+				reader.Read();
+				v13 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("user_is_ignored"u8))
+			{
+				reader.Read();
+				v14 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_post_count"u8))
+			{
+				reader.Read();
+				v15 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("thread_is_bumped"u8))
+			{
+				reader.Read();
+				v16 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_published"u8))
+			{
+				reader.Read();
+				v17 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_deleted"u8))
+			{
+				reader.Read();
+				v18 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_sticky"u8))
+			{
+				reader.Read();
+				v19 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_closed"u8))
+			{
+				reader.Read();
+				v20 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_followed"u8))
+			{
+				reader.Read();
+				v21 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_is_starred"u8))
+			{
+				reader.Read();
+				v22 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("thread_prefixes"u8))
+			{
+				reader.Read();
+				if (reader.TokenType == JsonTokenType.StartArray)
+				{
+					var __lst = new List<JsonElement>();
+					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+					{
+						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+						__lst.Add(__item);
+					}
+					v23 = __lst;
+				}
+			}
+			else if (reader.ValueTextEquals("thread_tags"u8))
+			{
+				reader.Read();
+				v24 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelProfileThreadsThreadTags.ReadFromReader(ref reader);
+			}
+			else if (reader.ValueTextEquals("links"u8))
+			{
+				reader.Read();
+				v25 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelProfileThreadsLinks.ReadFromReader(ref reader);
+			}
+			else if (reader.ValueTextEquals("permissions"u8))
+			{
+				reader.Read();
+				v26 = reader.TokenType == JsonTokenType.Null ? null! : Resp_UserModelProfileThreadsPermissions.ReadFromReader(ref reader);
+			}
+			else if (reader.ValueTextEquals("node_title"u8))
+			{
+				reader.Read();
+				v27 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new Resp_UserModelProfileThreads(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27);
 	}
 }
 

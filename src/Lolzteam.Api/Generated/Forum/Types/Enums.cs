@@ -179,6 +179,13 @@ public enum LikeType
 	[Lolzteam.Api.Runtime.EnumValue("like2")] Like2,
 }
 
+[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<MessageState>))]
+public enum MessageState
+{
+	[Lolzteam.Api.Runtime.EnumValue("visible")] Visible,
+	[Lolzteam.Api.Runtime.EnumValue("deleted")] Deleted,
+}
+
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<NotificationsType>))]
 public enum NotificationsType
 {

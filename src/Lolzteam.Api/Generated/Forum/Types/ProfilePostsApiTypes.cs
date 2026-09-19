@@ -209,6 +209,8 @@ public sealed record ProfilePostsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("disable_comments")]
 		public bool? DisableComments { get; init; }
+		[JsonPropertyName("message_state")]
+		public MessageState? MessageState { get; init; }
 	}
 
 	public sealed record ProfilePostsEditResponse(
@@ -1353,10 +1355,20 @@ public sealed record ProfilePostsLikesResponseUsers(
 	public sealed record ProfilePostsCommentsListParams
 	{
 		/// <summary>
-		/// Id of profile post.
+		/// ID of profile post.
 		/// </summary>
 		[JsonPropertyName("profile_post_id")]
-		public required long? ProfilePostId { get; init; }
+		public long? ProfilePostId { get; init; }
+		/// <summary>
+		/// ID of a profile post comment.
+		/// </summary>
+		[JsonPropertyName("comment_id")]
+		public long? CommentId { get; init; }
+		/// <summary>
+		/// ID of a profile post comment, comments that are in the same page with the specified comment will be returned.
+		/// </summary>
+		[JsonPropertyName("page_of_comment_id")]
+		public long? PageOfCommentId { get; init; }
 		/// <summary>
 		/// Date to get older comments. Please note that this entry point does not support the page parameter but it still does support <b>limit</b>.
 		/// </summary>
@@ -2020,6 +2032,8 @@ public sealed record ProfilePostsCommentsCreateResponseComment(
 		/// </summary>
 		[JsonPropertyName("comment_body")]
 		public required string CommentBody { get; init; }
+		[JsonPropertyName("message_state")]
+		public MessageState? MessageState { get; init; }
 	}
 
 	public sealed record ProfilePostsCommentsEditResponse(
@@ -2381,6 +2395,66 @@ public sealed record ProfilePostsCommentsEditResponseComment(
 		}
 	}
 
+	public sealed record ProfilePostsCommentsReportReasonsParams
+	{
+		/// <summary>
+		/// Id of profile post comment.
+		/// </summary>
+		[JsonPropertyName("comment_id")]
+		public long? CommentId { get; init; }
+	}
+
+	public sealed record ProfilePostsCommentsReportReasonsResponse(
+		[property: JsonPropertyName("reasons")] List<string> Reasons,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ProfilePostsCommentsReportReasonsResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ProfilePostsCommentsReportReasonsResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			List<string> v0 = null!;
+			Resp_SystemInfo v1 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("reasons"u8))
+				{
+					reader.Read();
+					if (reader.TokenType == JsonTokenType.StartArray)
+					{
+						var __lst = new List<string>();
+						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+						{
+							var __item = reader.GetString()!;
+							__lst.Add(__item);
+						}
+						v0 = __lst;
+					}
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ProfilePostsCommentsReportReasonsResponse(v0, v1);
+		}
+	}
+
 	public sealed record ProfilePostsCommentsReportBody
 	{
 		/// <summary>
@@ -2388,6 +2462,11 @@ public sealed record ProfilePostsCommentsEditResponseComment(
 		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
+		/// <summary>
+		/// Id of profile post comment.
+		/// </summary>
+		[JsonPropertyName("comment_id")]
+		public required long? CommentId { get; init; }
 	}
 
 	public sealed record ProfilePostsCommentsReportResponse(

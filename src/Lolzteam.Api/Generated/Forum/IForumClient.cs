@@ -6,6 +6,8 @@ namespace Lolzteam.Api.Generated.Forum;
 /// <summary>Interface for the ForumClient.</summary>
 public interface IForumClient : System.IDisposable
 {
+	/// <summary>App API operations.</summary>
+	AppApi App { get; }
 	/// <summary>Assets API operations.</summary>
 	AssetsApi Assets { get; }
 	/// <summary>Batch API operations.</summary>
@@ -22,8 +24,6 @@ public interface IForumClient : System.IDisposable
 	ForumsApi Forums { get; }
 	/// <summary>Links API operations.</summary>
 	LinksApi Links { get; }
-	/// <summary>Navigation API operations.</summary>
-	NavigationApi Navigation { get; }
 	/// <summary>Notifications API operations.</summary>
 	NotificationsApi Notifications { get; }
 	/// <summary>OAuth API operations.</summary>
@@ -40,6 +40,8 @@ public interface IForumClient : System.IDisposable
 	TagsApi Tags { get; }
 	/// <summary>Threads API operations.</summary>
 	ThreadsApi Threads { get; }
+	/// <summary>Uptime API operations.</summary>
+	UptimeApi Uptime { get; }
 	/// <summary>Users API operations.</summary>
 	UsersApi Users { get; }
 }

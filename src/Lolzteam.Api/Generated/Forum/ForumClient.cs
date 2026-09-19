@@ -7,6 +7,45 @@ using Lolzteam.Api.Runtime;
 
 namespace Lolzteam.Api.Generated.Forum;
 
+public sealed class AppApi
+{
+	private readonly LolzteamHttpClient _http;
+
+	public AppApi(LolzteamHttpClient http)
+	{
+		_http = http;
+	}
+
+	/// <summary>
+	/// Internal method, not for public usage.
+	/// </summary>
+	public async Task<AppApiTypes.AppGetResponse> GetAsync(AppApiTypes.AppGetParams? @params = null, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/app",
+			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+		};
+		return await _http.RequestAsync(__opts, AppApiTypes.AppGetResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Internal method, not for public usage.
+	/// </summary>
+	public async Task<AppApiTypes.AppPushSubscriptionResponse> PushSubscriptionAsync(AppApiTypes.AppPushSubscriptionBody? body = null, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "PUT",
+			Path = "/app/push-subscription",
+			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			BodyEncoding = BodyEncoding.Json,
+		};
+		return await _http.RequestAsync(__opts, AppApiTypes.AppPushSubscriptionResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+}
+
 public sealed class AssetsApi
 {
 	private readonly LolzteamHttpClient _http;
@@ -499,6 +538,26 @@ public sealed class ConversationsApi
 			Path = $"/conversations/{ConversationId}",
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsGetResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Get a shareable thread content (hides).
+	/// <para/>
+	/// Required scopes:
+	/// <list type="bullet">
+	/// <item><description><b>get</b></description></item>
+	/// <item><description><b>conversate</b></description></item>
+	/// </list>
+	/// </summary>
+	public async Task<ConversationsApiTypes.ConversationsShareContentResponse> ShareContentAsync(ConversationsApiTypes.ConversationsShareContentParams? @params = null, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/conversations/share-content",
+			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+		};
+		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsShareContentResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -1077,35 +1136,6 @@ public sealed class LinksApi
 	}
 }
 
-public sealed class NavigationApi
-{
-	private readonly LolzteamHttpClient _http;
-
-	public NavigationApi(LolzteamHttpClient http)
-	{
-		_http = http;
-	}
-
-	/// <summary>
-	/// List of navigation elements within the system.
-	/// <para/>
-	/// Required scopes:
-	/// <list type="bullet">
-	/// <item><description><b>read</b></description></item>
-	/// </list>
-	/// </summary>
-	public async Task<NavigationApiTypes.NavigationListResponse> ListAsync(NavigationApiTypes.NavigationListParams? @params = null, CancellationToken cancellationToken = default)
-	{
-		var __opts = new RequestOptions
-		{
-			Method = "GET",
-			Path = "/navigation",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
-		};
-		return await _http.RequestAsync(__opts, NavigationApiTypes.NavigationListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
-	}
-}
-
 public sealed class NotificationsApi
 {
 	private readonly LolzteamHttpClient _http;
@@ -1532,6 +1562,25 @@ public sealed class PostsApi
 	}
 
 	/// <summary>
+	/// Get a post comment report reasons.
+	/// <para/>
+	/// Required scopes:
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
+	/// </summary>
+	public async Task<PostsApiTypes.PostsCommentsReportReasonsResponse> CommentsReportReasonsAsync(PostsApiTypes.PostsCommentsReportReasonsParams? @params = null, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/posts/comments/report",
+			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+		};
+		return await _http.RequestAsync(__opts, PostsApiTypes.PostsCommentsReportReasonsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
 	/// Report a post comment.
 	/// <para/>
 	/// Required scopes:
@@ -1569,7 +1618,7 @@ public sealed class ProfilePostsApi
 	/// <item><description><b>read</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<ProfilePostsApiTypes.ProfilePostsListResponse> ListAsync(Lolzteam.Api.Runtime.StringOrLong UserId, ProfilePostsApiTypes.ProfilePostsListParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<ProfilePostsApiTypes.ProfilePostsListResponse> ListAsync(string UserId, ProfilePostsApiTypes.ProfilePostsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -1883,6 +1932,25 @@ public sealed class ProfilePostsApi
 	}
 
 	/// <summary>
+	/// Get profile post comment report reasons.
+	/// <para/>
+	/// Required scopes:
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// </list>
+	/// </summary>
+	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsReportReasonsResponse> CommentsReportReasonsAsync(ProfilePostsApiTypes.ProfilePostsCommentsReportReasonsParams? @params = null, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/profile-posts/comments/report",
+			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+		};
+		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsCommentsReportReasonsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
 	/// Report a profile post comment.
 	/// <para/>
 	/// Required scopes:
@@ -1890,12 +1958,12 @@ public sealed class ProfilePostsApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsReportResponse> CommentsReportAsync(long CommentId, ProfilePostsApiTypes.ProfilePostsCommentsReportBody body, CancellationToken cancellationToken = default)
+	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsReportResponse> CommentsReportAsync(ProfilePostsApiTypes.ProfilePostsCommentsReportBody body, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
-			Path = $"/profile-posts/comments/{CommentId}/report",
+			Path = "/profile-posts/comments/report",
 			Body = JsonSerializer.SerializeToElement(body),
 			BodyEncoding = BodyEncoding.Json,
 		};
@@ -2452,24 +2520,6 @@ public sealed class ThreadsApi
 	}
 
 	/// <summary>
-	/// List of navigation elements to reach the specified thread.
-	/// <para/>
-	/// Required scopes:
-	/// <list type="bullet">
-	/// <item><description><b>read</b></description></item>
-	/// </list>
-	/// </summary>
-	public async Task<ThreadsApiTypes.ThreadsNavigationResponse> NavigationAsync(long ThreadId, CancellationToken cancellationToken = default)
-	{
-		var __opts = new RequestOptions
-		{
-			Method = "GET",
-			Path = $"/threads/{ThreadId}/navigation",
-		};
-		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsNavigationResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
-	}
-
-	/// <summary>
 	/// Detail information of a poll.
 	/// <para/>
 	/// Required scopes:
@@ -2564,6 +2614,42 @@ public sealed class ThreadsApi
 	}
 }
 
+public sealed class UptimeApi
+{
+	private readonly LolzteamHttpClient _http;
+
+	public UptimeApi(LolzteamHttpClient http)
+	{
+		_http = http;
+	}
+
+	/// <summary>
+	/// Provide data for published public status pages.
+	/// </summary>
+	public async Task<UptimeApiTypes.UptimeInfoResponse> InfoAsync(CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/api/status-page/lzt",
+		};
+		return await _http.RequestAsync(__opts, UptimeApiTypes.UptimeInfoResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Get heartbeat and uptime.
+	/// </summary>
+	public async Task<UptimeApiTypes.UptimeHeartbeatResponse> HeartbeatAsync(CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/api/status-page/heartbeat/lzt",
+		};
+		return await _http.RequestAsync(__opts, UptimeApiTypes.UptimeHeartbeatResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+}
+
 public sealed class UsersApi
 {
 	private readonly LolzteamHttpClient _http;
@@ -2630,6 +2716,26 @@ public sealed class UsersApi
 	}
 
 	/// <summary>
+	/// Detail information of a current user.
+	/// <para/>
+	/// Required scopes:
+	/// <list type="bullet">
+	/// <item><description><b>read</b></description></item>
+	/// <item><description><b>basic</b></description></item>
+	/// </list>
+	/// </summary>
+	public async Task<UsersApiTypes.UsersCurrentResponse> CurrentAsync(UsersApiTypes.UsersCurrentParams? @params = null, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/users/me",
+			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+		};
+		return await _http.RequestAsync(__opts, UsersApiTypes.UsersCurrentResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
 	/// Detail information of a user.
 	/// <para/>
 	/// Required scopes:
@@ -2638,7 +2744,7 @@ public sealed class UsersApi
 	/// <item><description><b>basic</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersGetResponse> GetAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersGetParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersGetResponse> GetAsync(string UserId, UsersApiTypes.UsersGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2657,7 +2763,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersEditResponse> EditAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersEditBody? body = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersEditResponse> EditAsync(string UserId, UsersApiTypes.UsersEditBody? body = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2677,7 +2783,7 @@ public sealed class UsersApi
 	/// <item><description><b>read</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersClaimsResponse> ClaimsAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersClaimsParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersClaimsResponse> ClaimsAsync(string UserId, UsersApiTypes.UsersClaimsParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2696,7 +2802,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersAvatarUploadResponse> AvatarUploadAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersAvatarUploadBody body, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersAvatarUploadResponse> AvatarUploadAsync(string UserId, UsersApiTypes.UsersAvatarUploadBody body, CancellationToken cancellationToken = default)
 	{
 		var jsonObj = new System.Text.Json.Nodes.JsonObject();
 		if (body.X is not null) jsonObj["x"] = System.Text.Json.Nodes.JsonValue.Create(body.X);
@@ -2723,7 +2829,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersAvatarDeleteResponse> AvatarDeleteAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersAvatarDeleteResponse> AvatarDeleteAsync(string UserId, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2741,7 +2847,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersAvatarCropResponse> AvatarCropAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersAvatarCropBody? body = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersAvatarCropResponse> AvatarCropAsync(string UserId, UsersApiTypes.UsersAvatarCropBody? body = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2761,7 +2867,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersBackgroundUploadResponse> BackgroundUploadAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersBackgroundUploadBody body, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersBackgroundUploadResponse> BackgroundUploadAsync(string UserId, UsersApiTypes.UsersBackgroundUploadBody body, CancellationToken cancellationToken = default)
 	{
 		var jsonObj = new System.Text.Json.Nodes.JsonObject();
 		if (body.X is not null) jsonObj["x"] = System.Text.Json.Nodes.JsonValue.Create(body.X);
@@ -2788,7 +2894,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersBackgroundDeleteResponse> BackgroundDeleteAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersBackgroundDeleteResponse> BackgroundDeleteAsync(string UserId, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2806,7 +2912,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersBackgroundCropResponse> BackgroundCropAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersBackgroundCropBody body, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersBackgroundCropResponse> BackgroundCropAsync(string UserId, UsersApiTypes.UsersBackgroundCropBody body, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2826,7 +2932,7 @@ public sealed class UsersApi
 	/// <item><description><b>read</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersFollowersResponse> FollowersAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersFollowersParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersFollowersResponse> FollowersAsync(string UserId, UsersApiTypes.UsersFollowersParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2845,7 +2951,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersFollowResponse> FollowAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersFollowResponse> FollowAsync(string UserId, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2863,7 +2969,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersUnfollowResponse> UnfollowAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersUnfollowResponse> UnfollowAsync(string UserId, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2881,7 +2987,7 @@ public sealed class UsersApi
 	/// <item><description><b>read</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersFollowingsResponse> FollowingsAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersFollowingsParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersFollowingsResponse> FollowingsAsync(string UserId, UsersApiTypes.UsersFollowingsParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2900,7 +3006,7 @@ public sealed class UsersApi
 	/// <item><description><b>read</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersLikesResponse> LikesAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersLikesParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersLikesResponse> LikesAsync(string UserId, UsersApiTypes.UsersLikesParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2938,7 +3044,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersIgnoreResponse> IgnoreAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersIgnoreResponse> IgnoreAsync(string UserId, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2956,7 +3062,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersIgnoreEditResponse> IgnoreEditAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersIgnoreEditParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersIgnoreEditResponse> IgnoreEditAsync(string UserId, UsersApiTypes.UsersIgnoreEditParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2975,7 +3081,7 @@ public sealed class UsersApi
 	/// <item><description><b>post</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersUnignoreResponse> UnignoreAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersUnignoreResponse> UnignoreAsync(string UserId, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -2993,7 +3099,7 @@ public sealed class UsersApi
 	/// <item><description><b>read</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersContentsResponse> ContentsAsync(Lolzteam.Api.Runtime.StringOrLong UserId, UsersApiTypes.UsersContentsParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersContentsResponse> ContentsAsync(string UserId, UsersApiTypes.UsersContentsParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -3012,7 +3118,7 @@ public sealed class UsersApi
 	/// <item><description><b>read</b></description></item>
 	/// </list>
 	/// </summary>
-	public async Task<UsersApiTypes.UsersTrophiesResponse> TrophiesAsync(Lolzteam.Api.Runtime.StringOrLong UserId, CancellationToken cancellationToken = default)
+	public async Task<UsersApiTypes.UsersTrophiesResponse> TrophiesAsync(string UserId, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
@@ -3079,6 +3185,7 @@ public sealed class UsersApi
 
 public sealed class ForumClient : IForumClient
 {
+	public AppApi App { get; }
 	public AssetsApi Assets { get; }
 	public BatchApi Batch { get; }
 	public CategoriesApi Categories { get; }
@@ -3087,7 +3194,6 @@ public sealed class ForumClient : IForumClient
 	public FormsApi Forms { get; }
 	public ForumsApi Forums { get; }
 	public LinksApi Links { get; }
-	public NavigationApi Navigation { get; }
 	public NotificationsApi Notifications { get; }
 	public OAuthApi OAuth { get; }
 	public PagesApi Pages { get; }
@@ -3096,6 +3202,7 @@ public sealed class ForumClient : IForumClient
 	public SearchApi Search { get; }
 	public TagsApi Tags { get; }
 	public ThreadsApi Threads { get; }
+	public UptimeApi Uptime { get; }
 	public UsersApi Users { get; }
 
 	private readonly LolzteamHttpClient _http;
@@ -3110,6 +3217,7 @@ public sealed class ForumClient : IForumClient
 		};
 		_http = new LolzteamHttpClient(resolvedConfig);
 
+		App = new AppApi(_http);
 		Assets = new AssetsApi(_http);
 		Batch = new BatchApi(_http);
 		Categories = new CategoriesApi(_http);
@@ -3118,7 +3226,6 @@ public sealed class ForumClient : IForumClient
 		Forms = new FormsApi(_http);
 		Forums = new ForumsApi(_http);
 		Links = new LinksApi(_http);
-		Navigation = new NavigationApi(_http);
 		Notifications = new NotificationsApi(_http);
 		OAuth = new OAuthApi(_http);
 		Pages = new PagesApi(_http);
@@ -3127,6 +3234,7 @@ public sealed class ForumClient : IForumClient
 		Search = new SearchApi(_http);
 		Tags = new TagsApi(_http);
 		Threads = new ThreadsApi(_http);
+		Uptime = new UptimeApi(_http);
 		Users = new UsersApi(_http);
 	}
 
@@ -3134,6 +3242,7 @@ public sealed class ForumClient : IForumClient
 	internal ForumClient(LolzteamHttpClient http)
 	{
 		_http = http;
+		App = new AppApi(_http);
 		Assets = new AssetsApi(_http);
 		Batch = new BatchApi(_http);
 		Categories = new CategoriesApi(_http);
@@ -3142,7 +3251,6 @@ public sealed class ForumClient : IForumClient
 		Forms = new FormsApi(_http);
 		Forums = new ForumsApi(_http);
 		Links = new LinksApi(_http);
-		Navigation = new NavigationApi(_http);
 		Notifications = new NotificationsApi(_http);
 		OAuth = new OAuthApi(_http);
 		Pages = new PagesApi(_http);
@@ -3151,6 +3259,7 @@ public sealed class ForumClient : IForumClient
 		Search = new SearchApi(_http);
 		Tags = new TagsApi(_http);
 		Threads = new ThreadsApi(_http);
+		Uptime = new UptimeApi(_http);
 		Users = new UsersApi(_http);
 	}
 

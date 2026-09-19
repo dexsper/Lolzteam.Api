@@ -214,6 +214,8 @@ public static class PostsApiTypes
 		/// </summary>
 		[JsonPropertyName("post_body")]
 		public string? PostBody { get; init; }
+		[JsonPropertyName("message_state")]
+		public MessageState? MessageState { get; init; }
 	}
 
 	public sealed record PostsEditResponse(
@@ -633,10 +635,15 @@ public sealed record PostsLikesResponseUsers(
 	public sealed record PostsCommentsGetParams
 	{
 		/// <summary>
-		/// Id of post.
+		/// Id of a post.
 		/// </summary>
 		[JsonPropertyName("post_id")]
-		public required long? PostId { get; init; }
+		public long? PostId { get; init; }
+		/// <summary>
+		/// Id of a post comment.
+		/// </summary>
+		[JsonPropertyName("post_comment_id")]
+		public long? PostCommentId { get; init; }
 		/// <summary>
 		/// The time in milliseconds (e.g. 1652177794083) before last comment date.
 		/// </summary>
@@ -1062,6 +1069,8 @@ public sealed record PostsCommentsCreateResponseComment(
 		/// </summary>
 		[JsonPropertyName("comment_body")]
 		public required string CommentBody { get; init; }
+		[JsonPropertyName("message_state")]
+		public MessageState? MessageState { get; init; }
 	}
 
 	public sealed record PostsCommentsEditResponse(
@@ -1460,6 +1469,66 @@ public sealed record PostsCommentsEditResponseComment(
 				}
 			}
 			return new PostsCommentsDeleteResponse(v0, v1, v2);
+		}
+	}
+
+	public sealed record PostsCommentsReportReasonsParams
+	{
+		/// <summary>
+		/// Id of post comment.
+		/// </summary>
+		[JsonPropertyName("post_comment_id")]
+		public long? PostCommentId { get; init; }
+	}
+
+	public sealed record PostsCommentsReportReasonsResponse(
+		[property: JsonPropertyName("reasons")] List<string> Reasons,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static PostsCommentsReportReasonsResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static PostsCommentsReportReasonsResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			List<string> v0 = null!;
+			Resp_SystemInfo v1 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("reasons"u8))
+				{
+					reader.Read();
+					if (reader.TokenType == JsonTokenType.StartArray)
+					{
+						var __lst = new List<string>();
+						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+						{
+							var __item = reader.GetString()!;
+							__lst.Add(__item);
+						}
+						v0 = __lst;
+					}
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new PostsCommentsReportReasonsResponse(v0, v1);
 		}
 	}
 
