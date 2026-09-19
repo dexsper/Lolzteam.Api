@@ -1,9 +1,6 @@
-using System;
-using System.IO;
-using System.Net.Http;
+#pragma warning disable CA1822 // BenchmarkDotNet requires instance (non-static) benchmark methods.
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 
 namespace Lolzteam.Benchmarks;
@@ -20,7 +17,7 @@ namespace Lolzteam.Benchmarks;
 [GcForce]
 public class DeserializationBenchmark
 {
-    private static readonly byte[] _responseBytes = Encoding.UTF8.GetBytes("""
+    private static readonly byte[] ResponseBytes = Encoding.UTF8.GetBytes("""
         {
             "user_id": 12345,
             "username": "testuser",
@@ -32,26 +29,26 @@ public class DeserializationBenchmark
         }
         """);
 
-    private static readonly JsonSerializerOptions _opts = new(JsonSerializerOptions.Default);
+    private static readonly JsonSerializerOptions Opts = new(JsonSerializerOptions.Default);
 
     [Benchmark(Baseline = true, Description = "Competitor: string→Deserialize")]
-    public static UserDto? Competitor_StringDeserialize()
+    public UserDto? Competitor_StringDeserialize()
     {
-        var str = Encoding.UTF8.GetString(_responseBytes);
-        return JsonSerializer.Deserialize<UserDto>(str, _opts);
+        var str = Encoding.UTF8.GetString(ResponseBytes);
+        return JsonSerializer.Deserialize<UserDto>(str, Opts);
     }
 
     [Benchmark(Description = "Ours: stream→DeserializeAsync")]
-    public static async Task<UserDto?> Ours_StreamDeserialize()
+    public async Task<UserDto?> Ours_StreamDeserialize()
     {
-        await using var stream = new MemoryStream(_responseBytes, writable: false);
-        return await JsonSerializer.DeserializeAsync<UserDto>(stream, _opts);
+        await using var stream = new MemoryStream(ResponseBytes, writable: false);
+        return await JsonSerializer.DeserializeAsync<UserDto>(stream, Opts);
     }
 
     [Benchmark(Description = "Utf8JsonReader: zero-alloc on net7+")]
-    public static UserDto Utf8JsonReader_Manual()
+    public UserDto Utf8JsonReader_Manual()
     {
-        var reader = new Utf8JsonReader(_responseBytes);
+        var reader = new Utf8JsonReader(ResponseBytes);
         return UserDto.ReadFrom(ref reader);
     }
 }

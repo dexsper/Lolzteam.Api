@@ -1,6 +1,4 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+#pragma warning disable CA1822 // BenchmarkDotNet requires instance (non-static) benchmark methods.
 using BenchmarkDotNet.Attributes;
 using Lolzteam.Api.Runtime;
 
@@ -13,7 +11,7 @@ namespace Lolzteam.Benchmarks;
 [MemoryDiagnoser]
 public class RetryOverheadBenchmark
 {
-    private static readonly RetryConfig Config = new RetryConfig
+    private static readonly RetryConfig Config = new()
     {
         MaxRetries = 3,
         BaseDelay = TimeSpan.FromMilliseconds(100),
@@ -21,11 +19,11 @@ public class RetryOverheadBenchmark
     };
 
     [Benchmark(Baseline = true, Description = "Direct call (no retry wrapper)")]
-    public static Task<int> DirectCall() => Task.FromResult(42);
+    public Task<int> DirectCall() => Task.FromResult(42);
 
     [Benchmark(Description = "Via retry pipeline (happy path)")]
-    public static Task<int> ViaRetryPipeline() =>
-        RetryHandler.ExecuteWithRetryAsync(
-            ct => Task.FromResult(42),
-            Config, null, "GET", "/", CancellationToken.None);
+    public Task<int> ViaRetryPipeline() => RetryHandler.ExecuteWithRetryAsync(
+        _ => Task.FromResult(42),
+        Config, null, "GET", "/", CancellationToken.None
+    );
 }

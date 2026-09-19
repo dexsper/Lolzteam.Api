@@ -1,9 +1,7 @@
+#pragma warning disable CA1822 // BenchmarkDotNet requires instance (non-static) benchmark methods.
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using Lolzteam.Api.Runtime;
 
@@ -20,27 +18,24 @@ namespace Lolzteam.Benchmarks;
 [Config(typeof(BenchmarkConfig))]
 public class RequestAllocationBenchmark : IDisposable
 {
-    private static readonly byte[] JsonBody =
-        Encoding.UTF8.GetBytes("{\"ok\":true,\"value\":42,\"name\":\"bench\"}");
+    private static readonly byte[] JsonBody = "{\"ok\":true,\"value\":42,\"name\":\"bench\"}"u8.ToArray();
+    private static readonly RequestOptions Opts = new() { Method = "GET", Path = "/bench" };
 
     private sealed class StubHandler : HttpMessageHandler
     {
-        protected override Task<HttpResponseMessage> SendAsync(
-            HttpRequestMessage _, CancellationToken __)
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage _, CancellationToken __)
         {
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new ByteArrayContent(JsonBody),
             };
-            response.Content.Headers.ContentType =
-                new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
+            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             return Task.FromResult(response);
         }
     }
 
     private LolzteamHttpClient? _pooledClient;
-    private static readonly RequestOptions Opts =
-        new() { Method = "GET", Path = "/bench" };
 
     [GlobalSetup]
     public void Setup()
@@ -67,16 +62,18 @@ public class RequestAllocationBenchmark : IDisposable
 
     /// <summary>Naïve pattern: create new HttpClient (and handler) on every call.</summary>
     [Benchmark]
-    public static async Task<JsonElement> Naive_new_HttpClient_per_request()
+    public async Task<JsonElement> Naive_new_HttpClient_per_request()
     {
         using var handler = new StubHandler();
-        using var httpClient = new HttpClient(handler) { BaseAddress = new System.Uri("http://bench.test") };
+        using var httpClient = new HttpClient(handler);
+        httpClient.BaseAddress = new Uri("http://bench.test");
+
         using var request = new HttpRequestMessage(HttpMethod.Get, "/bench");
-        request.Headers.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "bench");
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "bench");
         using var response = await httpClient.SendAsync(request);
-        using var stream = await response.Content.ReadAsStreamAsync();
+        await using var stream = await response.Content.ReadAsStreamAsync();
         using var doc = await JsonDocument.ParseAsync(stream);
+
         return doc.RootElement.Clone();
     }
 }
