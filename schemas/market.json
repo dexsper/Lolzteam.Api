@@ -10663,6 +10663,31 @@
                             "title": "Steam Dota Win Rate",
                             "type": "integer"
                           },
+                          "steamGifts": {
+                            "title": "Steam Gifts",
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "title": "Title",
+                                  "type": "string"
+                                },
+                                "fraudwarnings": {
+                                  "title": "Fraudwarnings",
+                                  "type": "string"
+                                },
+                                "image_url": {
+                                  "title": "Image Url",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "title",
+                                "image_url"
+                              ]
+                            }
+                          },
                           "steamTransactions": {
                             "title": "Steam Transactions",
                             "type": "array",
@@ -10977,6 +11002,7 @@
                           "steamCs2Medals",
                           "cs2RankExpired",
                           "steamDota2WinRate",
+                          "steamGifts",
                           "steamTransactions",
                           "hasPossibleBanInDota2",
                           "chineseAccount",
