@@ -88,8 +88,8 @@ public sealed class BatchApi
 	/// Execute multiple API requests at once (separated by comma). Maximum batch jobs is 10.
 	/// Following methods are unavailable in Batch:
 	/// <list type="bullet">
-	/// <item><description>GET /{item_id}/image</description></item>
-	/// <item><description>/item/fast-sell</description></item>
+	/// <item><description><c>GET /{item_id}/image</c></description></item>
+	/// <item><description><c>POST /item/fast-sell</c></description></item>
 	/// </list>
 	/// </summary>
 	public async Task<BatchApiTypes.BatchBatchResponse> BatchAsync(List<JsonElement> body, CancellationToken cancellationToken = default)
@@ -456,16 +456,16 @@ public sealed class CategoryApi
 	/// <summary>
 	/// Displays a list of accounts in a specific category according to your parameters.
 	/// </summary>
-	public async Task<CategoryApiTypes.CategoryChatGPTResponse> ChatGPTAsync(CategoryApiTypes.CategoryChatGPTParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<CategoryApiTypes.CategoryLlmResponse> LlmAsync(CategoryApiTypes.CategoryLlmParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
-			Path = "/chatgpt",
+			Path = "/llm",
 			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
 			IsSearch = true,
 		};
-		return await _http.RequestAsync(__opts, CategoryApiTypes.CategoryChatGPTResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+		return await _http.RequestAsync(__opts, CategoryApiTypes.CategoryLlmResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -546,16 +546,16 @@ public sealed class CategoryApi
 	/// <summary>
 	/// Displays a list of accounts in a specific category according to your parameters.
 	/// </summary>
-	public async Task<CategoryApiTypes.CategoryCursorResponse> CursorAsync(CategoryApiTypes.CategoryCursorParams? @params = null, CancellationToken cancellationToken = default)
+	public async Task<CategoryApiTypes.CategoryOnlyfansResponse> OnlyfansAsync(CategoryApiTypes.CategoryOnlyfansParams? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
-			Path = "/cursor",
+			Path = "/onlyfans",
 			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
 			IsSearch = true,
 		};
-		return await _http.RequestAsync(__opts, CategoryApiTypes.CategoryCursorResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+		return await _http.RequestAsync(__opts, CategoryApiTypes.CategoryOnlyfansResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -815,6 +815,81 @@ public sealed class ManagingApi
 	}
 
 	/// <summary>
+	/// Returns a list of your tags.
+	/// </summary>
+	public async Task<ManagingApiTypes.ManagingTagsListResponse> TagsListAsync(CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = "/user/tags",
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingTagsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Creates Tag.
+	/// </summary>
+	public async Task<ManagingApiTypes.ManagingTagsCreateResponse> TagsCreateAsync(ManagingApiTypes.ManagingTagsCreateBody body, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "POST",
+			Path = "/user/tags",
+			Body = JsonSerializer.SerializeToElement(body),
+			BodyEncoding = BodyEncoding.Json,
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingTagsCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Updates a specified tag.
+	/// </summary>
+	public async Task<ManagingApiTypes.ManagingTagsEditResponse> TagsEditAsync(ManagingApiTypes.ManagingTagsEditBody body, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "PUT",
+			Path = "/user/tags",
+			Body = JsonSerializer.SerializeToElement(body),
+			BodyEncoding = BodyEncoding.Json,
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingTagsEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Deletes a tag.
+	/// </summary>
+	public async Task<ManagingApiTypes.ManagingTagsDeleteResponse> TagsDeleteAsync(ManagingApiTypes.ManagingTagsDeleteBody body, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "DELETE",
+			Path = "/user/tags",
+			Body = JsonSerializer.SerializeToElement(body),
+			BodyEncoding = BodyEncoding.Json,
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingTagsDeleteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Reorder your tags.
+	/// <para/>
+	/// &gt; ❗️ Tags missing from <c>tag_order</c> will be deleted (even from the items).
+	/// </summary>
+	public async Task<ManagingApiTypes.ManagingTagsOrderResponse> TagsOrderAsync(ManagingApiTypes.ManagingTagsOrderBody body, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "POST",
+			Path = "/user/tags/order",
+			Body = JsonSerializer.SerializeToElement(body),
+			BodyEncoding = BodyEncoding.Json,
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingTagsOrderResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
 	/// Displays account information.
 	/// </summary>
 	public async Task<ManagingApiTypes.ManagingGetResponse> GetAsync(long ItemId, ManagingApiTypes.ManagingGetParams? @params = null, CancellationToken cancellationToken = default)
@@ -871,6 +946,21 @@ public sealed class ManagingApi
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingBulkGetResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Executes bulk actions on items.
+	/// </summary>
+	public async Task<ManagingApiTypes.ManagingBulkActionResponse> BulkActionAsync(ManagingApiTypes.ManagingBulkActionBody body, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "POST",
+			Path = "/items/bulk-action",
+			Body = JsonSerializer.SerializeToElement(body),
+			BodyEncoding = BodyEncoding.Json,
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingBulkActionResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -961,16 +1051,29 @@ public sealed class ManagingApi
 	/// <summary>
 	/// Edits a note for the account.
 	/// </summary>
-	public async Task<ManagingApiTypes.ManagingNoteResponse> NoteAsync(long ItemId, ManagingApiTypes.ManagingNoteBody? body = null, CancellationToken cancellationToken = default)
+	public async Task<ManagingApiTypes.ManagingNoteEditResponse> NoteEditAsync(long ItemId, ManagingApiTypes.ManagingNoteEditBody? body = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
 		{
-			Method = "POST",
-			Path = $"/{ItemId}/note-save",
+			Method = "PUT",
+			Path = $"/{ItemId}/note",
 			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
 			BodyEncoding = BodyEncoding.Json,
 		};
-		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingNoteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingNoteEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Deletes a note from the account.
+	/// </summary>
+	public async Task<ManagingApiTypes.ManagingNoteDeleteResponse> NoteDeleteAsync(long ItemId, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "DELETE",
+			Path = $"/{ItemId}/note",
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingNoteDeleteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -1089,6 +1192,22 @@ public sealed class ManagingApi
 	/// <para/>
 	/// &gt; ❗️ If you receive a "retry_request" error, you should repeat the same request (up to a maximum of 100 times)
 	/// </summary>
+	public async Task<ManagingApiTypes.ManagingGetLettersResponse> GetLettersAsync(long ItemId, ManagingApiTypes.ManagingGetLettersParams? @params = null, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "GET",
+			Path = $"/{ItemId}/letters",
+			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingGetLettersResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Returns account letters.
+	/// <para/>
+	/// &gt; ❗️ If you receive a "retry_request" error, you should repeat the same request (up to a maximum of 100 times)
+	/// </summary>
 	public async Task<ManagingApiTypes.ManagingGetLetters2Response> GetLetters2Async(ManagingApiTypes.ManagingGetLetters2Params? @params = null, CancellationToken cancellationToken = default)
 	{
 		var __opts = new RequestOptions
@@ -1197,6 +1316,21 @@ public sealed class ManagingApi
 			Path = $"/{ItemId}/telegram-reset-authorizations",
 		};
 		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingTelegramResetAuthResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Authorize to Telegram/Steam by providing qr-code challenge.
+	/// </summary>
+	public async Task<ManagingApiTypes.ManagingQRLoginResponse> QRLoginAsync(long ItemId, ManagingApiTypes.ManagingQRLoginBody body, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "POST",
+			Path = $"/{ItemId}/qr-login",
+			Body = JsonSerializer.SerializeToElement(body),
+			BodyEncoding = BodyEncoding.Json,
+		};
+		return await _http.RequestAsync(__opts, ManagingApiTypes.ManagingQRLoginResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -1890,6 +2024,21 @@ public sealed class PurchasingApi
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PurchasingApiTypes.PurchasingDiscountRequestResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Approve/Decline a discount request.
+	/// </summary>
+	public async Task<PurchasingApiTypes.PurchasingDiscountReviewResponse> DiscountReviewAsync(long ItemId, PurchasingApiTypes.PurchasingDiscountReviewBody body, CancellationToken cancellationToken = default)
+	{
+		var __opts = new RequestOptions
+		{
+			Method = "PUT",
+			Path = $"/{ItemId}/discount",
+			Body = JsonSerializer.SerializeToElement(body),
+			BodyEncoding = BodyEncoding.Json,
+		};
+		return await _http.RequestAsync(__opts, PurchasingApiTypes.PurchasingDiscountReviewResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>

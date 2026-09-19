@@ -4249,8 +4249,7 @@ public sealed record PaymentsBalanceListResponseFromBalance(
 }
 
 public sealed record PaymentsBalanceListResponseFrom(
-	[property: JsonPropertyName("balance")] PaymentsBalanceListResponseFromBalance Balance,
-	[property: JsonPropertyName("12345")] BalanceModel _12345
+	[property: JsonPropertyName("balance")] PaymentsBalanceListResponseFromBalance Balance
 )
 {
 
@@ -4265,7 +4264,6 @@ public sealed record PaymentsBalanceListResponseFrom(
 	internal static PaymentsBalanceListResponseFrom ReadFromReader(ref Utf8JsonReader reader)
 	{
 		PaymentsBalanceListResponseFromBalance v0 = null!;
-		BalanceModel v1 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4275,18 +4273,13 @@ public sealed record PaymentsBalanceListResponseFrom(
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsBalanceListResponseFromBalance.ReadFromReader(ref reader);
 			}
-			else if (reader.ValueTextEquals("12345"u8))
-			{
-				reader.Read();
-				v1 = reader.TokenType == JsonTokenType.Null ? null! : BalanceModel.ReadFromReader(ref reader);
-			}
 			else
 			{
 				reader.Read();
 				reader.Skip();
 			}
 		}
-		return new PaymentsBalanceListResponseFrom(v0, v1);
+		return new PaymentsBalanceListResponseFrom(v0);
 	}
 }
 
@@ -4457,8 +4450,7 @@ public sealed record PaymentsBalanceExchangeResponseFromBalance(
 }
 
 public sealed record PaymentsBalanceExchangeResponseFrom(
-	[property: JsonPropertyName("balance")] PaymentsBalanceExchangeResponseFromBalance Balance,
-	[property: JsonPropertyName("12345")] BalanceModel _12345
+	[property: JsonPropertyName("balance")] PaymentsBalanceExchangeResponseFromBalance Balance
 )
 {
 
@@ -4473,7 +4465,6 @@ public sealed record PaymentsBalanceExchangeResponseFrom(
 	internal static PaymentsBalanceExchangeResponseFrom ReadFromReader(ref Utf8JsonReader reader)
 	{
 		PaymentsBalanceExchangeResponseFromBalance v0 = null!;
-		BalanceModel v1 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4483,18 +4474,13 @@ public sealed record PaymentsBalanceExchangeResponseFrom(
 				reader.Read();
 				v0 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsBalanceExchangeResponseFromBalance.ReadFromReader(ref reader);
 			}
-			else if (reader.ValueTextEquals("12345"u8))
-			{
-				reader.Read();
-				v1 = reader.TokenType == JsonTokenType.Null ? null! : BalanceModel.ReadFromReader(ref reader);
-			}
 			else
 			{
 				reader.Read();
 				reader.Skip();
 			}
 		}
-		return new PaymentsBalanceExchangeResponseFrom(v0, v1);
+		return new PaymentsBalanceExchangeResponseFrom(v0);
 	}
 }
 
@@ -4640,11 +4626,16 @@ public sealed record PaymentsBalanceExchangeResponseTo(
 		/// </summary>
 		[JsonPropertyName("amount")]
 		public double? Amount { get; init; }
+		/// <summary>
+		/// Currencн.
+		/// </summary>
+		[JsonPropertyName("currency")]
+		public required Currency Currency { get; init; }
 	}
 
 	public sealed record PaymentsFeeResponse(
 		[property: JsonPropertyName("commission_percentage")] long CommissionPercentage,
-		[property: JsonPropertyName("spentCurrentMonth")] long SpentCurrentMonth,
+		[property: JsonPropertyName("spentCurrentMonth")] double SpentCurrentMonth,
 		[property: JsonPropertyName("calculator")] PaymentsFeeResponseCalculator Calculator,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
@@ -4661,7 +4652,7 @@ public sealed record PaymentsBalanceExchangeResponseTo(
 		internal static PaymentsFeeResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			long v0 = default;
-			long v1 = default;
+			double v1 = default;
 			PaymentsFeeResponseCalculator v2 = null!;
 			Resp_SystemInfo v3 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
@@ -4676,7 +4667,7 @@ public sealed record PaymentsBalanceExchangeResponseTo(
 				else if (reader.ValueTextEquals("spentCurrentMonth"u8))
 				{
 					reader.Read();
-					v1 = reader.GetInt64();
+					v1 = reader.GetDouble();
 				}
 				else if (reader.ValueTextEquals("calculator"u8))
 				{
@@ -4816,12 +4807,12 @@ public sealed record PaymentsFeeResponseCalculator(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// Currency.
 		/// </summary>
@@ -4885,7 +4876,7 @@ public sealed record PaymentsFeeResponseCalculator(
 	}
 
 	public sealed record PaymentsHistoryResponse(
-		[property: JsonPropertyName("payments")] PaymentsHistoryResponsePayments Payments,
+		[property: JsonPropertyName("payments")] Dictionary<string, PaymentsHistoryResponsePayments> Payments,
 		[property: JsonPropertyName("perPage")] string PerPage,
 		[property: JsonPropertyName("page")] long Page,
 		[property: JsonPropertyName("pageNavLink")] string PageNavLink,
@@ -4912,7 +4903,7 @@ public sealed record PaymentsFeeResponseCalculator(
 
 		internal static PaymentsHistoryResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			PaymentsHistoryResponsePayments v0 = null!;
+			Dictionary<string, PaymentsHistoryResponsePayments> v0 = null!;
 			string v1 = null!;
 			long v2 = default;
 			string v3 = null!;
@@ -4933,7 +4924,19 @@ public sealed record PaymentsFeeResponseCalculator(
 				if (reader.ValueTextEquals("payments"u8))
 				{
 					reader.Read();
-					v0 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePayments.ReadFromReader(ref reader);
+					if (reader.TokenType == JsonTokenType.StartObject)
+					{
+						var __dict = new Dictionary<string, PaymentsHistoryResponsePayments>();
+						while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+						{
+							if (reader.TokenType != JsonTokenType.PropertyName) continue;
+							var __key = reader.GetString()!;
+							reader.Read();
+							var __val = PaymentsHistoryResponsePayments.ReadFromReader(ref reader);
+							__dict[__key] = __val;
+						}
+						v0 = __dict;
+					}
 				}
 				else if (reader.ValueTextEquals("perPage"u8))
 				{
@@ -5010,7 +5013,7 @@ public sealed record PaymentsFeeResponseCalculator(
 		}
 	}
 
-public sealed record PaymentsHistoryResponsePayments1234567890Data(
+public sealed record PaymentsHistoryResponsePaymentsData(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("comment")] string Comment,
@@ -5031,14 +5034,14 @@ public sealed record PaymentsHistoryResponsePayments1234567890Data(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static PaymentsHistoryResponsePayments1234567890Data ReadFrom(ReadOnlyMemory<byte> json)
+	public static PaymentsHistoryResponsePaymentsData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static PaymentsHistoryResponsePayments1234567890Data ReadFromReader(ref Utf8JsonReader reader)
+	internal static PaymentsHistoryResponsePaymentsData ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		string v1 = null!;
@@ -5146,24 +5149,24 @@ public sealed record PaymentsHistoryResponsePayments1234567890Data(
 				reader.Skip();
 			}
 		}
-		return new PaymentsHistoryResponsePayments1234567890Data(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
+		return new PaymentsHistoryResponsePaymentsData(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
 	}
 }
 
-public sealed record PaymentsHistoryResponsePayments1234567890Label(
+public sealed record PaymentsHistoryResponsePaymentsLabel(
 	[property: JsonPropertyName("title")] string Title
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static PaymentsHistoryResponsePayments1234567890Label ReadFrom(ReadOnlyMemory<byte> json)
+	public static PaymentsHistoryResponsePaymentsLabel ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static PaymentsHistoryResponsePayments1234567890Label ReadFromReader(ref Utf8JsonReader reader)
+	internal static PaymentsHistoryResponsePaymentsLabel ReadFromReader(ref Utf8JsonReader reader)
 	{
 		string v0 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
@@ -5181,11 +5184,11 @@ public sealed record PaymentsHistoryResponsePayments1234567890Label(
 				reader.Skip();
 			}
 		}
-		return new PaymentsHistoryResponsePayments1234567890Label(v0);
+		return new PaymentsHistoryResponsePaymentsLabel(v0);
 	}
 }
 
-public sealed record PaymentsHistoryResponsePayments1234567890Merchant(
+public sealed record PaymentsHistoryResponsePaymentsMerchant(
 	[property: JsonPropertyName("merchant_id")] long MerchantId,
 	[property: JsonPropertyName("name")] string Name,
 	[property: JsonPropertyName("user_id")] long UserId,
@@ -5197,14 +5200,14 @@ public sealed record PaymentsHistoryResponsePayments1234567890Merchant(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static PaymentsHistoryResponsePayments1234567890Merchant ReadFrom(ReadOnlyMemory<byte> json)
+	public static PaymentsHistoryResponsePaymentsMerchant ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static PaymentsHistoryResponsePayments1234567890Merchant ReadFromReader(ref Utf8JsonReader reader)
+	internal static PaymentsHistoryResponsePaymentsMerchant ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		string v1 = null!;
@@ -5258,11 +5261,11 @@ public sealed record PaymentsHistoryResponsePayments1234567890Merchant(
 				reader.Skip();
 			}
 		}
-		return new PaymentsHistoryResponsePayments1234567890Merchant(v0, v1, v2, v3, v4, v5, v6);
+		return new PaymentsHistoryResponsePaymentsMerchant(v0, v1, v2, v3, v4, v5, v6);
 	}
 }
 
-public sealed record PaymentsHistoryResponsePayments1234567890User(
+public sealed record PaymentsHistoryResponsePaymentsUser(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("user_balance")] string UserBalance,
 	[property: JsonPropertyName("user_hold")] string UserHold,
@@ -5271,14 +5274,14 @@ public sealed record PaymentsHistoryResponsePayments1234567890User(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static PaymentsHistoryResponsePayments1234567890User ReadFrom(ReadOnlyMemory<byte> json)
+	public static PaymentsHistoryResponsePaymentsUser ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static PaymentsHistoryResponsePayments1234567890User ReadFromReader(ref Utf8JsonReader reader)
+	internal static PaymentsHistoryResponsePaymentsUser ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		string v1 = null!;
@@ -5314,11 +5317,11 @@ public sealed record PaymentsHistoryResponsePayments1234567890User(
 				reader.Skip();
 			}
 		}
-		return new PaymentsHistoryResponsePayments1234567890User(v0, v1, v2, v3);
+		return new PaymentsHistoryResponsePaymentsUser(v0, v1, v2, v3);
 	}
 }
 
-public sealed record PaymentsHistoryResponsePayments1234567890(
+public sealed record PaymentsHistoryResponsePayments(
 	[property: JsonPropertyName("operation_id")] long OperationId,
 	[property: JsonPropertyName("operation_date")] long OperationDate,
 	[property: JsonPropertyName("operation_type")] string OperationType,
@@ -5329,7 +5332,7 @@ public sealed record PaymentsHistoryResponsePayments1234567890(
 	[property: JsonPropertyName("is_finished")] long IsFinished,
 	[property: JsonPropertyName("is_hold")] long IsHold,
 	[property: JsonPropertyName("payment_system")] string PaymentSystem,
-	[property: JsonPropertyName("data")] PaymentsHistoryResponsePayments1234567890Data Data,
+	[property: JsonPropertyName("data")] PaymentsHistoryResponsePaymentsData Data,
 	[property: JsonPropertyName("hold_end_date")] long HoldEndDate,
 	[property: JsonPropertyName("operation_end_date")] long OperationEndDate,
 	[property: JsonPropertyName("api")] long Api,
@@ -5344,21 +5347,21 @@ public sealed record PaymentsHistoryResponsePayments1234567890(
 	[property: JsonPropertyName("canFinishBalanceTransfer")] bool CanFinishBalanceTransfer,
 	[property: JsonPropertyName("canFinishBalancePayout")] bool CanFinishBalancePayout,
 	[property: JsonPropertyName("canFinishBalanceHold")] bool CanFinishBalanceHold,
-	[property: JsonPropertyName("label")] PaymentsHistoryResponsePayments1234567890Label Label,
-	[property: JsonPropertyName("merchant")] PaymentsHistoryResponsePayments1234567890Merchant Merchant,
-	[property: JsonPropertyName("user")] PaymentsHistoryResponsePayments1234567890User User
+	[property: JsonPropertyName("label")] PaymentsHistoryResponsePaymentsLabel Label,
+	[property: JsonPropertyName("merchant")] PaymentsHistoryResponsePaymentsMerchant Merchant,
+	[property: JsonPropertyName("user")] PaymentsHistoryResponsePaymentsUser User
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static PaymentsHistoryResponsePayments1234567890 ReadFrom(ReadOnlyMemory<byte> json)
+	public static PaymentsHistoryResponsePayments ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static PaymentsHistoryResponsePayments1234567890 ReadFromReader(ref Utf8JsonReader reader)
+	internal static PaymentsHistoryResponsePayments ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		long v1 = default;
@@ -5370,7 +5373,7 @@ public sealed record PaymentsHistoryResponsePayments1234567890(
 		long v7 = default;
 		long v8 = default;
 		string v9 = null!;
-		PaymentsHistoryResponsePayments1234567890Data v10 = null!;
+		PaymentsHistoryResponsePaymentsData v10 = null!;
 		long v11 = default;
 		long v12 = default;
 		long v13 = default;
@@ -5385,9 +5388,9 @@ public sealed record PaymentsHistoryResponsePayments1234567890(
 		bool v22 = default;
 		bool v23 = default;
 		bool v24 = default;
-		PaymentsHistoryResponsePayments1234567890Label v25 = null!;
-		PaymentsHistoryResponsePayments1234567890Merchant v26 = null!;
-		PaymentsHistoryResponsePayments1234567890User v27 = null!;
+		PaymentsHistoryResponsePaymentsLabel v25 = null!;
+		PaymentsHistoryResponsePaymentsMerchant v26 = null!;
+		PaymentsHistoryResponsePaymentsUser v27 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -5445,7 +5448,7 @@ public sealed record PaymentsHistoryResponsePayments1234567890(
 			else if (reader.ValueTextEquals("data"u8))
 			{
 				reader.Read();
-				v10 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePayments1234567890Data.ReadFromReader(ref reader);
+				v10 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePaymentsData.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("hold_end_date"u8))
 			{
@@ -5529,17 +5532,17 @@ public sealed record PaymentsHistoryResponsePayments1234567890(
 			else if (reader.ValueTextEquals("label"u8))
 			{
 				reader.Read();
-				v25 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePayments1234567890Label.ReadFromReader(ref reader);
+				v25 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePaymentsLabel.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("merchant"u8))
 			{
 				reader.Read();
-				v26 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePayments1234567890Merchant.ReadFromReader(ref reader);
+				v26 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePaymentsMerchant.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("user"u8))
 			{
 				reader.Read();
-				v27 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePayments1234567890User.ReadFromReader(ref reader);
+				v27 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePaymentsUser.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -5547,42 +5550,7 @@ public sealed record PaymentsHistoryResponsePayments1234567890(
 				reader.Skip();
 			}
 		}
-		return new PaymentsHistoryResponsePayments1234567890(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27);
-	}
-}
-
-public sealed record PaymentsHistoryResponsePayments(
-	[property: JsonPropertyName("1234567890")] PaymentsHistoryResponsePayments1234567890 _1234567890
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static PaymentsHistoryResponsePayments ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static PaymentsHistoryResponsePayments ReadFromReader(ref Utf8JsonReader reader)
-	{
-		PaymentsHistoryResponsePayments1234567890 v0 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("1234567890"u8))
-			{
-				reader.Read();
-				v0 = reader.TokenType == JsonTokenType.Null ? null! : PaymentsHistoryResponsePayments1234567890.ReadFromReader(ref reader);
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new PaymentsHistoryResponsePayments(v0);
+		return new PaymentsHistoryResponsePayments(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27);
 	}
 }
 

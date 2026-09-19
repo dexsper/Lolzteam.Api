@@ -46,12 +46,12 @@ public static class ListApiTypes
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// Login.
 		/// </summary>
@@ -145,14 +145,37 @@ public static class ListApiTypes
 	}
 
 	public sealed record ListUserResponse(
-		[property: JsonPropertyName("items")] List<ItemFromListModel> Items,
+		[property: JsonPropertyName("items")] List<ItemModel> Items,
 		[property: JsonPropertyName("totalItems")] long TotalItems,
-		[property: JsonPropertyName("totalItemsPrice")] JsonElement TotalItemsPrice,
+		[property: JsonPropertyName("totalItemsPrice")] long TotalItemsPrice,
 		[property: JsonPropertyName("hasNextPage")] bool HasNextPage,
 		[property: JsonPropertyName("perPage")] long PerPage,
 		[property: JsonPropertyName("page")] long Page,
+		[property: JsonPropertyName("wasCached")] bool WasCached,
+		[property: JsonPropertyName("cacheTTL")] long CacheTTL,
+		[property: JsonPropertyName("lastModified")] long LastModified,
+		[property: JsonPropertyName("serverTime")] long ServerTime,
+		[property: JsonPropertyName("totalItemsPriceWithSellerFee")] double TotalItemsPriceWithSellerFee,
 		[property: JsonPropertyName("searchUrl")] string SearchUrl,
-		[property: JsonPropertyName("stickyItems")] List<ItemFromListModel> StickyItems,
+		[property: JsonPropertyName("search")] string Search,
+		[property: JsonPropertyName("stickyItems")] List<JsonElement> StickyItems,
+		[property: JsonPropertyName("user")] ListUserResponseUser User,
+		[property: JsonPropertyName("publishedPeriodLabelPhrase")] string PublishedPeriodLabelPhrase,
+		[property: JsonPropertyName("filterDatesDefault")] bool FilterDatesDefault,
+		[property: JsonPropertyName("published_startDate")] string PublishedStartDate,
+		[property: JsonPropertyName("published_endDate")] string PublishedEndDate,
+		[property: JsonPropertyName("filter_by_published_date")] bool FilterByPublishedDate,
+		[property: JsonPropertyName("published_period_label")] string PublishedPeriodLabel,
+		[property: JsonPropertyName("paidPeriodLabelPhrase")] string PaidPeriodLabelPhrase,
+		[property: JsonPropertyName("paid_startDate")] string PaidStartDate,
+		[property: JsonPropertyName("paid_endDate")] string PaidEndDate,
+		[property: JsonPropertyName("filter_by_buyer_operation_date")] bool FilterByBuyerOperationDate,
+		[property: JsonPropertyName("paid_period_label")] string PaidPeriodLabel,
+		[property: JsonPropertyName("deletePeriodLabelPhrase")] string DeletePeriodLabelPhrase,
+		[property: JsonPropertyName("delete_startDate")] string DeleteStartDate,
+		[property: JsonPropertyName("delete_endDate")] string DeleteEndDate,
+		[property: JsonPropertyName("filter_by_delete_date")] bool FilterByDeleteDate,
+		[property: JsonPropertyName("delete_period_label")] string DeletePeriodLabel,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
 	{
@@ -167,15 +190,38 @@ public static class ListApiTypes
 
 		internal static ListUserResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			List<ItemFromListModel> v0 = null!;
+			List<ItemModel> v0 = null!;
 			long v1 = default;
-			JsonElement v2 = default;
+			long v2 = default;
 			bool v3 = default;
 			long v4 = default;
 			long v5 = default;
-			string v6 = null!;
-			List<ItemFromListModel> v7 = null!;
-			Resp_SystemInfo v8 = null!;
+			bool v6 = default;
+			long v7 = default;
+			long v8 = default;
+			long v9 = default;
+			double v10 = default;
+			string v11 = null!;
+			string v12 = null!;
+			List<JsonElement> v13 = null!;
+			ListUserResponseUser v14 = null!;
+			string v15 = null!;
+			bool v16 = default;
+			string v17 = null!;
+			string v18 = null!;
+			bool v19 = default;
+			string v20 = null!;
+			string v21 = null!;
+			string v22 = null!;
+			string v23 = null!;
+			bool v24 = default;
+			string v25 = null!;
+			string v26 = null!;
+			string v27 = null!;
+			string v28 = null!;
+			bool v29 = default;
+			string v30 = null!;
+			Resp_SystemInfo v31 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -185,10 +231,10 @@ public static class ListApiTypes
 					reader.Read();
 					if (reader.TokenType == JsonTokenType.StartArray)
 					{
-						var __lst = new List<ItemFromListModel>();
+						var __lst = new List<ItemModel>();
 						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 						{
-							var __item = ItemFromListModel.ReadFromReader(ref reader);
+							var __item = ItemModel.ReadFromReader(ref reader);
 							__lst.Add(__item);
 						}
 						v0 = __lst;
@@ -202,7 +248,7 @@ public static class ListApiTypes
 				else if (reader.ValueTextEquals("totalItemsPrice"u8))
 				{
 					reader.Read();
-					v2 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+					v2 = reader.GetInt64();
 				}
 				else if (reader.ValueTextEquals("hasNextPage"u8))
 				{
@@ -219,29 +265,144 @@ public static class ListApiTypes
 					reader.Read();
 					v5 = reader.GetInt64();
 				}
+				else if (reader.ValueTextEquals("wasCached"u8))
+				{
+					reader.Read();
+					v6 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("cacheTTL"u8))
+				{
+					reader.Read();
+					v7 = reader.GetInt64();
+				}
+				else if (reader.ValueTextEquals("lastModified"u8))
+				{
+					reader.Read();
+					v8 = reader.GetInt64();
+				}
+				else if (reader.ValueTextEquals("serverTime"u8))
+				{
+					reader.Read();
+					v9 = reader.GetInt64();
+				}
+				else if (reader.ValueTextEquals("totalItemsPriceWithSellerFee"u8))
+				{
+					reader.Read();
+					v10 = reader.GetDouble();
+				}
 				else if (reader.ValueTextEquals("searchUrl"u8))
 				{
 					reader.Read();
-					v6 = reader.GetString()!;
+					v11 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("search"u8))
+				{
+					reader.Read();
+					v12 = reader.GetString()!;
 				}
 				else if (reader.ValueTextEquals("stickyItems"u8))
 				{
 					reader.Read();
 					if (reader.TokenType == JsonTokenType.StartArray)
 					{
-						var __lst = new List<ItemFromListModel>();
+						var __lst = new List<JsonElement>();
 						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 						{
-							var __item = ItemFromListModel.ReadFromReader(ref reader);
+							var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 							__lst.Add(__item);
 						}
-						v7 = __lst;
+						v13 = __lst;
 					}
+				}
+				else if (reader.ValueTextEquals("user"u8))
+				{
+					reader.Read();
+					v14 = reader.TokenType == JsonTokenType.Null ? null! : ListUserResponseUser.ReadFromReader(ref reader);
+				}
+				else if (reader.ValueTextEquals("publishedPeriodLabelPhrase"u8))
+				{
+					reader.Read();
+					v15 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("filterDatesDefault"u8))
+				{
+					reader.Read();
+					v16 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("published_startDate"u8))
+				{
+					reader.Read();
+					v17 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("published_endDate"u8))
+				{
+					reader.Read();
+					v18 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("filter_by_published_date"u8))
+				{
+					reader.Read();
+					v19 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("published_period_label"u8))
+				{
+					reader.Read();
+					v20 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("paidPeriodLabelPhrase"u8))
+				{
+					reader.Read();
+					v21 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("paid_startDate"u8))
+				{
+					reader.Read();
+					v22 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("paid_endDate"u8))
+				{
+					reader.Read();
+					v23 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("filter_by_buyer_operation_date"u8))
+				{
+					reader.Read();
+					v24 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("paid_period_label"u8))
+				{
+					reader.Read();
+					v25 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("deletePeriodLabelPhrase"u8))
+				{
+					reader.Read();
+					v26 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("delete_startDate"u8))
+				{
+					reader.Read();
+					v27 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("delete_endDate"u8))
+				{
+					reader.Read();
+					v28 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("filter_by_delete_date"u8))
+				{
+					reader.Read();
+					v29 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("delete_period_label"u8))
+				{
+					reader.Read();
+					v30 = reader.GetString()!;
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v31 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -249,9 +410,79 @@ public static class ListApiTypes
 					reader.Skip();
 				}
 			}
-			return new ListUserResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+			return new ListUserResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31);
 		}
 	}
+
+public sealed record ListUserResponseUser(
+	[property: JsonPropertyName("user_id")] long UserId,
+	[property: JsonPropertyName("username")] string Username,
+	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
+	[property: JsonPropertyName("avatar_date")] long AvatarDate,
+	[property: JsonPropertyName("is_banned")] bool IsBanned,
+	[property: JsonPropertyName("uniq_username_css")] string UniqUsernameCss
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static ListUserResponseUser ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static ListUserResponseUser ReadFromReader(ref Utf8JsonReader reader)
+	{
+		long v0 = default;
+		string v1 = null!;
+		long v2 = default;
+		long v3 = default;
+		bool v4 = default;
+		string v5 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("user_id"u8))
+			{
+				reader.Read();
+				v0 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("username"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("display_style_group_id"u8))
+			{
+				reader.Read();
+				v2 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("avatar_date"u8))
+			{
+				reader.Read();
+				v3 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("is_banned"u8))
+			{
+				reader.Read();
+				v4 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("uniq_username_css"u8))
+			{
+				reader.Read();
+				v5 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new ListUserResponseUser(v0, v1, v2, v3, v4, v5);
+	}
+}
 
 	public sealed record ListOrdersParams
 	{
@@ -284,12 +515,12 @@ public static class ListApiTypes
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// Login.
 		/// </summary>
@@ -1296,12 +1527,12 @@ public sealed record ListStatesResponseUserItemStates(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// List of account origins.
 		/// </summary>
@@ -1412,12 +1643,12 @@ public sealed record ListStatesResponseUserItemStates(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// List of account origins.
 		/// </summary>
@@ -1585,12 +1816,12 @@ public sealed record ListStatesResponseUserItemStates(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// List of account origins.
 		/// </summary>
@@ -1629,14 +1860,19 @@ public sealed record ListStatesResponseUserItemStates(
 	}
 
 	public sealed record ListViewedResponse(
-		[property: JsonPropertyName("items")] List<ItemFromListModel> Items,
+		[property: JsonPropertyName("items")] List<ItemModel> Items,
 		[property: JsonPropertyName("totalItems")] long TotalItems,
 		[property: JsonPropertyName("totalItemsPrice")] JsonElement TotalItemsPrice,
 		[property: JsonPropertyName("hasNextPage")] bool HasNextPage,
 		[property: JsonPropertyName("perPage")] long PerPage,
 		[property: JsonPropertyName("page")] long Page,
+		[property: JsonPropertyName("wasCached")] bool WasCached,
+		[property: JsonPropertyName("cacheTTL")] long CacheTTL,
+		[property: JsonPropertyName("lastModified")] long LastModified,
+		[property: JsonPropertyName("serverTime")] long ServerTime,
 		[property: JsonPropertyName("searchUrl")] string SearchUrl,
-		[property: JsonPropertyName("stickyItems")] List<ItemFromListModel> StickyItems,
+		[property: JsonPropertyName("search")] string Search,
+		[property: JsonPropertyName("stickyItems")] List<JsonElement> StickyItems,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
 	{
@@ -1651,15 +1887,20 @@ public sealed record ListStatesResponseUserItemStates(
 
 		internal static ListViewedResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			List<ItemFromListModel> v0 = null!;
+			List<ItemModel> v0 = null!;
 			long v1 = default;
 			JsonElement v2 = default;
 			bool v3 = default;
 			long v4 = default;
 			long v5 = default;
-			string v6 = null!;
-			List<ItemFromListModel> v7 = null!;
-			Resp_SystemInfo v8 = null!;
+			bool v6 = default;
+			long v7 = default;
+			long v8 = default;
+			long v9 = default;
+			string v10 = null!;
+			string v11 = null!;
+			List<JsonElement> v12 = null!;
+			Resp_SystemInfo v13 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1669,10 +1910,10 @@ public sealed record ListStatesResponseUserItemStates(
 					reader.Read();
 					if (reader.TokenType == JsonTokenType.StartArray)
 					{
-						var __lst = new List<ItemFromListModel>();
+						var __lst = new List<ItemModel>();
 						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 						{
-							var __item = ItemFromListModel.ReadFromReader(ref reader);
+							var __item = ItemModel.ReadFromReader(ref reader);
 							__lst.Add(__item);
 						}
 						v0 = __lst;
@@ -1703,29 +1944,54 @@ public sealed record ListStatesResponseUserItemStates(
 					reader.Read();
 					v5 = reader.GetInt64();
 				}
+				else if (reader.ValueTextEquals("wasCached"u8))
+				{
+					reader.Read();
+					v6 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("cacheTTL"u8))
+				{
+					reader.Read();
+					v7 = reader.GetInt64();
+				}
+				else if (reader.ValueTextEquals("lastModified"u8))
+				{
+					reader.Read();
+					v8 = reader.GetInt64();
+				}
+				else if (reader.ValueTextEquals("serverTime"u8))
+				{
+					reader.Read();
+					v9 = reader.GetInt64();
+				}
 				else if (reader.ValueTextEquals("searchUrl"u8))
 				{
 					reader.Read();
-					v6 = reader.GetString()!;
+					v10 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("search"u8))
+				{
+					reader.Read();
+					v11 = reader.GetString()!;
 				}
 				else if (reader.ValueTextEquals("stickyItems"u8))
 				{
 					reader.Read();
 					if (reader.TokenType == JsonTokenType.StartArray)
 					{
-						var __lst = new List<ItemFromListModel>();
+						var __lst = new List<JsonElement>();
 						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 						{
-							var __item = ItemFromListModel.ReadFromReader(ref reader);
+							var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 							__lst.Add(__item);
 						}
-						v7 = __lst;
+						v12 = __lst;
 					}
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v8 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v13 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1733,7 +1999,7 @@ public sealed record ListStatesResponseUserItemStates(
 					reader.Skip();
 				}
 			}
-			return new ListViewedResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+			return new ListViewedResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
 		}
 	}
 

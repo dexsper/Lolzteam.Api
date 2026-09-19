@@ -21,12 +21,12 @@ public static class CategoryApiTypes
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -239,12 +239,12 @@ public static class CategoryApiTypes
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -351,6 +351,11 @@ public static class CategoryApiTypes
 		[JsonPropertyName("game[]")]
 		public List<long?>? Game { get; init; }
 		/// <summary>
+		/// List of games to exclude.
+		/// </summary>
+		[JsonPropertyName("not_game[]")]
+		public List<long?>? NotGame { get; init; }
+		/// <summary>
 		/// List of minimum hours played by game.
 		/// </summary>
 		[JsonPropertyName("hours_played")]
@@ -428,25 +433,15 @@ public static class CategoryApiTypes
 		[JsonPropertyName("lmax")]
 		public long? Lmax { get; init; }
 		/// <summary>
-		/// Minimum rank in CS2 Matchmaking.
-		/// </summary>
-		[JsonPropertyName("rmin")]
-		public long? Rmin { get; init; }
-		/// <summary>
-		/// Maximum rank in CS2 Matchmaking.
-		/// </summary>
-		[JsonPropertyName("rmax")]
-		public long? Rmax { get; init; }
-		/// <summary>
 		/// Minimum rank in CS2 Wingman.
 		/// </summary>
 		[JsonPropertyName("wingman_rmin")]
-		public long? WingmanRmin { get; init; }
+		public WingmanRmin? WingmanRmin { get; init; }
 		/// <summary>
 		/// Maximum rank in CS2 Wingman.
 		/// </summary>
 		[JsonPropertyName("wingman_rmax")]
-		public long? WingmanRmax { get; init; }
+		public WingmanRmax? WingmanRmax { get; init; }
 		/// <summary>
 		/// Has no VAC ban.
 		/// </summary>
@@ -471,7 +466,7 @@ public static class CategoryApiTypes
 		/// Game ID to check inventory price.
 		/// </summary>
 		[JsonPropertyName("inv_game")]
-		public long? InvGame { get; init; }
+		public InvGame? InvGame { get; init; }
 		/// <summary>
 		/// Minimum inventory price for game.
 		/// </summary>
@@ -561,12 +556,12 @@ public static class CategoryApiTypes
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Minimum CS2 rank.
 		/// </summary>
@@ -751,12 +746,12 @@ public static class CategoryApiTypes
 		/// Minimum rank in CS2 on a certain map.
 		/// </summary>
 		[JsonPropertyName("cs2_map_rmin")]
-		public long? Cs2MapRmin { get; init; }
+		public Cs2MapRmin? Cs2MapRmin { get; init; }
 		/// <summary>
 		/// Maximum rank in CS2 on a certain map.
 		/// </summary>
 		[JsonPropertyName("cs2_map_rmax")]
-		public long? Cs2MapRmax { get; init; }
+		public Cs2MapRmax? Cs2MapRmax { get; init; }
 		/// <summary>
 		/// Has FACEIT account.
 		/// </summary>
@@ -862,6 +857,51 @@ public static class CategoryApiTypes
 		/// </summary>
 		[JsonPropertyName("d2_last_match_date_later_period")]
 		public D2LastMatchDateLaterPeriod? D2LastMatchDateLaterPeriod { get; init; }
+		/// <summary>
+		/// Minimum number of Dota 2 low priority games.
+		/// </summary>
+		[JsonPropertyName("d2_low_priority_min")]
+		public long? D2LowPriorityMin { get; init; }
+		/// <summary>
+		/// Maximum number of Dota 2 low priority games.
+		/// </summary>
+		[JsonPropertyName("d2_low_priority_max")]
+		public long? D2LowPriorityMax { get; init; }
+		/// <summary>
+		/// Dota 2 low priority is active.
+		/// </summary>
+		[JsonPropertyName("d2_low_priority")]
+		public D2LowPriority? D2LowPriority { get; init; }
+		/// <summary>
+		/// Dota 2 ranked matchmaking unlocked.
+		/// </summary>
+		[JsonPropertyName("d2_ranked")]
+		public D2Ranked? D2Ranked { get; init; }
+		/// <summary>
+		/// Minimum total spend amount.
+		/// </summary>
+		[JsonPropertyName("spend_min")]
+		public long? SpendMin { get; init; }
+		/// <summary>
+		/// Maximum total spend amount.
+		/// </summary>
+		[JsonPropertyName("spend_max")]
+		public long? SpendMax { get; init; }
+		/// <summary>
+		/// Has access to VacNet labeling portal.
+		/// </summary>
+		[JsonPropertyName("vacnet")]
+		public Vacnet? Vacnet { get; init; }
+		/// <summary>
+		/// Minimum Dota 2 comm score.
+		/// </summary>
+		[JsonPropertyName("d2_comm_score_min")]
+		public long? D2CommScoreMin { get; init; }
+		/// <summary>
+		/// Maximum Dota 2 comm score.
+		/// </summary>
+		[JsonPropertyName("d2_comm_score_max")]
+		public long? D2CommScoreMax { get; init; }
 	}
 
 	public sealed record CategorySteamResponse(
@@ -2624,12 +2664,12 @@ public sealed record CategorySteamResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -2984,12 +3024,12 @@ public sealed record CategorySteamResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry2>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry2>? NotCountry { get; init; }
 		/// <summary>
 		/// STW edition.
 		/// </summary>
@@ -3000,6 +3040,16 @@ public sealed record CategorySteamResponseItems(
 		/// </summary>
 		[JsonPropertyName("not_stw[]")]
 		public List<NotStw>? NotStw { get; init; }
+		/// <summary>
+		/// Minimum number of friends.
+		/// </summary>
+		[JsonPropertyName("friends_min")]
+		public long? FriendsMin { get; init; }
+		/// <summary>
+		/// Maximum number of friends.
+		/// </summary>
+		[JsonPropertyName("friends_max")]
+		public long? FriendsMax { get; init; }
 	}
 
 	public sealed record CategoryFortniteResponse(
@@ -4517,12 +4567,12 @@ public sealed record CategoryFortniteResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -4918,6 +4968,11 @@ public sealed record CategoryFortniteResponseItems(
 		/// </summary>
 		[JsonPropertyName("daybreak")]
 		public long? Daybreak { get; init; }
+		/// <summary>
+		/// List of miHoYo games the account must have.
+		/// </summary>
+		[JsonPropertyName("mihoyo_game[]")]
+		public List<MihoyoGame>? MihoyoGame { get; init; }
 	}
 
 	public sealed record CategoryMihoyoResponse(
@@ -7378,12 +7433,12 @@ public sealed record CategoryMihoyoResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -7488,32 +7543,32 @@ public sealed record CategoryMihoyoResponseItems(
 		/// Minimum valorant rank.
 		/// </summary>
 		[JsonPropertyName("rmin")]
-		public long? Rmin { get; init; }
+		public Rmin? Rmin { get; init; }
 		/// <summary>
 		/// Maximum valorant rank.
 		/// </summary>
 		[JsonPropertyName("rmax")]
-		public long? Rmax { get; init; }
+		public Rmax? Rmax { get; init; }
 		/// <summary>
 		/// Last minimum valorant rank.
 		/// </summary>
 		[JsonPropertyName("last_rmin")]
-		public long? LastRmin { get; init; }
+		public LastRmin? LastRmin { get; init; }
 		/// <summary>
 		/// Last maximum valorant rank.
 		/// </summary>
 		[JsonPropertyName("last_rmax")]
-		public long? LastRmax { get; init; }
+		public LastRmax? LastRmax { get; init; }
 		/// <summary>
 		/// Previous minimum rank.
 		/// </summary>
 		[JsonPropertyName("previous_rmin")]
-		public long? PreviousRmin { get; init; }
+		public PreviousRmin? PreviousRmin { get; init; }
 		/// <summary>
 		/// Previous maximum rank.
 		/// </summary>
 		[JsonPropertyName("previous_rmax")]
-		public long? PreviousRmax { get; init; }
+		public PreviousRmax? PreviousRmax { get; init; }
 		/// <summary>
 		/// List of weapon skins.
 		/// </summary>
@@ -7543,12 +7598,12 @@ public sealed record CategoryMihoyoResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry3>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry3>? NotCountry { get; init; }
 		/// <summary>
 		/// Number of days the account has been offline.
 		/// </summary>
@@ -7623,22 +7678,22 @@ public sealed record CategoryMihoyoResponseItems(
 		/// List of allowed regions in Valorant.
 		/// </summary>
 		[JsonPropertyName("valorant_region[]")]
-		public List<string>? ValorantRegion { get; init; }
+		public List<ValorantRegion>? ValorantRegion { get; init; }
 		/// <summary>
 		/// List of disallowed regions in Valorant.
 		/// </summary>
 		[JsonPropertyName("valorant_not_region[]")]
-		public List<string>? ValorantNotRegion { get; init; }
+		public List<ValorantNotRegion>? ValorantNotRegion { get; init; }
 		/// <summary>
 		/// List of allowed regions in LoL.
 		/// </summary>
 		[JsonPropertyName("lol_region[]")]
-		public List<string>? LolRegion { get; init; }
+		public List<LolRegion>? LolRegion { get; init; }
 		/// <summary>
 		/// List of disallowed regions in LoL.
 		/// </summary>
 		[JsonPropertyName("lol_not_region[]")]
-		public List<string>? LolNotRegion { get; init; }
+		public List<LolNotRegion>? LolNotRegion { get; init; }
 		/// <summary>
 		/// Has any knife.
 		/// </summary>
@@ -7759,6 +7814,11 @@ public sealed record CategoryMihoyoResponseItems(
 		/// </summary>
 		[JsonPropertyName("lol_rank[]")]
 		public List<LolRank>? LolRank { get; init; }
+		/// <summary>
+		/// List of Riot games the account must have.
+		/// </summary>
+		[JsonPropertyName("riot_game[]")]
+		public List<RiotGame>? RiotGame { get; init; }
 	}
 
 	public sealed record CategoryRiotResponse(
@@ -9001,12 +9061,12 @@ public sealed record CategoryRiotResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -9126,12 +9186,12 @@ public sealed record CategoryRiotResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Number of days the account has been offline.
 		/// </summary>
@@ -9337,6 +9397,46 @@ public sealed record CategoryRiotResponseItems(
 		/// </summary>
 		[JsonPropertyName("max_stars_rating_level")]
 		public long? MaxStarsRatingLevel { get; init; }
+		/// <summary>
+		/// Minimum number of Telegram GRAM.
+		/// </summary>
+		[JsonPropertyName("min_gram")]
+		public long? MinGram { get; init; }
+		/// <summary>
+		/// Maximum number of Telegram GRAM.
+		/// </summary>
+		[JsonPropertyName("max_gram")]
+		public long? MaxGram { get; init; }
+		/// <summary>
+		/// Minimum number of Telegram rare (not upgraded) gifts on account.
+		/// </summary>
+		[JsonPropertyName("min_rare_gifts")]
+		public long? MinRareGifts { get; init; }
+		/// <summary>
+		/// Maximum number of Telegram rare (not upgraded) gifts on account.
+		/// </summary>
+		[JsonPropertyName("max_rare_gifts")]
+		public long? MaxRareGifts { get; init; }
+		/// <summary>
+		/// Minimum number of authorizations.
+		/// </summary>
+		[JsonPropertyName("min_authorizations")]
+		public long? MinAuthorizations { get; init; }
+		/// <summary>
+		/// Maximum number of authorizations.
+		/// </summary>
+		[JsonPropertyName("max_authorizations")]
+		public long? MaxAuthorizations { get; init; }
+		/// <summary>
+		/// Session was created X time before.
+		/// </summary>
+		[JsonPropertyName("session_age")]
+		public long? SessionAge { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
+		[JsonPropertyName("session_age_period")]
+		public SessionAgePeriod? SessionAgePeriod { get; init; }
 	}
 
 	public sealed record CategoryTelegramResponse(
@@ -10247,12 +10347,12 @@ public sealed record CategoryTelegramResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -10693,6 +10793,61 @@ public sealed record CategoryTelegramResponseItems(
 		/// </summary>
 		[JsonPropertyName("royale_league_number_max")]
 		public long? RoyaleLeagueNumberMax { get; init; }
+		/// <summary>
+		/// List of Supercell games the account must have.
+		/// </summary>
+		[JsonPropertyName("supercell_game[]")]
+		public List<SupercellGame>? SupercellGame { get; init; }
+		/// <summary>
+		/// Minimum number of primes (prestiges) on the account.
+		/// </summary>
+		[JsonPropertyName("prime_count_min")]
+		public long? PrimeCountMin { get; init; }
+		/// <summary>
+		/// Maximum number of primes (prestiges) on the account.
+		/// </summary>
+		[JsonPropertyName("prime_count_max")]
+		public long? PrimeCountMax { get; init; }
+		/// <summary>
+		/// Minimum Collection Level in Clash Royale.
+		/// </summary>
+		[JsonPropertyName("royale_collection_level_min")]
+		public long? RoyaleCollectionLevelMin { get; init; }
+		/// <summary>
+		/// Maximum Collection Level in Clash Royale.
+		/// </summary>
+		[JsonPropertyName("royale_collection_level_max")]
+		public long? RoyaleCollectionLevelMax { get; init; }
+		/// <summary>
+		/// Minimum current ranked tier in Brawl Stars (1 = Bronze I, 21 = Masters III).
+		/// </summary>
+		[JsonPropertyName("brawl_ranked_min")]
+		public long? BrawlRankedMin { get; init; }
+		/// <summary>
+		/// Maximum current ranked tier in Brawl Stars (1 = Bronze I, 21 = Masters III).
+		/// </summary>
+		[JsonPropertyName("brawl_ranked_max")]
+		public long? BrawlRankedMax { get; init; }
+		/// <summary>
+		/// Minimum highest ranked tier in Brawl Stars (1 = Bronze I, 21 = Masters III).
+		/// </summary>
+		[JsonPropertyName("brawl_highest_ranked_min")]
+		public long? BrawlHighestRankedMin { get; init; }
+		/// <summary>
+		/// Maximum highest ranked tier in Brawl Stars (1 = Bronze I, 21 = Masters III).
+		/// </summary>
+		[JsonPropertyName("brawl_highest_ranked_max")]
+		public long? BrawlHighestRankedMax { get; init; }
+		/// <summary>
+		/// Minimum fame (glory) level in Brawl Stars (1-24).
+		/// </summary>
+		[JsonPropertyName("brawl_fame_level_min")]
+		public long? BrawlFameLevelMin { get; init; }
+		/// <summary>
+		/// Maximum fame (glory) level in Brawl Stars (1-24).
+		/// </summary>
+		[JsonPropertyName("brawl_fame_level_max")]
+		public long? BrawlFameLevelMax { get; init; }
 	}
 
 	public sealed record CategorySupercellResponse(
@@ -11717,12 +11872,12 @@ public sealed record CategorySupercellResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -11832,12 +11987,12 @@ public sealed record CategorySupercellResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Minimum count of games.
 		/// </summary>
@@ -11852,12 +12007,12 @@ public sealed record CategorySupercellResponseItems(
 		/// Minimum rank points in Apex Legends.
 		/// </summary>
 		[JsonPropertyName("al_rank_min")]
-		public long? AlRankMin { get; init; }
+		public AlRankMin? AlRankMin { get; init; }
 		/// <summary>
 		/// Maximum rank points in Apex Legends.
 		/// </summary>
 		[JsonPropertyName("al_rank_max")]
-		public long? AlRankMax { get; init; }
+		public AlRankMax? AlRankMax { get; init; }
 		/// <summary>
 		/// Minimum level in Apex Legends.
 		/// </summary>
@@ -12949,12 +13104,12 @@ public sealed record CategoryEaResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -13204,12 +13359,12 @@ public sealed record CategoryEaResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Minimum number of members in clan.
 		/// </summary>
@@ -15432,12 +15587,12 @@ public sealed record CategoryWotResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -15687,12 +15842,12 @@ public sealed record CategoryWotResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Minimum number of members in clan.
 		/// </summary>
@@ -35156,12 +35311,12 @@ public sealed record CategoryWotBlitzResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -36028,12 +36183,12 @@ public sealed record CategoryGiftsResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -36188,12 +36343,12 @@ public sealed record CategoryGiftsResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Number of days the account has been offline.
 		/// </summary>
@@ -37338,12 +37493,12 @@ public sealed record CategoryEpicGamesResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -37489,6 +37644,106 @@ public sealed record CategoryEpicGamesResponseItems(
 		/// </summary>
 		[JsonPropertyName("sc[]")]
 		public List<Sc>? Sc { get; init; }
+		/// <summary>
+		/// Has Alpha armband.
+		/// </summary>
+		[JsonPropertyName("alpha_armband")]
+		public AlphaArmband? AlphaArmband { get; init; }
+		/// <summary>
+		/// Minimum hours in game.
+		/// </summary>
+		[JsonPropertyName("hours_min")]
+		public long? HoursMin { get; init; }
+		/// <summary>
+		/// Maximum hours in game.
+		/// </summary>
+		[JsonPropertyName("hours_max")]
+		public long? HoursMax { get; init; }
+		/// <summary>
+		/// Minimum stash value (rubles).
+		/// </summary>
+		[JsonPropertyName("stash_min")]
+		public long? StashMin { get; init; }
+		/// <summary>
+		/// Maximum stash value (rubles).
+		/// </summary>
+		[JsonPropertyName("stash_max")]
+		public long? StashMax { get; init; }
+		/// <summary>
+		/// Minimum prestige level.
+		/// </summary>
+		[JsonPropertyName("prestige_min")]
+		public long? PrestigeMin { get; init; }
+		/// <summary>
+		/// Maximum prestige level.
+		/// </summary>
+		[JsonPropertyName("prestige_max")]
+		public long? PrestigeMax { get; init; }
+		/// <summary>
+		/// Minimum K/D.
+		/// </summary>
+		[JsonPropertyName("kd_min")]
+		public long? KdMin { get; init; }
+		/// <summary>
+		/// Maximum K/D.
+		/// </summary>
+		[JsonPropertyName("kd_max")]
+		public long? KdMax { get; init; }
+		/// <summary>
+		/// Raided within the last period.
+		/// </summary>
+		[JsonPropertyName("last_raid")]
+		public long? LastRaid { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
+		[JsonPropertyName("last_raid_period")]
+		public LastRaidPeriod? LastRaidPeriod { get; init; }
+		/// <summary>
+		/// Owned legendary achievements (all must be present).
+		/// </summary>
+		[JsonPropertyName("achievements[]")]
+		public List<Achievements>? Achievements { get; init; }
+		/// <summary>
+		/// Minimum season level.
+		/// </summary>
+		[JsonPropertyName("season_level_min")]
+		public long? SeasonLevelMin { get; init; }
+		/// <summary>
+		/// Maximum season level.
+		/// </summary>
+		[JsonPropertyName("season_level_max")]
+		public long? SeasonLevelMax { get; init; }
+		/// <summary>
+		/// Minimum season prestige level.
+		/// </summary>
+		[JsonPropertyName("season_prestige_min")]
+		public long? SeasonPrestigeMin { get; init; }
+		/// <summary>
+		/// Maximum season prestige level.
+		/// </summary>
+		[JsonPropertyName("season_prestige_max")]
+		public long? SeasonPrestigeMax { get; init; }
+		/// <summary>
+		/// Minimum PvE level.
+		/// </summary>
+		[JsonPropertyName("pve_level_min")]
+		public long? PveLevelMin { get; init; }
+		/// <summary>
+		/// Maximum PvE level.
+		/// </summary>
+		[JsonPropertyName("pve_level_max")]
+		public long? PveLevelMax { get; init; }
+		/// <summary>
+		/// Minimum PvE prestige level.
+		/// </summary>
+		[JsonPropertyName("pve_prestige_min")]
+		public long? PvePrestigeMin { get; init; }
+		/// <summary>
+		/// Maximum PvE prestige level.
+		/// </summary>
+		[JsonPropertyName("pve_prestige_max")]
+		public long? PvePrestigeMax { get; init; }
 	}
 
 	public sealed record CategoryEscapeFromTarkovResponse(
@@ -38404,12 +38659,12 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -39480,12 +39735,12 @@ public sealed record CategorySocialClubResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -39595,12 +39850,12 @@ public sealed record CategorySocialClubResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Number of days the account has been offline.
 		/// </summary>
@@ -39645,12 +39900,12 @@ public sealed record CategorySocialClubResponseItems(
 		/// Minimum rank points in Tom Clancy's Rainbow Six Siege.
 		/// </summary>
 		[JsonPropertyName("r6_rank_min")]
-		public long? R6RankMin { get; init; }
+		public R6RankMin? R6RankMin { get; init; }
 		/// <summary>
 		/// Maximum rank points in Tom Clancy's Rainbow Six Siege.
 		/// </summary>
 		[JsonPropertyName("r6_rank_max")]
-		public long? R6RankMax { get; init; }
+		public R6RankMax? R6RankMax { get; init; }
 		/// <summary>
 		/// Minimum count of operators in Tom Clancy's Rainbow Six Siege.
 		/// </summary>
@@ -40834,12 +41089,12 @@ public sealed record CategoryUplayResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -41044,12 +41299,12 @@ public sealed record CategoryUplayResponseItems(
 		/// List of languages.
 		/// </summary>
 		[JsonPropertyName("language[]")]
-		public List<string>? Language { get; init; }
+		public List<Language>? Language { get; init; }
 		/// <summary>
 		/// List of languages that won't be included.
 		/// </summary>
 		[JsonPropertyName("not_language[]")]
-		public List<string>? NotLanguage { get; init; }
+		public List<NotLanguage>? NotLanguage { get; init; }
 		/// <summary>
 		/// Has clans.
 		/// </summary>
@@ -41079,12 +41334,12 @@ public sealed record CategoryUplayResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry4>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry4>? NotCountry { get; init; }
 		/// <summary>
 		/// Minimum count of servers.
 		/// </summary>
@@ -42010,12 +42265,12 @@ public sealed record CategoryDiscordResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -43134,12 +43389,12 @@ public sealed record CategoryTikTokResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -43249,12 +43504,12 @@ public sealed record CategoryTikTokResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Login by cookies.
 		/// </summary>
@@ -44170,12 +44425,12 @@ public sealed record CategoryInstagramResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -44295,12 +44550,12 @@ public sealed record CategoryInstagramResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry>? NotCountry { get; init; }
 		/// <summary>
 		/// Has linked mobile.
 		/// </summary>
@@ -45473,7 +45728,7 @@ public sealed record CategoryBattleNetResponseItems(
 	}
 }
 
-	public sealed record CategoryChatGPTParams
+	public sealed record CategoryLlmParams
 	{
 		/// <summary>
 		/// The number of the page to display results from.
@@ -45484,12 +45739,12 @@ public sealed record CategoryBattleNetResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -45611,11 +45866,6 @@ public sealed record CategoryBattleNetResponseItems(
 		[JsonPropertyName("autorenewal")]
 		public Autorenewal? Autorenewal { get; init; }
 		/// <summary>
-		/// Has linked mobile.
-		/// </summary>
-		[JsonPropertyName("tel")]
-		public Tel? Tel { get; init; }
-		/// <summary>
 		/// Has transactions.
 		/// </summary>
 		[JsonPropertyName("transactions")]
@@ -45630,10 +45880,60 @@ public sealed record CategoryBattleNetResponseItems(
 		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+		/// <summary>
+		/// List of allowed LLM services.
+		/// </summary>
+		[JsonPropertyName("service[]")]
+		public List<CategoryService>? Service { get; init; }
+		/// <summary>
+		/// List of excluded LLM services.
+		/// </summary>
+		[JsonPropertyName("not_service[]")]
+		public List<NotService>? NotService { get; init; }
+		/// <summary>
+		/// KYC verified.
+		/// </summary>
+		[JsonPropertyName("kyc_verified")]
+		public KycVerified? KycVerified { get; init; }
+		/// <summary>
+		/// Has phone number.
+		/// </summary>
+		[JsonPropertyName("tel")]
+		public Tel? Tel { get; init; }
+		/// <summary>
+		/// Login by cookies.
+		/// </summary>
+		[JsonPropertyName("cookies")]
+		public Cookies? Cookies { get; init; }
+		/// <summary>
+		/// Min API usage percent.
+		/// </summary>
+		[JsonPropertyName("usage_percent_min")]
+		public long? UsagePercentMin { get; init; }
+		/// <summary>
+		/// Max API usage percent.
+		/// </summary>
+		[JsonPropertyName("usage_percent_max")]
+		public long? UsagePercentMax { get; init; }
+		/// <summary>
+		/// Minimum prepaid balance.
+		/// </summary>
+		[JsonPropertyName("balance_min")]
+		public long? BalanceMin { get; init; }
+		/// <summary>
+		/// Maximum prepaid balance.
+		/// </summary>
+		[JsonPropertyName("balance_max")]
+		public long? BalanceMax { get; init; }
+		/// <summary>
+		/// Has payment method.
+		/// </summary>
+		[JsonPropertyName("has_payment_method")]
+		public HasPaymentMethod? HasPaymentMethod { get; init; }
 	}
 
-	public sealed record CategoryChatGPTResponse(
-		[property: JsonPropertyName("items")] List<CategoryChatGPTResponseItems> Items,
+	public sealed record CategoryLlmResponse(
+		[property: JsonPropertyName("items")] List<CategoryLlmResponseItems> Items,
 		[property: JsonPropertyName("totalItems")] long TotalItems,
 		[property: JsonPropertyName("totalItemsPrice")] JsonElement TotalItemsPrice,
 		[property: JsonPropertyName("hasNextPage")] bool HasNextPage,
@@ -45650,16 +45950,16 @@ public sealed record CategoryBattleNetResponseItems(
 	{
 
 		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-		public static CategoryChatGPTResponse ReadFrom(ReadOnlyMemory<byte> json)
+		public static CategoryLlmResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
 			reader.Read(); // advance to StartObject
 			return ReadFromReader(ref reader);
 		}
 
-		internal static CategoryChatGPTResponse ReadFromReader(ref Utf8JsonReader reader)
+		internal static CategoryLlmResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			List<CategoryChatGPTResponseItems> v0 = null!;
+			List<CategoryLlmResponseItems> v0 = null!;
 			long v1 = default;
 			JsonElement v2 = default;
 			bool v3 = default;
@@ -45681,10 +45981,10 @@ public sealed record CategoryBattleNetResponseItems(
 					reader.Read();
 					if (reader.TokenType == JsonTokenType.StartArray)
 					{
-						var __lst = new List<CategoryChatGPTResponseItems>();
+						var __lst = new List<CategoryLlmResponseItems>();
 						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 						{
-							var __item = CategoryChatGPTResponseItems.ReadFromReader(ref reader);
+							var __item = CategoryLlmResponseItems.ReadFromReader(ref reader);
 							__lst.Add(__item);
 						}
 						v0 = __lst;
@@ -45765,24 +46065,24 @@ public sealed record CategoryBattleNetResponseItems(
 					reader.Skip();
 				}
 			}
-			return new CategoryChatGPTResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
+			return new CategoryLlmResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
 		}
 	}
 
-public sealed record CategoryChatGPTResponseItemsCopyFormatData(
+public sealed record CategoryLlmResponseItemsCopyFormatData(
 	[property: JsonPropertyName("title_link")] string TitleLink
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static CategoryChatGPTResponseItemsCopyFormatData ReadFrom(ReadOnlyMemory<byte> json)
+	public static CategoryLlmResponseItemsCopyFormatData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static CategoryChatGPTResponseItemsCopyFormatData ReadFromReader(ref Utf8JsonReader reader)
+	internal static CategoryLlmResponseItemsCopyFormatData ReadFromReader(ref Utf8JsonReader reader)
 	{
 		string v0 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
@@ -45800,11 +46100,11 @@ public sealed record CategoryChatGPTResponseItemsCopyFormatData(
 				reader.Skip();
 			}
 		}
-		return new CategoryChatGPTResponseItemsCopyFormatData(v0);
+		return new CategoryLlmResponseItemsCopyFormatData(v0);
 	}
 }
 
-public sealed record CategoryChatGPTResponseItemsBumpSettings(
+public sealed record CategoryLlmResponseItemsBumpSettings(
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBumpItemGlobally")] bool CanBumpItemGlobally,
 	[property: JsonPropertyName("shortErrorPhrase")] JsonElement ShortErrorPhrase,
@@ -45813,14 +46113,14 @@ public sealed record CategoryChatGPTResponseItemsBumpSettings(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static CategoryChatGPTResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
+	public static CategoryLlmResponseItemsBumpSettings ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static CategoryChatGPTResponseItemsBumpSettings ReadFromReader(ref Utf8JsonReader reader)
+	internal static CategoryLlmResponseItemsBumpSettings ReadFromReader(ref Utf8JsonReader reader)
 	{
 		bool v0 = default;
 		bool v1 = default;
@@ -45856,11 +46156,11 @@ public sealed record CategoryChatGPTResponseItemsBumpSettings(
 				reader.Skip();
 			}
 		}
-		return new CategoryChatGPTResponseItemsBumpSettings(v0, v1, v2, v3);
+		return new CategoryLlmResponseItemsBumpSettings(v0, v1, v2, v3);
 	}
 }
 
-public sealed record CategoryChatGPTResponseItemsSeller(
+public sealed record CategoryLlmResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -45874,14 +46174,14 @@ public sealed record CategoryChatGPTResponseItemsSeller(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static CategoryChatGPTResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
+	public static CategoryLlmResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static CategoryChatGPTResponseItemsSeller ReadFromReader(ref Utf8JsonReader reader)
+	internal static CategoryLlmResponseItemsSeller ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		long v1 = default;
@@ -45947,11 +46247,11 @@ public sealed record CategoryChatGPTResponseItemsSeller(
 				reader.Skip();
 			}
 		}
-		return new CategoryChatGPTResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+		return new CategoryLlmResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-public sealed record CategoryChatGPTResponseItems(
+public sealed record CategoryLlmResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -45990,7 +46290,7 @@ public sealed record CategoryChatGPTResponseItems(
 	[property: JsonPropertyName("canReportItem")] bool CanReportItem,
 	[property: JsonPropertyName("canViewItemViews")] bool CanViewItemViews,
 	[property: JsonPropertyName("canViewEmailLoginData")] bool CanViewEmailLoginData,
-	[property: JsonPropertyName("copyFormatData")] CategoryChatGPTResponseItemsCopyFormatData CopyFormatData,
+	[property: JsonPropertyName("copyFormatData")] CategoryLlmResponseItemsCopyFormatData CopyFormatData,
 	[property: JsonPropertyName("showGetEmailCodeButton")] bool ShowGetEmailCodeButton,
 	[property: JsonPropertyName("canOpenItem")] bool CanOpenItem,
 	[property: JsonPropertyName("canCloseItem")] bool CanCloseItem,
@@ -45998,7 +46298,7 @@ public sealed record CategoryChatGPTResponseItems(
 	[property: JsonPropertyName("canDeleteItem")] bool CanDeleteItem,
 	[property: JsonPropertyName("canStickItem")] bool CanStickItem,
 	[property: JsonPropertyName("canUnstickItem")] bool CanUnstickItem,
-	[property: JsonPropertyName("bumpSettings")] CategoryChatGPTResponseItemsBumpSettings BumpSettings,
+	[property: JsonPropertyName("bumpSettings")] CategoryLlmResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("isPersonalAccount")] bool IsPersonalAccount,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
@@ -46021,19 +46321,19 @@ public sealed record CategoryChatGPTResponseItems(
 	[property: JsonPropertyName("descriptionEnHtml")] string DescriptionEnHtml,
 	[property: JsonPropertyName("descriptionPlain")] string DescriptionPlain,
 	[property: JsonPropertyName("descriptionEnPlain")] string DescriptionEnPlain,
-	[property: JsonPropertyName("seller")] CategoryChatGPTResponseItemsSeller Seller
+	[property: JsonPropertyName("seller")] CategoryLlmResponseItemsSeller Seller
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static CategoryChatGPTResponseItems ReadFrom(ReadOnlyMemory<byte> json)
+	public static CategoryLlmResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static CategoryChatGPTResponseItems ReadFromReader(ref Utf8JsonReader reader)
+	internal static CategoryLlmResponseItems ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		string v1 = null!;
@@ -46073,7 +46373,7 @@ public sealed record CategoryChatGPTResponseItems(
 		bool v35 = default;
 		bool v36 = default;
 		bool v37 = default;
-		CategoryChatGPTResponseItemsCopyFormatData v38 = null!;
+		CategoryLlmResponseItemsCopyFormatData v38 = null!;
 		bool v39 = default;
 		bool v40 = default;
 		bool v41 = default;
@@ -46081,7 +46381,7 @@ public sealed record CategoryChatGPTResponseItems(
 		bool v43 = default;
 		bool v44 = default;
 		bool v45 = default;
-		CategoryChatGPTResponseItemsBumpSettings v46 = null!;
+		CategoryLlmResponseItemsBumpSettings v46 = null!;
 		bool v47 = default;
 		bool v48 = default;
 		bool v49 = default;
@@ -46104,7 +46404,7 @@ public sealed record CategoryChatGPTResponseItems(
 		string v66 = null!;
 		string v67 = null!;
 		string v68 = null!;
-		CategoryChatGPTResponseItemsSeller v69 = null!;
+		CategoryLlmResponseItemsSeller v69 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -46302,7 +46602,7 @@ public sealed record CategoryChatGPTResponseItems(
 			else if (reader.ValueTextEquals("copyFormatData"u8))
 			{
 				reader.Read();
-				v38 = reader.TokenType == JsonTokenType.Null ? null! : CategoryChatGPTResponseItemsCopyFormatData.ReadFromReader(ref reader);
+				v38 = reader.TokenType == JsonTokenType.Null ? null! : CategoryLlmResponseItemsCopyFormatData.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("showGetEmailCodeButton"u8))
 			{
@@ -46342,7 +46642,7 @@ public sealed record CategoryChatGPTResponseItems(
 			else if (reader.ValueTextEquals("bumpSettings"u8))
 			{
 				reader.Read();
-				v46 = reader.TokenType == JsonTokenType.Null ? null! : CategoryChatGPTResponseItemsBumpSettings.ReadFromReader(ref reader);
+				v46 = reader.TokenType == JsonTokenType.Null ? null! : CategoryLlmResponseItemsBumpSettings.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("isPersonalAccount"u8))
 			{
@@ -46466,7 +46766,7 @@ public sealed record CategoryChatGPTResponseItems(
 			else if (reader.ValueTextEquals("seller"u8))
 			{
 				reader.Read();
-				v69 = reader.TokenType == JsonTokenType.Null ? null! : CategoryChatGPTResponseItemsSeller.ReadFromReader(ref reader);
+				v69 = reader.TokenType == JsonTokenType.Null ? null! : CategoryLlmResponseItemsSeller.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -46474,7 +46774,7 @@ public sealed record CategoryChatGPTResponseItems(
 				reader.Skip();
 			}
 		}
-		return new CategoryChatGPTResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69);
+		return new CategoryLlmResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69);
 	}
 }
 
@@ -46489,12 +46789,12 @@ public sealed record CategoryChatGPTResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -46589,7 +46889,7 @@ public sealed record CategoryChatGPTResponseItems(
 		/// List of allowed VPN services.
 		/// </summary>
 		[JsonPropertyName("service[]")]
-		public List<Service>? Service { get; init; }
+		public List<CategoryService2>? Service { get; init; }
 		/// <summary>
 		/// Length of subscription.
 		/// </summary>
@@ -47373,12 +47673,12 @@ public sealed record CategoryVpnResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -47508,12 +47808,12 @@ public sealed record CategoryVpnResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country")]
-		public List<string>? Country { get; init; }
+		public Country? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country")]
-		public List<string>? NotCountry { get; init; }
+		public NotCountry? NotCountry { get; init; }
 		/// <summary>
 		/// How old is the account.
 		/// </summary>
@@ -47648,17 +47948,17 @@ public sealed record CategoryVpnResponseItems(
 		/// List of allowed age groups.
 		/// </summary>
 		[JsonPropertyName("age_group[]")]
-		public List<string>? AgeGroup { get; init; }
+		public List<AgeGroup>? AgeGroup { get; init; }
 		/// <summary>
 		/// List of disallowed age groups.
 		/// </summary>
 		[JsonPropertyName("not_age_group[]")]
-		public List<string>? NotAgeGroup { get; init; }
+		public List<NotAgeGroup>? NotAgeGroup { get; init; }
 		/// <summary>
 		/// Has donations in specific game(s) by place_id.
 		/// </summary>
 		[JsonPropertyName("game_donation[]")]
-		public List<string>? GameDonation { get; init; }
+		public List<GameDonation>? GameDonation { get; init; }
 		/// <summary>
 		/// Minimum R$ donated per game (keyed by place_id).
 		/// </summary>
@@ -47669,6 +47969,26 @@ public sealed record CategoryVpnResponseItems(
 		/// </summary>
 		[JsonPropertyName("donation_total_max")]
 		public Dictionary<string, long?>? DonationTotalMax { get; init; }
+		/// <summary>
+		/// Minimum pending robux.
+		/// </summary>
+		[JsonPropertyName("pending_robux_min")]
+		public long? PendingRobuxMin { get; init; }
+		/// <summary>
+		/// Maximum pending robux.
+		/// </summary>
+		[JsonPropertyName("pending_robux_max")]
+		public long? PendingRobuxMax { get; init; }
+		/// <summary>
+		/// Minimum pending robux across owned groups.
+		/// </summary>
+		[JsonPropertyName("group_pending_robux_min")]
+		public long? GroupPendingRobuxMin { get; init; }
+		/// <summary>
+		/// Maximum pending robux across owned groups.
+		/// </summary>
+		[JsonPropertyName("group_pending_robux_max")]
+		public long? GroupPendingRobuxMax { get; init; }
 	}
 
 	public sealed record CategoryRobloxResponse(
@@ -48786,12 +49106,12 @@ public sealed record CategoryRobloxResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -49835,12 +50155,12 @@ public sealed record CategoryWarfaceResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -49995,12 +50315,12 @@ public sealed record CategoryWarfaceResponseItems(
 		/// List of allowed countries.
 		/// </summary>
 		[JsonPropertyName("country[]")]
-		public List<string>? Country { get; init; }
+		public List<CategoryCountry5>? Country { get; init; }
 		/// <summary>
 		/// List of disallowed countries.
 		/// </summary>
 		[JsonPropertyName("not_country[]")]
-		public List<string>? NotCountry { get; init; }
+		public List<CategoryNotCountry5>? NotCountry { get; init; }
 		/// <summary>
 		/// Has active Hypixel ban.
 		/// </summary>
@@ -51095,12 +51415,12 @@ public sealed record CategoryMinecraftResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -52098,7 +52418,7 @@ public sealed record CategoryHytaleResponseItems(
 	}
 }
 
-	public sealed record CategoryCursorParams
+	public sealed record CategoryOnlyfansParams
 	{
 		/// <summary>
 		/// The number of the page to display results from.
@@ -52109,12 +52429,12 @@ public sealed record CategoryHytaleResponseItems(
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>
@@ -52206,29 +52526,94 @@ public sealed record CategoryHytaleResponseItems(
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
 		/// <summary>
-		/// Subscription plan.
+		/// List of subscribed creator ids.
 		/// </summary>
-		[JsonPropertyName("plan[]")]
-		public List<string>? Plan { get; init; }
+		[JsonPropertyName("creator[]")]
+		public List<string>? Creator { get; init; }
 		/// <summary>
-		/// Has linked payment method.
+		/// Minimum count of active paid subscriptions.
 		/// </summary>
-		[JsonPropertyName("has_payment_method")]
-		public HasPaymentMethod? HasPaymentMethod { get; init; }
+		[JsonPropertyName("subs_min")]
+		public long? SubsMin { get; init; }
 		/// <summary>
-		/// Minimum usage percent.
+		/// Maximum count of active paid subscriptions.
 		/// </summary>
-		[JsonPropertyName("usage_percent_min")]
-		public long? UsagePercentMin { get; init; }
+		[JsonPropertyName("subs_max")]
+		public long? SubsMax { get; init; }
 		/// <summary>
-		/// Maximum usage percent.
+		/// Minimum count of own subscribers.
 		/// </summary>
-		[JsonPropertyName("usage_percent_max")]
-		public long? UsagePercentMax { get; init; }
+		[JsonPropertyName("subscribers_min")]
+		public long? SubscribersMin { get; init; }
+		/// <summary>
+		/// Maximum count of own subscribers.
+		/// </summary>
+		[JsonPropertyName("subscribers_max")]
+		public long? SubscribersMax { get; init; }
+		/// <summary>
+		/// Minimum count of own posts.
+		/// </summary>
+		[JsonPropertyName("posts_min")]
+		public long? PostsMin { get; init; }
+		/// <summary>
+		/// Maximum count of own posts.
+		/// </summary>
+		[JsonPropertyName("posts_max")]
+		public long? PostsMax { get; init; }
+		/// <summary>
+		/// Minimum credit balance.
+		/// </summary>
+		[JsonPropertyName("balance_min")]
+		public long? BalanceMin { get; init; }
+		/// <summary>
+		/// Maximum credit balance.
+		/// </summary>
+		[JsonPropertyName("balance_max")]
+		public long? BalanceMax { get; init; }
+		/// <summary>
+		/// Identity verification passed.
+		/// </summary>
+		[JsonPropertyName("kyc_verified")]
+		public KycVerified? KycVerified { get; init; }
+		/// <summary>
+		/// Payout legal approve passed.
+		/// </summary>
+		[JsonPropertyName("payout_approved")]
+		public PayoutApproved? PayoutApproved { get; init; }
+		/// <summary>
+		/// Age verification passed.
+		/// </summary>
+		[JsonPropertyName("age_verified")]
+		public AgeVerified? AgeVerified { get; init; }
+		/// <summary>
+		/// Payment card verified.
+		/// </summary>
+		[JsonPropertyName("card_verified")]
+		public CardVerified? CardVerified { get; init; }
+		/// <summary>
+		/// Has payment card attached.
+		/// </summary>
+		[JsonPropertyName("has_card")]
+		public HasCard? HasCard { get; init; }
+		/// <summary>
+		/// Has transactions.
+		/// </summary>
+		[JsonPropertyName("transactions")]
+		public Transactions? Transactions { get; init; }
+		/// <summary>
+		/// How old is the account.
+		/// </summary>
+		[JsonPropertyName("reg")]
+		public long? Reg { get; init; }
+		/// <summary>
+		/// In what notation is time measured.
+		/// </summary>
+		[JsonPropertyName("reg_period")]
+		public RegPeriod? RegPeriod { get; init; }
 	}
 
-	public sealed record CategoryCursorResponse(
-		[property: JsonPropertyName("items")] List<CategoryCursorResponseItems> Items,
+	public sealed record CategoryOnlyfansResponse(
+		[property: JsonPropertyName("items")] List<CategoryOnlyfansResponseItems> Items,
 		[property: JsonPropertyName("totalItems")] long TotalItems,
 		[property: JsonPropertyName("totalItemsPrice")] JsonElement TotalItemsPrice,
 		[property: JsonPropertyName("hasNextPage")] bool HasNextPage,
@@ -52239,22 +52624,29 @@ public sealed record CategoryHytaleResponseItems(
 		[property: JsonPropertyName("lastModified")] long LastModified,
 		[property: JsonPropertyName("serverTime")] long ServerTime,
 		[property: JsonPropertyName("searchUrl")] string SearchUrl,
+		[property: JsonPropertyName("search")] string Search,
 		[property: JsonPropertyName("stickyItems")] List<JsonElement> StickyItems,
+		[property: JsonPropertyName("publishedPeriodLabelPhrase")] string PublishedPeriodLabelPhrase,
+		[property: JsonPropertyName("filterDatesDefault")] bool FilterDatesDefault,
+		[property: JsonPropertyName("published_startDate")] string PublishedStartDate,
+		[property: JsonPropertyName("published_endDate")] string PublishedEndDate,
+		[property: JsonPropertyName("filter_by_published_date")] bool FilterByPublishedDate,
+		[property: JsonPropertyName("published_period_label")] string PublishedPeriodLabel,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
 	{
 
 		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-		public static CategoryCursorResponse ReadFrom(ReadOnlyMemory<byte> json)
+		public static CategoryOnlyfansResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
 			reader.Read(); // advance to StartObject
 			return ReadFromReader(ref reader);
 		}
 
-		internal static CategoryCursorResponse ReadFromReader(ref Utf8JsonReader reader)
+		internal static CategoryOnlyfansResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			List<CategoryCursorResponseItems> v0 = null!;
+			List<CategoryOnlyfansResponseItems> v0 = null!;
 			long v1 = default;
 			JsonElement v2 = default;
 			bool v3 = default;
@@ -52265,8 +52657,15 @@ public sealed record CategoryHytaleResponseItems(
 			long v8 = default;
 			long v9 = default;
 			string v10 = null!;
-			List<JsonElement> v11 = null!;
-			Resp_SystemInfo v12 = null!;
+			string v11 = null!;
+			List<JsonElement> v12 = null!;
+			string v13 = null!;
+			bool v14 = default;
+			string v15 = null!;
+			string v16 = null!;
+			bool v17 = default;
+			string v18 = null!;
+			Resp_SystemInfo v19 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -52276,10 +52675,10 @@ public sealed record CategoryHytaleResponseItems(
 					reader.Read();
 					if (reader.TokenType == JsonTokenType.StartArray)
 					{
-						var __lst = new List<CategoryCursorResponseItems>();
+						var __lst = new List<CategoryOnlyfansResponseItems>();
 						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 						{
-							var __item = CategoryCursorResponseItems.ReadFromReader(ref reader);
+							var __item = CategoryOnlyfansResponseItems.ReadFromReader(ref reader);
 							__lst.Add(__item);
 						}
 						v0 = __lst;
@@ -52335,6 +52734,11 @@ public sealed record CategoryHytaleResponseItems(
 					reader.Read();
 					v10 = reader.GetString()!;
 				}
+				else if (reader.ValueTextEquals("search"u8))
+				{
+					reader.Read();
+					v11 = reader.GetString()!;
+				}
 				else if (reader.ValueTextEquals("stickyItems"u8))
 				{
 					reader.Read();
@@ -52346,13 +52750,43 @@ public sealed record CategoryHytaleResponseItems(
 							var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 							__lst.Add(__item);
 						}
-						v11 = __lst;
+						v12 = __lst;
 					}
+				}
+				else if (reader.ValueTextEquals("publishedPeriodLabelPhrase"u8))
+				{
+					reader.Read();
+					v13 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("filterDatesDefault"u8))
+				{
+					reader.Read();
+					v14 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("published_startDate"u8))
+				{
+					reader.Read();
+					v15 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("published_endDate"u8))
+				{
+					reader.Read();
+					v16 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("filter_by_published_date"u8))
+				{
+					reader.Read();
+					v17 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("published_period_label"u8))
+				{
+					reader.Read();
+					v18 = reader.GetString()!;
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v12 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v19 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -52360,11 +52794,11 @@ public sealed record CategoryHytaleResponseItems(
 					reader.Skip();
 				}
 			}
-			return new CategoryCursorResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12);
+			return new CategoryOnlyfansResponse(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19);
 		}
 	}
 
-public sealed record CategoryCursorResponseItemsCategory(
+public sealed record CategoryOnlyfansResponseItemsCategory(
 	[property: JsonPropertyName("category_id")] long CategoryId,
 	[property: JsonPropertyName("category_title")] string CategoryTitle,
 	[property: JsonPropertyName("category_name")] string CategoryName,
@@ -52373,14 +52807,14 @@ public sealed record CategoryCursorResponseItemsCategory(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static CategoryCursorResponseItemsCategory ReadFrom(ReadOnlyMemory<byte> json)
+	public static CategoryOnlyfansResponseItemsCategory ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static CategoryCursorResponseItemsCategory ReadFromReader(ref Utf8JsonReader reader)
+	internal static CategoryOnlyfansResponseItemsCategory ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		string v1 = null!;
@@ -52416,24 +52850,24 @@ public sealed record CategoryCursorResponseItemsCategory(
 				reader.Skip();
 			}
 		}
-		return new CategoryCursorResponseItemsCategory(v0, v1, v2, v3);
+		return new CategoryOnlyfansResponseItemsCategory(v0, v1, v2, v3);
 	}
 }
 
-public sealed record CategoryCursorResponseItemsCopyFormatData(
+public sealed record CategoryOnlyfansResponseItemsCopyFormatData(
 	[property: JsonPropertyName("title_link")] string TitleLink
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static CategoryCursorResponseItemsCopyFormatData ReadFrom(ReadOnlyMemory<byte> json)
+	public static CategoryOnlyfansResponseItemsCopyFormatData ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static CategoryCursorResponseItemsCopyFormatData ReadFromReader(ref Utf8JsonReader reader)
+	internal static CategoryOnlyfansResponseItemsCopyFormatData ReadFromReader(ref Utf8JsonReader reader)
 	{
 		string v0 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
@@ -52451,11 +52885,186 @@ public sealed record CategoryCursorResponseItemsCopyFormatData(
 				reader.Skip();
 			}
 		}
-		return new CategoryCursorResponseItemsCopyFormatData(v0);
+		return new CategoryOnlyfansResponseItemsCopyFormatData(v0);
 	}
 }
 
-public sealed record CategoryCursorResponseItemsSeller(
+public sealed record CategoryOnlyfansResponseItemsOnlyfansSubscriptions(
+	[property: JsonPropertyName("id")] long Id,
+	[property: JsonPropertyName("name")] string Name,
+	[property: JsonPropertyName("username")] string Username,
+	[property: JsonPropertyName("price")] double Price,
+	[property: JsonPropertyName("converted_price")] long ConvertedPrice,
+	[property: JsonPropertyName("expire_date")] long ExpireDate
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static CategoryOnlyfansResponseItemsOnlyfansSubscriptions ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static CategoryOnlyfansResponseItemsOnlyfansSubscriptions ReadFromReader(ref Utf8JsonReader reader)
+	{
+		long v0 = default;
+		string v1 = null!;
+		string v2 = null!;
+		double v3 = default;
+		long v4 = default;
+		long v5 = default;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("id"u8))
+			{
+				reader.Read();
+				v0 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("name"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("username"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("price"u8))
+			{
+				reader.Read();
+				v3 = reader.GetDouble();
+			}
+			else if (reader.ValueTextEquals("converted_price"u8))
+			{
+				reader.Read();
+				v4 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("expire_date"u8))
+			{
+				reader.Read();
+				v5 = reader.GetInt64();
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new CategoryOnlyfansResponseItemsOnlyfansSubscriptions(v0, v1, v2, v3, v4, v5);
+	}
+}
+
+public sealed record CategoryOnlyfansResponseItemsOnlyfansTransactions(
+	[property: JsonPropertyName("amount")] string Amount,
+	[property: JsonPropertyName("date")] long Date,
+	[property: JsonPropertyName("description")] string Description,
+	[property: JsonPropertyName("status")] string Status
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static CategoryOnlyfansResponseItemsOnlyfansTransactions ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static CategoryOnlyfansResponseItemsOnlyfansTransactions ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		long v1 = default;
+		string v2 = null!;
+		string v3 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("amount"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("date"u8))
+			{
+				reader.Read();
+				v1 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("description"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("status"u8))
+			{
+				reader.Read();
+				v3 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new CategoryOnlyfansResponseItemsOnlyfansTransactions(v0, v1, v2, v3);
+	}
+}
+
+public sealed record CategoryOnlyfansResponseItemsAccountLinks(
+	[property: JsonPropertyName("link")] string Link,
+	[property: JsonPropertyName("text")] string Text,
+	[property: JsonPropertyName("iconClass")] string IconClass
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static CategoryOnlyfansResponseItemsAccountLinks ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static CategoryOnlyfansResponseItemsAccountLinks ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		string v1 = null!;
+		string v2 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("link"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("text"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("iconClass"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new CategoryOnlyfansResponseItemsAccountLinks(v0, v1, v2);
+	}
+}
+
+public sealed record CategoryOnlyfansResponseItemsSeller(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
@@ -52469,14 +53078,14 @@ public sealed record CategoryCursorResponseItemsSeller(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static CategoryCursorResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
+	public static CategoryOnlyfansResponseItemsSeller ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static CategoryCursorResponseItemsSeller ReadFromReader(ref Utf8JsonReader reader)
+	internal static CategoryOnlyfansResponseItemsSeller ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		long v1 = default;
@@ -52542,11 +53151,11 @@ public sealed record CategoryCursorResponseItemsSeller(
 				reader.Skip();
 			}
 		}
-		return new CategoryCursorResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+		return new CategoryOnlyfansResponseItemsSeller(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-public sealed record CategoryCursorResponseItems(
+public sealed record CategoryOnlyfansResponseItems(
 	[property: JsonPropertyName("item_id")] long ItemId,
 	[property: JsonPropertyName("item_state")] string ItemState,
 	[property: JsonPropertyName("category_id")] long CategoryId,
@@ -52567,21 +53176,32 @@ public sealed record CategoryCursorResponseItems(
 	[property: JsonPropertyName("title_en")] string TitleEn,
 	[property: JsonPropertyName("description_en")] string DescriptionEn,
 	[property: JsonPropertyName("email_type")] string EmailType,
-	[property: JsonPropertyName("email_provider")] JsonElement EmailProvider,
+	[property: JsonPropertyName("email_provider")] string EmailProvider,
 	[property: JsonPropertyName("item_domain")] string ItemDomain,
 	[property: JsonPropertyName("resale_item_origin")] string ResaleItemOrigin,
 	[property: JsonPropertyName("auto_bump_period")] long AutoBumpPeriod,
 	[property: JsonPropertyName("guarantee_duration")] long GuaranteeDuration,
 	[property: JsonPropertyName("rub_price")] long RubPrice,
-	[property: JsonPropertyName("discount")] bool Discount,
-	[property: JsonPropertyName("cursor_item_id")] long CursorItemId,
-	[property: JsonPropertyName("cursor_plan")] string CursorPlan,
-	[property: JsonPropertyName("cursor_has_payment_method")] long CursorHasPaymentMethod,
-	[property: JsonPropertyName("cursor_usage_percent")] long CursorUsagePercent,
+	[property: JsonPropertyName("discount")] JsonElement Discount,
+	[property: JsonPropertyName("onlyfans_item_id")] long OnlyfansItemId,
+	[property: JsonPropertyName("onlyfans_id")] string OnlyfansId,
+	[property: JsonPropertyName("onlyfans_register_date")] long OnlyfansRegisterDate,
+	[property: JsonPropertyName("onlyfans_balance")] string OnlyfansBalance,
+	[property: JsonPropertyName("onlyfans_converted_balance")] long OnlyfansConvertedBalance,
+	[property: JsonPropertyName("onlyfans_subscribers_count")] long OnlyfansSubscribersCount,
+	[property: JsonPropertyName("onlyfans_posts_count")] long OnlyfansPostsCount,
+	[property: JsonPropertyName("onlyfans_active_subs_count")] long OnlyfansActiveSubsCount,
+	[property: JsonPropertyName("onlyfans_kyc_verified")] long OnlyfansKycVerified,
+	[property: JsonPropertyName("onlyfans_payout_approved")] long OnlyfansPayoutApproved,
+	[property: JsonPropertyName("onlyfans_age_verified")] long OnlyfansAgeVerified,
+	[property: JsonPropertyName("onlyfans_card_verified")] long OnlyfansCardVerified,
+	[property: JsonPropertyName("onlyfans_has_card")] long OnlyfansHasCard,
+	[property: JsonPropertyName("onlyfans_subscriptions")] string OnlyfansSubscriptions,
+	[property: JsonPropertyName("onlyfans_transactions")] string OnlyfansTransactions,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("max_discount_percent")] long MaxDiscountPercent,
 	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
-	[property: JsonPropertyName("category")] CategoryCursorResponseItemsCategory Category,
+	[property: JsonPropertyName("category")] CategoryOnlyfansResponseItemsCategory Category,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canViewTempEmail")] bool CanViewTempEmail,
@@ -52590,7 +53210,7 @@ public sealed record CategoryCursorResponseItems(
 	[property: JsonPropertyName("canViewItemViews")] bool CanViewItemViews,
 	[property: JsonPropertyName("canManagePublicTag")] bool CanManagePublicTag,
 	[property: JsonPropertyName("canViewEmailLoginData")] bool CanViewEmailLoginData,
-	[property: JsonPropertyName("copyFormatData")] CategoryCursorResponseItemsCopyFormatData CopyFormatData,
+	[property: JsonPropertyName("copyFormatData")] CategoryOnlyfansResponseItemsCopyFormatData CopyFormatData,
 	[property: JsonPropertyName("showGetEmailCodeButton")] bool ShowGetEmailCodeButton,
 	[property: JsonPropertyName("canOpenItem")] bool CanOpenItem,
 	[property: JsonPropertyName("canCloseItem")] bool CanCloseItem,
@@ -52607,11 +53227,15 @@ public sealed record CategoryCursorResponseItems(
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("priceWithSellerFeeLabel")] string PriceWithSellerFeeLabel,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
+	[property: JsonPropertyName("canChangeOwner")] bool CanChangeOwner,
 	[property: JsonPropertyName("canResellItem")] bool CanResellItem,
+	[property: JsonPropertyName("onlyfansSubscriptions")] List<CategoryOnlyfansResponseItemsOnlyfansSubscriptions> OnlyfansSubscriptions2,
+	[property: JsonPropertyName("onlyfansTransactions")] List<CategoryOnlyfansResponseItemsOnlyfansTransactions> OnlyfansTransactions2,
 	[property: JsonPropertyName("canViewAccountLink")] bool CanViewAccountLink,
-	[property: JsonPropertyName("accountLinks")] List<JsonElement> AccountLinks,
-	[property: JsonPropertyName("accountLink")] JsonElement AccountLink,
+	[property: JsonPropertyName("accountLinks")] List<CategoryOnlyfansResponseItemsAccountLinks> AccountLinks,
+	[property: JsonPropertyName("accountLink")] string AccountLink,
 	[property: JsonPropertyName("imagePreviewLinks")] List<JsonElement> ImagePreviewLinks,
+	[property: JsonPropertyName("emailLoginUrl")] string EmailLoginUrl,
 	[property: JsonPropertyName("canChangePassword")] bool CanChangePassword,
 	[property: JsonPropertyName("canChangeEmailPassword")] bool CanChangeEmailPassword,
 	[property: JsonPropertyName("uniqueKeyExists")] bool UniqueKeyExists,
@@ -52623,19 +53247,19 @@ public sealed record CategoryCursorResponseItems(
 	[property: JsonPropertyName("descriptionEnHtml")] string DescriptionEnHtml,
 	[property: JsonPropertyName("descriptionPlain")] string DescriptionPlain,
 	[property: JsonPropertyName("descriptionEnPlain")] string DescriptionEnPlain,
-	[property: JsonPropertyName("seller")] CategoryCursorResponseItemsSeller Seller
+	[property: JsonPropertyName("seller")] CategoryOnlyfansResponseItemsSeller Seller
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static CategoryCursorResponseItems ReadFrom(ReadOnlyMemory<byte> json)
+	public static CategoryOnlyfansResponseItems ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static CategoryCursorResponseItems ReadFromReader(ref Utf8JsonReader reader)
+	internal static CategoryOnlyfansResponseItems ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		string v1 = null!;
@@ -52657,63 +53281,78 @@ public sealed record CategoryCursorResponseItems(
 		string v17 = null!;
 		string v18 = null!;
 		string v19 = null!;
-		JsonElement v20 = default;
+		string v20 = null!;
 		string v21 = null!;
 		string v22 = null!;
 		long v23 = default;
 		long v24 = default;
 		long v25 = default;
-		bool v26 = default;
+		JsonElement v26 = default;
 		long v27 = default;
 		string v28 = null!;
 		long v29 = default;
-		long v30 = default;
-		string v31 = null!;
+		string v30 = null!;
+		long v31 = default;
 		long v32 = default;
-		double v33 = default;
-		CategoryCursorResponseItemsCategory v34 = null!;
-		JsonElement v35 = default;
-		bool v36 = default;
-		bool v37 = default;
-		bool v38 = default;
-		bool v39 = default;
-		bool v40 = default;
-		bool v41 = default;
-		bool v42 = default;
-		CategoryCursorResponseItemsCopyFormatData v43 = null!;
-		bool v44 = default;
-		bool v45 = default;
-		bool v46 = default;
+		long v33 = default;
+		long v34 = default;
+		long v35 = default;
+		long v36 = default;
+		long v37 = default;
+		long v38 = default;
+		long v39 = default;
+		string v40 = null!;
+		string v41 = null!;
+		string v42 = null!;
+		long v43 = default;
+		double v44 = default;
+		CategoryOnlyfansResponseItemsCategory v45 = null!;
+		JsonElement v46 = default;
 		bool v47 = default;
 		bool v48 = default;
 		bool v49 = default;
 		bool v50 = default;
 		bool v51 = default;
-		string v52 = null!;
+		bool v52 = default;
 		bool v53 = default;
-		JsonElement v54 = default;
+		CategoryOnlyfansResponseItemsCopyFormatData v54 = null!;
 		bool v55 = default;
 		bool v56 = default;
-		string v57 = null!;
-		string v58 = null!;
+		bool v57 = default;
+		bool v58 = default;
 		bool v59 = default;
 		bool v60 = default;
 		bool v61 = default;
-		List<JsonElement> v62 = null!;
-		JsonElement v63 = default;
-		List<JsonElement> v64 = null!;
-		bool v65 = default;
+		bool v62 = default;
+		string v63 = null!;
+		bool v64 = default;
+		JsonElement v65 = default;
 		bool v66 = default;
 		bool v67 = default;
 		string v68 = null!;
-		List<JsonElement> v69 = null!;
-		JsonElement v70 = default;
-		JsonElement v71 = default;
-		string v72 = null!;
-		string v73 = null!;
-		string v74 = null!;
-		string v75 = null!;
-		CategoryCursorResponseItemsSeller v76 = null!;
+		string v69 = null!;
+		bool v70 = default;
+		bool v71 = default;
+		bool v72 = default;
+		List<CategoryOnlyfansResponseItemsOnlyfansSubscriptions> v73 = null!;
+		List<CategoryOnlyfansResponseItemsOnlyfansTransactions> v74 = null!;
+		bool v75 = default;
+		List<CategoryOnlyfansResponseItemsAccountLinks> v76 = null!;
+		string v77 = null!;
+		List<JsonElement> v78 = null!;
+		string v79 = null!;
+		bool v80 = default;
+		bool v81 = default;
+		bool v82 = default;
+		string v83 = null!;
+		List<JsonElement> v84 = null!;
+		JsonElement v85 = default;
+		JsonElement v86 = default;
+		string v87 = null!;
+		string v88 = null!;
+		string v89 = null!;
+		string v90 = null!;
+		CategoryOnlyfansResponseItemsSeller v91 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -52821,7 +53460,7 @@ public sealed record CategoryCursorResponseItems(
 			else if (reader.ValueTextEquals("email_provider"u8))
 			{
 				reader.Read();
-				v20 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				v20 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("item_domain"u8))
 			{
@@ -52851,201 +53490,289 @@ public sealed record CategoryCursorResponseItems(
 			else if (reader.ValueTextEquals("discount"u8))
 			{
 				reader.Read();
-				v26 = reader.GetBoolean();
+				v26 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
-			else if (reader.ValueTextEquals("cursor_item_id"u8))
+			else if (reader.ValueTextEquals("onlyfans_item_id"u8))
 			{
 				reader.Read();
 				v27 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("cursor_plan"u8))
+			else if (reader.ValueTextEquals("onlyfans_id"u8))
 			{
 				reader.Read();
 				v28 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("cursor_has_payment_method"u8))
+			else if (reader.ValueTextEquals("onlyfans_register_date"u8))
 			{
 				reader.Read();
 				v29 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("cursor_usage_percent"u8))
+			else if (reader.ValueTextEquals("onlyfans_balance"u8))
 			{
 				reader.Read();
-				v30 = reader.GetInt64();
+				v30 = reader.GetString()!;
 			}
-			else if (reader.ValueTextEquals("feedback_data"u8))
+			else if (reader.ValueTextEquals("onlyfans_converted_balance"u8))
 			{
 				reader.Read();
-				v31 = reader.GetString()!;
+				v31 = reader.GetInt64();
 			}
-			else if (reader.ValueTextEquals("max_discount_percent"u8))
+			else if (reader.ValueTextEquals("onlyfans_subscribers_count"u8))
 			{
 				reader.Read();
 				v32 = reader.GetInt64();
 			}
+			else if (reader.ValueTextEquals("onlyfans_posts_count"u8))
+			{
+				reader.Read();
+				v33 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("onlyfans_active_subs_count"u8))
+			{
+				reader.Read();
+				v34 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("onlyfans_kyc_verified"u8))
+			{
+				reader.Read();
+				v35 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("onlyfans_payout_approved"u8))
+			{
+				reader.Read();
+				v36 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("onlyfans_age_verified"u8))
+			{
+				reader.Read();
+				v37 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("onlyfans_card_verified"u8))
+			{
+				reader.Read();
+				v38 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("onlyfans_has_card"u8))
+			{
+				reader.Read();
+				v39 = reader.GetInt64();
+			}
+			else if (reader.ValueTextEquals("onlyfans_subscriptions"u8))
+			{
+				reader.Read();
+				v40 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("onlyfans_transactions"u8))
+			{
+				reader.Read();
+				v41 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("feedback_data"u8))
+			{
+				reader.Read();
+				v42 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("max_discount_percent"u8))
+			{
+				reader.Read();
+				v43 = reader.GetInt64();
+			}
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v33 = reader.GetDouble();
+				v44 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("category"u8))
 			{
 				reader.Read();
-				v34 = reader.TokenType == JsonTokenType.Null ? null! : CategoryCursorResponseItemsCategory.ReadFromReader(ref reader);
+				v45 = reader.TokenType == JsonTokenType.Null ? null! : CategoryOnlyfansResponseItemsCategory.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
 				reader.Read();
-				v35 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				v46 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
 			else if (reader.ValueTextEquals("canViewLoginData"u8))
 			{
 				reader.Read();
-				v36 = reader.GetBoolean();
+				v47 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canViewTempEmail"u8))
 			{
 				reader.Read();
-				v37 = reader.GetBoolean();
+				v48 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canUpdateItemStats"u8))
 			{
 				reader.Read();
-				v38 = reader.GetBoolean();
+				v49 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canReportItem"u8))
 			{
 				reader.Read();
-				v39 = reader.GetBoolean();
+				v50 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canViewItemViews"u8))
 			{
 				reader.Read();
-				v40 = reader.GetBoolean();
+				v51 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canManagePublicTag"u8))
 			{
 				reader.Read();
-				v41 = reader.GetBoolean();
+				v52 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canViewEmailLoginData"u8))
 			{
 				reader.Read();
-				v42 = reader.GetBoolean();
+				v53 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("copyFormatData"u8))
 			{
 				reader.Read();
-				v43 = reader.TokenType == JsonTokenType.Null ? null! : CategoryCursorResponseItemsCopyFormatData.ReadFromReader(ref reader);
+				v54 = reader.TokenType == JsonTokenType.Null ? null! : CategoryOnlyfansResponseItemsCopyFormatData.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("showGetEmailCodeButton"u8))
 			{
 				reader.Read();
-				v44 = reader.GetBoolean();
+				v55 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canOpenItem"u8))
 			{
 				reader.Read();
-				v45 = reader.GetBoolean();
+				v56 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canCloseItem"u8))
 			{
 				reader.Read();
-				v46 = reader.GetBoolean();
+				v57 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canEditItem"u8))
 			{
 				reader.Read();
-				v47 = reader.GetBoolean();
+				v58 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canDeleteItem"u8))
 			{
 				reader.Read();
-				v48 = reader.GetBoolean();
+				v59 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canStickItem"u8))
 			{
 				reader.Read();
-				v49 = reader.GetBoolean();
+				v60 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canUnstickItem"u8))
 			{
 				reader.Read();
-				v50 = reader.GetBoolean();
+				v61 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
-				v51 = reader.GetBoolean();
+				v62 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canNotBumpItemReason"u8))
 			{
 				reader.Read();
-				v52 = reader.GetString()!;
+				v63 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("canAutoBump"u8))
 			{
 				reader.Read();
-				v53 = reader.GetBoolean();
+				v64 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("buyer"u8))
 			{
 				reader.Read();
-				v54 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				v65 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
 			else if (reader.ValueTextEquals("isPersonalAccount"u8))
 			{
 				reader.Read();
-				v55 = reader.GetBoolean();
+				v66 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canBuyItem"u8))
 			{
 				reader.Read();
-				v56 = reader.GetBoolean();
+				v67 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
 				reader.Read();
-				v57 = reader.GetString()!;
+				v68 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("priceWithSellerFeeLabel"u8))
 			{
 				reader.Read();
-				v58 = reader.GetString()!;
+				v69 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("canValidateAccount"u8))
 			{
 				reader.Read();
-				v59 = reader.GetBoolean();
+				v70 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("canChangeOwner"u8))
+			{
+				reader.Read();
+				v71 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canResellItem"u8))
 			{
 				reader.Read();
-				v60 = reader.GetBoolean();
+				v72 = reader.GetBoolean();
+			}
+			else if (reader.ValueTextEquals("onlyfansSubscriptions"u8))
+			{
+				reader.Read();
+				if (reader.TokenType == JsonTokenType.StartArray)
+				{
+					var __lst = new List<CategoryOnlyfansResponseItemsOnlyfansSubscriptions>();
+					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+					{
+						var __item = CategoryOnlyfansResponseItemsOnlyfansSubscriptions.ReadFromReader(ref reader);
+						__lst.Add(__item);
+					}
+					v73 = __lst;
+				}
+			}
+			else if (reader.ValueTextEquals("onlyfansTransactions"u8))
+			{
+				reader.Read();
+				if (reader.TokenType == JsonTokenType.StartArray)
+				{
+					var __lst = new List<CategoryOnlyfansResponseItemsOnlyfansTransactions>();
+					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+					{
+						var __item = CategoryOnlyfansResponseItemsOnlyfansTransactions.ReadFromReader(ref reader);
+						__lst.Add(__item);
+					}
+					v74 = __lst;
+				}
 			}
 			else if (reader.ValueTextEquals("canViewAccountLink"u8))
 			{
 				reader.Read();
-				v61 = reader.GetBoolean();
+				v75 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("accountLinks"u8))
 			{
 				reader.Read();
 				if (reader.TokenType == JsonTokenType.StartArray)
 				{
-					var __lst = new List<JsonElement>();
+					var __lst = new List<CategoryOnlyfansResponseItemsAccountLinks>();
 					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 					{
-						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+						var __item = CategoryOnlyfansResponseItemsAccountLinks.ReadFromReader(ref reader);
 						__lst.Add(__item);
 					}
-					v62 = __lst;
+					v76 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("accountLink"u8))
 			{
 				reader.Read();
-				v63 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				v77 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("imagePreviewLinks"u8))
 			{
@@ -53058,28 +53785,33 @@ public sealed record CategoryCursorResponseItems(
 						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 						__lst.Add(__item);
 					}
-					v64 = __lst;
+					v78 = __lst;
 				}
+			}
+			else if (reader.ValueTextEquals("emailLoginUrl"u8))
+			{
+				reader.Read();
+				v79 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("canChangePassword"u8))
 			{
 				reader.Read();
-				v65 = reader.GetBoolean();
+				v80 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("canChangeEmailPassword"u8))
 			{
 				reader.Read();
-				v66 = reader.GetBoolean();
+				v81 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("uniqueKeyExists"u8))
 			{
 				reader.Read();
-				v67 = reader.GetBoolean();
+				v82 = reader.GetBoolean();
 			}
 			else if (reader.ValueTextEquals("itemOriginPhrase"u8))
 			{
 				reader.Read();
-				v68 = reader.GetString()!;
+				v83 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("tags"u8))
 			{
@@ -53092,43 +53824,43 @@ public sealed record CategoryCursorResponseItems(
 						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 						__lst.Add(__item);
 					}
-					v69 = __lst;
+					v84 = __lst;
 				}
 			}
 			else if (reader.ValueTextEquals("public_tag"u8))
 			{
 				reader.Read();
-				v70 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				v85 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
 			else if (reader.ValueTextEquals("note_text"u8))
 			{
 				reader.Read();
-				v71 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				v86 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
 			else if (reader.ValueTextEquals("descriptionHtml"u8))
 			{
 				reader.Read();
-				v72 = reader.GetString()!;
+				v87 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("descriptionEnHtml"u8))
 			{
 				reader.Read();
-				v73 = reader.GetString()!;
+				v88 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("descriptionPlain"u8))
 			{
 				reader.Read();
-				v74 = reader.GetString()!;
+				v89 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("descriptionEnPlain"u8))
 			{
 				reader.Read();
-				v75 = reader.GetString()!;
+				v90 = reader.GetString()!;
 			}
 			else if (reader.ValueTextEquals("seller"u8))
 			{
 				reader.Read();
-				v76 = reader.TokenType == JsonTokenType.Null ? null! : CategoryCursorResponseItemsSeller.ReadFromReader(ref reader);
+				v91 = reader.TokenType == JsonTokenType.Null ? null! : CategoryOnlyfansResponseItemsSeller.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -53136,7 +53868,7 @@ public sealed record CategoryCursorResponseItems(
 				reader.Skip();
 			}
 		}
-		return new CategoryCursorResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76);
+		return new CategoryOnlyfansResponseItems(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63, v64, v65, v66, v67, v68, v69, v70, v71, v72, v73, v74, v75, v76, v77, v78, v79, v80, v81, v82, v83, v84, v85, v86, v87, v88, v89, v90, v91);
 	}
 }
 

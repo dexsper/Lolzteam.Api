@@ -10,6 +10,278 @@ namespace Lolzteam.Api.Generated.Market;
 
 public static class ManagingApiTypes
 {
+	public sealed record ManagingTagsListResponse(
+		[property: JsonPropertyName("tags")] List<TagModel> Tags,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingTagsListResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingTagsListResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			List<TagModel> v0 = null!;
+			Resp_SystemInfo v1 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("tags"u8))
+				{
+					reader.Read();
+					if (reader.TokenType == JsonTokenType.StartArray)
+					{
+						var __lst = new List<TagModel>();
+						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+						{
+							var __item = TagModel.ReadFromReader(ref reader);
+							__lst.Add(__item);
+						}
+						v0 = __lst;
+					}
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingTagsListResponse(v0, v1);
+		}
+	}
+
+	public sealed record ManagingTagsCreateBody
+	{
+		[JsonPropertyName("title")]
+		public required string Title { get; init; }
+		/// <summary>
+		/// Background Color
+		/// </summary>
+		[JsonPropertyName("bc")]
+		public required string Bc { get; init; }
+	}
+
+	public sealed record ManagingTagsCreateResponse(
+		[property: JsonPropertyName("tag")] TagModel Tag,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingTagsCreateResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingTagsCreateResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			TagModel v0 = null!;
+			Resp_SystemInfo v1 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("tag"u8))
+				{
+					reader.Read();
+					v0 = reader.TokenType == JsonTokenType.Null ? null! : TagModel.ReadFromReader(ref reader);
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingTagsCreateResponse(v0, v1);
+		}
+	}
+
+	public sealed record ManagingTagsEditBody
+	{
+		[JsonPropertyName("tag_id")]
+		public required long? TagId { get; init; }
+		[JsonPropertyName("title")]
+		public required string Title { get; init; }
+		/// <summary>
+		/// Background Color
+		/// </summary>
+		[JsonPropertyName("bc")]
+		public required string Bc { get; init; }
+	}
+
+	public sealed record ManagingTagsEditResponse(
+		[property: JsonPropertyName("tag")] TagModel Tag,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingTagsEditResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingTagsEditResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			TagModel v0 = null!;
+			Resp_SystemInfo v1 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("tag"u8))
+				{
+					reader.Read();
+					v0 = reader.TokenType == JsonTokenType.Null ? null! : TagModel.ReadFromReader(ref reader);
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingTagsEditResponse(v0, v1);
+		}
+	}
+
+	public sealed record ManagingTagsDeleteBody
+	{
+		[JsonPropertyName("tag_id")]
+		public required long? TagId { get; init; }
+	}
+
+	public sealed record ManagingTagsDeleteResponse(
+		[property: JsonPropertyName("status")] string? Status,
+		[property: JsonPropertyName("message")] string? Message,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo? SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingTagsDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingTagsDeleteResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			string v0 = null!;
+			string v1 = null!;
+			Resp_SystemInfo v2 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("status"u8))
+				{
+					reader.Read();
+					v0 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("message"u8))
+				{
+					reader.Read();
+					v1 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingTagsDeleteResponse(v0, v1, v2);
+		}
+	}
+
+	public sealed record ManagingTagsOrderBody
+	{
+		/// <summary>
+		/// Array of tag IDs in the desired order.
+		/// </summary>
+		[JsonPropertyName("tag_order")]
+		public required List<long?> TagOrder { get; init; }
+	}
+
+	public sealed record ManagingTagsOrderResponse(
+		[property: JsonPropertyName("status")] string? Status,
+		[property: JsonPropertyName("message")] string? Message,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo? SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingTagsOrderResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingTagsOrderResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			string v0 = null!;
+			string v1 = null!;
+			Resp_SystemInfo v2 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("status"u8))
+				{
+					reader.Read();
+					v0 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("message"u8))
+				{
+					reader.Read();
+					v1 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingTagsOrderResponse(v0, v1, v2);
+		}
+	}
+
 	public sealed record ManagingGetParams
 	{
 		/// <summary>
@@ -285,7 +557,7 @@ public static class ManagingApiTypes
 
 	public sealed record ManagingCreateClaimResponse(
 		[property: JsonPropertyName("thread")] ManagingCreateClaimResponseThread Thread,
-		[property: JsonPropertyName("system_info")] ManagingCreateClaimResponseSystemInfo SystemInfo
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
 	{
 
@@ -300,7 +572,7 @@ public static class ManagingApiTypes
 		internal static ManagingCreateClaimResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			ManagingCreateClaimResponseThread v0 = null!;
-			ManagingCreateClaimResponseSystemInfo v1 = null!;
+			Resp_SystemInfo v1 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -313,7 +585,7 @@ public static class ManagingApiTypes
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingCreateClaimResponseSystemInfo.ReadFromReader(ref reader);
+					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1441,48 +1713,6 @@ public sealed record ManagingCreateClaimResponseThread(
 	}
 }
 
-public sealed record ManagingCreateClaimResponseSystemInfo(
-	[property: JsonPropertyName("visitor_id")] long VisitorId,
-	[property: JsonPropertyName("time")] long Time
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static ManagingCreateClaimResponseSystemInfo ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static ManagingCreateClaimResponseSystemInfo ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		long v1 = default;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("visitor_id"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("time"u8))
-			{
-				reader.Read();
-				v1 = reader.GetInt64();
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new ManagingCreateClaimResponseSystemInfo(v0, v1);
-	}
-}
-
 	public sealed record ManagingBulkGetBody
 	{
 		/// <summary>
@@ -1598,6 +1828,116 @@ public sealed record ManagingBulkGetResponseItems(
 		return new ManagingBulkGetResponseItems(v0);
 	}
 }
+
+	public sealed record ManagingBulkActionBody
+	{
+		[JsonPropertyName("action")]
+		public required string Action { get; init; }
+		[JsonPropertyName("reason")]
+		public string? Reason { get; init; }
+		[JsonPropertyName("username")]
+		public string? Username { get; init; }
+		[JsonPropertyName("open")]
+		public bool? Open { get; init; }
+		[JsonPropertyName("close")]
+		public bool? Close { get; init; }
+		[JsonPropertyName("visibility")]
+		public bool? Visibility { get; init; }
+		[JsonPropertyName("hour")]
+		public long? Hour { get; init; }
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+		[JsonPropertyName("price")]
+		public string? Price { get; init; }
+		[JsonPropertyName("currency")]
+		public string? Currency { get; init; }
+		[JsonPropertyName("change_price_in_percents")]
+		public bool? ChangePriceInPercents { get; init; }
+		[JsonPropertyName("percents_price")]
+		public double? PercentsPrice { get; init; }
+		[JsonPropertyName("auto_buy_price")]
+		public bool? AutoBuyPrice { get; init; }
+		[JsonPropertyName("delete_notes")]
+		public bool? DeleteNotes { get; init; }
+		[JsonPropertyName("description")]
+		public string? Description { get; init; }
+		[JsonPropertyName("information")]
+		public string? Information { get; init; }
+		[JsonPropertyName("proxy_id")]
+		public string? ProxyId { get; init; }
+		[JsonPropertyName("random_proxy")]
+		public bool? RandomProxy { get; init; }
+		[JsonPropertyName("add_tags")]
+		public List<long?>? AddTags { get; init; }
+		[JsonPropertyName("remove_tags")]
+		public List<long?>? RemoveTags { get; init; }
+		[JsonPropertyName("guarantee_duration")]
+		public string? GuaranteeDuration { get; init; }
+		[JsonPropertyName("item_origin")]
+		public string? ItemOrigin { get; init; }
+		[JsonPropertyName("allow_ask_discount")]
+		public string? AllowAskDiscount { get; init; }
+		[JsonPropertyName("email_type")]
+		public string? EmailType { get; init; }
+		[JsonPropertyName("notes")]
+		public string? Notes { get; init; }
+	}
+
+	public sealed record ManagingBulkActionResponse(
+		[property: JsonPropertyName("queued")] bool Queued,
+		[property: JsonPropertyName("action")] string Action,
+		[property: JsonPropertyName("items_count")] long ItemsCount,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingBulkActionResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingBulkActionResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			bool v0 = default;
+			string v1 = null!;
+			long v2 = default;
+			Resp_SystemInfo v3 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("queued"u8))
+				{
+					reader.Read();
+					v0 = reader.GetBoolean();
+				}
+				else if (reader.ValueTextEquals("action"u8))
+				{
+					reader.Read();
+					v1 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("items_count"u8))
+				{
+					reader.Read();
+					v2 = reader.GetInt64();
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingBulkActionResponse(v0, v1, v2, v3);
+		}
+	}
 
 	public sealed record ManagingSteamInventoryValueParams
 	{
@@ -2574,7 +2914,7 @@ public sealed record ManagingSteamValueResponseData(
 		}
 	}
 
-	public sealed record ManagingNoteBody
+	public sealed record ManagingNoteEditBody
 	{
 		/// <summary>
 		/// Text of note.
@@ -2583,7 +2923,7 @@ public sealed record ManagingSteamValueResponseData(
 		public string? Text { get; init; }
 	}
 
-	public sealed record ManagingNoteResponse(
+	public sealed record ManagingNoteEditResponse(
 		[property: JsonPropertyName("status")] string Status,
 		[property: JsonPropertyName("message")] string Message,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
@@ -2591,14 +2931,14 @@ public sealed record ManagingSteamValueResponseData(
 	{
 
 		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-		public static ManagingNoteResponse ReadFrom(ReadOnlyMemory<byte> json)
+		public static ManagingNoteEditResponse ReadFrom(ReadOnlyMemory<byte> json)
 		{
 			var reader = new Utf8JsonReader(json.Span);
 			reader.Read(); // advance to StartObject
 			return ReadFromReader(ref reader);
 		}
 
-		internal static ManagingNoteResponse ReadFromReader(ref Utf8JsonReader reader)
+		internal static ManagingNoteEditResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			string v0 = null!;
 			string v1 = null!;
@@ -2628,7 +2968,56 @@ public sealed record ManagingSteamValueResponseData(
 					reader.Skip();
 				}
 			}
-			return new ManagingNoteResponse(v0, v1, v2);
+			return new ManagingNoteEditResponse(v0, v1, v2);
+		}
+	}
+
+	public sealed record ManagingNoteDeleteResponse(
+		[property: JsonPropertyName("status")] string Status,
+		[property: JsonPropertyName("message")] string Message,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingNoteDeleteResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingNoteDeleteResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			string v0 = null!;
+			string v1 = null!;
+			Resp_SystemInfo v2 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("status"u8))
+				{
+					reader.Read();
+					v0 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("message"u8))
+				{
+					reader.Read();
+					v1 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingNoteDeleteResponse(v0, v1, v2);
 		}
 	}
 
@@ -3093,6 +3482,129 @@ public sealed record ManagingEmailCodeResponseCodeData(
 			}
 		}
 		return new ManagingEmailCodeResponseCodeData(v0, v1, v2);
+	}
+}
+
+	public sealed record ManagingGetLettersParams
+	{
+		/// <summary>
+		/// Number of letters to return.
+		/// </summary>
+		[JsonPropertyName("limit")]
+		public long? Limit { get; init; }
+	}
+
+	public sealed record ManagingGetLettersResponse(
+		[property: JsonPropertyName("email")] string Email,
+		[property: JsonPropertyName("letters")] List<ManagingGetLettersResponseLetters> Letters,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingGetLettersResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingGetLettersResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			string v0 = null!;
+			List<ManagingGetLettersResponseLetters> v1 = null!;
+			Resp_SystemInfo v2 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("email"u8))
+				{
+					reader.Read();
+					v0 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("letters"u8))
+				{
+					reader.Read();
+					if (reader.TokenType == JsonTokenType.StartArray)
+					{
+						var __lst = new List<ManagingGetLettersResponseLetters>();
+						while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+						{
+							var __item = ManagingGetLettersResponseLetters.ReadFromReader(ref reader);
+							__lst.Add(__item);
+						}
+						v1 = __lst;
+					}
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingGetLettersResponse(v0, v1, v2);
+		}
+	}
+
+public sealed record ManagingGetLettersResponseLetters(
+	[property: JsonPropertyName("textHtml")] string TextHtml,
+	[property: JsonPropertyName("textPlain")] string TextPlain,
+	[property: JsonPropertyName("from")] string From,
+	[property: JsonPropertyName("date")] long Date
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static ManagingGetLettersResponseLetters ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static ManagingGetLettersResponseLetters ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		string v1 = null!;
+		string v2 = null!;
+		long v3 = default;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("textHtml"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("textPlain"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("from"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("date"u8))
+			{
+				reader.Read();
+				v3 = reader.GetInt64();
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new ManagingGetLettersResponseLetters(v0, v1, v2, v3);
 	}
 }
 
@@ -3843,6 +4355,120 @@ public sealed record ManagingTelegramCodeResponseCodes(
 		}
 	}
 
+	public sealed record ManagingQRLoginBody
+	{
+		/// <summary>
+		/// QR code challenge string. For Steam, provide the Steam QR URL. For Telegram, provide the Telegram QR code link.
+		/// </summary>
+		[JsonPropertyName("challenge")]
+		public required string Challenge { get; init; }
+	}
+
+	public sealed record ManagingQRLoginResponse(
+		[property: JsonPropertyName("item")] ItemModel Item,
+		[property: JsonPropertyName("result")] ManagingQRLoginResponseResult Result,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static ManagingQRLoginResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static ManagingQRLoginResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			ItemModel v0 = null!;
+			ManagingQRLoginResponseResult v1 = null!;
+			Resp_SystemInfo v2 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("item"u8))
+				{
+					reader.Read();
+					v0 = reader.TokenType == JsonTokenType.Null ? null! : ItemModel.ReadFromReader(ref reader);
+				}
+				else if (reader.ValueTextEquals("result"u8))
+				{
+					reader.Read();
+					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingQRLoginResponseResult.ReadFromReader(ref reader);
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new ManagingQRLoginResponse(v0, v1, v2);
+		}
+	}
+
+public sealed record ManagingQRLoginResponseResult(
+	[property: JsonPropertyName("ip")] string Ip,
+	[property: JsonPropertyName("city")] string City,
+	[property: JsonPropertyName("country")] string Country,
+	[property: JsonPropertyName("device")] string Device
+)
+{
+
+	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+	public static ManagingQRLoginResponseResult ReadFrom(ReadOnlyMemory<byte> json)
+	{
+		var reader = new Utf8JsonReader(json.Span);
+		reader.Read(); // advance to StartObject
+		return ReadFromReader(ref reader);
+	}
+
+	internal static ManagingQRLoginResponseResult ReadFromReader(ref Utf8JsonReader reader)
+	{
+		string v0 = null!;
+		string v1 = null!;
+		string v2 = null!;
+		string v3 = null!;
+		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+		{
+			if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+			if (reader.ValueTextEquals("ip"u8))
+			{
+				reader.Read();
+				v0 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("city"u8))
+			{
+				reader.Read();
+				v1 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("country"u8))
+			{
+				reader.Read();
+				v2 = reader.GetString()!;
+			}
+			else if (reader.ValueTextEquals("device"u8))
+			{
+				reader.Read();
+				v3 = reader.GetString()!;
+			}
+			else
+			{
+				reader.Read();
+				reader.Skip();
+			}
+		}
+		return new ManagingQRLoginResponseResult(v0, v1, v2, v3);
+	}
+}
+
 	public sealed record ManagingRefuseGuaranteeResponse(
 		[property: JsonPropertyName("status")] string? Status,
 		[property: JsonPropertyName("message")] string? Message,
@@ -4131,7 +4757,7 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 
 	public sealed record ManagingTagResponse(
 		[property: JsonPropertyName("itemId")] long ItemId,
-		[property: JsonPropertyName("tag")] ManagingTagResponseTag Tag,
+		[property: JsonPropertyName("tag")] JsonElement Tag,
 		[property: JsonPropertyName("addedTagId")] long AddedTagId,
 		[property: JsonPropertyName("deleteTags")] List<long> DeleteTags,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
@@ -4149,7 +4775,7 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 		internal static ManagingTagResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			long v0 = default;
-			ManagingTagResponseTag v1 = null!;
+			JsonElement v1 = default;
 			long v2 = default;
 			List<long> v3 = null!;
 			Resp_SystemInfo v4 = null!;
@@ -4165,7 +4791,7 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 				else if (reader.ValueTextEquals("tag"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingTagResponseTag.ReadFromReader(ref reader);
+					v1 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 				}
 				else if (reader.ValueTextEquals("addedTagId"u8))
 				{
@@ -4201,69 +4827,6 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 		}
 	}
 
-public sealed record ManagingTagResponseTag(
-	[property: JsonPropertyName("tag_id")] long TagId,
-	[property: JsonPropertyName("title")] string Title,
-	[property: JsonPropertyName("isDefault")] bool IsDefault,
-	[property: JsonPropertyName("forOwnedAccountsOnly")] bool ForOwnedAccountsOnly,
-	[property: JsonPropertyName("bc")] string Bc
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static ManagingTagResponseTag ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static ManagingTagResponseTag ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		string v1 = null!;
-		bool v2 = default;
-		bool v3 = default;
-		string v4 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("tag_id"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("title"u8))
-			{
-				reader.Read();
-				v1 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("isDefault"u8))
-			{
-				reader.Read();
-				v2 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("forOwnedAccountsOnly"u8))
-			{
-				reader.Read();
-				v3 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("bc"u8))
-			{
-				reader.Read();
-				v4 = reader.GetString()!;
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new ManagingTagResponseTag(v0, v1, v2, v3, v4);
-	}
-}
-
 	public sealed record ManagingUntagBody
 	{
 		/// <summary>
@@ -4275,7 +4838,7 @@ public sealed record ManagingTagResponseTag(
 
 	public sealed record ManagingUntagResponse(
 		[property: JsonPropertyName("itemId")] long ItemId,
-		[property: JsonPropertyName("tag")] ManagingUntagResponseTag Tag,
+		[property: JsonPropertyName("tag")] JsonElement Tag,
 		[property: JsonPropertyName("addedTagId")] long AddedTagId,
 		[property: JsonPropertyName("deleteTags")] List<long> DeleteTags,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
@@ -4293,7 +4856,7 @@ public sealed record ManagingTagResponseTag(
 		internal static ManagingUntagResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			long v0 = default;
-			ManagingUntagResponseTag v1 = null!;
+			JsonElement v1 = default;
 			long v2 = default;
 			List<long> v3 = null!;
 			Resp_SystemInfo v4 = null!;
@@ -4309,7 +4872,7 @@ public sealed record ManagingTagResponseTag(
 				else if (reader.ValueTextEquals("tag"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingUntagResponseTag.ReadFromReader(ref reader);
+					v1 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 				}
 				else if (reader.ValueTextEquals("addedTagId"u8))
 				{
@@ -4345,69 +4908,6 @@ public sealed record ManagingTagResponseTag(
 		}
 	}
 
-public sealed record ManagingUntagResponseTag(
-	[property: JsonPropertyName("tag_id")] long TagId,
-	[property: JsonPropertyName("title")] string Title,
-	[property: JsonPropertyName("isDefault")] bool IsDefault,
-	[property: JsonPropertyName("forOwnedAccountsOnly")] bool ForOwnedAccountsOnly,
-	[property: JsonPropertyName("bc")] string Bc
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static ManagingUntagResponseTag ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static ManagingUntagResponseTag ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		string v1 = null!;
-		bool v2 = default;
-		bool v3 = default;
-		string v4 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("tag_id"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("title"u8))
-			{
-				reader.Read();
-				v1 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("isDefault"u8))
-			{
-				reader.Read();
-				v2 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("forOwnedAccountsOnly"u8))
-			{
-				reader.Read();
-				v3 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("bc"u8))
-			{
-				reader.Read();
-				v4 = reader.GetString()!;
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new ManagingUntagResponseTag(v0, v1, v2, v3, v4);
-	}
-}
-
 	public sealed record ManagingPublicTagBody
 	{
 		/// <summary>
@@ -4419,7 +4919,7 @@ public sealed record ManagingUntagResponseTag(
 
 	public sealed record ManagingPublicTagResponse(
 		[property: JsonPropertyName("itemId")] long ItemId,
-		[property: JsonPropertyName("tag")] ManagingPublicTagResponseTag Tag,
+		[property: JsonPropertyName("tag")] JsonElement Tag,
 		[property: JsonPropertyName("addedTagId")] long AddedTagId,
 		[property: JsonPropertyName("deleteTags")] List<long> DeleteTags,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
@@ -4437,7 +4937,7 @@ public sealed record ManagingUntagResponseTag(
 		internal static ManagingPublicTagResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			long v0 = default;
-			ManagingPublicTagResponseTag v1 = null!;
+			JsonElement v1 = default;
 			long v2 = default;
 			List<long> v3 = null!;
 			Resp_SystemInfo v4 = null!;
@@ -4453,7 +4953,7 @@ public sealed record ManagingUntagResponseTag(
 				else if (reader.ValueTextEquals("tag"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingPublicTagResponseTag.ReadFromReader(ref reader);
+					v1 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 				}
 				else if (reader.ValueTextEquals("addedTagId"u8))
 				{
@@ -4489,69 +4989,6 @@ public sealed record ManagingUntagResponseTag(
 		}
 	}
 
-public sealed record ManagingPublicTagResponseTag(
-	[property: JsonPropertyName("tag_id")] long TagId,
-	[property: JsonPropertyName("title")] string Title,
-	[property: JsonPropertyName("isDefault")] bool IsDefault,
-	[property: JsonPropertyName("forOwnedAccountsOnly")] bool ForOwnedAccountsOnly,
-	[property: JsonPropertyName("bc")] string Bc
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static ManagingPublicTagResponseTag ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static ManagingPublicTagResponseTag ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		string v1 = null!;
-		bool v2 = default;
-		bool v3 = default;
-		string v4 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("tag_id"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("title"u8))
-			{
-				reader.Read();
-				v1 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("isDefault"u8))
-			{
-				reader.Read();
-				v2 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("forOwnedAccountsOnly"u8))
-			{
-				reader.Read();
-				v3 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("bc"u8))
-			{
-				reader.Read();
-				v4 = reader.GetString()!;
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new ManagingPublicTagResponseTag(v0, v1, v2, v3, v4);
-	}
-}
-
 	public sealed record ManagingPublicUntagBody
 	{
 		/// <summary>
@@ -4563,7 +5000,7 @@ public sealed record ManagingPublicTagResponseTag(
 
 	public sealed record ManagingPublicUntagResponse(
 		[property: JsonPropertyName("itemId")] long ItemId,
-		[property: JsonPropertyName("tag")] ManagingPublicUntagResponseTag Tag,
+		[property: JsonPropertyName("tag")] JsonElement Tag,
 		[property: JsonPropertyName("addedTagId")] long AddedTagId,
 		[property: JsonPropertyName("deleteTags")] List<long> DeleteTags,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
@@ -4581,7 +5018,7 @@ public sealed record ManagingPublicTagResponseTag(
 		internal static ManagingPublicUntagResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			long v0 = default;
-			ManagingPublicUntagResponseTag v1 = null!;
+			JsonElement v1 = default;
 			long v2 = default;
 			List<long> v3 = null!;
 			Resp_SystemInfo v4 = null!;
@@ -4597,7 +5034,7 @@ public sealed record ManagingPublicTagResponseTag(
 				else if (reader.ValueTextEquals("tag"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingPublicUntagResponseTag.ReadFromReader(ref reader);
+					v1 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 				}
 				else if (reader.ValueTextEquals("addedTagId"u8))
 				{
@@ -4632,69 +5069,6 @@ public sealed record ManagingPublicTagResponseTag(
 			return new ManagingPublicUntagResponse(v0, v1, v2, v3, v4);
 		}
 	}
-
-public sealed record ManagingPublicUntagResponseTag(
-	[property: JsonPropertyName("tag_id")] long TagId,
-	[property: JsonPropertyName("title")] string Title,
-	[property: JsonPropertyName("isDefault")] bool IsDefault,
-	[property: JsonPropertyName("forOwnedAccountsOnly")] bool ForOwnedAccountsOnly,
-	[property: JsonPropertyName("bc")] string Bc
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static ManagingPublicUntagResponseTag ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static ManagingPublicUntagResponseTag ReadFromReader(ref Utf8JsonReader reader)
-	{
-		long v0 = default;
-		string v1 = null!;
-		bool v2 = default;
-		bool v3 = default;
-		string v4 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("tag_id"u8))
-			{
-				reader.Read();
-				v0 = reader.GetInt64();
-			}
-			else if (reader.ValueTextEquals("title"u8))
-			{
-				reader.Read();
-				v1 = reader.GetString()!;
-			}
-			else if (reader.ValueTextEquals("isDefault"u8))
-			{
-				reader.Read();
-				v2 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("forOwnedAccountsOnly"u8))
-			{
-				reader.Read();
-				v3 = reader.GetBoolean();
-			}
-			else if (reader.ValueTextEquals("bc"u8))
-			{
-				reader.Read();
-				v4 = reader.GetString()!;
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new ManagingPublicUntagResponseTag(v0, v1, v2, v3, v4);
-	}
-}
 
 	public sealed record ManagingFavoriteResponse(
 		[property: JsonPropertyName("status")] string Status,
@@ -4904,6 +5278,16 @@ public sealed record ManagingPublicUntagResponseTag(
 		/// </summary>
 		[JsonPropertyName("secret_answer")]
 		public required string SecretAnswer { get; init; }
+		/// <summary>
+		/// Open item after transfer.
+		/// </summary>
+		[JsonPropertyName("open")]
+		public bool? Open { get; init; }
+		/// <summary>
+		/// Close item after transfer.
+		/// </summary>
+		[JsonPropertyName("close")]
+		public bool? Close { get; init; }
 	}
 
 	public sealed record ManagingTransferResponse(

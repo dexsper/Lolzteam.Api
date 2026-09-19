@@ -2602,6 +2602,16 @@ public sealed record PurchasingConfirmResponseItem(
 		/// </summary>
 		[JsonPropertyName("message")]
 		public string? Message { get; init; }
+		/// <summary>
+		/// Automatically buy the item once the discount is accepted.
+		/// </summary>
+		[JsonPropertyName("auto_buy")]
+		public bool? AutoBuy { get; init; }
+		/// <summary>
+		/// Balance ID that will be used to purchase specified item.
+		/// </summary>
+		[JsonPropertyName("balance_id")]
+		public long? BalanceId { get; init; }
 	}
 
 	public sealed record PurchasingDiscountRequestResponse(
@@ -2650,6 +2660,79 @@ public sealed record PurchasingConfirmResponseItem(
 				}
 			}
 			return new PurchasingDiscountRequestResponse(v0, v1, v2);
+		}
+	}
+
+	public sealed record PurchasingDiscountReviewBody
+	{
+		/// <summary>
+		/// User ID.
+		/// </summary>
+		[JsonPropertyName("user_id")]
+		public required long? UserId { get; init; }
+		/// <summary>
+		/// Approve/Reject requested discount.
+		/// </summary>
+		[JsonPropertyName("action")]
+		public Action? Action { get; init; }
+		/// <summary>
+		/// Offer a different discount for an amount other than what the user requested. Uses your default currency.
+		/// </summary>
+		[JsonPropertyName("discount_price")]
+		public double? DiscountPrice { get; init; }
+		/// <summary>
+		/// This message will be shown in buyer discount review notification.
+		/// </summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+	}
+
+	public sealed record PurchasingDiscountReviewResponse(
+		[property: JsonPropertyName("status")] string? Status,
+		[property: JsonPropertyName("message")] string? Message,
+		[property: JsonPropertyName("system_info")] Resp_SystemInfo? SystemInfo
+	)
+	{
+
+		/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
+		public static PurchasingDiscountReviewResponse ReadFrom(ReadOnlyMemory<byte> json)
+		{
+			var reader = new Utf8JsonReader(json.Span);
+			reader.Read(); // advance to StartObject
+			return ReadFromReader(ref reader);
+		}
+
+		internal static PurchasingDiscountReviewResponse ReadFromReader(ref Utf8JsonReader reader)
+		{
+			string v0 = null!;
+			string v1 = null!;
+			Resp_SystemInfo v2 = null!;
+			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+			{
+				if (reader.TokenType != JsonTokenType.PropertyName) continue;
+
+				if (reader.ValueTextEquals("status"u8))
+				{
+					reader.Read();
+					v0 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("message"u8))
+				{
+					reader.Read();
+					v1 = reader.GetString()!;
+				}
+				else if (reader.ValueTextEquals("system_info"u8))
+				{
+					reader.Read();
+					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				}
+				else
+				{
+					reader.Read();
+					reader.Skip();
+				}
+			}
+			return new PurchasingDiscountReviewResponse(v0, v1, v2);
 		}
 	}
 

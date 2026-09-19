@@ -13,7 +13,7 @@ public static class ImapApiTypes
 	public sealed record ImapCreateBody
 	{
 		/// <summary>
-		/// Domain to delete IMAP configuration for.
+		/// Name (domain) of IMAP configuration, required for future IMAP config deletion.
 		/// </summary>
 		[JsonPropertyName("domain")]
 		public required string Domain { get; init; }
@@ -86,7 +86,7 @@ public static class ImapApiTypes
 	public sealed record ImapDeleteBody
 	{
 		/// <summary>
-		/// Domain to delete IMAP configuration for.
+		/// Name (domain) of IMAP configuration.
 		/// </summary>
 		[JsonPropertyName("domain")]
 		public required string Domain { get; init; }

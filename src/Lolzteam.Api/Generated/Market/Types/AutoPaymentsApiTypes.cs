@@ -11,7 +11,7 @@ namespace Lolzteam.Api.Generated.Market;
 public static class AutoPaymentsApiTypes
 {
 	public sealed record AutoPaymentsListResponse(
-		[property: JsonPropertyName("payments")] AutoPaymentsListResponsePayments Payments,
+		[property: JsonPropertyName("payments")] Dictionary<string, AutoPaymentsListResponsePayments> Payments,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
 	{
@@ -26,7 +26,7 @@ public static class AutoPaymentsApiTypes
 
 		internal static AutoPaymentsListResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			AutoPaymentsListResponsePayments v0 = null!;
+			Dictionary<string, AutoPaymentsListResponsePayments> v0 = null!;
 			Resp_SystemInfo v1 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
@@ -35,7 +35,19 @@ public static class AutoPaymentsApiTypes
 				if (reader.ValueTextEquals("payments"u8))
 				{
 					reader.Read();
-					v0 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePayments.ReadFromReader(ref reader);
+					if (reader.TokenType == JsonTokenType.StartObject)
+					{
+						var __dict = new Dictionary<string, AutoPaymentsListResponsePayments>();
+						while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+						{
+							if (reader.TokenType != JsonTokenType.PropertyName) continue;
+							var __key = reader.GetString()!;
+							reader.Read();
+							var __val = AutoPaymentsListResponsePayments.ReadFromReader(ref reader);
+							__dict[__key] = __val;
+						}
+						v0 = __dict;
+					}
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
@@ -52,7 +64,7 @@ public static class AutoPaymentsApiTypes
 		}
 	}
 
-public sealed record AutoPaymentsListResponsePayments1234567890ReceiverLinks(
+public sealed record AutoPaymentsListResponsePaymentsReceiverLinks(
 	[property: JsonPropertyName("permalink")] string Permalink,
 	[property: JsonPropertyName("detail")] string Detail,
 	[property: JsonPropertyName("avatar")] string Avatar,
@@ -66,14 +78,14 @@ public sealed record AutoPaymentsListResponsePayments1234567890ReceiverLinks(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static AutoPaymentsListResponsePayments1234567890ReceiverLinks ReadFrom(ReadOnlyMemory<byte> json)
+	public static AutoPaymentsListResponsePaymentsReceiverLinks ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static AutoPaymentsListResponsePayments1234567890ReceiverLinks ReadFromReader(ref Utf8JsonReader reader)
+	internal static AutoPaymentsListResponsePaymentsReceiverLinks ReadFromReader(ref Utf8JsonReader reader)
 	{
 		string v0 = null!;
 		string v1 = null!;
@@ -139,11 +151,11 @@ public sealed record AutoPaymentsListResponsePayments1234567890ReceiverLinks(
 				reader.Skip();
 			}
 		}
-		return new AutoPaymentsListResponsePayments1234567890ReceiverLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
+		return new AutoPaymentsListResponsePaymentsReceiverLinks(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 
-public sealed record AutoPaymentsListResponsePayments1234567890ReceiverPermissions(
+public sealed record AutoPaymentsListResponsePaymentsReceiverPermissions(
 	[property: JsonPropertyName("edit")] bool Edit,
 	[property: JsonPropertyName("follow")] bool Follow,
 	[property: JsonPropertyName("ignore")] bool Ignore,
@@ -152,14 +164,14 @@ public sealed record AutoPaymentsListResponsePayments1234567890ReceiverPermissio
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static AutoPaymentsListResponsePayments1234567890ReceiverPermissions ReadFrom(ReadOnlyMemory<byte> json)
+	public static AutoPaymentsListResponsePaymentsReceiverPermissions ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static AutoPaymentsListResponsePayments1234567890ReceiverPermissions ReadFromReader(ref Utf8JsonReader reader)
+	internal static AutoPaymentsListResponsePaymentsReceiverPermissions ReadFromReader(ref Utf8JsonReader reader)
 	{
 		bool v0 = default;
 		bool v1 = default;
@@ -195,11 +207,11 @@ public sealed record AutoPaymentsListResponsePayments1234567890ReceiverPermissio
 				reader.Skip();
 			}
 		}
-		return new AutoPaymentsListResponsePayments1234567890ReceiverPermissions(v0, v1, v2, v3);
+		return new AutoPaymentsListResponsePaymentsReceiverPermissions(v0, v1, v2, v3);
 	}
 }
 
-public sealed record AutoPaymentsListResponsePayments1234567890ReceiverFields(
+public sealed record AutoPaymentsListResponsePaymentsReceiverFields(
 	[property: JsonPropertyName("id")] string Id,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
@@ -210,14 +222,14 @@ public sealed record AutoPaymentsListResponsePayments1234567890ReceiverFields(
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static AutoPaymentsListResponsePayments1234567890ReceiverFields ReadFrom(ReadOnlyMemory<byte> json)
+	public static AutoPaymentsListResponsePaymentsReceiverFields ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static AutoPaymentsListResponsePayments1234567890ReceiverFields ReadFromReader(ref Utf8JsonReader reader)
+	internal static AutoPaymentsListResponsePaymentsReceiverFields ReadFromReader(ref Utf8JsonReader reader)
 	{
 		string v0 = null!;
 		string v1 = null!;
@@ -265,11 +277,11 @@ public sealed record AutoPaymentsListResponsePayments1234567890ReceiverFields(
 				reader.Skip();
 			}
 		}
-		return new AutoPaymentsListResponsePayments1234567890ReceiverFields(v0, v1, v2, v3, v4, v5);
+		return new AutoPaymentsListResponsePaymentsReceiverFields(v0, v1, v2, v3, v4, v5);
 	}
 }
 
-public sealed record AutoPaymentsListResponsePayments1234567890Receiver(
+public sealed record AutoPaymentsListResponsePaymentsReceiver(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("username")] string Username,
 	[property: JsonPropertyName("username_html")] string UsernameHtml,
@@ -288,24 +300,24 @@ public sealed record AutoPaymentsListResponsePayments1234567890Receiver(
 	[property: JsonPropertyName("user_last_seen_date")] long UserLastSeenDate,
 	[property: JsonPropertyName("user_following_count")] long UserFollowingCount,
 	[property: JsonPropertyName("user_followers_count")] long UserFollowersCount,
-	[property: JsonPropertyName("links")] AutoPaymentsListResponsePayments1234567890ReceiverLinks Links,
-	[property: JsonPropertyName("permissions")] AutoPaymentsListResponsePayments1234567890ReceiverPermissions Permissions,
+	[property: JsonPropertyName("links")] AutoPaymentsListResponsePaymentsReceiverLinks Links,
+	[property: JsonPropertyName("permissions")] AutoPaymentsListResponsePaymentsReceiverPermissions Permissions,
 	[property: JsonPropertyName("user_is_ignored")] bool UserIsIgnored,
 	[property: JsonPropertyName("user_is_visitor")] bool UserIsVisitor,
 	[property: JsonPropertyName("user_group_id")] long UserGroupId,
-	[property: JsonPropertyName("fields")] List<AutoPaymentsListResponsePayments1234567890ReceiverFields> Fields
+	[property: JsonPropertyName("fields")] List<AutoPaymentsListResponsePaymentsReceiverFields> Fields
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static AutoPaymentsListResponsePayments1234567890Receiver ReadFrom(ReadOnlyMemory<byte> json)
+	public static AutoPaymentsListResponsePaymentsReceiver ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static AutoPaymentsListResponsePayments1234567890Receiver ReadFromReader(ref Utf8JsonReader reader)
+	internal static AutoPaymentsListResponsePaymentsReceiver ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		string v1 = null!;
@@ -325,12 +337,12 @@ public sealed record AutoPaymentsListResponsePayments1234567890Receiver(
 		long v15 = default;
 		long v16 = default;
 		long v17 = default;
-		AutoPaymentsListResponsePayments1234567890ReceiverLinks v18 = null!;
-		AutoPaymentsListResponsePayments1234567890ReceiverPermissions v19 = null!;
+		AutoPaymentsListResponsePaymentsReceiverLinks v18 = null!;
+		AutoPaymentsListResponsePaymentsReceiverPermissions v19 = null!;
 		bool v20 = default;
 		bool v21 = default;
 		long v22 = default;
-		List<AutoPaymentsListResponsePayments1234567890ReceiverFields> v23 = null!;
+		List<AutoPaymentsListResponsePaymentsReceiverFields> v23 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -428,12 +440,12 @@ public sealed record AutoPaymentsListResponsePayments1234567890Receiver(
 			else if (reader.ValueTextEquals("links"u8))
 			{
 				reader.Read();
-				v18 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePayments1234567890ReceiverLinks.ReadFromReader(ref reader);
+				v18 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePaymentsReceiverLinks.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("permissions"u8))
 			{
 				reader.Read();
-				v19 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePayments1234567890ReceiverPermissions.ReadFromReader(ref reader);
+				v19 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePaymentsReceiverPermissions.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("user_is_ignored"u8))
 			{
@@ -455,10 +467,10 @@ public sealed record AutoPaymentsListResponsePayments1234567890Receiver(
 				reader.Read();
 				if (reader.TokenType == JsonTokenType.StartArray)
 				{
-					var __lst = new List<AutoPaymentsListResponsePayments1234567890ReceiverFields>();
+					var __lst = new List<AutoPaymentsListResponsePaymentsReceiverFields>();
 					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 					{
-						var __item = AutoPaymentsListResponsePayments1234567890ReceiverFields.ReadFromReader(ref reader);
+						var __item = AutoPaymentsListResponsePaymentsReceiverFields.ReadFromReader(ref reader);
 						__lst.Add(__item);
 					}
 					v23 = __lst;
@@ -470,11 +482,11 @@ public sealed record AutoPaymentsListResponsePayments1234567890Receiver(
 				reader.Skip();
 			}
 		}
-		return new AutoPaymentsListResponsePayments1234567890Receiver(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23);
+		return new AutoPaymentsListResponsePaymentsReceiver(v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23);
 	}
 }
 
-public sealed record AutoPaymentsListResponsePayments1234567890(
+public sealed record AutoPaymentsListResponsePayments(
 	[property: JsonPropertyName("user_id")] long UserId,
 	[property: JsonPropertyName("receiver_id")] long ReceiverId,
 	[property: JsonPropertyName("amount")] string Amount,
@@ -483,19 +495,19 @@ public sealed record AutoPaymentsListResponsePayments1234567890(
 	[property: JsonPropertyName("next_alert_date")] long NextAlertDate,
 	[property: JsonPropertyName("auto_payment_id")] long AutoPaymentId,
 	[property: JsonPropertyName("day")] string Day,
-	[property: JsonPropertyName("receiver")] AutoPaymentsListResponsePayments1234567890Receiver Receiver
+	[property: JsonPropertyName("receiver")] AutoPaymentsListResponsePaymentsReceiver Receiver
 )
 {
 
 	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static AutoPaymentsListResponsePayments1234567890 ReadFrom(ReadOnlyMemory<byte> json)
+	public static AutoPaymentsListResponsePayments ReadFrom(ReadOnlyMemory<byte> json)
 	{
 		var reader = new Utf8JsonReader(json.Span);
 		reader.Read(); // advance to StartObject
 		return ReadFromReader(ref reader);
 	}
 
-	internal static AutoPaymentsListResponsePayments1234567890 ReadFromReader(ref Utf8JsonReader reader)
+	internal static AutoPaymentsListResponsePayments ReadFromReader(ref Utf8JsonReader reader)
 	{
 		long v0 = default;
 		long v1 = default;
@@ -505,7 +517,7 @@ public sealed record AutoPaymentsListResponsePayments1234567890(
 		long v5 = default;
 		long v6 = default;
 		string v7 = null!;
-		AutoPaymentsListResponsePayments1234567890Receiver v8 = null!;
+		AutoPaymentsListResponsePaymentsReceiver v8 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -553,7 +565,7 @@ public sealed record AutoPaymentsListResponsePayments1234567890(
 			else if (reader.ValueTextEquals("receiver"u8))
 			{
 				reader.Read();
-				v8 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePayments1234567890Receiver.ReadFromReader(ref reader);
+				v8 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePaymentsReceiver.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -561,42 +573,7 @@ public sealed record AutoPaymentsListResponsePayments1234567890(
 				reader.Skip();
 			}
 		}
-		return new AutoPaymentsListResponsePayments1234567890(v0, v1, v2, v3, v4, v5, v6, v7, v8);
-	}
-}
-
-public sealed record AutoPaymentsListResponsePayments(
-	[property: JsonPropertyName("1234567890")] AutoPaymentsListResponsePayments1234567890 _1234567890
-)
-{
-
-	/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>
-	public static AutoPaymentsListResponsePayments ReadFrom(ReadOnlyMemory<byte> json)
-	{
-		var reader = new Utf8JsonReader(json.Span);
-		reader.Read(); // advance to StartObject
-		return ReadFromReader(ref reader);
-	}
-
-	internal static AutoPaymentsListResponsePayments ReadFromReader(ref Utf8JsonReader reader)
-	{
-		AutoPaymentsListResponsePayments1234567890 v0 = null!;
-		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
-		{
-			if (reader.TokenType != JsonTokenType.PropertyName) continue;
-
-			if (reader.ValueTextEquals("1234567890"u8))
-			{
-				reader.Read();
-				v0 = reader.TokenType == JsonTokenType.Null ? null! : AutoPaymentsListResponsePayments1234567890.ReadFromReader(ref reader);
-			}
-			else
-			{
-				reader.Read();
-				reader.Skip();
-			}
-		}
-		return new AutoPaymentsListResponsePayments(v0);
+		return new AutoPaymentsListResponsePayments(v0, v1, v2, v3, v4, v5, v6, v7, v8);
 	}
 }
 

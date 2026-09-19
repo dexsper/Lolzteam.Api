@@ -26,12 +26,12 @@ public static class CartApiTypes
 		/// Minimal price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmin")]
-		public long? Pmin { get; init; }
+		public double? Pmin { get; init; }
 		/// <summary>
 		/// Maximum price of account (Inclusive).
 		/// </summary>
 		[JsonPropertyName("pmax")]
-		public long? Pmax { get; init; }
+		public double? Pmax { get; init; }
 		/// <summary>
 		/// The word or words contained in the account title.
 		/// </summary>

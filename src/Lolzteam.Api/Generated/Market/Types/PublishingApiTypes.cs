@@ -23,6 +23,11 @@ public static class PublishingApiTypes
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
 		/// <summary>
+		/// Generate the title by using AI.
+		/// </summary>
+		[JsonPropertyName("auto_generate_title")]
+		public bool? AutoGenerateTitle { get; init; }
+		/// <summary>
 		/// Current price of account in your currency.
 		/// </summary>
 		[JsonPropertyName("price")]
@@ -40,10 +45,10 @@ public static class PublishingApiTypes
 		[JsonPropertyName("item_origin")]
 		public required ItemOrigin ItemOrigin { get; init; }
 		/// <summary>
-		/// Guarantee type.
+		/// Guarantee duration.
 		/// </summary>
-		[JsonPropertyName("extended_guarantee")]
-		public ExtendedGuarantee? ExtendedGuarantee { get; init; }
+		[JsonPropertyName("guarantee_duration")]
+		public GuaranteeDuration? GuaranteeDuration { get; init; }
 		/// <summary>
 		/// Allow users to ask discount for this account.
 		/// </summary>
@@ -87,6 +92,16 @@ public static class PublishingApiTypes
 		[JsonPropertyName("login_password")]
 		public string? LoginPassword { get; init; }
 		/// <summary>
+		/// Put item id, if you are trying to resell item. This is useful to pass temporary email from reselling item to new item. You will get same temporary email from reselling account.
+		/// </summary>
+		[JsonPropertyName("resell_item_id")]
+		public long? ResellItemId { get; init; }
+		/// <summary>
+		/// List of tag IDs
+		/// </summary>
+		[JsonPropertyName("tag_id")]
+		public List<long?>? TagId { get; init; }
+		/// <summary>
 		/// Required if a <b>category</b> is one of list of Required email login data categories.
 		/// </summary>
 		[JsonPropertyName("has_email_login_data")]
@@ -101,6 +116,11 @@ public static class PublishingApiTypes
 		/// </summary>
 		[JsonPropertyName("email_type")]
 		public EmailType? EmailType { get; init; }
+		/// <summary>
+		/// 2FA secret code. Available for <c>Instagram</c> and <c>Roblox</c> categories.
+		/// </summary>
+		[JsonPropertyName("tfa_secret")]
+		public string? TfaSecret { get; init; }
 		[JsonPropertyName("extra")]
 		public JsonElement? Extra { get; init; }
 	}
@@ -167,6 +187,11 @@ public static class PublishingApiTypes
 		[JsonPropertyName("title_en")]
 		public string? TitleEn { get; init; }
 		/// <summary>
+		/// Generate the title by using AI.
+		/// </summary>
+		[JsonPropertyName("auto_generate_title")]
+		public bool? AutoGenerateTitle { get; init; }
+		/// <summary>
 		/// Current price of account in your currency.
 		/// </summary>
 		[JsonPropertyName("price")]
@@ -184,10 +209,10 @@ public static class PublishingApiTypes
 		[JsonPropertyName("item_origin")]
 		public required ItemOrigin ItemOrigin { get; init; }
 		/// <summary>
-		/// Guarantee type.
+		/// Guarantee duration.
 		/// </summary>
-		[JsonPropertyName("extended_guarantee")]
-		public ExtendedGuarantee? ExtendedGuarantee { get; init; }
+		[JsonPropertyName("guarantee_duration")]
+		public GuaranteeDuration? GuaranteeDuration { get; init; }
 		/// <summary>
 		/// Account public description.
 		/// </summary>
@@ -209,6 +234,11 @@ public static class PublishingApiTypes
 		[JsonPropertyName("resell_item_id")]
 		public long? ResellItemId { get; init; }
 		/// <summary>
+		/// List of tag IDs
+		/// </summary>
+		[JsonPropertyName("tag_id")]
+		public List<long?>? TagId { get; init; }
+		/// <summary>
 		/// Required if a <b>category</b> is one of list of Required email login data categories.
 		/// </summary>
 		[JsonPropertyName("has_email_login_data")]
@@ -223,6 +253,11 @@ public static class PublishingApiTypes
 		/// </summary>
 		[JsonPropertyName("email_type")]
 		public EmailType? EmailType { get; init; }
+		/// <summary>
+		/// 2FA secret code. Available for <c>Instagram</c> and <c>Roblox</c> categories.
+		/// </summary>
+		[JsonPropertyName("tfa_secret")]
+		public string? TfaSecret { get; init; }
 		/// <summary>
 		/// Allow users to ask discount for this account.
 		/// </summary>
@@ -293,11 +328,6 @@ public static class PublishingApiTypes
 
 	public sealed record PublishingCheckBody
 	{
-		/// <summary>
-		/// Put if you are trying to resell an account.
-		/// </summary>
-		[JsonPropertyName("resell_item_id")]
-		public long? ResellItemId { get; init; }
 		/// <summary>
 		/// Set this parameter to <b>true</b> so that the Market will take a random proxy from its pool for each of your requests.
 		/// Otherwise, if this parameter is set to <b>false</b> or not set, the Market will take a specific proxy from its pool, which is predefined for each item.
