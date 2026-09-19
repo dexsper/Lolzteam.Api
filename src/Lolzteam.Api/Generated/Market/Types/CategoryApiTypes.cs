@@ -1653,7 +1653,7 @@ public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("steam_last_activity")] long SteamLastActivity,
 	[property: JsonPropertyName("steam_full_games")] CategorySteamResponseItemsSteamFullGames SteamFullGames,
 	[property: JsonPropertyName("steam_community_ban")] long SteamCommunityBan,
-	[property: JsonPropertyName("steam_bans")] string SteamBans,
+	[property: JsonPropertyName("steam_bans")] Dictionary<string, string>? SteamBans,
 	[property: JsonPropertyName("steam_cs2_profile_rank")] long SteamCs2ProfileRank,
 	[property: JsonPropertyName("steam_balance")] string SteamBalance,
 	[property: JsonPropertyName("steam_cs2_rank_id")] long SteamCs2RankId,
@@ -1708,7 +1708,7 @@ public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("steam_dota2_last_match_date")] long SteamDota2LastMatchDate,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] CategorySteamResponseItemsGuarantee Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -1808,7 +1808,7 @@ public sealed record CategorySteamResponseItems(
 		long v25 = default;
 		CategorySteamResponseItemsSteamFullGames v26 = null!;
 		long v27 = default;
-		string v28 = null!;
+		Dictionary<string, string> v28 = null!;
 		long v29 = default;
 		string v30 = null!;
 		long v31 = default;
@@ -1863,7 +1863,7 @@ public sealed record CategorySteamResponseItems(
 		long v80 = default;
 		string v81 = null!;
 		bool v82 = default;
-		long v83 = default;
+		double v83 = default;
 		CategorySteamResponseItemsGuarantee v84 = null!;
 		bool v85 = default;
 		bool v86 = default;
@@ -2069,7 +2069,19 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("steam_bans"u8))
 			{
 				reader.Read();
-				v28 = reader.GetString()!;
+				if (reader.TokenType == JsonTokenType.StartObject)
+				{
+					var __dict = new Dictionary<string, string>();
+					while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
+					{
+						if (reader.TokenType != JsonTokenType.PropertyName) continue;
+						var __key = reader.GetString()!;
+						reader.Read();
+						var __val = reader.GetString()!;
+						__dict[__key] = __val;
+					}
+					v28 = __dict;
+				}
 			}
 			else if (reader.ValueTextEquals("steam_cs2_profile_rank"u8))
 			{
@@ -2344,7 +2356,7 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v83 = reader.GetInt64();
+				v83 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -3916,7 +3928,7 @@ public sealed record CategoryFortniteResponseItems(
 	[property: JsonPropertyName("fortnite_shop_gliders_count")] long FortniteShopGlidersCount,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -4022,7 +4034,7 @@ public sealed record CategoryFortniteResponseItems(
 		long v42 = default;
 		string v43 = null!;
 		bool v44 = default;
-		long v45 = default;
+		double v45 = default;
 		JsonElement v46 = default;
 		bool v47 = default;
 		bool v48 = default;
@@ -4302,7 +4314,7 @@ public sealed record CategoryFortniteResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v45 = reader.GetInt64();
+				v45 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -6779,7 +6791,7 @@ public sealed record CategoryMihoyoResponseItems(
 	[property: JsonPropertyName("mihoyo_zenless_currency")] long MihoyoZenlessCurrency,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -6891,7 +6903,7 @@ public sealed record CategoryMihoyoResponseItems(
 		long v54 = default;
 		string v55 = null!;
 		bool v56 = default;
-		long v57 = default;
+		double v57 = default;
 		JsonElement v58 = default;
 		bool v59 = default;
 		bool v60 = default;
@@ -7225,7 +7237,7 @@ public sealed record CategoryMihoyoResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v57 = reader.GetInt64();
+				v57 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -8412,7 +8424,7 @@ public sealed record CategoryRiotResponseItems(
 	[property: JsonPropertyName("riot_lol_rank_win_rate")] long RiotLolRankWinRate,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -8527,7 +8539,7 @@ public sealed record CategoryRiotResponseItems(
 		long v53 = default;
 		string v54 = null!;
 		bool v55 = default;
-		long v56 = default;
+		double v56 = default;
 		JsonElement v57 = default;
 		bool v58 = default;
 		bool v59 = default;
@@ -8860,7 +8872,7 @@ public sealed record CategoryRiotResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v56 = reader.GetInt64();
+				v56 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -9885,7 +9897,7 @@ public sealed record CategoryTelegramResponseItems(
 	[property: JsonPropertyName("telegram_contacts_count")] long TelegramContactsCount,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -9971,7 +9983,7 @@ public sealed record CategoryTelegramResponseItems(
 		long v37 = default;
 		string v38 = null!;
 		bool v39 = default;
-		long v40 = default;
+		double v40 = default;
 		JsonElement v41 = default;
 		bool v42 = default;
 		bool v43 = default;
@@ -10211,7 +10223,7 @@ public sealed record CategoryTelegramResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v40 = reader.GetInt64();
+				v40 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -11302,7 +11314,7 @@ public sealed record CategorySupercellResponseItems(
 	[property: JsonPropertyName("supercell_total_builder_troops_level")] long SupercellTotalBuilderTroopsLevel,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -11404,7 +11416,7 @@ public sealed record CategorySupercellResponseItems(
 		long v50 = default;
 		string v51 = null!;
 		bool v52 = default;
-		long v53 = default;
+		double v53 = default;
 		JsonElement v54 = default;
 		bool v55 = default;
 		bool v56 = default;
@@ -11712,7 +11724,7 @@ public sealed record CategorySupercellResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v53 = reader.GetInt64();
+				v53 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -12612,7 +12624,7 @@ public sealed record CategoryEaResponseItems(
 	[property: JsonPropertyName("ea_has_ban")] long EaHasBan,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -12701,7 +12713,7 @@ public sealed record CategoryEaResponseItems(
 		long v37 = default;
 		string v38 = null!;
 		bool v39 = default;
-		long v40 = default;
+		double v40 = default;
 		JsonElement v41 = default;
 		bool v42 = default;
 		bool v43 = default;
@@ -12953,7 +12965,7 @@ public sealed record CategoryEaResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v40 = reader.GetInt64();
+				v40 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -15035,7 +15047,7 @@ public sealed record CategoryWotResponseItems(
 	[property: JsonPropertyName("wot_blitz")] long WotBlitz,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -15134,7 +15146,7 @@ public sealed record CategoryWotResponseItems(
 		long v38 = default;
 		string v39 = null!;
 		bool v40 = default;
-		long v41 = default;
+		double v41 = default;
 		JsonElement v42 = default;
 		bool v43 = default;
 		bool v44 = default;
@@ -15391,7 +15403,7 @@ public sealed record CategoryWotResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v41 = reader.GetInt64();
+				v41 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -34759,7 +34771,7 @@ public sealed record CategoryWotBlitzResponseItems(
 	[property: JsonPropertyName("wot_blitz")] long WotBlitz,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -34858,7 +34870,7 @@ public sealed record CategoryWotBlitzResponseItems(
 		long v38 = default;
 		string v39 = null!;
 		bool v40 = default;
-		long v41 = default;
+		double v41 = default;
 		JsonElement v42 = default;
 		bool v43 = default;
 		bool v44 = default;
@@ -35115,7 +35127,7 @@ public sealed record CategoryWotBlitzResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v41 = reader.GetInt64();
+				v41 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -35802,7 +35814,7 @@ public sealed record CategoryGiftsResponseItems(
 	[property: JsonPropertyName("gifts_type")] string GiftsType,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -35876,7 +35888,7 @@ public sealed record CategoryGiftsResponseItems(
 		string v25 = null!;
 		string v26 = null!;
 		bool v27 = default;
-		long v28 = default;
+		double v28 = default;
 		JsonElement v29 = default;
 		bool v30 = default;
 		bool v31 = default;
@@ -36056,7 +36068,7 @@ public sealed record CategoryGiftsResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v28 = reader.GetInt64();
+				v28 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -36960,7 +36972,7 @@ public sealed record CategoryEpicGamesResponseItems(
 	[property: JsonPropertyName("eg_balance")] long EgBalance,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -37051,7 +37063,7 @@ public sealed record CategoryEpicGamesResponseItems(
 		long v37 = default;
 		string v38 = null!;
 		bool v39 = default;
-		long v40 = default;
+		double v40 = default;
 		JsonElement v41 = default;
 		bool v42 = default;
 		bool v43 = default;
@@ -37323,7 +37335,7 @@ public sealed record CategoryEpicGamesResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v40 = reader.GetInt64();
+				v40 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -38140,7 +38152,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 	[property: JsonPropertyName("tarkov_purchase_date")] long TarkovPurchaseDate,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -38236,7 +38248,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 		long v41 = default;
 		string v42 = null!;
 		bool v43 = default;
-		long v44 = default;
+		double v44 = default;
 		JsonElement v45 = default;
 		bool v46 = default;
 		bool v47 = default;
@@ -38502,7 +38514,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v44 = reader.GetInt64();
+				v44 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -39298,7 +39310,7 @@ public sealed record CategorySocialClubResponseItems(
 	[property: JsonPropertyName("socialclub_has_rdr2")] long SocialclubHasRdr2,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -39378,7 +39390,7 @@ public sealed record CategorySocialClubResponseItems(
 		long v29 = default;
 		string v30 = null!;
 		bool v31 = default;
-		long v32 = default;
+		double v32 = default;
 		JsonElement v33 = default;
 		bool v34 = default;
 		bool v35 = default;
@@ -39589,7 +39601,7 @@ public sealed record CategorySocialClubResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v32 = reader.GetInt64();
+				v32 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -40529,7 +40541,7 @@ public sealed record CategoryUplayResponseItems(
 	[property: JsonPropertyName("uplay_r6_rank")] long UplayR6Rank,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -40628,7 +40640,7 @@ public sealed record CategoryUplayResponseItems(
 		long v39 = default;
 		string v40 = null!;
 		bool v41 = default;
-		long v42 = default;
+		double v42 = default;
 		JsonElement v43 = default;
 		bool v44 = default;
 		bool v45 = default;
@@ -40889,7 +40901,7 @@ public sealed record CategoryUplayResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v42 = reader.GetInt64();
+				v42 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -41810,7 +41822,7 @@ public sealed record CategoryDiscordResponseItems(
 	[property: JsonPropertyName("discord_admin_servers")] string DiscordAdminServers,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -41896,7 +41908,7 @@ public sealed record CategoryDiscordResponseItems(
 		string v35 = null!;
 		string v36 = null!;
 		bool v37 = default;
-		long v38 = default;
+		double v38 = default;
 		JsonElement v39 = default;
 		bool v40 = default;
 		bool v41 = default;
@@ -42128,7 +42140,7 @@ public sealed record CategoryDiscordResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v38 = reader.GetInt64();
+				v38 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -42895,7 +42907,7 @@ public sealed record CategoryTikTokResponseItems(
 	[property: JsonPropertyName("tt_cookie_login")] long TtCookieLogin,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -42986,7 +42998,7 @@ public sealed record CategoryTikTokResponseItems(
 		long v40 = default;
 		string v41 = null!;
 		bool v42 = default;
-		long v43 = default;
+		double v43 = default;
 		JsonElement v44 = default;
 		bool v45 = default;
 		bool v46 = default;
@@ -43243,7 +43255,7 @@ public sealed record CategoryTikTokResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v43 = reader.GetInt64();
+				v43 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -43986,7 +43998,7 @@ public sealed record CategoryInstagramResponseItems(
 	[property: JsonPropertyName("instagram_login_without_cookies")] long InstagramLoginWithoutCookies,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -44068,7 +44080,7 @@ public sealed record CategoryInstagramResponseItems(
 		long v32 = default;
 		string v33 = null!;
 		bool v34 = default;
-		long v35 = default;
+		double v35 = default;
 		JsonElement v36 = default;
 		bool v37 = default;
 		bool v38 = default;
@@ -44284,7 +44296,7 @@ public sealed record CategoryInstagramResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v35 = reader.GetInt64();
+				v35 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -45235,7 +45247,7 @@ public sealed record CategoryBattleNetResponseItems(
 	[property: JsonPropertyName("battlenet_converted_balance")] long BattlenetConvertedBalance,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] CategoryBattleNetResponseItemsGuarantee Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -45325,7 +45337,7 @@ public sealed record CategoryBattleNetResponseItems(
 		long v32 = default;
 		string v33 = null!;
 		bool v34 = default;
-		long v35 = default;
+		double v35 = default;
 		CategoryBattleNetResponseItemsGuarantee v36 = null!;
 		bool v37 = default;
 		bool v38 = default;
@@ -45549,7 +45561,7 @@ public sealed record CategoryBattleNetResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v35 = reader.GetInt64();
+				v35 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -47285,7 +47297,7 @@ public sealed record CategoryVpnResponseItems(
 	[property: JsonPropertyName("vpn_renewable")] long VpnRenewable,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -47360,7 +47372,7 @@ public sealed record CategoryVpnResponseItems(
 		long v25 = default;
 		string v26 = null!;
 		bool v27 = default;
-		long v28 = default;
+		double v28 = default;
 		JsonElement v29 = default;
 		bool v30 = default;
 		bool v31 = default;
@@ -47541,7 +47553,7 @@ public sealed record CategoryVpnResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v28 = reader.GetInt64();
+				v28 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -48535,7 +48547,7 @@ public sealed record CategoryRobloxResponseItems(
 	[property: JsonPropertyName("roblox_credit_balance")] long RobloxCreditBalance,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -48635,7 +48647,7 @@ public sealed record CategoryRobloxResponseItems(
 		long v44 = default;
 		string v45 = null!;
 		bool v46 = default;
-		long v47 = default;
+		double v47 = default;
 		JsonElement v48 = default;
 		bool v49 = default;
 		bool v50 = default;
@@ -48917,7 +48929,7 @@ public sealed record CategoryRobloxResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v47 = reader.GetInt64();
+				v47 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -49689,7 +49701,7 @@ public sealed record CategoryWarfaceResponseItems(
 	[property: JsonPropertyName("wf_rank")] long WfRank,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -49775,7 +49787,7 @@ public sealed record CategoryWarfaceResponseItems(
 		long v33 = default;
 		string v34 = null!;
 		bool v35 = default;
-		long v36 = default;
+		double v36 = default;
 		JsonElement v37 = default;
 		bool v38 = default;
 		bool v39 = default;
@@ -49999,7 +50011,7 @@ public sealed record CategoryWarfaceResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v36 = reader.GetInt64();
+				v36 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -50876,7 +50888,7 @@ public sealed record CategoryMinecraftResponseItems(
 	[property: JsonPropertyName("minecraft_email_reset_date")] long MinecraftEmailResetDate,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("isIgnored")] bool IsIgnored,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] JsonElement Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -50973,7 +50985,7 @@ public sealed record CategoryMinecraftResponseItems(
 		long v46 = default;
 		string v47 = null!;
 		bool v48 = default;
-		long v49 = default;
+		double v49 = default;
 		JsonElement v50 = default;
 		bool v51 = default;
 		bool v52 = default;
@@ -51269,7 +51281,7 @@ public sealed record CategoryMinecraftResponseItems(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v49 = reader.GetInt64();
+				v49 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{

@@ -1123,7 +1123,7 @@ public sealed record PublishingCheckResponseItem(
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("buyer_avatar_date")] long BuyerAvatarDate,
 	[property: JsonPropertyName("buyer_user_group_id")] long BuyerUserGroupId,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] PublishingCheckResponseItemGuarantee Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -1213,7 +1213,7 @@ public sealed record PublishingCheckResponseItem(
 		string v29 = null!;
 		long v30 = default;
 		long v31 = default;
-		long v32 = default;
+		double v32 = default;
 		PublishingCheckResponseItemGuarantee v33 = null!;
 		bool v34 = default;
 		bool v35 = default;
@@ -1425,7 +1425,7 @@ public sealed record PublishingCheckResponseItem(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v32 = reader.GetInt64();
+				v32 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{

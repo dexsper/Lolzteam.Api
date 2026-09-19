@@ -10232,7 +10232,10 @@
                           },
                           "steam_bans": {
                             "title": "Steam",
-                            "type": "string"
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string"
+                            }
                           },
                           "steam_cs2_profile_rank": {
                             "title": "Steam",
@@ -10452,7 +10455,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee",
@@ -10911,7 +10914,6 @@
                           "steam_last_activity",
                           "steam_full_games",
                           "steam_community_ban",
-                          "steam_bans",
                           "steam_cs2_profile_rank",
                           "steam_balance",
                           "steam_cs2_rank_id",
@@ -29002,7 +29004,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -32440,7 +32442,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -35422,7 +35424,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -36863,7 +36865,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -38842,7 +38844,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -39822,7 +39824,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -40613,7 +40615,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -42003,7 +42005,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -52303,7 +52305,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -53192,7 +53194,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -54342,7 +54344,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -55082,7 +55084,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -56133,7 +56135,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -57805,7 +57807,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -58574,7 +58576,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -59263,7 +59265,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -59996,7 +59998,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee",
@@ -61632,7 +61634,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -63145,7 +63147,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -63935,7 +63937,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -65267,7 +65269,7 @@
                           },
                           "priceWithSellerFee": {
                             "title": "Price With Seller Fee",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "guarantee": {
                             "title": "Guarantee"
@@ -84342,7 +84344,7 @@
                     },
                     "priceWithSellerFee": {
                       "title": "Price With Seller Fee",
-                      "type": "integer"
+                      "type": "number"
                     },
                     "guarantee": {
                       "title": "Guarantee",
@@ -84905,7 +84907,7 @@
                     },
                     "priceWithSellerFee": {
                       "title": "Price With Seller Fee",
-                      "type": "integer"
+                      "type": "number"
                     },
                     "guarantee": {
                       "title": "Guarantee",

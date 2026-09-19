@@ -778,7 +778,7 @@ public sealed record PurchasingFastBuyResponseItem(
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("buyer_avatar_date")] long BuyerAvatarDate,
 	[property: JsonPropertyName("buyer_user_group_id")] long BuyerUserGroupId,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] PurchasingFastBuyResponseItemGuarantee Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -868,7 +868,7 @@ public sealed record PurchasingFastBuyResponseItem(
 		string v29 = null!;
 		long v30 = default;
 		long v31 = default;
-		long v32 = default;
+		double v32 = default;
 		PurchasingFastBuyResponseItemGuarantee v33 = null!;
 		bool v34 = default;
 		bool v35 = default;
@@ -1080,7 +1080,7 @@ public sealed record PurchasingFastBuyResponseItem(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v32 = reader.GetInt64();
+				v32 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
@@ -1781,7 +1781,7 @@ public sealed record PurchasingCheckResponseItem(
 	[property: JsonPropertyName("user_alerted")] JsonElement UserAlerted,
 	[property: JsonPropertyName("message")] JsonElement Message,
 	[property: JsonPropertyName("min_price")] long MinPrice,
-	[property: JsonPropertyName("priceWithSellerFee")] long PriceWithSellerFee,
+	[property: JsonPropertyName("priceWithSellerFee")] double PriceWithSellerFee,
 	[property: JsonPropertyName("guarantee")] PurchasingCheckResponseItemGuarantee Guarantee,
 	[property: JsonPropertyName("canViewLoginData")] bool CanViewLoginData,
 	[property: JsonPropertyName("canUpdateItemStats")] bool CanUpdateItemStats,
@@ -1880,7 +1880,7 @@ public sealed record PurchasingCheckResponseItem(
 		JsonElement v44 = default;
 		JsonElement v45 = default;
 		long v46 = default;
-		long v47 = default;
+		double v47 = default;
 		PurchasingCheckResponseItemGuarantee v48 = null!;
 		bool v49 = default;
 		bool v50 = default;
@@ -2161,7 +2161,7 @@ public sealed record PurchasingCheckResponseItem(
 			else if (reader.ValueTextEquals("priceWithSellerFee"u8))
 			{
 				reader.Read();
-				v47 = reader.GetInt64();
+				v47 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
