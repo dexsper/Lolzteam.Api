@@ -169,14 +169,41 @@ public enum AlRankMin : long
 
 public enum AppId : long
 {
+	/// <summary>
+	/// CS2
+	/// </summary>
 	CS2 = 730,
+	/// <summary>
+	/// PUBG
+	/// </summary>
 	Pubg = 578080,
+	/// <summary>
+	/// Steam
+	/// </summary>
 	Steam = 753,
+	/// <summary>
+	/// Dota 2
+	/// </summary>
 	Dota2 = 570,
+	/// <summary>
+	/// Team Fortress 2
+	/// </summary>
 	TF2 = 440,
+	/// <summary>
+	/// Rust
+	/// </summary>
 	Rust = 252490,
+	/// <summary>
+	/// Unturned
+	/// </summary>
 	Unturned = 304930,
+	/// <summary>
+	/// Killing Floor 2
+	/// </summary>
 	KillingFloor2 = 232090,
+	/// <summary>
+	/// Don't Starve Together
+	/// </summary>
 	DontStarveTogether = 322330,
 }
 
@@ -1235,22 +1262,49 @@ public enum CategoryCountry5
 
 public enum CategoryEg : long
 {
+	/// <summary>
+	/// 12 hours
+	/// </summary>
 	Neg1 = -1,
+	/// <summary>
+	/// 24 hours
+	/// </summary>
 	V0 = 0,
+	/// <summary>
+	/// 3 days
+	/// </summary>
 	V1 = 1,
 }
 
 public enum CategoryEg2 : long
 {
+	/// <summary>
+	/// 12 hours
+	/// </summary>
 	Neg1 = -1,
+	/// <summary>
+	/// 24 hours
+	/// </summary>
 	V0 = 0,
+	/// <summary>
+	/// 3 days
+	/// </summary>
 	V1 = 1,
+	/// <summary>
+	/// Guarantee at the time of purchase
+	/// </summary>
 	V2 = 2,
 }
 
 public enum CategoryEg3 : long
 {
+	/// <summary>
+	/// 24 hours
+	/// </summary>
 	V0 = 0,
+	/// <summary>
+	/// 3 days
+	/// </summary>
 	V1 = 1,
 }
 
@@ -1289,30 +1343,105 @@ public enum CategoryEmailType4
 
 public enum CategoryId : long
 {
+	/// <summary>
+	/// Steam
+	/// </summary>
 	V1 = 1,
+	/// <summary>
+	/// EA (Origin)
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// Warface
+	/// </summary>
 	V4 = 4,
+	/// <summary>
+	/// Uplay
+	/// </summary>
 	V5 = 5,
+	/// <summary>
+	/// LLM
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// Social Club
+	/// </summary>
 	V7 = 7,
+	/// <summary>
+	/// Hytale
+	/// </summary>
 	V8 = 8,
+	/// <summary>
+	/// Fortnite
+	/// </summary>
 	V9 = 9,
+	/// <summary>
+	/// Instagram
+	/// </summary>
 	V10 = 10,
+	/// <summary>
+	/// Battlenet
+	/// </summary>
 	V11 = 11,
+	/// <summary>
+	/// Epic Games
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Riot
+	/// </summary>
 	V13 = 13,
+	/// <summary>
+	/// World Of Tanks
+	/// </summary>
 	V14 = 14,
+	/// <summary>
+	/// Supercell
+	/// </summary>
 	V15 = 15,
+	/// <summary>
+	/// WOT Blitz
+	/// </summary>
 	V16 = 16,
+	/// <summary>
+	/// miHoYo
+	/// </summary>
 	V17 = 17,
+	/// <summary>
+	/// Escape From Tarkov
+	/// </summary>
 	V18 = 18,
+	/// <summary>
+	/// VPN
+	/// </summary>
 	V19 = 19,
+	/// <summary>
+	/// Tiktok
+	/// </summary>
 	V20 = 20,
+	/// <summary>
+	/// Onlyfans
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Discord
+	/// </summary>
 	V22 = 22,
+	/// <summary>
+	/// Telegram
+	/// </summary>
 	V24 = 24,
+	/// <summary>
+	/// Minecraft
+	/// </summary>
 	V28 = 28,
+	/// <summary>
+	/// Gifts
+	/// </summary>
 	V30 = 30,
+	/// <summary>
+	/// Roblox
+	/// </summary>
 	V31 = 31,
 }
 
@@ -2505,18 +2634,57 @@ public enum Country
 
 public enum Cs2MapRank : long
 {
+	/// <summary>
+	/// Dust II
+	/// </summary>
 	V1 = 1,
+	/// <summary>
+	/// Mirage
+	/// </summary>
 	V2 = 2,
+	/// <summary>
+	/// Train
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// Nuke
+	/// </summary>
 	V4 = 4,
+	/// <summary>
+	/// Overpass
+	/// </summary>
 	V5 = 5,
+	/// <summary>
+	/// Inferno
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// Ancient
+	/// </summary>
 	V7 = 7,
+	/// <summary>
+	/// Vertigo
+	/// </summary>
 	V8 = 8,
+	/// <summary>
+	/// Anubis
+	/// </summary>
 	V9 = 9,
+	/// <summary>
+	/// Office
+	/// </summary>
 	V10 = 10,
+	/// <summary>
+	/// Thera
+	/// </summary>
 	V11 = 11,
+	/// <summary>
+	/// Mills
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Italy
+	/// </summary>
 	V13 = 13,
 	V14 = 14,
 	V15 = 15,
@@ -10318,9 +10486,21 @@ public enum Glider
 
 public enum GuaranteeDuration : long
 {
+	/// <summary>
+	/// No guarantee
+	/// </summary>
 	V0 = 0,
+	/// <summary>
+	/// 12 hours
+	/// </summary>
 	V43200 = 43200,
+	/// <summary>
+	/// 24 hours
+	/// </summary>
 	V86400 = 86400,
+	/// <summary>
+	/// 3 days
+	/// </summary>
 	V259200 = 259200,
 }
 
@@ -10693,14 +10873,41 @@ public enum InvGame : long
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<ItemOrigin>))]
 public enum ItemOrigin
 {
+	/// <summary>
+	/// Account received using Bruteforce
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
+	/// <summary>
+	/// Account received from phishing page
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
+	/// <summary>
+	/// Account received from stealer logs
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
+	/// <summary>
+	/// Account is automatically registered by a tool
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
+	/// <summary>
+	/// Account is yours. You created it yourself
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
+	/// <summary>
+	/// Account received from another seller
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
+	/// <summary>
+	/// Dummy (empty) account (Only for *Steam* category)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
+	/// <summary>
+	/// Self registered account (Only for *Telegram* category)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
+	/// <summary>
+	/// Account was retrieved via support (Only for *Steam*, *Fortnite* categories)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("retrieve_via_support")] RetrieveViaSupport,
 }
 
@@ -10776,59 +10983,209 @@ public enum LastRaidPeriod
 
 public enum LastRmax : long
 {
+	/// <summary>
+	/// Iron 1
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// Iron 2
+	/// </summary>
 	V4 = 4,
+	/// <summary>
+	/// Iron 3
+	/// </summary>
 	V5 = 5,
+	/// <summary>
+	/// Bronze 1
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// Bronze 2
+	/// </summary>
 	V7 = 7,
+	/// <summary>
+	/// Bronze 3
+	/// </summary>
 	V8 = 8,
+	/// <summary>
+	/// Silver 1
+	/// </summary>
 	V9 = 9,
+	/// <summary>
+	/// Silver 2
+	/// </summary>
 	V10 = 10,
+	/// <summary>
+	/// Silver 3
+	/// </summary>
 	V11 = 11,
+	/// <summary>
+	/// Gold 1
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Gold 2
+	/// </summary>
 	V13 = 13,
+	/// <summary>
+	/// Gold 3
+	/// </summary>
 	V14 = 14,
+	/// <summary>
+	/// Platinum 1
+	/// </summary>
 	V15 = 15,
+	/// <summary>
+	/// Platinum 2
+	/// </summary>
 	V16 = 16,
+	/// <summary>
+	/// Platinum 3
+	/// </summary>
 	V17 = 17,
+	/// <summary>
+	/// Diamond 1
+	/// </summary>
 	V18 = 18,
+	/// <summary>
+	/// Diamond 2
+	/// </summary>
 	V19 = 19,
+	/// <summary>
+	/// Diamond 3
+	/// </summary>
 	V20 = 20,
+	/// <summary>
+	/// Ascendant 1
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Ascendant 2
+	/// </summary>
 	V22 = 22,
+	/// <summary>
+	/// Ascendant 3
+	/// </summary>
 	V23 = 23,
+	/// <summary>
+	/// Immortal 1
+	/// </summary>
 	V24 = 24,
+	/// <summary>
+	/// Immortal 2
+	/// </summary>
 	V25 = 25,
+	/// <summary>
+	/// Immortal 3
+	/// </summary>
 	V26 = 26,
+	/// <summary>
+	/// Radiant
+	/// </summary>
 	V27 = 27,
 }
 
 public enum LastRmin : long
 {
+	/// <summary>
+	/// Iron 1
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// Iron 2
+	/// </summary>
 	V4 = 4,
+	/// <summary>
+	/// Iron 3
+	/// </summary>
 	V5 = 5,
+	/// <summary>
+	/// Bronze 1
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// Bronze 2
+	/// </summary>
 	V7 = 7,
+	/// <summary>
+	/// Bronze 3
+	/// </summary>
 	V8 = 8,
+	/// <summary>
+	/// Silver 1
+	/// </summary>
 	V9 = 9,
+	/// <summary>
+	/// Silver 2
+	/// </summary>
 	V10 = 10,
+	/// <summary>
+	/// Silver 3
+	/// </summary>
 	V11 = 11,
+	/// <summary>
+	/// Gold 1
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Gold 2
+	/// </summary>
 	V13 = 13,
+	/// <summary>
+	/// Gold 3
+	/// </summary>
 	V14 = 14,
+	/// <summary>
+	/// Platinum 1
+	/// </summary>
 	V15 = 15,
+	/// <summary>
+	/// Platinum 2
+	/// </summary>
 	V16 = 16,
+	/// <summary>
+	/// Platinum 3
+	/// </summary>
 	V17 = 17,
+	/// <summary>
+	/// Diamond 1
+	/// </summary>
 	V18 = 18,
+	/// <summary>
+	/// Diamond 2
+	/// </summary>
 	V19 = 19,
+	/// <summary>
+	/// Diamond 3
+	/// </summary>
 	V20 = 20,
+	/// <summary>
+	/// Ascendant 1
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Ascendant 2
+	/// </summary>
 	V22 = 22,
+	/// <summary>
+	/// Ascendant 3
+	/// </summary>
 	V23 = 23,
+	/// <summary>
+	/// Immortal 1
+	/// </summary>
 	V24 = 24,
+	/// <summary>
+	/// Immortal 2
+	/// </summary>
 	V25 = 25,
+	/// <summary>
+	/// Immortal 3
+	/// </summary>
 	V26 = 26,
+	/// <summary>
+	/// Radiant
+	/// </summary>
 	V27 = 27,
 }
 
@@ -11468,14 +11825,41 @@ public enum NotLanguage
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<NotOrigin>))]
 public enum NotOrigin
 {
+	/// <summary>
+	/// Account received using Bruteforce
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
+	/// <summary>
+	/// Account received from phishing page
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
+	/// <summary>
+	/// Account received from stealer logs
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
+	/// <summary>
+	/// Account is automatically registered by a tool
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
+	/// <summary>
+	/// Account is yours. You created it yourself
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
+	/// <summary>
+	/// Account received from another seller
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
+	/// <summary>
+	/// Dummy (empty) account (Only for *Steam* category)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
+	/// <summary>
+	/// Self registered account (Only for *Telegram* category)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
+	/// <summary>
+	/// Account was retrieved via support (Only for *Steam*, *Fortnite* categories)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("retrieve_via_support")] RetrieveViaSupport,
 }
 
@@ -11524,15 +11908,45 @@ public enum NotStw
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<OrderBy>))]
 public enum OrderBy
 {
+	/// <summary>
+	/// Cheap first.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("price_to_up")] PriceToUp,
+	/// <summary>
+	/// Expensive first.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("price_to_down")] PriceToDown,
+	/// <summary>
+	/// Newest.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("pdate_to_down")] PdateToDown,
+	/// <summary>
+	/// Oldest.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("pdate_to_up")] PdateToUp,
+	/// <summary>
+	/// Newest uploaded.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("pdate_to_down_upload")] PdateToDownUpload,
+	/// <summary>
+	/// Oldest uploaded.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("pdate_to_up_upload")] PdateToUpUpload,
+	/// <summary>
+	/// Newest edited.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("edate_to_up")] EdateToUp,
+	/// <summary>
+	/// Oldest edited.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("edate_to_down")] EdateToDown,
+	/// <summary>
+	/// Newest deleted.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("ddate_to_up")] DdateToUp,
+	/// <summary>
+	/// Oldest deleted.
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("ddate_to_down")] DdateToDown,
 	[Lolzteam.Api.Runtime.EnumValue("auto_buy_diff_to_up")] AutoBuyDiffToUp,
 	[Lolzteam.Api.Runtime.EnumValue("auto_buy_diff_to_down")] AutoBuyDiffToDown,
@@ -11541,14 +11955,41 @@ public enum OrderBy
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<Origin>))]
 public enum Origin
 {
+	/// <summary>
+	/// Account received using Bruteforce
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("brute")] Brute,
+	/// <summary>
+	/// Account received from phishing page
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("phishing")] Phishing,
+	/// <summary>
+	/// Account received from stealer logs
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("stealer")] Stealer,
+	/// <summary>
+	/// Account is automatically registered by a tool
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("autoreg")] Autoreg,
+	/// <summary>
+	/// Account is yours. You created it yourself
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("personal")] Personal,
+	/// <summary>
+	/// Account received from another seller
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("resale")] Resale,
+	/// <summary>
+	/// Dummy (empty) account (Only for *Steam* category)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("dummy")] Dummy,
+	/// <summary>
+	/// Self registered account (Only for *Telegram* category)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("self_registration")] SelfRegistration,
+	/// <summary>
+	/// Account was retrieved via support (Only for *Steam*, *Fortnite* categories)
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("retrieve_via_support")] RetrieveViaSupport,
 }
 
@@ -13921,59 +14362,209 @@ public enum PremiumExpirationPeriod
 
 public enum PreviousRmax : long
 {
+	/// <summary>
+	/// Iron 1
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// Iron 2
+	/// </summary>
 	V4 = 4,
+	/// <summary>
+	/// Iron 3
+	/// </summary>
 	V5 = 5,
+	/// <summary>
+	/// Bronze 1
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// Bronze 2
+	/// </summary>
 	V7 = 7,
+	/// <summary>
+	/// Bronze 3
+	/// </summary>
 	V8 = 8,
+	/// <summary>
+	/// Silver 1
+	/// </summary>
 	V9 = 9,
+	/// <summary>
+	/// Silver 2
+	/// </summary>
 	V10 = 10,
+	/// <summary>
+	/// Silver 3
+	/// </summary>
 	V11 = 11,
+	/// <summary>
+	/// Gold 1
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Gold 2
+	/// </summary>
 	V13 = 13,
+	/// <summary>
+	/// Gold 3
+	/// </summary>
 	V14 = 14,
+	/// <summary>
+	/// Platinum 1
+	/// </summary>
 	V15 = 15,
+	/// <summary>
+	/// Platinum 2
+	/// </summary>
 	V16 = 16,
+	/// <summary>
+	/// Platinum 3
+	/// </summary>
 	V17 = 17,
+	/// <summary>
+	/// Diamond 1
+	/// </summary>
 	V18 = 18,
+	/// <summary>
+	/// Diamond 2
+	/// </summary>
 	V19 = 19,
+	/// <summary>
+	/// Diamond 3
+	/// </summary>
 	V20 = 20,
+	/// <summary>
+	/// Ascendant 1
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Ascendant 2
+	/// </summary>
 	V22 = 22,
+	/// <summary>
+	/// Ascendant 3
+	/// </summary>
 	V23 = 23,
+	/// <summary>
+	/// Immortal 1
+	/// </summary>
 	V24 = 24,
+	/// <summary>
+	/// Immortal 2
+	/// </summary>
 	V25 = 25,
+	/// <summary>
+	/// Immortal 3
+	/// </summary>
 	V26 = 26,
+	/// <summary>
+	/// Radiant
+	/// </summary>
 	V27 = 27,
 }
 
 public enum PreviousRmin : long
 {
+	/// <summary>
+	/// Iron 1
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// Iron 2
+	/// </summary>
 	V4 = 4,
+	/// <summary>
+	/// Iron 3
+	/// </summary>
 	V5 = 5,
+	/// <summary>
+	/// Bronze 1
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// Bronze 2
+	/// </summary>
 	V7 = 7,
+	/// <summary>
+	/// Bronze 3
+	/// </summary>
 	V8 = 8,
+	/// <summary>
+	/// Silver 1
+	/// </summary>
 	V9 = 9,
+	/// <summary>
+	/// Silver 2
+	/// </summary>
 	V10 = 10,
+	/// <summary>
+	/// Silver 3
+	/// </summary>
 	V11 = 11,
+	/// <summary>
+	/// Gold 1
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Gold 2
+	/// </summary>
 	V13 = 13,
+	/// <summary>
+	/// Gold 3
+	/// </summary>
 	V14 = 14,
+	/// <summary>
+	/// Platinum 1
+	/// </summary>
 	V15 = 15,
+	/// <summary>
+	/// Platinum 2
+	/// </summary>
 	V16 = 16,
+	/// <summary>
+	/// Platinum 3
+	/// </summary>
 	V17 = 17,
+	/// <summary>
+	/// Diamond 1
+	/// </summary>
 	V18 = 18,
+	/// <summary>
+	/// Diamond 2
+	/// </summary>
 	V19 = 19,
+	/// <summary>
+	/// Diamond 3
+	/// </summary>
 	V20 = 20,
+	/// <summary>
+	/// Ascendant 1
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Ascendant 2
+	/// </summary>
 	V22 = 22,
+	/// <summary>
+	/// Ascendant 3
+	/// </summary>
 	V23 = 23,
+	/// <summary>
+	/// Immortal 1
+	/// </summary>
 	V24 = 24,
+	/// <summary>
+	/// Immortal 2
+	/// </summary>
 	V25 = 25,
+	/// <summary>
+	/// Immortal 3
+	/// </summary>
 	V26 = 26,
+	/// <summary>
+	/// Radiant
+	/// </summary>
 	V27 = 27,
 }
 
@@ -14158,59 +14749,209 @@ public enum RiotGame
 
 public enum Rmax : long
 {
+	/// <summary>
+	/// Iron 1
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// Iron 2
+	/// </summary>
 	V4 = 4,
+	/// <summary>
+	/// Iron 3
+	/// </summary>
 	V5 = 5,
+	/// <summary>
+	/// Bronze 1
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// Bronze 2
+	/// </summary>
 	V7 = 7,
+	/// <summary>
+	/// Bronze 3
+	/// </summary>
 	V8 = 8,
+	/// <summary>
+	/// Silver 1
+	/// </summary>
 	V9 = 9,
+	/// <summary>
+	/// Silver 2
+	/// </summary>
 	V10 = 10,
+	/// <summary>
+	/// Silver 3
+	/// </summary>
 	V11 = 11,
+	/// <summary>
+	/// Gold 1
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Gold 2
+	/// </summary>
 	V13 = 13,
+	/// <summary>
+	/// Gold 3
+	/// </summary>
 	V14 = 14,
+	/// <summary>
+	/// Platinum 1
+	/// </summary>
 	V15 = 15,
+	/// <summary>
+	/// Platinum 2
+	/// </summary>
 	V16 = 16,
+	/// <summary>
+	/// Platinum 3
+	/// </summary>
 	V17 = 17,
+	/// <summary>
+	/// Diamond 1
+	/// </summary>
 	V18 = 18,
+	/// <summary>
+	/// Diamond 2
+	/// </summary>
 	V19 = 19,
+	/// <summary>
+	/// Diamond 3
+	/// </summary>
 	V20 = 20,
+	/// <summary>
+	/// Ascendant 1
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Ascendant 2
+	/// </summary>
 	V22 = 22,
+	/// <summary>
+	/// Ascendant 3
+	/// </summary>
 	V23 = 23,
+	/// <summary>
+	/// Immortal 1
+	/// </summary>
 	V24 = 24,
+	/// <summary>
+	/// Immortal 2
+	/// </summary>
 	V25 = 25,
+	/// <summary>
+	/// Immortal 3
+	/// </summary>
 	V26 = 26,
+	/// <summary>
+	/// Radiant
+	/// </summary>
 	V27 = 27,
 }
 
 public enum Rmin : long
 {
+	/// <summary>
+	/// Iron 1
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// Iron 2
+	/// </summary>
 	V4 = 4,
+	/// <summary>
+	/// Iron 3
+	/// </summary>
 	V5 = 5,
+	/// <summary>
+	/// Bronze 1
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// Bronze 2
+	/// </summary>
 	V7 = 7,
+	/// <summary>
+	/// Bronze 3
+	/// </summary>
 	V8 = 8,
+	/// <summary>
+	/// Silver 1
+	/// </summary>
 	V9 = 9,
+	/// <summary>
+	/// Silver 2
+	/// </summary>
 	V10 = 10,
+	/// <summary>
+	/// Silver 3
+	/// </summary>
 	V11 = 11,
+	/// <summary>
+	/// Gold 1
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Gold 2
+	/// </summary>
 	V13 = 13,
+	/// <summary>
+	/// Gold 3
+	/// </summary>
 	V14 = 14,
+	/// <summary>
+	/// Platinum 1
+	/// </summary>
 	V15 = 15,
+	/// <summary>
+	/// Platinum 2
+	/// </summary>
 	V16 = 16,
+	/// <summary>
+	/// Platinum 3
+	/// </summary>
 	V17 = 17,
+	/// <summary>
+	/// Diamond 1
+	/// </summary>
 	V18 = 18,
+	/// <summary>
+	/// Diamond 2
+	/// </summary>
 	V19 = 19,
+	/// <summary>
+	/// Diamond 3
+	/// </summary>
 	V20 = 20,
+	/// <summary>
+	/// Ascendant 1
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Ascendant 2
+	/// </summary>
 	V22 = 22,
+	/// <summary>
+	/// Ascendant 3
+	/// </summary>
 	V23 = 23,
+	/// <summary>
+	/// Immortal 1
+	/// </summary>
 	V24 = 24,
+	/// <summary>
+	/// Immortal 2
+	/// </summary>
 	V25 = 25,
+	/// <summary>
+	/// Immortal 3
+	/// </summary>
 	V26 = 26,
+	/// <summary>
+	/// Radiant
+	/// </summary>
 	V27 = 27,
 }
 

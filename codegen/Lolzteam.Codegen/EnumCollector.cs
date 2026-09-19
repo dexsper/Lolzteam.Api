@@ -87,6 +87,7 @@ internal static class EnumCollector
 			if (distinctValueSets.Count == 1)
 			{
 				var (isInt, values) = distinctValueSets[0];
+				values = MergeVariantDescriptions(occs, values);
                 var typeName = EnsureUniqueTypeName(SafeEnumTypeName(paramName), enumDefs);
 				var def = new EnumDefinition(typeName, isInt, values);
 
@@ -120,7 +121,8 @@ internal static class EnumCollector
 					var prefix = Naming.CapitalizeFirst(distinctGroups.First());
 					var baseName = SafeEnumTypeName(paramName);
                     var typeName = EnsureUniqueTypeName(prefix + baseName, enumDefs);
-					var def = new EnumDefinition(typeName, isInt, values);
+					var mergedValues = MergeVariantDescriptions(groupsForSet, values);
+					var def = new EnumDefinition(typeName, isInt, mergedValues);
 
 					enumDefs[typeName] = def;
 
@@ -157,6 +159,37 @@ internal static class EnumCollector
             result.Add((occ.IsIntEnum, occ.Values));
         }
 		return result;
+	}
+
+	/// <summary>
+	/// Merge per-value descriptions from all occurrences sharing an equal value set into
+	/// <paramref name="baseValues"/> (first non-null description for a value wins).
+	/// </summary>
+	private static List<EnumVariant> MergeVariantDescriptions(List<EnumOccurrence> occurrences, List<EnumVariant> baseValues)
+	{
+		var descriptionsByKey = new Dictionary<string, string>();
+		foreach (var occ in occurrences)
+		{
+			foreach (var variant in occ.Values)
+			{
+				var description = variant switch
+				{
+					EnumVariant.IntVariant iv => iv.Description,
+					EnumVariant.StringVariant sv => sv.Description,
+					_ => null,
+				};
+
+				if (description is null) continue;
+				descriptionsByKey.TryAdd(VariantKey(variant), description);
+			}
+		}
+
+		return baseValues.Select(v => v switch
+		{
+			EnumVariant.IntVariant iv => descriptionsByKey.TryGetValue(VariantKey(iv), out var d) ? iv with { Description = d } : iv,
+			EnumVariant.StringVariant sv => descriptionsByKey.TryGetValue(VariantKey(sv), out var d) ? sv with { Description = d } : sv,
+			_ => v,
+		}).ToList();
 	}
 
 	/// <summary>Check if two enum value lists are equal.</summary>

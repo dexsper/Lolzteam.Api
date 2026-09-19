@@ -16,9 +16,9 @@ internal sealed record ApiConfig(
 
 internal abstract record EnumVariant
 {
-    internal sealed record IntVariant(long Value) : EnumVariant;
+    internal sealed record IntVariant(long Value, string? Description = null) : EnumVariant;
 
-    internal sealed record StringVariant(string Value) : EnumVariant;
+    internal sealed record StringVariant(string Value, string? Description = null) : EnumVariant;
 }
 
 internal sealed record EnumDefinition(string TypeName, bool IsIntEnum, List<EnumVariant> Values);

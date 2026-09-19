@@ -34,6 +34,7 @@ internal static partial class Emitter
                     continue;
 
                 var name = DeduplicateName(IntEnumMemberName(iv.Value), seenMembers);
+                EmitEnumMemberDoc(w, iv.Description);
                 w.Line($"{name} = {iv.Value},");
             }
 
@@ -51,10 +52,23 @@ internal static partial class Emitter
 
             var name = DeduplicateName(StringEnumMemberName(sv.Value), seenMembers);
             var escaped = sv.Value.Replace("\\", "\\\\").Replace("\"", "\\\"");
+            EmitEnumMemberDoc(w, sv.Description);
             w.Line($"[Lolzteam.Api.Runtime.EnumValue(\"{escaped}\")] {name},");
         }
 
         w.Close();
+    }
+
+    /// <summary>Emit an XML doc <c>&lt;summary&gt;</c> for an enum member, if a description is present.</summary>
+    private static void EmitEnumMemberDoc(CodeWriter w, string? description)
+    {
+        if (description is null)
+            return;
+
+        w.Line("/// <summary>");
+        foreach (var line in DescriptionDoc.ToXmlDocLines(description))
+            w.Line(string.IsNullOrEmpty(line) ? "///" : $"/// {line}");
+        w.Line("/// </summary>");
     }
 
     /// <summary>Generate a valid C# identifier for an integer enum variant.</summary>

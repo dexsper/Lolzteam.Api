@@ -160,7 +160,13 @@ public enum GrantType
 
 public enum LanguageId : long
 {
+	/// <summary>
+	/// English
+	/// </summary>
 	V1 = 1,
+	/// <summary>
+	/// Russian
+	/// </summary>
 	V2 = 2,
 }
 
@@ -175,7 +181,13 @@ public enum LengthOption
 [JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<LikeType>))]
 public enum LikeType
 {
+	/// <summary>
+	/// Sympathies
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("like")] Like,
+	/// <summary>
+	/// Likes
+	/// </summary>
 	[Lolzteam.Api.Runtime.EnumValue("like2")] Like2,
 }
 
@@ -220,14 +232,41 @@ public enum PostsOrder
 
 public enum PrizeDataUpgrade : long
 {
+	/// <summary>
+	/// Supreme - 1500 ₽
+	/// </summary>
 	V1 = 1,
+	/// <summary>
+	/// Legend - 2999 ₽
+	/// </summary>
 	V6 = 6,
+	/// <summary>
+	/// AntiPublic.One Plus subscription - 2000 ₽
+	/// </summary>
 	V12 = 12,
+	/// <summary>
+	/// Uniq - 7500 ₽
+	/// </summary>
 	V14 = 14,
+	/// <summary>
+	/// 18+ Photo leaks – 6 months - 1200 ₽
+	/// </summary>
 	V17 = 17,
+	/// <summary>
+	/// Auto giveaway participation - 1000 ₽
+	/// </summary>
 	V19 = 19,
+	/// <summary>
+	/// AntiPublic.one Premium subscription - 5000 ₽
+	/// </summary>
 	V20 = 20,
+	/// <summary>
+	/// AntiPublic.one Premium subscription - 500 ₽
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Auto buy on Market - 999 ₽
+	/// </summary>
 	V22 = 22,
 }
 
@@ -247,20 +286,53 @@ public enum ProfilePostsFieldsInclude
 
 public enum ReplyGroup : long
 {
+	/// <summary>
+	/// Only staff members and curators can reply in thread
+	/// </summary>
 	V0 = 0,
+	/// <summary>
+	/// Everyone can reply in thread
+	/// </summary>
 	V2 = 2,
+	/// <summary>
+	/// Local and higher can reply in thread
+	/// </summary>
 	V21 = 21,
+	/// <summary>
+	/// Resident or higher can reply in thread
+	/// </summary>
 	V22 = 22,
+	/// <summary>
+	/// Expert or higher can reply in thread
+	/// </summary>
 	V23 = 23,
+	/// <summary>
+	/// Guru and higher can reply in thread
+	/// </summary>
 	V60 = 60,
+	/// <summary>
+	/// Artificial Intelligence and higher can reply in thread
+	/// </summary>
 	V351 = 351,
 }
 
 public enum RoomId : long
 {
+	/// <summary>
+	/// [Russian] General chat
+	/// </summary>
 	V1 = 1,
+	/// <summary>
+	/// [English] General hat
+	/// </summary>
 	V2 = 2,
+	/// <summary>
+	/// [Russian] Market chat
+	/// </summary>
 	V3 = 3,
+	/// <summary>
+	/// [English] Market chat
+	/// </summary>
 	V4 = 4,
 	V13 = 13,
 }

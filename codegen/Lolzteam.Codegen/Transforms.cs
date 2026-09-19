@@ -357,6 +357,7 @@ internal static partial class Transforms
         var enumArr = sObj["enum"];
         if (enumArr is not JsonArray arr || arr.Count == 0) return null;
 
+        var descriptions = ExtractEnumDescriptions(sObj);
         var type = StringProp(sObj, "type");
         var values = new List<EnumVariant>();
         foreach (var el in arr)
@@ -366,17 +367,39 @@ internal static partial class Transforms
             if (type == "integer" || (type is null && ev.TryGetValue<long>(out _)))
             {
                 if (ev.TryGetValue<long>(out var longVal))
-                    values.Add(new EnumVariant.IntVariant(longVal));
+                {
+                    descriptions.TryGetValue(longVal.ToString(), out var intDesc);
+                    values.Add(new EnumVariant.IntVariant(longVal, intDesc));
+                }
 
                 continue;
             }
 
-            values.Add(ev.TryGetValue<string>(out var strVal)
-                ? new EnumVariant.StringVariant(strVal)
-                : new EnumVariant.StringVariant(ev.ToString()));
+            var strVal = ev.TryGetValue<string>(out var s) ? s : ev.ToString();
+            descriptions.TryGetValue(strVal, out var strDesc);
+            values.Add(new EnumVariant.StringVariant(strVal, strDesc));
         }
 
         return values.Count > 0 ? values : null;
+    }
+
+    /// <summary>
+    /// Extract the vendor extension <c>x-enumDescriptions</c> map (enum value → human-readable
+    /// description), keyed by the string form of the enum value.
+    /// </summary>
+    private static Dictionary<string, string> ExtractEnumDescriptions(JsonObject sObj)
+    {
+        var result = new Dictionary<string, string>();
+        if (sObj["x-enumDescriptions"] is not JsonObject descObj)
+            return result;
+
+        foreach (var kvp in descObj)
+        {
+            if (kvp.Value is JsonValue jv && jv.TryGetValue<string>(out var desc))
+                result[kvp.Key] = desc;
+        }
+
+        return result;
     }
 
     /// <summary>Extract the "default" value from a schema node as a string, or null if absent.</summary>
