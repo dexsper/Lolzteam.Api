@@ -16,7 +16,11 @@ public static class OAuthApiTypes
 	[JsonDerivedType(typeof(OAuthTokenBodyRefreshToken), "refresh_token")]
 	[JsonDerivedType(typeof(OAuthTokenBodyPassword), "password")]
 	#endif
-	public abstract record OAuthTokenBody;
+	public abstract record OAuthTokenBody
+	{
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public abstract void WriteTo(Utf8JsonWriter writer);
+	}
 
 	public sealed record OAuthTokenBodyClientCredentials : OAuthTokenBody
 	{
@@ -37,6 +41,21 @@ public static class OAuthApiTypes
 		/// </summary>
 		[JsonPropertyName("scope")]
 		public required JsonElement Scope { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public override void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("grant_type"u8);
+			writer.WriteStringValue(GrantType);
+			writer.WritePropertyName("client_id"u8);
+			writer.WriteStringValue(ClientId);
+			writer.WritePropertyName("client_secret"u8);
+			writer.WriteStringValue(ClientSecret);
+			writer.WritePropertyName("scope"u8);
+			Scope.WriteTo(writer);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record OAuthTokenBodyAuthorizationCode : OAuthTokenBody
@@ -68,6 +87,25 @@ public static class OAuthApiTypes
 		/// </summary>
 		[JsonPropertyName("scope")]
 		public required JsonElement Scope { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public override void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("grant_type"u8);
+			writer.WriteStringValue(GrantType);
+			writer.WritePropertyName("code"u8);
+			writer.WriteStringValue(Code);
+			writer.WritePropertyName("client_id"u8);
+			writer.WriteStringValue(ClientId);
+			writer.WritePropertyName("client_secret"u8);
+			writer.WriteStringValue(ClientSecret);
+			writer.WritePropertyName("redirect_uri"u8);
+			writer.WriteStringValue(RedirectUri);
+			writer.WritePropertyName("scope"u8);
+			Scope.WriteTo(writer);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record OAuthTokenBodyRefreshToken : OAuthTokenBody
@@ -89,6 +127,21 @@ public static class OAuthApiTypes
 		/// </summary>
 		[JsonPropertyName("client_secret")]
 		public required string ClientSecret { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public override void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("grant_type"u8);
+			writer.WriteStringValue(GrantType);
+			writer.WritePropertyName("refresh_token"u8);
+			writer.WriteStringValue(RefreshToken);
+			writer.WritePropertyName("client_id"u8);
+			writer.WriteStringValue(ClientId);
+			writer.WritePropertyName("client_secret"u8);
+			writer.WriteStringValue(ClientSecret);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record OAuthTokenBodyPassword : OAuthTokenBody
@@ -120,6 +173,25 @@ public static class OAuthApiTypes
 		/// </summary>
 		[JsonPropertyName("scope")]
 		public required JsonElement Scope { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public override void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("grant_type"u8);
+			writer.WriteStringValue(GrantType);
+			writer.WritePropertyName("username"u8);
+			writer.WriteStringValue(Username);
+			writer.WritePropertyName("password"u8);
+			writer.WriteStringValue(Password);
+			writer.WritePropertyName("client_id"u8);
+			writer.WriteStringValue(ClientId);
+			writer.WritePropertyName("client_secret"u8);
+			writer.WriteStringValue(ClientSecret);
+			writer.WritePropertyName("scope"u8);
+			Scope.WriteTo(writer);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record OAuthTokenResponse(

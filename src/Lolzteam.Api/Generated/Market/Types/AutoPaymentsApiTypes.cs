@@ -606,6 +606,37 @@ public sealed record AutoPaymentsListResponsePayments(
 		/// </summary>
 		[JsonPropertyName("description")]
 		public string? Description { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (SecretAnswer is not null)
+			{
+				writer.WritePropertyName("secret_answer"u8);
+				writer.WriteStringValue(SecretAnswer);
+			}
+			writer.WritePropertyName("username_receiver"u8);
+			writer.WriteStringValue(UsernameReceiver);
+			writer.WritePropertyName("day"u8);
+			writer.WriteNumberValue((long)Day);
+			if (Amount is not null)
+			{
+				writer.WritePropertyName("amount"u8);
+				writer.WriteNumberValue(Amount.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (Description is not null)
+			{
+				writer.WritePropertyName("description"u8);
+				writer.WriteStringValue(Description);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record AutoPaymentsCreateResponse(
@@ -671,6 +702,18 @@ public sealed record AutoPaymentsListResponsePayments(
 		/// </summary>
 		[JsonPropertyName("auto_payment_id")]
 		public required long? AutoPaymentId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (AutoPaymentId is not null)
+			{
+				writer.WritePropertyName("auto_payment_id"u8);
+				writer.WriteNumberValue(AutoPaymentId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record AutoPaymentsDeleteResponse(

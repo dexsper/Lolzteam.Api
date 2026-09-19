@@ -102,6 +102,118 @@ public static class ThreadsApiTypes
 		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<ThreadsFieldsInclude>? FieldsInclude { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ForumId is not null)
+			{
+				writer.WritePropertyName("forum_id"u8);
+				writer.WriteNumberValue(ForumId.Value);
+			}
+			if (Tab is not null)
+			{
+				writer.WritePropertyName("tab"u8);
+				writer.WriteStringValue(Tab);
+			}
+			if (State is not null)
+			{
+				writer.WritePropertyName("state"u8);
+				writer.WriteStringValue(State.Value.ToJsonValue());
+			}
+			if (Period is not null)
+			{
+				writer.WritePropertyName("period"u8);
+				writer.WriteStringValue(Period.Value.ToJsonValue());
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (TitleOnly is not null)
+			{
+				writer.WritePropertyName("title_only"u8);
+				writer.WriteBooleanValue(TitleOnly.Value);
+			}
+			if (CreatorUserId is not null)
+			{
+				writer.WritePropertyName("creator_user_id"u8);
+				writer.WriteNumberValue(CreatorUserId.Value);
+			}
+			if (Sticky is not null)
+			{
+				writer.WritePropertyName("sticky"u8);
+				writer.WriteBooleanValue(Sticky.Value);
+			}
+			if (PrefixIds is not null)
+			{
+				writer.WritePropertyName("prefix_ids[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PrefixIds)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PrefixIdsNot is not null)
+			{
+				writer.WritePropertyName("prefix_ids_not[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PrefixIdsNot)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (ThreadTagId is not null)
+			{
+				writer.WritePropertyName("thread_tag_id"u8);
+				writer.WriteNumberValue(ThreadTagId.Value);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (Order is not null)
+			{
+				writer.WritePropertyName("order"u8);
+				writer.WriteStringValue(Order.Value.ToJsonValue());
+			}
+			if (Direction is not null)
+			{
+				writer.WritePropertyName("direction"u8);
+				writer.WriteStringValue(Direction.Value.ToJsonValue());
+			}
+			if (ThreadCreateDate is not null)
+			{
+				writer.WritePropertyName("thread_create_date"u8);
+				writer.WriteNumberValue(ThreadCreateDate.Value);
+			}
+			if (ThreadUpdateDate is not null)
+			{
+				writer.WritePropertyName("thread_update_date"u8);
+				writer.WriteNumberValue(ThreadUpdateDate.Value);
+			}
+			if (FieldsInclude is not null)
+			{
+				writer.WritePropertyName("fields_include"u8);
+				writer.WriteStartArray();
+				foreach (var __w in FieldsInclude)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsListResponse(
@@ -577,6 +689,100 @@ public sealed record ThreadsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("watch_thread_email")]
 		public bool? WatchThreadEmail { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("post_body"u8);
+			writer.WriteStringValue(PostBody);
+			if (ForumId is not null)
+			{
+				writer.WritePropertyName("forum_id"u8);
+				writer.WriteNumberValue(ForumId.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (TitleEn is not null)
+			{
+				writer.WritePropertyName("title_en"u8);
+				writer.WriteStringValue(TitleEn);
+			}
+			if (PrefixId is not null)
+			{
+				writer.WritePropertyName("prefix_id"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PrefixId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Tags is not null)
+			{
+				writer.WritePropertyName("tags"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Tags)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (HideContacts is not null)
+			{
+				writer.WritePropertyName("hide_contacts"u8);
+				writer.WriteBooleanValue(HideContacts.Value);
+			}
+			if (AllowAskHiddenContent is not null)
+			{
+				writer.WritePropertyName("allow_ask_hidden_content"u8);
+				writer.WriteBooleanValue(AllowAskHiddenContent.Value);
+			}
+			if (ReplyGroup is not null)
+			{
+				writer.WritePropertyName("reply_group"u8);
+				writer.WriteNumberValue((long)ReplyGroup.Value);
+			}
+			if (CommentIgnoreGroup is not null)
+			{
+				writer.WritePropertyName("comment_ignore_group"u8);
+				writer.WriteBooleanValue(CommentIgnoreGroup.Value);
+			}
+			if (DontAlertFollowers is not null)
+			{
+				writer.WritePropertyName("dont_alert_followers"u8);
+				writer.WriteBooleanValue(DontAlertFollowers.Value);
+			}
+			if (ScheduleDate is not null)
+			{
+				writer.WritePropertyName("schedule_date"u8);
+				writer.WriteStringValue(ScheduleDate);
+			}
+			if (ScheduleTime is not null)
+			{
+				writer.WritePropertyName("schedule_time"u8);
+				writer.WriteStringValue(ScheduleTime);
+			}
+			if (WatchThreadState is not null)
+			{
+				writer.WritePropertyName("watch_thread_state"u8);
+				writer.WriteBooleanValue(WatchThreadState.Value);
+			}
+			if (WatchThread is not null)
+			{
+				writer.WritePropertyName("watch_thread"u8);
+				writer.WriteBooleanValue(WatchThread.Value);
+			}
+			if (WatchThreadEmail is not null)
+			{
+				writer.WritePropertyName("watch_thread_email"u8);
+				writer.WriteBooleanValue(WatchThreadEmail.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsCreateResponse(
@@ -757,6 +963,144 @@ public sealed record ThreadsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("watch_thread_email")]
 		public bool? WatchThreadEmail { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("post_body"u8);
+			writer.WriteStringValue(PostBody);
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (TitleEn is not null)
+			{
+				writer.WritePropertyName("title_en"u8);
+				writer.WriteStringValue(TitleEn);
+			}
+			writer.WritePropertyName("contest_type"u8);
+			writer.WriteStringValue(ContestType.ToJsonValue());
+			if (LengthValue is not null)
+			{
+				writer.WritePropertyName("length_value"u8);
+				writer.WriteNumberValue(LengthValue.Value);
+			}
+			if (LengthOption is not null)
+			{
+				writer.WritePropertyName("length_option"u8);
+				writer.WriteStringValue(LengthOption.Value.ToJsonValue());
+			}
+			writer.WritePropertyName("prize_type"u8);
+			writer.WriteStringValue(PrizeType.ToJsonValue());
+			if (CountWinners is not null)
+			{
+				writer.WritePropertyName("count_winners"u8);
+				writer.WriteNumberValue(CountWinners.Value);
+			}
+			if (PrizeDataMoney is not null)
+			{
+				writer.WritePropertyName("prize_data_money"u8);
+				writer.WriteNumberValue(PrizeDataMoney.Value);
+			}
+			if (IsMoneyPlaces is not null)
+			{
+				writer.WritePropertyName("is_money_places"u8);
+				writer.WriteBooleanValue(IsMoneyPlaces.Value);
+			}
+			if (PrizeDataPlaces is not null)
+			{
+				writer.WritePropertyName("prize_data_places"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PrizeDataPlaces)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PrizeDataUpgrade is not null)
+			{
+				writer.WritePropertyName("prize_data_upgrade"u8);
+				writer.WriteNumberValue((long)PrizeDataUpgrade.Value);
+			}
+			if (RequireLikeCount is not null)
+			{
+				writer.WritePropertyName("require_like_count"u8);
+				writer.WriteNumberValue(RequireLikeCount.Value);
+			}
+			if (RequireTotalLikeCount is not null)
+			{
+				writer.WritePropertyName("require_total_like_count"u8);
+				writer.WriteNumberValue(RequireTotalLikeCount.Value);
+			}
+			if (SecretAnswer is not null)
+			{
+				writer.WritePropertyName("secret_answer"u8);
+				writer.WriteStringValue(SecretAnswer);
+			}
+			if (Tags is not null)
+			{
+				writer.WritePropertyName("tags"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Tags)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (ReplyGroup is not null)
+			{
+				writer.WritePropertyName("reply_group"u8);
+				writer.WriteNumberValue((long)ReplyGroup.Value);
+			}
+			if (CommentIgnoreGroup is not null)
+			{
+				writer.WritePropertyName("comment_ignore_group"u8);
+				writer.WriteBooleanValue(CommentIgnoreGroup.Value);
+			}
+			if (DontAlertFollowers is not null)
+			{
+				writer.WritePropertyName("dont_alert_followers"u8);
+				writer.WriteBooleanValue(DontAlertFollowers.Value);
+			}
+			if (HideContacts is not null)
+			{
+				writer.WritePropertyName("hide_contacts"u8);
+				writer.WriteBooleanValue(HideContacts.Value);
+			}
+			if (AllowAskHiddenContent is not null)
+			{
+				writer.WritePropertyName("allow_ask_hidden_content"u8);
+				writer.WriteBooleanValue(AllowAskHiddenContent.Value);
+			}
+			if (ScheduleDate is not null)
+			{
+				writer.WritePropertyName("schedule_date"u8);
+				writer.WriteStringValue(ScheduleDate);
+			}
+			if (ScheduleTime is not null)
+			{
+				writer.WritePropertyName("schedule_time"u8);
+				writer.WriteStringValue(ScheduleTime);
+			}
+			if (WatchThreadState is not null)
+			{
+				writer.WritePropertyName("watch_thread_state"u8);
+				writer.WriteBooleanValue(WatchThreadState.Value);
+			}
+			if (WatchThread is not null)
+			{
+				writer.WritePropertyName("watch_thread"u8);
+				writer.WriteBooleanValue(WatchThread.Value);
+			}
+			if (WatchThreadEmail is not null)
+			{
+				writer.WritePropertyName("watch_thread_email"u8);
+				writer.WriteBooleanValue(WatchThreadEmail.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsCreateContestResponse(
@@ -929,6 +1273,119 @@ public sealed record ThreadsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("post_body")]
 		public required string PostBody { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("as_responder"u8);
+			writer.WriteStringValue(AsResponder);
+			if (AsIsMarketDeal is not null)
+			{
+				writer.WritePropertyName("as_is_market_deal"u8);
+				writer.WriteBooleanValue(AsIsMarketDeal.Value);
+			}
+			if (AsMarketItemId is not null)
+			{
+				writer.WritePropertyName("as_market_item_id"u8);
+				writer.WriteNumberValue(AsMarketItemId.Value);
+			}
+			if (AsData is not null)
+			{
+				writer.WritePropertyName("as_data"u8);
+				writer.WriteStringValue(AsData);
+			}
+			if (AsAmount is not null)
+			{
+				writer.WritePropertyName("as_amount"u8);
+				writer.WriteNumberValue(AsAmount.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			writer.WritePropertyName("transfer_type"u8);
+			writer.WriteStringValue(TransferType.ToJsonValue());
+			if (PayClaim is not null)
+			{
+				writer.WritePropertyName("pay_claim"u8);
+				writer.WriteStringValue(PayClaim.Value.ToJsonValue());
+			}
+			if (AsFundsReceipt is not null)
+			{
+				writer.WritePropertyName("as_funds_receipt"u8);
+				writer.WriteStringValue(AsFundsReceipt);
+			}
+			if (AsTgLoginScreenshot is not null)
+			{
+				writer.WritePropertyName("as_tg_login_screenshot"u8);
+				writer.WriteStringValue(AsTgLoginScreenshot);
+			}
+			if (Tags is not null)
+			{
+				writer.WritePropertyName("tags"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Tags)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (HideContacts is not null)
+			{
+				writer.WritePropertyName("hide_contacts"u8);
+				writer.WriteBooleanValue(HideContacts.Value);
+			}
+			if (AllowAskHiddenContent is not null)
+			{
+				writer.WritePropertyName("allow_ask_hidden_content"u8);
+				writer.WriteBooleanValue(AllowAskHiddenContent.Value);
+			}
+			if (ReplyGroup is not null)
+			{
+				writer.WritePropertyName("reply_group"u8);
+				writer.WriteNumberValue((long)ReplyGroup.Value);
+			}
+			if (CommentIgnoreGroup is not null)
+			{
+				writer.WritePropertyName("comment_ignore_group"u8);
+				writer.WriteBooleanValue(CommentIgnoreGroup.Value);
+			}
+			if (DontAlertFollowers is not null)
+			{
+				writer.WritePropertyName("dont_alert_followers"u8);
+				writer.WriteBooleanValue(DontAlertFollowers.Value);
+			}
+			if (ScheduleDate is not null)
+			{
+				writer.WritePropertyName("schedule_date"u8);
+				writer.WriteStringValue(ScheduleDate);
+			}
+			if (ScheduleTime is not null)
+			{
+				writer.WritePropertyName("schedule_time"u8);
+				writer.WriteStringValue(ScheduleTime);
+			}
+			if (WatchThreadState is not null)
+			{
+				writer.WritePropertyName("watch_thread_state"u8);
+				writer.WriteBooleanValue(WatchThreadState.Value);
+			}
+			if (WatchThread is not null)
+			{
+				writer.WritePropertyName("watch_thread"u8);
+				writer.WriteBooleanValue(WatchThread.Value);
+			}
+			if (WatchThreadEmail is not null)
+			{
+				writer.WritePropertyName("watch_thread_email"u8);
+				writer.WriteBooleanValue(WatchThreadEmail.Value);
+			}
+			writer.WritePropertyName("post_body"u8);
+			writer.WriteStringValue(PostBody);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsClaimResponse(
@@ -980,6 +1437,23 @@ public sealed record ThreadsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<ThreadsFieldsInclude>? FieldsInclude { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (FieldsInclude is not null)
+			{
+				writer.WritePropertyName("fields_include"u8);
+				writer.WriteStartArray();
+				foreach (var __w in FieldsInclude)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsGetResponse(
@@ -1071,6 +1545,68 @@ public sealed record ThreadsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("comment_ignore_group")]
 		public bool? CommentIgnoreGroup { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (TitleEn is not null)
+			{
+				writer.WritePropertyName("title_en"u8);
+				writer.WriteStringValue(TitleEn);
+			}
+			if (PrefixId is not null)
+			{
+				writer.WritePropertyName("prefix_id"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PrefixId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Tags is not null)
+			{
+				writer.WritePropertyName("tags"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Tags)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (DiscussionOpen is not null)
+			{
+				writer.WritePropertyName("discussion_open"u8);
+				writer.WriteBooleanValue(DiscussionOpen.Value);
+			}
+			if (HideContacts is not null)
+			{
+				writer.WritePropertyName("hide_contacts"u8);
+				writer.WriteBooleanValue(HideContacts.Value);
+			}
+			if (AllowAskHiddenContent is not null)
+			{
+				writer.WritePropertyName("allow_ask_hidden_content"u8);
+				writer.WriteBooleanValue(AllowAskHiddenContent.Value);
+			}
+			if (ReplyGroup is not null)
+			{
+				writer.WritePropertyName("reply_group"u8);
+				writer.WriteNumberValue((long)ReplyGroup.Value);
+			}
+			if (CommentIgnoreGroup is not null)
+			{
+				writer.WritePropertyName("comment_ignore_group"u8);
+				writer.WriteBooleanValue(CommentIgnoreGroup.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsEditResponse(
@@ -1122,6 +1658,18 @@ public sealed record ThreadsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("reason")]
 		public string? Reason { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Reason is not null)
+			{
+				writer.WritePropertyName("reason"u8);
+				writer.WriteStringValue(Reason);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsDeleteResponse(
@@ -1205,6 +1753,45 @@ public sealed record ThreadsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("send_alert")]
 		public bool? SendAlert { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("node_id"u8);
+			writer.WriteStringValue(NodeId);
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (TitleEn is not null)
+			{
+				writer.WritePropertyName("title_en"u8);
+				writer.WriteStringValue(TitleEn);
+			}
+			if (PrefixId is not null)
+			{
+				writer.WritePropertyName("prefix_id"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PrefixId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (ApplyThreadPrefix is not null)
+			{
+				writer.WritePropertyName("apply_thread_prefix"u8);
+				writer.WriteBooleanValue(ApplyThreadPrefix.Value);
+			}
+			if (SendAlert is not null)
+			{
+				writer.WritePropertyName("send_alert"u8);
+				writer.WriteBooleanValue(SendAlert.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsMoveResponse(
@@ -1601,6 +2188,18 @@ public sealed record ThreadsFollowersResponseUsers(
 		/// </summary>
 		[JsonPropertyName("email")]
 		public bool? Email { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Email is not null)
+			{
+				writer.WritePropertyName("email"u8);
+				writer.WriteBooleanValue(Email.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsFollowResponse(
@@ -1713,6 +2312,28 @@ public sealed record ThreadsFollowersResponseUsers(
 		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<ThreadsFieldsInclude>? FieldsInclude { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Total is not null)
+			{
+				writer.WritePropertyName("total"u8);
+				writer.WriteBooleanValue(Total.Value);
+			}
+			if (FieldsInclude is not null)
+			{
+				writer.WritePropertyName("fields_include"u8);
+				writer.WriteStartArray();
+				foreach (var __w in FieldsInclude)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsFollowedResponse(
@@ -2053,6 +2674,28 @@ public sealed record ThreadsPollGetResponsePoll(
 		/// </summary>
 		[JsonPropertyName("response_ids")]
 		public List<long?>? ResponseIds { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ResponseId is not null)
+			{
+				writer.WritePropertyName("response_id"u8);
+				writer.WriteNumberValue(ResponseId.Value);
+			}
+			if (ResponseIds is not null)
+			{
+				writer.WritePropertyName("response_ids"u8);
+				writer.WriteStartArray();
+				foreach (var __w in ResponseIds)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsPollVoteResponse(
@@ -2121,6 +2764,28 @@ public sealed record ThreadsPollGetResponsePoll(
 		/// </summary>
 		[JsonPropertyName("data_limit")]
 		public long? DataLimit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (ForumId is not null)
+			{
+				writer.WritePropertyName("forum_id"u8);
+				writer.WriteNumberValue(ForumId.Value);
+			}
+			if (DataLimit is not null)
+			{
+				writer.WritePropertyName("data_limit"u8);
+				writer.WriteNumberValue(DataLimit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsUnreadResponse(
@@ -2247,6 +2912,33 @@ public sealed record ThreadsUnreadResponseThreads(
 		/// </summary>
 		[JsonPropertyName("data_limit")]
 		public long? DataLimit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Days is not null)
+			{
+				writer.WritePropertyName("days"u8);
+				writer.WriteNumberValue(Days.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (ForumId is not null)
+			{
+				writer.WritePropertyName("forum_id"u8);
+				writer.WriteNumberValue(ForumId.Value);
+			}
+			if (DataLimit is not null)
+			{
+				writer.WritePropertyName("data_limit"u8);
+				writer.WriteNumberValue(DataLimit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ThreadsRecentResponse(

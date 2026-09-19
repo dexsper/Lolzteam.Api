@@ -22,6 +22,23 @@ public static class PurchasingApiTypes
 		/// </summary>
 		[JsonPropertyName("balance_id")]
 		public long? BalanceId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Price is not null)
+			{
+				writer.WritePropertyName("price"u8);
+				writer.WriteNumberValue(Price.Value);
+			}
+			if (BalanceId is not null)
+			{
+				writer.WritePropertyName("balance_id"u8);
+				writer.WriteNumberValue(BalanceId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PurchasingFastBuyResponse(
@@ -2420,6 +2437,23 @@ public sealed record PurchasingCheckResponseItem(
 		/// </summary>
 		[JsonPropertyName("balance_id")]
 		public long? BalanceId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Price is not null)
+			{
+				writer.WritePropertyName("price"u8);
+				writer.WriteNumberValue(Price.Value);
+			}
+			if (BalanceId is not null)
+			{
+				writer.WritePropertyName("balance_id"u8);
+				writer.WriteNumberValue(BalanceId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PurchasingConfirmResponse(
@@ -2612,6 +2646,33 @@ public sealed record PurchasingConfirmResponseItem(
 		/// </summary>
 		[JsonPropertyName("balance_id")]
 		public long? BalanceId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (DiscountPrice is not null)
+			{
+				writer.WritePropertyName("discount_price"u8);
+				writer.WriteNumberValue(DiscountPrice.Value);
+			}
+			if (Message is not null)
+			{
+				writer.WritePropertyName("message"u8);
+				writer.WriteStringValue(Message);
+			}
+			if (AutoBuy is not null)
+			{
+				writer.WritePropertyName("auto_buy"u8);
+				writer.WriteBooleanValue(AutoBuy.Value);
+			}
+			if (BalanceId is not null)
+			{
+				writer.WritePropertyName("balance_id"u8);
+				writer.WriteNumberValue(BalanceId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PurchasingDiscountRequestResponse(
@@ -2685,6 +2746,33 @@ public sealed record PurchasingConfirmResponseItem(
 		/// </summary>
 		[JsonPropertyName("message")]
 		public string? Message { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Action is not null)
+			{
+				writer.WritePropertyName("action"u8);
+				writer.WriteStringValue(Action.Value.ToJsonValue());
+			}
+			if (DiscountPrice is not null)
+			{
+				writer.WritePropertyName("discount_price"u8);
+				writer.WriteNumberValue(DiscountPrice.Value);
+			}
+			if (Message is not null)
+			{
+				writer.WritePropertyName("message"u8);
+				writer.WriteStringValue(Message);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PurchasingDiscountReviewResponse(

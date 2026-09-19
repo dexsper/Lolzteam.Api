@@ -27,6 +27,33 @@ public static class UsersApiTypes
 		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<UsersFieldsInclude>? FieldsInclude { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (FieldsInclude is not null)
+			{
+				writer.WritePropertyName("fields_include"u8);
+				writer.WriteStartArray();
+				foreach (var __w in FieldsInclude)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersListResponse(
@@ -274,6 +301,39 @@ public sealed record UsersFieldsResponseFields(
 		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<UsersFieldsInclude>? FieldsInclude { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Username is not null)
+			{
+				writer.WritePropertyName("username"u8);
+				writer.WriteStringValue(Username);
+			}
+			if (CustomFields is not null)
+			{
+				writer.WritePropertyName("custom_fields"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in CustomFields)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteStringValue(__wkv.Value);
+				}
+				writer.WriteEndObject();
+			}
+			if (FieldsInclude is not null)
+			{
+				writer.WritePropertyName("fields_include"u8);
+				writer.WriteStartArray();
+				foreach (var __w in FieldsInclude)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersFindResponse(
@@ -334,6 +394,23 @@ public sealed record UsersFieldsResponseFields(
 		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<UsersFieldsInclude>? FieldsInclude { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (FieldsInclude is not null)
+			{
+				writer.WritePropertyName("fields_include"u8);
+				writer.WriteStartArray();
+				foreach (var __w in FieldsInclude)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersCurrentResponse(
@@ -385,6 +462,23 @@ public sealed record UsersFieldsResponseFields(
 		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<UsersFieldsInclude>? FieldsInclude { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (FieldsInclude is not null)
+			{
+				writer.WritePropertyName("fields_include"u8);
+				writer.WriteStartArray();
+				foreach (var __w in FieldsInclude)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersGetResponse(
@@ -566,6 +660,154 @@ public sealed record UsersFieldsResponseFields(
 		/// </summary>
 		[JsonPropertyName("fields")]
 		public JsonElement? Fields { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Username is not null)
+			{
+				writer.WritePropertyName("username"u8);
+				writer.WriteStringValue(Username);
+			}
+			if (UserTitle is not null)
+			{
+				writer.WritePropertyName("user_title"u8);
+				writer.WriteStringValue(UserTitle);
+			}
+			if (DisplayGroupId is not null)
+			{
+				writer.WritePropertyName("display_group_id"u8);
+				writer.WriteNumberValue(DisplayGroupId.Value);
+			}
+			if (DisplayIconGroupId is not null)
+			{
+				writer.WritePropertyName("display_icon_group_id"u8);
+				writer.WriteNumberValue(DisplayIconGroupId.Value);
+			}
+			if (DisplayBannerId is not null)
+			{
+				writer.WritePropertyName("display_banner_id"u8);
+				writer.WriteNumberValue(DisplayBannerId.Value);
+			}
+			if (ConvWelcomeMessage is not null)
+			{
+				writer.WritePropertyName("conv_welcome_message"u8);
+				writer.WriteStringValue(ConvWelcomeMessage);
+			}
+			if (UserDobDay is not null)
+			{
+				writer.WritePropertyName("user_dob_day"u8);
+				writer.WriteNumberValue(UserDobDay.Value);
+			}
+			if (UserDobMonth is not null)
+			{
+				writer.WritePropertyName("user_dob_month"u8);
+				writer.WriteNumberValue(UserDobMonth.Value);
+			}
+			if (UserDobYear is not null)
+			{
+				writer.WritePropertyName("user_dob_year"u8);
+				writer.WriteNumberValue(UserDobYear.Value);
+			}
+			if (SecretAnswer is not null)
+			{
+				writer.WritePropertyName("secret_answer"u8);
+				writer.WriteStringValue(SecretAnswer);
+			}
+			if (SecretAnswerType is not null)
+			{
+				writer.WritePropertyName("secret_answer_type"u8);
+				writer.WriteNumberValue(SecretAnswerType.Value);
+			}
+			if (ShortLink is not null)
+			{
+				writer.WritePropertyName("short_link"u8);
+				writer.WriteStringValue(ShortLink);
+			}
+			if (LanguageId is not null)
+			{
+				writer.WritePropertyName("language_id"u8);
+				writer.WriteNumberValue((long)LanguageId.Value);
+			}
+			if (Gender is not null)
+			{
+				writer.WritePropertyName("gender"u8);
+				writer.WriteStringValue(Gender.Value.ToJsonValue());
+			}
+			if (Timezone is not null)
+			{
+				writer.WritePropertyName("timezone"u8);
+				writer.WriteStringValue(Timezone.Value.ToJsonValue());
+			}
+			if (ReceiveAdminEmail is not null)
+			{
+				writer.WritePropertyName("receive_admin_email"u8);
+				writer.WriteBooleanValue(ReceiveAdminEmail.Value);
+			}
+			if (ActivityVisible is not null)
+			{
+				writer.WritePropertyName("activity_visible"u8);
+				writer.WriteBooleanValue(ActivityVisible.Value);
+			}
+			if (ShowDobDate is not null)
+			{
+				writer.WritePropertyName("show_dob_date"u8);
+				writer.WriteBooleanValue(ShowDobDate.Value);
+			}
+			if (ShowDobYear is not null)
+			{
+				writer.WritePropertyName("show_dob_year"u8);
+				writer.WriteBooleanValue(ShowDobYear.Value);
+			}
+			if (HideUsernameChangeLogs is not null)
+			{
+				writer.WritePropertyName("hide_username_change_logs"u8);
+				writer.WriteBooleanValue(HideUsernameChangeLogs.Value);
+			}
+			if (AllowViewProfile is not null)
+			{
+				writer.WritePropertyName("allow_view_profile"u8);
+				writer.WriteStringValue(AllowViewProfile.Value.ToJsonValue());
+			}
+			if (AllowPostProfile is not null)
+			{
+				writer.WritePropertyName("allow_post_profile"u8);
+				writer.WriteStringValue(AllowPostProfile.Value.ToJsonValue());
+			}
+			if (AllowSendPersonalConversation is not null)
+			{
+				writer.WritePropertyName("allow_send_personal_conversation"u8);
+				writer.WriteStringValue(AllowSendPersonalConversation.Value.ToJsonValue());
+			}
+			if (AllowInviteGroup is not null)
+			{
+				writer.WritePropertyName("allow_invite_group"u8);
+				writer.WriteStringValue(AllowInviteGroup.Value.ToJsonValue());
+			}
+			if (AllowReceiveNewsFeed is not null)
+			{
+				writer.WritePropertyName("allow_receive_news_feed"u8);
+				writer.WriteStringValue(AllowReceiveNewsFeed.Value.ToJsonValue());
+			}
+			if (Alert is not null)
+			{
+				writer.WritePropertyName("alert"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in Alert)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteBooleanValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (Fields is not null)
+			{
+				writer.WritePropertyName("fields"u8);
+				Fields.Value.WriteTo(writer);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersEditResponse(
@@ -629,6 +871,23 @@ public sealed record UsersFieldsResponseFields(
 		/// </summary>
 		[JsonPropertyName("claim_state")]
 		public ClaimState? ClaimState { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Type is not null)
+			{
+				writer.WritePropertyName("type"u8);
+				writer.WriteStringValue(Type.Value.ToJsonValue());
+			}
+			if (ClaimState is not null)
+			{
+				writer.WritePropertyName("claim_state"u8);
+				writer.WriteStringValue(ClaimState.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersClaimsResponse(
@@ -956,6 +1215,30 @@ public sealed record UsersClaimsResponseStats(
 		/// </summary>
 		[JsonPropertyName("crop")]
 		public long? Crop { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("avatar"u8);
+			writer.WriteBase64StringValue(Avatar);
+			if (X is not null)
+			{
+				writer.WritePropertyName("x"u8);
+				writer.WriteNumberValue(X.Value);
+			}
+			if (Y is not null)
+			{
+				writer.WritePropertyName("y"u8);
+				writer.WriteNumberValue(Y.Value);
+			}
+			if (Crop is not null)
+			{
+				writer.WritePropertyName("crop"u8);
+				writer.WriteNumberValue(Crop.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersAvatarUploadResponse(
@@ -1073,6 +1356,28 @@ public sealed record UsersClaimsResponseStats(
 		/// </summary>
 		[JsonPropertyName("crop")]
 		public long? Crop { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (X is not null)
+			{
+				writer.WritePropertyName("x"u8);
+				writer.WriteNumberValue(X.Value);
+			}
+			if (Y is not null)
+			{
+				writer.WritePropertyName("y"u8);
+				writer.WriteNumberValue(Y.Value);
+			}
+			if (Crop is not null)
+			{
+				writer.WritePropertyName("crop"u8);
+				writer.WriteNumberValue(Crop.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersAvatarCropResponse(
@@ -1146,6 +1451,30 @@ public sealed record UsersClaimsResponseStats(
 		/// </summary>
 		[JsonPropertyName("crop")]
 		public long? Crop { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("background"u8);
+			writer.WriteBase64StringValue(Background);
+			if (X is not null)
+			{
+				writer.WritePropertyName("x"u8);
+				writer.WriteNumberValue(X.Value);
+			}
+			if (Y is not null)
+			{
+				writer.WritePropertyName("y"u8);
+				writer.WriteNumberValue(Y.Value);
+			}
+			if (Crop is not null)
+			{
+				writer.WritePropertyName("crop"u8);
+				writer.WriteNumberValue(Crop.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersBackgroundUploadResponse(
@@ -1263,6 +1592,28 @@ public sealed record UsersClaimsResponseStats(
 		/// </summary>
 		[JsonPropertyName("crop")]
 		public long? Crop { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (X is not null)
+			{
+				writer.WritePropertyName("x"u8);
+				writer.WriteNumberValue(X.Value);
+			}
+			if (Y is not null)
+			{
+				writer.WritePropertyName("y"u8);
+				writer.WriteNumberValue(Y.Value);
+			}
+			if (Crop is not null)
+			{
+				writer.WritePropertyName("crop"u8);
+				writer.WriteNumberValue(Crop.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersBackgroundCropResponse(
@@ -1331,6 +1682,28 @@ public sealed record UsersClaimsResponseStats(
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Order is not null)
+			{
+				writer.WritePropertyName("order"u8);
+				writer.WriteStringValue(Order.Value.ToJsonValue());
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersFollowersResponse(
@@ -1982,6 +2355,28 @@ public sealed record UsersFollowersResponseLinks(
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Order is not null)
+			{
+				writer.WritePropertyName("order"u8);
+				writer.WriteStringValue(Order.Value.ToJsonValue());
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersFollowingsResponse(
@@ -2638,6 +3033,48 @@ public sealed record UsersFollowingsResponseUsers(
 		/// </summary>
 		[JsonPropertyName("stats")]
 		public bool? Stats { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (NodeId is not null)
+			{
+				writer.WritePropertyName("node_id"u8);
+				writer.WriteNumberValue(NodeId.Value);
+			}
+			if (LikeType is not null)
+			{
+				writer.WritePropertyName("like_type"u8);
+				writer.WriteStringValue(LikeType.Value.ToJsonValue());
+			}
+			if (Type is not null)
+			{
+				writer.WritePropertyName("type"u8);
+				writer.WriteStringValue(Type.Value.ToJsonValue());
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (ContentType is not null)
+			{
+				writer.WritePropertyName("content_type"u8);
+				writer.WriteStringValue(ContentType.Value.ToJsonValue());
+			}
+			if (SearchUserId is not null)
+			{
+				writer.WritePropertyName("search_user_id"u8);
+				writer.WriteNumberValue(SearchUserId.Value);
+			}
+			if (Stats is not null)
+			{
+				writer.WritePropertyName("stats"u8);
+				writer.WriteBooleanValue(Stats.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersLikesResponse(
@@ -2834,6 +3271,18 @@ public sealed record UsersLikesResponseLikes(
 		/// </summary>
 		[JsonPropertyName("total")]
 		public bool? Total { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Total is not null)
+			{
+				writer.WritePropertyName("total"u8);
+				writer.WriteBooleanValue(Total.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersIgnoredResponse(
@@ -3501,6 +3950,28 @@ public sealed record UsersIgnoredResponseUsers(
 		/// </summary>
 		[JsonPropertyName("restrict_view_profile")]
 		public bool? RestrictViewProfile { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (IgnoreConversations is not null)
+			{
+				writer.WritePropertyName("ignore_conversations"u8);
+				writer.WriteBooleanValue(IgnoreConversations.Value);
+			}
+			if (IgnoreContent is not null)
+			{
+				writer.WritePropertyName("ignore_content"u8);
+				writer.WriteBooleanValue(IgnoreContent.Value);
+			}
+			if (RestrictViewProfile is not null)
+			{
+				writer.WritePropertyName("restrict_view_profile"u8);
+				writer.WriteBooleanValue(RestrictViewProfile.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersIgnoreEditResponse(
@@ -3613,6 +4084,23 @@ public sealed record UsersIgnoredResponseUsers(
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record UsersContentsResponse(

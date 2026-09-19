@@ -123,6 +123,124 @@ public static class PublishingApiTypes
 		public string? TfaSecret { get; init; }
 		[JsonPropertyName("extra")]
 		public JsonElement? Extra { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (TitleEn is not null)
+			{
+				writer.WritePropertyName("title_en"u8);
+				writer.WriteStringValue(TitleEn);
+			}
+			if (AutoGenerateTitle is not null)
+			{
+				writer.WritePropertyName("auto_generate_title"u8);
+				writer.WriteBooleanValue(AutoGenerateTitle.Value);
+			}
+			if (Price is not null)
+			{
+				writer.WritePropertyName("price"u8);
+				writer.WriteNumberValue(Price.Value);
+			}
+			writer.WritePropertyName("category_id"u8);
+			writer.WriteNumberValue((long)CategoryId);
+			writer.WritePropertyName("currency"u8);
+			writer.WriteStringValue(Currency.ToJsonValue());
+			writer.WritePropertyName("item_origin"u8);
+			writer.WriteStringValue(ItemOrigin.ToJsonValue());
+			if (GuaranteeDuration is not null)
+			{
+				writer.WritePropertyName("guarantee_duration"u8);
+				writer.WriteNumberValue((long)GuaranteeDuration.Value);
+			}
+			if (AllowAskDiscount is not null)
+			{
+				writer.WritePropertyName("allow_ask_discount"u8);
+				writer.WriteBooleanValue(AllowAskDiscount.Value);
+			}
+			if (ProxyId is not null)
+			{
+				writer.WritePropertyName("proxy_id"u8);
+				writer.WriteNumberValue(ProxyId.Value);
+			}
+			if (RandomProxy is not null)
+			{
+				writer.WritePropertyName("random_proxy"u8);
+				writer.WriteBooleanValue(RandomProxy.Value);
+			}
+			if (Description is not null)
+			{
+				writer.WritePropertyName("description"u8);
+				writer.WriteStringValue(Description);
+			}
+			if (Information is not null)
+			{
+				writer.WritePropertyName("information"u8);
+				writer.WriteStringValue(Information);
+			}
+			if (Login is not null)
+			{
+				writer.WritePropertyName("login"u8);
+				writer.WriteStringValue(Login);
+			}
+			if (Password is not null)
+			{
+				writer.WritePropertyName("password"u8);
+				writer.WriteStringValue(Password);
+			}
+			if (LoginPassword is not null)
+			{
+				writer.WritePropertyName("login_password"u8);
+				writer.WriteStringValue(LoginPassword);
+			}
+			if (ResellItemId is not null)
+			{
+				writer.WritePropertyName("resell_item_id"u8);
+				writer.WriteNumberValue(ResellItemId.Value);
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (HasEmailLoginData is not null)
+			{
+				writer.WritePropertyName("has_email_login_data"u8);
+				writer.WriteBooleanValue(HasEmailLoginData.Value);
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteStringValue(EmailLoginData);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type"u8);
+				writer.WriteStringValue(EmailType.Value.ToJsonValue());
+			}
+			if (TfaSecret is not null)
+			{
+				writer.WritePropertyName("tfa_secret"u8);
+				writer.WriteStringValue(TfaSecret);
+			}
+			if (Extra is not null)
+			{
+				writer.WritePropertyName("extra"u8);
+				Extra.Value.WriteTo(writer);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PublishingFastSellResponse(
@@ -275,6 +393,109 @@ public static class PublishingApiTypes
 		/// </summary>
 		[JsonPropertyName("random_proxy")]
 		public bool? RandomProxy { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (TitleEn is not null)
+			{
+				writer.WritePropertyName("title_en"u8);
+				writer.WriteStringValue(TitleEn);
+			}
+			if (AutoGenerateTitle is not null)
+			{
+				writer.WritePropertyName("auto_generate_title"u8);
+				writer.WriteBooleanValue(AutoGenerateTitle.Value);
+			}
+			if (Price is not null)
+			{
+				writer.WritePropertyName("price"u8);
+				writer.WriteNumberValue(Price.Value);
+			}
+			writer.WritePropertyName("category_id"u8);
+			writer.WriteNumberValue((long)CategoryId);
+			writer.WritePropertyName("currency"u8);
+			writer.WriteStringValue(Currency.ToJsonValue());
+			writer.WritePropertyName("item_origin"u8);
+			writer.WriteStringValue(ItemOrigin.ToJsonValue());
+			if (GuaranteeDuration is not null)
+			{
+				writer.WritePropertyName("guarantee_duration"u8);
+				writer.WriteNumberValue((long)GuaranteeDuration.Value);
+			}
+			if (Description is not null)
+			{
+				writer.WritePropertyName("description"u8);
+				writer.WriteStringValue(Description);
+			}
+			if (Information is not null)
+			{
+				writer.WritePropertyName("information"u8);
+				writer.WriteStringValue(Information);
+			}
+			if (ForceTempEmail is not null)
+			{
+				writer.WritePropertyName("forceTempEmail"u8);
+				writer.WriteBooleanValue(ForceTempEmail.Value);
+			}
+			if (ResellItemId is not null)
+			{
+				writer.WritePropertyName("resell_item_id"u8);
+				writer.WriteNumberValue(ResellItemId.Value);
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (HasEmailLoginData is not null)
+			{
+				writer.WritePropertyName("has_email_login_data"u8);
+				writer.WriteBooleanValue(HasEmailLoginData.Value);
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteStringValue(EmailLoginData);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type"u8);
+				writer.WriteStringValue(EmailType.Value.ToJsonValue());
+			}
+			if (TfaSecret is not null)
+			{
+				writer.WritePropertyName("tfa_secret"u8);
+				writer.WriteStringValue(TfaSecret);
+			}
+			if (AllowAskDiscount is not null)
+			{
+				writer.WritePropertyName("allow_ask_discount"u8);
+				writer.WriteBooleanValue(AllowAskDiscount.Value);
+			}
+			if (ProxyId is not null)
+			{
+				writer.WritePropertyName("proxy_id"u8);
+				writer.WriteNumberValue(ProxyId.Value);
+			}
+			if (RandomProxy is not null)
+			{
+				writer.WritePropertyName("random_proxy"u8);
+				writer.WriteBooleanValue(RandomProxy.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PublishingAddResponse(
@@ -367,6 +588,53 @@ public static class PublishingApiTypes
 		public EmailType? EmailType { get; init; }
 		[JsonPropertyName("extra")]
 		public JsonElement? Extra { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (RandomProxy is not null)
+			{
+				writer.WritePropertyName("random_proxy"u8);
+				writer.WriteBooleanValue(RandomProxy.Value);
+			}
+			if (Login is not null)
+			{
+				writer.WritePropertyName("login"u8);
+				writer.WriteStringValue(Login);
+			}
+			if (Password is not null)
+			{
+				writer.WritePropertyName("password"u8);
+				writer.WriteStringValue(Password);
+			}
+			if (LoginPassword is not null)
+			{
+				writer.WritePropertyName("login_password"u8);
+				writer.WriteStringValue(LoginPassword);
+			}
+			if (HasEmailLoginData is not null)
+			{
+				writer.WritePropertyName("has_email_login_data"u8);
+				writer.WriteBooleanValue(HasEmailLoginData.Value);
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteStringValue(EmailLoginData);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type"u8);
+				writer.WriteStringValue(EmailType.Value.ToJsonValue());
+			}
+			if (Extra is not null)
+			{
+				writer.WritePropertyName("extra"u8);
+				Extra.Value.WriteTo(writer);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PublishingCheckResponse(
@@ -1715,6 +1983,30 @@ public sealed record PublishingCheckResponseItem(
 		/// </summary>
 		[JsonPropertyName("cookies")]
 		public string? Cookies { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("type"u8);
+			writer.WriteStringValue(Type.ToJsonValue());
+			if (Login is not null)
+			{
+				writer.WritePropertyName("login"u8);
+				writer.WriteStringValue(Login);
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteStringValue(EmailLoginData);
+			}
+			if (Cookies is not null)
+			{
+				writer.WritePropertyName("cookies"u8);
+				writer.WriteStringValue(Cookies);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PublishingExternalResponse(

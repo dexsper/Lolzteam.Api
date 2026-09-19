@@ -17,6 +17,18 @@ public static class FormsApiTypes
 		/// </summary>
 		[JsonPropertyName("page")]
 		public long? Page { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record FormsListResponse(
@@ -272,7 +284,11 @@ public sealed record FormsListResponseForms(
 	[JsonDerivedType(typeof(FormsCreateBodyP2PTrade), "1")]
 	[JsonDerivedType(typeof(FormsCreateBodyComplaint), "3")]
 	#endif
-	public abstract record FormsCreateBody;
+	public abstract record FormsCreateBody
+	{
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public abstract void WriteTo(Utf8JsonWriter writer);
+	}
 
 	public sealed record FormsCreateBodyP2PTrade : FormsCreateBody
 	{
@@ -280,6 +296,17 @@ public sealed record FormsListResponseForms(
 		public long FormId => 1;
 		[JsonPropertyName("fields")]
 		public required JsonElement Fields { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public override void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("form_id"u8);
+			writer.WriteNumberValue(FormId);
+			writer.WritePropertyName("fields"u8);
+			Fields.WriteTo(writer);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record FormsCreateBodyComplaint : FormsCreateBody
@@ -288,6 +315,17 @@ public sealed record FormsListResponseForms(
 		public long FormId => 3;
 		[JsonPropertyName("fields")]
 		public required JsonElement Fields { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public override void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("form_id"u8);
+			writer.WriteNumberValue(FormId);
+			writer.WritePropertyName("fields"u8);
+			Fields.WriteTo(writer);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record FormsCreateResponse(

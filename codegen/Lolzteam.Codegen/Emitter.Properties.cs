@@ -15,6 +15,8 @@ internal static partial class Emitter
         var typeName = Naming.BuildTypeName(group, method.MethodName) + "Params";
         w.Open($"public sealed record {typeName}");
 
+        var writeProps = new List<WriteProperty>();
+
         foreach (var param in method.Params.QueryParams)
         {
             var csharpType = ResolvePropCSharpType(param.Name, param.Type, method.OperationId, paramToEnumType);
@@ -27,7 +29,11 @@ internal static partial class Emitter
                 description: param.Description,
                 defaultNote: param.DefaultValue is not null ? FormatDefaultValue(param.DefaultValue) : null
             );
+
+            writeProps.Add(new WriteProperty(param.Name, propName, ComputeDeclaredType(csharpType, param.Required, defaultLiteral)));
         }
+
+        EmitWriteToMethod(w, writeProps, BuildEnumIsIntLookup(enumDefs));
 
         w.Close().Line();
     }
@@ -53,6 +59,8 @@ internal static partial class Emitter
         var typeName = Naming.BuildTypeName(group, method.MethodName) + "Body";
         w.Open($"public sealed record {typeName}");
 
+        var writeProps = new List<WriteProperty>();
+
         foreach (var prop in method.BodyProperties)
         {
             var csharpType = ResolvePropCSharpType(prop.Name, prop.Type, method.OperationId, paramToEnumType);
@@ -65,7 +73,11 @@ internal static partial class Emitter
                 description: prop.Description,
                 defaultNote: prop.DefaultValue is not null ? FormatDefaultValue(prop.DefaultValue) : null
             );
+
+            writeProps.Add(new WriteProperty(prop.Name, propName, ComputeDeclaredType(csharpType, prop.Required, defaultLiteral)));
         }
+
+        EmitWriteToMethod(w, writeProps, BuildEnumIsIntLookup(enumDefs));
 
         w.Close().Line();
     }
@@ -77,6 +89,7 @@ internal static partial class Emitter
         Dictionary<string, string> paramToEnumType, List<EnumDefinition>? enumDefs)
     {
         var baseName = Naming.BuildTypeName(group, method.MethodName) + "Body";
+        var enumIsInt = BuildEnumIsIntLookup(enumDefs);
 
         w.Line("#if NET7_0_OR_GREATER");
         foreach (var variant in variants)
@@ -86,7 +99,10 @@ internal static partial class Emitter
         }
 
         w.Line("#endif");
-        w.Line($"public abstract record {baseName};");
+        w.Open($"public abstract record {baseName}")
+            .Line("/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>")
+            .Line("public abstract void WriteTo(Utf8JsonWriter writer);")
+            .Close();
 
         foreach (var variant in variants)
         {
@@ -96,11 +112,13 @@ internal static partial class Emitter
             var discPropName = Naming.SafeCSharpName(variant.DiscriminatorField);
             w.Line($"[JsonPropertyName(\"{variant.DiscriminatorField}\")]");
 
-            w.Line(long.TryParse(variant.DiscriminatorValue, out var intDisc)
+            var isIntDisc = long.TryParse(variant.DiscriminatorValue, out var intDisc);
+            w.Line(isIntDisc
                 ? $"public long {discPropName} => {intDisc};"
                 : $"public string {discPropName} => \"{variant.DiscriminatorValue}\";"
             );
 
+            var writeProps = new List<WriteProperty>();
             foreach (var prop in variant.Properties)
             {
                 var csharpType = ResolvePropCSharpType(prop.Name, prop.Type, method.OperationId, paramToEnumType);
@@ -113,7 +131,20 @@ internal static partial class Emitter
                     description: prop.Description,
                     defaultNote: prop.DefaultValue is not null ? FormatDefaultValue(prop.DefaultValue) : null
                 );
+
+                writeProps.Add(new WriteProperty(prop.Name, propName, ComputeDeclaredType(csharpType, prop.Required, defaultLiteral)));
             }
+
+            w.Line()
+                .Line("/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>")
+                .Open("public override void WriteTo(Utf8JsonWriter writer)")
+                .Line("writer.WriteStartObject();")
+                .Line($"writer.WritePropertyName(\"{variant.DiscriminatorField}\"u8);")
+                .Line(isIntDisc ? $"writer.WriteNumberValue({discPropName});" : $"writer.WriteStringValue({discPropName});");
+
+            EmitWritePropertyLoop(w, writeProps, enumIsInt);
+
+            w.Line("writer.WriteEndObject();").Close();
 
             w.Close();
         }

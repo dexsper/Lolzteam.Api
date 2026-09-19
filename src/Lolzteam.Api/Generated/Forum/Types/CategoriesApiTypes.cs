@@ -27,6 +27,28 @@ public static class CategoriesApiTypes
 		/// </summary>
 		[JsonPropertyName("order")]
 		public CategoriesOrder? Order { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ParentCategoryId is not null)
+			{
+				writer.WritePropertyName("parent_category_id"u8);
+				writer.WriteNumberValue(ParentCategoryId.Value);
+			}
+			if (ParentForumId is not null)
+			{
+				writer.WritePropertyName("parent_forum_id"u8);
+				writer.WriteNumberValue(ParentForumId.Value);
+			}
+			if (Order is not null)
+			{
+				writer.WritePropertyName("order"u8);
+				writer.WriteStringValue(Order.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoriesListResponse(

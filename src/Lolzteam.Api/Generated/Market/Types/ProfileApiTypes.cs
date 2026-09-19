@@ -22,6 +22,23 @@ public static class ProfileApiTypes
 		/// </summary>
 		[JsonPropertyName("claim_state")]
 		public ClaimState? ClaimState { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Type is not null)
+			{
+				writer.WritePropertyName("type"u8);
+				writer.WriteStringValue(Type.Value.ToJsonValue());
+			}
+			if (ClaimState is not null)
+			{
+				writer.WritePropertyName("claim_state"u8);
+				writer.WriteStringValue(ClaimState.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ProfileClaimsResponse(
@@ -714,6 +731,23 @@ public sealed record ProfileClaimsResponseStats(
 		/// </summary>
 		[JsonPropertyName("fields_include")]
 		public List<FieldsInclude>? FieldsInclude { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (FieldsInclude is not null)
+			{
+				writer.WritePropertyName("fields_include"u8);
+				writer.WriteStartArray();
+				foreach (var __w in FieldsInclude)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ProfileGetResponse(
@@ -814,6 +848,78 @@ public sealed record ProfileClaimsResponseStats(
 		/// </summary>
 		[JsonPropertyName("clear_telegram_client")]
 		public bool? ClearTelegramClient { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (User is not null)
+			{
+				writer.WritePropertyName("user"u8);
+				User.Value.WriteTo(writer);
+			}
+			if (Option is not null)
+			{
+				writer.WritePropertyName("option"u8);
+				Option.Value.WriteTo(writer);
+			}
+			if (AllowAcceptAccounts is not null)
+			{
+				writer.WritePropertyName("allow_accept_accounts"u8);
+				writer.WriteStartArray();
+				foreach (var __w in AllowAcceptAccounts)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (TelegramApiId is not null)
+			{
+				writer.WritePropertyName("telegram_api_id"u8);
+				writer.WriteStringValue(TelegramApiId);
+			}
+			if (TelegramApiHash is not null)
+			{
+				writer.WritePropertyName("telegram_api_hash"u8);
+				writer.WriteStringValue(TelegramApiHash);
+			}
+			if (TelegramDeviceModel is not null)
+			{
+				writer.WritePropertyName("telegram_device_model"u8);
+				writer.WriteStringValue(TelegramDeviceModel);
+			}
+			if (TelegramSystemVersion is not null)
+			{
+				writer.WritePropertyName("telegram_system_version"u8);
+				writer.WriteStringValue(TelegramSystemVersion);
+			}
+			if (TelegramAppVersion is not null)
+			{
+				writer.WritePropertyName("telegram_app_version"u8);
+				writer.WriteStringValue(TelegramAppVersion);
+			}
+			if (TelegramLangPack is not null)
+			{
+				writer.WritePropertyName("telegram_lang_pack"u8);
+				writer.WriteStringValue(TelegramLangPack);
+			}
+			if (TelegramLangCode is not null)
+			{
+				writer.WritePropertyName("telegram_lang_code"u8);
+				writer.WriteStringValue(TelegramLangCode);
+			}
+			if (TelegramSystemLangCode is not null)
+			{
+				writer.WritePropertyName("telegram_system_lang_code"u8);
+				writer.WriteStringValue(TelegramSystemLangCode);
+			}
+			if (ClearTelegramClient is not null)
+			{
+				writer.WritePropertyName("clear_telegram_client"u8);
+				writer.WriteBooleanValue(ClearTelegramClient.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ProfileEditResponse(

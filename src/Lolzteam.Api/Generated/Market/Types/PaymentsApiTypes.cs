@@ -22,6 +22,23 @@ public static class PaymentsApiTypes
 		/// </summary>
 		[JsonPropertyName("payment_id")]
 		public string? PaymentId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (InvoiceId is not null)
+			{
+				writer.WritePropertyName("invoice_id"u8);
+				writer.WriteNumberValue(InvoiceId.Value);
+			}
+			if (PaymentId is not null)
+			{
+				writer.WritePropertyName("payment_id"u8);
+				writer.WriteStringValue(PaymentId);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsInvoiceGetResponse(
@@ -127,6 +144,61 @@ public static class PaymentsApiTypes
 		/// </summary>
 		[JsonPropertyName("is_test")]
 		public bool? IsTest { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("currency"u8);
+			writer.WriteStringValue(Currency.ToJsonValue());
+			if (Amount is not null)
+			{
+				writer.WritePropertyName("amount"u8);
+				writer.WriteNumberValue(Amount.Value);
+			}
+			writer.WritePropertyName("payment_id"u8);
+			writer.WriteStringValue(PaymentId);
+			writer.WritePropertyName("comment"u8);
+			writer.WriteStringValue(Comment);
+			writer.WritePropertyName("url_success"u8);
+			writer.WriteStringValue(UrlSuccess);
+			if (UrlCallback is not null)
+			{
+				writer.WritePropertyName("url_callback"u8);
+				writer.WriteStringValue(UrlCallback);
+			}
+			if (MerchantId is not null)
+			{
+				writer.WritePropertyName("merchant_id"u8);
+				writer.WriteNumberValue(MerchantId.Value);
+			}
+			if (RequiredTelegramId is not null)
+			{
+				writer.WritePropertyName("required_telegram_id"u8);
+				writer.WriteNumberValue(RequiredTelegramId.Value);
+			}
+			if (RequiredTelegramUsername is not null)
+			{
+				writer.WritePropertyName("required_telegram_username"u8);
+				writer.WriteStringValue(RequiredTelegramUsername);
+			}
+			if (Lifetime is not null)
+			{
+				writer.WritePropertyName("lifetime"u8);
+				writer.WriteNumberValue(Lifetime.Value);
+			}
+			if (AdditionalData is not null)
+			{
+				writer.WritePropertyName("additional_data"u8);
+				writer.WriteStringValue(AdditionalData);
+			}
+			if (IsTest is not null)
+			{
+				writer.WritePropertyName("is_test"u8);
+				writer.WriteBooleanValue(IsTest.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsInvoiceCreateResponse(
@@ -198,6 +270,38 @@ public static class PaymentsApiTypes
 		/// </summary>
 		[JsonPropertyName("merchant_id")]
 		public long? MerchantId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (Status is not null)
+			{
+				writer.WritePropertyName("status"u8);
+				writer.WriteStringValue(Status.Value.ToJsonValue());
+			}
+			if (Amount is not null)
+			{
+				writer.WritePropertyName("amount"u8);
+				writer.WriteNumberValue(Amount.Value);
+			}
+			if (MerchantId is not null)
+			{
+				writer.WritePropertyName("merchant_id"u8);
+				writer.WriteNumberValue(MerchantId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsInvoiceListResponse(
@@ -4335,6 +4439,22 @@ public sealed record PaymentsBalanceListResponseTo(
 		/// </summary>
 		[JsonPropertyName("amount")]
 		public required long? Amount { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("from_balance"u8);
+			writer.WriteStringValue(FromBalance);
+			writer.WritePropertyName("to_balance"u8);
+			writer.WriteStringValue(ToBalance);
+			if (Amount is not null)
+			{
+				writer.WritePropertyName("amount"u8);
+				writer.WriteNumberValue(Amount.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsBalanceExchangeResponse(
@@ -4568,6 +4688,60 @@ public sealed record PaymentsBalanceExchangeResponseTo(
 		/// </summary>
 		[JsonPropertyName("hold_length_option")]
 		public HoldLengthOption? HoldLengthOption { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Username is not null)
+			{
+				writer.WritePropertyName("username"u8);
+				writer.WriteStringValue(Username);
+			}
+			if (Amount is not null)
+			{
+				writer.WritePropertyName("amount"u8);
+				writer.WriteNumberValue(Amount.Value);
+			}
+			writer.WritePropertyName("currency"u8);
+			writer.WriteStringValue(Currency.ToJsonValue());
+			if (Comment is not null)
+			{
+				writer.WritePropertyName("comment"u8);
+				writer.WriteStringValue(Comment);
+			}
+			if (TelegramDeal is not null)
+			{
+				writer.WritePropertyName("telegram_deal"u8);
+				writer.WriteBooleanValue(TelegramDeal.Value);
+			}
+			if (TelegramUsername is not null)
+			{
+				writer.WritePropertyName("telegram_username"u8);
+				writer.WriteStringValue(TelegramUsername);
+			}
+			if (TransferHold is not null)
+			{
+				writer.WritePropertyName("transfer_hold"u8);
+				writer.WriteBooleanValue(TransferHold.Value);
+			}
+			if (HoldLengthValue is not null)
+			{
+				writer.WritePropertyName("hold_length_value"u8);
+				writer.WriteNumberValue(HoldLengthValue.Value);
+			}
+			if (HoldLengthOption is not null)
+			{
+				writer.WritePropertyName("hold_length_option"u8);
+				writer.WriteStringValue(HoldLengthOption.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsTransferResponse(
@@ -4631,6 +4805,20 @@ public sealed record PaymentsBalanceExchangeResponseTo(
 		/// </summary>
 		[JsonPropertyName("currency")]
 		public required Currency Currency { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Amount is not null)
+			{
+				writer.WritePropertyName("amount"u8);
+				writer.WriteNumberValue(Amount.Value);
+			}
+			writer.WritePropertyName("currency"u8);
+			writer.WriteStringValue(Currency.ToJsonValue());
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsFeeResponse(
@@ -4745,6 +4933,18 @@ public sealed record PaymentsFeeResponseCalculator(
 		/// </summary>
 		[JsonPropertyName("payment_id")]
 		public required long? PaymentId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (PaymentId is not null)
+			{
+				writer.WritePropertyName("payment_id"u8);
+				writer.WriteNumberValue(PaymentId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsCancelResponse(
@@ -4873,6 +5073,88 @@ public sealed record PaymentsFeeResponseCalculator(
 		/// </summary>
 		[JsonPropertyName("show_payment_stats")]
 		public bool? ShowPaymentStats { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Type is not null)
+			{
+				writer.WritePropertyName("type"u8);
+				writer.WriteStringValue(Type.Value.ToJsonValue());
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (OperationIdLt is not null)
+			{
+				writer.WritePropertyName("operation_id_lt"u8);
+				writer.WriteNumberValue(OperationIdLt.Value);
+			}
+			if (Receiver is not null)
+			{
+				writer.WritePropertyName("receiver"u8);
+				writer.WriteStringValue(Receiver);
+			}
+			if (Sender is not null)
+			{
+				writer.WritePropertyName("sender"u8);
+				writer.WriteStringValue(Sender);
+			}
+			if (IsApi is not null)
+			{
+				writer.WritePropertyName("is_api"u8);
+				writer.WriteBooleanValue(IsApi.Value);
+			}
+			if (StartDate is not null)
+			{
+				writer.WritePropertyName("startDate"u8);
+				writer.WriteStringValue(StartDate);
+			}
+			if (EndDate is not null)
+			{
+				writer.WritePropertyName("endDate"u8);
+				writer.WriteStringValue(EndDate);
+			}
+			if (Wallet is not null)
+			{
+				writer.WritePropertyName("wallet"u8);
+				writer.WriteStringValue(Wallet);
+			}
+			if (Comment is not null)
+			{
+				writer.WritePropertyName("comment"u8);
+				writer.WriteStringValue(Comment);
+			}
+			if (IsHold is not null)
+			{
+				writer.WritePropertyName("is_hold"u8);
+				writer.WriteBooleanValue(IsHold.Value);
+			}
+			if (ShowPaymentStats is not null)
+			{
+				writer.WritePropertyName("show_payment_stats"u8);
+				writer.WriteBooleanValue(ShowPaymentStats.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsHistoryResponse(
@@ -6620,6 +6902,34 @@ public sealed record PaymentsPayoutServicesResponseSystems(
 		public bool? IncludeFee { get; init; }
 		[JsonPropertyName("extra")]
 		public JsonElement? Extra { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("payment_system"u8);
+			writer.WriteStringValue(PaymentSystem);
+			writer.WritePropertyName("wallet"u8);
+			writer.WriteStringValue(Wallet);
+			if (Amount is not null)
+			{
+				writer.WritePropertyName("amount"u8);
+				writer.WriteNumberValue(Amount.Value);
+			}
+			writer.WritePropertyName("currency"u8);
+			writer.WriteStringValue(Currency.ToJsonValue());
+			if (IncludeFee is not null)
+			{
+				writer.WritePropertyName("include_fee"u8);
+				writer.WriteBooleanValue(IncludeFee.Value);
+			}
+			if (Extra is not null)
+			{
+				writer.WritePropertyName("extra"u8);
+				Extra.Value.WriteTo(writer);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PaymentsPayoutResponse(

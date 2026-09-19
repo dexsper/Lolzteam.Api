@@ -97,6 +97,40 @@ public static class CustomDiscountsApiTypes
 		public double? MaxPrice { get; init; }
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			writer.WritePropertyName("category_id"u8);
+			writer.WriteNumberValue((long)CategoryId);
+			if (DiscountPercent is not null)
+			{
+				writer.WritePropertyName("discount_percent"u8);
+				writer.WriteNumberValue(DiscountPercent.Value);
+			}
+			if (MinPrice is not null)
+			{
+				writer.WritePropertyName("min_price"u8);
+				writer.WriteNumberValue(MinPrice.Value);
+			}
+			if (MaxPrice is not null)
+			{
+				writer.WritePropertyName("max_price"u8);
+				writer.WriteNumberValue(MaxPrice.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CustomDiscountsCreateResponse(
@@ -170,6 +204,33 @@ public static class CustomDiscountsApiTypes
 		/// </summary>
 		[JsonPropertyName("max_price")]
 		public double? MaxPrice { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (DiscountId is not null)
+			{
+				writer.WritePropertyName("discount_id"u8);
+				writer.WriteNumberValue(DiscountId.Value);
+			}
+			if (DiscountPercent is not null)
+			{
+				writer.WritePropertyName("discount_percent"u8);
+				writer.WriteNumberValue(DiscountPercent.Value);
+			}
+			if (MinPrice is not null)
+			{
+				writer.WritePropertyName("min_price"u8);
+				writer.WriteNumberValue(MinPrice.Value);
+			}
+			if (MaxPrice is not null)
+			{
+				writer.WritePropertyName("max_price"u8);
+				writer.WriteNumberValue(MaxPrice.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CustomDiscountsEditResponse(
@@ -237,6 +298,18 @@ public static class CustomDiscountsApiTypes
 		/// </summary>
 		[JsonPropertyName("discount_id")]
 		public required long? DiscountId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (DiscountId is not null)
+			{
+				writer.WritePropertyName("discount_id"u8);
+				writer.WriteNumberValue(DiscountId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CustomDiscountsDeleteResponse(

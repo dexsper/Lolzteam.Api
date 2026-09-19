@@ -142,6 +142,153 @@ public static class ListApiTypes
 		/// </summary>
 		[JsonPropertyName("filter_by_delete_date")]
 		public bool? FilterByDeleteDate { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (CategoryId is not null)
+			{
+				writer.WritePropertyName("category_id"u8);
+				writer.WriteNumberValue((long)CategoryId.Value);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Show is not null)
+			{
+				writer.WritePropertyName("show"u8);
+				writer.WriteStringValue(Show.Value.ToJsonValue());
+			}
+			if (DeleteReason is not null)
+			{
+				writer.WritePropertyName("delete_reason"u8);
+				writer.WriteStringValue(DeleteReason);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Login is not null)
+			{
+				writer.WritePropertyName("login"u8);
+				writer.WriteStringValue(Login);
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (Username is not null)
+			{
+				writer.WritePropertyName("username"u8);
+				writer.WriteStringValue(Username);
+			}
+			if (PublishedStartDate is not null)
+			{
+				writer.WritePropertyName("published_startDate"u8);
+				writer.WriteStringValue(PublishedStartDate);
+			}
+			if (PublishedEndDate is not null)
+			{
+				writer.WritePropertyName("published_endDate"u8);
+				writer.WriteStringValue(PublishedEndDate);
+			}
+			if (FilterByPublishedDate is not null)
+			{
+				writer.WritePropertyName("filter_by_published_date"u8);
+				writer.WriteBooleanValue(FilterByPublishedDate.Value);
+			}
+			if (PaidStartDate is not null)
+			{
+				writer.WritePropertyName("paid_startDate"u8);
+				writer.WriteStringValue(PaidStartDate);
+			}
+			if (PaidEndDate is not null)
+			{
+				writer.WritePropertyName("paid_endDate"u8);
+				writer.WriteStringValue(PaidEndDate);
+			}
+			if (FilterByBuyerOperationDate is not null)
+			{
+				writer.WritePropertyName("filter_by_buyer_operation_date"u8);
+				writer.WriteBooleanValue(FilterByBuyerOperationDate.Value);
+			}
+			if (DeleteStartDate is not null)
+			{
+				writer.WritePropertyName("delete_startDate"u8);
+				writer.WriteStringValue(DeleteStartDate);
+			}
+			if (DeleteEndDate is not null)
+			{
+				writer.WritePropertyName("delete_endDate"u8);
+				writer.WriteStringValue(DeleteEndDate);
+			}
+			if (FilterByDeleteDate is not null)
+			{
+				writer.WritePropertyName("filter_by_delete_date"u8);
+				writer.WriteBooleanValue(FilterByDeleteDate.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ListUserResponse(
@@ -561,6 +708,98 @@ public sealed record ListUserResponseUser(
 		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (CategoryId is not null)
+			{
+				writer.WritePropertyName("category_id"u8);
+				writer.WriteNumberValue((long)CategoryId.Value);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Show is not null)
+			{
+				writer.WritePropertyName("show"u8);
+				writer.WriteStringValue(Show.Value.ToJsonValue());
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Login is not null)
+			{
+				writer.WritePropertyName("login"u8);
+				writer.WriteStringValue(Login);
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ListOrdersResponse(
@@ -679,6 +918,18 @@ public sealed record ListUserResponseUser(
 		/// </summary>
 		[JsonPropertyName("user_id")]
 		public Lolzteam.Api.Runtime.StringOrLong? UserId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				UserId.Value.WriteTo(writer);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ListStatesResponse(
@@ -1618,6 +1869,153 @@ public sealed record ListStatesResponseUserItemStates(
 		/// </summary>
 		[JsonPropertyName("filter_by_delete_date")]
 		public bool? FilterByDeleteDate { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Format is not null)
+			{
+				writer.WritePropertyName("format"u8);
+				writer.WriteStringValue(Format.Value.ToJsonValue());
+			}
+			if (CustomFormat is not null)
+			{
+				writer.WritePropertyName("custom_format"u8);
+				writer.WriteStringValue(CustomFormat);
+			}
+			if (CategoryId is not null)
+			{
+				writer.WritePropertyName("category_id"u8);
+				writer.WriteNumberValue((long)CategoryId.Value);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Show is not null)
+			{
+				writer.WritePropertyName("show"u8);
+				writer.WriteStringValue(Show.Value.ToJsonValue());
+			}
+			if (DeleteReason is not null)
+			{
+				writer.WritePropertyName("delete_reason"u8);
+				writer.WriteStringValue(DeleteReason);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (Username is not null)
+			{
+				writer.WritePropertyName("username"u8);
+				writer.WriteStringValue(Username);
+			}
+			if (PublishedStartDate is not null)
+			{
+				writer.WritePropertyName("published_startDate"u8);
+				writer.WriteStringValue(PublishedStartDate);
+			}
+			if (PublishedEndDate is not null)
+			{
+				writer.WritePropertyName("published_endDate"u8);
+				writer.WriteStringValue(PublishedEndDate);
+			}
+			if (FilterByPublishedDate is not null)
+			{
+				writer.WritePropertyName("filter_by_published_date"u8);
+				writer.WriteBooleanValue(FilterByPublishedDate.Value);
+			}
+			if (PaidStartDate is not null)
+			{
+				writer.WritePropertyName("paid_startDate"u8);
+				writer.WriteStringValue(PaidStartDate);
+			}
+			if (PaidEndDate is not null)
+			{
+				writer.WritePropertyName("paid_endDate"u8);
+				writer.WriteStringValue(PaidEndDate);
+			}
+			if (FilterByBuyerOperationDate is not null)
+			{
+				writer.WritePropertyName("filter_by_buyer_operation_date"u8);
+				writer.WriteBooleanValue(FilterByBuyerOperationDate.Value);
+			}
+			if (DeleteStartDate is not null)
+			{
+				writer.WritePropertyName("delete_startDate"u8);
+				writer.WriteStringValue(DeleteStartDate);
+			}
+			if (DeleteEndDate is not null)
+			{
+				writer.WritePropertyName("delete_endDate"u8);
+				writer.WriteStringValue(DeleteEndDate);
+			}
+			if (FilterByDeleteDate is not null)
+			{
+				writer.WritePropertyName("filter_by_delete_date"u8);
+				writer.WriteBooleanValue(FilterByDeleteDate.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ListDownloadResponse(string Data);
@@ -1684,6 +2082,83 @@ public sealed record ListStatesResponseUserItemStates(
 		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Show is not null)
+			{
+				writer.WritePropertyName("show"u8);
+				writer.WriteStringValue(Show.Value.ToJsonValue());
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ListFavoritesResponse(
@@ -1857,6 +2332,83 @@ public sealed record ListStatesResponseUserItemStates(
 		/// </summary>
 		[JsonPropertyName("nsb_by_me")]
 		public bool? NsbByMe { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Show is not null)
+			{
+				writer.WritePropertyName("show"u8);
+				writer.WriteStringValue(Show.Value.ToJsonValue());
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ListViewedResponse(

@@ -54,6 +54,9 @@ internal sealed record BodyProperty(
     string? Description = null
 );
 
+/// <summary>A property to emit inside a generated <c>WriteTo(Utf8JsonWriter)</c> method.</summary>
+internal sealed record WriteProperty(string JsonName, string PropName, string DeclaredType);
+
 internal sealed record OneOfVariant(
     string Title,
     string DiscriminatorField,

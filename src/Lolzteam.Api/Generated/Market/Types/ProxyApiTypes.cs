@@ -200,6 +200,38 @@ public sealed record ProxyGetResponseProxies(
 		/// </summary>
 		[JsonPropertyName("proxy_row")]
 		public string? ProxyRow { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ProxyIp is not null)
+			{
+				writer.WritePropertyName("proxy_ip"u8);
+				writer.WriteStringValue(ProxyIp);
+			}
+			if (ProxyPort is not null)
+			{
+				writer.WritePropertyName("proxy_port"u8);
+				writer.WriteNumberValue(ProxyPort.Value);
+			}
+			if (ProxyUser is not null)
+			{
+				writer.WritePropertyName("proxy_user"u8);
+				writer.WriteStringValue(ProxyUser);
+			}
+			if (ProxyPass is not null)
+			{
+				writer.WritePropertyName("proxy_pass"u8);
+				writer.WriteStringValue(ProxyPass);
+			}
+			if (ProxyRow is not null)
+			{
+				writer.WritePropertyName("proxy_row"u8);
+				writer.WriteStringValue(ProxyRow);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ProxyAddResponse(
@@ -263,6 +295,23 @@ public sealed record ProxyGetResponseProxies(
 		/// </summary>
 		[JsonPropertyName("delete_all")]
 		public bool? DeleteAll { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ProxyId is not null)
+			{
+				writer.WritePropertyName("proxy_id"u8);
+				writer.WriteNumberValue(ProxyId.Value);
+			}
+			if (DeleteAll is not null)
+			{
+				writer.WritePropertyName("delete_all"u8);
+				writer.WriteBooleanValue(DeleteAll.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ProxyDeleteResponse(

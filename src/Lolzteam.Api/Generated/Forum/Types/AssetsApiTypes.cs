@@ -17,6 +17,23 @@ public static class AssetsApiTypes
 		/// </summary>
 		[JsonPropertyName("css")]
 		public List<string>? Css { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Css is not null)
+			{
+				writer.WritePropertyName("css"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Css)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record AssetsCssResponse(

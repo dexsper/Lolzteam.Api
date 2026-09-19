@@ -203,7 +203,8 @@ internal static partial class Emitter
             bodyEncoding: "form",
             method.IsSearch,
             includeByteFields: false,
-            includeJsonObj: false
+            includeJsonObj: false,
+            bodyArrayItemType: null
         );
 
         w.Line("var __raw = await _http.RequestRawAsync(__opts, cancellationToken).ConfigureAwait(false);");
@@ -221,7 +222,8 @@ internal static partial class Emitter
             bodyRequired: definition.BodyRequired,
             bodyEncoding: definition.BodyEncoding,
             method.IsSearch,
-            includeByteFields: false, includeJsonObj: false
+            includeByteFields: false, includeJsonObj: false,
+            bodyArrayItemType: definition.BodyIsArray ? definition.BodyArrayItemType : null
         );
 
         EmitRequestAndReturn(w, method.ResponseTypeName);
@@ -272,7 +274,8 @@ internal static partial class Emitter
                 bodyEncoding: "multipart",
                 method.IsSearch,
                 includeByteFields: true,
-                includeJsonObj: serializableProps.Count > 0
+                includeJsonObj: serializableProps.Count > 0,
+                bodyArrayItemType: null
             );
 
             EmitRequestAndReturn(w, method.ResponseTypeName);
@@ -297,37 +300,45 @@ internal static partial class Emitter
             bodyEncoding: "multipart",
             method.IsSearch,
             includeByteFields: false,
-            includeJsonObj: false
+            includeJsonObj: false,
+            bodyArrayItemType: null
         );
 
         EmitRequestAndReturn(w, method.ResponseTypeName);
         w.Close();
     }
 
-    /// <summary>Emit <c>var __opts = new RequestOptions { … };</c>.</summary>
+    /// <summary>
+    /// Emit <c>var __query = …;</c> / <c>var __body = …;</c> (as needed), then the
+    /// <c>var __opts = new RequestOptions { … };</c> initializer.
+    /// Query/body values go through <c>WriteTo(Utf8JsonWriter)</c> and
+    /// <see cref="Lolzteam.Api.Runtime.JsonElementWriter"/>, not <c>JsonSerializer.SerializeToElement&lt;T&gt;</c>,
+    /// so no reflection-based type metadata is needed (required for Native AOT).
+    /// </summary>
     private static void EmitBuildOpts(
         CodeWriter w,
         string httpMethod, string pathExpr,
         bool hasQueryType, bool includeBody, bool bodyRequired,
         string bodyEncoding, bool isSearch,
-        bool includeByteFields, bool includeJsonObj)
+        bool includeByteFields, bool includeJsonObj,
+        string? bodyArrayItemType)
     {
+        if (hasQueryType)
+            w.Line(
+                "JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;");
+
+        if (includeBody)
+            EmitBodyLocal(w, includeJsonObj, bodyRequired, bodyArrayItemType);
+
         w.Open("var __opts = new RequestOptions")
             .Line($"Method = \"{httpMethod}\",")
             .Line($"Path = {pathExpr},");
 
         if (hasQueryType)
-            w.Line("Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,");
+            w.Line("Query = __query,");
 
-        string? bodyLine = !includeBody ? null
-            : includeJsonObj ? "Body = JsonSerializer.SerializeToElement(jsonObj),"
-            : bodyRequired ? "Body = JsonSerializer.SerializeToElement(body),"
-            : "Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,";
-
-        if (bodyLine is not null)
-        {
-            w.Line(bodyLine);
-        }
+        if (includeBody)
+            w.Line("Body = __body,");
 
         if (includeBody || bodyEncoding != "form")
         {
@@ -338,6 +349,55 @@ internal static partial class Emitter
             w.Line("ByteArrayFields = byteFields,");
 
         w.LineIf(isSearch, "IsSearch = true,").Close(";");
+    }
+
+    /// <summary>Emit <c>var __body = …;</c> ahead of the <c>RequestOptions</c> initializer.</summary>
+    private static void EmitBodyLocal(CodeWriter w, bool includeJsonObj, bool bodyRequired, string? bodyArrayItemType)
+    {
+        if (includeJsonObj)
+        {
+            w.Line("var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer => jsonObj.WriteTo(writer));");
+            return;
+        }
+
+        if (bodyArrayItemType is not null)
+        {
+            var itemTypeRaw = Transforms.ToCSharpType(bodyArrayItemType);
+            var enumIsInt = new Dictionary<string, bool>(); // array-body item types never resolve to enums
+            var itemNullable = itemTypeRaw.EndsWith('?');
+            var itemType = itemTypeRaw.TrimEnd('?');
+            var itemExpr = itemNullable && IsWriteValueType(itemType, enumIsInt)
+                ? "__wItem.GetValueOrDefault()"
+                : "__wItem";
+
+            if (bodyRequired)
+            {
+                w.Open("var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer =>")
+                    .Line("writer.WriteStartArray();")
+                    .Open("foreach (var __wItem in body)");
+                EmitWriteValue(w, itemExpr, itemType, enumIsInt);
+                w.Close()
+                    .Line("writer.WriteEndArray();")
+                    .Close(");");
+                return;
+            }
+
+            w.Line("JsonElement? __body = null;")
+                .Open("if (body is not null)")
+                .Open("__body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer =>")
+                .Line("writer.WriteStartArray();")
+                .Open("foreach (var __wItem in body)");
+            EmitWriteValue(w, itemExpr, itemType, enumIsInt);
+            w.Close()
+                .Line("writer.WriteEndArray();")
+                .Close(");")
+                .Close();
+            return;
+        }
+
+        w.Line(bodyRequired
+            ? "var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);"
+            : "JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;");
     }
 
     private static void EmitRequestAndReturn(CodeWriter w, string responseTypeName)

@@ -122,6 +122,163 @@ public static class CartApiTypes
 		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (CategoryId is not null)
+			{
+				writer.WritePropertyName("category_id"u8);
+				writer.WriteNumberValue((long)CategoryId.Value);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CartGetResponse(
@@ -240,6 +397,18 @@ public static class CartApiTypes
 		/// </summary>
 		[JsonPropertyName("item_id")]
 		public required long? ItemId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ItemId is not null)
+			{
+				writer.WritePropertyName("item_id"u8);
+				writer.WriteNumberValue(ItemId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CartAddResponse(
@@ -291,6 +460,18 @@ public static class CartApiTypes
 		/// </summary>
 		[JsonPropertyName("item_id")]
 		public long? ItemId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ItemId is not null)
+			{
+				writer.WritePropertyName("item_id"u8);
+				writer.WriteNumberValue(ItemId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CartDeleteResponse(

@@ -27,6 +27,28 @@ public static class ConversationsApiTypes
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Folder is not null)
+			{
+				writer.WritePropertyName("folder"u8);
+				writer.WriteStringValue(Folder.Value.ToJsonValue());
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsListResponse(
@@ -257,6 +279,63 @@ public sealed record ConversationsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("message_body")]
 		public string? MessageBody { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (RecipientId is not null)
+			{
+				writer.WritePropertyName("recipient_id"u8);
+				writer.WriteNumberValue(RecipientId.Value);
+			}
+			if (Recipients is not null)
+			{
+				writer.WritePropertyName("recipients"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Recipients)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (IsGroup is not null)
+			{
+				writer.WritePropertyName("is_group"u8);
+				writer.WriteBooleanValue(IsGroup.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OpenInvite is not null)
+			{
+				writer.WritePropertyName("open_invite"u8);
+				writer.WriteBooleanValue(OpenInvite.Value);
+			}
+			if (AllowEditMessages is not null)
+			{
+				writer.WritePropertyName("allow_edit_messages"u8);
+				writer.WriteBooleanValue(AllowEditMessages.Value);
+			}
+			if (AllowStickyMessages is not null)
+			{
+				writer.WritePropertyName("allow_sticky_messages"u8);
+				writer.WriteBooleanValue(AllowStickyMessages.Value);
+			}
+			if (AllowDeleteOwnMessages is not null)
+			{
+				writer.WritePropertyName("allow_delete_own_messages"u8);
+				writer.WriteBooleanValue(AllowDeleteOwnMessages.Value);
+			}
+			if (MessageBody is not null)
+			{
+				writer.WritePropertyName("message_body"u8);
+				writer.WriteStringValue(MessageBody);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsCreateResponse(
@@ -338,6 +417,48 @@ public sealed record ConversationsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("allow_delete_own_messages")]
 		public bool? AllowDeleteOwnMessages { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ConversationId is not null)
+			{
+				writer.WritePropertyName("conversation_id"u8);
+				writer.WriteNumberValue(ConversationId.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OpenInvite is not null)
+			{
+				writer.WritePropertyName("open_invite"u8);
+				writer.WriteBooleanValue(OpenInvite.Value);
+			}
+			if (HistoryOpen is not null)
+			{
+				writer.WritePropertyName("history_open"u8);
+				writer.WriteBooleanValue(HistoryOpen.Value);
+			}
+			if (AllowEditMessages is not null)
+			{
+				writer.WritePropertyName("allow_edit_messages"u8);
+				writer.WriteBooleanValue(AllowEditMessages.Value);
+			}
+			if (AllowStickyMessages is not null)
+			{
+				writer.WritePropertyName("allow_sticky_messages"u8);
+				writer.WriteBooleanValue(AllowStickyMessages.Value);
+			}
+			if (AllowDeleteOwnMessages is not null)
+			{
+				writer.WritePropertyName("allow_delete_own_messages"u8);
+				writer.WriteBooleanValue(AllowDeleteOwnMessages.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsUpdateResponse(
@@ -394,6 +515,20 @@ public sealed record ConversationsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("delete_type")]
 		public required DeleteType DeleteType { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ConversationId is not null)
+			{
+				writer.WritePropertyName("conversation_id"u8);
+				writer.WriteNumberValue(ConversationId.Value);
+			}
+			writer.WritePropertyName("delete_type"u8);
+			writer.WriteStringValue(DeleteType.ToJsonValue());
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsDeleteResponse(
@@ -449,6 +584,15 @@ public sealed record ConversationsListResponseLinks(
 	{
 		[JsonPropertyName("user_id")]
 		public required Lolzteam.Api.Runtime.StringOrLong UserId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("user_id"u8);
+			UserId.WriteTo(writer);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsStartResponse(
@@ -500,6 +644,15 @@ public sealed record ConversationsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("link")]
 		public required string Link { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("link"u8);
+			writer.WriteStringValue(Link);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsSaveResponse(
@@ -600,6 +753,18 @@ public sealed record ConversationsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("thread_id")]
 		public required long? ThreadId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ThreadId is not null)
+			{
+				writer.WritePropertyName("thread_id"u8);
+				writer.WriteNumberValue(ThreadId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsShareContentResponse(
@@ -671,6 +836,38 @@ public sealed record ConversationsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("after")]
 		public long? After { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (Order is not null)
+			{
+				writer.WritePropertyName("order"u8);
+				writer.WriteStringValue(Order.Value.ToJsonValue());
+			}
+			if (Before is not null)
+			{
+				writer.WritePropertyName("before"u8);
+				writer.WriteNumberValue(Before.Value);
+			}
+			if (After is not null)
+			{
+				writer.WritePropertyName("after"u8);
+				writer.WriteNumberValue(After.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsMessagesListResponse(
@@ -799,6 +996,20 @@ public sealed record ConversationsMessagesListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("message_body")]
 		public required string MessageBody { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ReplyMessageId is not null)
+			{
+				writer.WritePropertyName("reply_message_id"u8);
+				writer.WriteNumberValue(ReplyMessageId.Value);
+			}
+			writer.WritePropertyName("message_body"u8);
+			writer.WriteStringValue(MessageBody);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsMessagesCreateResponse(
@@ -860,6 +1071,28 @@ public sealed record ConversationsMessagesListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("search_recipients")]
 		public bool? SearchRecipients { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Q is not null)
+			{
+				writer.WritePropertyName("q"u8);
+				writer.WriteStringValue(Q);
+			}
+			if (ConversationId is not null)
+			{
+				writer.WritePropertyName("conversation_id"u8);
+				writer.WriteNumberValue(ConversationId.Value);
+			}
+			if (SearchRecipients is not null)
+			{
+				writer.WritePropertyName("search_recipients"u8);
+				writer.WriteBooleanValue(SearchRecipients.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsSearchResponse(
@@ -969,6 +1202,15 @@ public sealed record ConversationsMessagesListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("message_body")]
 		public required string MessageBody { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("message_body"u8);
+			writer.WriteStringValue(MessageBody);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsMessagesEditResponse(
@@ -1069,6 +1311,20 @@ public sealed record ConversationsMessagesListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("recipients")]
 		public required List<string> Recipients { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("recipients"u8);
+			writer.WriteStartArray();
+			foreach (var __w in Recipients)
+			{
+				writer.WriteStringValue(__w);
+			}
+			writer.WriteEndArray();
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsInviteResponse(
@@ -1127,6 +1383,18 @@ public sealed record ConversationsMessagesListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("user_id")]
 		public required long? UserId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ConversationsKickResponse(

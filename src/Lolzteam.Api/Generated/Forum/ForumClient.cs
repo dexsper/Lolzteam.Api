@@ -21,11 +21,12 @@ public sealed class AppApi
 	/// </summary>
 	public async Task<AppApiTypes.AppGetResponse> GetAsync(AppApiTypes.AppGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/app",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, AppApiTypes.AppGetResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -35,11 +36,12 @@ public sealed class AppApi
 	/// </summary>
 	public async Task<AppApiTypes.AppPushSubscriptionResponse> PushSubscriptionAsync(AppApiTypes.AppPushSubscriptionBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = "/app/push-subscription",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, AppApiTypes.AppPushSubscriptionResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -60,11 +62,12 @@ public sealed class AssetsApi
 	/// </summary>
 	public async Task<AssetsApiTypes.AssetsCssResponse> CssAsync(AssetsApiTypes.AssetsCssParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/css",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, AssetsApiTypes.AssetsCssResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -89,11 +92,24 @@ public sealed class BatchApi
 	/// </summary>
 	public async Task<BatchApiTypes.BatchExecuteResponse> ExecuteAsync(List<JsonElement>? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = null;
+		if (body is not null)
+		{
+			__body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer =>
+			{
+				writer.WriteStartArray();
+				foreach (var __wItem in body)
+				{
+					__wItem.WriteTo(writer);
+				}
+				writer.WriteEndArray();
+			});
+		}
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/batch",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, BatchApiTypes.BatchExecuteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -119,11 +135,12 @@ public sealed class CategoriesApi
 	/// </summary>
 	public async Task<CategoriesApiTypes.CategoriesListResponse> ListAsync(CategoriesApiTypes.CategoriesListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/categories",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, CategoriesApiTypes.CategoriesListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -166,11 +183,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxIndexResponse> IndexAsync(ChatboxApiTypes.ChatboxIndexParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/chatbox",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxIndexResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -185,11 +203,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxGetMessagesResponse> GetMessagesAsync(ChatboxApiTypes.ChatboxGetMessagesParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/chatbox/messages",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxGetMessagesResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -204,11 +223,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxPostMessageResponse> PostMessageAsync(ChatboxApiTypes.ChatboxPostMessageBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/chatbox/messages",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxPostMessageResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -224,11 +244,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxEditMessageResponse> EditMessageAsync(ChatboxApiTypes.ChatboxEditMessageBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = "/chatbox/messages",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxEditMessageResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -244,11 +265,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxDeleteMessageResponse> DeleteMessageAsync(ChatboxApiTypes.ChatboxDeleteMessageBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "DELETE",
 			Path = "/chatbox/messages",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxDeleteMessageResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -264,11 +286,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxOnlineResponse> OnlineAsync(ChatboxApiTypes.ChatboxOnlineParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/chatbox/messages/online",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxOnlineResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -283,11 +306,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxReportReasonsResponse> ReportReasonsAsync(ChatboxApiTypes.ChatboxReportReasonsParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/chatbox/messages/report",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxReportReasonsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -302,11 +326,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxReportResponse> ReportAsync(ChatboxApiTypes.ChatboxReportBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/chatbox/messages/report",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxReportResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -322,11 +347,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxGetLeaderboardResponse> GetLeaderboardAsync(ChatboxApiTypes.ChatboxGetLeaderboardParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/chatbox/messages/leaderboard",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxGetLeaderboardResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -359,11 +385,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxPostIgnoreResponse> PostIgnoreAsync(ChatboxApiTypes.ChatboxPostIgnoreBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/chatbox/ignore",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxPostIgnoreResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -379,11 +406,12 @@ public sealed class ChatboxApi
 	/// </summary>
 	public async Task<ChatboxApiTypes.ChatboxDeleteIgnoreResponse> DeleteIgnoreAsync(ChatboxApiTypes.ChatboxDeleteIgnoreBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "DELETE",
 			Path = "/chatbox/ignore",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ChatboxApiTypes.ChatboxDeleteIgnoreResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -410,11 +438,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsListResponse> ListAsync(ConversationsApiTypes.ConversationsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/conversations",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -430,11 +459,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsCreateResponse> CreateAsync(ConversationsApiTypes.ConversationsCreateBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/conversations",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -450,11 +480,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsUpdateResponse> UpdateAsync(ConversationsApiTypes.ConversationsUpdateBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = "/conversations",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsUpdateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -471,11 +502,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsDeleteResponse> DeleteAsync(ConversationsApiTypes.ConversationsDeleteBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "DELETE",
 			Path = "/conversations",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsDeleteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -491,11 +523,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsStartResponse> StartAsync(ConversationsApiTypes.ConversationsStartBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/conversations/start",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsStartResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -511,11 +544,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsSaveResponse> SaveAsync(ConversationsApiTypes.ConversationsSaveBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/conversations/save",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsSaveResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -551,11 +585,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsShareContentResponse> ShareContentAsync(ConversationsApiTypes.ConversationsShareContentParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/conversations/share-content",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsShareContentResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -571,11 +606,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesListResponse> MessagesListAsync(long ConversationId, ConversationsApiTypes.ConversationsMessagesListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/conversations/{ConversationId}/messages",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsMessagesListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -591,11 +627,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesCreateResponse> MessagesCreateAsync(long ConversationId, ConversationsApiTypes.ConversationsMessagesCreateBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/conversations/{ConversationId}/messages",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsMessagesCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -612,11 +649,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsSearchResponse> SearchAsync(ConversationsApiTypes.ConversationsSearchBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/conversations/search",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsSearchResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -652,11 +690,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsMessagesEditResponse> MessagesEditAsync(long ConversationId, long MessageId, ConversationsApiTypes.ConversationsMessagesEditBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = $"/conversations/{ConversationId}/messages/{MessageId}",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsMessagesEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -691,11 +730,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsInviteResponse> InviteAsync(long ConversationId, ConversationsApiTypes.ConversationsInviteBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/conversations/{ConversationId}/invite",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsInviteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -711,11 +751,12 @@ public sealed class ConversationsApi
 	/// </summary>
 	public async Task<ConversationsApiTypes.ConversationsKickResponse> KickAsync(long ConversationId, ConversationsApiTypes.ConversationsKickBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/conversations/{ConversationId}/kick",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ConversationsApiTypes.ConversationsKickResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -887,11 +928,12 @@ public sealed class FormsApi
 	/// </summary>
 	public async Task<FormsApiTypes.FormsListResponse> ListAsync(FormsApiTypes.FormsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/forms",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, FormsApiTypes.FormsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -901,11 +943,12 @@ public sealed class FormsApi
 	/// </summary>
 	public async Task<FormsApiTypes.FormsCreateResponse> CreateAsync(FormsApiTypes.FormsCreateBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/forms/save",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, FormsApiTypes.FormsCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -931,11 +974,12 @@ public sealed class ForumsApi
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsListResponse> ListAsync(ForumsApiTypes.ForumsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/forums",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ForumsApiTypes.ForumsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1004,11 +1048,12 @@ public sealed class ForumsApi
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsFollowResponse> FollowAsync(long ForumId, ForumsApiTypes.ForumsFollowBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/forums/{ForumId}/followers",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ForumsApiTypes.ForumsFollowResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1042,11 +1087,12 @@ public sealed class ForumsApi
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsFollowedResponse> FollowedAsync(ForumsApiTypes.ForumsFollowedParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/forums/followed",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ForumsApiTypes.ForumsFollowedResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1079,11 +1125,12 @@ public sealed class ForumsApi
 	/// </summary>
 	public async Task<ForumsApiTypes.ForumsEditFeedOptionsResponse> EditFeedOptionsAsync(ForumsApiTypes.ForumsEditFeedOptionsBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = "/forums/feed/options",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ForumsApiTypes.ForumsEditFeedOptionsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1155,11 +1202,12 @@ public sealed class NotificationsApi
 	/// </summary>
 	public async Task<NotificationsApiTypes.NotificationsListResponse> ListAsync(NotificationsApiTypes.NotificationsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/notifications",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, NotificationsApiTypes.NotificationsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1192,11 +1240,12 @@ public sealed class NotificationsApi
 	/// </summary>
 	public async Task<NotificationsApiTypes.NotificationsReadResponse> ReadAsync(NotificationsApiTypes.NotificationsReadBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/notifications/read",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, NotificationsApiTypes.NotificationsReadResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1225,11 +1274,12 @@ public sealed class OAuthApi
 	/// </summary>
 	public async Task<OAuthApiTypes.OAuthTokenResponse> TokenAsync(OAuthApiTypes.OAuthTokenBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/oauth/token",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Multipart,
 		};
 		return await _http.RequestAsync(__opts, OAuthApiTypes.OAuthTokenResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1255,11 +1305,12 @@ public sealed class PagesApi
 	/// </summary>
 	public async Task<PagesApiTypes.PagesListResponse> ListAsync(PagesApiTypes.PagesListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/pages",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, PagesApiTypes.PagesListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1302,11 +1353,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsListResponse> ListAsync(PostsApiTypes.PostsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/posts",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1321,11 +1373,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCreateResponse> CreateAsync(PostsApiTypes.PostsCreateBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/posts",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1359,11 +1412,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsEditResponse> EditAsync(long PostId, PostsApiTypes.PostsEditBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = $"/posts/{PostId}",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1379,11 +1433,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsDeleteResponse> DeleteAsync(long PostId, PostsApiTypes.PostsDeleteBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "DELETE",
 			Path = $"/posts/{PostId}",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsDeleteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1399,11 +1454,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsLikesResponse> LikesAsync(long PostId, PostsApiTypes.PostsLikesParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/posts/{PostId}/likes",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsLikesResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1472,11 +1528,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsReportResponse> ReportAsync(long PostId, PostsApiTypes.PostsReportBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/posts/{PostId}/report",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsReportResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1492,11 +1549,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsGetResponse> CommentsGetAsync(PostsApiTypes.PostsCommentsGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/posts/comments",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsCommentsGetResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1511,11 +1569,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsCreateResponse> CommentsCreateAsync(PostsApiTypes.PostsCommentsCreateBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/posts/comments",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsCommentsCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1531,11 +1590,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsEditResponse> CommentsEditAsync(PostsApiTypes.PostsCommentsEditBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = "/posts/comments",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsCommentsEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1551,11 +1611,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsDeleteResponse> CommentsDeleteAsync(PostsApiTypes.PostsCommentsDeleteBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "DELETE",
 			Path = "/posts/comments",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsCommentsDeleteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1571,11 +1632,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsReportReasonsResponse> CommentsReportReasonsAsync(PostsApiTypes.PostsCommentsReportReasonsParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/posts/comments/report",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsCommentsReportReasonsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1590,11 +1652,12 @@ public sealed class PostsApi
 	/// </summary>
 	public async Task<PostsApiTypes.PostsCommentsReportResponse> CommentsReportAsync(PostsApiTypes.PostsCommentsReportBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/posts/comments/report",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, PostsApiTypes.PostsCommentsReportResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1620,11 +1683,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsListResponse> ListAsync(string UserId, ProfilePostsApiTypes.ProfilePostsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/users/{UserId}/profile-posts",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1657,11 +1721,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsEditResponse> EditAsync(long ProfilePostId, ProfilePostsApiTypes.ProfilePostsEditBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = $"/profile-posts/{ProfilePostId}",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1677,11 +1742,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsDeleteResponse> DeleteAsync(long ProfilePostId, ProfilePostsApiTypes.ProfilePostsDeleteParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "DELETE",
 			Path = $"/profile-posts/{ProfilePostId}",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsDeleteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1714,11 +1780,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsReportResponse> ReportAsync(long ProfilePostId, ProfilePostsApiTypes.ProfilePostsReportBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/profile-posts/{ProfilePostId}/report",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsReportResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1734,11 +1801,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCreateResponse> CreateAsync(ProfilePostsApiTypes.ProfilePostsCreateBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/profile-posts",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1844,11 +1912,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsListResponse> CommentsListAsync(ProfilePostsApiTypes.ProfilePostsCommentsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/profile-posts/comments",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsCommentsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1863,11 +1932,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsCreateResponse> CommentsCreateAsync(ProfilePostsApiTypes.ProfilePostsCommentsCreateBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/profile-posts/comments",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsCommentsCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1883,11 +1953,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsEditResponse> CommentsEditAsync(ProfilePostsApiTypes.ProfilePostsCommentsEditBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = "/profile-posts/comments",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsCommentsEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1903,11 +1974,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsDeleteResponse> CommentsDeleteAsync(ProfilePostsApiTypes.ProfilePostsCommentsDeleteBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "DELETE",
 			Path = "/profile-posts/comments",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsCommentsDeleteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1941,11 +2013,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsReportReasonsResponse> CommentsReportReasonsAsync(ProfilePostsApiTypes.ProfilePostsCommentsReportReasonsParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/profile-posts/comments/report",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsCommentsReportReasonsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -1960,11 +2033,12 @@ public sealed class ProfilePostsApi
 	/// </summary>
 	public async Task<ProfilePostsApiTypes.ProfilePostsCommentsReportResponse> CommentsReportAsync(ProfilePostsApiTypes.ProfilePostsCommentsReportBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/profile-posts/comments/report",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ProfilePostsApiTypes.ProfilePostsCommentsReportResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -1990,11 +2064,12 @@ public sealed class SearchApi
 	/// </summary>
 	public async Task<SearchApiTypes.SearchAllResponse> AllAsync(SearchApiTypes.SearchAllBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/search",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, SearchApiTypes.SearchAllResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2010,11 +2085,12 @@ public sealed class SearchApi
 	/// </summary>
 	public async Task<SearchApiTypes.SearchThreadsResponse> ThreadsAsync(SearchApiTypes.SearchThreadsBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/search/threads",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, SearchApiTypes.SearchThreadsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2030,11 +2106,12 @@ public sealed class SearchApi
 	/// </summary>
 	public async Task<SearchApiTypes.SearchPostsResponse> PostsAsync(SearchApiTypes.SearchPostsBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/search/posts",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, SearchApiTypes.SearchPostsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2050,11 +2127,12 @@ public sealed class SearchApi
 	/// </summary>
 	public async Task<SearchApiTypes.SearchUsersResponse> UsersAsync(SearchApiTypes.SearchUsersBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/search/users",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, SearchApiTypes.SearchUsersResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2070,11 +2148,12 @@ public sealed class SearchApi
 	/// </summary>
 	public async Task<SearchApiTypes.SearchProfilePostsResponse> ProfilePostsAsync(SearchApiTypes.SearchProfilePostsBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/search/profile-posts",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, SearchApiTypes.SearchProfilePostsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2090,11 +2169,12 @@ public sealed class SearchApi
 	/// </summary>
 	public async Task<SearchApiTypes.SearchTaggedResponse> TaggedAsync(SearchApiTypes.SearchTaggedBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/search/tagged",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, SearchApiTypes.SearchTaggedResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2110,11 +2190,12 @@ public sealed class SearchApi
 	/// </summary>
 	public async Task<SearchApiTypes.SearchResultsResponse> ResultsAsync(Lolzteam.Api.Runtime.StringOrLong SearchId, SearchApiTypes.SearchResultsParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/search/{SearchId}/results",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, SearchApiTypes.SearchResultsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2157,11 +2238,12 @@ public sealed class TagsApi
 	/// </summary>
 	public async Task<TagsApiTypes.TagsListResponse> ListAsync(TagsApiTypes.TagsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/tags/list",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, TagsApiTypes.TagsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2176,11 +2258,12 @@ public sealed class TagsApi
 	/// </summary>
 	public async Task<TagsApiTypes.TagsGetResponse> GetAsync(long TagId, TagsApiTypes.TagsGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/tags/{TagId}",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, TagsApiTypes.TagsGetResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2195,11 +2278,12 @@ public sealed class TagsApi
 	/// </summary>
 	public async Task<TagsApiTypes.TagsFindResponse> FindAsync(TagsApiTypes.TagsFindParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/tags/find",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, TagsApiTypes.TagsFindResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2224,11 +2308,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsListResponse> ListAsync(ThreadsApiTypes.ThreadsListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/threads",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2243,11 +2328,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsCreateResponse> CreateAsync(ThreadsApiTypes.ThreadsCreateBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/threads",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsCreateResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2263,11 +2349,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsCreateContestResponse> CreateContestAsync(ThreadsApiTypes.ThreadsCreateContestBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/contests",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsCreateContestResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2283,11 +2370,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsClaimResponse> ClaimAsync(ThreadsApiTypes.ThreadsClaimBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = "/claims",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsClaimResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2303,11 +2391,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsGetResponse> GetAsync(long ThreadId, ThreadsApiTypes.ThreadsGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/threads/{ThreadId}",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsGetResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2322,11 +2411,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsEditResponse> EditAsync(long ThreadId, ThreadsApiTypes.ThreadsEditBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = $"/threads/{ThreadId}",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2342,11 +2432,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsDeleteResponse> DeleteAsync(long ThreadId, ThreadsApiTypes.ThreadsDeleteBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "DELETE",
 			Path = $"/threads/{ThreadId}",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsDeleteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2362,11 +2453,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsMoveResponse> MoveAsync(long ThreadId, ThreadsApiTypes.ThreadsMoveBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/threads/{ThreadId}/move",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsMoveResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2472,11 +2564,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsFollowResponse> FollowAsync(long ThreadId, ThreadsApiTypes.ThreadsFollowBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/threads/{ThreadId}/followers",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsFollowResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2510,11 +2603,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsFollowedResponse> FollowedAsync(ThreadsApiTypes.ThreadsFollowedParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/threads/followed",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsFollowedResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2547,11 +2641,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsPollVoteResponse> PollVoteAsync(long ThreadId, ThreadsApiTypes.ThreadsPollVoteBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/threads/{ThreadId}/poll/votes",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsPollVoteResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2567,11 +2662,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsUnreadResponse> UnreadAsync(ThreadsApiTypes.ThreadsUnreadParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/threads/new",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsUnreadResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2586,11 +2682,12 @@ public sealed class ThreadsApi
 	/// </summary>
 	public async Task<ThreadsApiTypes.ThreadsRecentResponse> RecentAsync(ThreadsApiTypes.ThreadsRecentParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/threads/recent",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, ThreadsApiTypes.ThreadsRecentResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2669,11 +2766,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersListResponse> ListAsync(UsersApiTypes.UsersListParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/users",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersListResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2706,11 +2804,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersFindResponse> FindAsync(UsersApiTypes.UsersFindParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/users/find",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersFindResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2726,11 +2825,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersCurrentResponse> CurrentAsync(UsersApiTypes.UsersCurrentParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/users/me",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersCurrentResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2746,11 +2846,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersGetResponse> GetAsync(string UserId, UsersApiTypes.UsersGetParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/users/{UserId}",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersGetResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2765,11 +2866,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersEditResponse> EditAsync(string UserId, UsersApiTypes.UsersEditBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = $"/users/{UserId}",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2785,11 +2887,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersClaimsResponse> ClaimsAsync(string UserId, UsersApiTypes.UsersClaimsParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/users/{UserId}/claims",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersClaimsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2810,11 +2913,12 @@ public sealed class UsersApi
 		if (body.Crop is not null) jsonObj["crop"] = System.Text.Json.Nodes.JsonValue.Create(body.Crop);
 		var byteFields = new Dictionary<string, byte[]>();
 		byteFields["avatar"] = body.Avatar;
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer => jsonObj.WriteTo(writer));
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/users/{UserId}/avatar",
-			Body = JsonSerializer.SerializeToElement(jsonObj),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Multipart,
 			ByteArrayFields = byteFields,
 		};
@@ -2849,11 +2953,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersAvatarCropResponse> AvatarCropAsync(string UserId, UsersApiTypes.UsersAvatarCropBody? body = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/users/{UserId}/avatar/crop",
-			Body = body is not null ? JsonSerializer.SerializeToElement(body) : null,
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersAvatarCropResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2875,11 +2980,12 @@ public sealed class UsersApi
 		if (body.Crop is not null) jsonObj["crop"] = System.Text.Json.Nodes.JsonValue.Create(body.Crop);
 		var byteFields = new Dictionary<string, byte[]>();
 		byteFields["background"] = body.Background;
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer => jsonObj.WriteTo(writer));
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/users/{UserId}/background",
-			Body = JsonSerializer.SerializeToElement(jsonObj),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Multipart,
 			ByteArrayFields = byteFields,
 		};
@@ -2914,11 +3020,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersBackgroundCropResponse> BackgroundCropAsync(string UserId, UsersApiTypes.UsersBackgroundCropBody body, CancellationToken cancellationToken = default)
 	{
+		var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);
 		var __opts = new RequestOptions
 		{
 			Method = "POST",
 			Path = $"/users/{UserId}/background/crop",
-			Body = JsonSerializer.SerializeToElement(body),
+			Body = __body,
 			BodyEncoding = BodyEncoding.Json,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersBackgroundCropResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
@@ -2934,11 +3041,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersFollowersResponse> FollowersAsync(string UserId, UsersApiTypes.UsersFollowersParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/users/{UserId}/followers",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersFollowersResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -2989,11 +3097,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersFollowingsResponse> FollowingsAsync(string UserId, UsersApiTypes.UsersFollowingsParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/users/{UserId}/followings",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersFollowingsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -3008,11 +3117,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersLikesResponse> LikesAsync(string UserId, UsersApiTypes.UsersLikesParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/users/{UserId}/likes",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersLikesResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -3027,11 +3137,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersIgnoredResponse> IgnoredAsync(UsersApiTypes.UsersIgnoredParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = "/users/ignored",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersIgnoredResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -3064,11 +3175,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersIgnoreEditResponse> IgnoreEditAsync(string UserId, UsersApiTypes.UsersIgnoreEditParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "PUT",
 			Path = $"/users/{UserId}/ignore",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersIgnoreEditResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}
@@ -3101,11 +3213,12 @@ public sealed class UsersApi
 	/// </summary>
 	public async Task<UsersApiTypes.UsersContentsResponse> ContentsAsync(string UserId, UsersApiTypes.UsersContentsParams? @params = null, CancellationToken cancellationToken = default)
 	{
+		JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;
 		var __opts = new RequestOptions
 		{
 			Method = "GET",
 			Path = $"/users/{UserId}/timeline",
-			Query = @params is not null ? JsonSerializer.SerializeToElement(@params) : null,
+			Query = __query,
 		};
 		return await _http.RequestAsync(__opts, UsersApiTypes.UsersContentsResponse.ReadFrom, cancellationToken).ConfigureAwait(false);
 	}

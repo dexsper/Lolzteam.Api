@@ -22,6 +22,23 @@ public static class PagesApiTypes
 		/// </summary>
 		[JsonPropertyName("order")]
 		public CategoriesOrder? Order { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ParentPageId is not null)
+			{
+				writer.WritePropertyName("parent_page_id"u8);
+				writer.WriteNumberValue(ParentPageId.Value);
+			}
+			if (Order is not null)
+			{
+				writer.WritePropertyName("order"u8);
+				writer.WriteStringValue(Order.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PagesListResponse(

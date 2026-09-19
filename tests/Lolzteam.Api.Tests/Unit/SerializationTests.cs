@@ -1,5 +1,7 @@
+using System.Linq;
 using System.Text.Json;
 using FluentAssertions;
+using Lolzteam.Api.Generated.Market;
 using Lolzteam.Api.Runtime;
 using Xunit;
 
@@ -232,6 +234,80 @@ public sealed class SerializationTests
     {
         var cfg = new RateLimitConfig(120);
         cfg.RequestsPerMinute.Should().Be(120);
+    }
+
+    // --- AOT-safety regression tests -----------------------------------------------------
+    // Generated query/body types now serialize via hand-written WriteTo(Utf8JsonWriter)
+    // methods instead of JsonSerializer.SerializeToElement<T>, which requires reflection-based
+    // metadata that is unavailable when PublishAot=true. These tests exercise the real
+    // generated types end-to-end (not just reflection-free compilation).
+
+    [Fact]
+    public void Generated_query_params_WriteTo_produces_expected_json_without_reflection()
+    {
+        var @params = new CategoryApiTypes.CategorySteamParams
+        {
+            Page = 2,
+            Pmin = 10.5,
+            Title = "nice account",
+            OrderBy = OrderBy.PriceToUp,
+            TagId = [1, 2, null, 3],
+        };
+
+        var element = JsonElementWriter.Build(@params.WriteTo);
+
+        element.GetProperty("page").GetInt64().Should().Be(2);
+        element.GetProperty("pmin").GetDouble().Should().Be(10.5);
+        element.GetProperty("title").GetString().Should().Be("nice account");
+        element.GetProperty("order_by").GetString().Should().Be("price_to_up");
+        element.GetProperty("tag_id[]").EnumerateArray().Select(e => e.GetInt64())
+            .Should().Equal(1, 2, 0, 3);
+
+        // Properties never set must be omitted entirely, not written as explicit JSON null.
+        element.TryGetProperty("pmax", out _).Should().BeFalse();
+    }
+
+    [Fact]
+    public void Generated_query_params_WriteTo_omits_unset_optional_properties()
+    {
+        var @params = new CategoryApiTypes.CategorySteamParams { Page = 1 };
+
+        var element = JsonElementWriter.Build(@params.WriteTo);
+
+        element.GetProperty("page").GetInt64().Should().Be(1);
+        element.TryGetProperty("title", out _).Should().BeFalse();
+        element.TryGetProperty("order_by", out _).Should().BeFalse();
+        element.TryGetProperty("tag_id[]", out _).Should().BeFalse();
+    }
+
+    [Fact]
+    public void JsonElementWriter_Build_round_trips_a_JsonNode()
+    {
+        var node = new System.Text.Json.Nodes.JsonObject { ["x"] = 1, ["y"] = 2 };
+
+        var element = JsonElementWriter.Build(writer => node.WriteTo(writer));
+
+        element.GetProperty("x").GetInt32().Should().Be(1);
+        element.GetProperty("y").GetInt32().Should().Be(2);
+    }
+
+    [Fact]
+    public void Generated_enum_ToJsonValue_maps_to_the_correct_json_string()
+    {
+        OrderBy.PriceToUp.ToJsonValue().Should().Be("price_to_up");
+        OrderBy.PdateToDown.ToJsonValue().Should().Be("pdate_to_down");
+    }
+
+    [Fact]
+    public void StringOrLong_WriteTo_writes_the_correct_json_token()
+    {
+        var longElement = JsonElementWriter.Build(w => ((StringOrLong)42L).WriteTo(w));
+        longElement.ValueKind.Should().Be(JsonValueKind.Number);
+        longElement.GetInt64().Should().Be(42L);
+
+        var stringElement = JsonElementWriter.Build(w => ((StringOrLong)"abc").WriteTo(w));
+        stringElement.ValueKind.Should().Be(JsonValueKind.String);
+        stringElement.GetString().Should().Be("abc");
     }
 
     private static JsonSerializerOptions ConverterOptions()

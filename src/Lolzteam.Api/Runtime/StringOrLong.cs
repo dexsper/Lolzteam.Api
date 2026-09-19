@@ -51,6 +51,16 @@ public readonly struct StringOrLong : IEquatable<StringOrLong>
         return default;
     }
 
+    /// <summary>
+    /// Write directly to a <see cref="Utf8JsonWriter"/> — no reflection, no <see cref="JsonSerializer"/>.
+    /// Used by the generated <c>WriteTo</c> methods.
+    /// </summary>
+    public void WriteTo(Utf8JsonWriter writer)
+    {
+        if (_isLong) writer.WriteNumberValue(_long);
+        else writer.WriteStringValue(_str);
+    }
+
     /// <inheritdoc />
     public bool Equals(StringOrLong v) => _isLong == v._isLong && (_isLong ? _long == v._long : _str == v._str);
 

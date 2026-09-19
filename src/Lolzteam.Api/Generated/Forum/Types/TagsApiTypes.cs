@@ -76,6 +76,23 @@ public static class TagsApiTypes
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record TagsListResponse(
@@ -207,6 +224,23 @@ public sealed record TagsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record TagsGetResponse(
@@ -435,6 +469,15 @@ public sealed record TagsGetResponseLinks(
 		/// </summary>
 		[JsonPropertyName("tag")]
 		public required string Tag { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("tag"u8);
+			writer.WriteStringValue(Tag);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record TagsFindResponse(

@@ -37,6 +37,38 @@ public static class PostsApiTypes
 		/// </summary>
 		[JsonPropertyName("order")]
 		public PostsOrder? Order { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ThreadId is not null)
+			{
+				writer.WritePropertyName("thread_id"u8);
+				writer.WriteNumberValue(ThreadId.Value);
+			}
+			if (PageOfPostId is not null)
+			{
+				writer.WritePropertyName("page_of_post_id"u8);
+				writer.WriteNumberValue(PageOfPostId.Value);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (Order is not null)
+			{
+				writer.WritePropertyName("order"u8);
+				writer.WriteStringValue(Order.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsListResponse(
@@ -121,6 +153,25 @@ public static class PostsApiTypes
 		/// </summary>
 		[JsonPropertyName("quote_post_id")]
 		public long? QuotePostId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("post_body"u8);
+			writer.WriteStringValue(PostBody);
+			if (ThreadId is not null)
+			{
+				writer.WritePropertyName("thread_id"u8);
+				writer.WriteNumberValue(ThreadId.Value);
+			}
+			if (QuotePostId is not null)
+			{
+				writer.WritePropertyName("quote_post_id"u8);
+				writer.WriteNumberValue(QuotePostId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsCreateResponse(
@@ -216,6 +267,23 @@ public static class PostsApiTypes
 		public string? PostBody { get; init; }
 		[JsonPropertyName("message_state")]
 		public MessageState? MessageState { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (PostBody is not null)
+			{
+				writer.WritePropertyName("post_body"u8);
+				writer.WriteStringValue(PostBody);
+			}
+			if (MessageState is not null)
+			{
+				writer.WritePropertyName("message_state"u8);
+				writer.WriteStringValue(MessageState.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsEditResponse(
@@ -267,6 +335,18 @@ public static class PostsApiTypes
 		/// </summary>
 		[JsonPropertyName("reason")]
 		public string? Reason { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Reason is not null)
+			{
+				writer.WritePropertyName("reason"u8);
+				writer.WriteStringValue(Reason);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsDeleteResponse(
@@ -330,6 +410,23 @@ public static class PostsApiTypes
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsLikesResponse(
@@ -581,6 +678,15 @@ public sealed record PostsLikesResponseUsers(
 		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("message"u8);
+			writer.WriteStringValue(Message);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsReportResponse(
@@ -654,6 +760,33 @@ public sealed record PostsLikesResponseUsers(
 		/// </summary>
 		[JsonPropertyName("before_comment")]
 		public long? BeforeComment { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (PostId is not null)
+			{
+				writer.WritePropertyName("post_id"u8);
+				writer.WriteNumberValue(PostId.Value);
+			}
+			if (PostCommentId is not null)
+			{
+				writer.WritePropertyName("post_comment_id"u8);
+				writer.WriteNumberValue(PostCommentId.Value);
+			}
+			if (Before is not null)
+			{
+				writer.WritePropertyName("before"u8);
+				writer.WriteNumberValue(Before.Value);
+			}
+			if (BeforeComment is not null)
+			{
+				writer.WritePropertyName("before_comment"u8);
+				writer.WriteNumberValue(BeforeComment.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsCommentsGetResponse(
@@ -719,6 +852,20 @@ public sealed record PostsLikesResponseUsers(
 		/// </summary>
 		[JsonPropertyName("comment_body")]
 		public required string CommentBody { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (PostId is not null)
+			{
+				writer.WritePropertyName("post_id"u8);
+				writer.WriteNumberValue(PostId.Value);
+			}
+			writer.WritePropertyName("comment_body"u8);
+			writer.WriteStringValue(CommentBody);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsCommentsCreateResponse(
@@ -1071,6 +1218,25 @@ public sealed record PostsCommentsCreateResponseComment(
 		public required string CommentBody { get; init; }
 		[JsonPropertyName("message_state")]
 		public MessageState? MessageState { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (PostCommentId is not null)
+			{
+				writer.WritePropertyName("post_comment_id"u8);
+				writer.WriteNumberValue(PostCommentId.Value);
+			}
+			writer.WritePropertyName("comment_body"u8);
+			writer.WriteStringValue(CommentBody);
+			if (MessageState is not null)
+			{
+				writer.WritePropertyName("message_state"u8);
+				writer.WriteStringValue(MessageState.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsCommentsEditResponse(
@@ -1421,6 +1587,23 @@ public sealed record PostsCommentsEditResponseComment(
 		/// </summary>
 		[JsonPropertyName("reason")]
 		public string? Reason { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (PostCommentId is not null)
+			{
+				writer.WritePropertyName("post_comment_id"u8);
+				writer.WriteNumberValue(PostCommentId.Value);
+			}
+			if (Reason is not null)
+			{
+				writer.WritePropertyName("reason"u8);
+				writer.WriteStringValue(Reason);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsCommentsDeleteResponse(
@@ -1479,6 +1662,18 @@ public sealed record PostsCommentsEditResponseComment(
 		/// </summary>
 		[JsonPropertyName("post_comment_id")]
 		public long? PostCommentId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (PostCommentId is not null)
+			{
+				writer.WritePropertyName("post_comment_id"u8);
+				writer.WriteNumberValue(PostCommentId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsCommentsReportReasonsResponse(
@@ -1544,6 +1739,20 @@ public sealed record PostsCommentsEditResponseComment(
 		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (PostCommentId is not null)
+			{
+				writer.WritePropertyName("post_comment_id"u8);
+				writer.WriteNumberValue(PostCommentId.Value);
+			}
+			writer.WritePropertyName("message"u8);
+			writer.WriteStringValue(Message);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record PostsCommentsReportResponse(

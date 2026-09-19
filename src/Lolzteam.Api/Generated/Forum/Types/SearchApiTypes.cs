@@ -44,6 +44,48 @@ public static class SearchApiTypes
 		/// </summary>
 		[JsonPropertyName("before")]
 		public long? Before { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Q is not null)
+			{
+				writer.WritePropertyName("q"u8);
+				writer.WriteStringValue(Q);
+			}
+			if (Tag is not null)
+			{
+				writer.WritePropertyName("tag"u8);
+				writer.WriteStringValue(Tag);
+			}
+			if (ForumId is not null)
+			{
+				writer.WritePropertyName("forum_id"u8);
+				writer.WriteNumberValue(ForumId.Value);
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				UserId.Value.WriteTo(writer);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (Before is not null)
+			{
+				writer.WritePropertyName("before"u8);
+				writer.WriteNumberValue(Before.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record SearchAllResponse(
@@ -215,6 +257,53 @@ public sealed record SearchAllResponseLinks(
 		/// </summary>
 		[JsonPropertyName("before")]
 		public long? Before { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Q is not null)
+			{
+				writer.WritePropertyName("q"u8);
+				writer.WriteStringValue(Q);
+			}
+			if (Tag is not null)
+			{
+				writer.WritePropertyName("tag"u8);
+				writer.WriteStringValue(Tag);
+			}
+			if (ForumId is not null)
+			{
+				writer.WritePropertyName("forum_id"u8);
+				writer.WriteNumberValue(ForumId.Value);
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				UserId.Value.WriteTo(writer);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (DataLimit is not null)
+			{
+				writer.WritePropertyName("data_limit"u8);
+				writer.WriteNumberValue(DataLimit.Value);
+			}
+			if (Before is not null)
+			{
+				writer.WritePropertyName("before"u8);
+				writer.WriteNumberValue(Before.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record SearchThreadsResponse(
@@ -370,6 +459,53 @@ public sealed record SearchThreadsResponseLinks(
 		/// </summary>
 		[JsonPropertyName("before")]
 		public long? Before { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Q is not null)
+			{
+				writer.WritePropertyName("q"u8);
+				writer.WriteStringValue(Q);
+			}
+			if (Tag is not null)
+			{
+				writer.WritePropertyName("tag"u8);
+				writer.WriteStringValue(Tag);
+			}
+			if (ForumId is not null)
+			{
+				writer.WritePropertyName("forum_id"u8);
+				writer.WriteNumberValue(ForumId.Value);
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				UserId.Value.WriteTo(writer);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (DataLimit is not null)
+			{
+				writer.WritePropertyName("data_limit"u8);
+				writer.WriteNumberValue(DataLimit.Value);
+			}
+			if (Before is not null)
+			{
+				writer.WritePropertyName("before"u8);
+				writer.WriteNumberValue(Before.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record SearchPostsResponse(
@@ -493,6 +629,18 @@ public sealed record SearchPostsResponseLinks(
 		/// </summary>
 		[JsonPropertyName("q")]
 		public string? Q { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Q is not null)
+			{
+				writer.WritePropertyName("q"u8);
+				writer.WriteStringValue(Q);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record SearchUsersResponse(
@@ -573,6 +721,38 @@ public sealed record SearchPostsResponseLinks(
 		/// </summary>
 		[JsonPropertyName("before")]
 		public long? Before { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Q is not null)
+			{
+				writer.WritePropertyName("q"u8);
+				writer.WriteStringValue(Q);
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			if (Before is not null)
+			{
+				writer.WritePropertyName("before"u8);
+				writer.WriteNumberValue(Before.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record SearchProfilePostsResponse(
@@ -711,6 +891,38 @@ public sealed record SearchProfilePostsResponseLinks(
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Tag is not null)
+			{
+				writer.WritePropertyName("tag"u8);
+				writer.WriteStringValue(Tag);
+			}
+			if (Tags is not null)
+			{
+				writer.WritePropertyName("tags"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Tags)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record SearchTaggedResponse(
@@ -839,6 +1051,23 @@ public sealed record SearchTaggedResponseLinks(
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record SearchResultsResponse(

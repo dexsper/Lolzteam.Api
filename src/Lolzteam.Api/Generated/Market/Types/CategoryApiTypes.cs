@@ -117,6 +117,158 @@ public static class CategoryApiTypes
 		/// </summary>
 		[JsonPropertyName("parse_same_item_ids")]
 		public bool? ParseSameItemIds { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryAllResponse(
@@ -902,6 +1054,775 @@ public static class CategoryApiTypes
 		/// </summary>
 		[JsonPropertyName("d2_comm_score_max")]
 		public long? D2CommScoreMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Game is not null)
+			{
+				writer.WritePropertyName("game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Game)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotGame is not null)
+			{
+				writer.WritePropertyName("not_game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotGame)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (HoursPlayed is not null)
+			{
+				writer.WritePropertyName("hours_played"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in HoursPlayed)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (HoursPlayedMax is not null)
+			{
+				writer.WritePropertyName("hours_played_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in HoursPlayedMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (Eg is not null)
+			{
+				writer.WritePropertyName("eg"u8);
+				writer.WriteNumberValue((long)Eg.Value);
+			}
+			if (Vac is not null)
+			{
+				writer.WritePropertyName("vac[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Vac)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (VacSkipGameCheck is not null)
+			{
+				writer.WritePropertyName("vac_skip_game_check"u8);
+				writer.WriteBooleanValue(VacSkipGameCheck.Value);
+			}
+			if (Rt is not null)
+			{
+				writer.WritePropertyName("rt"u8);
+				writer.WriteStringValue(Rt.Value.ToJsonValue());
+			}
+			if (TradeBan is not null)
+			{
+				writer.WritePropertyName("trade_ban"u8);
+				writer.WriteStringValue(TradeBan.Value.ToJsonValue());
+			}
+			if (TradeLimit is not null)
+			{
+				writer.WritePropertyName("trade_limit"u8);
+				writer.WriteStringValue(TradeLimit.Value.ToJsonValue());
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteStringValue(Limit.Value.ToJsonValue());
+			}
+			if (Mafile is not null)
+			{
+				writer.WritePropertyName("mafile"u8);
+				writer.WriteStringValue(Mafile.Value.ToJsonValue());
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			if (Lmin is not null)
+			{
+				writer.WritePropertyName("lmin"u8);
+				writer.WriteNumberValue(Lmin.Value);
+			}
+			if (Lmax is not null)
+			{
+				writer.WritePropertyName("lmax"u8);
+				writer.WriteNumberValue(Lmax.Value);
+			}
+			if (WingmanRmin is not null)
+			{
+				writer.WritePropertyName("wingman_rmin"u8);
+				writer.WriteNumberValue((long)WingmanRmin.Value);
+			}
+			if (WingmanRmax is not null)
+			{
+				writer.WritePropertyName("wingman_rmax"u8);
+				writer.WriteNumberValue((long)WingmanRmax.Value);
+			}
+			if (NoVac is not null)
+			{
+				writer.WritePropertyName("no_vac"u8);
+				writer.WriteBooleanValue(NoVac.Value);
+			}
+			if (MmBan is not null)
+			{
+				writer.WritePropertyName("mm_ban"u8);
+				writer.WriteStringValue(MmBan.Value.ToJsonValue());
+			}
+			if (BalanceMin is not null)
+			{
+				writer.WritePropertyName("balance_min"u8);
+				writer.WriteNumberValue(BalanceMin.Value);
+			}
+			if (BalanceMax is not null)
+			{
+				writer.WritePropertyName("balance_max"u8);
+				writer.WriteNumberValue(BalanceMax.Value);
+			}
+			if (InvGame is not null)
+			{
+				writer.WritePropertyName("inv_game"u8);
+				writer.WriteNumberValue((long)InvGame.Value);
+			}
+			if (InvMin is not null)
+			{
+				writer.WritePropertyName("inv_min"u8);
+				writer.WriteNumberValue(InvMin.Value);
+			}
+			if (InvMax is not null)
+			{
+				writer.WritePropertyName("inv_max"u8);
+				writer.WriteNumberValue(InvMax.Value);
+			}
+			if (FriendsMin is not null)
+			{
+				writer.WritePropertyName("friends_min"u8);
+				writer.WriteNumberValue(FriendsMin.Value);
+			}
+			if (FriendsMax is not null)
+			{
+				writer.WritePropertyName("friends_max"u8);
+				writer.WriteNumberValue(FriendsMax.Value);
+			}
+			if (Gmin is not null)
+			{
+				writer.WritePropertyName("gmin"u8);
+				writer.WriteNumberValue(Gmin.Value);
+			}
+			if (Gmax is not null)
+			{
+				writer.WritePropertyName("gmax"u8);
+				writer.WriteNumberValue(Gmax.Value);
+			}
+			if (WinCountMin is not null)
+			{
+				writer.WritePropertyName("win_count_min"u8);
+				writer.WriteNumberValue(WinCountMin.Value);
+			}
+			if (WinCountMax is not null)
+			{
+				writer.WritePropertyName("win_count_max"u8);
+				writer.WriteNumberValue(WinCountMax.Value);
+			}
+			if (MedalId is not null)
+			{
+				writer.WritePropertyName("medal_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in MedalId)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (MedalOperatorOr is not null)
+			{
+				writer.WritePropertyName("medal_operator_or"u8);
+				writer.WriteBooleanValue(MedalOperatorOr.Value);
+			}
+			if (MedalMin is not null)
+			{
+				writer.WritePropertyName("medal_min"u8);
+				writer.WriteNumberValue(MedalMin.Value);
+			}
+			if (MedalMax is not null)
+			{
+				writer.WritePropertyName("medal_max"u8);
+				writer.WriteNumberValue(MedalMax.Value);
+			}
+			if (Gift is not null)
+			{
+				writer.WritePropertyName("gift[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Gift)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (GiftMin is not null)
+			{
+				writer.WritePropertyName("gift_min"u8);
+				writer.WriteNumberValue(GiftMin.Value);
+			}
+			if (GiftMax is not null)
+			{
+				writer.WritePropertyName("gift_max"u8);
+				writer.WriteNumberValue(GiftMax.Value);
+			}
+			if (RecentlyHoursMin is not null)
+			{
+				writer.WritePropertyName("recently_hours_min"u8);
+				writer.WriteNumberValue(RecentlyHoursMin.Value);
+			}
+			if (RecentlyHoursMax is not null)
+			{
+				writer.WritePropertyName("recently_hours_max"u8);
+				writer.WriteNumberValue(RecentlyHoursMax.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Cs2ProfileRankMin is not null)
+			{
+				writer.WritePropertyName("cs2_profile_rank_min"u8);
+				writer.WriteNumberValue(Cs2ProfileRankMin.Value);
+			}
+			if (Cs2ProfileRankMax is not null)
+			{
+				writer.WritePropertyName("cs2_profile_rank_max"u8);
+				writer.WriteNumberValue(Cs2ProfileRankMax.Value);
+			}
+			if (SolommrMin is not null)
+			{
+				writer.WritePropertyName("solommr_min"u8);
+				writer.WriteNumberValue(SolommrMin.Value);
+			}
+			if (SolommrMax is not null)
+			{
+				writer.WritePropertyName("solommr_max"u8);
+				writer.WriteNumberValue(SolommrMax.Value);
+			}
+			if (D2GameCountMin is not null)
+			{
+				writer.WritePropertyName("d2_game_count_min"u8);
+				writer.WriteNumberValue(D2GameCountMin.Value);
+			}
+			if (D2GameCountMax is not null)
+			{
+				writer.WritePropertyName("d2_game_count_max"u8);
+				writer.WriteNumberValue(D2GameCountMax.Value);
+			}
+			if (D2WinCountMin is not null)
+			{
+				writer.WritePropertyName("d2_win_count_min"u8);
+				writer.WriteNumberValue(D2WinCountMin.Value);
+			}
+			if (D2WinCountMax is not null)
+			{
+				writer.WritePropertyName("d2_win_count_max"u8);
+				writer.WriteNumberValue(D2WinCountMax.Value);
+			}
+			if (D2BehaviorMin is not null)
+			{
+				writer.WritePropertyName("d2_behavior_min"u8);
+				writer.WriteNumberValue(D2BehaviorMin.Value);
+			}
+			if (D2BehaviorMax is not null)
+			{
+				writer.WritePropertyName("d2_behavior_max"u8);
+				writer.WriteNumberValue(D2BehaviorMax.Value);
+			}
+			if (FaceitLvlMin is not null)
+			{
+				writer.WritePropertyName("faceit_lvl_min"u8);
+				writer.WriteNumberValue(FaceitLvlMin.Value);
+			}
+			if (FaceitLvlMax is not null)
+			{
+				writer.WritePropertyName("faceit_lvl_max"u8);
+				writer.WriteNumberValue(FaceitLvlMax.Value);
+			}
+			if (PointsMin is not null)
+			{
+				writer.WritePropertyName("points_min"u8);
+				writer.WriteNumberValue(PointsMin.Value);
+			}
+			if (PointsMax is not null)
+			{
+				writer.WritePropertyName("points_max"u8);
+				writer.WriteNumberValue(PointsMax.Value);
+			}
+			if (RelevantGmin is not null)
+			{
+				writer.WritePropertyName("relevant_gmin"u8);
+				writer.WriteNumberValue(RelevantGmin.Value);
+			}
+			if (RelevantGmax is not null)
+			{
+				writer.WritePropertyName("relevant_gmax"u8);
+				writer.WriteNumberValue(RelevantGmax.Value);
+			}
+			if (LastTransDate is not null)
+			{
+				writer.WritePropertyName("last_trans_date"u8);
+				writer.WriteNumberValue(LastTransDate.Value);
+			}
+			if (LastTransDatePeriod is not null)
+			{
+				writer.WritePropertyName("last_trans_date_period"u8);
+				writer.WriteStringValue(LastTransDatePeriod.Value.ToJsonValue());
+			}
+			if (LastTransDateLater is not null)
+			{
+				writer.WritePropertyName("last_trans_date_later"u8);
+				writer.WriteNumberValue(LastTransDateLater.Value);
+			}
+			if (LastTransDatePeriodLater is not null)
+			{
+				writer.WritePropertyName("last_trans_date_period_later"u8);
+				writer.WriteStringValue(LastTransDatePeriodLater.Value.ToJsonValue());
+			}
+			if (NoTrans is not null)
+			{
+				writer.WritePropertyName("no_trans"u8);
+				writer.WriteBooleanValue(NoTrans.Value);
+			}
+			if (Trans is not null)
+			{
+				writer.WritePropertyName("trans"u8);
+				writer.WriteBooleanValue(Trans.Value);
+			}
+			if (GiftsPurchaseMin is not null)
+			{
+				writer.WritePropertyName("gifts_purchase_min"u8);
+				writer.WriteNumberValue(GiftsPurchaseMin.Value);
+			}
+			if (GiftsPurchaseMax is not null)
+			{
+				writer.WritePropertyName("gifts_purchase_max"u8);
+				writer.WriteNumberValue(GiftsPurchaseMax.Value);
+			}
+			if (RefundsPurchaseMin is not null)
+			{
+				writer.WritePropertyName("refunds_purchase_min"u8);
+				writer.WriteNumberValue(RefundsPurchaseMin.Value);
+			}
+			if (RefundsPurchaseMax is not null)
+			{
+				writer.WritePropertyName("refunds_purchase_max"u8);
+				writer.WriteNumberValue(RefundsPurchaseMax.Value);
+			}
+			if (IngamePurchaseMin is not null)
+			{
+				writer.WritePropertyName("ingame_purchase_min"u8);
+				writer.WriteNumberValue(IngamePurchaseMin.Value);
+			}
+			if (IngamePurchaseMax is not null)
+			{
+				writer.WritePropertyName("ingame_purchase_max"u8);
+				writer.WriteNumberValue(IngamePurchaseMax.Value);
+			}
+			if (GamesPurchaseMin is not null)
+			{
+				writer.WritePropertyName("games_purchase_min"u8);
+				writer.WriteNumberValue(GamesPurchaseMin.Value);
+			}
+			if (GamesPurchaseMax is not null)
+			{
+				writer.WritePropertyName("games_purchase_max"u8);
+				writer.WriteNumberValue(GamesPurchaseMax.Value);
+			}
+			if (PurchaseMin is not null)
+			{
+				writer.WritePropertyName("purchase_min"u8);
+				writer.WriteNumberValue(PurchaseMin.Value);
+			}
+			if (PurchaseMax is not null)
+			{
+				writer.WritePropertyName("purchase_max"u8);
+				writer.WriteNumberValue(PurchaseMax.Value);
+			}
+			if (HasActivatedKeys is not null)
+			{
+				writer.WritePropertyName("has_activated_keys"u8);
+				writer.WriteStringValue(HasActivatedKeys.Value.ToJsonValue());
+			}
+			if (EloMin is not null)
+			{
+				writer.WritePropertyName("elo_min"u8);
+				writer.WriteNumberValue(EloMin.Value);
+			}
+			if (EloMax is not null)
+			{
+				writer.WritePropertyName("elo_max"u8);
+				writer.WriteNumberValue(EloMax.Value);
+			}
+			if (Cs2MapRank is not null)
+			{
+				writer.WritePropertyName("cs2_map_rank"u8);
+				writer.WriteNumberValue((long)Cs2MapRank.Value);
+			}
+			if (Cs2MapRmin is not null)
+			{
+				writer.WritePropertyName("cs2_map_rmin"u8);
+				writer.WriteNumberValue((long)Cs2MapRmin.Value);
+			}
+			if (Cs2MapRmax is not null)
+			{
+				writer.WritePropertyName("cs2_map_rmax"u8);
+				writer.WriteNumberValue((long)Cs2MapRmax.Value);
+			}
+			if (HasFaceit is not null)
+			{
+				writer.WritePropertyName("has_faceit"u8);
+				writer.WriteStringValue(HasFaceit.Value.ToJsonValue());
+			}
+			if (FaceitCsgoLvlMin is not null)
+			{
+				writer.WritePropertyName("faceit_csgo_lvl_min"u8);
+				writer.WriteNumberValue(FaceitCsgoLvlMin.Value);
+			}
+			if (FaceitCsgoLvlMax is not null)
+			{
+				writer.WritePropertyName("faceit_csgo_lvl_max"u8);
+				writer.WriteNumberValue(FaceitCsgoLvlMax.Value);
+			}
+			if (RustDeathsMin is not null)
+			{
+				writer.WritePropertyName("rust_deaths_min"u8);
+				writer.WriteNumberValue(RustDeathsMin.Value);
+			}
+			if (RustDeathsMax is not null)
+			{
+				writer.WritePropertyName("rust_deaths_max"u8);
+				writer.WriteNumberValue(RustDeathsMax.Value);
+			}
+			if (RustKillsMin is not null)
+			{
+				writer.WritePropertyName("rust_kills_min"u8);
+				writer.WriteNumberValue(RustKillsMin.Value);
+			}
+			if (RustKillsMax is not null)
+			{
+				writer.WritePropertyName("rust_kills_max"u8);
+				writer.WriteNumberValue(RustKillsMax.Value);
+			}
+			if (D2LastMatchDate is not null)
+			{
+				writer.WritePropertyName("d2_last_match_date"u8);
+				writer.WriteNumberValue(D2LastMatchDate.Value);
+			}
+			if (D2LastMatchDatePeriod is not null)
+			{
+				writer.WritePropertyName("d2_last_match_date_period"u8);
+				writer.WriteStringValue(D2LastMatchDatePeriod.Value.ToJsonValue());
+			}
+			if (CardsMin is not null)
+			{
+				writer.WritePropertyName("cards_min"u8);
+				writer.WriteNumberValue(CardsMin.Value);
+			}
+			if (CardsMax is not null)
+			{
+				writer.WritePropertyName("cards_max"u8);
+				writer.WriteNumberValue(CardsMax.Value);
+			}
+			if (CardsGamesMin is not null)
+			{
+				writer.WritePropertyName("cards_games_min"u8);
+				writer.WriteNumberValue(CardsGamesMin.Value);
+			}
+			if (CardsGamesMax is not null)
+			{
+				writer.WritePropertyName("cards_games_max"u8);
+				writer.WriteNumberValue(CardsGamesMax.Value);
+			}
+			if (SkipVacInv is not null)
+			{
+				writer.WritePropertyName("skip_vac_inv"u8);
+				writer.WriteBooleanValue(SkipVacInv.Value);
+			}
+			if (Market is not null)
+			{
+				writer.WritePropertyName("market"u8);
+				writer.WriteStringValue(Market.Value.ToJsonValue());
+			}
+			if (RegAfter is not null)
+			{
+				writer.WritePropertyName("reg_after"u8);
+				writer.WriteNumberValue(RegAfter.Value);
+			}
+			if (RegAfterPeriod is not null)
+			{
+				writer.WritePropertyName("reg_after_period"u8);
+				writer.WriteStringValue(RegAfterPeriod.Value.ToJsonValue());
+			}
+			if (PendingBalanceMin is not null)
+			{
+				writer.WritePropertyName("pending_balance_min"u8);
+				writer.WriteNumberValue(PendingBalanceMin.Value);
+			}
+			if (PendingBalanceMax is not null)
+			{
+				writer.WritePropertyName("pending_balance_max"u8);
+				writer.WriteNumberValue(PendingBalanceMax.Value);
+			}
+			if (D2LastMatchDateLater is not null)
+			{
+				writer.WritePropertyName("d2_last_match_date_later"u8);
+				writer.WriteNumberValue(D2LastMatchDateLater.Value);
+			}
+			if (D2LastMatchDateLaterPeriod is not null)
+			{
+				writer.WritePropertyName("d2_last_match_date_later_period"u8);
+				writer.WriteStringValue(D2LastMatchDateLaterPeriod.Value.ToJsonValue());
+			}
+			if (D2LowPriorityMin is not null)
+			{
+				writer.WritePropertyName("d2_low_priority_min"u8);
+				writer.WriteNumberValue(D2LowPriorityMin.Value);
+			}
+			if (D2LowPriorityMax is not null)
+			{
+				writer.WritePropertyName("d2_low_priority_max"u8);
+				writer.WriteNumberValue(D2LowPriorityMax.Value);
+			}
+			if (D2LowPriority is not null)
+			{
+				writer.WritePropertyName("d2_low_priority"u8);
+				writer.WriteStringValue(D2LowPriority.Value.ToJsonValue());
+			}
+			if (D2Ranked is not null)
+			{
+				writer.WritePropertyName("d2_ranked"u8);
+				writer.WriteStringValue(D2Ranked.Value.ToJsonValue());
+			}
+			if (SpendMin is not null)
+			{
+				writer.WritePropertyName("spend_min"u8);
+				writer.WriteNumberValue(SpendMin.Value);
+			}
+			if (SpendMax is not null)
+			{
+				writer.WritePropertyName("spend_max"u8);
+				writer.WriteNumberValue(SpendMax.Value);
+			}
+			if (Vacnet is not null)
+			{
+				writer.WritePropertyName("vacnet"u8);
+				writer.WriteStringValue(Vacnet.Value.ToJsonValue());
+			}
+			if (D2CommScoreMin is not null)
+			{
+				writer.WritePropertyName("d2_comm_score_min"u8);
+				writer.WriteNumberValue(D2CommScoreMin.Value);
+			}
+			if (D2CommScoreMax is not null)
+			{
+				writer.WritePropertyName("d2_comm_score_max"u8);
+				writer.WriteNumberValue(D2CommScoreMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategorySteamResponse(
@@ -3127,6 +4048,498 @@ public sealed record CategorySteamResponseItems(
 		/// </summary>
 		[JsonPropertyName("friends_max")]
 		public long? FriendsMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (TempEmail is not null)
+			{
+				writer.WritePropertyName("temp_email"u8);
+				writer.WriteStringValue(TempEmail.Value.ToJsonValue());
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Eg is not null)
+			{
+				writer.WritePropertyName("eg"u8);
+				writer.WriteNumberValue((long)Eg.Value);
+			}
+			if (Smin is not null)
+			{
+				writer.WritePropertyName("smin"u8);
+				writer.WriteNumberValue(Smin.Value);
+			}
+			if (Smax is not null)
+			{
+				writer.WritePropertyName("smax"u8);
+				writer.WriteNumberValue(Smax.Value);
+			}
+			if (Vbmin is not null)
+			{
+				writer.WritePropertyName("vbmin"u8);
+				writer.WriteNumberValue(Vbmin.Value);
+			}
+			if (Vbmax is not null)
+			{
+				writer.WritePropertyName("vbmax"u8);
+				writer.WriteNumberValue(Vbmax.Value);
+			}
+			if (Skin is not null)
+			{
+				writer.WritePropertyName("skin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Skin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Pickaxe is not null)
+			{
+				writer.WritePropertyName("pickaxe[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Pickaxe)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Glider is not null)
+			{
+				writer.WritePropertyName("glider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Glider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Dance is not null)
+			{
+				writer.WritePropertyName("dance[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Dance)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ChangeEmail is not null)
+			{
+				writer.WritePropertyName("change_email"u8);
+				writer.WriteStringValue(ChangeEmail.Value.ToJsonValue());
+			}
+			if (Platform is not null)
+			{
+				writer.WritePropertyName("platform[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Platform)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (SkinsShopMin is not null)
+			{
+				writer.WritePropertyName("skins_shop_min"u8);
+				writer.WriteNumberValue(SkinsShopMin.Value);
+			}
+			if (SkinsShopMax is not null)
+			{
+				writer.WritePropertyName("skins_shop_max"u8);
+				writer.WriteNumberValue(SkinsShopMax.Value);
+			}
+			if (PickaxesShopMin is not null)
+			{
+				writer.WritePropertyName("pickaxes_shop_min"u8);
+				writer.WriteNumberValue(PickaxesShopMin.Value);
+			}
+			if (PickaxesShopMax is not null)
+			{
+				writer.WritePropertyName("pickaxes_shop_max"u8);
+				writer.WriteNumberValue(PickaxesShopMax.Value);
+			}
+			if (DancesShopMin is not null)
+			{
+				writer.WritePropertyName("dances_shop_min"u8);
+				writer.WriteNumberValue(DancesShopMin.Value);
+			}
+			if (DancesShopMax is not null)
+			{
+				writer.WritePropertyName("dances_shop_max"u8);
+				writer.WriteNumberValue(DancesShopMax.Value);
+			}
+			if (GlidersShopMin is not null)
+			{
+				writer.WritePropertyName("gliders_shop_min"u8);
+				writer.WriteNumberValue(GlidersShopMin.Value);
+			}
+			if (GlidersShopMax is not null)
+			{
+				writer.WritePropertyName("gliders_shop_max"u8);
+				writer.WriteNumberValue(GlidersShopMax.Value);
+			}
+			if (SkinsShopVbmin is not null)
+			{
+				writer.WritePropertyName("skins_shop_vbmin"u8);
+				writer.WriteNumberValue(SkinsShopVbmin.Value);
+			}
+			if (SkinsShopVbmax is not null)
+			{
+				writer.WritePropertyName("skins_shop_vbmax"u8);
+				writer.WriteNumberValue(SkinsShopVbmax.Value);
+			}
+			if (PickaxesShopVbmin is not null)
+			{
+				writer.WritePropertyName("pickaxes_shop_vbmin"u8);
+				writer.WriteNumberValue(PickaxesShopVbmin.Value);
+			}
+			if (PickaxesShopVbmax is not null)
+			{
+				writer.WritePropertyName("pickaxes_shop_vbmax"u8);
+				writer.WriteNumberValue(PickaxesShopVbmax.Value);
+			}
+			if (DancesShopVbmin is not null)
+			{
+				writer.WritePropertyName("dances_shop_vbmin"u8);
+				writer.WriteNumberValue(DancesShopVbmin.Value);
+			}
+			if (DancesShopVbmax is not null)
+			{
+				writer.WritePropertyName("dances_shop_vbmax"u8);
+				writer.WriteNumberValue(DancesShopVbmax.Value);
+			}
+			if (GlidersShopVbmin is not null)
+			{
+				writer.WritePropertyName("gliders_shop_vbmin"u8);
+				writer.WriteNumberValue(GlidersShopVbmin.Value);
+			}
+			if (GlidersShopVbmax is not null)
+			{
+				writer.WritePropertyName("gliders_shop_vbmax"u8);
+				writer.WriteNumberValue(GlidersShopVbmax.Value);
+			}
+			if (Bp is not null)
+			{
+				writer.WritePropertyName("bp"u8);
+				writer.WriteStringValue(Bp.Value.ToJsonValue());
+			}
+			if (Lmin is not null)
+			{
+				writer.WritePropertyName("lmin"u8);
+				writer.WriteNumberValue(Lmin.Value);
+			}
+			if (Lmax is not null)
+			{
+				writer.WritePropertyName("lmax"u8);
+				writer.WriteNumberValue(Lmax.Value);
+			}
+			if (BpLmin is not null)
+			{
+				writer.WritePropertyName("bp_lmin"u8);
+				writer.WriteNumberValue(BpLmin.Value);
+			}
+			if (BpLmax is not null)
+			{
+				writer.WritePropertyName("bp_lmax"u8);
+				writer.WriteNumberValue(BpLmax.Value);
+			}
+			if (LastTransDate is not null)
+			{
+				writer.WritePropertyName("last_trans_date"u8);
+				writer.WriteNumberValue(LastTransDate.Value);
+			}
+			if (LastTransDatePeriod is not null)
+			{
+				writer.WritePropertyName("last_trans_date_period"u8);
+				writer.WriteStringValue(LastTransDatePeriod.Value.ToJsonValue());
+			}
+			if (NoTrans is not null)
+			{
+				writer.WritePropertyName("no_trans"u8);
+				writer.WriteBooleanValue(NoTrans.Value);
+			}
+			if (XboxLinkable is not null)
+			{
+				writer.WritePropertyName("xbox_linkable"u8);
+				writer.WriteStringValue(XboxLinkable.Value.ToJsonValue());
+			}
+			if (PsnLinkable is not null)
+			{
+				writer.WritePropertyName("psn_linkable"u8);
+				writer.WriteStringValue(PsnLinkable.Value.ToJsonValue());
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (RlPurchases is not null)
+			{
+				writer.WritePropertyName("rl_purchases"u8);
+				writer.WriteBooleanValue(RlPurchases.Value);
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			if (RefundCreditsMin is not null)
+			{
+				writer.WritePropertyName("refund_credits_min"u8);
+				writer.WriteNumberValue(RefundCreditsMin.Value);
+			}
+			if (RefundCreditsMax is not null)
+			{
+				writer.WritePropertyName("refund_credits_max"u8);
+				writer.WriteNumberValue(RefundCreditsMax.Value);
+			}
+			if (PickaxeMin is not null)
+			{
+				writer.WritePropertyName("pickaxe_min"u8);
+				writer.WriteNumberValue(PickaxeMin.Value);
+			}
+			if (PickaxeMax is not null)
+			{
+				writer.WritePropertyName("pickaxe_max"u8);
+				writer.WriteNumberValue(PickaxeMax.Value);
+			}
+			if (Dmin is not null)
+			{
+				writer.WritePropertyName("dmin"u8);
+				writer.WriteNumberValue(Dmin.Value);
+			}
+			if (Dmax is not null)
+			{
+				writer.WritePropertyName("dmax"u8);
+				writer.WriteNumberValue(Dmax.Value);
+			}
+			if (Gmin is not null)
+			{
+				writer.WritePropertyName("gmin"u8);
+				writer.WriteNumberValue(Gmin.Value);
+			}
+			if (Gmax is not null)
+			{
+				writer.WritePropertyName("gmax"u8);
+				writer.WriteNumberValue(Gmax.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Stw is not null)
+			{
+				writer.WritePropertyName("stw[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Stw)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotStw is not null)
+			{
+				writer.WritePropertyName("not_stw[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotStw)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (FriendsMin is not null)
+			{
+				writer.WritePropertyName("friends_min"u8);
+				writer.WriteNumberValue(FriendsMin.Value);
+			}
+			if (FriendsMax is not null)
+			{
+				writer.WritePropertyName("friends_max"u8);
+				writer.WriteNumberValue(FriendsMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryFortniteResponse(
@@ -5050,6 +6463,554 @@ public sealed record CategoryFortniteResponseItems(
 		/// </summary>
 		[JsonPropertyName("mihoyo_game[]")]
 		public List<MihoyoGame>? MihoyoGame { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Email is not null)
+			{
+				writer.WritePropertyName("email"u8);
+				writer.WriteStringValue(Email.Value.ToJsonValue());
+			}
+			if (Ea is not null)
+			{
+				writer.WritePropertyName("ea"u8);
+				writer.WriteStringValue(Ea.Value.ToJsonValue());
+			}
+			if (Region is not null)
+			{
+				writer.WritePropertyName("region"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Region)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotRegion is not null)
+			{
+				writer.WritePropertyName("not_region"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotRegion)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (GenshinCharacter is not null)
+			{
+				writer.WritePropertyName("genshin_character[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in GenshinCharacter)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (GenshinCharacterConstellations is not null)
+			{
+				writer.WritePropertyName("genshin_character_constellations"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in GenshinCharacterConstellations)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (GenshinCharacterConstellationsMax is not null)
+			{
+				writer.WritePropertyName("genshin_character_constellations_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in GenshinCharacterConstellationsMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (GenshinWeapon is not null)
+			{
+				writer.WritePropertyName("genshin_weapon[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in GenshinWeapon)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (GenshinCharMin is not null)
+			{
+				writer.WritePropertyName("genshin_char_min"u8);
+				writer.WriteNumberValue(GenshinCharMin.Value);
+			}
+			if (GenshinCharMax is not null)
+			{
+				writer.WritePropertyName("genshin_char_max"u8);
+				writer.WriteNumberValue(GenshinCharMax.Value);
+			}
+			if (GenshinLegendaryMin is not null)
+			{
+				writer.WritePropertyName("genshin_legendary_min"u8);
+				writer.WriteNumberValue(GenshinLegendaryMin.Value);
+			}
+			if (GenshinLegendaryMax is not null)
+			{
+				writer.WritePropertyName("genshin_legendary_max"u8);
+				writer.WriteNumberValue(GenshinLegendaryMax.Value);
+			}
+			if (GenshinLevelMin is not null)
+			{
+				writer.WritePropertyName("genshin_level_min"u8);
+				writer.WriteNumberValue(GenshinLevelMin.Value);
+			}
+			if (GenshinLevelMax is not null)
+			{
+				writer.WritePropertyName("genshin_level_max"u8);
+				writer.WriteNumberValue(GenshinLevelMax.Value);
+			}
+			if (GenshinLegendaryWeaponMin is not null)
+			{
+				writer.WritePropertyName("genshin_legendary_weapon_min"u8);
+				writer.WriteNumberValue(GenshinLegendaryWeaponMin.Value);
+			}
+			if (GenshinLegendaryWeaponMax is not null)
+			{
+				writer.WritePropertyName("genshin_legendary_weapon_max"u8);
+				writer.WriteNumberValue(GenshinLegendaryWeaponMax.Value);
+			}
+			if (ConstellationsMin is not null)
+			{
+				writer.WritePropertyName("constellations_min"u8);
+				writer.WriteNumberValue(ConstellationsMin.Value);
+			}
+			if (ConstellationsMax is not null)
+			{
+				writer.WritePropertyName("constellations_max"u8);
+				writer.WriteNumberValue(ConstellationsMax.Value);
+			}
+			if (GenshinAchievementMin is not null)
+			{
+				writer.WritePropertyName("genshin_achievement_min"u8);
+				writer.WriteNumberValue(GenshinAchievementMin.Value);
+			}
+			if (GenshinAchievementMax is not null)
+			{
+				writer.WritePropertyName("genshin_achievement_max"u8);
+				writer.WriteNumberValue(GenshinAchievementMax.Value);
+			}
+			if (GenshinCurrencyMin is not null)
+			{
+				writer.WritePropertyName("genshin_currency_min"u8);
+				writer.WriteNumberValue(GenshinCurrencyMin.Value);
+			}
+			if (GenshinCurrencyMax is not null)
+			{
+				writer.WritePropertyName("genshin_currency_max"u8);
+				writer.WriteNumberValue(GenshinCurrencyMax.Value);
+			}
+			if (HonkaiCharacter is not null)
+			{
+				writer.WritePropertyName("honkai_character[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in HonkaiCharacter)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (HonkaiCharacterEidolons is not null)
+			{
+				writer.WritePropertyName("honkai_character_eidolons"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in HonkaiCharacterEidolons)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (HonkaiCharacterEidolonsMax is not null)
+			{
+				writer.WritePropertyName("honkai_character_eidolons_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in HonkaiCharacterEidolonsMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (HonkaiWeapon is not null)
+			{
+				writer.WritePropertyName("honkai_weapon[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in HonkaiWeapon)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (HonkaiCharMin is not null)
+			{
+				writer.WritePropertyName("honkai_char_min"u8);
+				writer.WriteNumberValue(HonkaiCharMin.Value);
+			}
+			if (HonkaiCharMax is not null)
+			{
+				writer.WritePropertyName("honkai_char_max"u8);
+				writer.WriteNumberValue(HonkaiCharMax.Value);
+			}
+			if (HonkaiLegendaryMin is not null)
+			{
+				writer.WritePropertyName("honkai_legendary_min"u8);
+				writer.WriteNumberValue(HonkaiLegendaryMin.Value);
+			}
+			if (HonkaiLegendaryMax is not null)
+			{
+				writer.WritePropertyName("honkai_legendary_max"u8);
+				writer.WriteNumberValue(HonkaiLegendaryMax.Value);
+			}
+			if (HonkaiLevelMin is not null)
+			{
+				writer.WritePropertyName("honkai_level_min"u8);
+				writer.WriteNumberValue(HonkaiLevelMin.Value);
+			}
+			if (HonkaiLevelMax is not null)
+			{
+				writer.WritePropertyName("honkai_level_max"u8);
+				writer.WriteNumberValue(HonkaiLevelMax.Value);
+			}
+			if (HonkaiLegendaryWeaponMin is not null)
+			{
+				writer.WritePropertyName("honkai_legendary_weapon_min"u8);
+				writer.WriteNumberValue(HonkaiLegendaryWeaponMin.Value);
+			}
+			if (HonkaiLegendaryWeaponMax is not null)
+			{
+				writer.WritePropertyName("honkai_legendary_weapon_max"u8);
+				writer.WriteNumberValue(HonkaiLegendaryWeaponMax.Value);
+			}
+			if (EidolonsMin is not null)
+			{
+				writer.WritePropertyName("eidolons_min"u8);
+				writer.WriteNumberValue(EidolonsMin.Value);
+			}
+			if (EidolonsMax is not null)
+			{
+				writer.WritePropertyName("eidolons_max"u8);
+				writer.WriteNumberValue(EidolonsMax.Value);
+			}
+			if (HonkaiAchievementMin is not null)
+			{
+				writer.WritePropertyName("honkai_achievement_min"u8);
+				writer.WriteNumberValue(HonkaiAchievementMin.Value);
+			}
+			if (HonkaiAchievementMax is not null)
+			{
+				writer.WritePropertyName("honkai_achievement_max"u8);
+				writer.WriteNumberValue(HonkaiAchievementMax.Value);
+			}
+			if (HonkaiCurrencyMin is not null)
+			{
+				writer.WritePropertyName("honkai_currency_min"u8);
+				writer.WriteNumberValue(HonkaiCurrencyMin.Value);
+			}
+			if (HonkaiCurrencyMax is not null)
+			{
+				writer.WritePropertyName("honkai_currency_max"u8);
+				writer.WriteNumberValue(HonkaiCurrencyMax.Value);
+			}
+			if (ZenlessCharacter is not null)
+			{
+				writer.WritePropertyName("zenless_character[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in ZenlessCharacter)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ZenlessCharacterCinemas is not null)
+			{
+				writer.WritePropertyName("zenless_character_cinemas"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in ZenlessCharacterCinemas)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (ZenlessCharacterCinemasMax is not null)
+			{
+				writer.WritePropertyName("zenless_character_cinemas_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in ZenlessCharacterCinemasMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (ZenlessWeapon is not null)
+			{
+				writer.WritePropertyName("zenless_weapon[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in ZenlessWeapon)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ZenlessLegendaryMin is not null)
+			{
+				writer.WritePropertyName("zenless_legendary_min"u8);
+				writer.WriteNumberValue(ZenlessLegendaryMin.Value);
+			}
+			if (ZenlessLegendaryMax is not null)
+			{
+				writer.WritePropertyName("zenless_legendary_max"u8);
+				writer.WriteNumberValue(ZenlessLegendaryMax.Value);
+			}
+			if (CinemasMin is not null)
+			{
+				writer.WritePropertyName("cinemas_min"u8);
+				writer.WriteNumberValue(CinemasMin.Value);
+			}
+			if (CinemasMax is not null)
+			{
+				writer.WritePropertyName("cinemas_max"u8);
+				writer.WriteNumberValue(CinemasMax.Value);
+			}
+			if (ZenlessLegendaryWeaponMin is not null)
+			{
+				writer.WritePropertyName("zenless_legendary_weapon_min"u8);
+				writer.WriteNumberValue(ZenlessLegendaryWeaponMin.Value);
+			}
+			if (ZenlessLegendaryWeaponMax is not null)
+			{
+				writer.WritePropertyName("zenless_legendary_weapon_max"u8);
+				writer.WriteNumberValue(ZenlessLegendaryWeaponMax.Value);
+			}
+			if (ZenlessCharMin is not null)
+			{
+				writer.WritePropertyName("zenless_char_min"u8);
+				writer.WriteNumberValue(ZenlessCharMin.Value);
+			}
+			if (ZenlessCharMax is not null)
+			{
+				writer.WritePropertyName("zenless_char_max"u8);
+				writer.WriteNumberValue(ZenlessCharMax.Value);
+			}
+			if (ZenlessLevelMin is not null)
+			{
+				writer.WritePropertyName("zenless_level_min"u8);
+				writer.WriteNumberValue(ZenlessLevelMin.Value);
+			}
+			if (ZenlessLevelMax is not null)
+			{
+				writer.WritePropertyName("zenless_level_max"u8);
+				writer.WriteNumberValue(ZenlessLevelMax.Value);
+			}
+			if (ZenlessAchievementMin is not null)
+			{
+				writer.WritePropertyName("zenless_achievement_min"u8);
+				writer.WriteNumberValue(ZenlessAchievementMin.Value);
+			}
+			if (ZenlessAchievementMax is not null)
+			{
+				writer.WritePropertyName("zenless_achievement_max"u8);
+				writer.WriteNumberValue(ZenlessAchievementMax.Value);
+			}
+			if (ZenlessCurrencyMin is not null)
+			{
+				writer.WritePropertyName("zenless_currency_min"u8);
+				writer.WriteNumberValue(ZenlessCurrencyMin.Value);
+			}
+			if (ZenlessCurrencyMax is not null)
+			{
+				writer.WritePropertyName("zenless_currency_max"u8);
+				writer.WriteNumberValue(ZenlessCurrencyMax.Value);
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (MihoyoGame is not null)
+			{
+				writer.WritePropertyName("mihoyo_game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in MihoyoGame)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryMihoyoResponse(
@@ -7896,6 +9857,523 @@ public sealed record CategoryMihoyoResponseItems(
 		/// </summary>
 		[JsonPropertyName("riot_game[]")]
 		public List<RiotGame>? RiotGame { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Rmin is not null)
+			{
+				writer.WritePropertyName("rmin"u8);
+				writer.WriteNumberValue((long)Rmin.Value);
+			}
+			if (Rmax is not null)
+			{
+				writer.WritePropertyName("rmax"u8);
+				writer.WriteNumberValue((long)Rmax.Value);
+			}
+			if (LastRmin is not null)
+			{
+				writer.WritePropertyName("last_rmin"u8);
+				writer.WriteNumberValue((long)LastRmin.Value);
+			}
+			if (LastRmax is not null)
+			{
+				writer.WritePropertyName("last_rmax"u8);
+				writer.WriteNumberValue((long)LastRmax.Value);
+			}
+			if (PreviousRmin is not null)
+			{
+				writer.WritePropertyName("previous_rmin"u8);
+				writer.WriteNumberValue((long)PreviousRmin.Value);
+			}
+			if (PreviousRmax is not null)
+			{
+				writer.WritePropertyName("previous_rmax"u8);
+				writer.WriteNumberValue((long)PreviousRmax.Value);
+			}
+			if (WeaponSkin is not null)
+			{
+				writer.WritePropertyName("weaponSkin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in WeaponSkin)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (Buddy is not null)
+			{
+				writer.WritePropertyName("buddy[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Buddy)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (Agent is not null)
+			{
+				writer.WritePropertyName("agent[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Agent)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (Champion is not null)
+			{
+				writer.WritePropertyName("champion[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Champion)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (Skin is not null)
+			{
+				writer.WritePropertyName("skin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Skin)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (ValorantLevelMin is not null)
+			{
+				writer.WritePropertyName("valorant_level_min"u8);
+				writer.WriteNumberValue(ValorantLevelMin.Value);
+			}
+			if (ValorantLevelMax is not null)
+			{
+				writer.WritePropertyName("valorant_level_max"u8);
+				writer.WriteNumberValue(ValorantLevelMax.Value);
+			}
+			if (LolLevelMin is not null)
+			{
+				writer.WritePropertyName("lol_level_min"u8);
+				writer.WriteNumberValue(LolLevelMin.Value);
+			}
+			if (LolLevelMax is not null)
+			{
+				writer.WritePropertyName("lol_level_max"u8);
+				writer.WriteNumberValue(LolLevelMax.Value);
+			}
+			if (InvMin is not null)
+			{
+				writer.WritePropertyName("inv_min"u8);
+				writer.WriteNumberValue(InvMin.Value);
+			}
+			if (InvMax is not null)
+			{
+				writer.WritePropertyName("inv_max"u8);
+				writer.WriteNumberValue(InvMax.Value);
+			}
+			if (VpMin is not null)
+			{
+				writer.WritePropertyName("vp_min"u8);
+				writer.WriteNumberValue(VpMin.Value);
+			}
+			if (VpMax is not null)
+			{
+				writer.WritePropertyName("vp_max"u8);
+				writer.WriteNumberValue(VpMax.Value);
+			}
+			if (ValorantSmin is not null)
+			{
+				writer.WritePropertyName("valorant_smin"u8);
+				writer.WriteNumberValue(ValorantSmin.Value);
+			}
+			if (ValorantSmax is not null)
+			{
+				writer.WritePropertyName("valorant_smax"u8);
+				writer.WriteNumberValue(ValorantSmax.Value);
+			}
+			if (ValorantRankType is not null)
+			{
+				writer.WritePropertyName("valorant_rank_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in ValorantRankType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Amin is not null)
+			{
+				writer.WritePropertyName("amin"u8);
+				writer.WriteNumberValue(Amin.Value);
+			}
+			if (Amax is not null)
+			{
+				writer.WritePropertyName("amax"u8);
+				writer.WriteNumberValue(Amax.Value);
+			}
+			if (ValorantRegion is not null)
+			{
+				writer.WritePropertyName("valorant_region[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in ValorantRegion)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ValorantNotRegion is not null)
+			{
+				writer.WritePropertyName("valorant_not_region[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in ValorantNotRegion)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (LolRegion is not null)
+			{
+				writer.WritePropertyName("lol_region[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in LolRegion)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (LolNotRegion is not null)
+			{
+				writer.WritePropertyName("lol_not_region[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in LolNotRegion)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Knife is not null)
+			{
+				writer.WritePropertyName("knife"u8);
+				writer.WriteBooleanValue(Knife.Value);
+			}
+			if (LolSmin is not null)
+			{
+				writer.WritePropertyName("lol_smin"u8);
+				writer.WriteNumberValue(LolSmin.Value);
+			}
+			if (LolSmax is not null)
+			{
+				writer.WritePropertyName("lol_smax"u8);
+				writer.WriteNumberValue(LolSmax.Value);
+			}
+			if (ChampionMin is not null)
+			{
+				writer.WritePropertyName("champion_min"u8);
+				writer.WriteNumberValue(ChampionMin.Value);
+			}
+			if (ChampionMax is not null)
+			{
+				writer.WritePropertyName("champion_max"u8);
+				writer.WriteNumberValue(ChampionMax.Value);
+			}
+			if (WinRateMin is not null)
+			{
+				writer.WritePropertyName("win_rate_min"u8);
+				writer.WriteNumberValue(WinRateMin.Value);
+			}
+			if (WinRateMax is not null)
+			{
+				writer.WritePropertyName("win_rate_max"u8);
+				writer.WriteNumberValue(WinRateMax.Value);
+			}
+			if (BlueMin is not null)
+			{
+				writer.WritePropertyName("blue_min"u8);
+				writer.WriteNumberValue(BlueMin.Value);
+			}
+			if (BlueMax is not null)
+			{
+				writer.WritePropertyName("blue_max"u8);
+				writer.WriteNumberValue(BlueMax.Value);
+			}
+			if (OrangeMin is not null)
+			{
+				writer.WritePropertyName("orange_min"u8);
+				writer.WriteNumberValue(OrangeMin.Value);
+			}
+			if (OrangeMax is not null)
+			{
+				writer.WritePropertyName("orange_max"u8);
+				writer.WriteNumberValue(OrangeMax.Value);
+			}
+			if (MythicMin is not null)
+			{
+				writer.WritePropertyName("mythic_min"u8);
+				writer.WriteNumberValue(MythicMin.Value);
+			}
+			if (MythicMax is not null)
+			{
+				writer.WritePropertyName("mythic_max"u8);
+				writer.WriteNumberValue(MythicMax.Value);
+			}
+			if (RiotMin is not null)
+			{
+				writer.WritePropertyName("riot_min"u8);
+				writer.WriteNumberValue(RiotMin.Value);
+			}
+			if (RiotMax is not null)
+			{
+				writer.WritePropertyName("riot_max"u8);
+				writer.WriteNumberValue(RiotMax.Value);
+			}
+			if (Email is not null)
+			{
+				writer.WritePropertyName("email"u8);
+				writer.WriteStringValue(Email.Value.ToJsonValue());
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (ValorantKnifeMin is not null)
+			{
+				writer.WritePropertyName("valorant_knife_min"u8);
+				writer.WriteNumberValue(ValorantKnifeMin.Value);
+			}
+			if (ValorantKnifeMax is not null)
+			{
+				writer.WritePropertyName("valorant_knife_max"u8);
+				writer.WriteNumberValue(ValorantKnifeMax.Value);
+			}
+			if (RpMin is not null)
+			{
+				writer.WritePropertyName("rp_min"u8);
+				writer.WriteNumberValue(RpMin.Value);
+			}
+			if (RpMax is not null)
+			{
+				writer.WritePropertyName("rp_max"u8);
+				writer.WriteNumberValue(RpMax.Value);
+			}
+			if (FaMin is not null)
+			{
+				writer.WritePropertyName("fa_min"u8);
+				writer.WriteNumberValue(FaMin.Value);
+			}
+			if (FaMax is not null)
+			{
+				writer.WritePropertyName("fa_max"u8);
+				writer.WriteNumberValue(FaMax.Value);
+			}
+			if (LolRank is not null)
+			{
+				writer.WritePropertyName("lol_rank[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in LolRank)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (RiotGame is not null)
+			{
+				writer.WritePropertyName("riot_game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in RiotGame)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryRiotResponse(
@@ -9514,6 +11992,458 @@ public sealed record CategoryRiotResponseItems(
 		/// </summary>
 		[JsonPropertyName("session_age_period")]
 		public SessionAgePeriod? SessionAgePeriod { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Spam is not null)
+			{
+				writer.WritePropertyName("spam"u8);
+				writer.WriteStringValue(Spam.Value.ToJsonValue());
+			}
+			if (Password is not null)
+			{
+				writer.WritePropertyName("password"u8);
+				writer.WriteStringValue(Password.Value.ToJsonValue());
+			}
+			if (Premium is not null)
+			{
+				writer.WritePropertyName("premium"u8);
+				writer.WriteStringValue(Premium.Value.ToJsonValue());
+			}
+			if (PremiumExpiration is not null)
+			{
+				writer.WritePropertyName("premium_expiration"u8);
+				writer.WriteNumberValue(PremiumExpiration.Value);
+			}
+			if (PremiumExpirationPeriod is not null)
+			{
+				writer.WritePropertyName("premium_expiration_period"u8);
+				writer.WriteStringValue(PremiumExpirationPeriod.Value.ToJsonValue());
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (MinChannels is not null)
+			{
+				writer.WritePropertyName("min_channels"u8);
+				writer.WriteNumberValue(MinChannels.Value);
+			}
+			if (MaxChannels is not null)
+			{
+				writer.WritePropertyName("max_channels"u8);
+				writer.WriteNumberValue(MaxChannels.Value);
+			}
+			if (MinChats is not null)
+			{
+				writer.WritePropertyName("min_chats"u8);
+				writer.WriteNumberValue(MinChats.Value);
+			}
+			if (MaxChats is not null)
+			{
+				writer.WritePropertyName("max_chats"u8);
+				writer.WriteNumberValue(MaxChats.Value);
+			}
+			if (MinConversations is not null)
+			{
+				writer.WritePropertyName("min_conversations"u8);
+				writer.WriteNumberValue(MinConversations.Value);
+			}
+			if (MaxConversations is not null)
+			{
+				writer.WritePropertyName("max_conversations"u8);
+				writer.WriteNumberValue(MaxConversations.Value);
+			}
+			if (MinAdmin is not null)
+			{
+				writer.WritePropertyName("min_admin"u8);
+				writer.WriteNumberValue(MinAdmin.Value);
+			}
+			if (MaxAdmin is not null)
+			{
+				writer.WritePropertyName("max_admin"u8);
+				writer.WriteNumberValue(MaxAdmin.Value);
+			}
+			if (MinAdminSub is not null)
+			{
+				writer.WritePropertyName("min_admin_sub"u8);
+				writer.WriteNumberValue(MinAdminSub.Value);
+			}
+			if (MaxAdminSub is not null)
+			{
+				writer.WritePropertyName("max_admin_sub"u8);
+				writer.WriteNumberValue(MaxAdminSub.Value);
+			}
+			if (DigMin is not null)
+			{
+				writer.WritePropertyName("dig_min"u8);
+				writer.WriteNumberValue(DigMin.Value);
+			}
+			if (DigMax is not null)
+			{
+				writer.WritePropertyName("dig_max"u8);
+				writer.WriteNumberValue(DigMax.Value);
+			}
+			if (MinContacts is not null)
+			{
+				writer.WritePropertyName("min_contacts"u8);
+				writer.WriteNumberValue(MinContacts.Value);
+			}
+			if (MaxContacts is not null)
+			{
+				writer.WritePropertyName("max_contacts"u8);
+				writer.WriteNumberValue(MaxContacts.Value);
+			}
+			if (MinStars is not null)
+			{
+				writer.WritePropertyName("min_stars"u8);
+				writer.WriteNumberValue(MinStars.Value);
+			}
+			if (MaxStars is not null)
+			{
+				writer.WritePropertyName("max_stars"u8);
+				writer.WriteNumberValue(MaxStars.Value);
+			}
+			if (Birthday is not null)
+			{
+				writer.WritePropertyName("birthday"u8);
+				writer.WriteNumberValue(Birthday.Value);
+			}
+			if (BirthdayPeriod is not null)
+			{
+				writer.WritePropertyName("birthday_period"u8);
+				writer.WriteStringValue(BirthdayPeriod.Value.ToJsonValue());
+			}
+			if (BirthdayAfter is not null)
+			{
+				writer.WritePropertyName("birthday_after"u8);
+				writer.WriteNumberValue(BirthdayAfter.Value);
+			}
+			if (BirthdayAfterPeriod is not null)
+			{
+				writer.WritePropertyName("birthday_after_period"u8);
+				writer.WriteStringValue(BirthdayAfterPeriod.Value.ToJsonValue());
+			}
+			if (MinId is not null)
+			{
+				writer.WritePropertyName("min_id"u8);
+				writer.WriteNumberValue(MinId.Value);
+			}
+			if (MaxId is not null)
+			{
+				writer.WritePropertyName("max_id"u8);
+				writer.WriteNumberValue(MaxId.Value);
+			}
+			if (AllowGeoSpamblock is not null)
+			{
+				writer.WritePropertyName("allow_geo_spamblock"u8);
+				writer.WriteBooleanValue(AllowGeoSpamblock.Value);
+			}
+			if (MinGifts is not null)
+			{
+				writer.WritePropertyName("min_gifts"u8);
+				writer.WriteNumberValue(MinGifts.Value);
+			}
+			if (MaxGifts is not null)
+			{
+				writer.WritePropertyName("max_gifts"u8);
+				writer.WriteNumberValue(MaxGifts.Value);
+			}
+			if (MinNftGifts is not null)
+			{
+				writer.WritePropertyName("min_nft_gifts"u8);
+				writer.WriteNumberValue(MinNftGifts.Value);
+			}
+			if (MaxNftGifts is not null)
+			{
+				writer.WritePropertyName("max_nft_gifts"u8);
+				writer.WriteNumberValue(MaxNftGifts.Value);
+			}
+			if (MinGiftsStars is not null)
+			{
+				writer.WritePropertyName("min_gifts_stars"u8);
+				writer.WriteNumberValue(MinGiftsStars.Value);
+			}
+			if (MaxGiftsStars is not null)
+			{
+				writer.WritePropertyName("max_gifts_stars"u8);
+				writer.WriteNumberValue(MaxGiftsStars.Value);
+			}
+			if (MinGiftsConvertStars is not null)
+			{
+				writer.WritePropertyName("min_gifts_convert_stars"u8);
+				writer.WriteNumberValue(MinGiftsConvertStars.Value);
+			}
+			if (MaxGiftsConvertStars is not null)
+			{
+				writer.WritePropertyName("max_gifts_convert_stars"u8);
+				writer.WriteNumberValue(MaxGiftsConvertStars.Value);
+			}
+			if (DcId is not null)
+			{
+				writer.WritePropertyName("dc_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in DcId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotDcId is not null)
+			{
+				writer.WritePropertyName("not_dc_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotDcId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Email is not null)
+			{
+				writer.WritePropertyName("email"u8);
+				writer.WriteStringValue(Email.Value.ToJsonValue());
+			}
+			if (MinBots is not null)
+			{
+				writer.WritePropertyName("min_bots"u8);
+				writer.WriteNumberValue(MinBots.Value);
+			}
+			if (MaxBots is not null)
+			{
+				writer.WritePropertyName("max_bots"u8);
+				writer.WriteNumberValue(MaxBots.Value);
+			}
+			if (MinBotActiveUsers is not null)
+			{
+				writer.WritePropertyName("min_bot_active_users"u8);
+				writer.WriteNumberValue(MinBotActiveUsers.Value);
+			}
+			if (MaxBotActiveUsers is not null)
+			{
+				writer.WritePropertyName("max_bot_active_users"u8);
+				writer.WriteNumberValue(MaxBotActiveUsers.Value);
+			}
+			if (MinStarsRatingLevel is not null)
+			{
+				writer.WritePropertyName("min_stars_rating_level"u8);
+				writer.WriteNumberValue(MinStarsRatingLevel.Value);
+			}
+			if (MaxStarsRatingLevel is not null)
+			{
+				writer.WritePropertyName("max_stars_rating_level"u8);
+				writer.WriteNumberValue(MaxStarsRatingLevel.Value);
+			}
+			if (MinGram is not null)
+			{
+				writer.WritePropertyName("min_gram"u8);
+				writer.WriteNumberValue(MinGram.Value);
+			}
+			if (MaxGram is not null)
+			{
+				writer.WritePropertyName("max_gram"u8);
+				writer.WriteNumberValue(MaxGram.Value);
+			}
+			if (MinRareGifts is not null)
+			{
+				writer.WritePropertyName("min_rare_gifts"u8);
+				writer.WriteNumberValue(MinRareGifts.Value);
+			}
+			if (MaxRareGifts is not null)
+			{
+				writer.WritePropertyName("max_rare_gifts"u8);
+				writer.WriteNumberValue(MaxRareGifts.Value);
+			}
+			if (MinAuthorizations is not null)
+			{
+				writer.WritePropertyName("min_authorizations"u8);
+				writer.WriteNumberValue(MinAuthorizations.Value);
+			}
+			if (MaxAuthorizations is not null)
+			{
+				writer.WritePropertyName("max_authorizations"u8);
+				writer.WriteNumberValue(MaxAuthorizations.Value);
+			}
+			if (SessionAge is not null)
+			{
+				writer.WritePropertyName("session_age"u8);
+				writer.WriteNumberValue(SessionAge.Value);
+			}
+			if (SessionAgePeriod is not null)
+			{
+				writer.WritePropertyName("session_age_period"u8);
+				writer.WriteStringValue(SessionAgePeriod.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryTelegramResponse(
@@ -10925,6 +13855,619 @@ public sealed record CategoryTelegramResponseItems(
 		/// </summary>
 		[JsonPropertyName("brawl_fame_level_max")]
 		public long? BrawlFameLevelMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Eg is not null)
+			{
+				writer.WritePropertyName("eg"u8);
+				writer.WriteNumberValue((long)Eg.Value);
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (BrawlLevelMin is not null)
+			{
+				writer.WritePropertyName("brawl_level_min"u8);
+				writer.WriteNumberValue(BrawlLevelMin.Value);
+			}
+			if (BrawlLevelMax is not null)
+			{
+				writer.WritePropertyName("brawl_level_max"u8);
+				writer.WriteNumberValue(BrawlLevelMax.Value);
+			}
+			if (BrawlCupMin is not null)
+			{
+				writer.WritePropertyName("brawl_cup_min"u8);
+				writer.WriteNumberValue(BrawlCupMin.Value);
+			}
+			if (BrawlCupMax is not null)
+			{
+				writer.WritePropertyName("brawl_cup_max"u8);
+				writer.WriteNumberValue(BrawlCupMax.Value);
+			}
+			if (BrawlWinsMin is not null)
+			{
+				writer.WritePropertyName("brawl_wins_min"u8);
+				writer.WriteNumberValue(BrawlWinsMin.Value);
+			}
+			if (BrawlWinsMax is not null)
+			{
+				writer.WritePropertyName("brawl_wins_max"u8);
+				writer.WriteNumberValue(BrawlWinsMax.Value);
+			}
+			if (BrawlPass is not null)
+			{
+				writer.WritePropertyName("brawl_pass"u8);
+				writer.WriteStringValue(BrawlPass.Value.ToJsonValue());
+			}
+			if (Brawler is not null)
+			{
+				writer.WritePropertyName("brawler[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Brawler)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (BrawlersMin is not null)
+			{
+				writer.WritePropertyName("brawlers_min"u8);
+				writer.WriteNumberValue(BrawlersMin.Value);
+			}
+			if (BrawlersMax is not null)
+			{
+				writer.WritePropertyName("brawlers_max"u8);
+				writer.WriteNumberValue(BrawlersMax.Value);
+			}
+			if (LegendaryBrawlersMin is not null)
+			{
+				writer.WritePropertyName("legendary_brawlers_min"u8);
+				writer.WriteNumberValue(LegendaryBrawlersMin.Value);
+			}
+			if (LegendaryBrawlersMax is not null)
+			{
+				writer.WritePropertyName("legendary_brawlers_max"u8);
+				writer.WriteNumberValue(LegendaryBrawlersMax.Value);
+			}
+			if (RoyaleLevelMin is not null)
+			{
+				writer.WritePropertyName("royale_level_min"u8);
+				writer.WriteNumberValue(RoyaleLevelMin.Value);
+			}
+			if (RoyaleLevelMax is not null)
+			{
+				writer.WritePropertyName("royale_level_max"u8);
+				writer.WriteNumberValue(RoyaleLevelMax.Value);
+			}
+			if (RoyaleCupMin is not null)
+			{
+				writer.WritePropertyName("royale_cup_min"u8);
+				writer.WriteNumberValue(RoyaleCupMin.Value);
+			}
+			if (RoyaleCupMax is not null)
+			{
+				writer.WritePropertyName("royale_cup_max"u8);
+				writer.WriteNumberValue(RoyaleCupMax.Value);
+			}
+			if (RoyaleWinsMin is not null)
+			{
+				writer.WritePropertyName("royale_wins_min"u8);
+				writer.WriteNumberValue(RoyaleWinsMin.Value);
+			}
+			if (RoyaleWinsMax is not null)
+			{
+				writer.WritePropertyName("royale_wins_max"u8);
+				writer.WriteNumberValue(RoyaleWinsMax.Value);
+			}
+			if (KingLevelMin is not null)
+			{
+				writer.WritePropertyName("king_level_min"u8);
+				writer.WriteNumberValue(KingLevelMin.Value);
+			}
+			if (KingLevelMax is not null)
+			{
+				writer.WritePropertyName("king_level_max"u8);
+				writer.WriteNumberValue(KingLevelMax.Value);
+			}
+			if (RoyalePass is not null)
+			{
+				writer.WritePropertyName("royale_pass"u8);
+				writer.WriteStringValue(RoyalePass.Value.ToJsonValue());
+			}
+			if (ClashLevelMin is not null)
+			{
+				writer.WritePropertyName("clash_level_min"u8);
+				writer.WriteNumberValue(ClashLevelMin.Value);
+			}
+			if (ClashLevelMax is not null)
+			{
+				writer.WritePropertyName("clash_level_max"u8);
+				writer.WriteNumberValue(ClashLevelMax.Value);
+			}
+			if (ClashCupMin is not null)
+			{
+				writer.WritePropertyName("clash_cup_min"u8);
+				writer.WriteNumberValue(ClashCupMin.Value);
+			}
+			if (ClashCupMax is not null)
+			{
+				writer.WritePropertyName("clash_cup_max"u8);
+				writer.WriteNumberValue(ClashCupMax.Value);
+			}
+			if (ClashWinsMin is not null)
+			{
+				writer.WritePropertyName("clash_wins_min"u8);
+				writer.WriteNumberValue(ClashWinsMin.Value);
+			}
+			if (ClashWinsMax is not null)
+			{
+				writer.WritePropertyName("clash_wins_max"u8);
+				writer.WriteNumberValue(ClashWinsMax.Value);
+			}
+			if (ClashPass is not null)
+			{
+				writer.WritePropertyName("clash_pass"u8);
+				writer.WriteStringValue(ClashPass.Value.ToJsonValue());
+			}
+			if (TotalHeroesLevelMin is not null)
+			{
+				writer.WritePropertyName("total_heroes_level_min"u8);
+				writer.WriteNumberValue(TotalHeroesLevelMin.Value);
+			}
+			if (TotalHeroesLevelMax is not null)
+			{
+				writer.WritePropertyName("total_heroes_level_max"u8);
+				writer.WriteNumberValue(TotalHeroesLevelMax.Value);
+			}
+			if (TotalTroopsLevelMin is not null)
+			{
+				writer.WritePropertyName("total_troops_level_min"u8);
+				writer.WriteNumberValue(TotalTroopsLevelMin.Value);
+			}
+			if (TotalTroopsLevelMax is not null)
+			{
+				writer.WritePropertyName("total_troops_level_max"u8);
+				writer.WriteNumberValue(TotalTroopsLevelMax.Value);
+			}
+			if (TotalSpellsLevelMin is not null)
+			{
+				writer.WritePropertyName("total_spells_level_min"u8);
+				writer.WriteNumberValue(TotalSpellsLevelMin.Value);
+			}
+			if (TotalSpellsLevelMax is not null)
+			{
+				writer.WritePropertyName("total_spells_level_max"u8);
+				writer.WriteNumberValue(TotalSpellsLevelMax.Value);
+			}
+			if (TotalBuilderHeroesLevelMin is not null)
+			{
+				writer.WritePropertyName("total_builder_heroes_level_min"u8);
+				writer.WriteNumberValue(TotalBuilderHeroesLevelMin.Value);
+			}
+			if (TotalBuilderHeroesLevelMax is not null)
+			{
+				writer.WritePropertyName("total_builder_heroes_level_max"u8);
+				writer.WriteNumberValue(TotalBuilderHeroesLevelMax.Value);
+			}
+			if (TotalBuilderTroopsLevelMin is not null)
+			{
+				writer.WritePropertyName("total_builder_troops_level_min"u8);
+				writer.WriteNumberValue(TotalBuilderTroopsLevelMin.Value);
+			}
+			if (TotalBuilderTroopsLevelMax is not null)
+			{
+				writer.WritePropertyName("total_builder_troops_level_max"u8);
+				writer.WriteNumberValue(TotalBuilderTroopsLevelMax.Value);
+			}
+			if (TownHallLevelMin is not null)
+			{
+				writer.WritePropertyName("town_hall_level_min"u8);
+				writer.WriteNumberValue(TownHallLevelMin.Value);
+			}
+			if (TownHallLevelMax is not null)
+			{
+				writer.WritePropertyName("town_hall_level_max"u8);
+				writer.WriteNumberValue(TownHallLevelMax.Value);
+			}
+			if (BuilderHallLevelMin is not null)
+			{
+				writer.WritePropertyName("builder_hall_level_min"u8);
+				writer.WriteNumberValue(BuilderHallLevelMin.Value);
+			}
+			if (BuilderHallLevelMax is not null)
+			{
+				writer.WritePropertyName("builder_hall_level_max"u8);
+				writer.WriteNumberValue(BuilderHallLevelMax.Value);
+			}
+			if (BuilderHallCupMin is not null)
+			{
+				writer.WritePropertyName("builder_hall_cup_min"u8);
+				writer.WriteNumberValue(BuilderHallCupMin.Value);
+			}
+			if (BuilderHallCupMax is not null)
+			{
+				writer.WritePropertyName("builder_hall_cup_max"u8);
+				writer.WriteNumberValue(BuilderHallCupMax.Value);
+			}
+			if (CreationYearMin is not null)
+			{
+				writer.WritePropertyName("creation_year_min"u8);
+				writer.WriteNumberValue(CreationYearMin.Value);
+			}
+			if (CreationYearMax is not null)
+			{
+				writer.WritePropertyName("creation_year_max"u8);
+				writer.WriteNumberValue(CreationYearMax.Value);
+			}
+			if (Skin is not null)
+			{
+				writer.WritePropertyName("skin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Skin)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (BrawlerRank is not null)
+			{
+				writer.WritePropertyName("brawler_rank"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in BrawlerRank)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (BrawlerRankMax is not null)
+			{
+				writer.WritePropertyName("brawler_rank_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in BrawlerRankMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (BrawlerPower is not null)
+			{
+				writer.WritePropertyName("brawler_power"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in BrawlerPower)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (BrawlerPowerMax is not null)
+			{
+				writer.WritePropertyName("brawler_power_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in BrawlerPowerMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (BrawlerTrophies is not null)
+			{
+				writer.WritePropertyName("brawler_trophies"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in BrawlerTrophies)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (BrawlerTrophiesMax is not null)
+			{
+				writer.WritePropertyName("brawler_trophies_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in BrawlerTrophiesMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (HyperchargesMin is not null)
+			{
+				writer.WritePropertyName("hypercharges_min"u8);
+				writer.WriteNumberValue(HyperchargesMin.Value);
+			}
+			if (HyperchargesMax is not null)
+			{
+				writer.WritePropertyName("hypercharges_max"u8);
+				writer.WriteNumberValue(HyperchargesMax.Value);
+			}
+			if (BrawlHighestTrophiesMin is not null)
+			{
+				writer.WritePropertyName("brawl_highest_trophies_min"u8);
+				writer.WriteNumberValue(BrawlHighestTrophiesMin.Value);
+			}
+			if (BrawlHighestTrophiesMax is not null)
+			{
+				writer.WritePropertyName("brawl_highest_trophies_max"u8);
+				writer.WriteNumberValue(BrawlHighestTrophiesMax.Value);
+			}
+			if (RoyaleEvolvedMin is not null)
+			{
+				writer.WritePropertyName("royale_evolved_min"u8);
+				writer.WriteNumberValue(RoyaleEvolvedMin.Value);
+			}
+			if (RoyaleEvolvedMax is not null)
+			{
+				writer.WritePropertyName("royale_evolved_max"u8);
+				writer.WriteNumberValue(RoyaleEvolvedMax.Value);
+			}
+			if (RoyaleChampionsMin is not null)
+			{
+				writer.WritePropertyName("royale_champions_min"u8);
+				writer.WriteNumberValue(RoyaleChampionsMin.Value);
+			}
+			if (RoyaleChampionsMax is not null)
+			{
+				writer.WritePropertyName("royale_champions_max"u8);
+				writer.WriteNumberValue(RoyaleChampionsMax.Value);
+			}
+			if (RoyaleLeagueTrophiesMin is not null)
+			{
+				writer.WritePropertyName("royale_league_trophies_min"u8);
+				writer.WriteNumberValue(RoyaleLeagueTrophiesMin.Value);
+			}
+			if (RoyaleLeagueTrophiesMax is not null)
+			{
+				writer.WritePropertyName("royale_league_trophies_max"u8);
+				writer.WriteNumberValue(RoyaleLeagueTrophiesMax.Value);
+			}
+			if (RoyaleLeagueNumberMin is not null)
+			{
+				writer.WritePropertyName("royale_league_number_min"u8);
+				writer.WriteNumberValue(RoyaleLeagueNumberMin.Value);
+			}
+			if (RoyaleLeagueNumberMax is not null)
+			{
+				writer.WritePropertyName("royale_league_number_max"u8);
+				writer.WriteNumberValue(RoyaleLeagueNumberMax.Value);
+			}
+			if (SupercellGame is not null)
+			{
+				writer.WritePropertyName("supercell_game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in SupercellGame)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (PrimeCountMin is not null)
+			{
+				writer.WritePropertyName("prime_count_min"u8);
+				writer.WriteNumberValue(PrimeCountMin.Value);
+			}
+			if (PrimeCountMax is not null)
+			{
+				writer.WritePropertyName("prime_count_max"u8);
+				writer.WriteNumberValue(PrimeCountMax.Value);
+			}
+			if (RoyaleCollectionLevelMin is not null)
+			{
+				writer.WritePropertyName("royale_collection_level_min"u8);
+				writer.WriteNumberValue(RoyaleCollectionLevelMin.Value);
+			}
+			if (RoyaleCollectionLevelMax is not null)
+			{
+				writer.WritePropertyName("royale_collection_level_max"u8);
+				writer.WriteNumberValue(RoyaleCollectionLevelMax.Value);
+			}
+			if (BrawlRankedMin is not null)
+			{
+				writer.WritePropertyName("brawl_ranked_min"u8);
+				writer.WriteNumberValue(BrawlRankedMin.Value);
+			}
+			if (BrawlRankedMax is not null)
+			{
+				writer.WritePropertyName("brawl_ranked_max"u8);
+				writer.WriteNumberValue(BrawlRankedMax.Value);
+			}
+			if (BrawlHighestRankedMin is not null)
+			{
+				writer.WritePropertyName("brawl_highest_ranked_min"u8);
+				writer.WriteNumberValue(BrawlHighestRankedMin.Value);
+			}
+			if (BrawlHighestRankedMax is not null)
+			{
+				writer.WritePropertyName("brawl_highest_ranked_max"u8);
+				writer.WriteNumberValue(BrawlHighestRankedMax.Value);
+			}
+			if (BrawlFameLevelMin is not null)
+			{
+				writer.WritePropertyName("brawl_fame_level_min"u8);
+				writer.WriteNumberValue(BrawlFameLevelMin.Value);
+			}
+			if (BrawlFameLevelMax is not null)
+			{
+				writer.WritePropertyName("brawl_fame_level_max"u8);
+				writer.WriteNumberValue(BrawlFameLevelMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategorySupercellResponse(
@@ -12150,6 +15693,295 @@ public sealed record CategorySupercellResponseItems(
 		/// </summary>
 		[JsonPropertyName("transactions")]
 		public Transactions? Transactions { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Game is not null)
+			{
+				writer.WritePropertyName("game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Game)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Gmin is not null)
+			{
+				writer.WritePropertyName("gmin"u8);
+				writer.WriteNumberValue(Gmin.Value);
+			}
+			if (Gmax is not null)
+			{
+				writer.WritePropertyName("gmax"u8);
+				writer.WriteNumberValue(Gmax.Value);
+			}
+			if (AlRankMin is not null)
+			{
+				writer.WritePropertyName("al_rank_min"u8);
+				writer.WriteNumberValue((long)AlRankMin.Value);
+			}
+			if (AlRankMax is not null)
+			{
+				writer.WritePropertyName("al_rank_max"u8);
+				writer.WriteNumberValue((long)AlRankMax.Value);
+			}
+			if (AlLevelMin is not null)
+			{
+				writer.WritePropertyName("al_level_min"u8);
+				writer.WriteNumberValue(AlLevelMin.Value);
+			}
+			if (AlLevelMax is not null)
+			{
+				writer.WritePropertyName("al_level_max"u8);
+				writer.WriteNumberValue(AlLevelMax.Value);
+			}
+			if (HasBan is not null)
+			{
+				writer.WritePropertyName("has_ban"u8);
+				writer.WriteStringValue(HasBan.Value.ToJsonValue());
+			}
+			if (XboxConnected is not null)
+			{
+				writer.WritePropertyName("xbox_connected"u8);
+				writer.WriteStringValue(XboxConnected.Value.ToJsonValue());
+			}
+			if (SteamConnected is not null)
+			{
+				writer.WritePropertyName("steam_connected"u8);
+				writer.WriteStringValue(SteamConnected.Value.ToJsonValue());
+			}
+			if (PsnConnected is not null)
+			{
+				writer.WritePropertyName("psn_connected"u8);
+				writer.WriteStringValue(PsnConnected.Value.ToJsonValue());
+			}
+			if (Subscription is not null)
+			{
+				writer.WritePropertyName("subscription"u8);
+				writer.WriteStringValue(Subscription.Value.ToJsonValue());
+			}
+			if (SubscriptionLength is not null)
+			{
+				writer.WritePropertyName("subscription_length"u8);
+				writer.WriteNumberValue(SubscriptionLength.Value);
+			}
+			if (SubscriptionPeriod is not null)
+			{
+				writer.WritePropertyName("subscription_period"u8);
+				writer.WriteStringValue(SubscriptionPeriod.Value.ToJsonValue());
+			}
+			if (HoursPlayed is not null)
+			{
+				writer.WritePropertyName("hours_played"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in HoursPlayed)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (HoursPlayedMax is not null)
+			{
+				writer.WritePropertyName("hours_played_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in HoursPlayedMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (Transactions is not null)
+			{
+				writer.WritePropertyName("transactions"u8);
+				writer.WriteStringValue(Transactions.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryEaResponse(
@@ -13452,6 +17284,373 @@ public sealed record CategoryEaResponseItems(
 		/// </summary>
 		[JsonPropertyName("clan_members_max")]
 		public long? ClanMembersMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (BattlesMin is not null)
+			{
+				writer.WritePropertyName("battles_min"u8);
+				writer.WriteNumberValue(BattlesMin.Value);
+			}
+			if (BattlesMax is not null)
+			{
+				writer.WritePropertyName("battles_max"u8);
+				writer.WriteNumberValue(BattlesMax.Value);
+			}
+			if (GoldMin is not null)
+			{
+				writer.WritePropertyName("gold_min"u8);
+				writer.WriteNumberValue(GoldMin.Value);
+			}
+			if (GoldMax is not null)
+			{
+				writer.WritePropertyName("gold_max"u8);
+				writer.WriteNumberValue(GoldMax.Value);
+			}
+			if (SilverMin is not null)
+			{
+				writer.WritePropertyName("silver_min"u8);
+				writer.WriteNumberValue(SilverMin.Value);
+			}
+			if (SilverMax is not null)
+			{
+				writer.WritePropertyName("silver_max"u8);
+				writer.WriteNumberValue(SilverMax.Value);
+			}
+			if (TopMin is not null)
+			{
+				writer.WritePropertyName("top_min"u8);
+				writer.WriteNumberValue(TopMin.Value);
+			}
+			if (TopMax is not null)
+			{
+				writer.WritePropertyName("top_max"u8);
+				writer.WriteNumberValue(TopMax.Value);
+			}
+			if (PremMin is not null)
+			{
+				writer.WritePropertyName("prem_min"u8);
+				writer.WriteNumberValue(PremMin.Value);
+			}
+			if (PremMax is not null)
+			{
+				writer.WritePropertyName("prem_max"u8);
+				writer.WriteNumberValue(PremMax.Value);
+			}
+			if (TopPremMin is not null)
+			{
+				writer.WritePropertyName("top_prem_min"u8);
+				writer.WriteNumberValue(TopPremMin.Value);
+			}
+			if (TopPremMax is not null)
+			{
+				writer.WritePropertyName("top_prem_max"u8);
+				writer.WriteNumberValue(TopPremMax.Value);
+			}
+			if (WinPmin is not null)
+			{
+				writer.WritePropertyName("win_pmin"u8);
+				writer.WriteNumberValue(WinPmin.Value);
+			}
+			if (WinPmax is not null)
+			{
+				writer.WritePropertyName("win_pmax"u8);
+				writer.WriteNumberValue(WinPmax.Value);
+			}
+			if (Tank is not null)
+			{
+				writer.WritePropertyName("tank[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Tank)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Region is not null)
+			{
+				writer.WritePropertyName("region[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Region)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotRegion is not null)
+			{
+				writer.WritePropertyName("not_region[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotRegion)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Premium is not null)
+			{
+				writer.WritePropertyName("premium"u8);
+				writer.WriteStringValue(Premium.Value.ToJsonValue());
+			}
+			if (PremiumExpiration is not null)
+			{
+				writer.WritePropertyName("premium_expiration"u8);
+				writer.WriteNumberValue(PremiumExpiration.Value);
+			}
+			if (PremiumExpirationPeriod is not null)
+			{
+				writer.WritePropertyName("premium_expiration_period"u8);
+				writer.WriteStringValue(PremiumExpirationPeriod.Value.ToJsonValue());
+			}
+			if (Clan is not null)
+			{
+				writer.WritePropertyName("clan"u8);
+				writer.WriteStringValue(Clan.Value.ToJsonValue());
+			}
+			if (ClanRole is not null)
+			{
+				writer.WritePropertyName("clan_role[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in ClanRole)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotClanRole is not null)
+			{
+				writer.WritePropertyName("not_clan_role[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotClanRole)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ClanGoldMin is not null)
+			{
+				writer.WritePropertyName("clan_gold_min"u8);
+				writer.WriteNumberValue(ClanGoldMin.Value);
+			}
+			if (ClanGoldMax is not null)
+			{
+				writer.WritePropertyName("clan_gold_max"u8);
+				writer.WriteNumberValue(ClanGoldMax.Value);
+			}
+			if (ClanCrystalMin is not null)
+			{
+				writer.WritePropertyName("clan_crystal_min"u8);
+				writer.WriteNumberValue(ClanCrystalMin.Value);
+			}
+			if (ClanCrystalMax is not null)
+			{
+				writer.WritePropertyName("clan_crystal_max"u8);
+				writer.WriteNumberValue(ClanCrystalMax.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ClanMembersMin is not null)
+			{
+				writer.WritePropertyName("clan_members_min"u8);
+				writer.WriteNumberValue(ClanMembersMin.Value);
+			}
+			if (ClanMembersMax is not null)
+			{
+				writer.WritePropertyName("clan_members_max"u8);
+				writer.WriteNumberValue(ClanMembersMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryWotResponse(
@@ -15935,6 +20134,373 @@ public sealed record CategoryWotResponseItems(
 		/// </summary>
 		[JsonPropertyName("clan_members_max")]
 		public long? ClanMembersMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (BattlesMin is not null)
+			{
+				writer.WritePropertyName("battles_min"u8);
+				writer.WriteNumberValue(BattlesMin.Value);
+			}
+			if (BattlesMax is not null)
+			{
+				writer.WritePropertyName("battles_max"u8);
+				writer.WriteNumberValue(BattlesMax.Value);
+			}
+			if (GoldMin is not null)
+			{
+				writer.WritePropertyName("gold_min"u8);
+				writer.WriteNumberValue(GoldMin.Value);
+			}
+			if (GoldMax is not null)
+			{
+				writer.WritePropertyName("gold_max"u8);
+				writer.WriteNumberValue(GoldMax.Value);
+			}
+			if (SilverMin is not null)
+			{
+				writer.WritePropertyName("silver_min"u8);
+				writer.WriteNumberValue(SilverMin.Value);
+			}
+			if (SilverMax is not null)
+			{
+				writer.WritePropertyName("silver_max"u8);
+				writer.WriteNumberValue(SilverMax.Value);
+			}
+			if (TopMin is not null)
+			{
+				writer.WritePropertyName("top_min"u8);
+				writer.WriteNumberValue(TopMin.Value);
+			}
+			if (TopMax is not null)
+			{
+				writer.WritePropertyName("top_max"u8);
+				writer.WriteNumberValue(TopMax.Value);
+			}
+			if (PremMin is not null)
+			{
+				writer.WritePropertyName("prem_min"u8);
+				writer.WriteNumberValue(PremMin.Value);
+			}
+			if (PremMax is not null)
+			{
+				writer.WritePropertyName("prem_max"u8);
+				writer.WriteNumberValue(PremMax.Value);
+			}
+			if (TopPremMin is not null)
+			{
+				writer.WritePropertyName("top_prem_min"u8);
+				writer.WriteNumberValue(TopPremMin.Value);
+			}
+			if (TopPremMax is not null)
+			{
+				writer.WritePropertyName("top_prem_max"u8);
+				writer.WriteNumberValue(TopPremMax.Value);
+			}
+			if (WinPmin is not null)
+			{
+				writer.WritePropertyName("win_pmin"u8);
+				writer.WriteNumberValue(WinPmin.Value);
+			}
+			if (WinPmax is not null)
+			{
+				writer.WritePropertyName("win_pmax"u8);
+				writer.WriteNumberValue(WinPmax.Value);
+			}
+			if (Tank is not null)
+			{
+				writer.WritePropertyName("tank[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Tank)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Region is not null)
+			{
+				writer.WritePropertyName("region[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Region)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotRegion is not null)
+			{
+				writer.WritePropertyName("not_region[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotRegion)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Premium is not null)
+			{
+				writer.WritePropertyName("premium"u8);
+				writer.WriteStringValue(Premium.Value.ToJsonValue());
+			}
+			if (PremiumExpiration is not null)
+			{
+				writer.WritePropertyName("premium_expiration"u8);
+				writer.WriteNumberValue(PremiumExpiration.Value);
+			}
+			if (PremiumExpirationPeriod is not null)
+			{
+				writer.WritePropertyName("premium_expiration_period"u8);
+				writer.WriteStringValue(PremiumExpirationPeriod.Value.ToJsonValue());
+			}
+			if (Clan is not null)
+			{
+				writer.WritePropertyName("clan"u8);
+				writer.WriteStringValue(Clan.Value.ToJsonValue());
+			}
+			if (ClanRole is not null)
+			{
+				writer.WritePropertyName("clan_role[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in ClanRole)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotClanRole is not null)
+			{
+				writer.WritePropertyName("not_clan_role[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotClanRole)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ClanGoldMin is not null)
+			{
+				writer.WritePropertyName("clan_gold_min"u8);
+				writer.WriteNumberValue(ClanGoldMin.Value);
+			}
+			if (ClanGoldMax is not null)
+			{
+				writer.WritePropertyName("clan_gold_max"u8);
+				writer.WriteNumberValue(ClanGoldMax.Value);
+			}
+			if (ClanCrystalMin is not null)
+			{
+				writer.WritePropertyName("clan_crystal_min"u8);
+				writer.WriteNumberValue(ClanCrystalMin.Value);
+			}
+			if (ClanCrystalMax is not null)
+			{
+				writer.WritePropertyName("clan_crystal_max"u8);
+				writer.WriteNumberValue(ClanCrystalMax.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ClanMembersMin is not null)
+			{
+				writer.WritePropertyName("clan_members_min"u8);
+				writer.WriteNumberValue(ClanMembersMin.Value);
+			}
+			if (ClanMembersMax is not null)
+			{
+				writer.WritePropertyName("clan_members_max"u8);
+				writer.WriteNumberValue(ClanMembersMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryWotBlitzResponse(
@@ -35499,6 +40065,173 @@ public sealed record CategoryWotBlitzResponseItems(
 		/// </summary>
 		[JsonPropertyName("subscription_period")]
 		public SubscriptionPeriod? SubscriptionPeriod { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Subscription is not null)
+			{
+				writer.WritePropertyName("subscription"u8);
+				writer.WriteStringValue(Subscription.Value.ToJsonValue());
+			}
+			if (SubscriptionLength is not null)
+			{
+				writer.WritePropertyName("subscription_length"u8);
+				writer.WriteNumberValue(SubscriptionLength.Value);
+			}
+			if (SubscriptionPeriod is not null)
+			{
+				writer.WritePropertyName("subscription_period"u8);
+				writer.WriteStringValue(SubscriptionPeriod.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryGiftsResponse(
@@ -36456,6 +41189,290 @@ public sealed record CategoryGiftsResponseItems(
 		/// </summary>
 		[JsonPropertyName("last_trans_date_period")]
 		public string? LastTransDatePeriod { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Eg is not null)
+			{
+				writer.WritePropertyName("eg"u8);
+				writer.WriteNumberValue((long)Eg.Value);
+			}
+			if (Game is not null)
+			{
+				writer.WritePropertyName("game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Game)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (ChangeEmail is not null)
+			{
+				writer.WritePropertyName("change_email"u8);
+				writer.WriteStringValue(ChangeEmail.Value.ToJsonValue());
+			}
+			if (RlPurchases is not null)
+			{
+				writer.WritePropertyName("rl_purchases"u8);
+				writer.WriteBooleanValue(RlPurchases.Value);
+			}
+			if (BalanceMin is not null)
+			{
+				writer.WritePropertyName("balance_min"u8);
+				writer.WriteNumberValue(BalanceMin.Value);
+			}
+			if (BalanceMax is not null)
+			{
+				writer.WritePropertyName("balance_max"u8);
+				writer.WriteNumberValue(BalanceMax.Value);
+			}
+			if (RewardsBalanceMin is not null)
+			{
+				writer.WritePropertyName("rewards_balance_min"u8);
+				writer.WriteNumberValue(RewardsBalanceMin.Value);
+			}
+			if (RewardsBalanceMax is not null)
+			{
+				writer.WritePropertyName("rewards_balance_max"u8);
+				writer.WriteNumberValue(RewardsBalanceMax.Value);
+			}
+			if (Gmin is not null)
+			{
+				writer.WritePropertyName("gmin"u8);
+				writer.WriteNumberValue(Gmin.Value);
+			}
+			if (Gmax is not null)
+			{
+				writer.WritePropertyName("gmax"u8);
+				writer.WriteNumberValue(Gmax.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (HoursPlayed is not null)
+			{
+				writer.WritePropertyName("hours_played"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in HoursPlayed)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (HoursPlayedMax is not null)
+			{
+				writer.WritePropertyName("hours_played_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in HoursPlayedMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (NoTrans is not null)
+			{
+				writer.WritePropertyName("no_trans"u8);
+				writer.WriteBooleanValue(NoTrans.Value);
+			}
+			if (LastTransDate is not null)
+			{
+				writer.WritePropertyName("last_trans_date"u8);
+				writer.WriteNumberValue(LastTransDate.Value);
+			}
+			if (LastTransDatePeriod is not null)
+			{
+				writer.WritePropertyName("last_trans_date_period"u8);
+				writer.WriteStringValue(LastTransDatePeriod);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryEpicGamesResponse(
@@ -37821,6 +42838,333 @@ public sealed record CategoryEpicGamesResponseItems(
 		/// </summary>
 		[JsonPropertyName("pve_prestige_max")]
 		public long? PvePrestigeMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Region is not null)
+			{
+				writer.WritePropertyName("region"u8);
+				writer.WriteStringValue(Region.Value.ToJsonValue());
+			}
+			if (Version is not null)
+			{
+				writer.WritePropertyName("version[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Version)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			if (LevelMin is not null)
+			{
+				writer.WritePropertyName("level_min"u8);
+				writer.WriteNumberValue(LevelMin.Value);
+			}
+			if (LevelMax is not null)
+			{
+				writer.WritePropertyName("level_max"u8);
+				writer.WriteNumberValue(LevelMax.Value);
+			}
+			if (Pve is not null)
+			{
+				writer.WritePropertyName("pve"u8);
+				writer.WriteStringValue(Pve.Value.ToJsonValue());
+			}
+			if (Side is not null)
+			{
+				writer.WritePropertyName("side"u8);
+				writer.WriteStringValue(Side.Value.ToJsonValue());
+			}
+			if (Sc is not null)
+			{
+				writer.WritePropertyName("sc[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Sc)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (AlphaArmband is not null)
+			{
+				writer.WritePropertyName("alpha_armband"u8);
+				writer.WriteStringValue(AlphaArmband.Value.ToJsonValue());
+			}
+			if (HoursMin is not null)
+			{
+				writer.WritePropertyName("hours_min"u8);
+				writer.WriteNumberValue(HoursMin.Value);
+			}
+			if (HoursMax is not null)
+			{
+				writer.WritePropertyName("hours_max"u8);
+				writer.WriteNumberValue(HoursMax.Value);
+			}
+			if (StashMin is not null)
+			{
+				writer.WritePropertyName("stash_min"u8);
+				writer.WriteNumberValue(StashMin.Value);
+			}
+			if (StashMax is not null)
+			{
+				writer.WritePropertyName("stash_max"u8);
+				writer.WriteNumberValue(StashMax.Value);
+			}
+			if (PrestigeMin is not null)
+			{
+				writer.WritePropertyName("prestige_min"u8);
+				writer.WriteNumberValue(PrestigeMin.Value);
+			}
+			if (PrestigeMax is not null)
+			{
+				writer.WritePropertyName("prestige_max"u8);
+				writer.WriteNumberValue(PrestigeMax.Value);
+			}
+			if (KdMin is not null)
+			{
+				writer.WritePropertyName("kd_min"u8);
+				writer.WriteNumberValue(KdMin.Value);
+			}
+			if (KdMax is not null)
+			{
+				writer.WritePropertyName("kd_max"u8);
+				writer.WriteNumberValue(KdMax.Value);
+			}
+			if (LastRaid is not null)
+			{
+				writer.WritePropertyName("last_raid"u8);
+				writer.WriteNumberValue(LastRaid.Value);
+			}
+			if (LastRaidPeriod is not null)
+			{
+				writer.WritePropertyName("last_raid_period"u8);
+				writer.WriteStringValue(LastRaidPeriod.Value.ToJsonValue());
+			}
+			if (Achievements is not null)
+			{
+				writer.WritePropertyName("achievements[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Achievements)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (SeasonLevelMin is not null)
+			{
+				writer.WritePropertyName("season_level_min"u8);
+				writer.WriteNumberValue(SeasonLevelMin.Value);
+			}
+			if (SeasonLevelMax is not null)
+			{
+				writer.WritePropertyName("season_level_max"u8);
+				writer.WriteNumberValue(SeasonLevelMax.Value);
+			}
+			if (SeasonPrestigeMin is not null)
+			{
+				writer.WritePropertyName("season_prestige_min"u8);
+				writer.WriteNumberValue(SeasonPrestigeMin.Value);
+			}
+			if (SeasonPrestigeMax is not null)
+			{
+				writer.WritePropertyName("season_prestige_max"u8);
+				writer.WriteNumberValue(SeasonPrestigeMax.Value);
+			}
+			if (PveLevelMin is not null)
+			{
+				writer.WritePropertyName("pve_level_min"u8);
+				writer.WriteNumberValue(PveLevelMin.Value);
+			}
+			if (PveLevelMax is not null)
+			{
+				writer.WritePropertyName("pve_level_max"u8);
+				writer.WriteNumberValue(PveLevelMax.Value);
+			}
+			if (PvePrestigeMin is not null)
+			{
+				writer.WritePropertyName("pve_prestige_min"u8);
+				writer.WriteNumberValue(PvePrestigeMin.Value);
+			}
+			if (PvePrestigeMax is not null)
+			{
+				writer.WritePropertyName("pve_prestige_max"u8);
+				writer.WriteNumberValue(PvePrestigeMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryEscapeFromTarkovResponse(
@@ -38872,6 +44216,203 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 		/// </summary>
 		[JsonPropertyName("game[]")]
 		public List<string>? Game { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (LevelMin is not null)
+			{
+				writer.WritePropertyName("level_min"u8);
+				writer.WriteNumberValue(LevelMin.Value);
+			}
+			if (LevelMax is not null)
+			{
+				writer.WritePropertyName("level_max"u8);
+				writer.WriteNumberValue(LevelMax.Value);
+			}
+			if (CashMin is not null)
+			{
+				writer.WritePropertyName("cash_min"u8);
+				writer.WriteNumberValue(CashMin.Value);
+			}
+			if (CashMax is not null)
+			{
+				writer.WritePropertyName("cash_max"u8);
+				writer.WriteNumberValue(CashMax.Value);
+			}
+			if (BankCashMin is not null)
+			{
+				writer.WritePropertyName("bank_cash_min"u8);
+				writer.WriteNumberValue(BankCashMin.Value);
+			}
+			if (BankCashMax is not null)
+			{
+				writer.WritePropertyName("bank_cash_max"u8);
+				writer.WriteNumberValue(BankCashMax.Value);
+			}
+			if (Game is not null)
+			{
+				writer.WritePropertyName("game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Game)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategorySocialClubResponse(
@@ -40058,6 +45599,338 @@ public sealed record CategorySocialClubResponseItems(
 		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Game is not null)
+			{
+				writer.WritePropertyName("game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Game)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (Gmin is not null)
+			{
+				writer.WritePropertyName("gmin"u8);
+				writer.WriteNumberValue(Gmin.Value);
+			}
+			if (Gmax is not null)
+			{
+				writer.WritePropertyName("gmax"u8);
+				writer.WriteNumberValue(Gmax.Value);
+			}
+			if (Subscription is not null)
+			{
+				writer.WritePropertyName("subscription"u8);
+				writer.WriteStringValue(Subscription.Value.ToJsonValue());
+			}
+			if (SubscriptionLength is not null)
+			{
+				writer.WritePropertyName("subscription_length"u8);
+				writer.WriteNumberValue(SubscriptionLength.Value);
+			}
+			if (SubscriptionPeriod is not null)
+			{
+				writer.WritePropertyName("subscription_period"u8);
+				writer.WriteStringValue(SubscriptionPeriod.Value.ToJsonValue());
+			}
+			if (R6LevelMin is not null)
+			{
+				writer.WritePropertyName("r6_level_min"u8);
+				writer.WriteNumberValue(R6LevelMin.Value);
+			}
+			if (R6LevelMax is not null)
+			{
+				writer.WritePropertyName("r6_level_max"u8);
+				writer.WriteNumberValue(R6LevelMax.Value);
+			}
+			if (R6RankMin is not null)
+			{
+				writer.WritePropertyName("r6_rank_min"u8);
+				writer.WriteNumberValue((long)R6RankMin.Value);
+			}
+			if (R6RankMax is not null)
+			{
+				writer.WritePropertyName("r6_rank_max"u8);
+				writer.WriteNumberValue((long)R6RankMax.Value);
+			}
+			if (R6OperatorsMin is not null)
+			{
+				writer.WritePropertyName("r6_operators_min"u8);
+				writer.WriteNumberValue(R6OperatorsMin.Value);
+			}
+			if (R6OperatorsMax is not null)
+			{
+				writer.WritePropertyName("r6_operators_max"u8);
+				writer.WriteNumberValue(R6OperatorsMax.Value);
+			}
+			if (R6Ban is not null)
+			{
+				writer.WritePropertyName("r6_ban"u8);
+				writer.WriteStringValue(R6Ban.Value.ToJsonValue());
+			}
+			if (R6Smin is not null)
+			{
+				writer.WritePropertyName("r6_smin"u8);
+				writer.WriteNumberValue(R6Smin.Value);
+			}
+			if (R6Smax is not null)
+			{
+				writer.WritePropertyName("r6_smax"u8);
+				writer.WriteNumberValue(R6Smax.Value);
+			}
+			if (R6Skin is not null)
+			{
+				writer.WritePropertyName("r6_skin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in R6Skin)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (R6Operator is not null)
+			{
+				writer.WritePropertyName("r6_operator[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in R6Operator)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (XboxConnected is not null)
+			{
+				writer.WritePropertyName("xbox_connected"u8);
+				writer.WriteStringValue(XboxConnected.Value.ToJsonValue());
+			}
+			if (PsnConnected is not null)
+			{
+				writer.WritePropertyName("psn_connected"u8);
+				writer.WriteStringValue(PsnConnected.Value.ToJsonValue());
+			}
+			if (SteamConnected is not null)
+			{
+				writer.WritePropertyName("steam_connected"u8);
+				writer.WriteStringValue(SteamConnected.Value.ToJsonValue());
+			}
+			if (BalanceMin is not null)
+			{
+				writer.WritePropertyName("balance_min"u8);
+				writer.WriteNumberValue(BalanceMin.Value);
+			}
+			if (BalanceMax is not null)
+			{
+				writer.WritePropertyName("balance_max"u8);
+				writer.WriteNumberValue(BalanceMax.Value);
+			}
+			if (Transactions is not null)
+			{
+				writer.WritePropertyName("transactions"u8);
+				writer.WriteStringValue(Transactions.Value.ToJsonValue());
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryUplayResponse(
@@ -41497,6 +47370,433 @@ public sealed record CategoryUplayResponseItems(
 		/// </summary>
 		[JsonPropertyName("username_max")]
 		public long? UsernameMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (Nitro is not null)
+			{
+				writer.WritePropertyName("nitro"u8);
+				writer.WriteStringValue(Nitro.Value.ToJsonValue());
+			}
+			if (NitroType is not null)
+			{
+				writer.WritePropertyName("nitro_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NitroType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NitroLength is not null)
+			{
+				writer.WritePropertyName("nitro_length"u8);
+				writer.WriteNumberValue(NitroLength.Value);
+			}
+			if (NitroPeriod is not null)
+			{
+				writer.WritePropertyName("nitro_period"u8);
+				writer.WriteStringValue(NitroPeriod.Value.ToJsonValue());
+			}
+			if (BoostsMin is not null)
+			{
+				writer.WritePropertyName("boosts_min"u8);
+				writer.WriteNumberValue(BoostsMin.Value);
+			}
+			if (BoostsMax is not null)
+			{
+				writer.WritePropertyName("boosts_max"u8);
+				writer.WriteNumberValue(BoostsMax.Value);
+			}
+			if (Billing is not null)
+			{
+				writer.WritePropertyName("billing"u8);
+				writer.WriteStringValue(Billing.Value.ToJsonValue());
+			}
+			if (Gifts is not null)
+			{
+				writer.WritePropertyName("gifts"u8);
+				writer.WriteStringValue(Gifts.Value.ToJsonValue());
+			}
+			if (Transactions is not null)
+			{
+				writer.WritePropertyName("transactions"u8);
+				writer.WriteStringValue(Transactions.Value.ToJsonValue());
+			}
+			if (Badge is not null)
+			{
+				writer.WritePropertyName("badge[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Badge)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Condition is not null)
+			{
+				writer.WritePropertyName("condition[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Condition)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ChatMin is not null)
+			{
+				writer.WritePropertyName("chat_min"u8);
+				writer.WriteNumberValue(ChatMin.Value);
+			}
+			if (ChatMax is not null)
+			{
+				writer.WritePropertyName("chat_max"u8);
+				writer.WriteNumberValue(ChatMax.Value);
+			}
+			if (MinAdminMembers is not null)
+			{
+				writer.WritePropertyName("min_admin_members"u8);
+				writer.WriteNumberValue(MinAdminMembers.Value);
+			}
+			if (MaxAdminMembers is not null)
+			{
+				writer.WritePropertyName("max_admin_members"u8);
+				writer.WriteNumberValue(MaxAdminMembers.Value);
+			}
+			if (MinAdmin is not null)
+			{
+				writer.WritePropertyName("min_admin"u8);
+				writer.WriteNumberValue(MinAdmin.Value);
+			}
+			if (MaxAdmin is not null)
+			{
+				writer.WritePropertyName("max_admin"u8);
+				writer.WriteNumberValue(MaxAdmin.Value);
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			if (Language is not null)
+			{
+				writer.WritePropertyName("language[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Language)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotLanguage is not null)
+			{
+				writer.WritePropertyName("not_language[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotLanguage)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Clans is not null)
+			{
+				writer.WritePropertyName("clans"u8);
+				writer.WriteStringValue(Clans.Value.ToJsonValue());
+			}
+			if (MinAdminClans is not null)
+			{
+				writer.WritePropertyName("min_admin_clans"u8);
+				writer.WriteNumberValue(MinAdminClans.Value);
+			}
+			if (MaxAdminClans is not null)
+			{
+				writer.WritePropertyName("max_admin_clans"u8);
+				writer.WriteNumberValue(MaxAdminClans.Value);
+			}
+			if (MinOwnerClans is not null)
+			{
+				writer.WritePropertyName("min_owner_clans"u8);
+				writer.WriteNumberValue(MinOwnerClans.Value);
+			}
+			if (MaxOwnerClans is not null)
+			{
+				writer.WritePropertyName("max_owner_clans"u8);
+				writer.WriteNumberValue(MaxOwnerClans.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (MinServers is not null)
+			{
+				writer.WritePropertyName("min_servers"u8);
+				writer.WriteNumberValue(MinServers.Value);
+			}
+			if (MaxServers is not null)
+			{
+				writer.WritePropertyName("max_servers"u8);
+				writer.WriteNumberValue(MaxServers.Value);
+			}
+			if (_2fa is not null)
+			{
+				writer.WritePropertyName("2fa"u8);
+				writer.WriteStringValue(_2fa.Value.ToJsonValue());
+			}
+			if (MinFullCredits is not null)
+			{
+				writer.WritePropertyName("min_full_credits"u8);
+				writer.WriteNumberValue(MinFullCredits.Value);
+			}
+			if (MaxFullCredits is not null)
+			{
+				writer.WritePropertyName("max_full_credits"u8);
+				writer.WriteNumberValue(MaxFullCredits.Value);
+			}
+			if (MinBasicCredits is not null)
+			{
+				writer.WritePropertyName("min_basic_credits"u8);
+				writer.WriteNumberValue(MinBasicCredits.Value);
+			}
+			if (MaxBasicCredits is not null)
+			{
+				writer.WritePropertyName("max_basic_credits"u8);
+				writer.WriteNumberValue(MaxBasicCredits.Value);
+			}
+			if (MinOrbs is not null)
+			{
+				writer.WritePropertyName("min_orbs"u8);
+				writer.WriteNumberValue(MinOrbs.Value);
+			}
+			if (MaxOrbs is not null)
+			{
+				writer.WritePropertyName("max_orbs"u8);
+				writer.WriteNumberValue(MaxOrbs.Value);
+			}
+			if (HasBadge is not null)
+			{
+				writer.WritePropertyName("has_badge"u8);
+				writer.WriteStringValue(HasBadge.Value.ToJsonValue());
+			}
+			if (MinOwnerMembers is not null)
+			{
+				writer.WritePropertyName("min_owner_members"u8);
+				writer.WriteNumberValue(MinOwnerMembers.Value);
+			}
+			if (MaxOwnerMembers is not null)
+			{
+				writer.WritePropertyName("max_owner_members"u8);
+				writer.WriteNumberValue(MaxOwnerMembers.Value);
+			}
+			if (MinOwner is not null)
+			{
+				writer.WritePropertyName("min_owner"u8);
+				writer.WriteNumberValue(MinOwner.Value);
+			}
+			if (MaxOwner is not null)
+			{
+				writer.WritePropertyName("max_owner"u8);
+				writer.WriteNumberValue(MaxOwner.Value);
+			}
+			if (UsernameMin is not null)
+			{
+				writer.WritePropertyName("username_min"u8);
+				writer.WriteNumberValue(UsernameMin.Value);
+			}
+			if (UsernameMax is not null)
+			{
+				writer.WritePropertyName("username_max"u8);
+				writer.WriteNumberValue(UsernameMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryDiscordResponse(
@@ -42528,6 +48828,253 @@ public sealed record CategoryDiscordResponseItems(
 		/// </summary>
 		[JsonPropertyName("can_stream_studio")]
 		public CanStreamStudio? CanStreamStudio { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			if (FollowersMin is not null)
+			{
+				writer.WritePropertyName("followers_min"u8);
+				writer.WriteNumberValue(FollowersMin.Value);
+			}
+			if (FollowersMax is not null)
+			{
+				writer.WritePropertyName("followers_max"u8);
+				writer.WriteNumberValue(FollowersMax.Value);
+			}
+			if (PostMin is not null)
+			{
+				writer.WritePropertyName("post_min"u8);
+				writer.WriteNumberValue(PostMin.Value);
+			}
+			if (PostMax is not null)
+			{
+				writer.WritePropertyName("post_max"u8);
+				writer.WriteNumberValue(PostMax.Value);
+			}
+			if (LikeMin is not null)
+			{
+				writer.WritePropertyName("like_min"u8);
+				writer.WriteNumberValue(LikeMin.Value);
+			}
+			if (LikeMax is not null)
+			{
+				writer.WritePropertyName("like_max"u8);
+				writer.WriteNumberValue(LikeMax.Value);
+			}
+			if (CoinsMin is not null)
+			{
+				writer.WritePropertyName("coins_min"u8);
+				writer.WriteNumberValue(CoinsMin.Value);
+			}
+			if (CoinsMax is not null)
+			{
+				writer.WritePropertyName("coins_max"u8);
+				writer.WriteNumberValue(CoinsMax.Value);
+			}
+			if (CookieLogin is not null)
+			{
+				writer.WritePropertyName("cookie_login"u8);
+				writer.WriteStringValue(CookieLogin.Value.ToJsonValue());
+			}
+			if (Verified is not null)
+			{
+				writer.WritePropertyName("verified"u8);
+				writer.WriteStringValue(Verified.Value.ToJsonValue());
+			}
+			if (Email is not null)
+			{
+				writer.WritePropertyName("email"u8);
+				writer.WriteStringValue(Email.Value.ToJsonValue());
+			}
+			if (CanStream is not null)
+			{
+				writer.WritePropertyName("can_stream"u8);
+				writer.WriteStringValue(CanStream.Value.ToJsonValue());
+			}
+			if (CanStreamStudio is not null)
+			{
+				writer.WritePropertyName("can_stream_studio"u8);
+				writer.WriteStringValue(CanStreamStudio.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryTikTokResponse(
@@ -43627,6 +50174,238 @@ public sealed record CategoryTikTokResponseItems(
 		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Cookies is not null)
+			{
+				writer.WritePropertyName("cookies"u8);
+				writer.WriteStringValue(Cookies.Value.ToJsonValue());
+			}
+			if (LoginWithoutCookies is not null)
+			{
+				writer.WritePropertyName("login_without_cookies"u8);
+				writer.WriteStringValue(LoginWithoutCookies.Value.ToJsonValue());
+			}
+			if (FollowersMin is not null)
+			{
+				writer.WritePropertyName("followers_min"u8);
+				writer.WriteNumberValue(FollowersMin.Value);
+			}
+			if (FollowersMax is not null)
+			{
+				writer.WritePropertyName("followers_max"u8);
+				writer.WriteNumberValue(FollowersMax.Value);
+			}
+			if (PostMin is not null)
+			{
+				writer.WritePropertyName("post_min"u8);
+				writer.WriteNumberValue(PostMin.Value);
+			}
+			if (PostMax is not null)
+			{
+				writer.WritePropertyName("post_max"u8);
+				writer.WriteNumberValue(PostMax.Value);
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryInstagramResponse(
@@ -44673,6 +51452,253 @@ public sealed record CategoryInstagramResponseItems(
 		/// </summary>
 		[JsonPropertyName("balance_max")]
 		public long? BalanceMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Eg is not null)
+			{
+				writer.WritePropertyName("eg"u8);
+				writer.WriteNumberValue((long)Eg.Value);
+			}
+			if (Game is not null)
+			{
+				writer.WritePropertyName("game[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Game)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (EditBtag is not null)
+			{
+				writer.WritePropertyName("edit_btag"u8);
+				writer.WriteStringValue(EditBtag.Value.ToJsonValue());
+			}
+			if (ChangeableFn is not null)
+			{
+				writer.WritePropertyName("changeable_fn"u8);
+				writer.WriteStringValue(ChangeableFn.Value.ToJsonValue());
+			}
+			if (RealId is not null)
+			{
+				writer.WritePropertyName("real_id"u8);
+				writer.WriteStringValue(RealId.Value.ToJsonValue());
+			}
+			if (ParentControl is not null)
+			{
+				writer.WritePropertyName("parent_control"u8);
+				writer.WriteStringValue(ParentControl.Value.ToJsonValue());
+			}
+			if (NoBans is not null)
+			{
+				writer.WritePropertyName("no_bans"u8);
+				writer.WriteStringValue(NoBans.Value.ToJsonValue());
+			}
+			if (BalanceMin is not null)
+			{
+				writer.WritePropertyName("balance_min"u8);
+				writer.WriteNumberValue(BalanceMin.Value);
+			}
+			if (BalanceMax is not null)
+			{
+				writer.WritePropertyName("balance_max"u8);
+				writer.WriteNumberValue(BalanceMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryBattleNetResponse(
@@ -46007,6 +53033,273 @@ public sealed record CategoryBattleNetResponseItems(
 		/// </summary>
 		[JsonPropertyName("has_payment_method")]
 		public HasPaymentMethod? HasPaymentMethod { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (EmailType is not null)
+			{
+				writer.WritePropertyName("email_type[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailType)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ItemDomain is not null)
+			{
+				writer.WritePropertyName("item_domain"u8);
+				writer.WriteStringValue(ItemDomain);
+			}
+			if (Subscription is not null)
+			{
+				writer.WritePropertyName("subscription[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Subscription)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (SubscriptionLength is not null)
+			{
+				writer.WritePropertyName("subscription_length"u8);
+				writer.WriteNumberValue(SubscriptionLength.Value);
+			}
+			if (SubscriptionPeriod is not null)
+			{
+				writer.WritePropertyName("subscription_period"u8);
+				writer.WriteStringValue(SubscriptionPeriod.Value.ToJsonValue());
+			}
+			if (Autorenewal is not null)
+			{
+				writer.WritePropertyName("autorenewal"u8);
+				writer.WriteStringValue(Autorenewal.Value.ToJsonValue());
+			}
+			if (Transactions is not null)
+			{
+				writer.WritePropertyName("transactions"u8);
+				writer.WriteStringValue(Transactions.Value.ToJsonValue());
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			if (Service is not null)
+			{
+				writer.WritePropertyName("service[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Service)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotService is not null)
+			{
+				writer.WritePropertyName("not_service[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotService)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (KycVerified is not null)
+			{
+				writer.WritePropertyName("kyc_verified"u8);
+				writer.WriteStringValue(KycVerified.Value.ToJsonValue());
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (Cookies is not null)
+			{
+				writer.WritePropertyName("cookies"u8);
+				writer.WriteStringValue(Cookies.Value.ToJsonValue());
+			}
+			if (UsagePercentMin is not null)
+			{
+				writer.WritePropertyName("usage_percent_min"u8);
+				writer.WriteNumberValue(UsagePercentMin.Value);
+			}
+			if (UsagePercentMax is not null)
+			{
+				writer.WritePropertyName("usage_percent_max"u8);
+				writer.WriteNumberValue(UsagePercentMax.Value);
+			}
+			if (BalanceMin is not null)
+			{
+				writer.WritePropertyName("balance_min"u8);
+				writer.WriteNumberValue(BalanceMin.Value);
+			}
+			if (BalanceMax is not null)
+			{
+				writer.WritePropertyName("balance_max"u8);
+				writer.WriteNumberValue(BalanceMax.Value);
+			}
+			if (HasPaymentMethod is not null)
+			{
+				writer.WritePropertyName("has_payment_method"u8);
+				writer.WriteStringValue(HasPaymentMethod.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryLlmResponse(
@@ -46982,6 +54275,183 @@ public sealed record CategoryLlmResponseItems(
 		/// </summary>
 		[JsonPropertyName("autorenewal")]
 		public Autorenewal? Autorenewal { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Service is not null)
+			{
+				writer.WritePropertyName("service[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Service)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (SubscriptionLength is not null)
+			{
+				writer.WritePropertyName("subscription_length"u8);
+				writer.WriteNumberValue(SubscriptionLength.Value);
+			}
+			if (SubscriptionPeriod is not null)
+			{
+				writer.WritePropertyName("subscription_period"u8);
+				writer.WriteStringValue(SubscriptionPeriod.Value.ToJsonValue());
+			}
+			if (Autorenewal is not null)
+			{
+				writer.WritePropertyName("autorenewal"u8);
+				writer.WriteStringValue(Autorenewal.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryVpnResponse(
@@ -48066,6 +55536,405 @@ public sealed record CategoryVpnResponseItems(
 		/// </summary>
 		[JsonPropertyName("group_pending_robux_max")]
 		public long? GroupPendingRobuxMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Email is not null)
+			{
+				writer.WritePropertyName("email"u8);
+				writer.WriteStringValue(Email.Value.ToJsonValue());
+			}
+			if (RobuxMin is not null)
+			{
+				writer.WritePropertyName("robux_min"u8);
+				writer.WriteNumberValue(RobuxMin.Value);
+			}
+			if (RobuxMax is not null)
+			{
+				writer.WritePropertyName("robux_max"u8);
+				writer.WriteNumberValue(RobuxMax.Value);
+			}
+			if (FriendsMin is not null)
+			{
+				writer.WritePropertyName("friends_min"u8);
+				writer.WriteNumberValue(FriendsMin.Value);
+			}
+			if (FriendsMax is not null)
+			{
+				writer.WritePropertyName("friends_max"u8);
+				writer.WriteNumberValue(FriendsMax.Value);
+			}
+			if (FollowersMin is not null)
+			{
+				writer.WritePropertyName("followers_min"u8);
+				writer.WriteNumberValue(FollowersMin.Value);
+			}
+			if (FollowersMax is not null)
+			{
+				writer.WritePropertyName("followers_max"u8);
+				writer.WriteNumberValue(FollowersMax.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country"u8);
+				writer.WriteStringValue(Country.Value.ToJsonValue());
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country"u8);
+				writer.WriteStringValue(NotCountry.Value.ToJsonValue());
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			if (Subscription is not null)
+			{
+				writer.WritePropertyName("subscription"u8);
+				writer.WriteStringValue(Subscription.Value.ToJsonValue());
+			}
+			if (SubscriptionLength is not null)
+			{
+				writer.WritePropertyName("subscription_length"u8);
+				writer.WriteNumberValue(SubscriptionLength.Value);
+			}
+			if (SubscriptionPeriod is not null)
+			{
+				writer.WritePropertyName("subscription_period"u8);
+				writer.WriteStringValue(SubscriptionPeriod.Value.ToJsonValue());
+			}
+			if (Autorenewal is not null)
+			{
+				writer.WritePropertyName("autorenewal"u8);
+				writer.WriteStringValue(Autorenewal.Value.ToJsonValue());
+			}
+			if (XboxConnected is not null)
+			{
+				writer.WritePropertyName("xbox_connected"u8);
+				writer.WriteStringValue(XboxConnected.Value.ToJsonValue());
+			}
+			if (PsnConnected is not null)
+			{
+				writer.WritePropertyName("psn_connected"u8);
+				writer.WriteStringValue(PsnConnected.Value.ToJsonValue());
+			}
+			if (Verified is not null)
+			{
+				writer.WritePropertyName("verified"u8);
+				writer.WriteStringValue(Verified.Value.ToJsonValue());
+			}
+			if (AgeVerified is not null)
+			{
+				writer.WritePropertyName("age_verified"u8);
+				writer.WriteStringValue(AgeVerified.Value.ToJsonValue());
+			}
+			if (IncomingRobuxTotalMin is not null)
+			{
+				writer.WritePropertyName("incoming_robux_total_min"u8);
+				writer.WriteNumberValue(IncomingRobuxTotalMin.Value);
+			}
+			if (IncomingRobuxTotalMax is not null)
+			{
+				writer.WritePropertyName("incoming_robux_total_max"u8);
+				writer.WriteNumberValue(IncomingRobuxTotalMax.Value);
+			}
+			if (LimitedPriceMin is not null)
+			{
+				writer.WritePropertyName("limited_price_min"u8);
+				writer.WriteNumberValue(LimitedPriceMin.Value);
+			}
+			if (LimitedPriceMax is not null)
+			{
+				writer.WritePropertyName("limited_price_max"u8);
+				writer.WriteNumberValue(LimitedPriceMax.Value);
+			}
+			if (GamepassMin is not null)
+			{
+				writer.WritePropertyName("gamepass_min"u8);
+				writer.WriteNumberValue(GamepassMin.Value);
+			}
+			if (GamepassMax is not null)
+			{
+				writer.WritePropertyName("gamepass_max"u8);
+				writer.WriteNumberValue(GamepassMax.Value);
+			}
+			if (GameDonations is not null)
+			{
+				writer.WritePropertyName("game_donations"u8);
+				writer.WriteStringValue(GameDonations.Value.ToJsonValue());
+			}
+			if (InvMin is not null)
+			{
+				writer.WritePropertyName("inv_min"u8);
+				writer.WriteNumberValue(InvMin.Value);
+			}
+			if (InvMax is not null)
+			{
+				writer.WritePropertyName("inv_max"u8);
+				writer.WriteNumberValue(InvMax.Value);
+			}
+			if (UgcLimitedPriceMin is not null)
+			{
+				writer.WritePropertyName("ugc_limited_price_min"u8);
+				writer.WriteNumberValue(UgcLimitedPriceMin.Value);
+			}
+			if (UgcLimitedPriceMax is not null)
+			{
+				writer.WritePropertyName("ugc_limited_price_max"u8);
+				writer.WriteNumberValue(UgcLimitedPriceMax.Value);
+			}
+			if (CreditBalanceMin is not null)
+			{
+				writer.WritePropertyName("credit_balance_min"u8);
+				writer.WriteNumberValue(CreditBalanceMin.Value);
+			}
+			if (CreditBalanceMax is not null)
+			{
+				writer.WritePropertyName("credit_balance_max"u8);
+				writer.WriteNumberValue(CreditBalanceMax.Value);
+			}
+			if (OffsaleMin is not null)
+			{
+				writer.WritePropertyName("offsale_min"u8);
+				writer.WriteNumberValue(OffsaleMin.Value);
+			}
+			if (OffsaleMax is not null)
+			{
+				writer.WritePropertyName("offsale_max"u8);
+				writer.WriteNumberValue(OffsaleMax.Value);
+			}
+			if (Voice is not null)
+			{
+				writer.WritePropertyName("voice"u8);
+				writer.WriteStringValue(Voice.Value.ToJsonValue());
+			}
+			if (AgeGroup is not null)
+			{
+				writer.WritePropertyName("age_group[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in AgeGroup)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotAgeGroup is not null)
+			{
+				writer.WritePropertyName("not_age_group[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotAgeGroup)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (GameDonation is not null)
+			{
+				writer.WritePropertyName("game_donation[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in GameDonation)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (DonationTotal is not null)
+			{
+				writer.WritePropertyName("donation_total"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in DonationTotal)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (DonationTotalMax is not null)
+			{
+				writer.WritePropertyName("donation_total_max"u8);
+				writer.WriteStartObject();
+				foreach (var __wkv in DonationTotalMax)
+				{
+					writer.WritePropertyName(__wkv.Key);
+					writer.WriteNumberValue(__wkv.Value.GetValueOrDefault());
+				}
+				writer.WriteEndObject();
+			}
+			if (PendingRobuxMin is not null)
+			{
+				writer.WritePropertyName("pending_robux_min"u8);
+				writer.WriteNumberValue(PendingRobuxMin.Value);
+			}
+			if (PendingRobuxMax is not null)
+			{
+				writer.WritePropertyName("pending_robux_max"u8);
+				writer.WriteNumberValue(PendingRobuxMax.Value);
+			}
+			if (GroupPendingRobuxMin is not null)
+			{
+				writer.WritePropertyName("group_pending_robux_min"u8);
+				writer.WriteNumberValue(GroupPendingRobuxMin.Value);
+			}
+			if (GroupPendingRobuxMax is not null)
+			{
+				writer.WritePropertyName("group_pending_robux_max"u8);
+				writer.WriteNumberValue(GroupPendingRobuxMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryRobloxResponse(
@@ -49329,6 +57198,208 @@ public sealed record CategoryRobloxResponseItems(
 		/// </summary>
 		[JsonPropertyName("total_kredits_max")]
 		public long? TotalKreditsMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (RankMin is not null)
+			{
+				writer.WritePropertyName("rank_min"u8);
+				writer.WriteNumberValue(RankMin.Value);
+			}
+			if (RankMax is not null)
+			{
+				writer.WritePropertyName("rank_max"u8);
+				writer.WriteNumberValue(RankMax.Value);
+			}
+			if (BonusRankMin is not null)
+			{
+				writer.WritePropertyName("bonus_rank_min"u8);
+				writer.WriteNumberValue(BonusRankMin.Value);
+			}
+			if (BonusRankMax is not null)
+			{
+				writer.WritePropertyName("bonus_rank_max"u8);
+				writer.WriteNumberValue(BonusRankMax.Value);
+			}
+			if (Tel is not null)
+			{
+				writer.WritePropertyName("tel"u8);
+				writer.WriteStringValue(Tel.Value.ToJsonValue());
+			}
+			if (Daybreak is not null)
+			{
+				writer.WritePropertyName("daybreak"u8);
+				writer.WriteNumberValue(Daybreak.Value);
+			}
+			if (KreditsMin is not null)
+			{
+				writer.WritePropertyName("kredits_min"u8);
+				writer.WriteNumberValue(KreditsMin.Value);
+			}
+			if (KreditsMax is not null)
+			{
+				writer.WritePropertyName("kredits_max"u8);
+				writer.WriteNumberValue(KreditsMax.Value);
+			}
+			if (TotalKreditsMin is not null)
+			{
+				writer.WritePropertyName("total_kredits_min"u8);
+				writer.WriteNumberValue(TotalKreditsMin.Value);
+			}
+			if (TotalKreditsMax is not null)
+			{
+				writer.WritePropertyName("total_kredits_max"u8);
+				writer.WriteNumberValue(TotalKreditsMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryWarfaceResponse(
@@ -50503,6 +58574,353 @@ public sealed record CategoryWarfaceResponseItems(
 		/// </summary>
 		[JsonPropertyName("minecoins_max")]
 		public long? MinecoinsMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Subscription is not null)
+			{
+				writer.WritePropertyName("subscription"u8);
+				writer.WriteStringValue(Subscription.Value.ToJsonValue());
+			}
+			if (SubscriptionLength is not null)
+			{
+				writer.WritePropertyName("subscription_length"u8);
+				writer.WriteNumberValue(SubscriptionLength.Value);
+			}
+			if (SubscriptionPeriod is not null)
+			{
+				writer.WritePropertyName("subscription_period"u8);
+				writer.WriteStringValue(SubscriptionPeriod.Value.ToJsonValue());
+			}
+			if (Autorenewal is not null)
+			{
+				writer.WritePropertyName("autorenewal"u8);
+				writer.WriteStringValue(Autorenewal.Value.ToJsonValue());
+			}
+			if (Java is not null)
+			{
+				writer.WritePropertyName("java"u8);
+				writer.WriteStringValue(Java.Value.ToJsonValue());
+			}
+			if (Bedrock is not null)
+			{
+				writer.WritePropertyName("bedrock"u8);
+				writer.WriteStringValue(Bedrock.Value.ToJsonValue());
+			}
+			if (Dungeons is not null)
+			{
+				writer.WritePropertyName("dungeons"u8);
+				writer.WriteStringValue(Dungeons.Value.ToJsonValue());
+			}
+			if (Legends is not null)
+			{
+				writer.WritePropertyName("legends"u8);
+				writer.WriteStringValue(Legends.Value.ToJsonValue());
+			}
+			if (ChangeNickname is not null)
+			{
+				writer.WritePropertyName("change_nickname"u8);
+				writer.WriteStringValue(ChangeNickname.Value.ToJsonValue());
+			}
+			if (Capes is not null)
+			{
+				writer.WritePropertyName("capes[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Capes)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (CapesMin is not null)
+			{
+				writer.WritePropertyName("capes_min"u8);
+				writer.WriteNumberValue(CapesMin.Value);
+			}
+			if (CapesMax is not null)
+			{
+				writer.WritePropertyName("capes_max"u8);
+				writer.WriteNumberValue(CapesMax.Value);
+			}
+			if (Country is not null)
+			{
+				writer.WritePropertyName("country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Country)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotCountry is not null)
+			{
+				writer.WritePropertyName("not_country[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotCountry)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (HypixelBan is not null)
+			{
+				writer.WritePropertyName("hypixel_ban"u8);
+				writer.WriteStringValue(HypixelBan.Value.ToJsonValue());
+			}
+			if (HypixelSkyblockApiEnabled is not null)
+			{
+				writer.WritePropertyName("hypixel_skyblock_api_enabled"u8);
+				writer.WriteStringValue(HypixelSkyblockApiEnabled.Value.ToJsonValue());
+			}
+			if (RankHypixel is not null)
+			{
+				writer.WritePropertyName("rank_hypixel[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in RankHypixel)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (LevelHypixelMin is not null)
+			{
+				writer.WritePropertyName("level_hypixel_min"u8);
+				writer.WriteNumberValue(LevelHypixelMin.Value);
+			}
+			if (LevelHypixelMax is not null)
+			{
+				writer.WritePropertyName("level_hypixel_max"u8);
+				writer.WriteNumberValue(LevelHypixelMax.Value);
+			}
+			if (AchievementHypixelMin is not null)
+			{
+				writer.WritePropertyName("achievement_hypixel_min"u8);
+				writer.WriteNumberValue(AchievementHypixelMin.Value);
+			}
+			if (AchievementHypixelMax is not null)
+			{
+				writer.WritePropertyName("achievement_hypixel_max"u8);
+				writer.WriteNumberValue(AchievementHypixelMax.Value);
+			}
+			if (LevelHypixelSkyblockMin is not null)
+			{
+				writer.WritePropertyName("level_hypixel_skyblock_min"u8);
+				writer.WriteNumberValue(LevelHypixelSkyblockMin.Value);
+			}
+			if (LevelHypixelSkyblockMax is not null)
+			{
+				writer.WritePropertyName("level_hypixel_skyblock_max"u8);
+				writer.WriteNumberValue(LevelHypixelSkyblockMax.Value);
+			}
+			if (NetWorthHypixelSkyblockMin is not null)
+			{
+				writer.WritePropertyName("net_worth_hypixel_skyblock_min"u8);
+				writer.WriteNumberValue(NetWorthHypixelSkyblockMin.Value);
+			}
+			if (NetWorthHypixelSkyblockMax is not null)
+			{
+				writer.WritePropertyName("net_worth_hypixel_skyblock_max"u8);
+				writer.WriteNumberValue(NetWorthHypixelSkyblockMax.Value);
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			if (LastLoginHypixel is not null)
+			{
+				writer.WritePropertyName("last_login_hypixel"u8);
+				writer.WriteNumberValue(LastLoginHypixel.Value);
+			}
+			if (LastLoginHypixelPeriod is not null)
+			{
+				writer.WritePropertyName("last_login_hypixel_period"u8);
+				writer.WriteStringValue(LastLoginHypixelPeriod.Value.ToJsonValue());
+			}
+			if (CanChangeDetails is not null)
+			{
+				writer.WritePropertyName("can_change_details"u8);
+				writer.WriteStringValue(CanChangeDetails.Value.ToJsonValue());
+			}
+			if (NicknameLengthMin is not null)
+			{
+				writer.WritePropertyName("nickname_length_min"u8);
+				writer.WriteNumberValue(NicknameLengthMin.Value);
+			}
+			if (NicknameLengthMax is not null)
+			{
+				writer.WritePropertyName("nickname_length_max"u8);
+				writer.WriteNumberValue(NicknameLengthMax.Value);
+			}
+			if (HypixelBanParsed is not null)
+			{
+				writer.WritePropertyName("hypixel_ban_parsed"u8);
+				writer.WriteStringValue(HypixelBanParsed.Value.ToJsonValue());
+			}
+			if (MinecoinsMin is not null)
+			{
+				writer.WritePropertyName("minecoins_min"u8);
+				writer.WriteNumberValue(MinecoinsMin.Value);
+			}
+			if (MinecoinsMax is not null)
+			{
+				writer.WritePropertyName("minecoins_max"u8);
+				writer.WriteNumberValue(MinecoinsMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryMinecraftResponse(
@@ -51603,6 +60021,178 @@ public sealed record CategoryMinecraftResponseItems(
 		/// </summary>
 		[JsonPropertyName("profiles_max")]
 		public long? ProfilesMax { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Edition is not null)
+			{
+				writer.WritePropertyName("edition[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Edition)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ProfilesMin is not null)
+			{
+				writer.WritePropertyName("profiles_min"u8);
+				writer.WriteNumberValue(ProfilesMin.Value);
+			}
+			if (ProfilesMax is not null)
+			{
+				writer.WritePropertyName("profiles_max"u8);
+				writer.WriteNumberValue(ProfilesMax.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryHytaleResponse(
@@ -52687,6 +61277,248 @@ public sealed record CategoryHytaleResponseItems(
 		/// </summary>
 		[JsonPropertyName("reg_period")]
 		public RegPeriod? RegPeriod { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Pmin is not null)
+			{
+				writer.WritePropertyName("pmin"u8);
+				writer.WriteNumberValue(Pmin.Value);
+			}
+			if (Pmax is not null)
+			{
+				writer.WritePropertyName("pmax"u8);
+				writer.WriteNumberValue(Pmax.Value);
+			}
+			if (Title is not null)
+			{
+				writer.WritePropertyName("title"u8);
+				writer.WriteStringValue(Title);
+			}
+			if (OrderBy is not null)
+			{
+				writer.WritePropertyName("order_by"u8);
+				writer.WriteStringValue(OrderBy.Value.ToJsonValue());
+			}
+			if (TagId is not null)
+			{
+				writer.WritePropertyName("tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in TagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotTagId is not null)
+			{
+				writer.WritePropertyName("not_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (PublicTagId is not null)
+			{
+				writer.WritePropertyName("public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotPublicTagId is not null)
+			{
+				writer.WritePropertyName("not_public_tag_id[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotPublicTagId)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Origin is not null)
+			{
+				writer.WritePropertyName("origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Origin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotOrigin is not null)
+			{
+				writer.WritePropertyName("not_origin[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotOrigin)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (UserId is not null)
+			{
+				writer.WritePropertyName("user_id"u8);
+				writer.WriteNumberValue(UserId.Value);
+			}
+			if (Nsb is not null)
+			{
+				writer.WritePropertyName("nsb"u8);
+				writer.WriteBooleanValue(Nsb.Value);
+			}
+			if (Sb is not null)
+			{
+				writer.WritePropertyName("sb"u8);
+				writer.WriteBooleanValue(Sb.Value);
+			}
+			if (NsbByMe is not null)
+			{
+				writer.WritePropertyName("nsb_by_me"u8);
+				writer.WriteBooleanValue(NsbByMe.Value);
+			}
+			if (SbByMe is not null)
+			{
+				writer.WritePropertyName("sb_by_me"u8);
+				writer.WriteBooleanValue(SbByMe.Value);
+			}
+			if (Currency is not null)
+			{
+				writer.WritePropertyName("currency"u8);
+				writer.WriteStringValue(Currency.Value.ToJsonValue());
+			}
+			if (EmailLoginData is not null)
+			{
+				writer.WritePropertyName("email_login_data"u8);
+				writer.WriteBooleanValue(EmailLoginData.Value);
+			}
+			if (EmailProvider is not null)
+			{
+				writer.WritePropertyName("email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in EmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (NotEmailProvider is not null)
+			{
+				writer.WritePropertyName("not_email_provider[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NotEmailProvider)
+				{
+					writer.WriteStringValue(__w.ToJsonValue());
+				}
+				writer.WriteEndArray();
+			}
+			if (ParseSameItemIds is not null)
+			{
+				writer.WritePropertyName("parse_same_item_ids"u8);
+				writer.WriteBooleanValue(ParseSameItemIds.Value);
+			}
+			if (Creator is not null)
+			{
+				writer.WritePropertyName("creator[]"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Creator)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			if (SubsMin is not null)
+			{
+				writer.WritePropertyName("subs_min"u8);
+				writer.WriteNumberValue(SubsMin.Value);
+			}
+			if (SubsMax is not null)
+			{
+				writer.WritePropertyName("subs_max"u8);
+				writer.WriteNumberValue(SubsMax.Value);
+			}
+			if (SubscribersMin is not null)
+			{
+				writer.WritePropertyName("subscribers_min"u8);
+				writer.WriteNumberValue(SubscribersMin.Value);
+			}
+			if (SubscribersMax is not null)
+			{
+				writer.WritePropertyName("subscribers_max"u8);
+				writer.WriteNumberValue(SubscribersMax.Value);
+			}
+			if (PostsMin is not null)
+			{
+				writer.WritePropertyName("posts_min"u8);
+				writer.WriteNumberValue(PostsMin.Value);
+			}
+			if (PostsMax is not null)
+			{
+				writer.WritePropertyName("posts_max"u8);
+				writer.WriteNumberValue(PostsMax.Value);
+			}
+			if (BalanceMin is not null)
+			{
+				writer.WritePropertyName("balance_min"u8);
+				writer.WriteNumberValue(BalanceMin.Value);
+			}
+			if (BalanceMax is not null)
+			{
+				writer.WritePropertyName("balance_max"u8);
+				writer.WriteNumberValue(BalanceMax.Value);
+			}
+			if (KycVerified is not null)
+			{
+				writer.WritePropertyName("kyc_verified"u8);
+				writer.WriteStringValue(KycVerified.Value.ToJsonValue());
+			}
+			if (PayoutApproved is not null)
+			{
+				writer.WritePropertyName("payout_approved"u8);
+				writer.WriteStringValue(PayoutApproved.Value.ToJsonValue());
+			}
+			if (AgeVerified is not null)
+			{
+				writer.WritePropertyName("age_verified"u8);
+				writer.WriteStringValue(AgeVerified.Value.ToJsonValue());
+			}
+			if (CardVerified is not null)
+			{
+				writer.WritePropertyName("card_verified"u8);
+				writer.WriteStringValue(CardVerified.Value.ToJsonValue());
+			}
+			if (HasCard is not null)
+			{
+				writer.WritePropertyName("has_card"u8);
+				writer.WriteStringValue(HasCard.Value.ToJsonValue());
+			}
+			if (Transactions is not null)
+			{
+				writer.WritePropertyName("transactions"u8);
+				writer.WriteStringValue(Transactions.Value.ToJsonValue());
+			}
+			if (Reg is not null)
+			{
+				writer.WritePropertyName("reg"u8);
+				writer.WriteNumberValue(Reg.Value);
+			}
+			if (RegPeriod is not null)
+			{
+				writer.WritePropertyName("reg_period"u8);
+				writer.WriteStringValue(RegPeriod.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryOnlyfansResponse(
@@ -53956,6 +62788,18 @@ public sealed record CategoryOnlyfansResponseItems(
 		/// </summary>
 		[JsonPropertyName("top_queries")]
 		public bool? TopQueries { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (TopQueries is not null)
+			{
+				writer.WritePropertyName("top_queries"u8);
+				writer.WriteBooleanValue(TopQueries.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record CategoryListResponse(

@@ -32,6 +32,27 @@ public static class ImapApiTypes
 		/// </summary>
 		[JsonPropertyName("secure")]
 		public required bool? Secure { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("domain"u8);
+			writer.WriteStringValue(Domain);
+			writer.WritePropertyName("imap_server"u8);
+			writer.WriteStringValue(ImapServer);
+			if (Port is not null)
+			{
+				writer.WritePropertyName("port"u8);
+				writer.WriteNumberValue(Port.Value);
+			}
+			if (Secure is not null)
+			{
+				writer.WritePropertyName("secure"u8);
+				writer.WriteBooleanValue(Secure.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ImapCreateResponse(
@@ -90,6 +111,15 @@ public static class ImapApiTypes
 		/// </summary>
 		[JsonPropertyName("domain")]
 		public required string Domain { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("domain"u8);
+			writer.WriteStringValue(Domain);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ImapDeleteResponse(

@@ -45,6 +45,7 @@ internal static partial class Emitter
         w.Line($"[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<{def.TypeName}>))]")
             .Open($"public enum {def.TypeName}");
 
+        var members = new List<(string name, string jsonValue)>();
         foreach (var variant in def.Values)
         {
             if (variant is not EnumVariant.StringVariant sv)
@@ -54,9 +55,29 @@ internal static partial class Emitter
             var escaped = sv.Value.Replace("\\", "\\\\").Replace("\"", "\\\"");
             EmitEnumMemberDoc(w, sv.Description);
             w.Line($"[Lolzteam.Api.Runtime.EnumValue(\"{escaped}\")] {name},");
+            members.Add((name, escaped));
         }
 
         w.Close();
+
+        if (members.Count == 0) return;
+
+        // Lets WriteTo write the JSON string for this enum without going through StringEnumConverter<T>
+        // (which resolves via JsonSerializer and needs reflection-based type metadata).
+        w.Line()
+            .Line($"/// <summary>Zero-reflection JSON string mapping for <see cref=\"{def.TypeName}\"/>.</summary>")
+            .Open($"internal static class {def.TypeName}Extensions")
+            .Open($"public static string ToJsonValue(this {def.TypeName} value)")
+            .Open("return value switch");
+
+        foreach (var (name, jsonValue) in members)
+            w.Line($"{def.TypeName}.{name} => \"{jsonValue}\",");
+
+        w.Line("_ => value.ToString(),");
+
+        w.Close(";")
+            .Close()
+            .Close();
     }
 
     /// <summary>Emit an XML doc <c>&lt;summary&gt;</c> for an enum member, if a description is present.</summary>

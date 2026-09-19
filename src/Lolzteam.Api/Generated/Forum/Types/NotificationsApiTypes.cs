@@ -27,6 +27,28 @@ public static class NotificationsApiTypes
 		/// </summary>
 		[JsonPropertyName("limit")]
 		public long? Limit { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Type is not null)
+			{
+				writer.WritePropertyName("type"u8);
+				writer.WriteStringValue(Type.Value.ToJsonValue());
+			}
+			if (Page is not null)
+			{
+				writer.WritePropertyName("page"u8);
+				writer.WriteNumberValue(Page.Value);
+			}
+			if (Limit is not null)
+			{
+				writer.WritePropertyName("limit"u8);
+				writer.WriteNumberValue(Limit.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record NotificationsListResponse(
@@ -206,6 +228,18 @@ public sealed record NotificationsListResponseLinks(
 		/// </summary>
 		[JsonPropertyName("notification_id")]
 		public long? NotificationId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (NotificationId is not null)
+			{
+				writer.WritePropertyName("notification_id"u8);
+				writer.WriteNumberValue(NotificationId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record NotificationsReadResponse(

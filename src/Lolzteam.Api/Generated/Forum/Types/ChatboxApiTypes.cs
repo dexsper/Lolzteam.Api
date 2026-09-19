@@ -17,6 +17,18 @@ public static class ChatboxApiTypes
 		/// </summary>
 		[JsonPropertyName("room_id")]
 		public RoomId? RoomId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (RoomId is not null)
+			{
+				writer.WritePropertyName("room_id"u8);
+				writer.WriteNumberValue((long)RoomId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxIndexResponse(
@@ -893,6 +905,20 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 		/// </summary>
 		[JsonPropertyName("before_message_id")]
 		public long? BeforeMessageId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("room_id"u8);
+			writer.WriteNumberValue((long)RoomId);
+			if (BeforeMessageId is not null)
+			{
+				writer.WritePropertyName("before_message_id"u8);
+				writer.WriteNumberValue(BeforeMessageId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxGetMessagesResponse(
@@ -963,6 +989,22 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("room_id"u8);
+			writer.WriteNumberValue((long)RoomId);
+			if (ReplyMessageId is not null)
+			{
+				writer.WritePropertyName("reply_message_id"u8);
+				writer.WriteNumberValue(ReplyMessageId.Value);
+			}
+			writer.WritePropertyName("message"u8);
+			writer.WriteStringValue(Message);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxPostMessageResponse(
@@ -1019,6 +1061,20 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 		/// </summary>
 		[JsonPropertyName("message")]
 		public required string Message { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (MessageId is not null)
+			{
+				writer.WritePropertyName("message_id"u8);
+				writer.WriteNumberValue(MessageId.Value);
+			}
+			writer.WritePropertyName("message"u8);
+			writer.WriteStringValue(Message);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxEditMessageResponse(
@@ -1070,6 +1126,18 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 		/// </summary>
 		[JsonPropertyName("message_id")]
 		public required long? MessageId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (MessageId is not null)
+			{
+				writer.WritePropertyName("message_id"u8);
+				writer.WriteNumberValue(MessageId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxDeleteMessageResponse(
@@ -1128,6 +1196,15 @@ public sealed record ChatboxIndexResponseRoomsOnline(
 		/// </summary>
 		[JsonPropertyName("room_id")]
 		public required RoomId RoomId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("room_id"u8);
+			writer.WriteNumberValue((long)RoomId);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxOnlineResponse(
@@ -1531,6 +1608,18 @@ public sealed record ChatboxOnlineResponseUsers(
 		/// </summary>
 		[JsonPropertyName("message_id")]
 		public required long? MessageId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (MessageId is not null)
+			{
+				writer.WritePropertyName("message_id"u8);
+				writer.WriteNumberValue(MessageId.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxReportReasonsResponse(
@@ -1596,6 +1685,20 @@ public sealed record ChatboxOnlineResponseUsers(
 		/// </summary>
 		[JsonPropertyName("reason")]
 		public required string Reason { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (MessageId is not null)
+			{
+				writer.WritePropertyName("message_id"u8);
+				writer.WriteNumberValue(MessageId.Value);
+			}
+			writer.WritePropertyName("reason"u8);
+			writer.WriteStringValue(Reason);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxReportResponse(
@@ -1654,6 +1757,18 @@ public sealed record ChatboxOnlineResponseUsers(
 		/// </summary>
 		[JsonPropertyName("duration")]
 		public Duration? Duration { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Duration is not null)
+			{
+				writer.WritePropertyName("duration"u8);
+				writer.WriteStringValue(Duration.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxGetLeaderboardResponse(
@@ -2350,6 +2465,15 @@ public sealed record ChatboxGetIgnoreResponseIgnored(
 	{
 		[JsonPropertyName("user_id")]
 		public required Lolzteam.Api.Runtime.StringOrLong UserId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("user_id"u8);
+			UserId.WriteTo(writer);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxPostIgnoreResponse(
@@ -2405,6 +2529,15 @@ public sealed record ChatboxGetIgnoreResponseIgnored(
 	{
 		[JsonPropertyName("user_id")]
 		public required Lolzteam.Api.Runtime.StringOrLong UserId { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			writer.WritePropertyName("user_id"u8);
+			UserId.WriteTo(writer);
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ChatboxDeleteIgnoreResponse(

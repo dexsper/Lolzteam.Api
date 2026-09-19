@@ -27,6 +27,28 @@ public static class ForumsApiTypes
 		/// </summary>
 		[JsonPropertyName("order")]
 		public CategoriesOrder? Order { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (ParentCategoryId is not null)
+			{
+				writer.WritePropertyName("parent_category_id"u8);
+				writer.WriteNumberValue(ParentCategoryId.Value);
+			}
+			if (ParentForumId is not null)
+			{
+				writer.WritePropertyName("parent_forum_id"u8);
+				writer.WriteNumberValue(ParentForumId.Value);
+			}
+			if (Order is not null)
+			{
+				writer.WritePropertyName("order"u8);
+				writer.WriteStringValue(Order.Value.ToJsonValue());
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ForumsListResponse(
@@ -559,6 +581,43 @@ public sealed record ForumsFollowersResponseLinks(
 		/// </summary>
 		[JsonPropertyName("minimal_contest_amount")]
 		public long? MinimalContestAmount { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Post is not null)
+			{
+				writer.WritePropertyName("post"u8);
+				writer.WriteBooleanValue(Post.Value);
+			}
+			if (Alert is not null)
+			{
+				writer.WritePropertyName("alert"u8);
+				writer.WriteBooleanValue(Alert.Value);
+			}
+			if (Email is not null)
+			{
+				writer.WritePropertyName("email"u8);
+				writer.WriteBooleanValue(Email.Value);
+			}
+			if (PrefixIds is not null)
+			{
+				writer.WritePropertyName("prefix_ids"u8);
+				writer.WriteStartArray();
+				foreach (var __w in PrefixIds)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (MinimalContestAmount is not null)
+			{
+				writer.WritePropertyName("minimal_contest_amount"u8);
+				writer.WriteNumberValue(MinimalContestAmount.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ForumsFollowResponse(
@@ -666,6 +725,18 @@ public sealed record ForumsFollowersResponseLinks(
 		/// </summary>
 		[JsonPropertyName("total")]
 		public bool? Total { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (Total is not null)
+			{
+				writer.WritePropertyName("total"u8);
+				writer.WriteBooleanValue(Total.Value);
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ForumsFollowedResponse(
@@ -821,6 +892,33 @@ public sealed record ForumsFollowersResponseLinks(
 		/// </summary>
 		[JsonPropertyName("keywords")]
 		public List<string>? Keywords { get; init; }
+
+		/// <summary>Serialize directly via Utf8JsonWriter, no JsonSerializer, no reflection.</summary>
+		public void WriteTo(Utf8JsonWriter writer)
+		{
+			writer.WriteStartObject();
+			if (NodeIds is not null)
+			{
+				writer.WritePropertyName("node_ids"u8);
+				writer.WriteStartArray();
+				foreach (var __w in NodeIds)
+				{
+					writer.WriteNumberValue(__w.GetValueOrDefault());
+				}
+				writer.WriteEndArray();
+			}
+			if (Keywords is not null)
+			{
+				writer.WritePropertyName("keywords"u8);
+				writer.WriteStartArray();
+				foreach (var __w in Keywords)
+				{
+					writer.WriteStringValue(__w);
+				}
+				writer.WriteEndArray();
+			}
+			writer.WriteEndObject();
+		}
 	}
 
 	public sealed record ForumsEditFeedOptionsResponse(
