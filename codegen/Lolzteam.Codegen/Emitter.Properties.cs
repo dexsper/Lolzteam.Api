@@ -6,9 +6,7 @@ internal static partial class Emitter
     /// Emit a <c>sealed record FooParams { … }</c> for query parameters.
     /// Does nothing when the method has no query params.
     /// </summary>
-    private static void EmitQueryParamsRecord(
-        CodeWriter w, string group, MethodDefinition method,
-        Dictionary<string, string> paramToEnumType, List<EnumDefinition>? enumDefs)
+    private static void EmitQueryParamsRecord(CodeWriter w, string group, MethodDefinition method, EnumCatalog enums)
     {
         if (method.Params.QueryParams.Count == 0) return;
 
@@ -16,24 +14,17 @@ internal static partial class Emitter
         w.Open($"public sealed record {typeName}");
 
         var writeProps = new List<WriteProperty>();
-
         foreach (var param in method.Params.QueryParams)
         {
-            var csharpType = ResolvePropCSharpType(param.Name, param.Type, method.OperationId, paramToEnumType);
-            var propName = Naming.SafeCSharpName(param.Name);
-            var defaultLiteral = param.DefaultValue is not null
-                ? FormatDefaultLiteral(param.DefaultValue, csharpType, enumDefs, propName)
-                : null;
-
-            EmitPropertyDecl(w, csharpType, propName, param.Name, param.Required, defaultLiteral,
-                description: param.Description,
-                defaultNote: param.DefaultValue is not null ? FormatDefaultValue(param.DefaultValue) : null
-            );
-
-            writeProps.Add(new WriteProperty(param.Name, propName, ComputeDeclaredType(csharpType, param.Required, defaultLiteral)));
+            writeProps.Add(EmitInputProperty(
+                w,
+                new InputProperty(param.Name, param.Type, param.Required, param.DefaultValue, param.Description),
+                method.OperationId,
+                enums
+            ));
         }
 
-        EmitWriteToMethod(w, writeProps, BuildEnumIsIntLookup(enumDefs));
+        EmitWriteToMethod(w, writeProps, BuildEnumIsIntLookup(enums.Definitions));
 
         w.Close().Line();
     }
@@ -42,15 +33,13 @@ internal static partial class Emitter
     /// Emit a <c>sealed record FooBody { … }</c> (or a discriminated-union hierarchy) for the request body.
     /// Does nothing when the method has nobody, or when the body is a raw array (method accepts <c>List&lt;T&gt;</c> directly).
     /// </summary>
-    private static void EmitBodyRecord(
-        CodeWriter w, string group, MethodDefinition method,
-        Dictionary<string, string> paramToEnumType, List<EnumDefinition>? enumDefs)
+    private static void EmitBodyRecord(CodeWriter w, string group, MethodDefinition method, EnumCatalog enums)
     {
         if (!method.HasBody || method.BodyIsArray) return;
 
         if (method.BodyOneOfVariants is { Count: > 0 } variants)
         {
-            EmitSealedBodyRecords(w, group, method, variants, paramToEnumType, enumDefs);
+            EmitSealedBodyRecords(w, group, method, variants, enums);
             return;
         }
 
@@ -60,36 +49,27 @@ internal static partial class Emitter
         w.Open($"public sealed record {typeName}");
 
         var writeProps = new List<WriteProperty>();
-
         foreach (var prop in method.BodyProperties)
         {
-            var csharpType = ResolvePropCSharpType(prop.Name, prop.Type, method.OperationId, paramToEnumType);
-            var propName = Naming.SafeCSharpName(prop.Name);
-            var defaultLiteral = prop.DefaultValue is not null
-                ? FormatDefaultLiteral(prop.DefaultValue, csharpType, enumDefs, propName)
-                : null;
-
-            EmitPropertyDecl(w, csharpType, propName, prop.Name, prop.Required, defaultLiteral,
-                description: prop.Description,
-                defaultNote: prop.DefaultValue is not null ? FormatDefaultValue(prop.DefaultValue) : null
-            );
-
-            writeProps.Add(new WriteProperty(prop.Name, propName, ComputeDeclaredType(csharpType, prop.Required, defaultLiteral)));
+            writeProps.Add(EmitInputProperty(
+                w,
+                new InputProperty(prop.Name, prop.Type, prop.Required, prop.DefaultValue, prop.Description),
+                method.OperationId,
+                enums
+            ));
         }
 
-        EmitWriteToMethod(w, writeProps, BuildEnumIsIntLookup(enumDefs));
+        EmitWriteToMethod(w, writeProps, BuildEnumIsIntLookup(enums.Definitions));
 
         w.Close().Line();
     }
 
     /// <summary>Emit an abstract base record plus sealed variant records for a discriminated-union body.</summary>
     private static void EmitSealedBodyRecords(
-        CodeWriter w, string group, MethodDefinition method,
-        List<OneOfVariant> variants,
-        Dictionary<string, string> paramToEnumType, List<EnumDefinition>? enumDefs)
+        CodeWriter w, string group, MethodDefinition method, List<OneOfVariant> variants, EnumCatalog enums)
     {
         var baseName = Naming.BuildTypeName(group, method.MethodName) + "Body";
-        var enumIsInt = BuildEnumIsIntLookup(enumDefs);
+        var enumIsInt = BuildEnumIsIntLookup(enums.Definitions);
 
         w.Line("#if NET7_0_OR_GREATER");
         foreach (var variant in variants)
@@ -121,18 +101,12 @@ internal static partial class Emitter
             var writeProps = new List<WriteProperty>();
             foreach (var prop in variant.Properties)
             {
-                var csharpType = ResolvePropCSharpType(prop.Name, prop.Type, method.OperationId, paramToEnumType);
-                var propName = Naming.SafeCSharpName(prop.Name);
-                var defaultLiteral = prop.DefaultValue is not null
-                    ? FormatDefaultLiteral(prop.DefaultValue, csharpType, enumDefs, propName)
-                    : null;
-
-                EmitPropertyDecl(w, csharpType, propName, prop.Name, prop.Required, defaultLiteral,
-                    description: prop.Description,
-                    defaultNote: prop.DefaultValue is not null ? FormatDefaultValue(prop.DefaultValue) : null
-                );
-
-                writeProps.Add(new WriteProperty(prop.Name, propName, ComputeDeclaredType(csharpType, prop.Required, defaultLiteral)));
+                writeProps.Add(EmitInputProperty(
+                    w,
+                    new InputProperty(prop.Name, prop.Type, prop.Required, prop.DefaultValue, prop.Description),
+                    method.OperationId,
+                    enums
+                ));
             }
 
             w.Line()
@@ -157,41 +131,61 @@ internal static partial class Emitter
     /// <c>[JsonPropertyName]</c> attribute, and default initializer.
     /// Handles required/optional and default-value combinations.
     /// </summary>
-    private static void EmitPropertyDecl(
-        CodeWriter w, string csharpType, string propName, string jsonName,
-        bool required, string? defaultLiteral,
-        string? description = null, string? defaultNote = null)
+    private static WriteProperty EmitInputProperty(
+        CodeWriter w, InputProperty property, string operationId, EnumCatalog enums)
     {
-        if (description is not null || defaultNote is not null)
+        var csharpType = ResolvePropCSharpType(property.Name, property.IntermediateType, operationId, enums.ParamToType);
+        var propName = Naming.SafeCSharpName(property.Name);
+        var defaultLiteral = property.DefaultValue is not null
+            ? FormatDefaultLiteral(property.DefaultValue, csharpType, enums.Definitions, propName)
+            : null;
+
+        EmitPropertyDecl(w, new PropertyDecl(
+            csharpType,
+            propName,
+            property.Name,
+            property.Required,
+            defaultLiteral,
+            property.Description,
+            property.DefaultValue is not null ? FormatDefaultValue(property.DefaultValue) : null
+        ));
+
+        return new WriteProperty(property.Name, propName, ComputeDeclaredType(csharpType, property.Required));
+    }
+
+    private static void EmitPropertyDecl(CodeWriter w, PropertyDecl property)
+    {
+        if (property.Description is not null || property.DefaultNote is not null)
         {
             w.Line("/// <summary>");
-            if (description is not null)
-                foreach (var line in DescriptionDoc.ToXmlDocLines(description))
+            if (property.Description is not null)
+                foreach (var line in DescriptionDoc.ToXmlDocLines(property.Description))
                     w.Line(string.IsNullOrEmpty(line) ? "///" : $"/// {line}");
-            if (defaultNote is not null)
+            if (property.DefaultNote is not null)
             {
-                if (description is not null) w.Line("/// <para/>");
-                w.Line($"/// Default: <c>{defaultNote}</c>");
+                if (property.Description is not null) w.Line("/// <para/>");
+                w.Line($"/// Default: <c>{property.DefaultNote}</c>");
             }
             w.Line("/// </summary>");
         }
 
-        if (Naming.NeedsJsonPropertyName(jsonName))
-            w.Line($"[JsonPropertyName(\"{jsonName}\")]");
+        if (Naming.NeedsJsonPropertyName(property.JsonName))
+            w.Line($"[JsonPropertyName(\"{property.JsonName}\")]");
 
-        if (required && defaultLiteral is null)
+        if (property.Required && property.DefaultLiteral is null)
         {
-            w.Line($"public required {csharpType} {propName} {{ get; init; }}");
+            w.Line($"public required {property.CSharpType} {property.PropName} {{ get; init; }}");
             return;
         }
 
-        if (defaultLiteral is not null)
+        if (property.DefaultLiteral is not null)
         {
-            w.Line($"public {(required ? csharpType : MakeNullable(csharpType))} {propName} {{ get; init; }} = {defaultLiteral};");
+            var typeName = property.Required ? property.CSharpType : MakeNullable(property.CSharpType);
+            w.Line($"public {typeName} {property.PropName} {{ get; init; }} = {property.DefaultLiteral};");
             return;
         }
 
-        w.Line($"public {MakeNullable(csharpType)} {propName} {{ get; init; }}");
+        w.Line($"public {MakeNullable(property.CSharpType)} {property.PropName} {{ get; init; }}");
     }
 
     /// <summary>

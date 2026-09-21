@@ -7,9 +7,7 @@ internal static partial class Emitter
     /// inside an already-opened record body.
     /// Zero reflection, no <c>JsonDocument</c> in the happy path.
     /// </summary>
-    private static void EmitReadFromMethods(
-        CodeWriter w, string typeName,
-        List<(string jsonName, string csharpType, bool required)> props)
+    private static void EmitReadFromMethods(CodeWriter w, string typeName, List<RecordField> props)
     {
         w.Line()
             .Line("/// <summary>Deserialize from raw UTF-8 JSON bytes — no JsonDocument, no reflection.</summary>")
@@ -25,9 +23,9 @@ internal static partial class Emitter
         // Index prefix (v0, v1, …) guarantees uniqueness even when SafeCSharpName produces collisions.
         for (var pi = 0; pi < props.Count; pi++)
         {
-            var (_, csharpType, required) = props[pi];
-            var declared = required ? csharpType : MakeNullable(csharpType);
-            var init = required && !IsJsonStruct(csharpType) ? "null!" : "default";
+            var field = props[pi];
+            var declared = field.Required ? field.CSharpType : MakeNullable(field.CSharpType);
+            var init = field.Required && !JsonScalars.IsStruct(field.CSharpType) ? "null!" : "default";
             w.Line($"{declared} v{pi} = {init};");
         }
 
@@ -38,12 +36,12 @@ internal static partial class Emitter
         var first = true;
         for (var pi = 0; pi < props.Count; pi++)
         {
-            var (jsonName, csharpType, required) = props[pi];
+            var field = props[pi];
             var keyword = first ? "if" : "else if";
-            w.Open($"{keyword} (reader.ValueTextEquals(\"{jsonName}\"u8))")
+            w.Open($"{keyword} (reader.ValueTextEquals(\"{field.JsonName}\"u8))")
                 .Line("reader.Read();");
 
-            EmitReadValueInto(w, $"v{pi}", csharpType, required);
+            EmitReadValueInto(w, $"v{pi}", field.CSharpType, field.Required);
             w.Close();
             first = false;
         }
@@ -67,21 +65,14 @@ internal static partial class Emitter
     /// </summary>
     private static void EmitReadValueInto(CodeWriter w, string localName, string csharpType, bool required)
     {
-        string? scalarExpr = csharpType switch
-        {
-            "long" or "int" => "reader.GetInt64()",
-            "double" or "float" => "reader.GetDouble()",
-            "bool" => "reader.GetBoolean()",
-            "string" => required ? "reader.GetString()!" : "reader.GetString()",
-            "Lolzteam.Api.Runtime.StringOrLong" or "StringOrLong" =>
-                "Lolzteam.Api.Runtime.StringOrLong.ReadFrom(ref reader)",
-            "JsonElement" => "JsonDocument.ParseValue(ref reader).RootElement.Clone()",
-            _ => null,
-        };
+        EmitReadNode(w, localName, CsharpType.Parse(csharpType), required, csharpType);
+    }
 
-        if (scalarExpr is not null)
+    private static void EmitReadNode(CodeWriter w, string localName, CsharpType type, bool required, string constructorType)
+    {
+        if (type is CsharpType.Primitive primitive && JsonScalars.ReadExpression(primitive.Name, required) is { } scalarExpr)
         {
-            if (!required && IsJsonStruct(csharpType))
+            if (!required && JsonScalars.IsStruct(primitive.Name))
             {
                 w.Open("if (reader.TokenType == JsonTokenType.Null)")
                     .Line($"{localName} = null;")
@@ -96,14 +87,13 @@ internal static partial class Emitter
             return;
         }
 
-        if (csharpType.StartsWith("List<") && csharpType.EndsWith('>'))
+        if (type is CsharpType.List list)
         {
-            var itemType = csharpType[5..^1];
             w.Open("if (reader.TokenType == JsonTokenType.StartArray)")
-                .Line($"var __lst = new {csharpType}();")
+                .Line($"var __lst = new {constructorType}();")
                 .Open("while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)");
 
-            EmitInlineListItem(w, itemType);
+            EmitInlineToken(w, list.Item, "__item", 0);
 
             w.Line("__lst.Add(__item);")
                 .Close()
@@ -112,17 +102,16 @@ internal static partial class Emitter
             return;
         }
 
-        if (csharpType.StartsWith("Dictionary<string, ") && csharpType.EndsWith('>'))
+        if (type is CsharpType.Map map)
         {
-            var valType = csharpType["Dictionary<string, ".Length..^1];
             w.Open("if (reader.TokenType == JsonTokenType.StartObject)")
-                .Line($"var __dict = new {csharpType}();")
+                .Line($"var __dict = new {constructorType}();")
                 .Open("while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)")
                 .Line("if (reader.TokenType != JsonTokenType.PropertyName) continue;")
                 .Line("var __key = reader.GetString()!;")
                 .Line("reader.Read();");
 
-            EmitInlineDictValue(w, valType);
+            EmitInlineToken(w, map.Value, "__val", 0);
 
             w.Line("__dict[__key] = __val;")
                 .Close()
@@ -133,94 +122,54 @@ internal static partial class Emitter
 
         var nullLiteral = required ? "null!" : "null";
         w.Line(
-            $"{localName} = reader.TokenType == JsonTokenType.Null ? {nullLiteral} : {csharpType}.ReadFromReader(ref reader);");
-    }
-
-    private static bool IsJsonStruct(string csharpType)
-    {
-        switch (csharpType)
-        {
-            case "long":
-            case "int":
-            case "double":
-            case "float":
-            case "bool":
-            case "JsonElement":
-            case "StringOrLong":
-            case "Lolzteam.Api.Runtime.StringOrLong":
-                return true;
-            default:
-                return false;
-        }
+            $"{localName} = reader.TokenType == JsonTokenType.Null ? {nullLiteral} : {constructorType}.ReadFromReader(ref reader);");
     }
 
     private static string DepthSuffix(int depth) => depth == 0 ? "" : depth.ToString();
 
-    /// <summary>Emit a variable declaration for a list item at the given nesting depth.</summary>
-    private static void EmitInlineListItem(CodeWriter w, string itemType, int depth = 0)
-    {
-        EmitInlineToken(w, itemType.TrimEnd('?'), $"__item{DepthSuffix(depth)}", depth);
-    }
-
-    /// <summary>Emit a variable declaration for a dictionary value at the given nesting depth.</summary>
-    private static void EmitInlineDictValue(CodeWriter w, string valueType, int depth = 0)
-    {
-        EmitInlineToken(w, valueType.TrimEnd('?'), $"__val{DepthSuffix(depth)}", depth);
-    }
-
     /// <summary>
-    /// Emit a declaration + population for <paramref name="varName"/> of <paramref name="baseType"/>.
-    /// Handles primitives (single line), <c>List&lt;T&gt;</c>, and <c>Dictionary&lt;string, T&gt;</c>
-    /// recursively. <paramref name="depth"/> tracks nesting to generate unique variable names:
-    /// depth 0 → <c>__item</c> / <c>__val</c>, depth 1 → <c>__item1</c> / <c>__val1</c>, etc.
+    /// Emit a declaration + population for <paramref name="varName"/> of <paramref name="type"/>.
+    /// List and dictionary items drop one outer nullable marker and are read as the underlying value,
+    /// matching the existing generated readers. <paramref name="depth"/> keeps nested names unique:
+    /// depth 0 → <c>__item</c> / <c>__val</c>, depth 1 → <c>__item1</c> / <c>__val1</c>.
     /// </summary>
-    private static void EmitInlineToken(CodeWriter w, string baseType, string varName, int depth)
+    private static void EmitInlineToken(CodeWriter w, CsharpType type, string varName, int depth)
     {
-        string? expr = baseType switch
-        {
-            "long" or "int" => "reader.GetInt64()",
-            "double" or "float" => "reader.GetDouble()",
-            "bool" => "reader.GetBoolean()",
-            "string" => "reader.GetString()!",
-            "Lolzteam.Api.Runtime.StringOrLong" or "StringOrLong" =>
-                "Lolzteam.Api.Runtime.StringOrLong.ReadFrom(ref reader)",
-            "JsonElement" => "JsonDocument.ParseValue(ref reader).RootElement.Clone()",
-            _ when baseType.StartsWith("List<") && baseType.EndsWith('>') => null,
-            _ when baseType.StartsWith("Dictionary<string, ") && baseType.EndsWith('>') => null,
-            _ => $"{baseType}.ReadFromReader(ref reader)",
-        };
-
-        if (expr is not null)
+        var concrete = type.Unwrap();
+        if (concrete is CsharpType.Primitive primitive && JsonScalars.ReadExpression(primitive.Name, required: true) is { } expr)
         {
             w.Line($"var {varName} = {expr};");
             return;
         }
 
-        if (baseType.StartsWith("List<") && baseType.EndsWith('>'))
+        var rendered = concrete.Render();
+        if (concrete is CsharpType.List list)
         {
             var innerItemName = $"__item{DepthSuffix(depth + 1)}";
-            var itemType = baseType[5..^1];
-
-            w.Line($"var {varName} = new {baseType}();")
+            w.Line($"var {varName} = new {rendered}();")
                 .Open("if (reader.TokenType == JsonTokenType.StartArray)")
                 .Open("while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)");
 
-            EmitInlineListItem(w, itemType, depth + 1);
+            EmitInlineToken(w, list.Item, innerItemName, depth + 1);
             w.Line($"{varName}.Add({innerItemName});").Close().Close();
             return;
         }
 
-        var innerValName = $"__val{DepthSuffix(depth + 1)}";
-        var valType = baseType["Dictionary<string, ".Length..^1];
+        if (concrete is CsharpType.Map map)
+        {
+            var innerValName = $"__val{DepthSuffix(depth + 1)}";
+            w.Line($"var {varName} = new {rendered}();")
+                .Open("if (reader.TokenType == JsonTokenType.StartObject)")
+                .Open("while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)")
+                .Line("if (reader.TokenType != JsonTokenType.PropertyName) continue;")
+                .Line($"var __key{DepthSuffix(depth)} = reader.GetString()!;")
+                .Line("reader.Read();");
 
-        w.Line($"var {varName} = new {baseType}();")
-            .Open("if (reader.TokenType == JsonTokenType.StartObject)")
-            .Open("while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)")
-            .Line("if (reader.TokenType != JsonTokenType.PropertyName) continue;")
-            .Line($"var __key{DepthSuffix(depth)} = reader.GetString()!;")
-            .Line("reader.Read();");
+            EmitInlineToken(w, map.Value, innerValName, depth + 1);
+            w.Line($"{varName}[__key{DepthSuffix(depth)}] = {innerValName};").Close().Close();
+            return;
+        }
 
-        EmitInlineDictValue(w, valType, depth + 1);
-        w.Line($"{varName}[__key{DepthSuffix(depth)}] = {innerValName};").Close().Close();
+        w.Line($"var {varName} = {rendered}.ReadFromReader(ref reader);");
     }
 }

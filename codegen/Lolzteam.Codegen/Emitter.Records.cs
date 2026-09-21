@@ -17,9 +17,13 @@ internal static partial class Emitter
             return;
         }
 
-        var entries = CollectSchemaEntries(propsObj, rawSpec, componentSchemaNames, name, nestedRecords, requiredSet);
-        EmitPositionalRecord(w, name, entries);
+        var entries = CollectSchemaEntries(
+            propsObj,
+            new SchemaScope(rawSpec, componentSchemaNames, name, nestedRecords),
+            requiredSet
+        );
 
+        EmitPositionalRecord(w, name, entries);
         foreach (var nested in nestedRecords)
             w.Line().Raw(nested);
     }
@@ -41,10 +45,7 @@ internal static partial class Emitter
             var requiredSet = CollectRequiredSet(rawSchema);
             var entries = CollectSchemaEntries(
                 propsObj,
-                rawSpec,
-                componentSchemaNames,
-                typeName,
-                nestedRecords,
+                new SchemaScope(rawSpec, componentSchemaNames, typeName, nestedRecords),
                 requiredSet
             );
 
@@ -78,9 +79,7 @@ internal static partial class Emitter
     /// Emit a <c>public sealed record T(…)</c> with generated
     /// <c>ReadFrom(ReadOnlyMemory&lt;byte&gt;)</c> and <c>ReadFromReader(ref Utf8JsonReader)</c> methods.
     /// </summary>
-    private static void EmitPositionalRecord(
-        CodeWriter w, string typeName,
-        List<(string jsonName, string csharpType, bool required)> entries)
+    private static void EmitPositionalRecord(CodeWriter w, string typeName, List<RecordField> entries)
     {
         if (entries.Count == 0)
         {
@@ -93,11 +92,11 @@ internal static partial class Emitter
 
         for (var i = 0; i < entries.Count; i++)
         {
-            var (jsonName, csharpType, required) = entries[i];
-            var propName = DeduplicateName(Naming.SafeCSharpName(jsonName), seen);
-            var typeStr = required ? csharpType : MakeNullable(csharpType);
+            var field = entries[i];
+            var propName = DeduplicateName(Naming.SafeCSharpName(field.JsonName), seen);
+            var typeStr = field.Required ? field.CSharpType : MakeNullable(field.CSharpType);
             var comma = i < entries.Count - 1 ? "," : "";
-            w.Line($"[property: JsonPropertyName(\"{jsonName}\")] {typeStr} {propName}{comma}");
+            w.Line($"[property: JsonPropertyName(\"{field.JsonName}\")] {typeStr} {propName}{comma}");
         }
 
         w.Pop().Open(")");
@@ -117,24 +116,15 @@ internal static partial class Emitter
         return set;
     }
 
-    private static List<(string jsonName, string csharpType, bool required)> CollectSchemaEntries(
-        JsonObject propsObj, JsonNode rawSpec, HashSet<string> componentSchemaNames,
-        string parentTypeName, List<string> nestedRecords, HashSet<string> requiredSet)
+    private static List<RecordField> CollectSchemaEntries(JsonObject propsObj, SchemaScope scope,
+        HashSet<string> requiredSet)
     {
-        var entries = new List<(string, string, bool)>();
+        var entries = new List<RecordField>();
         foreach (var kvp in propsObj)
         {
             if (kvp.Value is null) continue;
-            var csharpType = ResolveComponentPropertyType(
-                kvp.Value,
-                rawSpec,
-                componentSchemaNames,
-                parentTypeName,
-                kvp.Key,
-                nestedRecords
-            );
-
-            entries.Add((kvp.Key, csharpType, requiredSet.Contains(kvp.Key)));
+            var csharpType = ResolveComponentPropertyType(kvp.Value, scope, kvp.Key);
+            entries.Add(new RecordField(kvp.Key, csharpType, requiredSet.Contains(kvp.Key)));
         }
 
         return entries;
@@ -143,13 +133,15 @@ internal static partial class Emitter
     /// <summary>
     /// Resolve the C# type for a property within a component schema or response record.
     /// Handles <c>$ref</c>, arrays, multi-type fields (<c>StringOrLong</c>), inline objects,
-    /// and primitive scalars. Inline objects emit a nested record and are added to
-    /// <paramref name="nestedRecords"/> for emission after the parent.
+    /// and primitive scalars. Inline objects emit a nested record onto <see cref="SchemaScope.NestedRecords"/>.
     /// </summary>
-    private static string ResolveComponentPropertyType(
-        JsonNode schema, JsonNode rawSpec, HashSet<string> componentSchemaNames,
-        string? parentTypeName = null, string? propName = null, List<string>? nestedRecords = null)
+    private static string ResolveComponentPropertyType(JsonNode schema, SchemaScope scope, string? propName = null)
     {
+        var rawSpec = scope.RawSpec;
+        var parentTypeName = scope.ParentTypeName;
+        var nestedRecords = scope.NestedRecords;
+        var componentSchemaNames = scope.ComponentSchemaNames;
+
         if (schema is JsonObject refObj && refObj["$ref"] is JsonValue jv && jv.TryGetValue<string>(out var refStr))
         {
             if (refStr.StartsWith("#/components/schemas/"))
@@ -162,13 +154,7 @@ internal static partial class Emitter
             var resolved = Transforms.ResolveRef(refStr, rawSpec);
             if (resolved is not null)
             {
-                return ResolveComponentPropertyType(
-                    resolved,
-                    rawSpec,
-                    componentSchemaNames,
-                    parentTypeName,
-                    propName,
-                    nestedRecords);
+                return ResolveComponentPropertyType(resolved, scope, propName);
             }
         }
 
@@ -190,10 +176,7 @@ internal static partial class Emitter
             // (nullability is applied by the caller via MakeNullable)
             if (nonNull.Count == 1)
             {
-                return ResolveComponentPropertyType(
-                    new JsonObject { ["type"] = nonNull[0] },
-                    rawSpec, componentSchemaNames, parentTypeName, propName, nestedRecords
-                );
+                return ResolveComponentPropertyType(new JsonObject { ["type"] = nonNull[0] }, scope, propName);
             }
 
             return "JsonElement";
@@ -208,8 +191,7 @@ internal static partial class Emitter
             var items = sObj["items"];
             if (items is not null)
             {
-                var itemType = ResolveComponentPropertyType(items, rawSpec, componentSchemaNames, parentTypeName,
-                    propName, nestedRecords);
+                var itemType = ResolveComponentPropertyType(items, scope, propName);
                 return $"List<{itemType}>";
             }
 
@@ -223,15 +205,7 @@ internal static partial class Emitter
         {
             if (additionalProps is JsonObject additionalPropsSchema && properties is null or JsonObject { Count: 0 })
             {
-                var valType = ResolveComponentPropertyType(
-                    additionalPropsSchema,
-                    rawSpec,
-                    componentSchemaNames,
-                    parentTypeName,
-                    propName,
-                    nestedRecords
-                );
-
+                var valType = ResolveComponentPropertyType(additionalPropsSchema, scope, propName);
                 return $"Dictionary<string, {valType}>";
             }
 
@@ -244,11 +218,7 @@ internal static partial class Emitter
             var nestedName = parentTypeName + Naming.SnakeToPascal(Naming.SanitizeName(propName));
             var nestedRequired = CollectRequiredSet(sObj);
             var nestedEntries = CollectSchemaEntries(
-                innerProps,
-                rawSpec,
-                componentSchemaNames,
-                nestedName,
-                nestedRecords,
+                innerProps, scope with { ParentTypeName = nestedName },
                 nestedRequired
             );
 

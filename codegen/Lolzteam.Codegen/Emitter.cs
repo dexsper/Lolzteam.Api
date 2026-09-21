@@ -5,123 +5,133 @@ namespace Lolzteam.Codegen;
 /// <summary>Generates C# source files from parsed API definitions.</summary>
 internal static partial class Emitter
 {
-	/// <summary>
-	/// Generate per-file content for the <c>Types/</c> directory:
-	/// <c>Enums.cs</c>, <c>Schemas.cs</c>, and one <c>{ClassName}Types.cs</c> per group.
-	/// Returns a dictionary of <c>filename → content</c>.
-	/// </summary>
-	internal static Dictionary<string, string> EmitCSharpTypeFiles(
-		List<ParsedGroup> groups, string subPackage,
-		SortedDictionary<string, JsonObject> componentSchemas, JsonNode rawSpec,
-		List<EnumDefinition> enumDefs, Dictionary<string, string> paramToEnumType)
-	{
-		var ns = "Lolzteam.Api.Generated." + Naming.CapitalizeFirst(subPackage);
-		var componentSchemaNames = new HashSet<string>(componentSchemas.Keys);
-		var files = new Dictionary<string, string>();
+    /// <summary>
+    /// Generate per-file content for the <c>Types/</c> directory:
+    /// <c>Enums.cs</c>, <c>Schemas.cs</c>, and one <c>{ClassName}Types.cs</c> per group.
+    /// Returns a dictionary of <c>filename → content</c>.
+    /// </summary>
+    internal static Dictionary<string, string> EmitCSharpTypeFiles(TypeGeneration generation)
+    {
+        var rawSpec = generation.RawSpec;
+        var subPackage = generation.SubPackage;
+        var groups = generation.Groups;
+        var enumDefs = generation.Enums.Definitions;
+        var componentSchemas = generation.ComponentSchemas;
 
-		if (enumDefs.Count > 0)
-		{
-			var w = MakeTypeFileHeader(ns);
-			foreach (var def in enumDefs) { EmitEnumDefinition(w, def); w.Line(); }
-			files["Enums.cs"] = w.ToString();
-		}
+        var ns = "Lolzteam.Api.Generated." + Naming.CapitalizeFirst(subPackage);
+        var componentSchemaNames = new HashSet<string>(componentSchemas.Keys);
+        var files = new Dictionary<string, string>();
 
-		if (componentSchemas.Count > 0)
-		{
-			var w = MakeTypeFileHeader(ns);
-			foreach (var kvp in componentSchemas) { EmitComponentSchemaRecord(w, kvp.Key, kvp.Value, rawSpec, componentSchemaNames); w.Line(); }
-			files["Schemas.cs"] = w.ToString();
-		}
+        if (enumDefs.Count > 0)
+        {
+            var w = MakeTypeFileHeader(ns);
+            foreach (var def in enumDefs)
+            {
+                EmitEnumDefinition(w, def);
+                w.Line();
+            }
 
-		foreach (var group in groups)
-		{
-			var className = Naming.GroupToClassName(group.GroupName);
-			var w = MakeTypeFileHeader(ns);
-			w.Open($"public static class {className}Types");
+            files["Enums.cs"] = w.ToString();
+        }
 
-			foreach (var method in group.Methods)
-			{
-				EmitQueryParamsRecord(w, group.GroupName, method, paramToEnumType, enumDefs);
-				EmitBodyRecord(w, group.GroupName, method, paramToEnumType, enumDefs);
-				EmitResponseRecord(w, group.GroupName, method, rawSpec, componentSchemaNames);
-			}
+        if (componentSchemas.Count > 0)
+        {
+            var w = MakeTypeFileHeader(ns);
+            foreach (var kvp in componentSchemas)
+            {
+                EmitComponentSchemaRecord(w, kvp.Key, kvp.Value, rawSpec, componentSchemaNames);
+                w.Line();
+            }
 
-			w.Close();
-			files[$"{className}Types.cs"] = w.ToString();
-		}
+            files["Schemas.cs"] = w.ToString();
+        }
 
-		return files;
-	}
+        foreach (var group in groups)
+        {
+            var className = Naming.GroupToClassName(group.GroupName);
+            var w = MakeTypeFileHeader(ns);
+            w.Open($"public static class {className}Types");
+
+            foreach (var method in group.Methods)
+            {
+                EmitQueryParamsRecord(w, group.GroupName, method, generation.Enums);
+                EmitBodyRecord(w, group.GroupName, method, generation.Enums);
+                EmitResponseRecord(w, group.GroupName, method, rawSpec, componentSchemaNames);
+            }
+
+            w.Close();
+            files[$"{className}Types.cs"] = w.ToString();
+        }
+
+        return files;
+    }
 
     private static CodeWriter MakeTypeFileHeader(string ns)
     {
-		return new CodeWriter()
-			.Line("// Auto-generated. Do not edit manually.")
-			.Line("#nullable enable")
-			.Line("#pragma warning disable CS1591, CA1707")
-			.Line()
-			.Line("using System.Collections.Generic;")
-			.Line("using System.Text.Json;")
-			.Line("using System.Text.Json.Serialization;")
-			.Line()
-			.Line($"namespace {ns};")
-			.Line();
+        return new CodeWriter()
+            .Line("// Auto-generated. Do not edit manually.")
+            .Line("#nullable enable")
+            .Line("#pragma warning disable CS1591, CA1707")
+            .Line()
+            .Line("using System.Collections.Generic;")
+            .Line("using System.Text.Json;")
+            .Line("using System.Text.Json.Serialization;")
+            .Line()
+            .Line($"namespace {ns};")
+            .Line();
     }
 
-	/// <summary>
-	/// Generate the <c>Client.cs</c> and <c>Interface.cs</c> files.
-	/// </summary>
-	internal static (string clientFile, string interfaceFile) EmitCSharpClientFile(
-		List<ParsedGroup> groups,
-		string clientName, string interfaceName,
-		string defaultBaseUrl, int defaultRateLimit,
-		string subPackage, int defaultSearchRateLimit)
-	{
-		var ns = "Lolzteam.Api.Generated." + Naming.CapitalizeFirst(subPackage);
-		var w = new CodeWriter();
+    /// <summary>
+    /// Generate the <c>Client.cs</c> and <c>Interface.cs</c> files.
+    /// </summary>
+    internal static (string clientFile, string interfaceFile) EmitCSharpClientFile(
+        List<ParsedGroup> groups, ApiConfig config)
+    {
+        var ns = "Lolzteam.Api.Generated." + Naming.CapitalizeFirst(config.SubPackage);
+        var w = new CodeWriter();
 
-		w.Line("// Auto-generated. Do not edit manually.")
-		 .Line("#nullable enable")
-		 .Line("#pragma warning disable CS1591, CA1707")
-		 .Line()
-		 .Line("using System.Text.Json;")
-		 .Line("using Lolzteam.Api.Runtime;")
-		 .Line()
-		 .Line($"namespace {ns};")
-		 .Line();
+        w.Line("// Auto-generated. Do not edit manually.")
+            .Line("#nullable enable")
+            .Line("#pragma warning disable CS1591, CA1707")
+            .Line()
+            .Line("using System.Text.Json;")
+            .Line("using Lolzteam.Api.Runtime;")
+            .Line()
+            .Line($"namespace {ns};")
+            .Line();
 
-		foreach (var group in groups)
-		{
-			EmitGroupClass(w, group);
-			w.Line();
-		}
+        foreach (var group in groups)
+        {
+            EmitGroupClass(w, group);
+            w.Line();
+        }
 
-		EmitClientClass(w, groups, clientName, interfaceName,
-			defaultBaseUrl, defaultRateLimit, defaultSearchRateLimit);
+        EmitClientClass(w, groups, config);
 
-		var interfaceFile = EmitClientInterface(groups, interfaceName, subPackage);
-		return (w.ToString(), interfaceFile);
-	}
+        var interfaceFile = EmitClientInterface(groups, config);
+        return (w.ToString(), interfaceFile);
+    }
 
-	/// <summary>Ensure a property name is unique within its record by appending a numeric suffix.</summary>
-	private static string DeduplicateName(string name, HashSet<string> seen)
-	{
-		if (seen.Add(name)) return name;
-		var suffix = 2;
-		while (!seen.Add(name + suffix)) suffix++;
-		return name + suffix;
-	}
+    /// <summary>Ensure a property name is unique within its record by appending a numeric suffix.</summary>
+    private static string DeduplicateName(string name, HashSet<string> seen)
+    {
+        if (seen.Add(name)) return name;
+        var suffix = 2;
+        while (!seen.Add(name + suffix)) suffix++;
+        return name + suffix;
+    }
 
-	/// <summary>Make a C# type nullable if it isn't already (avoids <c>int??</c> etc.).</summary>
-	private static string MakeNullable(string type) => type.EndsWith('?') ? type : type + "?";
+    /// <summary>Append <c>?</c> when the type itself is not already nullable. <c>List&lt;long?&gt;</c> becomes <c>List&lt;long?&gt;?</c>.</summary>
+    private static string MakeNullable(string type) =>
+        CsharpType.Parse(type) is CsharpType.Nullable ? type : type + "?";
 
-	/// <summary>
-	/// Map a path-parameter intermediate type to a native C# type.
-	/// Falls back to <c>string</c> for complex types that cannot be interpolated into a URL.
-	/// </summary>
-	private static string PathParamToCSharpType(string intermediateType)
-	{
-		var csharp = Transforms.ToCSharpType(intermediateType).TrimEnd('?');
-		return csharp == "JsonElement" ? "string" : csharp;
-	}
+    /// <summary>
+    /// Map a path-parameter intermediate type to a native C# type.
+    /// Falls back to <c>string</c> for complex types that cannot be interpolated into a URL.
+    /// </summary>
+    private static string PathParamToCSharpType(string intermediateType)
+    {
+        var csharp = CsharpType.Parse(Transforms.ToCSharpType(intermediateType)).Unwrap().Render();
+        return csharp == "JsonElement" ? "string" : csharp;
+    }
 }

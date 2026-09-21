@@ -17,7 +17,11 @@ internal static partial class Emitter
         string defaultValue, string csharpType,
         List<EnumDefinition>? enumDefs, string? propName = null)
     {
-        var baseType = csharpType.TrimEnd('?');
+        var parsed = CsharpType.Parse(csharpType).Unwrap();
+        if (parsed is not CsharpType.Primitive primitive)
+            return null;
+
+        var baseType = primitive.Name;
 
         switch (baseType)
         {

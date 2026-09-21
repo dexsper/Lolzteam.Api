@@ -20,7 +20,7 @@ internal static class EnumCollector
 	/// <summary>
 	/// Collect all enum definitions and build a mapping from (groupName, paramName) → enum type name.
 	/// </summary>
-	internal static (List<EnumDefinition> Enums, Dictionary<string, string> ParamToEnumType) Collect(List<ParsedGroup> groups)
+	internal static EnumCatalog Collect(List<ParsedGroup> groups)
 	{
 		var occurrences = new List<EnumOccurrence>();
 		foreach (var group in groups)
@@ -63,7 +63,7 @@ internal static class EnumCollector
 
 		if (occurrences.Count == 0)
 		{
-			return ([], []);
+			return new EnumCatalog([], []);
 		}
 
 		var byName = new Dictionary<string, List<EnumOccurrence>>();
@@ -136,7 +136,7 @@ internal static class EnumCollector
 		}
 
 		var sortedEnums = enumDefs.Values.OrderBy(e => e.TypeName).ToList();
-		return (sortedEnums, paramToEnumType);
+		return new EnumCatalog(sortedEnums, paramToEnumType);
 	}
 
 	/// <summary>Deduplicate value sets, returning distinct (isInt, values) pairs.</summary>

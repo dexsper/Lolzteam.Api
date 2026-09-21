@@ -45,7 +45,7 @@ internal static partial class Emitter
         w.Line($"[JsonConverter(typeof(Lolzteam.Api.Runtime.StringEnumConverter<{def.TypeName}>))]")
             .Open($"public enum {def.TypeName}");
 
-        var members = new List<(string name, string jsonValue)>();
+        var members = new List<EnumJsonMember>();
         foreach (var variant in def.Values)
         {
             if (variant is not EnumVariant.StringVariant sv)
@@ -55,7 +55,7 @@ internal static partial class Emitter
             var escaped = sv.Value.Replace("\\", "\\\\").Replace("\"", "\\\"");
             EmitEnumMemberDoc(w, sv.Description);
             w.Line($"[Lolzteam.Api.Runtime.EnumValue(\"{escaped}\")] {name},");
-            members.Add((name, escaped));
+            members.Add(new EnumJsonMember(name, escaped));
         }
 
         w.Close();
@@ -70,8 +70,8 @@ internal static partial class Emitter
             .Open($"public static string ToJsonValue(this {def.TypeName} value)")
             .Open("return value switch");
 
-        foreach (var (name, jsonValue) in members)
-            w.Line($"{def.TypeName}.{name} => \"{jsonValue}\",");
+        foreach (var member in members)
+            w.Line($"{def.TypeName}.{member.Name} => \"{member.JsonValue}\",");
 
         w.Line("_ => value.ToString(),");
 

@@ -33,11 +33,10 @@ internal static partial class Emitter
         w.Close();
     }
 
-    private static void EmitClientClass(
-        CodeWriter w, List<ParsedGroup> groups,
-        string clientName, string interfaceName,
-        string defaultBaseUrl, int defaultRateLimit, int defaultSearchRateLimit)
+    private static void EmitClientClass(CodeWriter w, List<ParsedGroup> groups, ApiConfig config)
     {
+        var clientName = config.ClientName;
+        var interfaceName = config.InterfaceName;
         w.Open($"public sealed class {clientName} : {interfaceName}");
         foreach (var group in groups)
         {
@@ -50,11 +49,11 @@ internal static partial class Emitter
         w.Line("/// <summary>Create a new client.</summary>")
             .Open($"public {clientName}(ClientConfig config)")
             .Open("var resolvedConfig = config with")
-            .Line($"BaseUrl = config.BaseUrl ?? \"{defaultBaseUrl}\",")
-            .Line($"RateLimit = config.RateLimit ?? new RateLimitConfig({defaultRateLimit}),");
+            .Line($"BaseUrl = config.BaseUrl ?? \"{config.DefaultBaseUrl}\",")
+            .Line($"RateLimit = config.RateLimit ?? new RateLimitConfig({config.DefaultRateLimit}),");
 
-        if (defaultSearchRateLimit > 0)
-            w.Line($"SearchRateLimit = config.SearchRateLimit ?? new RateLimitConfig({defaultSearchRateLimit}),");
+        if (config.DefaultSearchRateLimit > 0)
+            w.Line($"SearchRateLimit = config.SearchRateLimit ?? new RateLimitConfig({config.DefaultSearchRateLimit}),");
 
         w.Close(";").Line("_http = new LolzteamHttpClient(resolvedConfig);").Line();
         foreach (var group in groups)
@@ -85,10 +84,10 @@ internal static partial class Emitter
             .Close();
     }
 
-    private static string EmitClientInterface(
-        List<ParsedGroup> groups, string interfaceName, string subPackage)
+    private static string EmitClientInterface(List<ParsedGroup> groups, ApiConfig config)
     {
-        var ns = "Lolzteam.Api.Generated." + Naming.CapitalizeFirst(subPackage);
+        var interfaceName = config.InterfaceName;
+        var ns = "Lolzteam.Api.Generated." + Naming.CapitalizeFirst(config.SubPackage);
         var w = new CodeWriter();
 
         w.Line("// Auto-generated. Do not edit manually.")
@@ -194,18 +193,15 @@ internal static partial class Emitter
     /// <summary>Body for text/html endpoints: use <c>RequestRawAsync</c> and wrap the result.</summary>
     private static void EmitHtmlMethodBody(CodeWriter w, MethodDefinition definition, CSharpMethod method)
     {
-        EmitBuildOpts(w,
+        EmitBuildOpts(w, new RequestEmit(
             definition.HttpMethod,
             method.PathExpression,
             method.HasQueryType,
-            includeBody: false,
-            bodyRequired: false,
-            bodyEncoding: "form",
-            method.IsSearch,
-            includeByteFields: false,
-            includeJsonObj: false,
-            bodyArrayItemType: null
-        );
+            IncludeBody: false,
+            BodyRequired: false,
+            BodyEncoding: "form",
+            method.IsSearch
+        ));
 
         w.Line("var __raw = await _http.RequestRawAsync(__opts, cancellationToken).ConfigureAwait(false);");
         w.Line($"return new {method.ResponseTypeName}(__raw);");
@@ -214,17 +210,16 @@ internal static partial class Emitter
     /// <summary>Body for standard JSON/form endpoints.</summary>
     private static void EmitStandardMethodBody(CodeWriter w, MethodDefinition definition, CSharpMethod method)
     {
-        EmitBuildOpts(w,
+        EmitBuildOpts(w, new RequestEmit(
             definition.HttpMethod,
             method.PathExpression,
             definition.Params.QueryParams.Count > 0,
-            includeBody: method.HasBodyType,
-            bodyRequired: definition.BodyRequired,
-            bodyEncoding: definition.BodyEncoding,
+            method.HasBodyType,
+            definition.BodyRequired,
+            definition.BodyEncoding,
             method.IsSearch,
-            includeByteFields: false, includeJsonObj: false,
-            bodyArrayItemType: definition.BodyIsArray ? definition.BodyArrayItemType : null
-        );
+            BodyArrayItemType: definition.BodyIsArray ? definition.BodyArrayItemType : null
+        ));
 
         EmitRequestAndReturn(w, method.ResponseTypeName);
     }
@@ -265,18 +260,17 @@ internal static partial class Emitter
                     : $"if (body.{pn} is not null) byteFields[\"{field.Name}\"] = body.{pn};");
             }
 
-            EmitBuildOpts(w,
+            EmitBuildOpts(w, new RequestEmit(
                 definition.HttpMethod,
                 method.PathExpression,
                 hasQueryType,
-                includeBody: serializableProps.Count > 0,
-                bodyRequired: true,
-                bodyEncoding: "multipart",
+                serializableProps.Count > 0,
+                BodyRequired: true,
+                BodyEncoding: "multipart",
                 method.IsSearch,
-                includeByteFields: true,
-                includeJsonObj: serializableProps.Count > 0,
-                bodyArrayItemType: null
-            );
+                IncludeByteFields: true,
+                IncludeJsonObject: serializableProps.Count > 0
+            ));
 
             EmitRequestAndReturn(w, method.ResponseTypeName);
         }
@@ -291,18 +285,15 @@ internal static partial class Emitter
         EmitBodyAndReturn();
         w.Close().Open("else");
 
-        EmitBuildOpts(w,
+        EmitBuildOpts(w, new RequestEmit(
             definition.HttpMethod,
             method.PathExpression,
             hasQueryType,
-            includeBody: false,
-            bodyRequired: false,
-            bodyEncoding: "multipart",
-            method.IsSearch,
-            includeByteFields: false,
-            includeJsonObj: false,
-            bodyArrayItemType: null
-        );
+            IncludeBody: false,
+            BodyRequired: false,
+            BodyEncoding: "multipart",
+            method.IsSearch
+        ));
 
         EmitRequestAndReturn(w, method.ResponseTypeName);
         w.Close();
@@ -315,67 +306,55 @@ internal static partial class Emitter
     /// <see cref="Lolzteam.Api.Runtime.JsonElementWriter"/>, not <c>JsonSerializer.SerializeToElement&lt;T&gt;</c>,
     /// so no reflection-based type metadata is needed (required for Native AOT).
     /// </summary>
-    private static void EmitBuildOpts(
-        CodeWriter w,
-        string httpMethod, string pathExpr,
-        bool hasQueryType, bool includeBody, bool bodyRequired,
-        string bodyEncoding, bool isSearch,
-        bool includeByteFields, bool includeJsonObj,
-        string? bodyArrayItemType)
+    private static void EmitBuildOpts(CodeWriter w, RequestEmit request)
     {
-        if (hasQueryType)
+        if (request.HasQuery)
             w.Line(
                 "JsonElement? __query = @params is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(@params.WriteTo) : null;");
 
-        if (includeBody)
-            EmitBodyLocal(w, includeJsonObj, bodyRequired, bodyArrayItemType);
+        if (request.IncludeBody)
+            EmitBodyLocal(w, request);
 
         w.Open("var __opts = new RequestOptions")
-            .Line($"Method = \"{httpMethod}\",")
-            .Line($"Path = {pathExpr},");
+            .Line($"Method = \"{request.HttpMethod}\",")
+            .Line($"Path = {request.PathExpression},");
 
-        if (hasQueryType)
+        if (request.HasQuery)
             w.Line("Query = __query,");
 
-        if (includeBody)
+        if (request.IncludeBody)
             w.Line("Body = __body,");
 
-        if (includeBody || bodyEncoding != "form")
-        {
-            w.Line($"BodyEncoding = {BodyEncodingLiteral(bodyEncoding)},");
-        }
+        if (request.IncludeBody || request.BodyEncoding != "form")
+            w.Line($"BodyEncoding = {BodyEncodingLiteral(request.BodyEncoding)},");
 
-        if (includeByteFields)
+        if (request.IncludeByteFields)
             w.Line("ByteArrayFields = byteFields,");
 
-        w.LineIf(isSearch, "IsSearch = true,").Close(";");
+        w.LineIf(request.IsSearch, "IsSearch = true,").Close(";");
     }
 
     /// <summary>Emit <c>var __body = …;</c> ahead of the <c>RequestOptions</c> initializer.</summary>
-    private static void EmitBodyLocal(CodeWriter w, bool includeJsonObj, bool bodyRequired, string? bodyArrayItemType)
+    private static void EmitBodyLocal(CodeWriter w, RequestEmit request)
     {
-        if (includeJsonObj)
+        if (request.IncludeJsonObject)
         {
             w.Line("var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer => jsonObj.WriteTo(writer));");
             return;
         }
 
-        if (bodyArrayItemType is not null)
+        if (request.BodyArrayItemType is not null)
         {
-            var itemTypeRaw = Transforms.ToCSharpType(bodyArrayItemType);
+            var itemType = CsharpType.Parse(Transforms.ToCSharpType(request.BodyArrayItemType));
             var enumIsInt = new Dictionary<string, bool>(); // array-body item types never resolve to enums
-            var itemNullable = itemTypeRaw.EndsWith('?');
-            var itemType = itemTypeRaw.TrimEnd('?');
-            var itemExpr = itemNullable && IsWriteValueType(itemType, enumIsInt)
-                ? "__wItem.GetValueOrDefault()"
-                : "__wItem";
+            var itemExpr = WriteElementExpr("__wItem", itemType, enumIsInt);
 
-            if (bodyRequired)
+            if (request.BodyRequired)
             {
                 w.Open("var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer =>")
                     .Line("writer.WriteStartArray();")
                     .Open("foreach (var __wItem in body)");
-                EmitWriteValue(w, itemExpr, itemType, enumIsInt);
+                EmitWriteValue(w, itemExpr, itemType.Unwrap(), enumIsInt);
                 w.Close()
                     .Line("writer.WriteEndArray();")
                     .Close(");");
@@ -387,7 +366,7 @@ internal static partial class Emitter
                 .Open("__body = Lolzteam.Api.Runtime.JsonElementWriter.Build(writer =>")
                 .Line("writer.WriteStartArray();")
                 .Open("foreach (var __wItem in body)");
-            EmitWriteValue(w, itemExpr, itemType, enumIsInt);
+            EmitWriteValue(w, itemExpr, itemType.Unwrap(), enumIsInt);
             w.Close()
                 .Line("writer.WriteEndArray();")
                 .Close(");")
@@ -395,7 +374,7 @@ internal static partial class Emitter
             return;
         }
 
-        w.Line(bodyRequired
+        w.Line(request.BodyRequired
             ? "var __body = Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo);"
             : "JsonElement? __body = body is not null ? Lolzteam.Api.Runtime.JsonElementWriter.Build(body.WriteTo) : null;");
     }

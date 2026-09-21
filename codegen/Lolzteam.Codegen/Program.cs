@@ -58,12 +58,12 @@ foreach (var config in apis)
         Console.WriteLine($"  Deleted Types/{Path.GetFileName(file)}");
     }
 
-    var (enumDefs, paramToEnumType) = EnumCollector.Collect(result.Groups);
-    Console.WriteLine($"  Enums: {enumDefs.Count} types");
+    var enums = EnumCollector.Collect(result.Groups);
+    Console.WriteLine($"  Enums: {enums.Definitions.Count} types");
 
-    var typeFiles = Emitter.EmitCSharpTypeFiles(
-        result.Groups, config.SubPackage, result.ComponentSchemas, rawSpec, enumDefs, paramToEnumType
-    );
+    var typeFiles = Emitter.EmitCSharpTypeFiles(new TypeGeneration(
+        result.Groups, config.SubPackage, result.ComponentSchemas, rawSpec, enums
+    ));
 
     foreach (var (fileName, content) in typeFiles)
     {
@@ -71,11 +71,7 @@ foreach (var config in apis)
         Console.WriteLine($"  Types/{fileName}");
     }
 
-    var (clientContent, interfaceContent) = Emitter.EmitCSharpClientFile(
-        result.Groups, config.ClientName, config.InterfaceName,
-        config.DefaultBaseUrl, config.DefaultRateLimit,
-        config.SubPackage, config.DefaultSearchRateLimit
-    );
+    var (clientContent, interfaceContent) = Emitter.EmitCSharpClientFile(result.Groups, config);
 
     File.WriteAllText(Path.Combine(config.OutputDir, $"{config.ClientName}.cs"), clientContent);
     Console.WriteLine($"  {config.ClientName}.cs");
