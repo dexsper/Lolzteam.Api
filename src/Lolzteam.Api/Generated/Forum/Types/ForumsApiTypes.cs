@@ -286,20 +286,20 @@ public sealed record ForumsGroupedResponseTabs(
 	internal static ForumsGroupedResponseTabs ReadFromReader(ref Utf8JsonReader reader)
 	{
 		string v0 = null!;
-		bool v1 = default;
+		bool? v1 = default;
 		string v2 = null!;
-		bool v3 = default;
-		string v4 = null!;
-		bool v5 = default;
-		string v6 = null!;
-		bool v7 = default;
-		List<JsonElement> v8 = null!;
-		List<JsonElement> v9 = null!;
-		string v10 = null!;
-		string v11 = null!;
-		string v12 = null!;
-		string v13 = null!;
-		string v14 = null!;
+		bool? v3 = default;
+		string? v4 = default;
+		bool? v5 = default;
+		string? v6 = default;
+		bool? v7 = default;
+		List<JsonElement>? v8 = default;
+		List<JsonElement>? v9 = default;
+		string? v10 = default;
+		string? v11 = default;
+		string? v12 = default;
+		string? v13 = default;
+		string? v14 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -312,7 +312,14 @@ public sealed record ForumsGroupedResponseTabs(
 			else if (reader.ValueTextEquals("isDefault"u8))
 			{
 				reader.Read();
-				v1 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v1 = null;
+				}
+				else
+				{
+					v1 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("title"u8))
 			{
@@ -322,27 +329,48 @@ public sealed record ForumsGroupedResponseTabs(
 			else if (reader.ValueTextEquals("isHidden"u8))
 			{
 				reader.Read();
-				v3 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v3 = null;
+				}
+				else
+				{
+					v3 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("tabLink"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v4 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("isDynamicTitle"u8))
 			{
 				reader.Read();
-				v5 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v5 = null;
+				}
+				else
+				{
+					v5 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("node_ids"u8))
 			{
 				reader.Read();
-				v6 = reader.GetString()!;
+				v6 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("isExtendedTab"u8))
 			{
 				reader.Read();
-				v7 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v7 = null;
+				}
+				else
+				{
+					v7 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("prefixes"u8))
 			{
@@ -375,27 +403,27 @@ public sealed record ForumsGroupedResponseTabs(
 			else if (reader.ValueTextEquals("order"u8))
 			{
 				reader.Read();
-				v10 = reader.GetString()!;
+				v10 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("direction"u8))
 			{
 				reader.Read();
-				v11 = reader.GetString()!;
+				v11 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("period"u8))
 			{
 				reader.Read();
-				v12 = reader.GetString()!;
+				v12 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("state"u8))
 			{
 				reader.Read();
-				v13 = reader.GetString()!;
+				v13 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("q"u8))
 			{
 				reader.Read();
-				v14 = reader.GetString()!;
+				v14 = reader.GetString();
 			}
 			else
 			{
@@ -468,8 +496,8 @@ public sealed record ForumsGroupedResponseTabs(
 		internal static ForumsFollowersResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			Resp_UserModel v0 = null!;
-			long v1 = default;
-			ForumsFollowersResponseLinks v2 = null!;
+			long? v1 = default;
+			ForumsFollowersResponseLinks? v2 = default;
 			Resp_SystemInfo v3 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
@@ -483,12 +511,19 @@ public sealed record ForumsGroupedResponseTabs(
 				else if (reader.ValueTextEquals("users_total"u8))
 				{
 					reader.Read();
-					v1 = reader.GetInt64();
+					if (reader.TokenType == JsonTokenType.Null)
+					{
+						v1 = null;
+					}
+					else
+					{
+						v1 = reader.GetInt64();
+					}
 				}
 				else if (reader.ValueTextEquals("links"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : ForumsFollowersResponseLinks.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : ForumsFollowersResponseLinks.ReadFromReader(ref reader);
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
@@ -637,9 +672,9 @@ public sealed record ForumsFollowersResponseLinks(
 
 		internal static ForumsFollowResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -647,17 +682,17 @@ public sealed record ForumsFollowersResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -686,9 +721,9 @@ public sealed record ForumsFollowersResponseLinks(
 
 		internal static ForumsUnfollowResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -696,17 +731,17 @@ public sealed record ForumsFollowersResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -938,9 +973,9 @@ public sealed record ForumsFollowersResponseLinks(
 
 		internal static ForumsEditFeedOptionsResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -948,17 +983,17 @@ public sealed record ForumsFollowersResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{

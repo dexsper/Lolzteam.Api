@@ -276,8 +276,8 @@ public sealed record ErrorModel(
 
 	internal static ErrorModel ReadFromReader(ref Utf8JsonReader reader)
 	{
-		List<string> v0 = null!;
-		Resp_SystemInfo v1 = null!;
+		List<string>? v0 = default;
+		Resp_SystemInfo? v1 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -299,7 +299,7 @@ public sealed record ErrorModel(
 			else if (reader.ValueTextEquals("system_info"u8))
 			{
 				reader.Read();
-				v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+				v1 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -352,33 +352,33 @@ public sealed record ExtraModel(
 
 	internal static ExtraModel ReadFromReader(ref Utf8JsonReader reader)
 	{
-		string v0 = null!;
-		bool v1 = default;
-		string v2 = null!;
-		string v3 = null!;
-		string v4 = null!;
-		string v5 = null!;
-		string v6 = null!;
-		bool v7 = default;
-		bool v8 = default;
-		string v9 = null!;
-		bool v10 = default;
-		bool v11 = default;
-		bool v12 = default;
-		bool v13 = default;
-		bool v14 = default;
-		bool v15 = default;
-		bool v16 = default;
-		bool v17 = default;
-		long v18 = default;
-		long v19 = default;
-		long v20 = default;
-		string v21 = null!;
-		string v22 = null!;
-		string v23 = null!;
-		bool v24 = default;
-		bool v25 = default;
-		bool v26 = default;
+		string? v0 = default;
+		bool? v1 = default;
+		string? v2 = default;
+		string? v3 = default;
+		string? v4 = default;
+		string? v5 = default;
+		string? v6 = default;
+		bool? v7 = default;
+		bool? v8 = default;
+		string? v9 = default;
+		bool? v10 = default;
+		bool? v11 = default;
+		bool? v12 = default;
+		bool? v13 = default;
+		bool? v14 = default;
+		bool? v15 = default;
+		bool? v16 = default;
+		bool? v17 = default;
+		long? v18 = default;
+		long? v19 = default;
+		long? v20 = default;
+		string? v21 = default;
+		string? v22 = default;
+		string? v23 = default;
+		bool? v24 = default;
+		bool? v25 = default;
+		bool? v26 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -386,137 +386,256 @@ public sealed record ExtraModel(
 			if (reader.ValueTextEquals("proxy"u8))
 			{
 				reader.Read();
-				v0 = reader.GetString()!;
+				v0 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("close_item"u8))
 			{
 				reader.Read();
-				v1 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v1 = null;
+				}
+				else
+				{
+					v1 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("region"u8))
 			{
 				reader.Read();
-				v2 = reader.GetString()!;
+				v2 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("service"u8))
 			{
 				reader.Read();
-				v3 = reader.GetString()!;
+				v3 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("system"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v4 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("confirmationCode"u8))
 			{
 				reader.Read();
-				v5 = reader.GetString()!;
+				v5 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("cookies"u8))
 			{
 				reader.Read();
-				v6 = reader.GetString()!;
+				v6 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("login_without_cookies"u8))
 			{
 				reader.Read();
-				v7 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v7 = null;
+				}
+				else
+				{
+					v7 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("cookie_login"u8))
 			{
 				reader.Read();
-				v8 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("mfa_file"u8))
 			{
 				reader.Read();
-				v9 = reader.GetString()!;
+				v9 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("parse_dota2"u8))
 			{
 				reader.Read();
-				v10 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v10 = null;
+				}
+				else
+				{
+					v10 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("uplay_games"u8))
 			{
 				reader.Read();
-				v11 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v11 = null;
+				}
+				else
+				{
+					v11 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("ea_games"u8))
 			{
 				reader.Read();
-				v12 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v12 = null;
+				}
+				else
+				{
+					v12 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("ark"u8))
 			{
 				reader.Read();
-				v13 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v13 = null;
+				}
+				else
+				{
+					v13 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("ark_ascended"u8))
 			{
 				reader.Read();
-				v14 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v14 = null;
+				}
+				else
+				{
+					v14 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("warframe"u8))
 			{
 				reader.Read();
-				v15 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v15 = null;
+				}
+				else
+				{
+					v15 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("the_quarry"u8))
 			{
 				reader.Read();
-				v16 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v16 = null;
+				}
+				else
+				{
+					v16 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("brawlhalla"u8))
 			{
 				reader.Read();
-				v17 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v17 = null;
+				}
+				else
+				{
+					v17 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("genshin_currency"u8))
 			{
 				reader.Read();
-				v18 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v18 = null;
+				}
+				else
+				{
+					v18 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("honkai_currency"u8))
 			{
 				reader.Read();
-				v19 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v19 = null;
+				}
+				else
+				{
+					v19 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("zenless_currency"u8))
 			{
 				reader.Read();
-				v20 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v20 = null;
+				}
+				else
+				{
+					v20 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("password"u8))
 			{
 				reader.Read();
-				v21 = reader.GetString()!;
+				v21 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("telegramClient"u8))
 			{
 				reader.Read();
-				v22 = reader.GetString()!;
+				v22 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("telegramJson"u8))
 			{
 				reader.Read();
-				v23 = reader.GetString()!;
+				v23 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("checkChannels"u8))
 			{
 				reader.Read();
-				v24 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v24 = null;
+				}
+				else
+				{
+					v24 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("checkSpam"u8))
 			{
 				reader.Read();
-				v25 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v25 = null;
+				}
+				else
+				{
+					v25 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("checkHypixelBan"u8))
 			{
 				reader.Read();
-				v26 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v26 = null;
+				}
+				else
+				{
+					v26 = reader.GetBoolean();
+				}
 			}
 			else
 			{
@@ -734,51 +853,51 @@ public sealed record ItemFromListModel(
 
 	internal static ItemFromListModel ReadFromReader(ref Utf8JsonReader reader)
 	{
-		long v0 = default;
-		string v1 = null!;
-		long v2 = default;
-		long v3 = default;
-		string v4 = null!;
-		string v5 = null!;
-		long v6 = default;
-		long v7 = default;
-		long v8 = default;
-		long v9 = default;
-		long v10 = default;
-		string v11 = null!;
-		long v12 = default;
-		long v13 = default;
-		long v14 = default;
-		string v15 = null!;
-		string v16 = null!;
-		string v17 = null!;
-		string v18 = null!;
-		long v19 = default;
-		bool v20 = default;
-		bool v21 = default;
-		bool v22 = default;
-		bool v23 = default;
-		bool v24 = default;
-		bool v25 = default;
-		bool v26 = default;
-		bool v27 = default;
-		bool v28 = default;
-		bool v29 = default;
-		bool v30 = default;
-		ItemFromListModelBumpSettings v31 = null!;
-		bool v32 = default;
-		bool v33 = default;
-		long v34 = default;
-		string v35 = null!;
-		bool v36 = default;
-		bool v37 = default;
-		bool v38 = default;
-		string v39 = null!;
-		List<string> v40 = null!;
-		string v41 = null!;
-		string v42 = null!;
-		string v43 = null!;
-		ItemFromListModelSeller v44 = null!;
+		long? v0 = default;
+		string? v1 = default;
+		long? v2 = default;
+		long? v3 = default;
+		string? v4 = default;
+		string? v5 = default;
+		long? v6 = default;
+		long? v7 = default;
+		long? v8 = default;
+		long? v9 = default;
+		long? v10 = default;
+		string? v11 = default;
+		long? v12 = default;
+		long? v13 = default;
+		long? v14 = default;
+		string? v15 = default;
+		string? v16 = default;
+		string? v17 = default;
+		string? v18 = default;
+		long? v19 = default;
+		bool? v20 = default;
+		bool? v21 = default;
+		bool? v22 = default;
+		bool? v23 = default;
+		bool? v24 = default;
+		bool? v25 = default;
+		bool? v26 = default;
+		bool? v27 = default;
+		bool? v28 = default;
+		bool? v29 = default;
+		bool? v30 = default;
+		ItemFromListModelBumpSettings? v31 = default;
+		bool? v32 = default;
+		bool? v33 = default;
+		long? v34 = default;
+		string? v35 = default;
+		bool? v36 = default;
+		bool? v37 = default;
+		bool? v38 = default;
+		string? v39 = default;
+		List<string>? v40 = default;
+		string? v41 = default;
+		string? v42 = default;
+		string? v43 = default;
+		ItemFromListModelSeller? v44 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -786,202 +905,405 @@ public sealed record ItemFromListModel(
 			if (reader.ValueTextEquals("item_id"u8))
 			{
 				reader.Read();
-				v0 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v0 = null;
+				}
+				else
+				{
+					v0 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("item_state"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("category_id"u8))
 			{
 				reader.Read();
-				v2 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v2 = null;
+				}
+				else
+				{
+					v2 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("published_date"u8))
 			{
 				reader.Read();
-				v3 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v3 = null;
+				}
+				else
+				{
+					v3 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("title"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v4 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("description"u8))
 			{
 				reader.Read();
-				v5 = reader.GetString()!;
+				v5 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v6 = null;
+				}
+				else
+				{
+					v6 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
 				reader.Read();
-				v7 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v7 = null;
+				}
+				else
+				{
+					v7 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("refreshed_date"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("view_count"u8))
 			{
 				reader.Read();
-				v9 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v9 = null;
+				}
+				else
+				{
+					v9 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("is_sticky"u8))
 			{
 				reader.Read();
-				v10 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v10 = null;
+				}
+				else
+				{
+					v10 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("item_origin"u8))
 			{
 				reader.Read();
-				v11 = reader.GetString()!;
+				v11 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("extended_guarantee"u8))
 			{
 				reader.Read();
-				v12 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v12 = null;
+				}
+				else
+				{
+					v12 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("nsb"u8))
 			{
 				reader.Read();
-				v13 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v13 = null;
+				}
+				else
+				{
+					v13 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("allow_ask_discount"u8))
 			{
 				reader.Read();
-				v14 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v14 = null;
+				}
+				else
+				{
+					v14 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("title_en"u8))
 			{
 				reader.Read();
-				v15 = reader.GetString()!;
+				v15 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("description_en"u8))
 			{
 				reader.Read();
-				v16 = reader.GetString()!;
+				v16 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("item_domain"u8))
 			{
 				reader.Read();
-				v17 = reader.GetString()!;
+				v17 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("resale_item_origin"u8))
 			{
 				reader.Read();
-				v18 = reader.GetString()!;
+				v18 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("isIgnored"u8))
 			{
 				reader.Read();
-				v19 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v19 = null;
+				}
+				else
+				{
+					v19 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("guarantee"u8))
 			{
 				reader.Read();
-				v20 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v20 = null;
+				}
+				else
+				{
+					v20 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canViewLoginData"u8))
 			{
 				reader.Read();
-				v21 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v21 = null;
+				}
+				else
+				{
+					v21 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canUpdateItemStats"u8))
 			{
 				reader.Read();
-				v22 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v22 = null;
+				}
+				else
+				{
+					v22 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canViewEmailLoginData"u8))
 			{
 				reader.Read();
-				v23 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v23 = null;
+				}
+				else
+				{
+					v23 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("showGetEmailCodeButton"u8))
 			{
 				reader.Read();
-				v24 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v24 = null;
+				}
+				else
+				{
+					v24 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canOpenItem"u8))
 			{
 				reader.Read();
-				v25 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v25 = null;
+				}
+				else
+				{
+					v25 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canCloseItem"u8))
 			{
 				reader.Read();
-				v26 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v26 = null;
+				}
+				else
+				{
+					v26 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canEditItem"u8))
 			{
 				reader.Read();
-				v27 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v27 = null;
+				}
+				else
+				{
+					v27 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canDeleteItem"u8))
 			{
 				reader.Read();
-				v28 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v28 = null;
+				}
+				else
+				{
+					v28 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canStickItem"u8))
 			{
 				reader.Read();
-				v29 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v29 = null;
+				}
+				else
+				{
+					v29 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canUnstickItem"u8))
 			{
 				reader.Read();
-				v30 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v30 = null;
+				}
+				else
+				{
+					v30 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("bumpSettings"u8))
 			{
 				reader.Read();
-				v31 = reader.TokenType == JsonTokenType.Null ? null! : ItemFromListModelBumpSettings.ReadFromReader(ref reader);
+				v31 = reader.TokenType == JsonTokenType.Null ? null : ItemFromListModelBumpSettings.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
-				v32 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v32 = null;
+				}
+				else
+				{
+					v32 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canBuyItem"u8))
 			{
 				reader.Read();
-				v33 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v33 = null;
+				}
+				else
+				{
+					v33 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v34 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v34 = null;
+				}
+				else
+				{
+					v34 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
 				reader.Read();
-				v35 = reader.GetString()!;
+				v35 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("canValidateAccount"u8))
 			{
 				reader.Read();
-				v36 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v36 = null;
+				}
+				else
+				{
+					v36 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canResellItemAfterPurchase"u8))
 			{
 				reader.Read();
-				v37 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v37 = null;
+				}
+				else
+				{
+					v37 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canViewAccountLink"u8))
 			{
 				reader.Read();
-				v38 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v38 = null;
+				}
+				else
+				{
+					v38 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("itemOriginPhrase"u8))
 			{
 				reader.Read();
-				v39 = reader.GetString()!;
+				v39 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("tags"u8))
 			{
@@ -1000,22 +1322,22 @@ public sealed record ItemFromListModel(
 			else if (reader.ValueTextEquals("note_text"u8))
 			{
 				reader.Read();
-				v41 = reader.GetString()!;
+				v41 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("description_html"u8))
 			{
 				reader.Read();
-				v42 = reader.GetString()!;
+				v42 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("description_html_en"u8))
 			{
 				reader.Read();
-				v43 = reader.GetString()!;
+				v43 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("seller"u8))
 			{
 				reader.Read();
-				v44 = reader.TokenType == JsonTokenType.Null ? null! : ItemFromListModelSeller.ReadFromReader(ref reader);
+				v44 = reader.TokenType == JsonTokenType.Null ? null : ItemFromListModelSeller.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -1045,10 +1367,10 @@ public sealed record ItemFromListModelBumpSettings(
 
 	internal static ItemFromListModelBumpSettings ReadFromReader(ref Utf8JsonReader reader)
 	{
-		bool v0 = default;
-		bool v1 = default;
-		string v2 = null!;
-		string v3 = null!;
+		bool? v0 = default;
+		bool? v1 = default;
+		string? v2 = default;
+		string? v3 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1056,22 +1378,36 @@ public sealed record ItemFromListModelBumpSettings(
 			if (reader.ValueTextEquals("canBumpItem"u8))
 			{
 				reader.Read();
-				v0 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v0 = null;
+				}
+				else
+				{
+					v0 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("canBumpItemGlobally"u8))
 			{
 				reader.Read();
-				v1 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v1 = null;
+				}
+				else
+				{
+					v1 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("shortErrorPhrase"u8))
 			{
 				reader.Read();
-				v2 = reader.GetString()!;
+				v2 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("errorPhrase"u8))
 			{
 				reader.Read();
-				v3 = reader.GetString()!;
+				v3 = reader.GetString();
 			}
 			else
 			{
@@ -1106,15 +1442,15 @@ public sealed record ItemFromListModelSeller(
 
 	internal static ItemFromListModelSeller ReadFromReader(ref Utf8JsonReader reader)
 	{
-		long v0 = default;
-		long v1 = default;
-		long v2 = default;
-		string v3 = null!;
-		string v4 = null!;
-		long v5 = default;
-		long v6 = default;
-		long v7 = default;
-		long v8 = default;
+		long? v0 = default;
+		long? v1 = default;
+		long? v2 = default;
+		string? v3 = default;
+		string? v4 = default;
+		long? v5 = default;
+		long? v6 = default;
+		long? v7 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1122,47 +1458,96 @@ public sealed record ItemFromListModelSeller(
 			if (reader.ValueTextEquals("user_id"u8))
 			{
 				reader.Read();
-				v0 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v0 = null;
+				}
+				else
+				{
+					v0 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("sold_items_count"u8))
 			{
 				reader.Read();
-				v1 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v1 = null;
+				}
+				else
+				{
+					v1 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("active_item_count"u8))
 			{
 				reader.Read();
-				v2 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v2 = null;
+				}
+				else
+				{
+					v2 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("restore_data"u8))
 			{
 				reader.Read();
-				v3 = reader.GetString()!;
+				v3 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("username"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v4 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("avatar_date"u8))
 			{
 				reader.Read();
-				v5 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v5 = null;
+				}
+				else
+				{
+					v5 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("is_banned"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v6 = null;
+				}
+				else
+				{
+					v6 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("display_style_group_id"u8))
 			{
 				reader.Read();
-				v7 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v7 = null;
+				}
+				else
+				{
+					v7 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -1430,7 +1815,7 @@ public sealed record ItemModel(
 		string v54 = null!;
 		bool v55 = default;
 		bool v56 = default;
-		bool v57 = default;
+		bool? v57 = default;
 		List<ItemModelAccountLinks> v58 = null!;
 		string v59 = null!;
 		ItemModelImagePreviewLinks v60 = null!;
@@ -1741,7 +2126,14 @@ public sealed record ItemModel(
 			else if (reader.ValueTextEquals("canViewAccountLink"u8))
 			{
 				reader.Read();
-				v57 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v57 = null;
+				}
+				else
+				{
+					v57 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("accountLinks"u8))
 			{
@@ -2255,7 +2647,7 @@ public sealed record ItemModelSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -2277,7 +2669,7 @@ public sealed record ItemModelSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2325,7 +2717,14 @@ public sealed record ItemModelSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -2414,7 +2813,7 @@ public sealed record Resp_SystemInfoRateLimit(
 		long v0 = default;
 		long v1 = default;
 		long v2 = default;
-		string v3 = null!;
+		string? v3 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2437,7 +2836,7 @@ public sealed record Resp_SystemInfoRateLimit(
 			else if (reader.ValueTextEquals("bucket"u8))
 			{
 				reader.Read();
-				v3 = reader.GetString()!;
+				v3 = reader.GetString();
 			}
 			else
 			{

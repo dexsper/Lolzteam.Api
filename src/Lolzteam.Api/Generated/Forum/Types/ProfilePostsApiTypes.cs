@@ -641,9 +641,9 @@ public sealed record ProfilePostsEditResponseProfilePost(
 
 		internal static ProfilePostsDeleteResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -651,17 +651,17 @@ public sealed record ProfilePostsEditResponseProfilePost(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -759,9 +759,9 @@ public sealed record ProfilePostsEditResponseProfilePost(
 
 		internal static ProfilePostsReportResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -769,17 +769,17 @@ public sealed record ProfilePostsEditResponseProfilePost(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1166,9 +1166,9 @@ public sealed record ProfilePostsCreateResponseProfilePost(
 
 		internal static ProfilePostsStickResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1176,17 +1176,17 @@ public sealed record ProfilePostsCreateResponseProfilePost(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1215,9 +1215,9 @@ public sealed record ProfilePostsCreateResponseProfilePost(
 
 		internal static ProfilePostsUnstickResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1225,17 +1225,17 @@ public sealed record ProfilePostsCreateResponseProfilePost(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1357,9 +1357,9 @@ public sealed record ProfilePostsLikesResponseUsers(
 
 		internal static ProfilePostsLikeResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1367,17 +1367,17 @@ public sealed record ProfilePostsLikesResponseUsers(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1406,9 +1406,9 @@ public sealed record ProfilePostsLikesResponseUsers(
 
 		internal static ProfilePostsUnlikeResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1416,17 +1416,17 @@ public sealed record ProfilePostsLikesResponseUsers(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -2484,9 +2484,9 @@ public sealed record ProfilePostsCommentsEditResponseComment(
 
 		internal static ProfilePostsCommentsDeleteResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2494,17 +2494,17 @@ public sealed record ProfilePostsCommentsEditResponseComment(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -2675,9 +2675,9 @@ public sealed record ProfilePostsCommentsEditResponseComment(
 
 		internal static ProfilePostsCommentsReportResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2685,17 +2685,17 @@ public sealed record ProfilePostsCommentsEditResponseComment(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{

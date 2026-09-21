@@ -101,7 +101,7 @@ internal static partial class Emitter
         }
 
         w.Pop().Open(")");
-        EmitReadFromMethods(w, typeName, entries.ConvertAll(e => (e.jsonName, e.csharpType)));
+        EmitReadFromMethods(w, typeName, entries);
         w.Close();
     }
 
@@ -113,6 +113,7 @@ internal static partial class Emitter
 
         foreach (var r in arr)
             set.Add(r!.GetValue<string>());
+
         return set;
     }
 
@@ -125,7 +126,14 @@ internal static partial class Emitter
         {
             if (kvp.Value is null) continue;
             var csharpType = ResolveComponentPropertyType(
-                kvp.Value, rawSpec, componentSchemaNames, parentTypeName, kvp.Key, nestedRecords);
+                kvp.Value,
+                rawSpec,
+                componentSchemaNames,
+                parentTypeName,
+                kvp.Key,
+                nestedRecords
+            );
+
             entries.Add((kvp.Key, csharpType, requiredSet.Contains(kvp.Key)));
         }
 

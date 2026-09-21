@@ -939,9 +939,9 @@ public sealed record ProfileClaimsResponseStats(
 
 		internal static ProfileEditResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -949,17 +949,17 @@ public sealed record ProfileClaimsResponseStats(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{

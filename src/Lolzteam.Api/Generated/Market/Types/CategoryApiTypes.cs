@@ -2311,7 +2311,7 @@ public sealed record CategorySteamResponseItemsSteamGifts(
 	internal static CategorySteamResponseItemsSteamGifts ReadFromReader(ref Utf8JsonReader reader)
 	{
 		string v0 = null!;
-		string v1 = null!;
+		string? v1 = default;
 		string v2 = null!;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
@@ -2325,7 +2325,7 @@ public sealed record CategorySteamResponseItemsSteamGifts(
 			else if (reader.ValueTextEquals("fraudwarnings"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("image_url"u8))
 			{
@@ -2463,7 +2463,7 @@ public sealed record CategorySteamResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -2485,7 +2485,7 @@ public sealed record CategorySteamResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2533,7 +2533,14 @@ public sealed record CategorySteamResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -2729,7 +2736,7 @@ public sealed record CategorySteamResponseItems(
 		long v25 = default;
 		CategorySteamResponseItemsSteamFullGames v26 = null!;
 		long v27 = default;
-		Dictionary<string, string> v28 = null!;
+		Dictionary<string, string>? v28 = default;
 		long v29 = default;
 		string v30 = null!;
 		long v31 = default;
@@ -5213,7 +5220,7 @@ public sealed record CategoryFortniteResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -5235,7 +5242,7 @@ public sealed record CategoryFortniteResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -5283,7 +5290,14 @@ public sealed record CategoryFortniteResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -8612,7 +8626,7 @@ public sealed record CategoryMihoyoResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -8634,7 +8648,7 @@ public sealed record CategoryMihoyoResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -8682,7 +8696,14 @@ public sealed record CategoryMihoyoResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -10763,7 +10784,7 @@ public sealed record CategoryRiotResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -10785,7 +10806,7 @@ public sealed record CategoryRiotResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -10833,7 +10854,14 @@ public sealed record CategoryRiotResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -12704,7 +12732,7 @@ public sealed record CategoryTelegramResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -12726,7 +12754,7 @@ public sealed record CategoryTelegramResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -12774,7 +12802,14 @@ public sealed record CategoryTelegramResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -14721,7 +14756,7 @@ public sealed record CategorySupercellResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -14743,7 +14778,7 @@ public sealed record CategorySupercellResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -14791,7 +14826,14 @@ public sealed record CategorySupercellResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -16333,7 +16375,7 @@ public sealed record CategoryEaResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -16355,7 +16397,7 @@ public sealed record CategoryEaResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -16403,7 +16445,14 @@ public sealed record CategoryEaResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -17866,12 +17915,12 @@ public sealed record CategoryWotResponseItemsWotTopPremiumTanks00000(
 
 	internal static CategoryWotResponseItemsWotTopPremiumTanks00000 ReadFromReader(ref Utf8JsonReader reader)
 	{
-		long v0 = default;
-		string v1 = null!;
-		long v2 = default;
-		string v3 = null!;
-		string v4 = null!;
-		long v5 = default;
+		long? v0 = default;
+		string? v1 = default;
+		long? v2 = default;
+		string? v3 = default;
+		string? v4 = default;
+		long? v5 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -17879,32 +17928,53 @@ public sealed record CategoryWotResponseItemsWotTopPremiumTanks00000(
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
-				v0 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v0 = null;
+				}
+				else
+				{
+					v0 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("name"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("is_premium"u8))
 			{
 				reader.Read();
-				v2 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v2 = null;
+				}
+				else
+				{
+					v2 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("image_url"u8))
 			{
 				reader.Read();
-				v3 = reader.GetString()!;
+				v3 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("short_name"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v4 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("tier"u8))
 			{
 				reader.Read();
-				v5 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v5 = null;
+				}
+				else
+				{
+					v5 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -17971,12 +18041,12 @@ public sealed record CategoryWotResponseItemsWotTanks00000(
 
 	internal static CategoryWotResponseItemsWotTanks00000 ReadFromReader(ref Utf8JsonReader reader)
 	{
-		long v0 = default;
-		string v1 = null!;
-		long v2 = default;
-		string v3 = null!;
-		string v4 = null!;
-		long v5 = default;
+		long? v0 = default;
+		string? v1 = default;
+		long? v2 = default;
+		string? v3 = default;
+		string? v4 = default;
+		long? v5 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -17984,32 +18054,53 @@ public sealed record CategoryWotResponseItemsWotTanks00000(
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
-				v0 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v0 = null;
+				}
+				else
+				{
+					v0 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("name"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("is_premium"u8))
 			{
 				reader.Read();
-				v2 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v2 = null;
+				}
+				else
+				{
+					v2 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("image_url"u8))
 			{
 				reader.Read();
-				v3 = reader.GetString()!;
+				v3 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("short_name"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v4 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("tier"u8))
 			{
 				reader.Read();
-				v5 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v5 = null;
+				}
+				else
+				{
+					v5 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -19028,12 +19119,12 @@ public sealed record CategoryWotResponseItemsWotTopTanks00000(
 
 	internal static CategoryWotResponseItemsWotTopTanks00000 ReadFromReader(ref Utf8JsonReader reader)
 	{
-		long v0 = default;
-		string v1 = null!;
-		long v2 = default;
-		string v3 = null!;
-		string v4 = null!;
-		long v5 = default;
+		long? v0 = default;
+		string? v1 = default;
+		long? v2 = default;
+		string? v3 = default;
+		string? v4 = default;
+		long? v5 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -19041,32 +19132,53 @@ public sealed record CategoryWotResponseItemsWotTopTanks00000(
 			if (reader.ValueTextEquals("tank_id"u8))
 			{
 				reader.Read();
-				v0 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v0 = null;
+				}
+				else
+				{
+					v0 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("name"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("is_premium"u8))
 			{
 				reader.Read();
-				v2 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v2 = null;
+				}
+				else
+				{
+					v2 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("image_url"u8))
 			{
 				reader.Read();
-				v3 = reader.GetString()!;
+				v3 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("short_name"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v4 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("tier"u8))
 			{
 				reader.Read();
-				v5 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v5 = null;
+				}
+				else
+				{
+					v5 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -19122,7 +19234,7 @@ public sealed record CategoryWotResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -19144,7 +19256,7 @@ public sealed record CategoryWotResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -19192,7 +19304,14 @@ public sealed record CategoryWotResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -39213,7 +39332,7 @@ public sealed record CategoryWotBlitzResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -39235,7 +39354,7 @@ public sealed record CategoryWotBlitzResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -39283,7 +39402,14 @@ public sealed record CategoryWotBlitzResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -40436,7 +40562,7 @@ public sealed record CategoryGiftsResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -40458,7 +40584,7 @@ public sealed record CategoryGiftsResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -40506,7 +40632,14 @@ public sealed record CategoryGiftsResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -41866,7 +41999,7 @@ public sealed record CategoryEpicGamesResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -41888,7 +42021,7 @@ public sealed record CategoryEpicGamesResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -41936,7 +42069,14 @@ public sealed record CategoryEpicGamesResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -43369,7 +43509,7 @@ public sealed record CategoryEscapeFromTarkovResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -43391,7 +43531,7 @@ public sealed record CategoryEscapeFromTarkovResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -43439,7 +43579,14 @@ public sealed record CategoryEscapeFromTarkovResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -44736,7 +44883,7 @@ public sealed record CategorySocialClubResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -44758,7 +44905,7 @@ public sealed record CategorySocialClubResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -44806,7 +44953,14 @@ public sealed record CategorySocialClubResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -46289,7 +46443,7 @@ public sealed record CategoryUplayResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -46311,7 +46465,7 @@ public sealed record CategoryUplayResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -46359,7 +46513,14 @@ public sealed record CategoryUplayResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -48001,7 +48162,7 @@ public sealed record CategoryDiscordResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -48023,7 +48184,7 @@ public sealed record CategoryDiscordResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -48071,7 +48232,14 @@ public sealed record CategoryDiscordResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -49328,7 +49496,7 @@ public sealed record CategoryTikTokResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -49350,7 +49518,7 @@ public sealed record CategoryTikTokResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -49398,7 +49566,14 @@ public sealed record CategoryTikTokResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -50659,7 +50834,7 @@ public sealed record CategoryInstagramResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -50681,7 +50856,7 @@ public sealed record CategoryInstagramResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -50729,7 +50904,14 @@ public sealed record CategoryInstagramResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -52155,7 +52337,7 @@ public sealed record CategoryBattleNetResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -52177,7 +52359,7 @@ public sealed record CategoryBattleNetResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -52225,7 +52407,14 @@ public sealed record CategoryBattleNetResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -53539,7 +53728,7 @@ public sealed record CategoryLlmResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -53561,7 +53750,7 @@ public sealed record CategoryLlmResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -53609,7 +53798,14 @@ public sealed record CategoryLlmResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -54656,7 +54852,7 @@ public sealed record CategoryVpnResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -54678,7 +54874,7 @@ public sealed record CategoryVpnResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -54726,7 +54922,14 @@ public sealed record CategoryVpnResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -56286,7 +56489,7 @@ public sealed record CategoryRobloxResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -56308,7 +56511,7 @@ public sealed record CategoryRobloxResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -56356,7 +56559,14 @@ public sealed record CategoryRobloxResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -57653,7 +57863,7 @@ public sealed record CategoryWarfaceResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents
 )
 {
 
@@ -57675,7 +57885,7 @@ public sealed record CategoryWarfaceResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		long v8 = default;
+		long? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -57723,7 +57933,14 @@ public sealed record CategoryWarfaceResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -59174,7 +59391,7 @@ public sealed record CategoryMinecraftResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -59196,7 +59413,7 @@ public sealed record CategoryMinecraftResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -59244,7 +59461,14 @@ public sealed record CategoryMinecraftResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -60432,7 +60656,7 @@ public sealed record CategoryHytaleResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -60454,7 +60678,7 @@ public sealed record CategoryHytaleResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -60502,7 +60726,14 @@ public sealed record CategoryHytaleResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -61982,7 +62213,7 @@ public sealed record CategoryOnlyfansResponseItemsSeller(
 	[property: JsonPropertyName("avatar_date")] long AvatarDate,
 	[property: JsonPropertyName("is_banned")] long IsBanned,
 	[property: JsonPropertyName("display_style_group_id")] long DisplayStyleGroupId,
-	[property: JsonPropertyName("restore_percents")] JsonElement RestorePercents
+	[property: JsonPropertyName("restore_percents")] JsonElement? RestorePercents
 )
 {
 
@@ -62004,7 +62235,7 @@ public sealed record CategoryOnlyfansResponseItemsSeller(
 		long v5 = default;
 		long v6 = default;
 		long v7 = default;
-		JsonElement v8 = default;
+		JsonElement? v8 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -62052,7 +62283,14 @@ public sealed record CategoryOnlyfansResponseItemsSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v8 = null;
+				}
+				else
+				{
+					v8 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
+				}
 			}
 			else
 			{
@@ -62974,10 +63212,10 @@ public sealed record CategoryListResponseCategory(
 
 		internal static CategoryParamsResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			CategoryParamsResponseCategory v0 = null!;
-			List<CategoryParamsResponseParams> v1 = null!;
-			CategoryParamsResponseBaseParams v2 = null!;
-			Resp_SystemInfo v3 = null!;
+			CategoryParamsResponseCategory? v0 = default;
+			List<CategoryParamsResponseParams>? v1 = default;
+			CategoryParamsResponseBaseParams? v2 = default;
+			Resp_SystemInfo? v3 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -62985,7 +63223,7 @@ public sealed record CategoryListResponseCategory(
 				if (reader.ValueTextEquals("category"u8))
 				{
 					reader.Read();
-					v0 = reader.TokenType == JsonTokenType.Null ? null! : CategoryParamsResponseCategory.ReadFromReader(ref reader);
+					v0 = reader.TokenType == JsonTokenType.Null ? null : CategoryParamsResponseCategory.ReadFromReader(ref reader);
 				}
 				else if (reader.ValueTextEquals("params"u8))
 				{
@@ -63004,12 +63242,12 @@ public sealed record CategoryListResponseCategory(
 				else if (reader.ValueTextEquals("base_params"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : CategoryParamsResponseBaseParams.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : CategoryParamsResponseBaseParams.ReadFromReader(ref reader);
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v3 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -63459,8 +63697,8 @@ public sealed record CategoryParamsResponseBaseParams(
 
 		internal static CategoryGamesResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			List<CategoryGamesResponseGames> v0 = null!;
-			Resp_SystemInfo v1 = null!;
+			List<CategoryGamesResponseGames>? v0 = default;
+			Resp_SystemInfo? v1 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -63482,7 +63720,7 @@ public sealed record CategoryParamsResponseBaseParams(
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v1 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{

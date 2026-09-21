@@ -548,9 +548,9 @@ public sealed record ConversationsListResponseLinks(
 
 		internal static ConversationsDeleteResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -558,17 +558,17 @@ public sealed record ConversationsListResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -672,9 +672,9 @@ public sealed record ConversationsListResponseLinks(
 
 		internal static ConversationsSaveResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -682,17 +682,17 @@ public sealed record ConversationsListResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1272,9 +1272,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 		internal static ConversationsMessagesDeleteResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1282,17 +1282,17 @@ public sealed record ConversationsMessagesListResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1344,9 +1344,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 		internal static ConversationsInviteResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1354,17 +1354,17 @@ public sealed record ConversationsMessagesListResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1414,9 +1414,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 		internal static ConversationsKickResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1424,17 +1424,17 @@ public sealed record ConversationsMessagesListResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1463,9 +1463,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 		internal static ConversationsReadResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1473,17 +1473,17 @@ public sealed record ConversationsMessagesListResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1561,9 +1561,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 		internal static ConversationsMessagesStickResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1571,17 +1571,17 @@ public sealed record ConversationsMessagesListResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -1610,9 +1610,9 @@ public sealed record ConversationsMessagesListResponseLinks(
 
 		internal static ConversationsMessagesUnstickResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1620,17 +1620,17 @@ public sealed record ConversationsMessagesListResponseLinks(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{

@@ -109,7 +109,7 @@ public static class SearchApiTypes
 		{
 			List<JsonElement> v0 = null!;
 			long v1 = default;
-			List<Resp_UserModel> v2 = null!;
+			List<Resp_UserModel>? v2 = default;
 			SearchAllResponseLinks v3 = null!;
 			Resp_SystemInfo v4 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)

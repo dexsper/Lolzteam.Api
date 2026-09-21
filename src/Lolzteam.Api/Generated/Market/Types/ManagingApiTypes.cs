@@ -231,9 +231,9 @@ public static class ManagingApiTypes
 
 		internal static ManagingTagsDeleteResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -241,17 +241,17 @@ public static class ManagingApiTypes
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -303,9 +303,9 @@ public static class ManagingApiTypes
 
 		internal static ManagingTagsOrderResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -313,17 +313,17 @@ public static class ManagingApiTypes
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -706,9 +706,9 @@ public sealed record ManagingCreateClaimResponseThreadFirstPostLikeUsers(
 	{
 		long v0 = default;
 		string v1 = null!;
-		long v2 = default;
-		long v3 = default;
-		string v4 = null!;
+		long? v2 = default;
+		long? v3 = default;
+		string? v4 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -726,17 +726,31 @@ public sealed record ManagingCreateClaimResponseThreadFirstPostLikeUsers(
 			else if (reader.ValueTextEquals("display_style_group_id"u8))
 			{
 				reader.Read();
-				v2 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v2 = null;
+				}
+				else
+				{
+					v2 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("is_banned"u8))
 			{
 				reader.Read();
-				v3 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v3 = null;
+				}
+				else
+				{
+					v3 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("uniq_username_css"u8))
 			{
 				reader.Read();
-				v4 = reader.GetString()!;
+				v4 = reader.GetString();
 			}
 			else
 			{
@@ -1919,7 +1933,7 @@ public sealed record ManagingBulkGetResponseItems(
 
 	internal static ManagingBulkGetResponseItems ReadFromReader(ref Utf8JsonReader reader)
 	{
-		ItemModel v0 = null!;
+		ItemModel? v0 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -1927,7 +1941,7 @@ public sealed record ManagingBulkGetResponseItems(
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
-				v0 = reader.TokenType == JsonTokenType.Null ? null! : ItemModel.ReadFromReader(ref reader);
+				v0 = reader.TokenType == JsonTokenType.Null ? null : ItemModel.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -2247,10 +2261,10 @@ public sealed record ManagingBulkGetResponseItems(
 
 		internal static ManagingSteamInventoryValueResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			ManagingSteamInventoryValueResponseData v1 = null!;
-			long v2 = default;
-			Resp_SystemInfo v3 = null!;
+			string? v0 = default;
+			ManagingSteamInventoryValueResponseData? v1 = default;
+			long? v2 = default;
+			Resp_SystemInfo? v3 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2258,22 +2272,29 @@ public sealed record ManagingBulkGetResponseItems(
 				if (reader.ValueTextEquals("query"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamInventoryValueResponseData.ReadFromReader(ref reader);
+					v1 = reader.TokenType == JsonTokenType.Null ? null : ManagingSteamInventoryValueResponseData.ReadFromReader(ref reader);
 				}
 				else if (reader.ValueTextEquals("appId"u8))
 				{
 					reader.Read();
-					v2 = reader.GetInt64();
+					if (reader.TokenType == JsonTokenType.Null)
+					{
+						v2 = null;
+					}
+					else
+					{
+						v2 = reader.GetInt64();
+					}
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v3 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -2470,7 +2491,7 @@ public sealed record ManagingSteamInventoryValueResponseDataItems(
 
 	internal static ManagingSteamInventoryValueResponseDataItems ReadFromReader(ref Utf8JsonReader reader)
 	{
-		ManagingSteamInventoryValueResponseDataItems0 v0 = null!;
+		ManagingSteamInventoryValueResponseDataItems0? v0 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2478,7 +2499,7 @@ public sealed record ManagingSteamInventoryValueResponseDataItems(
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
-				v0 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamInventoryValueResponseDataItems0.ReadFromReader(ref reader);
+				v0 = reader.TokenType == JsonTokenType.Null ? null : ManagingSteamInventoryValueResponseDataItems0.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -2661,10 +2682,10 @@ public sealed record ManagingSteamInventoryValueResponseData(
 
 		internal static ManagingSteamValueResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			ManagingSteamValueResponseData v1 = null!;
-			long v2 = default;
-			Resp_SystemInfo v3 = null!;
+			string? v0 = default;
+			ManagingSteamValueResponseData? v1 = default;
+			long? v2 = default;
+			Resp_SystemInfo? v3 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2672,22 +2693,29 @@ public sealed record ManagingSteamInventoryValueResponseData(
 				if (reader.ValueTextEquals("query"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("data"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamValueResponseData.ReadFromReader(ref reader);
+					v1 = reader.TokenType == JsonTokenType.Null ? null : ManagingSteamValueResponseData.ReadFromReader(ref reader);
 				}
 				else if (reader.ValueTextEquals("appId"u8))
 				{
 					reader.Read();
-					v2 = reader.GetInt64();
+					if (reader.TokenType == JsonTokenType.Null)
+					{
+						v2 = null;
+					}
+					else
+					{
+						v2 = reader.GetInt64();
+					}
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v3 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v3 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -2884,7 +2912,7 @@ public sealed record ManagingSteamValueResponseDataItems(
 
 	internal static ManagingSteamValueResponseDataItems ReadFromReader(ref Utf8JsonReader reader)
 	{
-		ManagingSteamValueResponseDataItems0 v0 = null!;
+		ManagingSteamValueResponseDataItems0? v0 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2892,7 +2920,7 @@ public sealed record ManagingSteamValueResponseDataItems(
 			if (reader.ValueTextEquals("0"u8))
 			{
 				reader.Read();
-				v0 = reader.TokenType == JsonTokenType.Null ? null! : ManagingSteamValueResponseDataItems0.ReadFromReader(ref reader);
+				v0 = reader.TokenType == JsonTokenType.Null ? null : ManagingSteamValueResponseDataItems0.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -3167,9 +3195,9 @@ public sealed record ManagingSteamValueResponseData(
 
 		internal static ManagingEditResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -3177,17 +3205,17 @@ public sealed record ManagingSteamValueResponseData(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -4760,8 +4788,8 @@ public sealed record ManagingTelegramCodeResponseCodes(
 
 	internal static ManagingTelegramCodeResponseCodes ReadFromReader(ref Utf8JsonReader reader)
 	{
-		string v0 = null!;
-		long v1 = default;
+		string? v0 = default;
+		long? v1 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4769,12 +4797,19 @@ public sealed record ManagingTelegramCodeResponseCodes(
 			if (reader.ValueTextEquals("code"u8))
 			{
 				reader.Read();
-				v0 = reader.GetString()!;
+				v0 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("date"u8))
 			{
 				reader.Read();
-				v1 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v1 = null;
+				}
+				else
+				{
+					v1 = reader.GetInt64();
+				}
 			}
 			else
 			{
@@ -4803,9 +4838,9 @@ public sealed record ManagingTelegramCodeResponseCodes(
 
 		internal static ManagingTelegramResetAuthResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4813,17 +4848,17 @@ public sealed record ManagingTelegramCodeResponseCodes(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -4975,9 +5010,9 @@ public sealed record ManagingQRLoginResponseResult(
 
 		internal static ManagingRefuseGuaranteeResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4985,17 +5020,17 @@ public sealed record ManagingQRLoginResponseResult(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -5045,9 +5080,9 @@ public sealed record ManagingQRLoginResponseResult(
 
 		internal static ManagingDeclineVideoRecordingResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -5055,17 +5090,17 @@ public sealed record ManagingQRLoginResponseResult(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -5157,8 +5192,8 @@ public sealed record ManagingQRLoginResponseResult(
 
 		internal static ManagingChangePasswordResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
+			string? v0 = default;
+			string? v1 = default;
 			string v2 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
@@ -5167,12 +5202,12 @@ public sealed record ManagingQRLoginResponseResult(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("new_password"u8))
 				{
@@ -5697,9 +5732,9 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 
 		internal static ManagingUnfavoriteResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -5707,17 +5742,17 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -5746,9 +5781,9 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 
 		internal static ManagingStickResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -5756,17 +5791,17 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -5795,9 +5830,9 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 
 		internal static ManagingUnstickResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -5805,17 +5840,17 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -5889,9 +5924,9 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 
 		internal static ManagingTransferResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -5899,17 +5934,17 @@ public sealed record ManagingTempEmailPasswordResponseItem(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{

@@ -27,7 +27,7 @@ public static class BatchApiTypes
 		internal static BatchBatchResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
 			BatchBatchResponseJobs v0 = null!;
-			Resp_SystemInfo v1 = null!;
+			Resp_SystemInfo? v1 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -40,7 +40,7 @@ public static class BatchApiTypes
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v1 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v1 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{
@@ -68,8 +68,8 @@ public sealed record BatchBatchResponseJobsJobId(
 
 	internal static BatchBatchResponseJobsJobId ReadFromReader(ref Utf8JsonReader reader)
 	{
-		string v0 = null!;
-		string v1 = null!;
+		string? v0 = default;
+		string? v1 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -77,12 +77,12 @@ public sealed record BatchBatchResponseJobsJobId(
 			if (reader.ValueTextEquals("_job_result"u8))
 			{
 				reader.Read();
-				v0 = reader.GetString()!;
+				v0 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("_job_error"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetString();
 			}
 			else
 			{

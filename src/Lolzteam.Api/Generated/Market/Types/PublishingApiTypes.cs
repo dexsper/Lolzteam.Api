@@ -1263,7 +1263,7 @@ public sealed record PublishingCheckResponseItemSeller(
 	[property: JsonPropertyName("sold_items_count")] long SoldItemsCount,
 	[property: JsonPropertyName("active_items_count")] long ActiveItemsCount,
 	[property: JsonPropertyName("restore_data")] string RestoreData,
-	[property: JsonPropertyName("restore_percents")] long RestorePercents,
+	[property: JsonPropertyName("restore_percents")] long? RestorePercents,
 	[property: JsonPropertyName("isOnline")] bool IsOnline
 )
 {
@@ -1287,7 +1287,7 @@ public sealed record PublishingCheckResponseItemSeller(
 		long v6 = default;
 		long v7 = default;
 		string v8 = null!;
-		long v9 = default;
+		long? v9 = default;
 		bool v10 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
@@ -1341,7 +1341,14 @@ public sealed record PublishingCheckResponseItemSeller(
 			else if (reader.ValueTextEquals("restore_percents"u8))
 			{
 				reader.Read();
-				v9 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v9 = null;
+				}
+				else
+				{
+					v9 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("isOnline"u8))
 			{
@@ -2026,9 +2033,9 @@ public sealed record PublishingCheckResponseItem(
 
 		internal static PublishingExternalResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			string v0 = null!;
-			string v1 = null!;
-			Resp_SystemInfo v2 = null!;
+			string? v0 = default;
+			string? v1 = default;
+			Resp_SystemInfo? v2 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -2036,17 +2043,17 @@ public sealed record PublishingCheckResponseItem(
 				if (reader.ValueTextEquals("status"u8))
 				{
 					reader.Read();
-					v0 = reader.GetString()!;
+					v0 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("message"u8))
 				{
 					reader.Read();
-					v1 = reader.GetString()!;
+					v1 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
 					reader.Read();
-					v2 = reader.TokenType == JsonTokenType.Null ? null! : Resp_SystemInfo.ReadFromReader(ref reader);
+					v2 = reader.TokenType == JsonTokenType.Null ? null : Resp_SystemInfo.ReadFromReader(ref reader);
 				}
 				else
 				{

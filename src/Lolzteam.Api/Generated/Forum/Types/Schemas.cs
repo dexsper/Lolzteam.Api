@@ -2945,7 +2945,7 @@ public sealed record Resp_PostModel(
 		string v12 = null!;
 		string v13 = null!;
 		long v14 = default;
-		Resp_PostModelDeleteInfo v15 = null!;
+		Resp_PostModelDeleteInfo? v15 = default;
 		bool v16 = default;
 		bool v17 = default;
 		bool v18 = default;
@@ -3040,7 +3040,7 @@ public sealed record Resp_PostModel(
 			else if (reader.ValueTextEquals("delete_info"u8))
 			{
 				reader.Read();
-				v15 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModelDeleteInfo.ReadFromReader(ref reader);
+				v15 = reader.TokenType == JsonTokenType.Null ? null : Resp_PostModelDeleteInfo.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("user_is_ignored"u8))
 			{
@@ -4076,16 +4076,16 @@ public sealed record Resp_ThreadModel(
 		bool v19 = default;
 		bool v20 = default;
 		bool v21 = default;
-		bool v22 = default;
-		bool v23 = default;
+		bool? v22 = default;
+		bool? v23 = default;
 		Resp_PostModel v24 = null!;
 		List<Resp_ThreadModelThreadPrefixes> v25 = null!;
 		Dictionary<string, string> v26 = null!;
 		Resp_ThreadModelLinks v27 = null!;
 		Resp_ThreadModelPermissions v28 = null!;
 		string v29 = null!;
-		Resp_PostModel v30 = null!;
-		Resp_ThreadModelContest v31 = null!;
+		Resp_PostModel? v30 = default;
+		Resp_ThreadModelContest? v31 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4203,12 +4203,26 @@ public sealed record Resp_ThreadModel(
 			else if (reader.ValueTextEquals("thread_hide_contacts"u8))
 			{
 				reader.Read();
-				v22 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v22 = null;
+				}
+				else
+				{
+					v22 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("thread_allow_ask_hidden_content"u8))
 			{
 				reader.Read();
-				v23 = reader.GetBoolean();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v23 = null;
+				}
+				else
+				{
+					v23 = reader.GetBoolean();
+				}
 			}
 			else if (reader.ValueTextEquals("first_post"u8))
 			{
@@ -4264,12 +4278,12 @@ public sealed record Resp_ThreadModel(
 			else if (reader.ValueTextEquals("last_post"u8))
 			{
 				reader.Read();
-				v30 = reader.TokenType == JsonTokenType.Null ? null! : Resp_PostModel.ReadFromReader(ref reader);
+				v30 = reader.TokenType == JsonTokenType.Null ? null : Resp_PostModel.ReadFromReader(ref reader);
 			}
 			else if (reader.ValueTextEquals("contest"u8))
 			{
 				reader.Read();
-				v31 = reader.TokenType == JsonTokenType.Null ? null! : Resp_ThreadModelContest.ReadFromReader(ref reader);
+				v31 = reader.TokenType == JsonTokenType.Null ? null : Resp_ThreadModelContest.ReadFromReader(ref reader);
 			}
 			else
 			{
@@ -4297,8 +4311,8 @@ public sealed record Resp_ThreadModelThreadPrefixes(
 
 	internal static Resp_ThreadModelThreadPrefixes ReadFromReader(ref Utf8JsonReader reader)
 	{
-		long v0 = default;
-		string v1 = null!;
+		long? v0 = default;
+		string? v1 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4306,12 +4320,19 @@ public sealed record Resp_ThreadModelThreadPrefixes(
 			if (reader.ValueTextEquals("prefix_id"u8))
 			{
 				reader.Read();
-				v0 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v0 = null;
+				}
+				else
+				{
+					v0 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("prefix_title"u8))
 			{
 				reader.Read();
-				v1 = reader.GetString()!;
+				v1 = reader.GetString();
 			}
 			else
 			{
@@ -4355,8 +4376,8 @@ public sealed record Resp_ThreadModelLinks(
 		string v5 = null!;
 		string v6 = null!;
 		string v7 = null!;
-		string v8 = null!;
-		string v9 = null!;
+		string? v8 = default;
+		string? v9 = default;
 		while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 		{
 			if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -4404,12 +4425,12 @@ public sealed record Resp_ThreadModelLinks(
 			else if (reader.ValueTextEquals("last_poster"u8))
 			{
 				reader.Read();
-				v8 = reader.GetString()!;
+				v8 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("last_post"u8))
 			{
 				reader.Read();
-				v9 = reader.GetString()!;
+				v9 = reader.GetString();
 			}
 			else
 			{
@@ -4833,7 +4854,7 @@ public sealed record Resp_UserModel(
 		long v18 = default;
 		long v19 = default;
 		string v20 = null!;
-		long v21 = default;
+		long? v21 = default;
 		long v22 = default;
 		string v23 = null!;
 		long v24 = default;
@@ -4972,7 +4993,14 @@ public sealed record Resp_UserModel(
 			else if (reader.ValueTextEquals("show_dob_dateshow_dob_date"u8))
 			{
 				reader.Read();
-				v21 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v21 = null;
+				}
+				else
+				{
+					v21 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("show_dob_year"u8))
 			{
@@ -5505,7 +5533,7 @@ public sealed record Resp_UserModelFields(
 		string v3 = null!;
 		bool v4 = default;
 		bool v5 = default;
-		string v6 = null!;
+		string? v6 = default;
 		bool v7 = default;
 		bool v8 = default;
 		List<Resp_UserModelFieldsChoices> v9 = null!;
@@ -5547,7 +5575,7 @@ public sealed record Resp_UserModelFields(
 			else if (reader.ValueTextEquals("value"u8))
 			{
 				reader.Read();
-				v6 = reader.GetString()!;
+				v6 = reader.GetString();
 			}
 			else if (reader.ValueTextEquals("editable"u8))
 			{

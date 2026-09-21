@@ -216,8 +216,8 @@ public static class OAuthApiTypes
 			string v0 = null!;
 			string v1 = null!;
 			long v2 = default;
-			string v3 = null!;
-			string v4 = null!;
+			string? v3 = default;
+			string? v4 = default;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
 				if (reader.TokenType != JsonTokenType.PropertyName) continue;
@@ -240,12 +240,12 @@ public static class OAuthApiTypes
 				else if (reader.ValueTextEquals("refresh_token"u8))
 				{
 					reader.Read();
-					v3 = reader.GetString()!;
+					v3 = reader.GetString();
 				}
 				else if (reader.ValueTextEquals("scope"u8))
 				{
 					reader.Read();
-					v4 = reader.GetString()!;
+					v4 = reader.GetString();
 				}
 				else
 				{
