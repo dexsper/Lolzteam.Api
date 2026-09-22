@@ -1372,7 +1372,7 @@ public sealed record PublishingCheckResponseItem(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -1412,7 +1412,7 @@ public sealed record PublishingCheckResponseItem(
 	[property: JsonPropertyName("isPersonalAccount")] bool IsPersonalAccount,
 	[property: JsonPropertyName("sold_items_category_count")] long SoldItemsCategoryCount,
 	[property: JsonPropertyName("restore_items_category_count")] long RestoreItemsCategoryCount,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -1462,7 +1462,7 @@ public sealed record PublishingCheckResponseItem(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -1502,7 +1502,7 @@ public sealed record PublishingCheckResponseItem(
 		bool v43 = default;
 		long v44 = default;
 		long v45 = default;
-		long v46 = default;
+		double v46 = default;
 		string v47 = null!;
 		bool v48 = default;
 		bool v49 = default;
@@ -1570,7 +1570,7 @@ public sealed record PublishingCheckResponseItem(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -1770,7 +1770,7 @@ public sealed record PublishingCheckResponseItem(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v46 = reader.GetInt64();
+				v46 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{

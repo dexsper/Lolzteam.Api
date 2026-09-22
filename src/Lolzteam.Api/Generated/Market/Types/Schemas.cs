@@ -801,7 +801,7 @@ public sealed record ItemFromListModel(
 	[property: JsonPropertyName("published_date")] long? PublishedDate,
 	[property: JsonPropertyName("title")] string? Title,
 	[property: JsonPropertyName("description")] string? Description,
-	[property: JsonPropertyName("price")] long? Price,
+	[property: JsonPropertyName("price")] double? Price,
 	[property: JsonPropertyName("update_stat_date")] long? UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long? RefreshedDate,
 	[property: JsonPropertyName("view_count")] long? ViewCount,
@@ -829,7 +829,7 @@ public sealed record ItemFromListModel(
 	[property: JsonPropertyName("bumpSettings")] ItemFromListModelBumpSettings? BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool? CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool? CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long? RubPrice,
+	[property: JsonPropertyName("rub_price")] double? RubPrice,
 	[property: JsonPropertyName("price_currency")] string? PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool? CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool? CanResellItemAfterPurchase,
@@ -859,7 +859,7 @@ public sealed record ItemFromListModel(
 		long? v3 = default;
 		string? v4 = default;
 		string? v5 = default;
-		long? v6 = default;
+		double? v6 = default;
 		long? v7 = default;
 		long? v8 = default;
 		long? v9 = default;
@@ -887,7 +887,7 @@ public sealed record ItemFromListModel(
 		ItemFromListModelBumpSettings? v31 = default;
 		bool? v32 = default;
 		bool? v33 = default;
-		long? v34 = default;
+		double? v34 = default;
 		string? v35 = default;
 		bool? v36 = default;
 		bool? v37 = default;
@@ -962,7 +962,7 @@ public sealed record ItemFromListModel(
 				}
 				else
 				{
-					v6 = reader.GetInt64();
+					v6 = reader.GetDouble();
 				}
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
@@ -1256,7 +1256,7 @@ public sealed record ItemFromListModel(
 				}
 				else
 				{
-					v34 = reader.GetInt64();
+					v34 = reader.GetDouble();
 				}
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
@@ -1675,7 +1675,7 @@ public sealed record ItemModel(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -1694,7 +1694,7 @@ public sealed record ItemModel(
 	[property: JsonPropertyName("resale_item_origin")] string ResaleItemOrigin,
 	[property: JsonPropertyName("auto_bump_period")] long AutoBumpPeriod,
 	[property: JsonPropertyName("guarantee_duration")] long GuaranteeDuration,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("discount")] bool Discount,
 	[property: JsonPropertyName("feedback_data")] string FeedbackData,
 	[property: JsonPropertyName("max_discount_percent")] long MaxDiscountPercent,
@@ -1764,7 +1764,7 @@ public sealed record ItemModel(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -1783,7 +1783,7 @@ public sealed record ItemModel(
 		string v22 = null!;
 		long v23 = default;
 		long v24 = default;
-		long v25 = default;
+		double v25 = default;
 		bool v26 = default;
 		string v27 = null!;
 		long v28 = default;
@@ -1871,7 +1871,7 @@ public sealed record ItemModel(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -1966,7 +1966,7 @@ public sealed record ItemModel(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v25 = reader.GetInt64();
+				v25 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("discount"u8))
 			{

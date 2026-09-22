@@ -3076,7 +3076,7 @@ public sealed record ManagingSteamValueResponseData(
 		/// Current price of account in your currency.
 		/// </summary>
 		[JsonPropertyName("price")]
-		public long? Price { get; init; }
+		public double? Price { get; init; }
 		[JsonPropertyName("currency")]
 		public Currency? Currency { get; init; }
 		/// <summary>
@@ -3228,7 +3228,7 @@ public sealed record ManagingSteamValueResponseData(
 	}
 
 	public sealed record ManagingAIPriceResponse(
-		[property: JsonPropertyName("price")] long Price,
+		[property: JsonPropertyName("price")] double Price,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
 	{
@@ -3243,7 +3243,7 @@ public sealed record ManagingSteamValueResponseData(
 
 		internal static ManagingAIPriceResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			long v0 = default;
+			double v0 = default;
 			Resp_SystemInfo v1 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
@@ -3252,7 +3252,7 @@ public sealed record ManagingSteamValueResponseData(
 				if (reader.ValueTextEquals("price"u8))
 				{
 					reader.Read();
-					v0 = reader.GetInt64();
+					v0 = reader.GetDouble();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{
@@ -3270,7 +3270,7 @@ public sealed record ManagingSteamValueResponseData(
 	}
 
 	public sealed record ManagingAutoBuyPriceResponse(
-		[property: JsonPropertyName("price")] long Price,
+		[property: JsonPropertyName("price")] double Price,
 		[property: JsonPropertyName("system_info")] Resp_SystemInfo SystemInfo
 	)
 	{
@@ -3285,7 +3285,7 @@ public sealed record ManagingSteamValueResponseData(
 
 		internal static ManagingAutoBuyPriceResponse ReadFromReader(ref Utf8JsonReader reader)
 		{
-			long v0 = default;
+			double v0 = default;
 			Resp_SystemInfo v1 = null!;
 			while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 			{
@@ -3294,7 +3294,7 @@ public sealed record ManagingSteamValueResponseData(
 				if (reader.ValueTextEquals("price"u8))
 				{
 					reader.Read();
-					v0 = reader.GetInt64();
+					v0 = reader.GetDouble();
 				}
 				else if (reader.ValueTextEquals("system_info"u8))
 				{

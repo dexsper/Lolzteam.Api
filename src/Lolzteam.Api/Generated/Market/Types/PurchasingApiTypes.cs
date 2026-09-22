@@ -776,7 +776,7 @@ public sealed record PurchasingFastBuyResponseItem(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -816,7 +816,7 @@ public sealed record PurchasingFastBuyResponseItem(
 	[property: JsonPropertyName("isPersonalAccount")] bool IsPersonalAccount,
 	[property: JsonPropertyName("sold_items_category_count")] long SoldItemsCategoryCount,
 	[property: JsonPropertyName("restore_items_category_count")] long RestoreItemsCategoryCount,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -866,7 +866,7 @@ public sealed record PurchasingFastBuyResponseItem(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -906,7 +906,7 @@ public sealed record PurchasingFastBuyResponseItem(
 		bool v43 = default;
 		long v44 = default;
 		long v45 = default;
-		long v46 = default;
+		double v46 = default;
 		string v47 = null!;
 		bool v48 = default;
 		bool v49 = default;
@@ -974,7 +974,7 @@ public sealed record PurchasingFastBuyResponseItem(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -1174,7 +1174,7 @@ public sealed record PurchasingFastBuyResponseItem(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v46 = reader.GetInt64();
+				v46 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -1771,7 +1771,7 @@ public sealed record PurchasingCheckResponseItem(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -1820,7 +1820,7 @@ public sealed record PurchasingCheckResponseItem(
 	[property: JsonPropertyName("canViewEmailLoginData")] bool CanViewEmailLoginData,
 	[property: JsonPropertyName("showGetEmailCodeButton")] bool ShowGetEmailCodeButton,
 	[property: JsonPropertyName("isPersonalAccount")] bool IsPersonalAccount,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -1870,7 +1870,7 @@ public sealed record PurchasingCheckResponseItem(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -1919,7 +1919,7 @@ public sealed record PurchasingCheckResponseItem(
 		bool v52 = default;
 		bool v53 = default;
 		bool v54 = default;
-		long v55 = default;
+		double v55 = default;
 		string v56 = null!;
 		bool v57 = default;
 		bool v58 = default;
@@ -1987,7 +1987,7 @@ public sealed record PurchasingCheckResponseItem(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -2232,7 +2232,7 @@ public sealed record PurchasingCheckResponseItem(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v55 = reader.GetInt64();
+				v55 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -2445,7 +2445,7 @@ public sealed record PurchasingCheckResponseItem(
 		/// Current price of account in your currency.
 		/// </summary>
 		[JsonPropertyName("price")]
-		public long? Price { get; init; }
+		public double? Price { get; init; }
 		/// <summary>
 		/// Balance ID that will be used to purchase specified item.
 		/// </summary>

@@ -10082,7 +10082,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -10576,7 +10576,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -10741,9 +10741,7 @@
                             "items": {}
                           },
                           "cs2PremierElo": {
-                            "title": "Cs Premier Elo",
-                            "type": "array",
-                            "items": {}
+                            "title": "Cs Premier Elo"
                           },
                           "steamLifetimeTradeBan": {
                             "title": "Steam Lifetime Trade Ban",
@@ -28847,7 +28845,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -29088,7 +29086,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -32236,7 +32234,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -32525,7 +32523,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -35221,7 +35219,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -35506,7 +35504,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -36727,7 +36725,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -36946,7 +36944,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -38651,7 +38649,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -38924,7 +38922,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -39643,7 +39641,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -39903,7 +39901,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -40469,7 +40467,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -40693,7 +40691,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -41858,7 +41856,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -42082,7 +42080,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -52209,7 +52207,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -52381,7 +52379,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -52983,7 +52981,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -53269,7 +53267,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -54181,7 +54179,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -54418,7 +54416,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -54897,7 +54895,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -55157,7 +55155,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -55935,7 +55933,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -56207,7 +56205,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -57665,7 +57663,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -57878,7 +57876,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -58414,7 +58412,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -58646,7 +58644,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -59133,7 +59131,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -59334,7 +59332,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -59865,7 +59863,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -60102,7 +60100,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -60889,7 +60887,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -61095,7 +61093,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -61528,7 +61526,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -61700,7 +61698,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -62963,7 +62961,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -63212,7 +63210,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -63797,7 +63795,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -64001,7 +63999,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -65074,7 +65072,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -65332,7 +65330,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "price_currency": {
                             "title": "Price",
@@ -65804,7 +65802,7 @@
                           },
                           "price": {
                             "title": "Price",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "title": "Update",
@@ -65876,7 +65874,7 @@
                           },
                           "rub_price": {
                             "title": "Rub",
-                            "type": "integer"
+                            "type": "number"
                           },
                           "discount": {
                             "title": "Discount",
@@ -66640,7 +66638,7 @@
                             "type": "string"
                           },
                           "price": {
-                            "type": "integer"
+                            "type": "number"
                           },
                           "update_stat_date": {
                             "type": "integer"
@@ -66697,7 +66695,7 @@
                             "type": "integer"
                           },
                           "rub_price": {
-                            "type": "integer"
+                            "type": "number"
                           },
                           "discount": {},
                           "onlyfans_item_id": {
@@ -72013,7 +72011,7 @@
                   },
                   "price": {
                     "title": "Price",
-                    "type": "integer",
+                    "type": "number",
                     "description": "Current price of account in your currency.",
                     "minimum": 1
                   },
@@ -72162,7 +72160,7 @@
                   "properties": {
                     "price": {
                       "title": "Price",
-                      "type": "integer"
+                      "type": "number"
                     },
                     "system_info": {
                       "$ref": "#/components/schemas/Resp_SystemInfo"
@@ -72218,7 +72216,7 @@
                   "properties": {
                     "price": {
                       "title": "Price",
-                      "type": "integer"
+                      "type": "number"
                     },
                     "system_info": {
                       "$ref": "#/components/schemas/Resp_SystemInfo"
@@ -73256,7 +73254,7 @@
                 "properties": {
                   "price": {
                     "title": "Price",
-                    "type": "integer",
+                    "type": "number",
                     "description": "Current price of account in your currency."
                   },
                   "balance_id": {
@@ -83134,7 +83132,7 @@
             "default": "Description"
           },
           "price": {
-            "type": "integer",
+            "type": "number",
             "default": 0
           },
           "update_stat_date": {
@@ -83263,7 +83261,7 @@
             "default": false
           },
           "rub_price": {
-            "type": "integer",
+            "type": "number",
             "default": 0
           },
           "price_currency": {
@@ -83446,7 +83444,7 @@
             "type": "string"
           },
           "price": {
-            "type": "integer"
+            "type": "number"
           },
           "update_stat_date": {
             "type": "integer"
@@ -83503,7 +83501,7 @@
             "type": "integer"
           },
           "rub_price": {
-            "type": "integer"
+            "type": "number"
           },
           "discount": {
             "type": "boolean"
@@ -84161,7 +84159,7 @@
                     },
                     "price": {
                       "title": "Price",
-                      "type": "integer"
+                      "type": "number"
                     },
                     "update_stat_date": {
                       "title": "Update",
@@ -84385,7 +84383,7 @@
                     },
                     "rub_price": {
                       "title": "Rub",
-                      "type": "integer"
+                      "type": "number"
                     },
                     "price_currency": {
                       "title": "Price",
@@ -84776,7 +84774,7 @@
                     },
                     "price": {
                       "title": "Price",
-                      "type": "integer"
+                      "type": "number"
                     },
                     "update_stat_date": {
                       "title": "Update",
@@ -85101,7 +85099,7 @@
                     },
                     "rub_price": {
                       "title": "Rub",
-                      "type": "integer"
+                      "type": "number"
                     },
                     "price_currency": {
                       "title": "Price",

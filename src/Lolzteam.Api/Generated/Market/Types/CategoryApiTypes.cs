@@ -2559,7 +2559,7 @@ public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -2652,7 +2652,7 @@ public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategorySteamResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -2677,7 +2677,7 @@ public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("hasPossibleBanInDota2")] bool HasPossibleBanInDota2,
 	[property: JsonPropertyName("chineseAccount")] bool ChineseAccount,
 	[property: JsonPropertyName("cs2MapsRanks")] List<JsonElement> Cs2MapsRanks,
-	[property: JsonPropertyName("cs2PremierElo")] List<JsonElement> Cs2PremierElo,
+	[property: JsonPropertyName("cs2PremierElo")] JsonElement Cs2PremierElo,
 	[property: JsonPropertyName("steamLifetimeTradeBan")] bool SteamLifetimeTradeBan,
 	[property: JsonPropertyName("canViewAccountLink")] bool CanViewAccountLink,
 	[property: JsonPropertyName("accountLinks")] List<CategorySteamResponseItemsAccountLinks> AccountLinks,
@@ -2714,7 +2714,7 @@ public sealed record CategorySteamResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -2807,7 +2807,7 @@ public sealed record CategorySteamResponseItems(
 		CategorySteamResponseItemsBumpSettings v96 = null!;
 		bool v97 = default;
 		bool v98 = default;
-		long v99 = default;
+		double v99 = default;
 		string v100 = null!;
 		bool v101 = default;
 		bool v102 = default;
@@ -2832,7 +2832,7 @@ public sealed record CategorySteamResponseItems(
 		bool v121 = default;
 		bool v122 = default;
 		List<JsonElement> v123 = null!;
-		List<JsonElement> v124 = null!;
+		JsonElement v124 = default;
 		bool v125 = default;
 		bool v126 = default;
 		List<CategorySteamResponseItemsAccountLinks> v127 = null!;
@@ -2887,7 +2887,7 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -3364,7 +3364,7 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v99 = reader.GetInt64();
+				v99 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -3534,16 +3534,7 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("cs2PremierElo"u8))
 			{
 				reader.Read();
-				if (reader.TokenType == JsonTokenType.StartArray)
-				{
-					var __lst = new List<JsonElement>();
-					while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
-					{
-						var __item = JsonDocument.ParseValue(ref reader).RootElement.Clone();
-						__lst.Add(__item);
-					}
-					v124 = __lst;
-				}
+				v124 = JsonDocument.ParseValue(ref reader).RootElement.Clone();
 			}
 			else if (reader.ValueTextEquals("steamLifetimeTradeBan"u8))
 			{
@@ -5316,7 +5307,7 @@ public sealed record CategoryFortniteResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -5371,7 +5362,7 @@ public sealed record CategoryFortniteResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryFortniteResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -5422,7 +5413,7 @@ public sealed record CategoryFortniteResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -5477,7 +5468,7 @@ public sealed record CategoryFortniteResponseItems(
 		CategoryFortniteResponseItemsBumpSettings v58 = null!;
 		bool v59 = default;
 		bool v60 = default;
-		long v61 = default;
+		double v61 = default;
 		string v62 = null!;
 		bool v63 = default;
 		bool v64 = default;
@@ -5546,7 +5537,7 @@ public sealed record CategoryFortniteResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -5821,7 +5812,7 @@ public sealed record CategoryFortniteResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v61 = reader.GetInt64();
+				v61 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -8722,7 +8713,7 @@ public sealed record CategoryMihoyoResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -8789,7 +8780,7 @@ public sealed record CategoryMihoyoResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryMihoyoResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -8834,7 +8825,7 @@ public sealed record CategoryMihoyoResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -8901,7 +8892,7 @@ public sealed record CategoryMihoyoResponseItems(
 		CategoryMihoyoResponseItemsBumpSettings v70 = null!;
 		bool v71 = default;
 		bool v72 = default;
-		long v73 = default;
+		double v73 = default;
 		string v74 = null!;
 		bool v75 = default;
 		bool v76 = default;
@@ -8964,7 +8955,7 @@ public sealed record CategoryMihoyoResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -9299,7 +9290,7 @@ public sealed record CategoryMihoyoResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v73 = reader.GetInt64();
+				v73 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -10880,7 +10871,7 @@ public sealed record CategoryRiotResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -10946,7 +10937,7 @@ public sealed record CategoryRiotResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryRiotResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -10995,7 +10986,7 @@ public sealed record CategoryRiotResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -11061,7 +11052,7 @@ public sealed record CategoryRiotResponseItems(
 		CategoryRiotResponseItemsBumpSettings v69 = null!;
 		bool v70 = default;
 		bool v71 = default;
-		long v72 = default;
+		double v72 = default;
 		string v73 = null!;
 		bool v74 = default;
 		bool v75 = default;
@@ -11128,7 +11119,7 @@ public sealed record CategoryRiotResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -11458,7 +11449,7 @@ public sealed record CategoryRiotResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v72 = reader.GetInt64();
+				v72 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -12828,7 +12819,7 @@ public sealed record CategoryTelegramResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -12878,7 +12869,7 @@ public sealed record CategoryTelegramResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryTelegramResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -12914,7 +12905,7 @@ public sealed record CategoryTelegramResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -12964,7 +12955,7 @@ public sealed record CategoryTelegramResponseItems(
 		CategoryTelegramResponseItemsBumpSettings v53 = null!;
 		bool v54 = default;
 		bool v55 = default;
-		long v56 = default;
+		double v56 = default;
 		string v57 = null!;
 		bool v58 = default;
 		bool v59 = default;
@@ -13018,7 +13009,7 @@ public sealed record CategoryTelegramResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -13268,7 +13259,7 @@ public sealed record CategoryTelegramResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v56 = reader.GetInt64();
+				v56 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -14852,7 +14843,7 @@ public sealed record CategorySupercellResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -14915,7 +14906,7 @@ public sealed record CategorySupercellResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategorySupercellResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -14954,7 +14945,7 @@ public sealed record CategorySupercellResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -15017,7 +15008,7 @@ public sealed record CategorySupercellResponseItems(
 		CategorySupercellResponseItemsBumpSettings v66 = null!;
 		bool v67 = default;
 		bool v68 = default;
-		long v69 = default;
+		double v69 = default;
 		string v70 = null!;
 		bool v71 = default;
 		bool v72 = default;
@@ -15074,7 +15065,7 @@ public sealed record CategorySupercellResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -15389,7 +15380,7 @@ public sealed record CategorySupercellResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v69 = reader.GetInt64();
+				v69 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -16471,7 +16462,7 @@ public sealed record CategoryEaResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -16521,7 +16512,7 @@ public sealed record CategoryEaResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryEaResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -16560,7 +16551,7 @@ public sealed record CategoryEaResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -16610,7 +16601,7 @@ public sealed record CategoryEaResponseItems(
 		CategoryEaResponseItemsBumpSettings v53 = null!;
 		bool v54 = default;
 		bool v55 = default;
-		long v56 = default;
+		double v56 = default;
 		string v57 = null!;
 		bool v58 = default;
 		bool v59 = default;
@@ -16667,7 +16658,7 @@ public sealed record CategoryEaResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -16926,7 +16917,7 @@ public sealed record CategoryEaResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v56 = reader.GetInt64();
+				v56 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -19330,7 +19321,7 @@ public sealed record CategoryWotResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -19381,7 +19372,7 @@ public sealed record CategoryWotResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryWotResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -19429,7 +19420,7 @@ public sealed record CategoryWotResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -19480,7 +19471,7 @@ public sealed record CategoryWotResponseItems(
 		CategoryWotResponseItemsBumpSettings v54 = null!;
 		bool v55 = default;
 		bool v56 = default;
-		long v57 = default;
+		double v57 = default;
 		string v58 = null!;
 		bool v59 = default;
 		bool v60 = default;
@@ -19546,7 +19537,7 @@ public sealed record CategoryWotResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -19801,7 +19792,7 @@ public sealed record CategoryWotResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v57 = reader.GetInt64();
+				v57 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -39428,7 +39419,7 @@ public sealed record CategoryWotBlitzResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -39479,7 +39470,7 @@ public sealed record CategoryWotBlitzResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryWotBlitzResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -39527,7 +39518,7 @@ public sealed record CategoryWotBlitzResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -39578,7 +39569,7 @@ public sealed record CategoryWotBlitzResponseItems(
 		CategoryWotBlitzResponseItemsBumpSettings v54 = null!;
 		bool v55 = default;
 		bool v56 = default;
-		long v57 = default;
+		double v57 = default;
 		string v58 = null!;
 		bool v59 = default;
 		bool v60 = default;
@@ -39644,7 +39635,7 @@ public sealed record CategoryWotBlitzResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -39899,7 +39890,7 @@ public sealed record CategoryWotBlitzResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v57 = reader.GetInt64();
+				v57 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -40658,7 +40649,7 @@ public sealed record CategoryGiftsResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -40696,7 +40687,7 @@ public sealed record CategoryGiftsResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryGiftsResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -40732,7 +40723,7 @@ public sealed record CategoryGiftsResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -40770,7 +40761,7 @@ public sealed record CategoryGiftsResponseItems(
 		CategoryGiftsResponseItemsBumpSettings v41 = null!;
 		bool v42 = default;
 		bool v43 = default;
-		long v44 = default;
+		double v44 = default;
 		string v45 = null!;
 		bool v46 = default;
 		bool v47 = default;
@@ -40824,7 +40815,7 @@ public sealed record CategoryGiftsResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -41014,7 +41005,7 @@ public sealed record CategoryGiftsResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v44 = reader.GetInt64();
+				v44 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -42095,7 +42086,7 @@ public sealed record CategoryEpicGamesResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -42145,7 +42136,7 @@ public sealed record CategoryEpicGamesResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryEpicGamesResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -42186,7 +42177,7 @@ public sealed record CategoryEpicGamesResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -42236,7 +42227,7 @@ public sealed record CategoryEpicGamesResponseItems(
 		CategoryEpicGamesResponseItemsBumpSettings v53 = null!;
 		bool v54 = default;
 		bool v55 = default;
-		long v56 = default;
+		double v56 = default;
 		string v57 = null!;
 		bool v58 = default;
 		bool v59 = default;
@@ -42295,7 +42286,7 @@ public sealed record CategoryEpicGamesResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -42572,7 +42563,7 @@ public sealed record CategoryEpicGamesResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v56 = reader.GetInt64();
+				v56 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -43605,7 +43596,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -43659,7 +43650,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryEscapeFromTarkovResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -43701,7 +43692,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -43755,7 +43746,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 		CategoryEscapeFromTarkovResponseItemsBumpSettings v57 = null!;
 		bool v58 = default;
 		bool v59 = default;
-		long v60 = default;
+		double v60 = default;
 		string v61 = null!;
 		bool v62 = default;
 		bool v63 = default;
@@ -43815,7 +43806,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -44085,7 +44076,7 @@ public sealed record CategoryEscapeFromTarkovResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v60 = reader.GetInt64();
+				v60 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -44979,7 +44970,7 @@ public sealed record CategorySocialClubResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -45021,7 +45012,7 @@ public sealed record CategorySocialClubResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategorySocialClubResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -45059,7 +45050,7 @@ public sealed record CategorySocialClubResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -45101,7 +45092,7 @@ public sealed record CategorySocialClubResponseItems(
 		CategorySocialClubResponseItemsBumpSettings v45 = null!;
 		bool v46 = default;
 		bool v47 = default;
-		long v48 = default;
+		double v48 = default;
 		string v49 = null!;
 		bool v50 = default;
 		bool v51 = default;
@@ -45157,7 +45148,7 @@ public sealed record CategorySocialClubResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -45376,7 +45367,7 @@ public sealed record CategorySocialClubResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v48 = reader.GetInt64();
+				v48 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -46539,7 +46530,7 @@ public sealed record CategoryUplayResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -46591,7 +46582,7 @@ public sealed record CategoryUplayResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryUplayResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -46638,7 +46629,7 @@ public sealed record CategoryUplayResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -46690,7 +46681,7 @@ public sealed record CategoryUplayResponseItems(
 		CategoryUplayResponseItemsBumpSettings v55 = null!;
 		bool v56 = default;
 		bool v57 = default;
-		long v58 = default;
+		double v58 = default;
 		string v59 = null!;
 		bool v60 = default;
 		bool v61 = default;
@@ -46755,7 +46746,7 @@ public sealed record CategoryUplayResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -47015,7 +47006,7 @@ public sealed record CategoryUplayResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v58 = reader.GetInt64();
+				v58 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -48258,7 +48249,7 @@ public sealed record CategoryDiscordResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -48306,7 +48297,7 @@ public sealed record CategoryDiscordResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryDiscordResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -48344,7 +48335,7 @@ public sealed record CategoryDiscordResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -48392,7 +48383,7 @@ public sealed record CategoryDiscordResponseItems(
 		CategoryDiscordResponseItemsBumpSettings v51 = null!;
 		bool v52 = default;
 		bool v53 = default;
-		long v54 = default;
+		double v54 = default;
 		string v55 = null!;
 		bool v56 = default;
 		bool v57 = default;
@@ -48448,7 +48439,7 @@ public sealed record CategoryDiscordResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -48688,7 +48679,7 @@ public sealed record CategoryDiscordResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v54 = reader.GetInt64();
+				v54 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -49592,7 +49583,7 @@ public sealed record CategoryTikTokResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -49645,7 +49636,7 @@ public sealed record CategoryTikTokResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryTikTokResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -49683,7 +49674,7 @@ public sealed record CategoryTikTokResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -49736,7 +49727,7 @@ public sealed record CategoryTikTokResponseItems(
 		CategoryTikTokResponseItemsBumpSettings v56 = null!;
 		bool v57 = default;
 		bool v58 = default;
-		long v59 = default;
+		double v59 = default;
 		string v60 = null!;
 		bool v61 = default;
 		bool v62 = default;
@@ -49792,7 +49783,7 @@ public sealed record CategoryTikTokResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -50057,7 +50048,7 @@ public sealed record CategoryTikTokResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v59 = reader.GetInt64();
+				v59 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -50930,7 +50921,7 @@ public sealed record CategoryInstagramResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -50975,7 +50966,7 @@ public sealed record CategoryInstagramResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryInstagramResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -51012,7 +51003,7 @@ public sealed record CategoryInstagramResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -51057,7 +51048,7 @@ public sealed record CategoryInstagramResponseItems(
 		CategoryInstagramResponseItemsBumpSettings v48 = null!;
 		bool v49 = default;
 		bool v50 = default;
-		long v51 = default;
+		double v51 = default;
 		string v52 = null!;
 		bool v53 = default;
 		bool v54 = default;
@@ -51112,7 +51103,7 @@ public sealed record CategoryInstagramResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -51337,7 +51328,7 @@ public sealed record CategoryInstagramResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v51 = reader.GetInt64();
+				v51 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -52433,7 +52424,7 @@ public sealed record CategoryBattleNetResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -52478,7 +52469,7 @@ public sealed record CategoryBattleNetResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryBattleNetResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -52523,7 +52514,7 @@ public sealed record CategoryBattleNetResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -52568,7 +52559,7 @@ public sealed record CategoryBattleNetResponseItems(
 		CategoryBattleNetResponseItemsBumpSettings v48 = null!;
 		bool v49 = default;
 		bool v50 = default;
-		long v51 = default;
+		double v51 = default;
 		string v52 = null!;
 		bool v53 = default;
 		bool v54 = default;
@@ -52631,7 +52622,7 @@ public sealed record CategoryBattleNetResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -52856,7 +52847,7 @@ public sealed record CategoryBattleNetResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v51 = reader.GetInt64();
+				v51 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -53824,7 +53815,7 @@ public sealed record CategoryLlmResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -53868,7 +53859,7 @@ public sealed record CategoryLlmResponseItems(
 	[property: JsonPropertyName("isPersonalAccount")] bool IsPersonalAccount,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("priceWithSellerFeeLabel")] string PriceWithSellerFeeLabel,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
@@ -53907,7 +53898,7 @@ public sealed record CategoryLlmResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -53951,7 +53942,7 @@ public sealed record CategoryLlmResponseItems(
 		bool v47 = default;
 		bool v48 = default;
 		bool v49 = default;
-		long v50 = default;
+		double v50 = default;
 		string v51 = null!;
 		string v52 = null!;
 		bool v53 = default;
@@ -54008,7 +53999,7 @@ public sealed record CategoryLlmResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -54228,7 +54219,7 @@ public sealed record CategoryLlmResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v50 = reader.GetInt64();
+				v50 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -54948,7 +54939,7 @@ public sealed record CategoryVpnResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -54986,7 +54977,7 @@ public sealed record CategoryVpnResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryVpnResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -55023,7 +55014,7 @@ public sealed record CategoryVpnResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -55061,7 +55052,7 @@ public sealed record CategoryVpnResponseItems(
 		CategoryVpnResponseItemsBumpSettings v41 = null!;
 		bool v42 = default;
 		bool v43 = default;
-		long v44 = default;
+		double v44 = default;
 		string v45 = null!;
 		bool v46 = default;
 		bool v47 = default;
@@ -55116,7 +55107,7 @@ public sealed record CategoryVpnResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -55306,7 +55297,7 @@ public sealed record CategoryVpnResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v44 = reader.GetInt64();
+				v44 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -56585,7 +56576,7 @@ public sealed record CategoryRobloxResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -56642,7 +56633,7 @@ public sealed record CategoryRobloxResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryRobloxResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -56685,7 +56676,7 @@ public sealed record CategoryRobloxResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -56742,7 +56733,7 @@ public sealed record CategoryRobloxResponseItems(
 		CategoryRobloxResponseItemsBumpSettings v60 = null!;
 		bool v61 = default;
 		bool v62 = default;
-		long v63 = default;
+		double v63 = default;
 		string v64 = null!;
 		bool v65 = default;
 		bool v66 = default;
@@ -56803,7 +56794,7 @@ public sealed record CategoryRobloxResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -57088,7 +57079,7 @@ public sealed record CategoryRobloxResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v63 = reader.GetInt64();
+				v63 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -57959,7 +57950,7 @@ public sealed record CategoryWarfaceResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -58005,7 +57996,7 @@ public sealed record CategoryWarfaceResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryWarfaceResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -58045,7 +58036,7 @@ public sealed record CategoryWarfaceResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -58091,7 +58082,7 @@ public sealed record CategoryWarfaceResponseItems(
 		CategoryWarfaceResponseItemsBumpSettings v49 = null!;
 		bool v50 = default;
 		bool v51 = default;
-		long v52 = default;
+		double v52 = default;
 		string v53 = null!;
 		bool v54 = default;
 		bool v55 = default;
@@ -58149,7 +58140,7 @@ public sealed record CategoryWarfaceResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -58379,7 +58370,7 @@ public sealed record CategoryWarfaceResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v52 = reader.GetInt64();
+				v52 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -59487,7 +59478,7 @@ public sealed record CategoryMinecraftResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -59546,7 +59537,7 @@ public sealed record CategoryMinecraftResponseItems(
 	[property: JsonPropertyName("bumpSettings")] CategoryMinecraftResponseItemsBumpSettings BumpSettings,
 	[property: JsonPropertyName("canBumpItem")] bool CanBumpItem,
 	[property: JsonPropertyName("canBuyItem")] bool CanBuyItem,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("price_currency")] string PriceCurrency,
 	[property: JsonPropertyName("canValidateAccount")] bool CanValidateAccount,
 	[property: JsonPropertyName("canResellItemAfterPurchase")] bool CanResellItemAfterPurchase,
@@ -59584,7 +59575,7 @@ public sealed record CategoryMinecraftResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -59643,7 +59634,7 @@ public sealed record CategoryMinecraftResponseItems(
 		CategoryMinecraftResponseItemsBumpSettings v62 = null!;
 		bool v63 = default;
 		bool v64 = default;
-		long v65 = default;
+		double v65 = default;
 		string v66 = null!;
 		bool v67 = default;
 		bool v68 = default;
@@ -59699,7 +59690,7 @@ public sealed record CategoryMinecraftResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -60003,7 +59994,7 @@ public sealed record CategoryMinecraftResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v65 = reader.GetInt64();
+				v65 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("price_currency"u8))
 			{
@@ -60752,7 +60743,7 @@ public sealed record CategoryHytaleResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -60770,7 +60761,7 @@ public sealed record CategoryHytaleResponseItems(
 	[property: JsonPropertyName("item_domain")] string ItemDomain,
 	[property: JsonPropertyName("resale_item_origin")] string ResaleItemOrigin,
 	[property: JsonPropertyName("auto_bump_period")] long AutoBumpPeriod,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("discount")] bool Discount,
 	[property: JsonPropertyName("hytale_item_id")] long HytaleItemId,
 	[property: JsonPropertyName("hytale_profiles")] long HytaleProfiles,
@@ -60840,7 +60831,7 @@ public sealed record CategoryHytaleResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -60858,7 +60849,7 @@ public sealed record CategoryHytaleResponseItems(
 		string v21 = null!;
 		string v22 = null!;
 		long v23 = default;
-		long v24 = default;
+		double v24 = default;
 		bool v25 = default;
 		long v26 = default;
 		long v27 = default;
@@ -60946,7 +60937,7 @@ public sealed record CategoryHytaleResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -61036,7 +61027,7 @@ public sealed record CategoryHytaleResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v24 = reader.GetInt64();
+				v24 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("discount"u8))
 			{
@@ -62309,7 +62300,7 @@ public sealed record CategoryOnlyfansResponseItems(
 	[property: JsonPropertyName("published_date")] long PublishedDate,
 	[property: JsonPropertyName("title")] string Title,
 	[property: JsonPropertyName("description")] string Description,
-	[property: JsonPropertyName("price")] long Price,
+	[property: JsonPropertyName("price")] double Price,
 	[property: JsonPropertyName("update_stat_date")] long UpdateStatDate,
 	[property: JsonPropertyName("refreshed_date")] long RefreshedDate,
 	[property: JsonPropertyName("edit_date")] long EditDate,
@@ -62328,7 +62319,7 @@ public sealed record CategoryOnlyfansResponseItems(
 	[property: JsonPropertyName("resale_item_origin")] string ResaleItemOrigin,
 	[property: JsonPropertyName("auto_bump_period")] long AutoBumpPeriod,
 	[property: JsonPropertyName("guarantee_duration")] long GuaranteeDuration,
-	[property: JsonPropertyName("rub_price")] long RubPrice,
+	[property: JsonPropertyName("rub_price")] double RubPrice,
 	[property: JsonPropertyName("discount")] JsonElement Discount,
 	[property: JsonPropertyName("onlyfans_item_id")] long OnlyfansItemId,
 	[property: JsonPropertyName("onlyfans_id")] string OnlyfansId,
@@ -62414,7 +62405,7 @@ public sealed record CategoryOnlyfansResponseItems(
 		long v3 = default;
 		string v4 = null!;
 		string v5 = null!;
-		long v6 = default;
+		double v6 = default;
 		long v7 = default;
 		long v8 = default;
 		long v9 = default;
@@ -62433,7 +62424,7 @@ public sealed record CategoryOnlyfansResponseItems(
 		string v22 = null!;
 		long v23 = default;
 		long v24 = default;
-		long v25 = default;
+		double v25 = default;
 		JsonElement v26 = default;
 		long v27 = default;
 		string v28 = null!;
@@ -62537,7 +62528,7 @@ public sealed record CategoryOnlyfansResponseItems(
 			else if (reader.ValueTextEquals("price"u8))
 			{
 				reader.Read();
-				v6 = reader.GetInt64();
+				v6 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("update_stat_date"u8))
 			{
@@ -62632,7 +62623,7 @@ public sealed record CategoryOnlyfansResponseItems(
 			else if (reader.ValueTextEquals("rub_price"u8))
 			{
 				reader.Read();
-				v25 = reader.GetInt64();
+				v25 = reader.GetDouble();
 			}
 			else if (reader.ValueTextEquals("discount"u8))
 			{
