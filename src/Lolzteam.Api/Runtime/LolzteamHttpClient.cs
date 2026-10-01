@@ -351,6 +351,14 @@ public sealed class LolzteamHttpClient : ILolzteamHttpClient
 
     private static void SetBody(HttpRequestMessage request, RequestOptions options)
     {
+        if (options.BodyEncoding == BodyEncoding.Json)
+        {
+            if (options.Body is { ValueKind: JsonValueKind.Object or JsonValueKind.Array } jsonBody)
+                request.Content = new StringContent(jsonBody.GetRawText(), Encoding.UTF8, "application/json");
+
+            return;
+        }
+
         var hasBody = options.Body is { ValueKind: JsonValueKind.Object };
         var hasByteFields = options.ByteArrayFields is { Count: > 0 };
 
@@ -358,12 +366,6 @@ public sealed class LolzteamHttpClient : ILolzteamHttpClient
 
         switch (options.BodyEncoding)
         {
-            case BodyEncoding.Json:
-            {
-                var json = options.Body is { } b ? JsonSerializer.Serialize(b) : "{}";
-                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
-                break;
-            }
             case BodyEncoding.Multipart:
             {
                 var multipart = new MultipartFormDataContent();

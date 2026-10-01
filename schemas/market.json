@@ -81858,24 +81858,9 @@
                   "properties": {
                     "jobs": {
                       "title": "Jobs",
-                      "required": [
-                        "job_id"
-                      ],
                       "type": "object",
-                      "properties": {
-                        "job_id": {
-                          "title": "JobId",
-                          "type": "object",
-                          "properties": {
-                            "_job_result": {
-                              "type": "string"
-                            },
-                            "_job_error": {
-                              "type": "string"
-                            }
-                          }
-                        }
-                      }
+                      "description": "Job results keyed by job id (or URI when the job has no id). Each result holds `_job_result` (`ok` or `error`), `_job_error` on failure, and the executed request's response fields.",
+                      "additionalProperties": {}
                     },
                     "system_info": {
                       "$ref": "#/components/schemas/Resp_SystemInfo"

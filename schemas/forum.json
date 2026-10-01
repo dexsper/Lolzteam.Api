@@ -14188,17 +14188,9 @@
                   "properties": {
                     "jobs": {
                       "title": "Jobs",
-                      "required": [
-                        "job_id"
-                      ],
                       "type": "object",
-                      "properties": {
-                        "job_id": {
-                          "title": "JobId",
-                          "type": "object",
-                          "properties": {}
-                        }
-                      }
+                      "description": "Job results keyed by job id (or URI when the job has no id). Each result holds `_job_result` (`ok` or `error`), `_job_error` on failure, and the executed request's response fields.",
+                      "additionalProperties": {}
                     }
                   }
                 }
