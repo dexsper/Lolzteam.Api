@@ -2594,15 +2594,15 @@ public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("steam_converted_balance")] long SteamConvertedBalance,
 	[property: JsonPropertyName("steam_cards_count")] long SteamCardsCount,
 	[property: JsonPropertyName("steam_cards_games")] long SteamCardsGames,
-	[property: JsonPropertyName("steam_pubg_inv_value")] long SteamPubgInvValue,
-	[property: JsonPropertyName("steam_cs2_inv_value")] long SteamCs2InvValue,
-	[property: JsonPropertyName("steam_dota2_inv_value")] long SteamDota2InvValue,
-	[property: JsonPropertyName("steam_tf2_inv_value")] long SteamTf2InvValue,
-	[property: JsonPropertyName("steam_rust_inv_value")] long SteamRustInvValue,
+	[property: JsonPropertyName("steam_pubg_inv_value")] long? SteamPubgInvValue,
+	[property: JsonPropertyName("steam_cs2_inv_value")] long? SteamCs2InvValue,
+	[property: JsonPropertyName("steam_dota2_inv_value")] long? SteamDota2InvValue,
+	[property: JsonPropertyName("steam_tf2_inv_value")] long? SteamTf2InvValue,
+	[property: JsonPropertyName("steam_rust_inv_value")] long? SteamRustInvValue,
 	[property: JsonPropertyName("steam_cs2_wingman_rank_id")] long SteamCs2WingmanRankId,
 	[property: JsonPropertyName("steam_game_count")] long SteamGameCount,
-	[property: JsonPropertyName("steam_steam_inv_value")] long SteamSteamInvValue,
-	[property: JsonPropertyName("steam_inv_value")] long SteamInvValue,
+	[property: JsonPropertyName("steam_steam_inv_value")] long? SteamSteamInvValue,
+	[property: JsonPropertyName("steam_inv_value")] long? SteamInvValue,
 	[property: JsonPropertyName("steam_cs2_win_count")] long SteamCs2WinCount,
 	[property: JsonPropertyName("steam_dota2_game_count")] long SteamDota2GameCount,
 	[property: JsonPropertyName("steam_dota2_lose_count")] long SteamDota2LoseCount,
@@ -2619,10 +2619,10 @@ public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("steam_market")] long SteamMarket,
 	[property: JsonPropertyName("steam_market_restrictions")] long SteamMarketRestrictions,
 	[property: JsonPropertyName("steam_market_ban_end_date")] long SteamMarketBanEndDate,
-	[property: JsonPropertyName("steam_unturned_inv_value")] long SteamUnturnedInvValue,
+	[property: JsonPropertyName("steam_unturned_inv_value")] long? SteamUnturnedInvValue,
 	[property: JsonPropertyName("steam_cs2_last_launched")] long SteamCs2LastLaunched,
-	[property: JsonPropertyName("steam_kf2_inv_value")] long SteamKf2InvValue,
-	[property: JsonPropertyName("steam_dst_inv_value")] long SteamDstInvValue,
+	[property: JsonPropertyName("steam_kf2_inv_value")] long? SteamKf2InvValue,
+	[property: JsonPropertyName("steam_dst_inv_value")] long? SteamDstInvValue,
 	[property: JsonPropertyName("steam_cs2_premier_elo")] long SteamCs2PremierElo,
 	[property: JsonPropertyName("steam_has_activated_keys")] long SteamHasActivatedKeys,
 	[property: JsonPropertyName("steam_cs2_ban_type")] long SteamCs2BanType,
@@ -2672,7 +2672,7 @@ public sealed record CategorySteamResponseItems(
 	[property: JsonPropertyName("steamCs2Medals")] List<JsonElement> SteamCs2Medals,
 	[property: JsonPropertyName("cs2RankExpired")] bool Cs2RankExpired,
 	[property: JsonPropertyName("steamDota2WinRate")] long SteamDota2WinRate,
-	[property: JsonPropertyName("steamGifts")] List<CategorySteamResponseItemsSteamGifts> SteamGifts,
+	[property: JsonPropertyName("steamGifts")] List<CategorySteamResponseItemsSteamGifts>? SteamGifts,
 	[property: JsonPropertyName("steamTransactions")] List<CategorySteamResponseItemsSteamTransactions> SteamTransactions,
 	[property: JsonPropertyName("hasPossibleBanInDota2")] bool HasPossibleBanInDota2,
 	[property: JsonPropertyName("chineseAccount")] bool ChineseAccount,
@@ -2749,15 +2749,15 @@ public sealed record CategorySteamResponseItems(
 		long v38 = default;
 		long v39 = default;
 		long v40 = default;
-		long v41 = default;
-		long v42 = default;
-		long v43 = default;
-		long v44 = default;
-		long v45 = default;
+		long? v41 = default;
+		long? v42 = default;
+		long? v43 = default;
+		long? v44 = default;
+		long? v45 = default;
 		long v46 = default;
 		long v47 = default;
-		long v48 = default;
-		long v49 = default;
+		long? v48 = default;
+		long? v49 = default;
 		long v50 = default;
 		long v51 = default;
 		long v52 = default;
@@ -2774,10 +2774,10 @@ public sealed record CategorySteamResponseItems(
 		long v63 = default;
 		long v64 = default;
 		long v65 = default;
-		long v66 = default;
+		long? v66 = default;
 		long v67 = default;
-		long v68 = default;
-		long v69 = default;
+		long? v68 = default;
+		long? v69 = default;
 		long v70 = default;
 		long v71 = default;
 		long v72 = default;
@@ -2827,7 +2827,7 @@ public sealed record CategorySteamResponseItems(
 		List<JsonElement> v116 = null!;
 		bool v117 = default;
 		long v118 = default;
-		List<CategorySteamResponseItemsSteamGifts> v119 = null!;
+		List<CategorySteamResponseItemsSteamGifts>? v119 = default;
 		List<CategorySteamResponseItemsSteamTransactions> v120 = null!;
 		bool v121 = default;
 		bool v122 = default;
@@ -3074,27 +3074,62 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("steam_pubg_inv_value"u8))
 			{
 				reader.Read();
-				v41 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v41 = null;
+				}
+				else
+				{
+					v41 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_cs2_inv_value"u8))
 			{
 				reader.Read();
-				v42 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v42 = null;
+				}
+				else
+				{
+					v42 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_dota2_inv_value"u8))
 			{
 				reader.Read();
-				v43 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v43 = null;
+				}
+				else
+				{
+					v43 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_tf2_inv_value"u8))
 			{
 				reader.Read();
-				v44 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v44 = null;
+				}
+				else
+				{
+					v44 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_rust_inv_value"u8))
 			{
 				reader.Read();
-				v45 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v45 = null;
+				}
+				else
+				{
+					v45 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_cs2_wingman_rank_id"u8))
 			{
@@ -3109,12 +3144,26 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("steam_steam_inv_value"u8))
 			{
 				reader.Read();
-				v48 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v48 = null;
+				}
+				else
+				{
+					v48 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_inv_value"u8))
 			{
 				reader.Read();
-				v49 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v49 = null;
+				}
+				else
+				{
+					v49 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_cs2_win_count"u8))
 			{
@@ -3199,7 +3248,14 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("steam_unturned_inv_value"u8))
 			{
 				reader.Read();
-				v66 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v66 = null;
+				}
+				else
+				{
+					v66 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_cs2_last_launched"u8))
 			{
@@ -3209,12 +3265,26 @@ public sealed record CategorySteamResponseItems(
 			else if (reader.ValueTextEquals("steam_kf2_inv_value"u8))
 			{
 				reader.Read();
-				v68 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v68 = null;
+				}
+				else
+				{
+					v68 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_dst_inv_value"u8))
 			{
 				reader.Read();
-				v69 = reader.GetInt64();
+				if (reader.TokenType == JsonTokenType.Null)
+				{
+					v69 = null;
+				}
+				else
+				{
+					v69 = reader.GetInt64();
+				}
 			}
 			else if (reader.ValueTextEquals("steam_cs2_premier_elo"u8))
 			{
